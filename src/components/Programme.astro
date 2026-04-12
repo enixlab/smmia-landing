@@ -1,70 +1,16 @@
 ---
-const mois1 = [
-  {
-    semaine: "S1", label: "Semaine 1",
-    lives: [
-      { num:"01", emoji:"🤖", title:"L'IA que t'utilisais mal depuis le début (fix en 1h)" },
-      { num:"02", emoji:"⚔️", title:"Transforme Claude en agence de 50 personnes pour ton SMMA" },
-    ]
-  },
-  {
-    semaine: "S2", label: "Semaine 2",
-    lives: [
-      { num:"03", emoji:"🧠", title:"Le prompt qui fait bosser 7 IA en simultané pendant que tu dors" },
-      { num:"04", emoji:"⚡", title:"15 IAs qui bossent ensemble — sans une seule ligne de code" },
-    ]
-  },
-  {
-    semaine: "S3", label: "Semaine 3",
-    lives: [
-      { num:"05", emoji:"🎨", title:"Des visuels de designer en 3 min — zéro Photoshop, zéro budget" },
-      { num:"06", emoji:"🏢", title:"Ton agence lancée en 1 journée : site, offre, réseaux — full IA" },
-    ],
-    vocal: true
-  },
-  {
-    semaine: "S4", label: "Semaine 4",
-    lives: [
-      { num:"07", emoji:"🔍", title:"Comment retrouver le numéro personnel d'un patron en 5 minutes" },
-      { num:"08", emoji:"💰", title:"Closer un client en moins de 15 min — même si t'as jamais vendu" },
-    ],
-    vocal: true
-  },
-];
-
-const mois2 = [
-  {
-    semaine: "S1", label: "Semaine 1",
-    lives: [
-      { num:"01", emoji:"🌐", title:"Le site livré en 48h qui domine Google — méthodes officielles... et les autres" },
-      { num:"02", emoji:"💎", title:"Combien facturer, comment négocier, comment ne jamais perdre un deal" },
-    ],
-    vocal: true
-  },
-  {
-    semaine: "S2", label: "Semaine 2",
-    lives: [
-      { num:"03", emoji:"🎬", title:"Des vidéos UGC pro générées par l'IA — tes clients voient pas la différence" },
-      { num:"04", emoji:"📣", title:"Le système Meta Ads qui tourne tout seul pendant que tu closes" },
-    ],
-    vocal: true
-  },
-  {
-    semaine: "S3", label: "Semaine 3",
-    lives: [
-      { num:"05", emoji:"📊", title:"Automatise Google Ads + GMB + Avis Google — et le vendre très cher" },
-      { num:"06", emoji:"🎯", title:"Le pipeline de leads qui se remplit tout seul — 0 appel froid, 0 pub" },
-    ],
-    vocal: true
-  },
-  {
-    semaine: "S4", label: "Semaine 4",
-    lives: [
-      { num:"07", emoji:"🤖", title:"Vire la secrétaire de tes clients — l'IA gère mails, factures et SAV" },
-      { num:"08", emoji:"🛠️", title:"Crée ton propre SaaS en 1 live — et le vendre 300€/mois à tes clients" },
-    ],
-    vocal: true
-  },
+const lives = [
+  "LIVE-01-super-claude.png",
+  "LIVE-02-art-de-la-parole.png",
+  "LIVE-03-branding-masterclass.png",
+  "LIVE-04-osint-underground.png",
+  "LIVE-05-vendre-nimporte-quoi.png",
+  "LIVE-06-agence-inoubliable.png",
+  "LIVE-07-blackhat-seo.png",
+  "LIVE-08-ads-qui-cartonnent.png",
+  "LIVE-09-ads-v2.png",
+  "LIVE-10-review-reseller.png",
+  "LIVE-11-automatise-tout.png",
 ];
 ---
 
@@ -85,105 +31,27 @@ const mois2 = [
       </p>
     </div>
 
-    <!-- Tabs -->
-    <div data-animate data-delay="0.12" class="tabs-row">
-      <button id="tab-m1" class="month-tab month-tab--active" onclick="switchMois(1)">
-        <span class="tab-pill">MOIS 1</span>
-        <span class="tab-name">Maîtriser l'IA à 100%</span>
-      </button>
-      <button id="tab-m2" class="month-tab" onclick="switchMois(2)">
-        <span class="tab-pill tab-pill--dim">MOIS 2</span>
-        <span class="tab-name">Monétiser ses compétences</span>
-      </button>
+    <!-- Main Preview -->
+    <div class="main-preview" data-animate data-delay="0.15">
+      <img
+        id="preview-img"
+        src={`/images/lives/${lives[0]}`}
+        alt="Live aperçu"
+      />
     </div>
 
-    <!-- ── CALENDRIER MOIS 1 ── -->
-    <div id="cal-m1" class="cal-wrap" data-animate data-delay="0.18">
-      {mois1.map((week, wi) => (
-        <div class={`cal-row${wi === mois1.length - 1 ? ' cal-row--last' : ''}`}>
-
-          <!-- Timeline col -->
-          <div class="cal-timeline">
-            <div class="tl-dot"></div>
-            {wi < mois1.length - 1 && <div class="tl-line"></div>}
-          </div>
-
-          <!-- Week label col -->
-          <div class="cal-week-label">
-            <span class="week-num">{week.label}</span>
-            <span class="week-count">{week.lives.length} lives{week.vocal ? ' + vocal' : ''}</span>
-          </div>
-
-          <!-- Events col -->
-          <div class="cal-events">
-            {week.lives.map((live) => (
-              <div class={`ev-card${live.isConversion ? ' ev-conversion' : ''}`}>
-                <div class="ev-header">
-                  <span class="ev-badge">LIVE</span>
-                  {live.isConversion && <span class="ev-badge ev-badge--orange">⚡ CONVERSION</span>}
-                </div>
-                <div class="ev-body">
-                  <span class="ev-emoji">{live.emoji}</span>
-                  <p class="ev-title">{live.title}</p>
-                </div>
-                <span class="ev-ghost-num">{live.num}</span>
-              </div>
-            ))}
-            {week.vocal && (
-              <div class="ev-vocal">
-                <span class="vocal-icon">🎙️</span>
-                <div>
-                  <p class="vocal-name">Vocal Accompagnement</p>
-                  <p class="vocal-desc">Tes questions · Coaching direct</p>
-                </div>
-              </div>
-            )}
-          </div>
-
-        </div>
-      ))}
-    </div>
-
-    <!-- ── CALENDRIER MOIS 2 ── -->
-    <div id="cal-m2" class="cal-wrap" style="display:none;" data-animate data-delay="0.18">
-      {mois2.map((week, wi) => (
-        <div class={`cal-row${wi === mois2.length - 1 ? ' cal-row--last' : ''}`}>
-
-          <div class="cal-timeline">
-            <div class="tl-dot"></div>
-            {wi < mois2.length - 1 && <div class="tl-line"></div>}
-          </div>
-
-          <div class="cal-week-label">
-            <span class="week-num">{week.label}</span>
-            <span class="week-count">{week.lives.length} lives{week.vocal ? ' + vocal' : ''}</span>
-          </div>
-
-          <div class="cal-events">
-            {week.lives.map((live) => (
-              <div class="ev-card">
-                <div class="ev-header">
-                  <span class="ev-badge">LIVE</span>
-                </div>
-                <div class="ev-body">
-                  <span class="ev-emoji">{live.emoji}</span>
-                  <p class="ev-title">{live.title}</p>
-                </div>
-                <span class="ev-ghost-num">{live.num}</span>
-              </div>
-            ))}
-            {week.vocal && (
-              <div class="ev-vocal">
-                <span class="vocal-icon">🎙️</span>
-                <div>
-                  <p class="vocal-name">Vocal Accompagnement</p>
-                  <p class="vocal-desc">Tes questions · Coaching direct</p>
-                </div>
-              </div>
-            )}
-          </div>
-
-        </div>
+    <!-- Thumbnail Strip -->
+    <div class="thumb-strip" data-animate data-delay="0.2">
+      {lives.map((file, i) => (
+        <button
+          class={`thumb${i === 0 ? ' thumb--active' : ''}`}
+          data-src={`/images/lives/${file}`}
+          data-index={i}
+          aria-label={`Live ${i + 1}`}
+        >
+          <img src={`/images/lives/${file}`} alt="" loading="lazy" />
+          <span class="thumb-num">{String(i + 1).padStart(2, '0')}</span>
+        </button>
       ))}
     </div>
 
@@ -195,24 +63,18 @@ const mois2 = [
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
   }
-  @keyframes glow-pulse {
-    0%, 100% { box-shadow: 0 0 10px rgba(232,68,42,0.4), 0 0 30px rgba(232,68,42,0.15); }
-    50% { box-shadow: 0 0 20px rgba(232,68,42,0.7), 0 0 50px rgba(232,68,42,0.3); }
-  }
 
-  /* ── Section ── */
   .prog-section {
     padding: 120px 0 140px;
     background:
       radial-gradient(ellipse 70% 60% at 15% 50%, rgba(168,85,247,0.05) 0%, transparent 60%),
       radial-gradient(ellipse 50% 40% at 85% 50%, rgba(168,85,247,0.03) 0%, transparent 60%);
-    position: relative;
   }
 
   .prog-inner {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 32px;
   }
 
   /* ── Header ── */
@@ -260,376 +122,113 @@ const mois2 = [
     margin: 0 auto;
   }
 
-  /* ── Tabs ── */
-  .tabs-row {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 56px;
-  }
-
-  .month-tab {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-    padding: 14px 22px;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.07);
-    background: rgba(255,255,255,0.02);
-    cursor: pointer;
-    transition: border-color 0.22s, background 0.22s;
-    text-align: left;
-  }
-  .month-tab:hover {
-    border-color: rgba(168,85,247,0.28);
-    background: rgba(168,85,247,0.05);
-  }
-  .month-tab--active {
-    border-color: rgba(168,85,247,0.4) !important;
-    background: rgba(168,85,247,0.08) !important;
-  }
-
-  .tab-pill {
-    font-size: 0.66rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    color: #A855F7;
-    background: rgba(168,85,247,0.14);
-    border-radius: 100px;
-    padding: 2px 10px;
-  }
-  .tab-pill--dim {
-    color: rgba(255,255,255,0.28);
-    background: rgba(255,255,255,0.05);
-  }
-  .month-tab--active .tab-pill--dim {
-    color: #A855F7;
-    background: rgba(168,85,247,0.14);
-  }
-
-  .tab-name {
-    font-size: 0.86rem;
-    font-weight: 700;
-    color: rgba(255,255,255,0.42);
-    white-space: nowrap;
-  }
-  .month-tab--active .tab-name {
-    color: rgba(255,255,255,0.88);
-  }
-
-  /* ── Calendar wrap ── */
-  .cal-wrap {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  /* ── Row ── */
-  .cal-row {
-    display: grid;
-    grid-template-columns: 40px 180px 1fr;
-    gap: 0 24px;
-    position: relative;
-    padding-bottom: 40px;
-    align-items: start;
-  }
-  .cal-row--last {
-    padding-bottom: 0;
-  }
-
-  /* ── Timeline ── */
-  .cal-timeline {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    padding-top: 4px;
-  }
-
-  .tl-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: #A855F7;
-    border: 2px solid rgba(168,85,247,0.4);
-    box-shadow: 0 0 0 4px rgba(168,85,247,0.1), 0 0 16px rgba(168,85,247,0.5);
-    flex-shrink: 0;
-    z-index: 2;
-    position: relative;
-  }
-
-  .tl-line {
-    width: 2px;
-    flex: 1;
-    min-height: 40px;
-    background: linear-gradient(to bottom, rgba(168,85,247,0.4), rgba(168,85,247,0.08));
-    margin-top: 6px;
-    position: absolute;
-    top: 20px;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  /* ── Week label col ── */
-  .cal-week-label {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding-top: 2px;
-    border-right: 1px solid rgba(255,255,255,0.05);
-    padding-right: 24px;
-  }
-
-  .week-num {
-    font-size: 0.92rem;
-    font-weight: 800;
-    color: rgba(255,255,255,0.75);
-    letter-spacing: -0.01em;
-  }
-
-  .week-count {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.25);
-    font-weight: 500;
-  }
-
-  /* ── Events col ── */
-  .cal-events {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-bottom: 8px;
-  }
-
-  /* ── Event card ── */
-  .ev-card {
-    position: relative;
+  /* ── Main Preview ── */
+  .main-preview {
+    border-radius: 20px;
     overflow: hidden;
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 16px;
-    padding: 18px 20px 16px;
-    flex: 1 1 280px;
-    min-width: 260px;
-    max-width: 400px;
-    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
-  }
-  .ev-card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(168,85,247,0.3);
-    background: rgba(168,85,247,0.04);
+    border: 1.5px solid rgba(168,85,247,0.35);
+    box-shadow: 0 0 60px rgba(168,85,247,0.15), 0 0 120px rgba(168,85,247,0.06);
+    margin-bottom: 16px;
+    aspect-ratio: 16/9;
+    background: #0a0510;
   }
 
-  .ev-conversion {
-    border-color: rgba(232,68,42,0.3) !important;
-    background: rgba(232,68,42,0.04) !important;
-    animation: glow-pulse 3s ease-in-out infinite;
-  }
-  .ev-conversion:hover {
-    transform: translateY(-2px);
-    border-color: rgba(232,68,42,0.55) !important;
-    background: rgba(232,68,42,0.07) !important;
-  }
-
-  .ev-header {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 14px;
-  }
-
-  .ev-badge {
-    font-size: 0.62rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    color: #A855F7;
-    background: rgba(168,85,247,0.12);
-    border: 1px solid rgba(168,85,247,0.22);
-    border-radius: 100px;
-    padding: 2px 9px;
-  }
-  .ev-badge--orange {
-    color: #E8442A;
-    background: rgba(232,68,42,0.12);
-    border-color: rgba(232,68,42,0.25);
-  }
-
-  .ev-body {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .ev-emoji {
-    font-size: 1.5rem;
-    line-height: 1;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .ev-title {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.45;
-    margin: 0;
-  }
-
-  /* Ghost number in background */
-  .ev-ghost-num {
-    position: absolute;
-    bottom: -8px;
-    right: 10px;
-    font-size: 4.5rem;
-    font-weight: 900;
-    color: rgba(255,255,255,0.025);
-    line-height: 1;
-    letter-spacing: -0.05em;
-    pointer-events: none;
-    user-select: none;
-  }
-  .ev-conversion .ev-ghost-num {
-    color: rgba(232,68,42,0.06);
-  }
-
-  /* ── Vocal card ── */
-  .ev-vocal {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(168,85,247,0.03);
-    border: 1px dashed rgba(168,85,247,0.18);
-    border-radius: 14px;
-    padding: 14px 18px;
-    flex: 0 0 auto;
+  .main-preview img {
     width: 100%;
-    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s ease;
   }
 
-  .vocal-icon {
-    font-size: 1.3rem;
-    flex-shrink: 0;
+  .main-preview img.fade {
+    opacity: 0;
   }
 
-  .vocal-name {
-    font-size: 0.82rem;
-    font-weight: 800;
-    color: rgba(168,85,247,0.7);
-    margin: 0 0 2px;
+  /* ── Thumbnail Strip ── */
+  .thumb-strip {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 4px 2px;
+  }
+  .thumb-strip::-webkit-scrollbar { display: none; }
+
+  .thumb {
+    flex: 0 0 auto;
+    width: calc((100% - 100px) / 11);
+    min-width: 80px;
+    max-width: 140px;
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.07);
+    background: #0a0510;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .thumb:hover {
+    border-color: rgba(168,85,247,0.45);
+    transform: translateY(-2px);
+  }
+  .thumb--active {
+    border-color: #A855F7 !important;
+    box-shadow: 0 0 16px rgba(168,85,247,0.5);
   }
 
-  .vocal-desc {
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.2);
-    margin: 0;
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
-  /* ── Separator between rows (via padding + border illusion) ── */
-  .cal-row:not(.cal-row--last)::after {
-    content: '';
+  .thumb-num {
     position: absolute;
-    left: 40px;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background: linear-gradient(to right, rgba(255,255,255,0.04) 0%, transparent 100%);
+    bottom: 4px;
+    right: 6px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  }
+  .thumb--active .thumb-num {
+    color: rgba(168,85,247,0.9);
   }
 
   /* ── Responsive ── */
-  @media (max-width: 1024px) {
-    .cal-row {
-      grid-template-columns: 32px 140px 1fr;
-      gap: 0 16px;
-    }
-    .cal-week-label {
-      padding-right: 16px;
-    }
-  }
-
   @media (max-width: 768px) {
-    .prog-inner {
-      padding: 0 20px;
-    }
-    .cal-row {
-      grid-template-columns: 28px 1fr;
-      grid-template-rows: auto auto;
-      gap: 8px 12px;
-    }
-    .cal-week-label {
-      grid-column: 2;
-      grid-row: 1;
-      border-right: none;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      padding-right: 0;
-      padding-bottom: 10px;
-      flex-direction: row;
-      align-items: center;
-      gap: 10px;
-    }
-    .cal-events {
-      grid-column: 2;
-      grid-row: 2;
-    }
-    .cal-timeline {
-      grid-column: 1;
-      grid-row: 1 / 3;
-    }
-    .tl-line {
-      bottom: -48px;
-    }
-    .ev-card {
-      flex: 1 1 100%;
-      max-width: 100%;
-      min-width: unset;
-    }
-    .tabs-row {
-      flex-direction: column;
-      align-items: center;
-    }
-    .month-tab {
-      width: 100%;
-      max-width: 320px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .prog-section {
-      padding: 80px 0 100px;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .ev-conversion {
-      animation: none;
-    }
-    .ev-card:hover,
-    .ev-conversion:hover {
-      transform: none;
+    .prog-inner { padding: 0 16px; }
+    .prog-section { padding: 80px 0 100px; }
+    .thumb {
+      min-width: 70px;
     }
   }
 </style>
 
 <script>
-  function switchMois(num: number) {
-    const cal1 = document.getElementById('cal-m1')!;
-    const cal2 = document.getElementById('cal-m2')!;
-    const tab1 = document.getElementById('tab-m1')!;
-    const tab2 = document.getElementById('tab-m2')!;
+  const preview = document.getElementById('preview-img') as HTMLImageElement;
+  const thumbs = document.querySelectorAll<HTMLButtonElement>('.thumb');
 
-    if (num === 1) {
-      cal1.style.display = 'flex';
-      cal2.style.display = 'none';
-      tab1.classList.add('month-tab--active');
-      tab2.classList.remove('month-tab--active');
-    } else {
-      cal1.style.display = 'none';
-      cal2.style.display = 'flex';
-      tab2.classList.add('month-tab--active');
-      tab1.classList.remove('month-tab--active');
-    }
-  }
-  (window as any).switchMois = switchMois;
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const src = thumb.dataset.src!;
+      // fade
+      preview.classList.add('fade');
+      setTimeout(() => {
+        preview.src = src;
+        preview.onload = () => preview.classList.remove('fade');
+      }, 150);
+      // active state
+      thumbs.forEach(t => t.classList.remove('thumb--active'));
+      thumb.classList.add('thumb--active');
+      // scroll thumb into view
+      thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    });
+  });
 </script>
