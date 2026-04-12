@@ -141,13 +141,13 @@ section {
   to { transform: translateX(0); }
 }
 .marquee-track-l {
-  animation: marquee-l 40s linear infinite;
+  animation: marquee-l 90s linear infinite;
   display: flex;
   width: max-content;
   align-items: center;
 }
 .marquee-track-r {
-  animation: marquee-r 45s linear infinite;
+  animation: marquee-r 100s linear infinite;
   display: flex;
   width: max-content;
   align-items: center;
