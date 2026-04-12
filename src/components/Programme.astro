@@ -38,21 +38,29 @@ const lives = [
         src={`/images/lives/${lives[0]}`}
         alt="Live aperçu"
       />
+      <button class="arrow arrow--prev" id="arrow-prev" aria-label="Précédent">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="arrow arrow--next" id="arrow-next" aria-label="Suivant">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
 
     <!-- Thumbnail Strip -->
-    <div class="thumb-strip" data-animate data-delay="0.2">
-      {lives.map((file, i) => (
-        <button
-          class={`thumb${i === 0 ? ' thumb--active' : ''}`}
-          data-src={`/images/lives/${file}`}
-          data-index={i}
-          aria-label={`Live ${i + 1}`}
-        >
-          <img src={`/images/lives/${file}`} alt="" loading="lazy" />
-          <span class="thumb-num">{String(i + 1).padStart(2, '0')}</span>
-        </button>
-      ))}
+    <div class="strip-wrap" data-animate data-delay="0.2">
+      <div class="thumb-strip" id="thumb-strip">
+        {lives.map((file, i) => (
+          <button
+            class={`thumb${i === 0 ? ' thumb--active' : ''}`}
+            data-src={`/images/lives/${file}`}
+            data-index={i}
+            aria-label={`Live ${i + 1}`}
+          >
+            <img src={`/images/lives/${file}`} alt="" loading="lazy" />
+            <span class="thumb-num">{String(i + 1).padStart(2, '0')}</span>
+          </button>
+        ))}
+      </div>
     </div>
 
   </div>
@@ -131,6 +139,7 @@ const lives = [
     margin-bottom: 16px;
     aspect-ratio: 16/9;
     background: #0a0510;
+    position: relative;
   }
 
   .main-preview img {
@@ -145,7 +154,43 @@ const lives = [
     opacity: 0;
   }
 
+  /* ── Arrows on preview ── */
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.55);
+    border: 1.5px solid rgba(168,85,247,0.4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    backdrop-filter: blur(6px);
+  }
+  .arrow:hover {
+    background: rgba(168,85,247,0.3);
+    border-color: #A855F7;
+    transform: translateY(-50%) scale(1.08);
+  }
+  .arrow--prev { left: 16px; }
+  .arrow--next { right: 16px; }
+  .arrow:disabled {
+    opacity: 0.25;
+    cursor: default;
+    pointer-events: none;
+  }
+
   /* ── Thumbnail Strip ── */
+  .strip-wrap {
+    position: relative;
+  }
+
   .thumb-strip {
     display: flex;
     gap: 10px;
@@ -214,21 +259,35 @@ const lives = [
 <script>
   const preview = document.getElementById('preview-img') as HTMLImageElement;
   const thumbs = document.querySelectorAll<HTMLButtonElement>('.thumb');
+  const btnPrev = document.getElementById('arrow-prev') as HTMLButtonElement;
+  const btnNext = document.getElementById('arrow-next') as HTMLButtonElement;
+  let current = 0;
+  const total = thumbs.length;
 
-  thumbs.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      const src = thumb.dataset.src!;
-      // fade
-      preview.classList.add('fade');
-      setTimeout(() => {
-        preview.src = src;
-        preview.onload = () => preview.classList.remove('fade');
-      }, 150);
-      // active state
-      thumbs.forEach(t => t.classList.remove('thumb--active'));
-      thumb.classList.add('thumb--active');
-      // scroll thumb into view
-      thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    });
+  function goTo(index: number) {
+    if (index < 0 || index >= total) return;
+    current = index;
+    const thumb = thumbs[current];
+    const src = thumb.dataset.src!;
+    preview.classList.add('fade');
+    setTimeout(() => {
+      preview.src = src;
+      preview.onload = () => preview.classList.remove('fade');
+    }, 150);
+    thumbs.forEach(t => t.classList.remove('thumb--active'));
+    thumb.classList.add('thumb--active');
+    thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    btnPrev.disabled = current === 0;
+    btnNext.disabled = current === total - 1;
+  }
+
+  thumbs.forEach((thumb, i) => {
+    thumb.addEventListener('click', () => goTo(i));
   });
+
+  btnPrev.addEventListener('click', () => goTo(current - 1));
+  btnNext.addEventListener('click', () => goTo(current + 1));
+
+  // init state
+  btnPrev.disabled = true;
 </script>
