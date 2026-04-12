@@ -1,0 +1,44 @@
+---
+const stats = [
+  { value: 47, suffix: "+", label: "Membres actifs", icon: "👥" },
+  { value: 3, suffix: " mois", label: "Pour rentabiliser", icon: "⚡" },
+  { value: 2, suffix: " lives/sem", label: "Avec les experts", icon: "🎥" },
+  { value: 3, suffix: "×", label: "Revenus moyens générés", icon: "📈" },
+];
+---
+
+<section style="padding:80px 0;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;" id="stats-grid">
+      {stats.map((stat, i) => (
+        <div
+          class="glass-card"
+          data-animate
+          data-delay={String(i * 0.1)}
+          style="padding:40px 24px;text-align:center;"
+        >
+          <div style="font-size:2rem;margin-bottom:12px;">{stat.icon}</div>
+          <div style="font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:1;background:linear-gradient(135deg,#A855F7,#E8442A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;">
+            <span data-countup={stat.value} data-suffix={stat.suffix}>0{stat.suffix}</span>
+          </div>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.875rem;font-weight:500;line-height:1.4;">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (max-width: 768px) {
+    #stats-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  @media (max-width: 480px) {
+    #stats-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

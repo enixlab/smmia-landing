@@ -1,0 +1,72 @@
+---
+const checklist = [
+  "2 lives/semaine avec les 5 experts",
+  "Accès communauté Discord Focus VIP",
+  "Templates Claude, Gemini, Lovart illimités",
+  "Scripts de vente qui closent",
+  "Accès services Prime à tarif membre",
+  "Support WhatsApp direct 7j/7",
+  "Accès aux replays à vie",
+];
+---
+
+<section id="prix" class="violet-grid" style="padding:120px 0;background:radial-gradient(ellipse 70% 50% at 50% 50%, rgba(168,85,247,0.08), transparent);">
+  <div style="max-width:600px;margin:0 auto;padding:0 24px;text-align:center;">
+
+    <!-- Texte au-dessus -->
+    <p data-animate style="font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;color:#A855F7;font-weight:600;margin-bottom:12px;">
+      Réservé aux membres de la communauté Focus
+    </p>
+    <h2 data-animate data-delay="0.1" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:64px;line-height:1.15;">
+      Un Module.<br/>Une décision.<br/>Tout change.
+    </h2>
+
+    <!-- Pricing card -->
+    <div
+      class="glass-card glow-pulse"
+      data-animate
+      data-delay="0.2"
+      style="padding:48px 40px;text-align:left;border:1px solid rgba(168,85,247,0.4);"
+    >
+
+      <!-- Badge FOMO -->
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:32px;">
+        <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(232,68,42,0.15);border:1px solid rgba(232,68,42,0.4);color:#E8442A;padding:8px 18px;border-radius:9999px;font-size:0.82rem;font-weight:700;letter-spacing:0.04em;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#E8442A;display:inline-block;animation:pulse-red 1.5s ease-in-out infinite;"></span>
+          Il ne reste que <strong style="font-size:0.95rem;">10 places</strong> — Session Mai 2026
+        </span>
+      </div>
+
+      <!-- Prix -->
+      <div style="margin-bottom:32px;">
+        <div style="display:flex;align-items:baseline;gap:4px;">
+          <span style="font-size:4.5rem;font-weight:900;line-height:1;background:linear-gradient(135deg,#A855F7,#7C3AED);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">1000€</span>
+        </div>
+      </div>
+
+      <!-- Checklist -->
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px;">
+        {checklist.map(item => (
+          <li style="display:flex;align-items:center;gap:12px;font-size:0.95rem;color:rgba(255,255,255,0.85);">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(168,85,247,0.2);border:1px solid rgba(168,85,247,0.4);flex-shrink:0;">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#A855F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA -->
+      <a href="#" class="btn-pill" style="width:100%;justify-content:center;font-size:1.1rem;padding:18px 32px;">
+        Je prends ma place &rarr;
+      </a>
+
+      <!-- Garantie -->
+      <p style="text-align:center;margin-top:16px;font-size:0.8rem;color:rgba(255,255,255,0.35);">
+        Paiement sécurisé &nbsp;·&nbsp; Sans engagement après 3 mois
+      </p>
+
+    </div>
+
+  </div>
+</section>

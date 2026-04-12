@@ -1,0 +1,175 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "SMMIA — Le module IA qui change tout",
+  description = "En 3 mois, tu passes de zéro à freelance IA qui cartonne. 2 lives/semaine avec 5 experts. Communauté Focus."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/logos/SMMIA-logo-transparent-v2.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/images/logos/smmia-icon-z4-no-text-v1.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+    <!-- styles imported in frontmatter -->
+  </head>
+  <body>
+    <!-- Custom cursor -->
+    <div id="cursor"></div>
+
+    <!-- Modal images -->
+    <div id="img-modal">
+      <button id="modal-close">&#10005;</button>
+      <img id="modal-img" src="" alt="Avis membre" />
+    </div>
+
+    <slot />
+
+    <script>
+      // Custom cursor
+      const cursor = document.getElementById('cursor');
+      let mouseX = -100, mouseY = -100;
+      let curX = -100, curY = -100;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function animateCursor() {
+        const lerp = 0.15;
+        curX += (mouseX - curX) * lerp;
+        curY += (mouseY - curY) * lerp;
+        if (cursor) {
+          cursor.style.left = curX + 'px';
+          cursor.style.top = curY + 'px';
+        }
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+
+      // Hover effect
+      document.querySelectorAll('a, button, .btn-pill, .avis-card, .intervenant-card, .faq-item').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor?.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => cursor?.classList.remove('hovering'));
+      });
+
+      // Scroll animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = el.dataset.delay || '0';
+            setTimeout(() => {
+              el.classList.add('visible');
+            }, parseFloat(delay) * 1000);
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+      // Count-up
+      function countUp(el: HTMLElement, target: number, duration: number = 1500, suffix: string = '') {
+        const start = Date.now();
+        const update = () => {
+          const elapsed = Date.now() - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+      }
+
+      const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const val = parseInt(el.dataset.countup || '0');
+            const suffix = el.dataset.suffix || '';
+            countUp(el, val, 1500, suffix);
+            countObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('[data-countup]').forEach(el => countObserver.observe(el as HTMLElement));
+
+      // FAQ accordion
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const btn = item.querySelector('.faq-btn');
+        const answer = item.querySelector('.faq-answer');
+        const chevron = item.querySelector('.faq-chevron');
+        btn?.addEventListener('click', () => {
+          const isOpen = answer?.classList.contains('open');
+          document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+          document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('rotated'));
+          if (!isOpen) {
+            answer?.classList.add('open');
+            chevron?.classList.add('rotated');
+          }
+        });
+      });
+
+      // Modal
+      const modal = document.getElementById('img-modal');
+      const modalImg = document.getElementById('modal-img') as HTMLImageElement;
+      const modalClose = document.getElementById('modal-close');
+
+      document.querySelectorAll('.avis-card img').forEach(img => {
+        img.addEventListener('click', () => {
+          if (modal && modalImg) {
+            modalImg.src = (img as HTMLImageElement).src;
+            modal.classList.add('active');
+          }
+        });
+      });
+
+      modalClose?.addEventListener('click', () => modal?.classList.remove('active'));
+      modal?.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal?.classList.remove('active');
+      });
+
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          navbar?.classList.add('scrolled');
+        } else {
+          navbar?.classList.remove('scrolled');
+        }
+      });
+    </script>
+
+    <style>
+      #navbar.scrolled {
+        border-bottom: 1px solid rgba(168,85,247,0.3);
+      }
+    </style>
+  </body>
+</html>

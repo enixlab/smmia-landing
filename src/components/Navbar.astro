@@ -1,0 +1,67 @@
+---
+---
+
+<nav id="navbar" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.92);backdrop-filter:blur(20px);transition:border-bottom 0.3s ease;border-bottom:1px solid transparent;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px;">
+    <!-- Logo -->
+    <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+      <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" style="height:40px;width:auto;" />
+    </a>
+
+    <!-- Liens desktop -->
+    <div class="nav-links" style="display:flex;align-items:center;gap:32px;">
+      <a href="#programme" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Programme</a>
+      <a href="#intervenants" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Intervenants</a>
+      <a href="#temoignages" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Témoignages</a>
+      <a href="#prix" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Prix</a>
+      <a href="https://discord.gg/focus" target="_blank" class="btn-membre" style="padding:10px 20px;border:1px solid rgba(168,85,247,0.4);border-radius:9999px;font-size:0.85rem;color:rgba(255,255,255,0.7);text-decoration:none;transition:all 0.2s;white-space:nowrap;">Espace membre</a>
+      <a href="#prix" class="btn-pill" style="padding:10px 22px;font-size:0.875rem;">Rejoindre &rarr;</a>
+    </div>
+
+    <!-- Burger mobile -->
+    <button id="burger" aria-label="Menu" style="display:none;background:none;border:none;cursor:pointer;padding:8px;color:#fff;">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" style="display:none;padding:16px 24px 24px;border-top:1px solid rgba(168,85,247,0.2);">
+    <a href="#programme" style="display:block;padding:12px 0;color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;border-bottom:1px solid rgba(255,255,255,0.05);">Programme</a>
+    <a href="#intervenants" style="display:block;padding:12px 0;color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;border-bottom:1px solid rgba(255,255,255,0.05);">Intervenants</a>
+    <a href="#temoignages" style="display:block;padding:12px 0;color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;border-bottom:1px solid rgba(255,255,255,0.05);">Témoignages</a>
+    <a href="#prix" style="display:block;padding:12px 0;color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;margin-bottom:16px;">Prix</a>
+    <a href="#prix" class="btn-pill" style="width:100%;justify-content:center;">Rejoindre &rarr;</a>
+  </div>
+</nav>
+
+<style>
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none !important;
+    }
+    #burger {
+      display: flex !important;
+    }
+  }
+  a:hover {
+    color: #A855F7 !important;
+  }
+</style>
+
+<script>
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  burger?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.style.display === 'block';
+    if (mobileMenu) mobileMenu.style.display = isOpen ? 'none' : 'block';
+  });
+  mobileMenu?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (mobileMenu) mobileMenu.style.display = 'none';
+    });
+  });
+</script>

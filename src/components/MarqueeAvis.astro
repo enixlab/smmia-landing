@@ -1,0 +1,66 @@
+---
+const discordAvis = [
+  ...Array.from({length: 15}, (_, i) => ({ file: `discord-${String(i+1).padStart(2,'0')}.png` })),
+  { file: 'discord-16.webp' },
+  ...Array.from({length: 15}, (_, i) => ({ file: `discord-${String(i+17).padStart(2,'0')}.png` })),
+  { file: 'discord-32.webp' },
+];
+
+const trustpilotAvis = Array.from({length: 18}, (_, i) => ({
+  file: `trustpilot-${String(i+1).padStart(2,'0')}.png`
+}));
+---
+
+<section id="temoignages" style="padding:100px 0;overflow:hidden;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;text-align:center;margin-bottom:60px;">
+    <h2 data-animate style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:12px;">
+      Ils ont changé leur vie avec le SMMIA
+    </h2>
+    <p data-animate data-delay="0.1" style="font-size:1rem;color:rgba(255,255,255,0.5);">
+      Membres de la communauté Focus &nbsp;·&nbsp; Avis vérifiés ✓
+    </p>
+  </div>
+
+  <!-- Ligne 1 — Discord → gauche -->
+  <div class="marquee-wrap" style="position:relative;overflow:hidden;margin-bottom:20px;">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:100px;background:linear-gradient(to right,#000,transparent);z-index:2;pointer-events:none;"></div>
+    <div style="position:absolute;right:0;top:0;bottom:0;width:100px;background:linear-gradient(to left,#000,transparent);z-index:2;pointer-events:none;"></div>
+    <div class="marquee-track-l" style="gap:16px;padding:8px 0;">
+      {[...discordAvis, ...discordAvis].map((item) => (
+        <div class="avis-card" style="flex-shrink:0;width:auto;height:220px;border-radius:12px;overflow:hidden;border:1px solid rgba(168,85,247,0.15);background:rgba(255,255,255,0.04);cursor:pointer;transition:border-color 0.2s,transform 0.2s;">
+          <img
+            src={`/images/avis/discord/${item.file}`}
+            alt="Avis Discord"
+            style="width:auto;height:100%;display:block;"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Ligne 2 — Trustpilot → droite -->
+  <div class="marquee-wrap" style="position:relative;overflow:hidden;">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:100px;background:linear-gradient(to right,#000,transparent);z-index:2;pointer-events:none;"></div>
+    <div style="position:absolute;right:0;top:0;bottom:0;width:100px;background:linear-gradient(to left,#000,transparent);z-index:2;pointer-events:none;"></div>
+    <div class="marquee-track-r" style="gap:16px;padding:8px 0;">
+      {[...trustpilotAvis, ...trustpilotAvis, ...trustpilotAvis].map((item) => (
+        <div class="avis-card" style="flex-shrink:0;width:auto;height:220px;border-radius:12px;overflow:hidden;border:1px solid rgba(168,85,247,0.15);background:rgba(255,255,255,0.04);cursor:pointer;transition:border-color 0.2s,transform 0.2s;">
+          <img
+            src={`/images/avis/trustpilot/${item.file}`}
+            alt="Avis Trustpilot"
+            style="width:auto;height:100%;display:block;"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .avis-card:hover {
+    border-color: rgba(168,85,247,0.5) !important;
+    transform: scale(1.02);
+  }
+</style>

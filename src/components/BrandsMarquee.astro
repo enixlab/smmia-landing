@@ -1,0 +1,28 @@
+---
+const brands = [
+  "Claude", "Gemini", "Lovart", "N8N", "Meta Ads", "Google Ads",
+  "Shopify", "WordPress", "Zapier", "Canva Pro", "WhatsApp Business",
+  "Stripe", "Notion", "Make", "ChatGPT", "MidJourney"
+];
+---
+
+<div style="padding:40px 0;border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);overflow:hidden;">
+  <p data-animate style="text-align:center;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:24px;font-weight:600;">
+    Ton arsenal IA complet
+  </p>
+
+  <div class="marquee-wrap" style="position:relative;overflow:hidden;">
+    <!-- Fade edges -->
+    <div style="position:absolute;left:0;top:0;bottom:0;width:120px;background:linear-gradient(to right,#000,transparent);z-index:2;pointer-events:none;"></div>
+    <div style="position:absolute;right:0;top:0;bottom:0;width:120px;background:linear-gradient(to left,#000,transparent);z-index:2;pointer-events:none;"></div>
+
+    <div class="marquee-track-l" style="gap:0;">
+      {[...brands, ...brands, ...brands].map((brand) => (
+        <span style="display:inline-flex;align-items:center;padding:0 32px;font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:0.05em;white-space:nowrap;transition:color 0.2s;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#A855F7;margin-right:14px;flex-shrink:0;opacity:0.6;"></span>
+          {brand}
+        </span>
+      ))}
+    </div>
+  </div>
+</div>

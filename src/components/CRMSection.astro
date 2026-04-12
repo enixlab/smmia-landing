@@ -1,0 +1,620 @@
+---
+---
+
+<section id="crm" style="padding:120px 0;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(168,85,247,0.07),transparent 70%);pointer-events:none;"></div>
+
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+    <div style="text-align:center;margin-bottom:64px;" data-animate>
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid rgba(168,85,247,0.3);border-radius:9999px;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#A855F7;font-weight:600;margin-bottom:24px;">Accès membre exclusif</div>
+      <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:16px;line-height:1.1;">Ton Accès Exclusif <span style="color:#A855F7;">en un clic</span></h2>
+      <p style="font-size:1rem;color:rgba(255,255,255,0.5);max-width:520px;margin:0 auto;">Clique sur chaque section pour voir comment ça marche en vrai.</p>
+    </div>
+
+    <div id="crm-shell" style="border:1px solid rgba(168,85,247,0.2);border-radius:20px;overflow:hidden;background:#070707;box-shadow:0 0 80px rgba(168,85,247,0.1),inset 0 1px 0 rgba(255,255,255,0.04);" data-animate data-delay="0.1">
+      <div style="padding:11px 20px;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.4);">
+        <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57;"></div>
+        <div style="width:10px;height:10px;border-radius:50%;background:#febc2e;"></div>
+        <div style="width:10px;height:10px;border-radius:50%;background:#28c840;"></div>
+        <span style="margin-left:12px;font-size:0.73rem;color:rgba(255,255,255,0.2);font-family:monospace;">smmia.app/dashboard</span>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:5px;"><div style="width:7px;height:7px;border-radius:50%;background:#28c840;box-shadow:0 0 5px #28c840;animation:blink 2s infinite;"></div><span style="font-size:0.68rem;color:rgba(255,255,255,0.2);">Connecté</span></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:220px 1fr;min-height:560px;">
+        <div style="border-right:1px solid rgba(255,255,255,0.05);background:rgba(0,0,0,0.5);display:flex;flex-direction:column;">
+          <div style="padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,0.04);">
+            <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" style="width:76px;height:auto;" />
+          </div>
+          <div style="padding:12px 8px;flex:1;">
+            <div style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 8px;margin-bottom:6px;">Menu</div>
+            <div class="si active" data-p="portfolio">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              Portfolio
+            </div>
+            <div class="si" data-p="services">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Services Prime
+            </div>
+            <div class="si" data-p="audit">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              Audit IA
+            </div>
+            <div class="si" data-p="clients">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Portefeuille
+            </div>
+            <div class="si" data-p="replays">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+              Replays
+            </div>
+            <div style="margin:10px 0;border-top:1px solid rgba(255,255,255,0.04);"></div>
+            <div class="si si-lock" data-p="mystery">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              ???
+              <span style="margin-left:auto;font-size:0.58rem;padding:1px 6px;background:rgba(168,85,247,0.2);border-radius:9999px;color:#A855F7;">Soon</span>
+            </div>
+            <div class="si si-lock" data-p="mystery">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              ???
+              <span style="margin-left:auto;font-size:0.58rem;padding:1px 6px;background:rgba(168,85,247,0.2);border-radius:9999px;color:#A855F7;">Soon</span>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-top:1px solid rgba(255,255,255,0.04);">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#A855F7,#E8442A);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;">TN</div>
+              <div><div style="font-size:0.75rem;color:rgba(255,255,255,0.6);font-weight:600;">Toi · Niveau 1</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.3);">Membre Focus</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="crm-main" style="overflow:hidden;position:relative;min-height:700px;">
+
+          <!-- PORTFOLIO -->
+          <div id="p-portfolio" class="pg" style="padding:28px;height:100%;overflow:auto;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+              <div><h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;">Nos réalisations</h3><p style="font-size:0.72rem;color:rgba(255,255,255,0.35);">Présente-les comme si c'était les tiennes</p></div>
+              <button class="cb" id="btn-share-portfolio">⬆ Partager</button>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+              <div class="pc" data-id="0"><div class="pt" style="background:linear-gradient(135deg,#A855F722,#7C3AED11);"><div class="pi" style="border-color:#A855F744;color:#A855F7;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Site Restaurant</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Site web IA</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">1 200€</div></div></div>
+              <div class="pc" data-id="1"><div class="pt" style="background:linear-gradient(135deg,#E8442A22,#E8442A11);"><div class="pi" style="border-color:#E8442A44;color:#E8442A;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Meta Ads Salon</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Meta Ads</div><div style="font-size:0.8rem;font-weight:700;color:#E8442A;">2 400€</div></div></div>
+              <div class="pc" data-id="2"><div class="pt" style="background:linear-gradient(135deg,#A855F722,#7C3AED11);"><div class="pi" style="border-color:#A855F744;color:#A855F7;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Branding Barbershop</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Visuels Lovart</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">600€</div></div></div>
+              <div class="pc" data-id="3"><div class="pt" style="background:linear-gradient(135deg,#E8442A22,#E8442A11);"><div class="pi" style="border-color:#E8442A44;color:#E8442A;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Google Ads Plombier</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Google Ads</div><div style="font-size:0.8rem;font-weight:700;color:#E8442A;">1 800€</div></div></div>
+              <div class="pc" data-id="4"><div class="pt" style="background:linear-gradient(135deg,#A855F722,#7C3AED11);"><div class="pi" style="border-color:#A855F744;color:#A855F7;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">NFC Avis Google</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">NFC justpush.fr</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">400€</div></div></div>
+              <div class="pc" data-id="5"><div class="pt" style="background:linear-gradient(135deg,#E8442A22,#E8442A11);"><div class="pi" style="border-color:#E8442A44;color:#E8442A;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Automation N8N</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">N8N</div><div style="font-size:0.8rem;font-weight:700;color:#E8442A;">3 200€</div></div></div>
+            </div>
+          </div>
+
+          <!-- SERVICES PRIME -->
+          <div id="p-services" class="pg" style="display:none;padding:28px;height:100%;overflow:auto;">
+            <div id="svc-list-view">
+              <div style="margin-bottom:20px;"><h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;">Services Prime</h3><p style="font-size:0.72rem;color:rgba(255,255,255,0.35);">Tu vends. Prime livre. Tu gardes la marge.</p></div>
+              <div style="display:flex;flex-direction:column;gap:8px;" id="svc-rows"></div>
+            </div>
+            <div id="svc-form-view" style="display:none;">
+              <button class="cb-ghost" id="btn-svc-back" style="margin-bottom:16px;">← Retour</button>
+              <div style="border:1px solid rgba(168,85,247,0.2);border-radius:14px;padding:24px;background:rgba(168,85,247,0.03);">
+                <div style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px;" id="svc-form-title"></div>
+                <div style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin-bottom:20px;" id="svc-form-sub"></div>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                  <div><label style="font-size:0.72rem;color:rgba(255,255,255,0.5);display:block;margin-bottom:6px;">Nom du client</label><input class="cinput" type="text" placeholder="Ex: Salon Léa Beauty" id="svc-client" /></div>
+                  <div><label style="font-size:0.72rem;color:rgba(255,255,255,0.5);display:block;margin-bottom:6px;">Brief (optionnel)</label><textarea class="cinput" rows="3" placeholder="Décris le projet rapidement..." id="svc-brief" style="resize:none;"></textarea></div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                    <div style="border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;text-align:center;"><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:4px;">Coût Prime</div><div style="font-size:1.1rem;font-weight:700;color:#fff;" id="svc-cout"></div></div>
+                    <div style="border:1px solid rgba(34,197,94,0.2);border-radius:10px;padding:14px;text-align:center;background:rgba(34,197,94,0.04);"><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:4px;">Ta marge min.</div><div style="font-size:1.1rem;font-weight:700;color:#22c55e;" id="svc-marge"></div></div>
+                  </div>
+                  <button class="cb" style="width:100%;padding:12px;" id="btn-svc-send">Envoyer la demande à Prime →</button>
+                </div>
+              </div>
+            </div>
+            <div id="svc-confirm-view" style="display:none;text-align:center;padding:40px 0;">
+              <div style="width:56px;height:56px;border-radius:50%;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                <svg width="24" height="24" fill="none" stroke="#22c55e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px;">Demande envoyée à Prime ✓</div>
+              <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);max-width:280px;margin:0 auto 24px;">L'équipe Prime te contacte sous 2h. Notif WhatsApp en route.</div>
+              <button class="cb-ghost" id="btn-svc-reset">Nouvelle demande</button>
+            </div>
+          </div>
+
+          <!-- AUDIT IA -->
+          <div id="p-audit" class="pg" style="display:none;padding:28px;height:100%;overflow:auto;">
+            <div style="margin-bottom:20px;"><h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;">Audit Digital IA</h3><p style="font-size:0.72rem;color:rgba(255,255,255,0.35);">Analyse un prospect. Ferme-le avant le RDV.</p></div>
+            <div id="audit-input-wrap">
+              <div style="display:flex;gap:8px;margin-bottom:12px;">
+                <input id="audit-url" class="cinput" type="text" placeholder="nomdusite.fr ou nom du business..." style="flex:1;" />
+                <button class="cb" id="btn-audit-go">Analyser →</button>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+                <span style="font-size:0.65rem;color:rgba(255,255,255,0.2);">Essaie :</span>
+                <span class="audit-ex">lebistrot-paris.fr</span>
+                <span class="audit-ex">salon-lea.com</span>
+                <span class="audit-ex">plombier-marseille.fr</span>
+              </div>
+            </div>
+            <div id="audit-loader-wrap" style="display:none;padding:24px 0;">
+              <div style="font-size:0.82rem;font-weight:600;color:#fff;margin-bottom:12px;" id="audit-step-txt">Initialisation...</div>
+              <div style="height:4px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;margin-bottom:16px;"><div id="audit-prog" style="height:100%;width:0%;background:linear-gradient(90deg,#A855F7,#E8442A);border-radius:4px;transition:width 0.4s ease;"></div></div>
+              <div id="audit-steps-done" style="display:flex;flex-direction:column;gap:5px;"></div>
+            </div>
+            <div id="audit-result-wrap" style="display:none;">
+              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px;">
+                <div style="border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:12px;"><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:4px;">Google Business</div><div style="font-size:1.3rem;font-weight:900;color:#E8442A;">3/10</div><div style="height:3px;background:rgba(255,255,255,0.07);border-radius:2px;margin-top:6px;overflow:hidden;"><div style="height:100%;width:30%;background:#E8442A;border-radius:2px;"></div></div></div>
+                <div style="border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:12px;"><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:4px;">Site Web</div><div style="font-size:1.3rem;font-weight:900;color:#f59e0b;">5/10</div><div style="height:3px;background:rgba(255,255,255,0.07);border-radius:2px;margin-top:6px;overflow:hidden;"><div style="height:100%;width:50%;background:#f59e0b;border-radius:2px;"></div></div></div>
+                <div style="border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:12px;"><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:4px;">Réseaux Sociaux</div><div style="font-size:1.3rem;font-weight:900;color:#E8442A;">2/10</div><div style="height:3px;background:rgba(255,255,255,0.07);border-radius:2px;margin-top:6px;overflow:hidden;"><div style="height:100%;width:20%;background:#E8442A;border-radius:2px;"></div></div></div>
+                <div style="border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:12px;"><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:4px;">Publicité Active</div><div style="font-size:1.3rem;font-weight:900;color:#E8442A;">0/10</div><div style="height:3px;background:rgba(255,255,255,0.07);border-radius:2px;margin-top:6px;"></div></div>
+              </div>
+              <div style="border:1px solid rgba(168,85,247,0.2);border-radius:10px;padding:14px;background:rgba(168,85,247,0.04);margin-bottom:12px;">
+                <div style="font-size:0.68rem;font-weight:700;color:#A855F7;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Recommandation IA</div>
+                <div style="font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.6;">Ce business perd des dizaines de clients chaque semaine. Zéro pub, réseaux inactifs, site daté. Opportunité claire : site + Google Ads. Potentiel estimé <strong style="color:#fff;">+2 400€/mois</strong>.</div>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <button class="cb" style="flex:1;" id="btn-audit-pdf">📄 Générer rapport PDF</button>
+                <button class="cb-ghost" id="btn-audit-new">Nouvel audit</button>
+              </div>
+              <div id="pdf-prog-wrap" style="display:none;margin-top:10px;">
+                <div style="height:3px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;"><div id="pdf-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#A855F7,#E8442A);border-radius:4px;transition:width 0.3s;"></div></div>
+                <div style="font-size:0.68rem;color:rgba(255,255,255,0.3);margin-top:5px;" id="pdf-label">Génération...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PORTEFEUILLE -->
+          <div id="p-clients" class="pg" style="display:none;padding:28px;height:100%;overflow:auto;">
+            <div id="cl-list-view">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+                <div><h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;">Portefeuille</h3><p style="font-size:0.72rem;color:rgba(255,255,255,0.35);" id="cl-subtitle">1 200€ récurrents · 3 clients actifs</p></div>
+                <button class="cb" id="btn-add-client">+ Client</button>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:7px;" id="cl-rows"></div>
+            </div>
+            <div id="cl-detail-view" style="display:none;">
+              <button class="cb-ghost" id="btn-cl-back" style="margin-bottom:16px;">← Portefeuille</button>
+              <div id="cl-detail-content"></div>
+            </div>
+            <div id="cl-form-view" style="display:none;">
+              <button class="cb-ghost" id="btn-cl-form-back" style="margin-bottom:16px;">← Retour</button>
+              <div style="border:1px solid rgba(168,85,247,0.2);border-radius:14px;padding:24px;background:rgba(168,85,247,0.03);">
+                <div style="font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:16px;">Nouveau client</div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <div><label style="font-size:0.7rem;color:rgba(255,255,255,0.45);display:block;margin-bottom:5px;">Nom du business</label><input class="cinput" type="text" placeholder="Ex: Boulangerie Martin" id="new-cl-nom" /></div>
+                  <div><label style="font-size:0.7rem;color:rgba(255,255,255,0.45);display:block;margin-bottom:5px;">Service vendu</label>
+                    <select class="cinput" id="new-cl-svc"><option>Site web IA</option><option>Meta Ads</option><option>Google Ads</option><option>Visuels</option><option>NFC Avis</option><option>N8N Automation</option></select>
+                  </div>
+                  <div><label style="font-size:0.7rem;color:rgba(255,255,255,0.45);display:block;margin-bottom:5px;">MRR (€/mois, 0 si one-shot)</label><input class="cinput" type="number" placeholder="400" id="new-cl-mrr" /></div>
+                  <button class="cb" style="width:100%;padding:11px;" id="btn-save-client">Ajouter →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- REPLAYS -->
+          <div id="p-replays" class="pg" style="display:none;padding:28px;height:100%;overflow:auto;">
+            <div id="rp-list-view">
+              <div style="margin-bottom:20px;"><h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;">Replays des lives</h3><p style="font-size:0.72rem;color:rgba(255,255,255,0.35);">À vie. Revois autant de fois que nécessaire.</p></div>
+              <div style="display:flex;flex-direction:column;gap:7px;" id="rp-rows"></div>
+            </div>
+            <div id="rp-player-view" style="display:none;">
+              <button class="cb-ghost" id="btn-rp-back" style="margin-bottom:16px;">← Replays</button>
+              <div style="border:1px solid rgba(168,85,247,0.2);border-radius:14px;overflow:hidden;">
+                <div id="rp-screen" style="background:#000;aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                  <div id="rp-thumb" style="position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a,#1a0a2e);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
+                    <div id="rp-play-big" style="width:60px;height:60px;border-radius:50%;background:rgba(168,85,247,0.15);border:2px solid rgba(168,85,247,0.5);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;">
+                      <svg width="22" height="22" fill="#A855F7" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <div style="font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.6);" id="rp-thumb-title"></div>
+                  </div>
+                  <div id="rp-live" style="display:none;position:absolute;inset:0;background:linear-gradient(135deg,#0d0020,#1a0a2e);align-items:center;justify-content:center;flex-direction:column;gap:10px;">
+                    <div style="display:flex;align-items:center;gap:3px;height:40px;" id="rp-wave">
+                      <div class="wb"></div><div class="wb" style="animation-delay:.1s"></div><div class="wb" style="animation-delay:.2s"></div>
+                      <div class="wb" style="animation-delay:.3s"></div><div class="wb" style="animation-delay:.15s"></div>
+                      <div class="wb" style="animation-delay:.25s"></div><div class="wb" style="animation-delay:.05s"></div>
+                    </div>
+                    <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);" id="rp-now">En cours de lecture...</div>
+                  </div>
+                </div>
+                <div style="padding:14px 16px;background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.05);">
+                  <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+                    <button id="rp-btn-play" style="background:rgba(168,85,247,0.15);border:none;cursor:pointer;color:#A855F7;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" title="Play/Pause">
+                      <svg id="rp-play-icon" width="13" height="13" fill="#A855F7" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </button>
+                    <div id="rp-track" style="flex:1;height:4px;background:rgba(255,255,255,0.1);border-radius:4px;cursor:pointer;position:relative;">
+                      <div id="rp-fill" style="height:100%;width:0%;background:linear-gradient(90deg,#A855F7,#E8442A);border-radius:4px;pointer-events:none;"></div>
+                    </div>
+                    <div style="font-size:0.67rem;color:rgba(255,255,255,0.35);white-space:nowrap;" id="rp-time">0:00 / 0:00</div>
+                  </div>
+                  <div style="font-size:0.78rem;font-weight:600;color:#fff;" id="rp-player-label"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MYSTERY -->
+          <div id="p-mystery" class="pg" style="display:none;padding:28px;">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;text-align:center;">
+              <div style="width:72px;height:72px;border-radius:20px;background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+                <svg width="32" height="32" fill="none" stroke="#A855F7" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:10px;">Feature mystère</div>
+              <div style="font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.7;max-width:280px;margin:0 auto;">On prépare quelque chose de dingue. Disponible dès que tu rejoins le module.</div>
+              <div style="margin-top:24px;padding:8px 20px;border:1px solid rgba(168,85,247,0.3);border-radius:9999px;font-size:0.73rem;color:#A855F7;font-weight:600;display:inline-block;">Bientôt</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px;" data-animate data-delay="0.2">
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.35);margin-bottom:18px;">Accès complet inclus dans le module SMMIA · Focus</p>
+      <a href="#prix" class="btn-pill" style="font-size:1rem;padding:14px 36px;">Accéder à mon espace membre &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Modal portfolio -->
+<div id="pf-modal" style="position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:none;align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)closePfModal()">
+  <div style="background:#0d0d0d;border:1px solid rgba(168,85,247,0.25);border-radius:20px;width:100%;max-width:500px;overflow:hidden;">
+    <div style="padding:18px 22px;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:space-between;">
+      <div style="font-size:0.9rem;font-weight:700;color:#fff;" id="pf-modal-title"></div>
+      <button onclick="closePfModal()" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:1.1rem;">✕</button>
+    </div>
+    <div style="padding:22px;" id="pf-modal-body"></div>
+  </div>
+</div>
+
+<style>
+  .si{display:flex;align-items:center;gap:9px;padding:9px 10px;font-size:0.8rem;color:rgba(255,255,255,0.35);cursor:pointer;border-radius:8px;transition:all .15s;margin-bottom:2px;}
+  .si:hover{color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.04);}
+  .si.active{color:#A855F7;background:rgba(168,85,247,0.12);font-weight:600;}
+  .si-lock{color:rgba(255,255,255,0.18)!important;}
+  .si-lock:hover{color:rgba(255,255,255,0.25)!important;}
+  .cb{background:linear-gradient(135deg,#A855F7,#7C3AED);border:none;border-radius:8px;padding:8px 16px;font-size:0.77rem;font-weight:600;color:#fff;cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap;}
+  .cb:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(168,85,247,0.4);}
+  .cb:active{transform:translateY(0);}
+  .cb-ghost{background:none;border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:7px 14px;font-size:0.77rem;color:rgba(255,255,255,0.5);cursor:pointer;transition:all .2s;font-family:inherit;}
+  .cb-ghost:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.8);}
+  .cinput{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:9px 13px;color:#fff;font-size:0.82rem;outline:none;font-family:inherit;transition:border-color .2s;box-sizing:border-box;}
+  .cinput:focus{border-color:rgba(168,85,247,0.5);}
+  .cinput::placeholder{color:rgba(255,255,255,0.2);}
+  .pc{border:1px solid rgba(255,255,255,0.07);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .2s;}
+  .pc:hover{border-color:rgba(168,85,247,0.35);transform:translateY(-2px);}
+  .pt{height:72px;display:flex;align-items:center;justify-content:center;}
+  .pi{width:34px;height:34px;border-radius:8px;background:rgba(0,0,0,0.3);border:1px solid;display:flex;align-items:center;justify-content:center;}
+  .cr{display:flex;align-items:center;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;gap:10px;background:rgba(255,255,255,0.02);cursor:pointer;transition:all .2s;}
+  .cr:hover{border-color:rgba(168,85,247,0.3);background:rgba(168,85,247,0.04);}
+  .audit-ex{font-size:0.68rem;padding:2px 10px;border:1px solid rgba(255,255,255,0.1);border-radius:9999px;color:rgba(255,255,255,0.4);cursor:pointer;transition:all .15s;}
+  .audit-ex:hover{border-color:rgba(168,85,247,0.4);color:#A855F7;}
+  .wb{width:3px;border-radius:3px;background:#A855F7;animation:wave .8s ease-in-out infinite alternate;}
+  @keyframes wave{from{height:6px;opacity:.4}to{height:30px;opacity:1}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+  #pf-modal.open{display:flex!important;}
+  #rp-live.show{display:flex!important;}
+  #rp-btn-play:hover{background:rgba(168,85,247,0.3)!important;}
+  #rp-play-big:hover{background:rgba(168,85,247,0.25)!important;transform:scale(1.05);}
+</style>
+
+<script>
+// ---- DATA ----
+const PF_DATA = [
+  {t:"Site Restaurant",cat:"Site web IA · WordPress",rev:"1 200€",desc:"Refonte complète d'un restaurant parisien. Menu interactif, résa en ligne, SEO local. Livré en 36h avec Claude.",result:"+180% réservations le premier mois.",tags:["Site web","SEO Local","Claude"]},
+  {t:"Meta Ads Salon",cat:"Meta Ads · Instagram",rev:"2 400€/mois",desc:"Gestion campagnes Meta Ads pour salon beauté. Créatifs Lovart, ciblage lookalike, A/B test continu.",result:"x3.8 ROAS · +340% nouveaux clients.",tags:["Meta Ads","Lovart","Instagram"]},
+  {t:"Branding Barbershop",cat:"Visuels · Lovart",rev:"600€",desc:"Identité visuelle complète : logo, charte, stories Instagram, panneau vitrine. 100% Lovart + Canva Pro.",result:"Livrée en 24h. Client bluffé.",tags:["Lovart","Branding","Canva"]},
+  {t:"Google Ads Plombier",cat:"Google Ads · SEA",rev:"1 800€/mois",desc:"Setup + gestion mensuelle Google Ads pour plombier indépendant. Campagnes Search + Local, extensions appel.",result:"x4.2 ROAS · 23 leads qualifiés/mois.",tags:["Google Ads","SEA","Local"]},
+  {t:"NFC Avis Google",cat:"NFC · justpush.fr",rev:"400€",desc:"Déploiement cartes NFC justpush.fr dans un restaurant. Scan → landing → avis Google en 20 secondes.",result:"+200 avis en 3 mois · Note 3.8 → 4.7.",tags:["NFC","Google","justpush"]},
+  {t:"Automation N8N",cat:"N8N · Zapier",rev:"3 200€",desc:"Workflow complet pour agence immobilière. Qualif prospects auto, email+SMS, CRM, relances planifiées.",result:"80h économisées/mois. ROI en 6 semaines.",tags:["N8N","Automation","CRM"]},
+];
+const SVC_DATA = [
+  {s:"Site web IA",d:"48h",c:"350€",m:"850€+",desc:"WordPress ou Webflow, responsive, SEO de base inclus."},
+  {s:"Meta Ads Setup",d:"24h",c:"200€",m:"600€+",desc:"Création compte + campagnes + créatifs Lovart."},
+  {s:"Google Ads Setup",d:"24h",c:"180€",m:"620€+",desc:"Campagnes Search + Local, extensions, tracking."},
+  {s:"Visuels & Logo IA",d:"24h",c:"80€",m:"320€+",desc:"Pack complet : logo, bannières, stories, publications."},
+  {s:"NFC Avis Google",d:"72h",c:"60€",m:"240€+",desc:"Cartes NFC + landing page + QR code."},
+  {s:"Automation N8N",d:"5j",c:"500€",m:"1500€+",desc:"Workflow sur-mesure selon le besoin client."},
+];
+let CL_DATA = [
+  {n:"Salon Léa Beauty",i:"L",s:"Meta Ads + SMM",mrr:400,st:"Actif",dot:"#22c55e",notes:"RDV mensuel le 1er. Campagnes Q2 à optimiser.",last:"Rapport envoyé il y a 3 jours"},
+  {n:"Boulangerie Martin",i:"M",s:"Site web + Google Ads",mrr:500,st:"Actif",dot:"#22c55e",notes:"Site refait en mars. Google Ads lancé, ROAS 3.2.",last:"Campagne optimisée hier"},
+  {n:"Plombier Dubois",i:"D",s:"Google Ads",mrr:300,st:"Actif",dot:"#22c55e",notes:"23 leads/mois. Proposer Meta Ads.",last:"Check call la semaine dernière"},
+  {n:"Restaurant Le Zinc",i:"Z",s:"Site web",mrr:0,st:"Livré",dot:"#A855F7",notes:"One-shot terminé. Proposer gestion réseaux.",last:"Livré il y a 2 semaines"},
+];
+const RP_DATA = [
+  {t:"Live 01 — Maîtriser Claude & Gemini",d:"1h 24min",ds:5040,date:"3 mai 2026",nw:true},
+  {t:"Live 02 — Visuels IA avec Lovart",d:"58min",ds:3480,date:"6 mai 2026",nw:true},
+  {t:"Live 03 — Sites web IA",d:"1h 12min",ds:4320,date:"10 mai 2026",nw:false},
+  {t:"Live 04 — Google Ads",d:"1h 05min",ds:3900,date:"13 mai 2026",nw:false},
+  {t:"Live 05 — Meta Ads & Réseaux",d:"1h 18min",ds:4680,date:"17 mai 2026",nw:false},
+];
+
+function fmt(s){const m=Math.floor(s/60),ss=s%60;return m+':'+(ss<10?'0':'')+ss;}
+function el(id){return document.getElementById(id);}
+function show(id){el(id).style.display='block';}
+function hide(id){el(id).style.display='none';}
+
+// ---- NAV ----
+document.querySelectorAll('.si').forEach(s=>{
+  s.addEventListener('click',()=>{
+    const p=s.getAttribute('data-p');
+    document.querySelectorAll('.si').forEach(x=>x.classList.remove('active'));
+    s.classList.add('active');
+    document.querySelectorAll('.pg').forEach(x=>x.style.display='none');
+    const t=el('p-'+p);
+    if(t) t.style.display='block';
+  });
+});
+
+// ---- PORTFOLIO ----
+document.querySelectorAll('.pc').forEach((c,i)=>{
+  c.addEventListener('click',()=>{
+    const d=PF_DATA[i];
+    el('pf-modal-title').textContent=d.t;
+    // Build modal content safely using DOM
+    const body=el('pf-modal-body');
+    body.innerHTML='';
+    const cat=document.createElement('div');
+    cat.style.cssText='font-size:.75rem;color:rgba(255,255,255,.35);margin-bottom:14px;';
+    cat.textContent=d.cat;
+    const desc=document.createElement('div');
+    desc.style.cssText='font-size:.85rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:16px;';
+    desc.textContent=d.desc;
+    const res=document.createElement('div');
+    res.style.cssText='border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:12px;background:rgba(34,197,94,.04);margin-bottom:16px;';
+    const resL=document.createElement('div');
+    resL.style.cssText='font-size:.65rem;color:#22c55e;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;';
+    resL.textContent='Résultat';
+    const resV=document.createElement('div');
+    resV.style.cssText='font-size:.82rem;color:rgba(255,255,255,.75);';
+    resV.textContent=d.result;
+    res.appendChild(resL);res.appendChild(resV);
+    const tags=document.createElement('div');
+    tags.style.cssText='display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;';
+    d.tags.forEach(t=>{const s=document.createElement('span');s.style.cssText='padding:3px 10px;border:1px solid rgba(168,85,247,.3);border-radius:9999px;font-size:.68rem;color:#A855F7;';s.textContent=t;tags.appendChild(s);});
+    const rev=document.createElement('div');
+    rev.style.cssText='font-size:1.1rem;font-weight:700;color:#fff;';
+    rev.textContent=d.rev;
+    body.appendChild(cat);body.appendChild(desc);body.appendChild(res);body.appendChild(tags);body.appendChild(rev);
+    el('pf-modal').classList.add('open');
+  });
+});
+function closePfModal(){el('pf-modal').classList.remove('open');}
+window.closePfModal=closePfModal;
+
+// Share button
+el('btn-share-portfolio').addEventListener('click',function(){
+  navigator.clipboard?.writeText('https://smmia.app/portfolio/toi').catch(()=>{});
+  this.textContent='✓ Lien copié !';
+  setTimeout(()=>this.textContent='⬆ Partager',2000);
+});
+
+// ---- SERVICES ----
+function renderSvc(){
+  const c=el('svc-rows');c.innerHTML='';
+  SVC_DATA.forEach((s,i)=>{
+    const row=document.createElement('div');
+    row.className='cr';
+    const left=document.createElement('div');left.style.flex='1';
+    const name=document.createElement('div');name.style.cssText='font-size:.85rem;font-weight:600;color:#fff;margin-bottom:2px;';name.textContent=s.s;
+    const sub=document.createElement('div');sub.style.cssText='font-size:.68rem;color:rgba(255,255,255,.35);';sub.textContent='Délai: '+s.d+' · '+s.desc;
+    left.appendChild(name);left.appendChild(sub);
+    const right=document.createElement('div');right.style.cssText='text-align:right;margin-right:10px;flex-shrink:0;';
+    const rl=document.createElement('div');rl.style.cssText='font-size:.65rem;color:rgba(255,255,255,.3);';rl.textContent='Ta marge';
+    const rv=document.createElement('div');rv.style.cssText='font-size:.9rem;font-weight:700;color:#22c55e;';rv.textContent=s.m;
+    right.appendChild(rl);right.appendChild(rv);
+    const btn=document.createElement('button');btn.className='cb';btn.style.cssText='font-size:.72rem;padding:6px 12px;flex-shrink:0;';btn.textContent='Commander';
+    btn.addEventListener('click',e=>{e.stopPropagation();openSvcForm(i);});
+    row.appendChild(left);row.appendChild(right);row.appendChild(btn);
+    c.appendChild(row);
+  });
+}
+function openSvcForm(i){
+  const s=SVC_DATA[i];
+  hide('svc-list-view');show('svc-form-view');hide('svc-confirm-view');
+  el('svc-form-title').textContent=s.s;
+  el('svc-form-sub').textContent=s.desc;
+  el('svc-cout').textContent=s.c;
+  el('svc-marge').textContent=s.m;
+  el('svc-client').value='';el('svc-brief').value='';
+}
+el('btn-svc-back').addEventListener('click',()=>{show('svc-list-view');hide('svc-form-view');});
+el('btn-svc-send').addEventListener('click',()=>{
+  if(!el('svc-client').value.trim()){el('svc-client').focus();return;}
+  hide('svc-form-view');show('svc-confirm-view');
+});
+el('btn-svc-reset').addEventListener('click',()=>{show('svc-list-view');hide('svc-confirm-view');});
+renderSvc();
+
+// ---- AUDIT ----
+const STEPS=['Recherche du domaine...','Analyse Google Business Profile...','Scan du site web...','Vérification réseaux sociaux...','Détection publicités actives...','Génération recommandations IA...'];
+function runAudit(){
+  const url=el('audit-url').value.trim();
+  if(!url){el('audit-url').focus();return;}
+  hide('audit-input-wrap');hide('audit-result-wrap');
+  show('audit-loader-wrap');
+  const bar=el('audit-prog'),lbl=el('audit-step-txt'),done=el('audit-steps-done');
+  done.innerHTML='';bar.style.width='0%';
+  let i=0;
+  function next(){
+    if(i>=STEPS.length){setTimeout(()=>{hide('audit-loader-wrap');show('audit-result-wrap');},400);return;}
+    lbl.textContent=STEPS[i];
+    const d=document.createElement('div');
+    d.style.cssText='font-size:.72rem;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:6px;';
+    const ok=document.createElement('span');ok.style.cssText='color:#22c55e;font-size:.8rem;';ok.textContent='✓';
+    const tx=document.createElement('span');tx.textContent=STEPS[i].replace(/^[🔍📍🌐📱📢🤖] /,'');
+    d.appendChild(ok);d.appendChild(tx);done.appendChild(d);
+    bar.style.width=Math.round((i+1)/STEPS.length*100)+'%';
+    i++;setTimeout(next,600+Math.random()*400);
+  }
+  next();
+}
+function resetAudit(){
+  el('audit-url').value='';
+  show('audit-input-wrap');hide('audit-result-wrap');hide('audit-loader-wrap');
+  hide('pdf-prog-wrap');
+}
+el('btn-audit-go').addEventListener('click',runAudit);
+el('audit-url').addEventListener('keydown',e=>{if(e.key==='Enter')runAudit();});
+document.querySelectorAll('.audit-ex').forEach(ex=>{
+  ex.addEventListener('click',()=>{el('audit-url').value=ex.textContent;runAudit();});
+});
+el('btn-audit-new').addEventListener('click',resetAudit);
+el('btn-audit-pdf').addEventListener('click',function(){
+  this.disabled=true;this.textContent='Génération...';
+  const pw=el('pdf-prog-wrap'),pb=el('pdf-bar'),pl=el('pdf-label');
+  pw.style.display='block';pb.style.width='0%';
+  const steps=['Mise en page...','Insertion scores...','Recommandations IA...','Finalisation PDF...'];
+  let i=0;
+  const self=this;
+  function go(){
+    if(i>=steps.length){pl.textContent='✓ Rapport PDF prêt — Téléchargement simulé';self.textContent='✓ PDF généré';self.disabled=false;return;}
+    pl.textContent=steps[i];pb.style.width=(i+1)/steps.length*100+'%';i++;setTimeout(go,700);
+  }
+  go();
+});
+
+// ---- CLIENTS ----
+function renderClients(){
+  const c=el('cl-rows');c.innerHTML='';
+  const total=CL_DATA.filter(x=>x.mrr>0).reduce((a,x)=>a+x.mrr,0);
+  CL_DATA.forEach((cl,i)=>{
+    const row=document.createElement('div');row.className='cr';
+    const av=document.createElement('div');av.style.cssText='width:34px;height:34px;border-radius:8px;background:rgba(168,85,247,.1);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#A855F7;flex-shrink:0;';av.textContent=cl.i;
+    const left=document.createElement('div');left.style.flex='1';
+    const na=document.createElement('div');na.style.cssText='font-size:.83rem;font-weight:600;color:#fff;margin-bottom:2px;';na.textContent=cl.n;
+    const sv=document.createElement('div');sv.style.cssText='font-size:.68rem;color:rgba(255,255,255,.35);';sv.textContent=cl.s;
+    left.appendChild(na);left.appendChild(sv);
+    const mr=document.createElement('div');mr.style.cssText='text-align:right;margin-right:10px;flex-shrink:0;';
+    const mv=document.createElement('div');mv.style.cssText='font-size:.83rem;font-weight:700;color:#fff;';mv.textContent=cl.mrr>0?cl.mrr+'€':'—';
+    const ml=document.createElement('div');ml.style.cssText='font-size:.62rem;color:rgba(255,255,255,.25);';ml.textContent='MRR';
+    mr.appendChild(mv);mr.appendChild(ml);
+    const badge=document.createElement('div');badge.style.cssText='display:flex;align-items:center;gap:4px;padding:3px 9px;border-radius:9999px;background:'+cl.dot+'18;border:1px solid '+cl.dot+'33;flex-shrink:0;';
+    const dot=document.createElement('div');dot.style.cssText='width:5px;height:5px;border-radius:50%;background:'+cl.dot+';';
+    const stl=document.createElement('span');stl.style.cssText='font-size:.62rem;color:'+cl.dot+';font-weight:600;';stl.textContent=cl.st;
+    badge.appendChild(dot);badge.appendChild(stl);
+    row.appendChild(av);row.appendChild(left);row.appendChild(mr);row.appendChild(badge);
+    row.addEventListener('click',()=>openClientDetail(i));
+    c.appendChild(row);
+  });
+  // Total row
+  const tot=document.createElement('div');
+  tot.style.cssText='margin-top:10px;padding:12px 14px;border:1px dashed rgba(255,255,255,.08);border-radius:10px;display:flex;align-items:center;justify-content:space-between;';
+  const tl=document.createElement('span');tl.style.cssText='font-size:.78rem;color:rgba(255,255,255,.4);';tl.textContent='Total récurrent mensuel';
+  const tv=document.createElement('span');tv.style.cssText='font-size:1rem;font-weight:700;color:#fff;';tv.textContent=total+'€/mois';
+  tot.appendChild(tl);tot.appendChild(tv);c.appendChild(tot);
+}
+function openClientDetail(i){
+  const cl=CL_DATA[i];
+  hide('cl-list-view');hide('cl-form-view');show('cl-detail-view');
+  const cont=el('cl-detail-content');cont.innerHTML='';
+
+  const header=document.createElement('div');header.style.cssText='display:flex;align-items:center;gap:14px;margin-bottom:20px;';
+  const av=document.createElement('div');av.style.cssText='width:48px;height:48px;border-radius:12px;background:rgba(168,85,247,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#A855F7;';av.textContent=cl.i;
+  const info=document.createElement('div');
+  const nm=document.createElement('div');nm.style.cssText='font-size:1rem;font-weight:700;color:#fff;';nm.textContent=cl.n;
+  const sv=document.createElement('div');sv.style.cssText='font-size:.72rem;color:rgba(255,255,255,.4);';sv.textContent=cl.s;
+  info.appendChild(nm);info.appendChild(sv);
+  const badge=document.createElement('div');badge.style.cssText='margin-left:auto;display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:9999px;background:'+cl.dot+'18;border:1px solid '+cl.dot+'33;';
+  const dot=document.createElement('div');dot.style.cssText='width:6px;height:6px;border-radius:50%;background:'+cl.dot+';';
+  const stl=document.createElement('span');stl.style.cssText='font-size:.7rem;color:'+cl.dot+';font-weight:600;';stl.textContent=cl.st;
+  badge.appendChild(dot);badge.appendChild(stl);
+  header.appendChild(av);header.appendChild(info);header.appendChild(badge);
+
+  const grid=document.createElement('div');grid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;';
+  const m1=document.createElement('div');m1.style.cssText='border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px;text-align:center;';
+  const ml=document.createElement('div');ml.style.cssText='font-size:.65rem;color:rgba(255,255,255,.3);margin-bottom:4px;';ml.textContent='MRR';
+  const mv=document.createElement('div');mv.style.cssText='font-size:1.3rem;font-weight:700;color:#fff;';mv.textContent=cl.mrr>0?cl.mrr+'€':'—';
+  m1.appendChild(ml);m1.appendChild(mv);
+  const m2=document.createElement('div');m2.style.cssText='border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px;text-align:center;';
+  const m2l=document.createElement('div');m2l.style.cssText='font-size:.65rem;color:rgba(255,255,255,.3);margin-bottom:4px;';m2l.textContent='Dernier contact';
+  const m2v=document.createElement('div');m2v.style.cssText='font-size:.75rem;font-weight:600;color:#fff;';m2v.textContent=cl.last;
+  m2.appendChild(m2l);m2.appendChild(m2v);
+  grid.appendChild(m1);grid.appendChild(m2);
+
+  const notes=document.createElement('div');notes.style.cssText='border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:14px;';
+  const nl=document.createElement('div');nl.style.cssText='font-size:.65rem;color:rgba(255,255,255,.35);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;';nl.textContent='Notes';
+  const nv=document.createElement('div');nv.style.cssText='font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.6;';nv.textContent=cl.notes;
+  notes.appendChild(nl);notes.appendChild(nv);
+
+  const actions=document.createElement('div');actions.style.cssText='display:flex;gap:8px;';
+  const b1=document.createElement('button');b1.className='cb';b1.style.flex='1';b1.textContent='Envoyer rapport';
+  b1.addEventListener('click',function(){this.textContent='✓ Rapport envoyé !';setTimeout(()=>this.textContent='Envoyer rapport',2000);});
+  const b2=document.createElement('button');b2.className='cb-ghost';b2.textContent='Appeler';
+  b2.addEventListener('click',function(){this.textContent='📞 En cours...';setTimeout(()=>this.textContent='Appeler',2000);});
+  const b3=document.createElement('button');b3.className='cb-ghost';b3.textContent='Facturer';
+  b3.addEventListener('click',function(){this.textContent='✓ Facture créée';setTimeout(()=>this.textContent='Facturer',2000);});
+  actions.appendChild(b1);actions.appendChild(b2);actions.appendChild(b3);
+
+  cont.appendChild(header);cont.appendChild(grid);cont.appendChild(notes);cont.appendChild(actions);
+}
+el('btn-cl-back').addEventListener('click',()=>{hide('cl-detail-view');show('cl-list-view');renderClients();});
+el('btn-add-client').addEventListener('click',()=>{hide('cl-list-view');show('cl-form-view');el('new-cl-nom').value='';el('new-cl-mrr').value='';});
+el('btn-cl-form-back').addEventListener('click',()=>{hide('cl-form-view');show('cl-list-view');});
+el('btn-save-client').addEventListener('click',()=>{
+  const n=el('new-cl-nom').value.trim();if(!n){el('new-cl-nom').focus();return;}
+  const s=el('new-cl-svc').value,m=parseInt(el('new-cl-mrr').value)||0;
+  CL_DATA.push({n,i:n.charAt(0).toUpperCase(),s,mrr:m,st:'Actif',dot:'#22c55e',notes:'Nouveau client.',last:"À l'instant"});
+  hide('cl-form-view');show('cl-list-view');renderClients();
+});
+renderClients();
+
+// ---- REPLAYS ----
+let rpTimer=null,rpOn=false,rpIdx=0,rpElapsed=0;
+function renderReplays(){
+  const c=el('rp-rows');c.innerHTML='';
+  RP_DATA.forEach((r,i)=>{
+    const row=document.createElement('div');row.className='cr';
+    const ico=document.createElement('div');ico.style.cssText='width:36px;height:36px;border-radius:8px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;';
+    ico.innerHTML='<svg width="12" height="12" fill="#A855F7" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+    const left=document.createElement('div');left.style.flex='1';
+    const trow=document.createElement('div');trow.style.cssText='font-size:.82rem;font-weight:600;color:#fff;margin-bottom:2px;display:flex;align-items:center;gap:7px;';
+    trow.textContent=r.t;
+    if(r.nw){const nb=document.createElement('span');nb.style.cssText='font-size:.58rem;padding:1px 6px;background:#A855F7;border-radius:9999px;color:#fff;font-weight:700;';nb.textContent='NEW';trow.appendChild(nb);}
+    const sub=document.createElement('div');sub.style.cssText='font-size:.68rem;color:rgba(255,255,255,.35);';sub.textContent=r.date+' · '+r.d;
+    left.appendChild(trow);left.appendChild(sub);
+    const btn=document.createElement('button');btn.className='cb';btn.style.cssText='font-size:.72rem;padding:6px 12px;flex-shrink:0;';btn.textContent='▶ Voir';
+    btn.addEventListener('click',e=>{e.stopPropagation();openPlayer(i);});
+    row.appendChild(ico);row.appendChild(left);row.appendChild(btn);
+    c.appendChild(row);
+  });
+}
+function openPlayer(i){
+  rpIdx=i;rpElapsed=0;rpOn=false;clearInterval(rpTimer);
+  const r=RP_DATA[i];
+  hide('rp-list-view');show('rp-player-view');
+  el('rp-thumb-title').textContent=r.t;
+  el('rp-player-label').textContent=r.t;
+  el('rp-time').textContent='0:00 / '+r.d;
+  el('rp-fill').style.width='0%';
+  el('rp-thumb').style.display='flex';
+  el('rp-live').style.display='none';
+  el('rp-play-icon').innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+}
+function togglePlay(){
+  const r=RP_DATA[rpIdx];rpOn=!rpOn;
+  if(rpOn){
+    el('rp-thumb').style.display='none';
+    el('rp-live').style.display='flex';
+    el('rp-now').textContent=r.t.replace(/Live \d+ — /,'');
+    el('rp-play-icon').innerHTML='<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+    rpTimer=setInterval(()=>{
+      rpElapsed++;if(rpElapsed>=r.ds){clearInterval(rpTimer);rpOn=false;return;}
+      el('rp-fill').style.width=(rpElapsed/r.ds*100)+'%';
+      el('rp-time').textContent=fmt(rpElapsed)+' / '+r.d;
+    },1000);
+  } else {
+    clearInterval(rpTimer);
+    el('rp-play-icon').innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+  }
+}
+el('rp-btn-play').addEventListener('click',togglePlay);
+el('rp-play-big').addEventListener('click',togglePlay);
+el('rp-track').addEventListener('click',e=>{
+  const r=RP_DATA[rpIdx];
+  const rect=el('rp-track').getBoundingClientRect();
+  const pct=(e.clientX-rect.left)/rect.width;
+  rpElapsed=Math.round(pct*r.ds);
+  el('rp-fill').style.width=(pct*100)+'%';
+  el('rp-time').textContent=fmt(rpElapsed)+' / '+r.d;
+});
+el('btn-rp-back').addEventListener('click',()=>{clearInterval(rpTimer);rpOn=false;hide('rp-player-view');show('rp-list-view');});
+renderReplays();
+</script>

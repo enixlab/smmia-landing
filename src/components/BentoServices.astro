@@ -1,0 +1,191 @@
+---
+const services = [
+  // SQUARE 1x1
+  { id: "01-tiktok-certif",        file: "01-tiktok-certif-SQUARE.png",        size: "square",   label: "Certification TikTok" },
+  { id: "02-snapchat-certif",      file: "02-snapchat-certif-SQUARE.png",      size: "square",   label: "Certification Snapchat" },
+  // WIDE 2x1
+  { id: "11-visuels",              file: "11-visuels-WIDE.png",                size: "wide",     label: "Visuels" },
+  // PORTRAIT 1x2
+  { id: "14-ugc-ia",               file: "14-ugc-ia-PORTRAIT.png",             size: "portrait", label: "UGC IA" },
+  // WIDE
+  { id: "12-sites-web",            file: "12-sites-web-WIDE.png",              size: "wide",     label: "Sites Web" },
+  // SQUARE
+  { id: "03-sms-mail",             file: "03-sms-mail-SQUARE.png",             size: "square",   label: "SMS / Mail Automatisé" },
+  { id: "04-chatbot-sav",          file: "04-chatbot-sav-SQUARE.png",          size: "square",   label: "Chatbot SAV" },
+  // WIDE
+  { id: "05-generation-leads",     file: "05-generation-leads-WIDE.png",       size: "wide",     label: "Génération de Leads" },
+  // PORTRAIT
+  { id: "07-apple-wallet",         file: "07-apple-wallet-PORTRAIT.png",       size: "portrait", label: "Cartes Push Apple Wallet" },
+  // SQUARE
+  { id: "08-landing-pages",        file: "08-landing-pages-SQUARE.png",        size: "square",   label: "Landing Pages" },
+  { id: "10-flyers",               file: "10-flyers-SQUARE.png",               size: "square",   label: "Flyers" },
+  // PORTRAIT
+  { id: "09-avis-google",          file: "09-avis-google-PORTRAIT.png",        size: "portrait", label: "Avis Google / Trustpilot" },
+  { id: "13-nfc",                  file: "13-nfc-PORTRAIT.png",                size: "portrait", label: "Cartes NFC" },
+  // WIDE
+  { id: "15-campagnes-ads",        file: "15-campagnes-ads-WIDE.png",          size: "wide",     label: "Campagnes Ads" },
+  // SQUARE
+  { id: "17-whatsapp",             file: "17-whatsapp-SQUARE.png",             size: "square",   label: "Automatisation WhatsApp" },
+  { id: "18-scrapping",            file: "18-scrapping-SQUARE.png",            size: "square",   label: "Scrapping" },
+  // WIDE
+  { id: "06-videos-montages",      file: "06-videos-montages-WIDE.png",        size: "wide",     label: "Vidéos IA / Montages" },
+  // SQUARE
+  { id: "19-seo",                  file: "19-seo-SQUARE.png",                  size: "square",   label: "SEO" },
+  // PORTRAIT
+  { id: "16-crm",                  file: "16-crm-PORTRAIT.png",                size: "portrait", label: "CRM / Logiciel / Automatisations" },
+  // SQUARE
+  { id: "20-audit",                file: "20-audit-SQUARE.png",                size: "square",   label: "Stratégie & Audit" },
+  { id: "21-e-reputation",         file: "21-e-reputation-SQUARE.png",         size: "square",   label: "Supprimer Avis / E-réputation" },
+  // PORTRAIT
+  { id: "22-osint",                file: "22-osint-PORTRAIT.png",              size: "portrait", label: "OSINT" },
+  // SQUARE
+  { id: "24-gmb",                  file: "24-gmb-SQUARE.png",                  size: "square",   label: "Google My Business" },
+  // PORTRAIT
+  { id: "23-creation-societe",     file: "23-creation-societe-PORTRAIT.png",   size: "portrait", label: "Création de Société" },
+  // WIDE
+  { id: "25-underground",          file: "25-underground-WIDE.png",            size: "wide",     label: "Service Underground / BlackHat" },
+];
+---
+
+<section class="bento-section">
+  <div class="bento-header">
+    <h2>Nos <span>Services</span></h2>
+    <p>Tout ce qu'une agence peut vendre — généré, automatisé, livré.</p>
+  </div>
+
+  <div class="bento-grid">
+    {services.map((s) => (
+      <div class={`bento-card bento-${s.size}`} data-id={s.id}>
+        <img
+          src={`/images/services/bento/${s.file}`}
+          alt={s.label}
+          loading="lazy"
+        />
+        <div class="bento-label">
+          <span>{s.label}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .bento-section {
+    background: #000;
+    padding: 80px 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .bento-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .bento-header h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .bento-header h2 span {
+    color: #A855F7;
+  }
+
+  .bento-header p {
+    color: #888;
+    font-size: 1.1rem;
+  }
+
+  /* ─── GRID ─── */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 300px;
+    grid-auto-flow: dense;
+    gap: 12px;
+  }
+
+  /* ─── CARD BASE ─── */
+  .bento-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #111;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .bento-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.25);
+    z-index: 2;
+  }
+
+  .bento-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ─── LABEL OVERLAY ─── */
+  .bento-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 16px 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .bento-card:hover .bento-label {
+    opacity: 1;
+  }
+
+  .bento-label span {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ─── SIZES ─── */
+  .bento-wide {
+    grid-column: span 2;
+  }
+
+  .bento-portrait {
+    grid-row: span 2;
+  }
+
+  .bento-square {
+    /* default: 1x1 */
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 220px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .bento-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 240px;
+    }
+
+    .bento-wide,
+    .bento-portrait {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+  }
+</style>
