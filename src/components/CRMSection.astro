@@ -294,6 +294,79 @@
   #rp-play-big:hover{background:rgba(168,85,247,0.25)!important;transform:scale(1.05);}
 </style>
 
+<style>
+  /* ── MOBILE FIXES ── */
+  @media (max-width: 768px) {
+    #crm-shell > div[style*="grid-template-columns:220px"] {
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: unset !important;
+    }
+
+    /* Sidebar → nav horizontale scrollable */
+    #crm-shell > div[style*="grid-template-columns:220px"] > div:first-child {
+      display: flex !important;
+      flex-direction: row !important;
+      overflow-x: auto !important;
+      overflow-y: visible !important;
+      border-right: none !important;
+      border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+      padding: 8px 12px !important;
+      width: 100% !important;
+      flex-shrink: 0 !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch;
+      gap: 4px !important;
+    }
+    #crm-shell > div[style*="grid-template-columns:220px"] > div:first-child::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Masquer logo + profil user dans la sidebar mobile */
+    #crm-shell > div[style*="grid-template-columns:220px"] > div:first-child > div:first-child,
+    #crm-shell > div[style*="grid-template-columns:220px"] > div:first-child > div:last-child {
+      display: none !important;
+    }
+
+    /* Items de la sidebar = boutons horizontaux */
+    .si {
+      flex-shrink: 0 !important;
+      white-space: nowrap !important;
+      padding: 8px 14px !important;
+      min-height: 40px !important;
+      border-radius: 8px !important;
+    }
+
+    /* Main content pleine largeur */
+    #crm-main {
+      min-height: unset !important;
+      width: 100% !important;
+    }
+
+    /* Section CRM padding réduit */
+    #crm {
+      padding: 60px 0 !important;
+    }
+
+    /* Header margin réduit */
+    #crm > div > div[style*="margin-bottom:64px"] {
+      margin-bottom: 32px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Grilles internes → 1 colonne */
+    #crm-main [style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 6px !important;
+    }
+    #crm-main [style*="grid-template-columns:1fr 1fr"],
+    #crm-main [style*="grid-template-columns:repeat(2,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
 <script>
 // ---- DATA ----
 const PF_DATA = [

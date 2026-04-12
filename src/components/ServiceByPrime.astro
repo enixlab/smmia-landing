@@ -163,6 +163,18 @@ const services = [
     justify-content: center;
   }
 
+  @media (max-width: 600px) {
+    .tabs-wrap { justify-content: flex-start; padding: 0 16px; }
+    .tabs { flex-wrap: nowrap; }
+    .tab { padding: 8px 14px; font-size: 0.78rem; }
+    .prime-section { padding: 60px 0; }
+    .prime-header { margin-bottom: 32px; }
+  }
+
+  @media (hover: none) {
+    .card:hover { transform: none; }
+  }
+
   .tab {
     padding: 8px 20px;
     border-radius: 9999px;

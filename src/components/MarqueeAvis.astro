@@ -63,4 +63,17 @@ const trustpilotAvis = Array.from({length: 18}, (_, i) => ({
     border-color: rgba(168,85,247,0.5) !important;
     transform: scale(1.02);
   }
+  @media (hover: none) {
+    .avis-card:hover { transform: none; }
+  }
+  .marquee-track-l, .marquee-track-r { will-change: transform; }
+  @media (hover: none) {
+    .marquee-wrap:hover .marquee-track-l,
+    .marquee-wrap:hover .marquee-track-r {
+      animation-play-state: running;
+    }
+  }
+  @media (max-width: 480px) {
+    .avis-card { height: 160px !important; }
+  }
 </style>

@@ -131,6 +131,35 @@ section {
   }
 }
 
+@media (max-width: 480px) {
+  section {
+    padding: 48px 0;
+  }
+}
+
+/* Désactiver cursor custom sur tactile */
+@media (hover: none) and (pointer: coarse) {
+  body { cursor: auto; }
+  #cursor { display: none; }
+}
+
+/* Modal close — zone tactile safe sur mobile */
+@media (max-width: 480px) {
+  #modal-close {
+    top: 16px;
+    right: 16px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #img-modal img {
+    max-width: 95vw;
+    max-height: 80vh;
+  }
+}
+
 /* Marquee */
 @keyframes marquee-l {
   from { transform: translateX(0); }
