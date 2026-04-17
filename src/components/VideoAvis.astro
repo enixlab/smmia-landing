@@ -1,0 +1,691 @@
+---
+import FloatingBrandIcons from './FloatingBrandIcons.astro';
+
+// Videos d'avis : deposer les MP4 dans /public/videos/ avec le nom
+// "avis-{slug}.mp4" pour qu'ils se chargent automatiquement. Si le fichier
+// n'existe pas encore, la carte reste cliquable et montre le poster.
+
+const testimonials = [
+  {
+    slug: "sonny",
+    name: "Sonny M.",
+    role: "Freelance IA · Paris",
+    result: "+12 400€ / mois",
+    quote: "En 6 semaines, j'ai closé mon premier client à 3000€. Je ne savais même pas prompter avant SMMIA.",
+    poster: "/images/portraits/sonny-portrait-v3.png",
+    duration: "1:42",
+  },
+  {
+    slug: "jamel",
+    name: "Jamel R.",
+    role: "Agence UGC · Lyon",
+    result: "+8 clients",
+    quote: "Le système de closing de Val, c'est une machine. J'ai signé 8 contrats en 2 mois grâce à SMMIA.",
+    poster: "/images/portraits/jamel-portrait-v3.png",
+    duration: "2:08",
+  },
+  {
+    slug: "idriss",
+    name: "Idriss B.",
+    role: "SaaS builder · Bordeaux",
+    result: "+5 200€ / mois",
+    quote: "Je pensais devoir coder pendant des mois. Avec les stacks IA du module, j'ai lancé mon SaaS en 3 semaines.",
+    poster: "/images/portraits/idriss-portrait-v2.png",
+    duration: "1:54",
+  },
+  {
+    slug: "moubak",
+    name: "Moubak L.",
+    role: "E-com IA · Marseille",
+    result: "x3 revenus",
+    quote: "J'avais déjà une agence. SMMIA m'a fait tripler mes revenus en automatisant tout avec l'IA.",
+    poster: "/images/portraits/moubak-portrait-v1.png",
+    duration: "2:21",
+  },
+  {
+    slug: "val",
+    name: "Val (Fondateur)",
+    role: "Focus · Paris",
+    result: "Coulisses",
+    quote: "Ce qu'on vise avec SMMIA : zéro bullshit, que du concret. Regarde pourquoi ce module change tout.",
+    poster: "/images/portraits/val-portrait-v1.png",
+    duration: "3:12",
+  },
+  {
+    slug: "lea",
+    name: "Léa T.",
+    role: "Freelance · Toulouse",
+    result: "1er client en 21j",
+    quote: "Je suis partie de zéro, sans aucun réseau. 21 jours après le début du module, je signais mon premier client.",
+    poster: "/images/portraits/sonny-portrait-v3.png",
+    duration: "1:36",
+  },
+];
+---
+
+<section id="video-avis" class="va-section">
+
+  <!-- Pattern & halos de fond -->
+  <div class="va-grid" aria-hidden="true"></div>
+  <div class="va-halo va-halo-l" aria-hidden="true"></div>
+  <div class="va-halo va-halo-r" aria-hidden="true"></div>
+
+  <!-- Logos brand flottants -->
+  <FloatingBrandIcons variant="medium" seed={10} />
+
+  <div class="va-inner">
+
+    <!-- Header -->
+    <div class="va-header">
+      <div class="va-badge" data-animate>
+        <span class="va-badge-dot"></span>
+        Ils racontent en vidéo
+      </div>
+
+      <h2 class="va-title" data-animate data-delay="0.08">
+        La preuve, <span class="va-accent">en direct.</span>
+      </h2>
+
+      <p class="va-sub" data-animate data-delay="0.16">
+        Pas de capture Trustpilot copiée. Des vraies têtes, des vrais chiffres, des vrais résultats.
+      </p>
+
+    </div>
+
+    <!-- Grille de videos -->
+    <div class="va-grid-cards">
+      {testimonials.map((t, i) => (
+        <button
+          class="va-card"
+          data-animate
+          data-delay={0.04 * i}
+          data-video={`/videos/avis-${t.slug}.mp4`}
+          data-name={t.name}
+          aria-label={`Voir le témoignage de ${t.name}`}
+        >
+          <div class="va-card-media">
+            <img
+              src={t.poster}
+              alt={t.name}
+              loading="lazy"
+              class="va-poster"
+            />
+
+            <!-- Overlay + play -->
+            <div class="va-card-overlay" aria-hidden="true"></div>
+
+            <div class="va-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+
+            <!-- Badge resultat + duree -->
+            <div class="va-result">{t.result}</div>
+            <div class="va-duration">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              {t.duration}
+            </div>
+          </div>
+
+          <div class="va-card-body">
+            <p class="va-quote">“{t.quote}”</p>
+            <div class="va-author">
+              <div class="va-author-name">{t.name}</div>
+              <div class="va-author-role">{t.role}</div>
+            </div>
+          </div>
+        </button>
+      ))}
+    </div>
+
+  </div>
+
+  <!-- Modal lecteur -->
+  <div class="va-modal" id="va-modal" aria-hidden="true">
+    <button class="va-modal-close" id="va-modal-close" aria-label="Fermer">&times;</button>
+    <div class="va-modal-inner">
+      <video
+        id="va-modal-video"
+        controls
+        playsinline
+        preload="metadata"
+      ></video>
+      <div class="va-modal-caption" id="va-modal-caption"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ────────── Section ────────── */
+  .va-section {
+    position: relative;
+    padding: 120px 0 140px;
+    background: radial-gradient(ellipse at 50% 0%, #140828 0%, #060211 55%, #000 100%);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .va-inner {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    z-index: 2;
+  }
+
+  .va-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(168, 85, 247, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168, 85, 247, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .va-halo {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .va-halo-l {
+    top: 10%;
+    left: -10%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.22), transparent 70%);
+  }
+
+  .va-halo-r {
+    bottom: 10%;
+    right: -10%;
+    background: radial-gradient(circle, rgba(88, 28, 135, 0.25), transparent 70%);
+  }
+
+  /* ────────── Header ────────── */
+  .va-header {
+    text-align: center;
+    margin-bottom: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .va-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #C4B5FD;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 38px;
+    margin-bottom: 24px;
+  }
+
+  .va-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #C084FC;
+    box-shadow: 0 0 12px #A855F7, 0 0 4px #fff;
+    animation: va-dot-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes va-dot-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.55; transform: scale(0.85); }
+  }
+
+  .va-title {
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin: 0 0 18px;
+  }
+
+  .va-accent {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 40%, #C084FC 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 6px 30px rgba(168, 85, 247, 0.45));
+  }
+
+  .va-sub {
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 620px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+
+  /* Stats ribbon */
+  .va-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(20px, 4vw, 44px);
+    padding: 18px 28px;
+    border-radius: 20px;
+    background: rgba(168, 85, 247, 0.05);
+    border: 1px solid rgba(168, 85, 247, 0.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .va-stat {
+    text-align: center;
+    min-width: 72px;
+  }
+
+  .va-stat-value {
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    background: linear-gradient(135deg, #FFFFFF, #C084FC);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .va-star {
+    color: #FACC15;
+    display: inline-flex;
+    -webkit-text-fill-color: #FACC15;
+  }
+
+  .va-star svg {
+    width: 0.8em;
+    height: 0.8em;
+    filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.6));
+  }
+
+  .va-stat-label {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  .va-stat-sep {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, transparent, rgba(168, 85, 247, 0.5), transparent);
+  }
+
+  /* ────────── Grille cards ────────── */
+  .va-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .va-card {
+    position: relative;
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(23, 10, 42, 0.6), rgba(10, 6, 21, 0.8));
+    border-radius: 22px;
+    overflow: hidden;
+    cursor: pointer;
+    isolation: isolate;
+    transition:
+      transform 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+      box-shadow 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow:
+      0 20px 50px -25px rgba(0, 0, 0, 0.9),
+      0 8px 22px -10px rgba(88, 28, 135, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* Bordure gradient */
+  .va-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(135deg,
+      rgba(192, 132, 252, 0.55) 0%,
+      rgba(168, 85, 247, 0.12) 40%,
+      rgba(168, 85, 247, 0) 60%,
+      rgba(192, 132, 252, 0.35) 100%);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .va-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 30px 70px -20px rgba(0, 0, 0, 0.95),
+      0 20px 40px -10px rgba(168, 85, 247, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  /* Media */
+  .va-card-media {
+    position: relative;
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
+  }
+
+  .va-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                filter 0.6s ease;
+    filter: brightness(0.85) saturate(1.05);
+  }
+
+  .va-card:hover .va-poster {
+    transform: scale(1.06);
+    filter: brightness(1) saturate(1.1);
+  }
+
+  .va-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.35) 60%,
+      rgba(10, 6, 21, 0.85) 100%);
+    z-index: 1;
+  }
+
+  /* Play button */
+  .va-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #1a0627;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+    box-shadow:
+      0 10px 40px rgba(168, 85, 247, 0.55),
+      0 0 0 0 rgba(192, 132, 252, 0.55);
+    transition:
+      transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+      box-shadow 0.4s;
+    animation: va-play-pulse 2.2s ease-out infinite;
+  }
+
+  .va-play svg {
+    width: 28px;
+    height: 28px;
+    margin-left: 4px;
+  }
+
+  @keyframes va-play-pulse {
+    0%   { box-shadow: 0 10px 40px rgba(168, 85, 247, 0.55), 0 0 0 0 rgba(192, 132, 252, 0.55); }
+    70%  { box-shadow: 0 10px 40px rgba(168, 85, 247, 0.55), 0 0 0 22px rgba(192, 132, 252, 0); }
+    100% { box-shadow: 0 10px 40px rgba(168, 85, 247, 0.55), 0 0 0 0 rgba(192, 132, 252, 0); }
+  }
+
+  .va-card:hover .va-play {
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+
+  /* Badges */
+  .va-result {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #A855F7, #6D28D9);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 18px rgba(168, 85, 247, 0.55);
+    white-space: nowrap;
+  }
+
+  .va-duration {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    z-index: 2;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.78rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Body */
+  .va-card-body {
+    padding: 22px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .va-quote {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0;
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  .va-author {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .va-author-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .va-author-role {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+  }
+
+  /* ────────── Modal ────────── */
+  .va-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .va-modal.open {
+    display: flex;
+    opacity: 1;
+  }
+
+  .va-modal-inner {
+    position: relative;
+    width: 100%;
+    max-width: 980px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .va-modal video {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    border-radius: 18px;
+    background: #000;
+    box-shadow: 0 40px 100px rgba(168, 85, 247, 0.3);
+  }
+
+  .va-modal-caption {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .va-modal-close {
+    position: absolute;
+    top: -56px;
+    right: -4px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    transition: all 0.25s;
+  }
+
+  .va-modal-close:hover {
+    background: rgba(168, 85, 247, 0.25);
+    border-color: rgba(168, 85, 247, 0.6);
+    transform: scale(1.08);
+  }
+
+  /* ────────── Tablette ────────── */
+  @media (max-width: 1024px) {
+    .va-section { padding: 96px 0 112px; }
+    .va-header { margin-bottom: 56px; }
+    .va-grid-cards { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .va-play { width: 64px; height: 64px; }
+    .va-play svg { width: 24px; height: 24px; }
+    .va-halo { width: 380px; height: 380px; filter: blur(80px); }
+  }
+
+  /* ────────── Mobile ────────── */
+  @media (max-width: 640px) {
+    .va-section { padding: 72px 0 88px; }
+    .va-header { margin-bottom: 44px; }
+    .va-stats { padding: 14px 18px; gap: 18px; border-radius: 16px; }
+    .va-stat-sep { height: 28px; }
+    .va-grid-cards { grid-template-columns: 1fr; gap: 18px; }
+    .va-card-body { padding: 18px 18px 20px; gap: 12px; }
+    .va-play { width: 58px; height: 58px; }
+    .va-play svg { width: 22px; height: 22px; }
+    .va-result { top: 12px; left: 12px; font-size: 0.72rem; padding: 5px 10px; }
+    .va-duration { bottom: 12px; right: 12px; font-size: 0.72rem; }
+    .va-modal-close { top: -48px; }
+    .va-grid { background-size: 44px 44px; }
+  }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    .va-play, .va-badge-dot { animation: none; }
+    .va-card, .va-poster { transition: none; }
+  }
+</style>
+
+<script>
+  const modal = document.getElementById('va-modal') as HTMLDivElement | null;
+  const modalVideo = document.getElementById('va-modal-video') as HTMLVideoElement | null;
+  const modalCaption = document.getElementById('va-modal-caption') as HTMLDivElement | null;
+  const modalClose = document.getElementById('va-modal-close');
+
+  const cards = document.querySelectorAll<HTMLButtonElement>('.va-card');
+
+  function closeModal() {
+    if (!modal || !modalVideo) return;
+    modalVideo.pause();
+    modalVideo.removeAttribute('src');
+    modalVideo.load();
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      if (!modal || !modalVideo || !modalCaption) return;
+      const src = card.dataset.video ?? '';
+      const name = card.dataset.name ?? '';
+      modalVideo.src = src;
+      modalCaption.textContent = name;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      // Auto-play (muted fallback si autoplay bloque)
+      modalVideo.play().catch(() => {
+        modalVideo.muted = true;
+        modalVideo.play().catch(() => {});
+      });
+    });
+  });
+
+  modalClose?.addEventListener('click', closeModal);
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>

@@ -1,19 +1,33 @@
 ---
+import FloatingBrandIcons from './FloatingBrandIcons.astro';
 ---
 
 <section id="hero">
 
-  <!-- Banniere SMMIA x Focus -->
+  <!-- Halo violet diffus -->
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <!-- Logos brand flottants -->
+  <FloatingBrandIcons variant="subtle" seed={12} />
+
+  <!-- Banniere SMMIA x Focus (pleine integrite, pas de crop) -->
   <div class="hero-banner-wrap">
     <img
       src="/images/hero/banniere.png"
       alt="SMMIA × Focus"
       class="hero-banner"
+      width="3168"
+      height="1344"
+      decoding="async"
+      fetchpriority="high"
     />
   </div>
 
+  <!-- Fade vers le noir en bas -->
+  <div class="hero-fade" aria-hidden="true"></div>
+
   <!-- Scroll indicator -->
-  <div class="hero-scroll">
+  <div class="hero-scroll" aria-hidden="true">
     <div class="hero-scroll-line"></div>
   </div>
 </section>
@@ -21,76 +35,111 @@
 <style>
   #hero {
     position: relative;
-    min-height: 100vh;
+    width: 100%;
+    background: #000;
+    padding: 0 0 40px;          /* colle tout en haut, pas de navbar */
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: radial-gradient(ellipse 100% 80% at 50% 40%, #1a0626 0%, #0a0012 60%, #000 100%);
-    padding: 88px 16px 48px;
+    flex-direction: column;
+    align-items: center;         /* centrage horizontal strict */
+    justify-content: flex-start;
     overflow: hidden;
+    text-align: center;
   }
 
   .hero-banner-wrap {
+    position: relative;
     width: 100%;
-    max-width: 1400px;
+    max-width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    z-index: 3;
+    line-height: 0;
   }
 
   .hero-banner {
-    width: 100%;
-    height: auto;
     display: block;
-    filter: drop-shadow(0 20px 80px rgba(168, 85, 247, 0.35));
+    width: 100%;
+    max-width: 100%;
+    height: auto;               /* preserve le ratio, jamais de crop */
+    margin: 0 auto;              /* centrage strict */
+    user-select: none;
+    -webkit-user-drag: none;
+    filter: drop-shadow(0 20px 60px rgba(168, 85, 247, 0.35));
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    max-width: 1200px;
+    aspect-ratio: 2 / 1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.35), transparent 65%);
+    filter: blur(60px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, #000);
+    pointer-events: none;
+    z-index: 2;
   }
 
   .hero-scroll {
     position: absolute;
-    bottom: 32px;
     left: 50%;
+    bottom: 20px;
     transform: translateX(-50%);
-    z-index: 2;
-    opacity: 0.5;
+    z-index: 3;
+    opacity: 0.7;
   }
 
   .hero-scroll-line {
     width: 1px;
-    height: 50px;
-    background: linear-gradient(to bottom, rgba(168, 85, 247, 0.8), transparent);
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(168, 85, 247, 0.9), transparent);
     margin: 0 auto;
   }
 
   /* Tablette */
   @media (max-width: 1024px) {
     #hero {
-      min-height: 90vh;
-      padding: 84px 16px 40px;
+      padding: 0 0 32px;
     }
   }
 
   /* Mobile */
   @media (max-width: 640px) {
     #hero {
-      min-height: 70vh;
-      padding: 80px 12px 32px;
+      padding: 0 0 24px;
     }
     .hero-banner {
-      filter: drop-shadow(0 10px 40px rgba(168, 85, 247, 0.35));
+      filter: drop-shadow(0 12px 30px rgba(168, 85, 247, 0.3));
     }
     .hero-scroll {
-      bottom: 20px;
+      bottom: 14px;
     }
     .hero-scroll-line {
-      height: 36px;
+      height: 30px;
     }
   }
 
   /* Petit mobile */
   @media (max-width: 380px) {
     #hero {
-      min-height: 60vh;
-      padding: 76px 8px 24px;
+      padding: 0 0 20px;
     }
   }
 </style>

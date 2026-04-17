@@ -1,0 +1,164 @@
+---
+// FloatingBrandIcons — éléments flottants premium avec logos marketing/IA/SMMA
+// Variants: 'dense' (8 icônes), 'medium' (6 icônes), 'subtle' (4 icônes)
+// Toutes les icônes sont en gradient violet, blur glow, animations float + rotate
+
+interface Props {
+  variant?: 'dense' | 'medium' | 'subtle';
+  seed?: number; // Pour varier les positions selon la section
+}
+
+const { variant = 'medium', seed = 0 } = Astro.props;
+
+const allIcons = [
+  { src: '/images/brand-icons/facebook.png', alt: 'Facebook' },
+  { src: '/images/brand-icons/youtube.png', alt: 'YouTube' },
+  { src: '/images/brand-icons/tiktok.png', alt: 'TikTok' },
+  { src: '/images/brand-icons/linkedin.png', alt: 'LinkedIn' },
+  { src: '/images/brand-icons/shopify.png', alt: 'Shopify' },
+  { src: '/images/brand-icons/stripe.png', alt: 'Stripe' },
+  { src: '/images/brand-icons/qonto.png', alt: 'Qonto' },
+  { src: '/images/brand-icons/revolut.png', alt: 'Revolut' },
+  { src: '/images/brand-icons/n8n.png', alt: 'n8n' },
+  { src: '/images/brand-icons/sparkle.png', alt: 'Claude AI' },
+  { src: '/images/brand-icons/diamond.png', alt: 'AI Sparkle' },
+  { src: '/images/brand-icons/burst.png', alt: 'Burst' },
+  { src: '/images/brand-icons/dollar.png', alt: 'Revenue' },
+  { src: '/images/brand-icons/shop.png', alt: 'Shop' },
+];
+
+// Positions disponibles (autour des bords pour ne pas gêner le contenu)
+const positions = [
+  { top: '6%',  left: '4%',  size: 64, delay: 0,    duration: 14, rot: -8 },
+  { top: '12%', left: '92%', size: 56, delay: 1.4,  duration: 16, rot: 12 },
+  { top: '28%', left: '88%', size: 72, delay: 2.8,  duration: 13, rot: -14 },
+  { top: '44%', left: '3%',  size: 60, delay: 0.7,  duration: 17, rot: 9 },
+  { top: '62%', left: '94%', size: 52, delay: 3.5,  duration: 12, rot: -6 },
+  { top: '78%', left: '6%',  size: 68, delay: 1.9,  duration: 15, rot: 11 },
+  { top: '88%', left: '90%', size: 58, delay: 0.3,  duration: 18, rot: -10 },
+  { top: '20%', left: '48%', size: 48, delay: 2.1,  duration: 19, rot: 7 },
+];
+
+const counts = { dense: 8, medium: 6, subtle: 4 };
+const count = counts[variant];
+
+// Sélection rotative avec seed pour varier d'une section à l'autre
+const selected = positions.slice(0, count).map((pos, i) => {
+  const iconIndex = (i + seed) % allIcons.length;
+  return { ...pos, ...allIcons[iconIndex] };
+});
+---
+
+<div class="fbi-layer" aria-hidden="true">
+  {selected.map((item) => (
+    <div
+      class="fbi-item"
+      style={`top:${item.top}; left:${item.left}; --size:${item.size}px; --delay:${item.delay}s; --duration:${item.duration}s; --rot:${item.rot}deg;`}
+    >
+      <div class="fbi-glow"></div>
+      <img src={item.src} alt={item.alt} class="fbi-img" loading="lazy" />
+    </div>
+  ))}
+</div>
+
+<style>
+  .fbi-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .fbi-item {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    transform: translate(-50%, -50%);
+    animation: fbi-float var(--duration) ease-in-out infinite;
+    animation-delay: var(--delay);
+    will-change: transform;
+  }
+
+  .fbi-glow {
+    position: absolute;
+    inset: -30%;
+    background: radial-gradient(
+      circle at center,
+      rgba(168, 85, 247, 0.45) 0%,
+      rgba(192, 132, 252, 0.25) 35%,
+      transparent 70%
+    );
+    filter: blur(20px);
+    z-index: 0;
+    animation: fbi-pulse 4s ease-in-out infinite;
+    animation-delay: var(--delay);
+  }
+
+  .fbi-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+    opacity: 0.85;
+    filter: drop-shadow(0 6px 18px rgba(168, 85, 247, 0.45));
+    animation: fbi-rotate var(--duration) linear infinite;
+    animation-delay: var(--delay);
+  }
+
+  @keyframes fbi-float {
+    0%, 100% {
+      transform: translate(-50%, -50%) translateY(0);
+    }
+    50% {
+      transform: translate(-50%, -50%) translateY(-22px);
+    }
+  }
+
+  @keyframes fbi-rotate {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(var(--rot)); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @keyframes fbi-pulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.15); }
+  }
+
+  /* Tablette : icônes plus petites */
+  @media (max-width: 1024px) {
+    .fbi-item {
+      width: calc(var(--size) * 0.78);
+      height: calc(var(--size) * 0.78);
+    }
+  }
+
+  /* Mobile : très réduites, opacité moindre, pas trop chargé */
+  @media (max-width: 640px) {
+    .fbi-item {
+      width: calc(var(--size) * 0.55);
+      height: calc(var(--size) * 0.55);
+    }
+    .fbi-img {
+      opacity: 0.7;
+    }
+    .fbi-glow {
+      filter: blur(14px);
+    }
+    /* On masque les icônes du milieu sur mobile pour ne pas gêner le contenu */
+    .fbi-item:nth-child(n+5) {
+      display: none;
+    }
+  }
+
+  /* Reduced motion : on coupe tout */
+  @media (prefers-reduced-motion: reduce) {
+    .fbi-item,
+    .fbi-img,
+    .fbi-glow {
+      animation: none !important;
+    }
+  }
+</style>

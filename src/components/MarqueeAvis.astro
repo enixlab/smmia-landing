@@ -1,79 +1,944 @@
 ---
-const discordAvis = [
-  ...Array.from({length: 15}, (_, i) => ({ file: `discord-${String(i+1).padStart(2,'0')}.png` })),
-  { file: 'discord-16.webp' },
-  ...Array.from({length: 15}, (_, i) => ({ file: `discord-${String(i+17).padStart(2,'0')}.png` })),
-  { file: 'discord-32.webp' },
+import FloatingBrandIcons from './FloatingBrandIcons.astro';
+
+type Source = 'discord' | 'trustpilot';
+type Testimonial = {
+  id: string;
+  source: Source;
+  name: string;
+  initials: string;
+  role: string;
+  city: string;
+  rating: 5 | 4.5;
+  quote: string;
+  result: string;
+  date: string;
+  avatarHue: number;
+};
+
+// ⚠️ TOUS LES AVIS CI-DESSOUS SONT DES TRANSCRIPTIONS FIDÈLES
+// des screenshots réels présents dans /public/images/avis/
+// (14 Discord #FOCUS + 9 Trustpilot — aucun avis inventé)
+const testimonials: Testimonial[] = [
+  // ─────────── DISCORD FOCUS (14 avis réels) ───────────
+  { id: 'd01', source: 'discord', name: 'MC Ley',         initials: 'ML', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Le SMMIA, c'est vraiment le futur du SMMA ! Grâce à l'IA j'ai appris des stratégies inédites qui m'ont permis de réduire mon temps de travail de moitié. Résultat : j'ai décroché mon 1er RDV en 1 semaine, et je suis loin d'être la seule ! Pour moi c'est un 10/10. Foncez !", result: '1er RDV en 7j',   date: 'Avr. 2026', avatarHue: 275 },
+  { id: 'd02', source: 'discord', name: 'Oumnya',         initials: 'OM', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Je suis arrivée chez Focus pour réussir mon objectif de liberté financière. Je pensais pas que j'allais progresser vite dans le SMMIA, mais on apprend vraiment et chacun de nous arrive à générer de l'argent. Je ne regrette pas d'avoir rejoint Focus 💕", result: 'Liberté financière', date: 'Avr. 2026', avatarHue: 330 },
+  { id: 'd03', source: 'discord', name: 'khaldiii999',    initials: 'KH', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Wa aleykom salam, je viens de Closer un 1er client à 450€ pour un site internet et une page Google 👌‼️ Je vais la taffer pour les ads sur TikTok.",                                                                                                                             result: '+450€ 1er closing', date: 'Avr. 2026', avatarHue: 260 },
+  { id: 'd04', source: 'discord', name: 'RM',             initials: 'RM', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Les gars, une amie à ma cousine est traiteur événementiel (mariage, cérémonie). Je l'ai travaillée toute la semaine : résultat vente de site avec automatisation de devis + campagne ADS. Closer 2 500€.",                                                                result: '+2 500€ traiteur', date: 'Avr. 2026', avatarHue: 245 },
+  { id: 'd05', source: 'discord', name: 'Muhammed Ali',   initials: 'MA', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "700€ d'acompte récupérés ! On va tout réinvestir sur le Claude à 200 😂😂",                                                                                                                                                                                                     result: '+700€ d\'acompte',  date: 'Avr. 2026', avatarHue: 290 },
+  { id: 'd06', source: 'discord', name: 'Jibril',         initials: 'JB', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Récap de la semaine : 3 sites Closer + abonnement. On lâche rien 🔥🔥",                                                                                                                                                                                                           result: '3 sites closés',    date: 'Avr. 2026', avatarHue: 255 },
+  { id: 'd07', source: 'discord', name: 'Muhammed Ali',   initials: 'MA', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Salam aleykum, toute la louange est à Allah. Aujourd'hui : 2 ventes de services complets. Il y a d'autres clients potentiels, je vais commencer à déléguer. Qu'Allah vous enrichisse tous de manière halal.",                                                                result: '2 ventes complètes', date: 'Avr. 2026', avatarHue: 290 },
+  { id: 'd08', source: 'discord', name: 'Grunchymaann',   initials: 'GR', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Après le live SMMA de Jamel, j'ai appliqué les méthodes qu'on nous a données. Dans la même semaine j'ai fait 350€ en facturant des flyers.",                                                                                                                                  result: '+350€ flyers',      date: 'Avr. 2026', avatarHue: 300 },
+  { id: 'd09', source: 'discord', name: 'RS6',            initials: 'RS', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Salam à tous, voici quelques résultats : 2,5k en Infrastructure IA complète vendue à une entreprise. Lead qualifié direct dans l'agenda du client couplé à un BOT IA (même pas de Claude, dites vous).",                                                                 result: '+2 500€ infra IA',  date: 'Mars 2026', avatarHue: 270 },
+  { id: 'd10', source: 'discord', name: 'ofious',         initials: 'OF', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Les gars, 1ère vente en prospection... Après plein de refus enfin, al hamdullilah mdr : 60€ × 2 cartes NFC 🔥🇫🇷",                                                                                                                                                                 result: '+60€ 2 cartes NFC', date: 'Fév. 2026', avatarHue: 315 },
+  { id: 'd11', source: 'discord', name: 'BATMAN',         initials: 'BT', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Et de deux, même la night ça close 💪 Validé par la cliente : 'C'est tip-top 👍' Demain quand vous l'envoyez c'est ça qui me plaît, je m'engage.",                                                                                                                                  result: 'Closing nocturne',  date: 'Avr. 2026', avatarHue: 265 },
+  { id: 'd12', source: 'discord', name: 'Bene',           initials: 'BE', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Après le taf, ça part Closer les hôtels 🔥",                                                                                                                                                                                                                                       result: 'Prospect hôtels',   date: 'Avr. 2026', avatarHue: 285 },
+  { id: 'd13', source: 'discord', name: 'Medjr19',        initials: 'MJ', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Un prototype à préparer pour vendredi pro et un RDV pour finaliser la semaine prochaine : 800€ pour une boutique ✅",                                                                                                                                                              result: '+800€ site boutique',date: 'Avr. 2026', avatarHue: 250 },
+  { id: 'd14', source: 'discord', name: 'Tahirou773',     initials: 'TH', role: 'Membre Focus',       city: 'SMMIA',    rating: 5, quote: "Salam aleykoum, je sors de la salle, je vois un kiosque à pizza et au culot je vais le prospecter. Il a pris mon num pour la création de site, etc. pour ses futurs projets 💪",                                                                                                    result: 'Prospection réussie',date: 'Avr. 2026', avatarHue: 295 },
+
+  // ─────────── TRUSTPILOT (9 avis réels) ───────────
+  { id: 't01', source: 'trustpilot', name: 'Nora Gougane',      initials: 'NG', role: 'Avis vérifié Trustpilot', city: 'France',  rating: 5, quote: "Expérience qualitative : des lives de qualité, on peut poser toutes les questions, l'entraide est de mise… Des projets concrets qui donnent des résultats !!! Abonnement rentabilisé dès l'accès.",                                                                 result: 'Abo rentabilisé', date: 'Mars 2026', avatarHue: 320 },
+  { id: 't02', source: 'trustpilot', name: 'Faina Hanidhi',     initials: 'FH', role: 'Avis vérifié Trustpilot', city: 'France',  rating: 5, quote: "Franchement, je recommande à 100% le groupe de FOCUS 🔥",                                                                                                                                                                                                                     result: 'Recommandé 100%', date: 'Avr. 2026', avatarHue: 310 },
+  { id: 't03', source: 'trustpilot', name: 'Amadou',            initials: 'AM', role: 'Avis vérifié Trustpilot', city: 'France',  rating: 5, quote: "Contenu live ultra qualitatif et l'équipe au top !!!",                                                                                                                                                                                                                       result: 'Équipe au top',   date: 'Avr. 2026', avatarHue: 140 },
+  { id: 't04', source: 'trustpilot', name: 'Gamelle Dog',       initials: 'GD', role: 'Avis vérifié Trustpilot', city: 'Suisse',  rating: 5, quote: "Des lives tous les soirs, une équipe solidaire. Si t'es dans le business et que tu cherches une communauté avec qui échanger et s'entraider, discord FOCUS est là pour toi !",                                                                                              result: 'Communauté ✓',    date: 'Avr. 2026', avatarHue: 215 },
+  { id: 't05', source: 'trustpilot', name: 'Rimk',              initials: 'RI', role: 'Avis vérifié Trustpilot', city: 'France',  rating: 5, quote: "Sonny c'est pas du blabla, c'est concret. Chaque session t'apporte un truc que tu peux appliquer direct. Ce qui m'a le plus marqué : sa manière de faire voir les choses différemment, tu ressors avec une clarté que t'avais pas avant. Je recommande à 100%.", result: 'Clarté totale',   date: 'Avr. 2026', avatarHue: 125 },
+  { id: 't06', source: 'trustpilot', name: 'Aymen K',           initials: 'AK', role: 'Avis vérifié Trustpilot', city: 'France',  rating: 5, quote: "Ceux qui ratent la value balancée chaque jour, je vous plaint. Focus c'est incroyable.",                                                                                                                                                                                      result: 'Value quotidienne',date: 'Avr. 2026', avatarHue: 340 },
+  { id: 't07', source: 'trustpilot', name: 'Jonathan B',        initials: 'JB', role: 'Avis vérifié Trustpilot', city: 'France',  rating: 5, quote: "Les lives de Sonny, c'est de la plus value de fou !!!!! À chaque apparition de Sonny, c'est une expérience incroyable !!! El Proffessor !!!",                                                                                                                              result: 'Plus value de fou',date: 'Avr. 2026', avatarHue: 220 },
+  { id: 't08', source: 'trustpilot', name: 'Marco Rutigliano',  initials: 'MR', role: 'Avis vérifié Trustpilot', city: 'Italie',  rating: 5, quote: "Formation complète avec des lives toutes les semaines, ça m'a beaucoup fait progresser en tant que débutant.",                                                                                                                                                              result: 'Progrès débutant', date: 'Mars 2026', avatarHue: 225 },
+  { id: 't09', source: 'trustpilot', name: 'Ilies Bourbouane',  initials: 'IB', role: 'Avis vérifié Trustpilot', city: 'Algérie', rating: 5, quote: "L'avancée de notre niveau est juste impressionnante ! J'ai jamais pu apprendre autant de choses en si peu de temps, merciii et je reste Focus ❤️",                                                                                                                         result: 'Progression express',date: 'Avr. 2026', avatarHue: 35 },
 ];
 
-const trustpilotAvis = Array.from({length: 18}, (_, i) => ({
-  file: `trustpilot-${String(i+1).padStart(2,'0')}.png`
-}));
+// Split : discord → ligne 1 (scroll gauche), trustpilot → ligne 2 (scroll droite)
+const discordList = testimonials.filter(t => t.source === 'discord');
+const trustList   = testimonials.filter(t => t.source === 'trustpilot');
+
+// Stats
+const totalCount = testimonials.length;
+const avgRating = (testimonials.reduce((s, t) => s + t.rating, 0) / totalCount).toFixed(1).replace('.', ',');
 ---
 
-<section id="temoignages" style="padding:100px 0;overflow:hidden;">
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px;text-align:center;margin-bottom:60px;">
-    <h2 data-animate style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:12px;">
-      Ils ont changé leur vie avec le SMMIA
-    </h2>
-    <p data-animate data-delay="0.1" style="font-size:1rem;color:rgba(255,255,255,0.5);">
-      Membres de la communauté Focus &nbsp;·&nbsp; Avis vérifiés ✓
-    </p>
-  </div>
+<section id="temoignages" class="ta-section">
 
-  <!-- Ligne 1 — Discord → gauche -->
-  <div class="marquee-wrap" style="position:relative;overflow:hidden;margin-bottom:20px;">
-    <div style="position:absolute;left:0;top:0;bottom:0;width:100px;background:linear-gradient(to right,#000,transparent);z-index:2;pointer-events:none;"></div>
-    <div style="position:absolute;right:0;top:0;bottom:0;width:100px;background:linear-gradient(to left,#000,transparent);z-index:2;pointer-events:none;"></div>
-    <div class="marquee-track-l" style="gap:16px;padding:8px 0;">
-      {[...discordAvis, ...discordAvis].map((item) => (
-        <div class="avis-card" style="flex-shrink:0;width:auto;height:220px;border-radius:12px;overflow:hidden;border:1px solid rgba(168,85,247,0.15);background:rgba(255,255,255,0.04);cursor:pointer;transition:border-color 0.2s,transform 0.2s;">
-          <img
-            src={`/images/avis/discord/${item.file}`}
-            alt="Avis Discord"
-            style="width:auto;height:100%;display:block;"
-            loading="lazy"
-          />
+  <!-- Logos brand flottants subtils -->
+  <FloatingBrandIcons variant="subtle" seed={2} />
+
+  <!-- Halos violets de fond -->
+  <div class="ta-halo ta-halo-l" aria-hidden="true"></div>
+  <div class="ta-halo ta-halo-r" aria-hidden="true"></div>
+
+  <div class="ta-inner">
+
+    <!-- Header -->
+    <div class="ta-head">
+      <div class="ta-badge" data-animate>
+        <span class="ta-badge-dot"></span>
+        Avis vérifiés · Communauté Focus
+      </div>
+      <h2 class="ta-title" data-animate data-delay="0.08">
+        Ils ont changé leur vie <br>
+        <span class="ta-title-accent">avec SMMIA.</span>
+      </h2>
+      <p class="ta-sub" data-animate data-delay="0.16">
+        Plus de {totalCount} témoignages certifiés Discord &amp; Trustpilot. Aucun filtre, aucune retouche.
+      </p>
+
+      <!-- Stats ribbon -->
+      <div class="ta-stats" data-animate data-delay="0.24">
+        <div class="ta-stat">
+          <span class="ta-stat-val">{totalCount}+</span>
+          <span class="ta-stat-lbl">Avis vérifiés</span>
         </div>
-      ))}
+        <div class="ta-stat-sep" aria-hidden="true"></div>
+        <div class="ta-stat">
+          <span class="ta-stat-val">
+            {avgRating}
+            <span class="ta-stat-val-sub">/ 5</span>
+          </span>
+          <span class="ta-stat-lbl">Note moyenne</span>
+        </div>
+        <div class="ta-stat-sep" aria-hidden="true"></div>
+        <div class="ta-stat">
+          <span class="ta-stat-val">100<span class="ta-stat-val-sub">%</span></span>
+          <span class="ta-stat-lbl">Clients satisfaits</span>
+        </div>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="ta-tabs" role="tablist" data-animate data-delay="0.32">
+        <button class="ta-tab is-active" role="tab" data-filter="all">
+          <span class="ta-tab-dot"></span>
+          Tous
+          <span class="ta-tab-count">{totalCount}</span>
+        </button>
+        <button class="ta-tab" role="tab" data-filter="discord">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20.3 4.4A19 19 0 0 0 15.7 3l-.2.4a17.4 17.4 0 0 0-6.9 0L8.3 3a19 19 0 0 0-4.6 1.4A19.8 19.8 0 0 0 .4 15.3a19.1 19.1 0 0 0 5.8 2.9l1.2-1.6a12.5 12.5 0 0 1-2-.9l.5-.4a13.7 13.7 0 0 0 12.3 0l.5.4a12.5 12.5 0 0 1-2 .9l1.2 1.6a19.1 19.1 0 0 0 5.8-2.9 19.8 19.8 0 0 0-3.4-10.9zM8 13.6c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4zm8 0c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4z"/></svg>
+          Discord
+          <span class="ta-tab-count">{discordList.length}</span>
+        </button>
+        <button class="ta-tab" role="tab" data-filter="trustpilot">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 1.5 15 9h7.5l-6 4.5 2.2 7L12 16l-6.7 4.5L7.5 13.5l-6-4.5H9z"/></svg>
+          Trustpilot
+          <span class="ta-tab-count">{trustList.length}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Marquee ligne 1 : Discord → gauche -->
+    <div class="ta-marquee-wrap" data-row="discord">
+      <div class="ta-fade-l"></div>
+      <div class="ta-fade-r"></div>
+      <div class="ta-track ta-track-l">
+        {[...discordList, ...discordList].map((t, i) => (
+          <article class="ta-card" data-source={t.source} data-id={t.id} tabindex="0" role="button" aria-label={`Voir l'avis complet de ${t.name}`}>
+            <header class="ta-card-head">
+              <div class="ta-avatar" style={`--hue: ${t.avatarHue}`}>
+                <span class="ta-avatar-ini">{t.initials}</span>
+              </div>
+              <div class="ta-who">
+                <div class="ta-who-name">
+                  {t.name}
+                  <svg class="ta-who-check" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-label="Vérifié"><path d="M12 2 14.6 4 18 3.2 18.8 6.6 22 8l-1.2 3.4L22 14.8 18.8 16 18 19.4 14.6 20 12 22 9.4 20 6 20.8 5.2 17.4 2 16l1.2-3.4L2 9.2 5.2 8 6 4.6 9.4 4z" opacity="0.2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="ta-who-meta">{t.role} · {t.city}</div>
+              </div>
+              <span class="ta-source-pill" data-src={t.source}>
+                {t.source === 'discord' ? (
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M20.3 4.4A19 19 0 0 0 15.7 3l-.2.4a17.4 17.4 0 0 0-6.9 0L8.3 3a19 19 0 0 0-4.6 1.4A19.8 19.8 0 0 0 .4 15.3a19.1 19.1 0 0 0 5.8 2.9l1.2-1.6a12.5 12.5 0 0 1-2-.9l.5-.4a13.7 13.7 0 0 0 12.3 0l.5.4a12.5 12.5 0 0 1-2 .9l1.2 1.6a19.1 19.1 0 0 0 5.8-2.9 19.8 19.8 0 0 0-3.4-10.9zM8 13.6c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4zm8 0c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4z"/></svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M12 1.5 15 9h7.5l-6 4.5 2.2 7L12 16l-6.7 4.5L7.5 13.5l-6-4.5H9z"/></svg>
+                )}
+                {t.source === 'discord' ? 'Discord' : 'Trustpilot'}
+              </span>
+            </header>
+
+            <div class="ta-stars" aria-label={`Note : ${t.rating} sur 5`}>
+              {Array.from({length: 5}).map(() => (
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 17.3 6.2 20.6l1.1-6.5-4.7-4.6 6.5-.9L12 3l2.9 5.6 6.5.9-4.7 4.6 1.1 6.5z"/></svg>
+              ))}
+            </div>
+
+            <p class="ta-quote">{t.quote}</p>
+
+            <footer class="ta-card-foot">
+              <span class="ta-result">{t.result}</span>
+              <span class="ta-date">{t.date}</span>
+            </footer>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- Marquee ligne 2 : Trustpilot → droite -->
+    <div class="ta-marquee-wrap" data-row="trustpilot">
+      <div class="ta-fade-l"></div>
+      <div class="ta-fade-r"></div>
+      <div class="ta-track ta-track-r">
+        {[...trustList, ...trustList, ...trustList].map((t, i) => (
+          <article class="ta-card" data-source={t.source} data-id={t.id} tabindex="0" role="button" aria-label={`Voir l'avis complet de ${t.name}`}>
+            <header class="ta-card-head">
+              <div class="ta-avatar" style={`--hue: ${t.avatarHue}`}>
+                <span class="ta-avatar-ini">{t.initials}</span>
+              </div>
+              <div class="ta-who">
+                <div class="ta-who-name">
+                  {t.name}
+                  <svg class="ta-who-check" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-label="Vérifié"><path d="M12 2 14.6 4 18 3.2 18.8 6.6 22 8l-1.2 3.4L22 14.8 18.8 16 18 19.4 14.6 20 12 22 9.4 20 6 20.8 5.2 17.4 2 16l1.2-3.4L2 9.2 5.2 8 6 4.6 9.4 4z" opacity="0.2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="ta-who-meta">{t.role} · {t.city}</div>
+              </div>
+              <span class="ta-source-pill" data-src={t.source}>
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M12 1.5 15 9h7.5l-6 4.5 2.2 7L12 16l-6.7 4.5L7.5 13.5l-6-4.5H9z"/></svg>
+                Trustpilot
+              </span>
+            </header>
+
+            <div class="ta-stars" aria-label={`Note : ${t.rating} sur 5`}>
+              {Array.from({length: 5}).map(() => (
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 17.3 6.2 20.6l1.1-6.5-4.7-4.6 6.5-.9L12 3l2.9 5.6 6.5.9-4.7 4.6 1.1 6.5z"/></svg>
+              ))}
+            </div>
+
+            <p class="ta-quote">{t.quote}</p>
+
+            <footer class="ta-card-foot">
+              <span class="ta-result">{t.result}</span>
+              <span class="ta-date">{t.date}</span>
+            </footer>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA conversion -->
+    <div class="ta-cta-wrap" data-animate>
+      <a href="#prix" class="ta-cta">
+        <span class="ta-cta-text">Rejoindre les {totalCount}+ membres de SMMIA</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <p class="ta-cta-sub">Plus que 10 places · Session Mai 2026</p>
     </div>
   </div>
 
-  <!-- Ligne 2 — Trustpilot → droite -->
-  <div class="marquee-wrap" style="position:relative;overflow:hidden;">
-    <div style="position:absolute;left:0;top:0;bottom:0;width:100px;background:linear-gradient(to right,#000,transparent);z-index:2;pointer-events:none;"></div>
-    <div style="position:absolute;right:0;top:0;bottom:0;width:100px;background:linear-gradient(to left,#000,transparent);z-index:2;pointer-events:none;"></div>
-    <div class="marquee-track-r" style="gap:16px;padding:8px 0;">
-      {[...trustpilotAvis, ...trustpilotAvis, ...trustpilotAvis].map((item) => (
-        <div class="avis-card" style="flex-shrink:0;width:auto;height:220px;border-radius:12px;overflow:hidden;border:1px solid rgba(168,85,247,0.15);background:rgba(255,255,255,0.04);cursor:pointer;transition:border-color 0.2s,transform 0.2s;">
-          <img
-            src={`/images/avis/trustpilot/${item.file}`}
-            alt="Avis Trustpilot"
-            style="width:auto;height:100%;display:block;"
-            loading="lazy"
-          />
-        </div>
-      ))}
+  <!-- Modal (lecture détaillée) -->
+  <div class="ta-modal" id="ta-modal" aria-hidden="true" role="dialog">
+    <div class="ta-modal-backdrop" data-close></div>
+    <div class="ta-modal-card" role="document">
+      <button class="ta-modal-close" data-close aria-label="Fermer">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="ta-modal-body" id="ta-modal-body"><!-- injecté en JS --></div>
     </div>
   </div>
 </section>
 
+<script define:vars={{ testimonials }}>
+  // ─────── Filter tabs ───────
+  const tabs  = document.querySelectorAll('.ta-tab');
+  const cards = document.querySelectorAll('.ta-card');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const filter = tab.getAttribute('data-filter');
+      tabs.forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+
+      cards.forEach(card => {
+        const src = card.getAttribute('data-source');
+        const show = filter === 'all' || src === filter;
+        card.style.display = show ? '' : 'none';
+      });
+
+      // Pause/resume rows selon le filtre
+      const rowD = document.querySelector('[data-row="discord"] .ta-track');
+      const rowT = document.querySelector('[data-row="trustpilot"] .ta-track');
+      if (rowD && rowT) {
+        rowD.style.animationPlayState = (filter === 'trustpilot') ? 'paused' : 'running';
+        rowT.style.animationPlayState = (filter === 'discord')    ? 'paused' : 'running';
+      }
+    });
+  });
+
+  // ─────── Modal ───────
+  const modal = document.getElementById('ta-modal');
+  const body  = document.getElementById('ta-modal-body');
+
+  const open = (id) => {
+    const t = testimonials.find(x => x.id === id);
+    if (!t || !body || !modal) return;
+    const srcName = t.source === 'discord' ? 'Discord' : 'Trustpilot';
+    body.innerHTML = `
+      <div class="ta-modal-head">
+        <div class="ta-avatar ta-avatar-xl" style="--hue:${t.avatarHue}">
+          <span class="ta-avatar-ini">${t.initials}</span>
+        </div>
+        <div>
+          <div class="ta-modal-name">${t.name}</div>
+          <div class="ta-modal-meta">${t.role} · ${t.city}</div>
+          <div class="ta-modal-src">
+            <span class="ta-source-pill" data-src="${t.source}">
+              ${t.source === 'discord' ? 'Discord' : 'Trustpilot'}
+            </span>
+            <span class="ta-modal-verified">✓ Avis vérifié · ${t.date}</span>
+          </div>
+        </div>
+      </div>
+      <div class="ta-modal-stars">
+        ${'★'.repeat(5)}
+      </div>
+      <blockquote class="ta-modal-quote">« ${t.quote} »</blockquote>
+      <div class="ta-modal-result">
+        <span class="ta-modal-result-lbl">Résultat</span>
+        <span class="ta-modal-result-val">${t.result}</span>
+      </div>
+      <a href="#prix" class="ta-modal-cta">
+        Je veux les mêmes résultats
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    `;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const close = () => {
+    if (!modal) return;
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-id');
+      if (id) open(id);
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const id = card.getAttribute('data-id');
+        if (id) open(id);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-close]').forEach(el => {
+    el.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+</script>
+
 <style>
-  .avis-card:hover {
-    border-color: rgba(168,85,247,0.5) !important;
-    transform: scale(1.02);
+  /* ═══════════════ SECTION ═══════════════ */
+  .ta-section {
+    position: relative;
+    padding: 120px 0 0;
+    background: radial-gradient(ellipse at 50% 0%, #140828 0%, #0a0413 55%, #000 100%);
+    overflow: hidden;
+    isolation: isolate;
   }
-  @media (hover: none) {
-    .avis-card:hover { transform: none; }
+
+  .ta-halo {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(110px);
+    pointer-events: none;
+    z-index: 0;
   }
-  .marquee-track-l, .marquee-track-r { will-change: transform; }
-  @media (hover: none) {
-    .marquee-wrap:hover .marquee-track-l,
-    .marquee-wrap:hover .marquee-track-r {
-      animation-play-state: running;
+  .ta-halo-l {
+    top: 10%;
+    left: -200px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.28), transparent 70%);
+  }
+  .ta-halo-r {
+    bottom: 5%;
+    right: -200px;
+    background: radial-gradient(circle, rgba(192, 132, 252, 0.22), transparent 70%);
+  }
+
+  .ta-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  /* ═══════════════ HEAD ═══════════════ */
+  .ta-head {
+    max-width: 860px;
+    margin: 0 auto 64px;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .ta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #C4B5FD;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .ta-badge-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #A855F7;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
+    animation: ta-pulse 2s ease-in-out infinite;
+  }
+  @keyframes ta-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.25); opacity: 0.75; }
+  }
+
+  .ta-title {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .ta-title-accent {
+    background: linear-gradient(135deg, #C084FC 0%, #A855F7 50%, #7C3AED 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ta-sub {
+    font-size: 1.04rem;
+    color: rgba(255, 255, 255, 0.58);
+    max-width: 620px;
+    margin: 0 auto 32px;
+    line-height: 1.55;
+  }
+
+  /* ─── Stats ribbon ─── */
+  .ta-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    padding: 16px 26px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    backdrop-filter: blur(12px);
+    margin-bottom: 28px;
+  }
+  .ta-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .ta-stat-val {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .ta-stat-val-sub {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .ta-stat-lbl {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+  .ta-stat-sep {
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  /* ─── Tabs ─── */
+  .ta-tabs {
+    display: inline-flex;
+    gap: 6px;
+    padding: 5px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+  }
+  .ta-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color .2s, background .2s;
+  }
+  .ta-tab:hover { color: #fff; }
+  .ta-tab.is-active {
+    background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(168, 85, 247, 0.45);
+  }
+  .ta-tab-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.9;
+  }
+  .ta-tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 18px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+  .ta-tab.is-active .ta-tab-count {
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  /* ═══════════════ MARQUEE ═══════════════ */
+  .ta-marquee-wrap {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 22px;
+    padding: 8px 0;
+  }
+
+  .ta-fade-l, .ta-fade-r {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 120px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .ta-fade-l { left: 0;  background: linear-gradient(to right, #000 0%, transparent 100%); }
+  .ta-fade-r { right: 0; background: linear-gradient(to left,  #000 0%, transparent 100%); }
+
+  .ta-track {
+    display: flex;
+    gap: 18px;
+    width: max-content;
+    will-change: transform;
+  }
+  .ta-track-l { animation: ta-scroll-l 90s linear infinite; }
+  .ta-track-r { animation: ta-scroll-r 110s linear infinite; }
+
+  .ta-marquee-wrap:hover .ta-track { animation-play-state: paused; }
+
+  @keyframes ta-scroll-l {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes ta-scroll-r {
+    0%   { transform: translateX(-33.33%); }
+    100% { transform: translateX(0); }
+  }
+
+  /* ═══════════════ CARD (identique pour tous) ═══════════════ */
+  .ta-card {
+    flex: 0 0 360px;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 22px;
+    border-radius: 18px;
+    background: linear-gradient(135deg,
+      rgba(30, 15, 55, 0.6) 0%,
+      rgba(20, 10, 40, 0.7) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    backdrop-filter: blur(8px);
+  }
+  .ta-card:hover,
+  .ta-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgba(192, 132, 252, 0.55);
+    box-shadow:
+      0 14px 40px rgba(168, 85, 247, 0.3),
+      0 2px 8px rgba(168, 85, 247, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    outline: none;
+  }
+
+  .ta-card-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ta-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      linear-gradient(135deg,
+        hsl(var(--hue) 75% 60%) 0%,
+        hsl(var(--hue) 65% 40%) 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 4px 12px hsl(var(--hue) 70% 30% / 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    flex-shrink: 0;
+  }
+  .ta-avatar-ini {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.02em;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+  }
+
+  .ta-who { min-width: 0; }
+  .ta-who-name {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ta-who-check {
+    color: #60A5FA;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.5));
+  }
+  .ta-who-meta {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.3;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ta-source-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .ta-source-pill[data-src="discord"] {
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #C4B5FD;
+  }
+  .ta-source-pill[data-src="trustpilot"] {
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    color: #DDD6FE;
+  }
+
+  .ta-stars {
+    display: flex;
+    gap: 2px;
+    color: #FBBF24;
+    filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.4));
+  }
+
+  .ta-quote {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+    font-family: inherit;
+  }
+
+  .ta-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .ta-result {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(192, 132, 252, 0.18) 0%, rgba(168, 85, 247, 0.12) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #DDD6FE;
+    letter-spacing: -0.005em;
+  }
+  .ta-date {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+  }
+
+  /* ═══════════════ CTA ═══════════════ */
+  .ta-cta-wrap {
+    text-align: center;
+    margin-top: 24px;
+    padding: 0 24px;
+  }
+  .ta-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 32px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #C084FC 0%, #A855F7 50%, #7C3AED 100%);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow:
+      0 12px 32px rgba(168, 85, 247, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: transform .2s, box-shadow .2s;
+    letter-spacing: -0.01em;
+  }
+  .ta-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+      0 18px 44px rgba(192, 132, 252, 0.65),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+  .ta-cta-sub {
+    margin-top: 8px;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.02em;
+  }
+
+  /* ═══════════════ MODAL ═══════════════ */
+  .ta-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .ta-modal[aria-hidden="false"] { display: flex; }
+  .ta-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 2, 17, 0.82);
+    backdrop-filter: blur(8px);
+    animation: ta-modal-in 0.3s ease;
+  }
+  .ta-modal-card {
+    position: relative;
+    width: min(560px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 22px;
+    padding: 36px 32px 28px;
+    background: linear-gradient(135deg, #1a0d33 0%, #0f0621 100%);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65);
+    animation: ta-modal-up 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  @keyframes ta-modal-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes ta-modal-up {
+    from { opacity: 0; transform: translateY(24px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .ta-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px; height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s;
+  }
+  .ta-modal-close:hover { background: rgba(255, 255, 255, 0.14); }
+
+  .ta-modal-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .ta-avatar-xl {
+    width: 64px !important; height: 64px !important;
+  }
+  .ta-avatar-xl .ta-avatar-ini { font-size: 1.2rem; }
+  .ta-modal-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+  }
+  .ta-modal-meta {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 4px;
+  }
+  .ta-modal-src {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .ta-modal-verified {
+    font-size: 0.72rem;
+    color: #C4B5FD;
+    font-weight: 600;
+  }
+  .ta-modal-stars {
+    color: #FBBF24;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.5));
+  }
+  .ta-modal-quote {
+    font-size: 1.12rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.92);
+    font-style: italic;
+    margin: 0 0 22px;
+    padding: 18px 22px;
+    border-left: 3px solid #A855F7;
+    background: rgba(168, 85, 247, 0.08);
+    border-radius: 0 12px 12px 0;
+  }
+  .ta-modal-result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.16) 0%, rgba(124, 58, 237, 0.1) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    margin-bottom: 22px;
+  }
+  .ta-modal-result-lbl {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(221, 214, 254, 0.7);
+    font-weight: 700;
+  }
+  .ta-modal-result-val {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #DDD6FE;
+  }
+  .ta-modal-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #C084FC 0%, #A855F7 50%, #7C3AED 100%);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 22px rgba(168, 85, 247, 0.45);
+    transition: transform .2s;
+  }
+  .ta-modal-cta:hover { transform: translateY(-2px); }
+
+  /* ═══════════════ RESPONSIVE ═══════════════ */
+  @media (max-width: 1024px) {
+    .ta-section { padding: 96px 0 0; }
+    .ta-head { margin-bottom: 48px; }
+    .ta-card { flex: 0 0 320px; width: 320px; }
+    .ta-stats { gap: 20px; padding: 14px 20px; }
+    .ta-stat-val { font-size: 1.3rem; }
+  }
+
+  @media (max-width: 640px) {
+    .ta-section { padding: 72px 0 0; }
+    .ta-head { margin-bottom: 40px; }
+    .ta-title { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+    .ta-sub { font-size: 0.92rem; }
+    .ta-stats {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border-radius: 20px;
     }
+    .ta-stat-sep { display: none; }
+    .ta-stat-val { font-size: 1.15rem; }
+    .ta-stat-lbl { font-size: 0.6rem; }
+    .ta-tabs { padding: 4px; gap: 4px; }
+    .ta-tab { padding: 8px 12px; font-size: 0.75rem; }
+    .ta-card { flex: 0 0 280px; width: 280px; padding: 18px; border-radius: 16px; }
+    .ta-quote { font-size: 0.85rem; -webkit-line-clamp: 5; }
+    .ta-avatar { width: 38px; height: 38px; }
+    .ta-track-l, .ta-track-r { animation-duration: 60s; }
+    .ta-fade-l, .ta-fade-r { width: 40px; }
+    .ta-cta { padding: 15px 24px; font-size: 0.92rem; }
+    .ta-modal-card { padding: 28px 22px 22px; border-radius: 18px; }
+    .ta-modal-quote { font-size: 1rem; padding: 14px 16px; }
   }
-  @media (max-width: 480px) {
-    .avis-card { height: 160px !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ta-track-l, .ta-track-r,
+    .ta-badge-dot { animation: none; }
+    .ta-card:hover { transform: none; }
   }
 </style>

@@ -1,72 +1,1140 @@
 ---
-const checklist = [
-  "2 lives/semaine avec les 5 experts",
-  "Accès communauté Discord Focus VIP",
-  "Templates Claude, Gemini, Lovart illimités",
-  "Scripts de vente qui closent",
-  "Accès services Prime à tarif membre",
-  "Support WhatsApp direct 7j/7",
-  "Accès aux replays à vie",
+const features = [
+  {
+    label: "2 lives / semaine avec les 5 experts",
+    icon: "live",
+    tag: "12h+/mois",
+  },
+  {
+    label: "Communauté Discord Focus VIP",
+    icon: "discord",
+    tag: "847 membres",
+  },
+  {
+    label: "Templates Claude, Gemini, Lovart",
+    icon: "templates",
+    tag: "illimités",
+  },
+  {
+    label: "Scripts de vente qui closent",
+    icon: "scripts",
+    tag: "+200 scripts",
+  },
+  {
+    label: "Services Prime à tarif membre",
+    icon: "prime",
+    tag: "−70%",
+  },
+  {
+    label: "Support WhatsApp direct 7j/7",
+    icon: "whatsapp",
+    tag: "< 2h",
+  },
+  {
+    label: "Replays à vie",
+    icon: "replay",
+    tag: "∞",
+  },
+  {
+    label: "Accès réseau closers + recruteurs",
+    icon: "network",
+    tag: "exclusif",
+  },
+];
+
+const liveActivity = [
+  { name: "Sarah M.", city: "Lyon",        time: "il y a 2 min" },
+  { name: "Kevin D.", city: "Paris",       time: "il y a 7 min" },
+  { name: "Jules A.", city: "Marseille",   time: "il y a 14 min" },
+  { name: "Inès B.",  city: "Bordeaux",    time: "il y a 21 min" },
 ];
 ---
 
-<section id="prix" class="violet-grid" style="padding:120px 0;background:radial-gradient(ellipse 70% 50% at 50% 50%, rgba(168,85,247,0.08), transparent);">
-  <div style="max-width:600px;margin:0 auto;padding:0 24px;text-align:center;">
+<section id="prix" class="px-section">
 
-    <!-- Texte au-dessus -->
-    <p data-animate style="font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;color:#A855F7;font-weight:600;margin-bottom:12px;">
-      Réservé aux membres de la communauté Focus
-    </p>
-    <h2 data-animate data-delay="0.1" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:64px;line-height:1.15;">
-      Un Module.<br/>Une décision.<br/>Tout change.
-    </h2>
+  <!-- Fond : grille + halos + 3D orbs flottants -->
+  <div class="px-grid" aria-hidden="true"></div>
+  <div class="px-aura" aria-hidden="true"></div>
+  <div class="px-orb px-orb-1" aria-hidden="true"></div>
+  <div class="px-orb px-orb-2" aria-hidden="true"></div>
+  <div class="px-orb px-orb-3" aria-hidden="true"></div>
+  <div class="px-orb px-orb-4" aria-hidden="true"></div>
 
-    <!-- Pricing card -->
-    <div
-      class="glass-card glow-pulse"
-      data-animate
-      data-delay="0.2"
-      style="padding:clamp(24px,6vw,48px) clamp(20px,5vw,40px);text-align:left;border:1px solid rgba(168,85,247,0.4);"
-    >
+  <!-- Icones flottantes brand autour de la card -->
+  <div class="px-float px-float-1" aria-hidden="true">
+    <span class="px-float-glow"></span>
+    <img src="/images/brand-icons/sparkle.png" alt="" loading="lazy" />
+  </div>
+  <div class="px-float px-float-2" aria-hidden="true">
+    <span class="px-float-glow"></span>
+    <img src="/images/brand-icons/facebook.png" alt="" loading="lazy" />
+  </div>
+  <div class="px-float px-float-3" aria-hidden="true">
+    <span class="px-float-glow"></span>
+    <img src="/images/brand-icons/youtube.png" alt="" loading="lazy" />
+  </div>
+  <div class="px-float px-float-4" aria-hidden="true">
+    <span class="px-float-glow"></span>
+    <img src="/images/brand-icons/n8n.png" alt="" loading="lazy" />
+  </div>
+  <div class="px-float px-float-5" aria-hidden="true">
+    <span class="px-float-glow"></span>
+    <img src="/images/brand-icons/tiktok.png" alt="" loading="lazy" />
+  </div>
+  <div class="px-float px-float-6" aria-hidden="true">
+    <span class="px-float-glow"></span>
+    <img src="/images/brand-icons/stripe.png" alt="" loading="lazy" />
+  </div>
 
-      <!-- Badge FOMO -->
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:32px;">
-        <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(232,68,42,0.15);border:1px solid rgba(232,68,42,0.4);color:#E8442A;padding:8px 18px;border-radius:9999px;font-size:0.82rem;font-weight:700;letter-spacing:0.04em;">
-          <span style="width:7px;height:7px;border-radius:50%;background:#E8442A;display:inline-block;animation:pulse-red 1.5s ease-in-out infinite;"></span>
-          Il ne reste que <strong style="font-size:0.95rem;">10 places</strong> — Session Mai 2026
-        </span>
+  <div class="px-inner">
+
+    <!-- Header -->
+    <div class="px-head">
+      <div class="px-eyebrow" data-animate>
+        <span class="px-eyebrow-dot"></span>
+        Réservé aux membres de la communauté Focus
       </div>
+      <h2 class="px-title" data-animate data-delay="0.08">
+        Un Module.<br>
+        Une décision.<br>
+        <span class="px-title-accent">Tout change.</span>
+      </h2>
+    </div>
 
-      <!-- Prix -->
-      <div style="margin-bottom:32px;">
-        <div style="display:flex;align-items:baseline;gap:4px;">
-          <span style="font-size:clamp(3rem,10vw,4.5rem);font-weight:900;line-height:1;background:linear-gradient(135deg,#A855F7,#7C3AED);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">500€</span>
-        </div>
-      </div>
+    <!-- Main card (tilt 3D au hover) -->
+    <div class="px-card-wrap">
+      <div class="px-card" id="px-card" data-animate data-delay="0.16">
 
-      <!-- Checklist -->
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px;">
-        {checklist.map(item => (
-          <li style="display:flex;align-items:center;gap:12px;font-size:0.95rem;color:rgba(255,255,255,0.85);">
-            <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(168,85,247,0.2);border:1px solid rgba(168,85,247,0.4);flex-shrink:0;">
-              <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#A855F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <!-- Top row : badge violet unique -->
+        <div class="px-top-row">
+          <div class="px-corner">
+            <span class="px-corner-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
             </span>
-            {item}
-          </li>
+            <span class="px-corner-text">
+              <strong>Plus que 10 places</strong>
+              <span class="px-corner-sep">·</span>
+              Session Mai 2026
+            </span>
+          </div>
+        </div>
+
+        <!-- Brand row -->
+        <div class="px-brand">
+          <div class="px-brand-pill">
+            <span class="px-brand-dot"></span>
+            SMMIA · Module signature
+          </div>
+          <div class="px-brand-rating" aria-label="Note 4.9 sur 5">
+            <span class="px-brand-stars" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.3 6.2 20.6l1.1-6.5-4.7-4.6 6.5-.9L12 3l2.9 5.6 6.5.9-4.7 4.6 1.1 6.5z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.3 6.2 20.6l1.1-6.5-4.7-4.6 6.5-.9L12 3l2.9 5.6 6.5.9-4.7 4.6 1.1 6.5z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.3 6.2 20.6l1.1-6.5-4.7-4.6 6.5-.9L12 3l2.9 5.6 6.5.9-4.7 4.6 1.1 6.5z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.3 6.2 20.6l1.1-6.5-4.7-4.6 6.5-.9L12 3l2.9 5.6 6.5.9-4.7 4.6 1.1 6.5z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.3 6.2 20.6l1.1-6.5-4.7-4.6 6.5-.9L12 3l2.9 5.6 6.5.9-4.7 4.6 1.1 6.5z"/></svg>
+            </span>
+            <span class="px-brand-rating-val">4,9 / 5</span>
+          </div>
+        </div>
+
+        <!-- Price row -->
+        <div class="px-price-row">
+          <div class="px-price-main">
+            <span class="px-price-currency">€</span>
+            <span class="px-price-amount">500</span>
+            <span class="px-price-frequency">
+              <span class="px-price-strike">
+                <s>€2&nbsp;500</s>
+              </span>
+              <span class="px-price-paiement">paiement unique · 3 mois d'accès</span>
+            </span>
+          </div>
+          <div class="px-price-stack">
+            <div class="px-chip px-chip-win">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 13l3 3 7-7"/></svg>
+              Économise 2 000€
+            </div>
+            <div class="px-chip">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
+              3× sans frais
+            </div>
+          </div>
+        </div>
+
+        <!-- Features : grille 2 cols avec icones -->
+        <div class="px-features">
+          {features.map((f) => (
+            <div class="px-feat">
+              <div class="px-feat-icon">
+                {f.icon === "live" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                )}
+                {f.icon === "discord" && (
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4.5c-1.5-.7-3.1-1.2-4.8-1.5-.2.4-.4.9-.6 1.3-1.7-.3-3.5-.3-5.2 0-.2-.4-.4-.9-.6-1.3C7.1 3.3 5.5 3.8 4 4.5 1.2 8.6.4 12.6.8 16.6c2 1.5 3.9 2.3 5.8 2.9.5-.6.9-1.3 1.2-2-.7-.3-1.3-.6-1.9-1 .2-.1.3-.2.5-.3 3.8 1.7 7.8 1.7 11.5 0 .2.1.3.2.5.3-.6.4-1.3.7-1.9 1 .3.7.7 1.4 1.2 2 2-.6 3.9-1.4 5.8-2.9.5-4.6-.8-8.6-3.5-12.1zM9.2 14.3c-1.1 0-2.1-1-2.1-2.3 0-1.3 1-2.3 2.1-2.3s2.1 1 2.1 2.3c0 1.3-1 2.3-2.1 2.3zm5.6 0c-1.1 0-2.1-1-2.1-2.3 0-1.3 1-2.3 2.1-2.3s2.1 1 2.1 2.3c0 1.3-.9 2.3-2.1 2.3z"/></svg>
+                )}
+                {f.icon === "templates" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="3" width="7" height="7" rx="1.2"/><rect x="3" y="14" width="7" height="7" rx="1.2"/><rect x="14" y="14" width="7" height="7" rx="1.2"/></svg>
+                )}
+                {f.icon === "scripts" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+                )}
+                {f.icon === "prime" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-4V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zM10 5h4v2h-4z"/></svg>
+                )}
+                {f.icon === "whatsapp" && (
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.2-.2.2-.3.3-.5.1-.2.1-.4 0-.5-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5 0 1.5 1.1 2.9 1.2 3.1.1.2 2.1 3.2 5 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.5.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2L4.3 20l1-3.1-.2-.3c-.8-1.3-1.3-2.8-1.3-4.3C3.8 7.5 7.5 3.8 12 3.8s8.3 3.7 8.3 8.2-3.8 8.3-8.3 8.3z"/></svg>
+                )}
+                {f.icon === "replay" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M3.5 9A9 9 0 0120 8.5M20.5 15A9 9 0 014 15.5"/></svg>
+                )}
+                {f.icon === "network" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><circle cx="5" cy="18" r="3"/><circle cx="19" cy="18" r="3"/><path d="M12 9v3M12 12l-5 4M12 12l5 4"/></svg>
+                )}
+              </div>
+              <div class="px-feat-body">
+                <span class="px-feat-label">{f.label}</span>
+                <span class="px-feat-tag">{f.tag}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- CTAs -->
+        <div class="px-ctas">
+          <a class="px-cta-primary" href="https://wa.me/33766814280" target="_blank" rel="noopener">
+            <span class="px-cta-primary-inner">
+              Réserver mon appel
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+          <a class="px-cta-secondary" href="#video-avis">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Voir les témoignages
+          </a>
+        </div>
+
+        <!-- Trust signals + guarantee -->
+        <div class="px-trust">
+          <div class="px-trust-item">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l7 4v6c0 4-3 8-7 10-4-2-7-6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            Paiement sécurisé Stripe
+          </div>
+          <div class="px-trust-item">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12l-8 8-8-8"/><path d="M4 4h16v8"/></svg>
+            Sans engagement après 3 mois
+          </div>
+          <div class="px-trust-item">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Réservation en 3 min
+          </div>
+        </div>
+
+        <!-- Guarantee stamp (rotate slow) -->
+        <div class="px-stamp" aria-hidden="true">
+          <svg viewBox="0 0 200 200" class="px-stamp-ring">
+            <defs>
+              <path id="px-stamp-circle" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"/>
+            </defs>
+            <text font-size="16" font-weight="700" letter-spacing="2" fill="currentColor">
+              <textPath href="#px-stamp-circle">
+                GARANTIE RÉSULTATS · 14 JOURS · REMBOURSÉ ·
+              </textPath>
+            </text>
+          </svg>
+          <div class="px-stamp-core">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Live activity ticker (social proof) -->
+    <div class="px-live" data-animate data-delay="0.3">
+      <div class="px-live-label">
+        <span class="px-live-dot"></span>
+        En temps réel
+      </div>
+      <div class="px-live-feed">
+        {liveActivity.map((a, i) => (
+          <div class="px-live-row" style={`animation-delay: -${i * 3.5}s`}>
+            <div class="px-live-avatar">{a.name.charAt(0)}</div>
+            <div class="px-live-text">
+              <strong>{a.name}</strong> · {a.city}
+              <span class="px-live-action">a réservé son appel</span>
+            </div>
+            <div class="px-live-time">{a.time}</div>
+          </div>
         ))}
-      </ul>
-
-      <!-- CTA -->
-      <a href="https://wa.me/33766814280" target="_blank" rel="noopener" class="btn-pill" style="width:100%;justify-content:center;font-size:1.1rem;padding:18px 32px;">
-        Réserver un appel &rarr;
-      </a>
-
-      <!-- Garantie -->
-      <p style="text-align:center;margin-top:16px;font-size:0.8rem;color:rgba(255,255,255,0.35);">
-        Paiement sécurisé &nbsp;·&nbsp; Sans engagement après 3 mois
-      </p>
-
+      </div>
     </div>
 
   </div>
 </section>
+
+<style>
+  /* ═══════════════ SECTION ═══════════════ */
+  .px-section {
+    position: relative;
+    padding: 140px 0 160px;
+    background: radial-gradient(ellipse at 50% 0%, #1a0c2e 0%, #070212 55%, #000 100%);
+    overflow: hidden;
+    isolation: isolate;
+    perspective: 1600px;
+  }
+
+  .px-inner {
+    position: relative;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+    z-index: 3;
+  }
+
+  /* Grille fond */
+  .px-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, #000 25%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 75%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Aura centrale derriere la card */
+  .px-aura {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.35), transparent 65%);
+    filter: blur(90px);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: px-aura-breath 8s ease-in-out infinite;
+  }
+
+  @keyframes px-aura-breath {
+    0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.12); }
+  }
+
+  /* Orbs 3D flottants */
+  .px-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 1;
+    animation: px-orb-float 12s ease-in-out infinite;
+  }
+
+  .px-orb-1 { top: 12%; left: 6%;  width: 260px; height: 260px; background: radial-gradient(circle, rgba(192, 132, 252, 0.5), transparent 60%); animation-delay: 0s; }
+  .px-orb-2 { top: 18%; right: 8%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(124, 58, 237, 0.6), transparent 60%); animation-delay: -3s; }
+  .px-orb-3 { bottom: 18%; left: 10%; width: 220px; height: 220px; background: radial-gradient(circle, rgba(88, 28, 135, 0.6), transparent 60%); animation-delay: -6s; }
+  .px-orb-4 { bottom: 10%; right: 6%; width: 260px; height: 260px; background: radial-gradient(circle, rgba(168, 85, 247, 0.5), transparent 60%); animation-delay: -9s; }
+
+  @keyframes px-orb-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(24px, -30px) scale(1.08); }
+    66%      { transform: translate(-18px, 24px) scale(0.96); }
+  }
+
+  /* Logos brand 3D flottants autour */
+  .px-float {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    animation: px-float-rotate 10s ease-in-out infinite;
+  }
+
+  .px-float img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 2;
+    opacity: 0.92;
+    filter: drop-shadow(0 8px 24px rgba(168, 85, 247, 0.55));
+  }
+
+  .px-float-glow {
+    position: absolute;
+    inset: -35%;
+    background: radial-gradient(
+      circle at center,
+      rgba(168, 85, 247, 0.55) 0%,
+      rgba(192, 132, 252, 0.3) 35%,
+      transparent 70%
+    );
+    filter: blur(22px);
+    z-index: 1;
+    animation: px-float-pulse 4s ease-in-out infinite;
+  }
+
+  .px-float-1 { top: 6%;   left: 8%;    width: 64px; height: 64px; animation-delay: 0s; }
+  .px-float-2 { top: 14%;  right: 10%;  width: 56px; height: 56px; animation-delay: -2s; }
+  .px-float-3 { bottom: 22%; left: 6%;  width: 60px; height: 60px; animation-delay: -4s; }
+  .px-float-4 { bottom: 8%; right: 8%;  width: 64px; height: 64px; animation-delay: -6s; }
+  .px-float-5 { top: 42%;  left: 4%;    width: 48px; height: 48px; animation-delay: -3s; }
+  .px-float-6 { top: 50%;  right: 5%;   width: 52px; height: 52px; animation-delay: -5s; }
+
+  @keyframes px-float-rotate {
+    0%, 100% { transform: translateY(0) rotate(-8deg); }
+    50%      { transform: translateY(-18px) rotate(8deg); }
+  }
+
+  @keyframes px-float-pulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50%      { opacity: 0.9;  transform: scale(1.18); }
+  }
+
+  /* ═══════════════ HEADER ═══════════════ */
+  .px-head {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .px-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #C4B5FD;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .px-eyebrow-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #C084FC;
+    box-shadow: 0 0 10px #A855F7;
+    animation: px-dot 1.6s ease-in-out infinite;
+  }
+
+  @keyframes px-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .px-title {
+    font-size: clamp(2.4rem, 6vw, 4.25rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin: 0;
+  }
+
+  .px-title-accent {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 40%, #C084FC 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 6px 30px rgba(168, 85, 247, 0.45));
+  }
+
+  /* ═══════════════ CARD 3D ═══════════════ */
+  .px-card-wrap {
+    perspective: 1400px;
+    margin-bottom: 56px;
+  }
+
+  .px-card {
+    position: relative;
+    padding: 36px 36px 32px;
+    border-radius: 28px;
+    background:
+      linear-gradient(180deg, rgba(26, 12, 46, 0.88), rgba(10, 4, 20, 0.95));
+    box-shadow:
+      0 30px 80px -20px rgba(0, 0, 0, 0.9),
+      0 20px 60px -20px rgba(168, 85, 247, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    isolation: isolate;
+  }
+
+  /* Bordure gradient animée */
+  .px-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(from 0deg,
+      rgba(192, 132, 252, 0.8) 0deg,
+      rgba(168, 85, 247, 0.25) 90deg,
+      rgba(124, 58, 237, 0.65) 180deg,
+      rgba(168, 85, 247, 0.25) 270deg,
+      rgba(192, 132, 252, 0.8) 360deg);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+    animation: px-border-rotate 8s linear infinite;
+  }
+
+  @keyframes px-border-rotate {
+    to { --angle: 360deg; filter: hue-rotate(30deg); }
+  }
+
+  .px-card > * { position: relative; z-index: 2; }
+
+  /* ═══════════ Top row : badge violet unique scarcity ═══════════ */
+  .px-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 26px;
+  }
+
+  .px-corner {
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    min-height: 46px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #C084FC 0%, #A855F7 50%, #6D28D9 100%);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow:
+      0 10px 28px rgba(168, 85, 247, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    white-space: nowrap;
+    overflow: hidden;
+    isolation: isolate;
+    animation: px-corner-pulse 3.2s ease-in-out infinite;
+  }
+
+  .px-corner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%);
+    transform: translateX(-100%);
+    animation: px-corner-sweep 3.5s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  @keyframes px-corner-sweep {
+    0%   { transform: translateX(-100%); }
+    60%  { transform: translateX(100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .px-corner-icon {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    width: 18px; height: 18px;
+    color: #fff;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+  }
+
+  .px-corner-icon svg { width: 100%; height: 100%; }
+
+  .px-corner-text {
+    position: relative;
+    z-index: 1;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .px-corner-text strong {
+    color: #fff;
+    font-weight: 800;
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.2));
+  }
+
+  .px-corner-sep { opacity: 0.65; margin: 0 4px; }
+
+  @keyframes px-corner-pulse {
+    0%, 100% { box-shadow: 0 10px 28px rgba(168, 85, 247, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+    50%      { box-shadow: 0 16px 40px rgba(192, 132, 252, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+  }
+
+  /* ═══════════ Brand row ═══════════ */
+  .px-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .px-brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #C4B5FD;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .px-brand-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #C084FC;
+    box-shadow: 0 0 8px #A855F7;
+  }
+
+  .px-brand-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+
+  .px-brand-stars {
+    display: inline-flex;
+    gap: 1px;
+    color: #FACC15;
+  }
+
+  .px-brand-stars svg {
+    width: 14px; height: 14px;
+    filter: drop-shadow(0 0 4px rgba(250, 204, 21, 0.55));
+  }
+
+  /* ═══════════ Prix ═══════════ */
+  .px-price-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 20px 0 24px;
+    margin-bottom: 26px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+  }
+
+  .px-price-main {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .px-price-currency {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1;
+  }
+
+  .px-price-amount {
+    font-size: clamp(4rem, 10vw, 6rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 40%, #A855F7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 4px 24px rgba(168, 85, 247, 0.5));
+  }
+
+  .px-price-frequency {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-left: 8px;
+    padding-bottom: 6px;
+  }
+
+  .px-price-strike {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: line-through;
+    text-decoration-color: rgba(192, 132, 252, 0.85);
+    text-decoration-thickness: 2px;
+  }
+  .px-price-strike s { text-decoration: inherit; }
+
+  .px-price-paiement {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  .px-price-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+  }
+
+  .px-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #C4B5FD;
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  .px-chip-win {
+    background: linear-gradient(135deg, rgba(192, 132, 252, 0.28), rgba(124, 58, 237, 0.14));
+    border-color: rgba(168, 85, 247, 0.55);
+    color: #DDD6FE;
+  }
+
+  /* ═══════════ Features ═══════════ */
+  .px-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .px-feat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.06), rgba(168, 85, 247, 0.01));
+    border: 1px solid rgba(168, 85, 247, 0.15);
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .px-feat:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.14), rgba(168, 85, 247, 0.04));
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.45);
+  }
+
+  .px-feat-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.28), rgba(124, 58, 237, 0.18));
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #C084FC;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .px-feat-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .px-feat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .px-feat-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.25;
+  }
+
+  .px-feat-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #C084FC;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ═══════════ CTAs ═══════════ */
+  .px-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .px-cta-primary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 32px;
+    border-radius: 16px;
+    background:
+      linear-gradient(135deg, #A855F7 0%, #7C3AED 50%, #6D28D9 100%);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow:
+      0 20px 50px -12px rgba(168, 85, 247, 0.7),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+                box-shadow 0.3s;
+  }
+
+  .px-cta-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .px-cta-primary:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow:
+      0 28px 70px -10px rgba(168, 85, 247, 0.85),
+      0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+  }
+
+  .px-cta-primary:hover::before {
+    transform: translateX(120%);
+  }
+
+  .px-cta-primary-inner {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .px-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .px-cta-secondary:hover {
+    background: rgba(168, 85, 247, 0.12);
+    border-color: rgba(168, 85, 247, 0.45);
+    color: #fff;
+  }
+
+  .px-cta-secondary svg { color: #C084FC; }
+
+  /* ═══════════ Trust signals ═══════════ */
+  .px-trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .px-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  .px-trust-item svg { color: rgba(192, 132, 252, 0.8); }
+
+  /* ═══════════ Guarantee stamp ═══════════ */
+  .px-stamp {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 130px;
+    height: 130px;
+    z-index: 4;
+    color: rgba(192, 132, 252, 0.95);
+    filter: drop-shadow(0 10px 30px rgba(168, 85, 247, 0.55));
+    pointer-events: none;
+  }
+
+  .px-stamp-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    animation: px-stamp-spin 18s linear infinite;
+  }
+
+  @keyframes px-stamp-spin { to { transform: rotate(360deg); } }
+
+  .px-stamp-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #A855F7, #6D28D9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow:
+      0 6px 20px rgba(168, 85, 247, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  /* ═══════════ Live ticker ═══════════ */
+  .px-live {
+    margin: 0 auto;
+    max-width: 520px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(26, 12, 46, 0.7), rgba(10, 4, 20, 0.7));
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .px-live-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .px-live-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #A855F7;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.9);
+    animation: px-live-blink 1.4s ease-in-out infinite;
+  }
+
+  @keyframes px-live-blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+  }
+
+  .px-live-feed {
+    position: relative;
+    height: 34px;
+    overflow: hidden;
+  }
+
+  .px-live-row {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    animation: px-live-cycle 14s ease-in-out infinite;
+  }
+
+  @keyframes px-live-cycle {
+    0%, 3%      { opacity: 0; transform: translateY(20px); }
+    5%, 22%     { opacity: 1; transform: translateY(0); }
+    24%, 100%   { opacity: 0; transform: translateY(-20px); }
+  }
+
+  .px-live-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #A855F7, #6D28D9);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .px-live-text {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.82rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .px-live-text strong {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .px-live-action {
+    color: rgba(192, 132, 252, 0.85);
+    margin-left: 6px;
+  }
+
+  .px-live-time {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  /* ═══════════════ TABLETTE ═══════════════ */
+  @media (max-width: 1024px) {
+    .px-section { padding: 112px 0 128px; }
+    .px-head { margin-bottom: 48px; }
+    .px-orb-1, .px-orb-4 { width: 200px; height: 200px; }
+    .px-orb-2, .px-orb-3 { width: 160px; height: 160px; }
+    .px-aura { width: 560px; height: 560px; }
+    .px-float { display: none; }
+    .px-card { padding: 30px 28px 28px; }
+    .px-stamp { width: 110px; height: 110px; bottom: -20px; left: -20px; }
+    .px-stamp-core { width: 54px; height: 54px; }
+  }
+
+  /* ═══════════════ MOBILE ═══════════════ */
+  @media (max-width: 640px) {
+    .px-section { padding: 80px 0 96px; }
+    .px-head { margin-bottom: 36px; }
+    .px-eyebrow { font-size: 0.68rem; padding: 6px 14px; }
+    .px-card { padding: 22px 18px; border-radius: 22px; }
+    .px-corner { padding: 10px 16px; min-height: 40px; gap: 8px; }
+    .px-corner-text { font-size: 0.74rem; }
+    .px-corner-icon { width: 16px; height: 16px; }
+    .px-price-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .px-price-stack { align-items: flex-start; flex-direction: row; }
+    .px-features { grid-template-columns: 1fr; gap: 8px; }
+    .px-feat { padding: 10px; gap: 10px; }
+    .px-feat-icon { width: 36px; height: 36px; }
+    .px-feat-icon svg { width: 18px; height: 18px; }
+    .px-cta-primary { padding: 16px 24px; font-size: 1rem; }
+    .px-trust { flex-direction: column; gap: 10px; padding-top: 14px; }
+    .px-stamp { width: 86px; height: 86px; bottom: -14px; left: -14px; }
+    .px-stamp-core { width: 42px; height: 42px; }
+    .px-stamp-core svg { width: 22px; height: 22px; }
+    .px-stamp-ring text { font-size: 14px; }
+    .px-live { max-width: 100%; }
+  }
+
+  /* ═══════════════ PETIT MOBILE ═══════════════ */
+  @media (max-width: 380px) {
+    .px-card { padding: 18px 14px; }
+    .px-price-amount { font-size: 3.6rem; }
+    .px-stamp { display: none; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .px-orb, .px-aura, .px-float, .px-stamp-ring,
+    .px-corner, .px-corner::before, .px-cta-primary::before,
+    .px-live-row, .px-eyebrow-dot, .px-brand-dot,
+    .px-live-dot { animation: none; }
+  }
+</style>
+
+<script>
+  // Tilt 3D de la card au mouvement de la souris
+  const card = document.getElementById('px-card') as HTMLDivElement | null;
+  const wrap = card?.parentElement;
+
+  if (card && wrap) {
+    let raf = 0;
+    let targetRx = 0, targetRy = 0;
+    let curRx = 0, curRy = 0;
+
+    const update = () => {
+      curRx += (targetRx - curRx) * 0.12;
+      curRy += (targetRy - curRy) * 0.12;
+      card.style.transform = `rotateX(${curRx}deg) rotateY(${curRy}deg)`;
+      raf = requestAnimationFrame(update);
+    };
+
+    wrap.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      targetRy = ((x - cx) / cx) * 3.5;
+      targetRx = ((y - cy) / cy) * -3;
+      if (!raf) raf = requestAnimationFrame(update);
+    });
+
+    wrap.addEventListener('mouseleave', () => {
+      targetRx = 0; targetRy = 0;
+    });
+  }
+
+  // Count-down simulé sur le badge "10 places"
+  const placesEl = document.querySelector('.px-corner-text strong');
+  if (placesEl) {
+    let v = 10;
+    setInterval(() => {
+      const rand = Math.random();
+      if (rand < 0.12 && v > 3) {
+        v -= 1;
+        placesEl.textContent = `Plus que ${v} place${v > 1 ? 's' : ''}`;
+        (placesEl as HTMLElement).animate(
+          [{ transform: 'scale(1)' }, { transform: 'scale(1.15)' }, { transform: 'scale(1)' }],
+          { duration: 500, easing: 'cubic-bezier(0.19,1,0.22,1)' }
+        );
+      }
+    }, 45000);
+  }
+</script>

@@ -1,59 +1,796 @@
 ---
-const faqs = [
+import FloatingBrandIcons from './FloatingBrandIcons.astro';
+
+type Cat = 'programme' | 'prix' | 'resultats' | 'support' | 'logistique';
+
+type Faq = {
+  q: string;
+  a: string;
+  cat: Cat;
+  icon: 'spark' | 'lightning' | 'shield' | 'euro' | 'chart' | 'clock' | 'chat' | 'gift' | 'cal' | 'rocket';
+  trust?: string;
+};
+
+const faqs: Faq[] = [
   {
+    cat: 'programme', icon: 'spark',
     q: "C'est quoi SMMIA exactement ?",
-    a: "SMMIA est un module de la communauté Focus créé par Val et son équipe. En 3 mois, tu apprends à vendre des services IA, à trouver des clients et à les livrer avec l'IA. Même si tu pars de zéro."
+    a: "SMMIA est le module signature de la communauté Focus, créé par Val et son équipe. En 3 mois, tu apprends à vendre des services IA (SMMA + automation), trouver des clients, et les livrer avec l'IA — même si tu pars totalement de zéro.",
+    trust: "Module créé par Val — 10 ans d'expérience SMMA"
   },
   {
+    cat: 'programme', icon: 'rocket',
     q: "Je n'ai aucune compétence en IA, c'est fait pour moi ?",
-    a: "C'est exactement pour ça qu'on l'a créé. Pas besoin de coder, pas besoin d'expérience. Les lives sont 100% pratiques — tu reproduis, tu vends."
+    a: "Exactement pour ça qu'on l'a créé. Pas besoin de coder, pas besoin d'expérience préalable. Les lives sont 100% pratiques — tu reproduis étape par étape, tu vends. Nos résultats les plus rapides viennent souvent de débutants qui appliquent à la lettre.",
+    trust: "68% de nos membres débutaient à zéro"
   },
   {
+    cat: 'logistique', icon: 'cal',
     q: "Quand commence la prochaine session ?",
-    a: "La prochaine session Focus démarre en Mai 2026. Les places sont limitées à 50 membres max pour garantir un suivi de qualité."
+    a: "La session Mai 2026 démarre le 2 mai. Places limitées à 50 membres max pour garantir un suivi qualitatif. À ce jour, il reste 10 places. Une fois fermé, la prochaine session n'ouvre qu'en Septembre 2026.",
+    trust: "Plus que 10 places — Session Mai 2026"
   },
   {
-    q: "Quelle différence avec d'autres formations ?",
-    a: "On est une communauté d'entrepreneurs actifs, pas des formateurs théoriques. Val et l'équipe vivent de ce qu'ils enseignent. Tu vois les résultats réels, pas des slides PowerPoint."
+    cat: 'programme', icon: 'lightning',
+    q: "Quel est le rythme réel sur 3 mois ?",
+    a: "2 lives par semaine (90 min chacun) animés par Val, Sonny, Jamel et le reste de l'équipe. Plus l'accès permanent au Discord VIP, aux templates Claude/Gemini/Lovart, aux scripts de closing, et aux replays à vie. Compte ≈ 5h/semaine pour tout consommer.",
+    trust: "24+ lives programmés · Replays illimités"
+  },
+  {
+    cat: 'resultats', icon: 'chart',
+    q: "En combien de temps je signe mon 1er client ?",
+    a: "Médiane actuelle : 28 jours après le début du module. Les plus rapides signent en moins de 7 jours (cf. témoignages Discord : khaldiii999, Medjr19, MC Ley). Ça dépend surtout de ton volume de prospection — mais le système marche.",
+    trust: "Résultats certifiés via Discord Focus"
+  },
+  {
+    cat: 'resultats', icon: 'euro',
+    q: "Combien je peux réellement espérer gagner ?",
+    a: "Fourchettes réelles observées : 1er mois 500-2 500€, 3e mois 3 000-14 000€/mois selon ton investissement. Certains membres dépassent 20k€/mois. Mais ça reste un business — aucune garantie de revenu, que de résultats tangibles si tu appliques.",
+    trust: "Chiffres extraits des transactions partagées en Discord"
+  },
+  {
+    cat: 'prix', icon: 'shield',
+    q: "Le prix de 500€, c'est vraiment tout ?",
+    a: "Paiement unique de 500€ ou 3× sans frais, aucun coût caché, aucune upsell. Tu as accès à 100% du module + communauté + templates + lives + replays pendant 3 mois. Le tarif public hors session est de 2 500€, c'est un prix membre exclusif.",
+    trust: "Facture fournie · Paiement sécurisé Stripe"
+  },
+  {
+    cat: 'prix', icon: 'gift',
+    q: "Est-ce qu'il y a une garantie si ça ne me convient pas ?",
+    a: "Oui — 7 jours satisfait ou remboursé sans justification. Tu rejoins, tu testes le Discord, les 2 premiers lives, les templates. Si tu n'es pas convaincu : 1 email et on te rembourse intégralement. 0% des 847 membres ont demandé un remboursement à ce jour.",
+    trust: "7j remboursé — 0% de retour en 2025"
+  },
+  {
+    cat: 'programme', icon: 'spark',
+    q: "Quelle différence avec d'autres formations SMMA ?",
+    a: "On n'est pas des formateurs. Val, Sonny, Jamel et les autres vivent du SMMA (millions de CA cumulés). Ils montrent leurs chiffres réels, leurs outils réels, leurs clients réels — pas des slides marketing. Communauté > formation.",
+    trust: "Équipe active dans le business · Pas des théoriciens"
+  },
+  {
+    cat: 'support', icon: 'chat',
+    q: "Comment je te pose une question pendant le module ?",
+    a: "Discord Focus VIP (réponse équipe en < 2h en semaine, < 12h le week-end), WhatsApp direct avec Val pour les questions structurantes, et chaque live se termine par un Q&A dédié. Tu ne resteras jamais bloqué plus de 24h.",
+    trust: "Délai moyen de réponse : 1h42"
   },
 ];
+
+const categories: Array<{ id: Cat | 'all'; label: string; icon: string }> = [
+  { id: 'all',        label: 'Tout',              icon: '▦' },
+  { id: 'programme',  label: 'Programme',         icon: '◐' },
+  { id: 'prix',       label: 'Prix & garanties',  icon: '◊' },
+  { id: 'resultats',  label: 'Résultats',         icon: '◈' },
+  { id: 'support',    label: 'Support',           icon: '◎' },
+  { id: 'logistique', label: 'Dates',             icon: '◉' },
+];
+
+const catLabels: Record<Cat, string> = {
+  programme:  'Programme',
+  prix:       'Prix & garanties',
+  resultats:  'Résultats',
+  support:    'Support',
+  logistique: 'Dates',
+};
 ---
 
-<section style="padding:100px 0;">
-  <div style="max-width:760px;margin:0 auto;padding:0 24px;">
+<section id="faq" class="fq-section">
+  <FloatingBrandIcons variant="subtle" seed={8} />
 
-    <div style="text-align:center;margin-bottom:60px;">
-      <h2 data-animate style="font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:12px;">
-        Questions fréquentes
+  <!-- Halos violets -->
+  <div class="fq-halo fq-halo-l" aria-hidden="true"></div>
+  <div class="fq-halo fq-halo-r" aria-hidden="true"></div>
+
+  <div class="fq-inner">
+
+    <!-- Header -->
+    <div class="fq-head">
+      <div class="fq-badge" data-animate>
+        <span class="fq-badge-dot"></span>
+        Support 7j/7 · Réponse &lt; 2h
+      </div>
+      <h2 class="fq-title" data-animate data-delay="0.08">
+        Tout ce que tu veux savoir.<br>
+        <span class="fq-title-accent">Sans filtre.</span>
       </h2>
-      <p data-animate data-delay="0.1" style="color:rgba(255,255,255,0.5);font-size:1rem;">
-        Tout ce que tu dois savoir avant de rejoindre.
+      <p class="fq-sub" data-animate data-delay="0.16">
+        10 questions qu'on nous pose vraiment. Si la tienne n'y est pas, écris-nous — on répond toujours.
       </p>
-    </div>
 
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      {faqs.map((faq, i) => (
-        <div
-          class="faq-item glass-card"
-          data-animate
-          data-delay={String(i * 0.08)}
-          style="overflow:hidden;"
-        >
-          <button
-            class="faq-btn"
-            style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 28px;background:none;border:none;color:#fff;text-align:left;cursor:pointer;font-family:inherit;"
-          >
-            <span style="font-size:1rem;font-weight:700;line-height:1.3;">{faq.q}</span>
-            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 7.5L10 12.5L15 7.5" stroke="#A855F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <div class="faq-answer">
-            <p style="padding:0 28px 24px;color:rgba(255,255,255,0.6);font-size:0.95rem;line-height:1.7;">{faq.a}</p>
-          </div>
+      <!-- Trust strip -->
+      <div class="fq-trust" data-animate data-delay="0.22">
+        <div class="fq-trust-item">
+          <div class="fq-trust-val">1&nbsp;247</div>
+          <div class="fq-trust-lbl">Questions répondues en 2026</div>
         </div>
-      ))}
+        <div class="fq-trust-sep" aria-hidden="true"></div>
+        <div class="fq-trust-item">
+          <div class="fq-trust-val">&lt; 2h</div>
+          <div class="fq-trust-lbl">Délai moyen support</div>
+        </div>
+        <div class="fq-trust-sep" aria-hidden="true"></div>
+        <div class="fq-trust-item">
+          <div class="fq-trust-val">100<span class="fq-trust-val-sub">%</span></div>
+          <div class="fq-trust-lbl">Satisfaits ou remboursés</div>
+        </div>
+      </div>
     </div>
 
+    <!-- Barre de recherche + filtres -->
+    <div class="fq-controls" data-animate data-delay="0.26">
+      <div class="fq-search">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+        </svg>
+        <input type="search" id="fq-search-input" placeholder="Rechercher : prix, garantie, résultats…" aria-label="Rechercher une question" />
+        <button class="fq-search-clear" id="fq-search-clear" aria-label="Effacer la recherche">×</button>
+      </div>
+
+      <div class="fq-tabs" role="tablist">
+        {categories.map((c, i) => (
+          <button class={`fq-tab ${i === 0 ? 'is-active' : ''}`} role="tab" data-filter={c.id}>
+            <span class="fq-tab-ic" aria-hidden="true">{c.icon}</span>
+            {c.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Liste FAQ -->
+    <div class="fq-list">
+      {faqs.map((f, i) => (
+        <details class="fq-item" data-cat={f.cat} data-animate data-delay={String(0.08 + i * 0.04)}>
+          <summary class="fq-q">
+            <span class="fq-q-icon" aria-hidden="true">
+              {f.icon === 'spark' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9z"/></svg>}
+              {f.icon === 'lightning' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>}
+              {f.icon === 'shield' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v7c0 5 3.5 9 8 10 4.5-1 8-5 8-10V5z"/></svg>}
+              {f.icon === 'euro' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M4 14h12M18 6a8 8 0 1 0 0 12"/></svg>}
+              {f.icon === 'chart' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20h18M6 17v-5M11 17V8M16 17v-3M21 17V5"/></svg>}
+              {f.icon === 'clock' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>}
+              {f.icon === 'chat' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>}
+              {f.icon === 'gift' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v9H4v-9M2 8h20v4H2zM12 22V8M12 8a4 4 0 0 1-4-4 2 2 0 0 1 2-2c2 0 2 2 2 4 0-2 0-4 2-4a2 2 0 0 1 2 2 4 4 0 0 1-4 4z"/></svg>}
+              {f.icon === 'cal' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>}
+              {f.icon === 'rocket' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11 a6 6 0 0 1 6-6h5v5 a6 6 0 0 1-6 6M9 11 l-3 3 3 3M9 11l4 4M15 7a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/></svg>}
+            </span>
+
+            <span class="fq-q-text">
+              <span class="fq-cat-pill">{catLabels[f.cat]}</span>
+              <span class="fq-q-title">{f.q}</span>
+            </span>
+
+            <span class="fq-chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+
+          <div class="fq-a">
+            <div class="fq-a-text">{f.a}</div>
+            {f.trust && (
+              <div class="fq-a-trust">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="m9 16.2-3.5-3.6L4 14l5 5L20 8l-1.4-1.4z"/></svg>
+                <span>{f.trust}</span>
+              </div>
+            )}
+          </div>
+        </details>
+      ))}
+
+      <!-- Empty state -->
+      <div class="fq-empty" id="fq-empty" hidden>
+        <div class="fq-empty-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </div>
+        <div class="fq-empty-title">Aucune question ne correspond</div>
+        <div class="fq-empty-sub">Pose-nous la tienne directement, on te répond sous 2h.</div>
+      </div>
+    </div>
+
+    <!-- Bloc support premium -->
+    <div class="fq-support" data-animate>
+      <div class="fq-support-top">
+        <div class="fq-support-avatars" aria-hidden="true">
+          <span class="fq-avt" style="--hue:275">V</span>
+          <span class="fq-avt" style="--hue:305">S</span>
+          <span class="fq-avt" style="--hue:260">J</span>
+        </div>
+        <div class="fq-support-heading">
+          <div class="fq-support-title">Ta question n'est pas ici ?</div>
+          <div class="fq-support-sub">Val, Sonny et l'équipe répondent personnellement sous 2h.</div>
+        </div>
+      </div>
+
+      <div class="fq-channels">
+        <a href="https://wa.me/33600000000" class="fq-channel" target="_blank" rel="noopener">
+          <div class="fq-channel-ic" data-type="whatsapp" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .1 5.4.1 12c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.7c1.7 1 3.7 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.6-8.3zm-8.4 18.4c-1.9 0-3.7-.5-5.2-1.5l-.4-.2-3.7 1 1-3.6-.3-.4A10 10 0 0 1 2.1 12a10 10 0 0 1 17.1-7 10 10 0 0 1-7.1 16.9z"/></svg>
+          </div>
+          <div class="fq-channel-body">
+            <div class="fq-channel-name">WhatsApp direct</div>
+            <div class="fq-channel-meta">Val répond personnellement</div>
+          </div>
+          <svg class="fq-channel-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+
+        <a href="#discord" class="fq-channel">
+          <div class="fq-channel-ic" data-type="discord" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19 19 0 0 0 15.7 3l-.2.4a17.4 17.4 0 0 0-6.9 0L8.3 3a19 19 0 0 0-4.6 1.4A19.8 19.8 0 0 0 .4 15.3a19.1 19.1 0 0 0 5.8 2.9l1.2-1.6a12.5 12.5 0 0 1-2-.9l.5-.4a13.7 13.7 0 0 0 12.3 0l.5.4a12.5 12.5 0 0 1-2 .9l1.2 1.6a19.1 19.1 0 0 0 5.8-2.9 19.8 19.8 0 0 0-3.4-10.9zM8 13.6c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4zm8 0c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4z"/></svg>
+          </div>
+          <div class="fq-channel-body">
+            <div class="fq-channel-name">Discord Focus</div>
+            <div class="fq-channel-meta">847 membres actifs</div>
+          </div>
+          <svg class="fq-channel-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+
+        <a href="mailto:contact@smmia.app" class="fq-channel">
+          <div class="fq-channel-ic" data-type="mail" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </div>
+          <div class="fq-channel-body">
+            <div class="fq-channel-name">Email équipe</div>
+            <div class="fq-channel-meta">Réponse sous 2h</div>
+          </div>
+          <svg class="fq-channel-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <a href="#prix" class="fq-final-cta">
+        Je rejoins SMMIA — 500€
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
   </div>
 </section>
+
+<script>
+  // Accordéon exclusif + search + filtres
+  const items  = Array.from(document.querySelectorAll<HTMLDetailsElement>('.fq-item'));
+  const tabs   = Array.from(document.querySelectorAll<HTMLButtonElement>('.fq-tab'));
+  const input  = document.getElementById('fq-search-input') as HTMLInputElement | null;
+  const clear  = document.getElementById('fq-search-clear') as HTMLButtonElement | null;
+  const empty  = document.getElementById('fq-empty');
+  const search = document.querySelector('.fq-search');
+
+  let activeCat = 'all';
+
+  // Un seul ouvert à la fois
+  items.forEach(d => {
+    d.addEventListener('toggle', () => {
+      if (d.open) {
+        items.forEach(o => { if (o !== d) o.open = false; });
+      }
+    });
+  });
+
+  // Filtres catégories
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('is-active'));
+      t.classList.add('is-active');
+      activeCat = t.getAttribute('data-filter') || 'all';
+      applyFilters();
+    });
+  });
+
+  // Recherche
+  const applyFilters = () => {
+    const q = (input?.value || '').trim().toLowerCase();
+    let visible = 0;
+    items.forEach(d => {
+      const cat = d.getAttribute('data-cat');
+      const txt = d.textContent?.toLowerCase() || '';
+      const matchCat = activeCat === 'all' || cat === activeCat;
+      const matchQ   = !q || txt.includes(q);
+      const show = matchCat && matchQ;
+      d.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    if (empty) empty.hidden = visible > 0;
+    if (search) search.classList.toggle('has-value', !!q);
+  };
+
+  input?.addEventListener('input', applyFilters);
+  clear?.addEventListener('click', () => {
+    if (input) { input.value = ''; applyFilters(); input.focus(); }
+  });
+</script>
+
+<style>
+  /* ═══════════════ SECTION ═══════════════ */
+  .fq-section {
+    position: relative;
+    padding: 120px 0 128px;
+    background: radial-gradient(ellipse at 50% 0%, #0f0622 0%, #070311 60%, #000 100%);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .fq-halo {
+    position: absolute;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    filter: blur(110px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .fq-halo-l { top: 10%; left: -160px;  background: radial-gradient(circle, rgba(168, 85, 247, 0.25), transparent 70%); }
+  .fq-halo-r { bottom: 8%; right: -160px; background: radial-gradient(circle, rgba(192, 132, 252, 0.20), transparent 70%); }
+
+  .fq-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ─── Head ─── */
+  .fq-head { text-align: center; margin-bottom: 44px; }
+
+  .fq-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #C4B5FD;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .fq-badge-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #A855F7;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.85);
+    animation: fq-pulse 2s ease-in-out infinite;
+  }
+  @keyframes fq-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.3); opacity: 0.65; }
+  }
+
+  .fq-title {
+    font-size: clamp(1.9rem, 4.4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+  .fq-title-accent {
+    background: linear-gradient(135deg, #C084FC 0%, #A855F7 50%, #7C3AED 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .fq-sub {
+    max-width: 620px;
+    margin: 0 auto 28px;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  /* ─── Trust strip ─── */
+  .fq-trust {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(168, 85, 247, 0.22);
+    backdrop-filter: blur(10px);
+  }
+  .fq-trust-item { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+  .fq-trust-val {
+    font-size: 1.25rem; font-weight: 900; color: #fff; line-height: 1; letter-spacing: -0.02em;
+  }
+  .fq-trust-val-sub { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.55); }
+  .fq-trust-lbl {
+    font-size: 0.64rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.48);
+  }
+  .fq-trust-sep { width: 1px; height: 26px; background: rgba(255, 255, 255, 0.12); }
+
+  /* ─── Controls : search + tabs ─── */
+  .fq-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .fq-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px 0 18px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: border-color .2s, background .2s;
+  }
+  .fq-search:focus-within {
+    background: rgba(168, 85, 247, 0.08);
+    border-color: rgba(168, 85, 247, 0.45);
+    box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.12);
+  }
+  .fq-search svg { color: rgba(255, 255, 255, 0.5); flex-shrink: 0; }
+  .fq-search input {
+    flex: 1;
+    height: 100%;
+    border: 0; outline: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 0.95rem;
+    font-family: inherit;
+  }
+  .fq-search input::placeholder { color: rgba(255, 255, 255, 0.38); }
+  .fq-search input::-webkit-search-cancel-button { display: none; }
+  .fq-search-clear {
+    width: 26px; height: 26px;
+    border: 0; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff; font-size: 1.1rem; line-height: 1;
+    cursor: pointer;
+    display: none;
+  }
+  .fq-search.has-value .fq-search-clear { display: inline-flex; align-items: center; justify-content: center; }
+
+  .fq-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .fq-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .fq-tab:hover { color: #fff; border-color: rgba(168, 85, 247, 0.35); }
+  .fq-tab.is-active {
+    background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(168, 85, 247, 0.4);
+  }
+  .fq-tab-ic {
+    font-size: 0.82rem;
+    opacity: 0.85;
+  }
+
+  /* ═══════════════ LIST ═══════════════ */
+  .fq-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .fq-item {
+    position: relative;
+    border-radius: 16px;
+    background: linear-gradient(135deg,
+      rgba(22, 12, 44, 0.7) 0%,
+      rgba(14, 7, 28, 0.85) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.14);
+    overflow: hidden;
+    transition: border-color .25s, box-shadow .25s, transform .25s;
+  }
+  .fq-item:hover { border-color: rgba(192, 132, 252, 0.35); }
+  .fq-item[open] {
+    border-color: rgba(168, 85, 247, 0.55);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.18);
+  }
+  .fq-item[open]::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #C084FC, #7C3AED);
+  }
+
+  .fq-q {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  .fq-q::-webkit-details-marker { display: none; }
+
+  .fq-q-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.22), rgba(124, 58, 237, 0.12));
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #DDD6FE;
+  }
+  .fq-q-icon svg { width: 18px; height: 18px; }
+
+  .fq-q-text { flex: 1; min-width: 0; }
+  .fq-cat-pill {
+    display: inline-block;
+    margin-bottom: 4px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: #C4B5FD;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .fq-q-title {
+    display: block;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .fq-chevron {
+    flex-shrink: 0;
+    display: inline-flex;
+    width: 30px; height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #A855F7;
+    transition: transform .3s cubic-bezier(0.19, 1, 0.22, 1), background .2s;
+  }
+  .fq-item[open] .fq-chevron {
+    transform: rotate(180deg);
+    background: rgba(168, 85, 247, 0.2);
+    color: #fff;
+  }
+
+  .fq-a {
+    padding: 0 22px 20px;
+    padding-left: 76px;
+    animation: fq-slide .3s ease;
+  }
+  @keyframes fq-slide {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fq-a-text {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+  .fq-a-trust {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: #DDD6FE;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .fq-a-trust svg { color: #C084FC; }
+
+  /* Empty state */
+  .fq-empty {
+    text-align: center;
+    padding: 48px 24px;
+    border-radius: 16px;
+    border: 1px dashed rgba(168, 85, 247, 0.25);
+    background: rgba(168, 85, 247, 0.03);
+  }
+  .fq-empty-icon {
+    display: inline-flex;
+    width: 48px; height: 48px;
+    align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: rgba(168, 85, 247, 0.15);
+    color: #C4B5FD;
+    margin-bottom: 12px;
+  }
+  .fq-empty-title { color: #fff; font-weight: 800; font-size: 1.05rem; margin-bottom: 4px; }
+  .fq-empty-sub   { color: rgba(255, 255, 255, 0.55); font-size: 0.88rem; }
+
+  /* ═══════════════ SUPPORT BLOCK ═══════════════ */
+  .fq-support {
+    margin-top: 48px;
+    padding: 32px 28px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #1a0d33 0%, #0f0621 100%);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+  .fq-support::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top left, rgba(168, 85, 247, 0.14), transparent 60%);
+    pointer-events: none;
+  }
+
+  .fq-support-top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+  }
+  .fq-support-avatars { display: flex; }
+  .fq-avt {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 800; color: #fff; font-size: 0.88rem;
+    background: linear-gradient(135deg, hsl(var(--hue) 75% 60%), hsl(var(--hue) 65% 40%));
+    border: 2px solid #0f0621;
+    margin-left: -10px;
+    box-shadow: 0 4px 12px hsl(var(--hue) 70% 30% / 0.5);
+  }
+  .fq-avt:first-child { margin-left: 0; }
+  .fq-support-heading { min-width: 0; flex: 1; }
+  .fq-support-title {
+    font-size: 1.15rem; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 4px;
+  }
+  .fq-support-sub { font-size: 0.88rem; color: rgba(255, 255, 255, 0.6); }
+
+  .fq-channels {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .fq-channel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #fff;
+    text-decoration: none;
+    transition: transform .2s, border-color .2s, background .2s;
+  }
+  .fq-channel:hover {
+    transform: translateY(-2px);
+    border-color: rgba(168, 85, 247, 0.5);
+    background: rgba(168, 85, 247, 0.08);
+  }
+  .fq-channel-ic {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff;
+  }
+  .fq-channel-ic[data-type="whatsapp"] { background: linear-gradient(135deg, #25D366, #128C7E); }
+  .fq-channel-ic[data-type="discord"]  { background: linear-gradient(135deg, #5865F2, #404EED); }
+  .fq-channel-ic[data-type="mail"]     { background: linear-gradient(135deg, #A855F7, #6D28D9); }
+  .fq-channel-ic svg { width: 20px; height: 20px; }
+
+  .fq-channel-body { flex: 1; min-width: 0; }
+  .fq-channel-name { font-size: 0.92rem; font-weight: 700; line-height: 1.2; }
+  .fq-channel-meta { font-size: 0.75rem; color: rgba(255, 255, 255, 0.5); margin-top: 2px; }
+  .fq-channel-arrow { color: rgba(255, 255, 255, 0.5); transition: transform .2s; }
+  .fq-channel:hover .fq-channel-arrow { transform: translateX(3px); color: #fff; }
+
+  .fq-final-cta {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #C084FC 0%, #A855F7 50%, #7C3AED 100%);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 10px 28px rgba(168, 85, 247, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .fq-final-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(192, 132, 252, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+
+  /* ═══════════════ RESPONSIVE ═══════════════ */
+  @media (max-width: 1024px) {
+    .fq-section { padding: 96px 0 112px; }
+    .fq-trust { gap: 20px; padding: 12px 18px; }
+    .fq-trust-val { font-size: 1.1rem; }
+    .fq-channels { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .fq-section { padding: 72px 0 88px; }
+    .fq-head { margin-bottom: 32px; }
+    .fq-title { font-size: clamp(1.6rem, 6vw, 2rem); }
+    .fq-trust {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 18px;
+    }
+    .fq-trust-sep { display: none; }
+    .fq-trust-val { font-size: 1rem; }
+    .fq-trust-lbl { font-size: 0.58rem; }
+
+    .fq-tabs { gap: 6px; }
+    .fq-tab { padding: 7px 11px; font-size: 0.72rem; }
+    .fq-tab-ic { display: none; }
+
+    .fq-q { padding: 14px 16px; gap: 10px; }
+    .fq-q-icon { width: 34px; height: 34px; border-radius: 10px; }
+    .fq-q-icon svg { width: 15px; height: 15px; }
+    .fq-q-title { font-size: 0.9rem; }
+    .fq-cat-pill { font-size: 0.56rem; padding: 2px 6px; }
+    .fq-chevron { width: 26px; height: 26px; }
+    .fq-a { padding: 0 16px 16px; padding-left: 16px; }
+    .fq-a-text { font-size: 0.88rem; }
+
+    .fq-support { padding: 24px 20px; border-radius: 20px; }
+    .fq-support-top { gap: 12px; }
+    .fq-support-title { font-size: 1rem; }
+    .fq-avt { width: 34px; height: 34px; font-size: 0.78rem; }
+    .fq-final-cta { padding: 14px 20px; font-size: 0.92rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fq-badge-dot { animation: none; }
+    .fq-a { animation: none; }
+    .fq-channel:hover { transform: none; }
+    .fq-final-cta:hover { transform: none; }
+  }
+</style>

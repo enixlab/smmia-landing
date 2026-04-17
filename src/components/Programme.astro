@@ -1,4 +1,6 @@
 ---
+import FloatingBrandIcons from './FloatingBrandIcons.astro';
+
 const lives = [
   "LIVE-01-super-claude.png",
   "LIVE-02-art-de-la-parole.png",
@@ -15,6 +17,7 @@ const lives = [
 ---
 
 <section id="programme" class="prog-section">
+  <FloatingBrandIcons variant="medium" seed={0} />
   <div class="prog-inner">
 
     <!-- Header -->
@@ -73,11 +76,14 @@ const lives = [
   }
 
   .prog-section {
+    position: relative;
+    overflow: hidden;
     padding: 120px 0 140px;
     background:
       radial-gradient(ellipse 70% 60% at 15% 50%, rgba(168,85,247,0.05) 0%, transparent 60%),
       radial-gradient(ellipse 50% 40% at 85% 50%, rgba(168,85,247,0.03) 0%, transparent 60%);
   }
+  .prog-inner { position: relative; z-index: 2; }
 
   .prog-inner {
     max-width: 1200px;
@@ -95,14 +101,14 @@ const lives = [
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(232,68,42,0.1);
-    border: 1px solid rgba(232,68,42,0.28);
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.35);
     border-radius: 100px;
     padding: 6px 16px;
     margin-bottom: 22px;
     font-size: 0.72rem;
     font-weight: 800;
-    color: #E8442A;
+    color: #C4B5FD;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
@@ -110,7 +116,8 @@ const lives = [
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #E8442A;
+    background: #A855F7;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
     animation: blink 1.4s ease-in-out infinite;
   }
 
