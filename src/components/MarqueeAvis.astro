@@ -1,5 +1,4 @@
 ---
-import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
 type Source = 'discord' | 'trustpilot';
 type Testimonial = {
@@ -60,7 +59,6 @@ const avgRating = (testimonials.reduce((s, t) => s + t.rating, 0) / totalCount).
 <section id="temoignages" class="ta-section">
 
   <!-- Logos brand flottants subtils -->
-  <FloatingBrandIcons variant="subtle" seed={2} />
 
   <!-- Halos violets de fond -->
   <div class="ta-halo ta-halo-l" aria-hidden="true"></div>
