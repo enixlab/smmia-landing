@@ -1,18 +1,8 @@
 ---
 
-const lives = [
-  "LIVE-01-super-claude.png",
-  "LIVE-02-art-de-la-parole.png",
-  "LIVE-03-branding-masterclass.png",
-  "LIVE-04-osint-underground.png",
-  "LIVE-05-vendre-nimporte-quoi.png",
-  "LIVE-06-agence-inoubliable.png",
-  "LIVE-07-blackhat-seo.png",
-  "LIVE-08-ads-qui-cartonnent.png",
-  "LIVE-09-ads-v2.png",
-  "LIVE-10-review-reseller.png",
-  "LIVE-11-automatise-tout.png",
-];
+const lives = Array.from({ length: 25 }, (_, i) =>
+  `LIVE-${String(i + 1).padStart(2, '0')}.png`
+);
 ---
 
 <section id="programme" class="prog-section">
@@ -207,9 +197,9 @@ const lives = [
 
   .thumb {
     flex: 0 0 auto;
-    width: calc((100% - 100px) / 11);
-    min-width: 80px;
-    max-width: 140px;
+    width: calc((100% - 240px) / 25);
+    min-width: 70px;
+    max-width: 100px;
     aspect-ratio: 16/9;
     border-radius: 10px;
     overflow: hidden;
