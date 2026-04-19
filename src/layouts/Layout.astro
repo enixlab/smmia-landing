@@ -46,33 +46,46 @@ const {
     <slot />
 
     <script>
-      // Custom cursor
+      // Custom cursor — uniquement sur desktop avec souris fine (skip mobile / touch)
+      const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
       const cursor = document.getElementById('cursor');
-      let mouseX = -100, mouseY = -100;
-      let curX = -100, curY = -100;
 
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-      });
+      if (hasFinePointer && cursor) {
+        let mouseX = -100, mouseY = -100;
+        let curX = -100, curY = -100;
+        let rafId = 0;
+        let isMoving = false;
 
-      function animateCursor() {
-        const lerp = 0.15;
-        curX += (mouseX - curX) * lerp;
-        curY += (mouseY - curY) * lerp;
-        if (cursor) {
-          cursor.style.left = curX + 'px';
-          cursor.style.top = curY + 'px';
+        document.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          if (!isMoving) {
+            isMoving = true;
+            animateCursor();
+          }
+        }, { passive: true });
+
+        function animateCursor() {
+          const lerp = 0.18;
+          curX += (mouseX - curX) * lerp;
+          curY += (mouseY - curY) * lerp;
+          cursor.style.transform = `translate3d(${curX}px, ${curY}px, 0)`;
+          // Stop le rAF quand le curseur est quasi-stable (économise CPU)
+          if (Math.abs(mouseX - curX) < 0.5 && Math.abs(mouseY - curY) < 0.5) {
+            isMoving = false;
+            return;
+          }
+          rafId = requestAnimationFrame(animateCursor);
         }
-        requestAnimationFrame(animateCursor);
-      }
-      animateCursor();
 
-      // Hover effect
-      document.querySelectorAll('a, button, .btn-pill, .avis-card, .intervenant-card, .faq-item').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor?.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => cursor?.classList.remove('hovering'));
-      });
+        // Hover effect
+        document.querySelectorAll('a, button, .btn-pill, .avis-card, .intervenant-card, .faq-item').forEach(el => {
+          el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+      } else if (cursor) {
+        cursor.style.display = 'none';
+      }
 
       // Scroll animations
       const observer = new IntersectionObserver((entries) => {
@@ -155,15 +168,17 @@ const {
         if (e.key === 'Escape') modal?.classList.remove('active');
       });
 
-      // Navbar scroll effect
+      // Navbar scroll effect — passif + rAF-throttled
       const navbar = document.getElementById('navbar');
+      let scrollRaf = 0;
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-          navbar?.classList.add('scrolled');
-        } else {
-          navbar?.classList.remove('scrolled');
-        }
-      });
+        if (scrollRaf) return;
+        scrollRaf = requestAnimationFrame(() => {
+          if (window.scrollY > 100) navbar?.classList.add('scrolled');
+          else navbar?.classList.remove('scrolled');
+          scrollRaf = 0;
+        });
+      }, { passive: true });
     </script>
 
     <style>
