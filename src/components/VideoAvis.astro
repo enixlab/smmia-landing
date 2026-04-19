@@ -88,7 +88,7 @@ const testimonials = [
     </div>
 
     <!-- Grille de videos -->
-    <div class="va-grid-cards">
+    <div class="va-grid-cards" id="va-grid">
       {testimonials.map((t, i) => (
         <button
           class="va-card"
@@ -127,6 +127,24 @@ const testimonials = [
           </div>
         </button>
       ))}
+    </div>
+
+    <!-- CTA bas de section -->
+    <div class="va-cta-block" data-animate>
+      <p class="va-cta-line">
+        Tu as vu leurs résultats.
+        <strong>Maintenant c'est à ton tour.</strong>
+      </p>
+      <a class="va-cta-btn" href="#prix">
+        <span class="va-cta-btn-inner">
+          Je veux ces résultats
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+      <div class="va-cta-trust">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Réservation en moins de 3 min · 10 places restantes
+      </div>
     </div>
 
   </div>
@@ -523,6 +541,101 @@ const testimonials = [
     filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
   }
 
+  /* ────────── CTA block ────────── */
+  .va-cta-block {
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    text-align: center;
+  }
+
+  .va-cta-line {
+    margin: 0;
+    font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.4;
+    max-width: 620px;
+    letter-spacing: -0.01em;
+  }
+
+  .va-cta-line strong {
+    color: #fff;
+    font-weight: 900;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 50%, #C084FC 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .va-cta-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #A855F7 0%, #7C3AED 50%, #6D28D9 100%);
+    color: #fff;
+    font-size: 1.12rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+      0 24px 60px -14px rgba(168, 85, 247, 0.75),
+      0 8px 22px -6px rgba(124, 58, 237, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+                box-shadow 0.3s;
+  }
+
+  .va-cta-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.32) 50%,
+      transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .va-cta-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+      0 32px 80px -12px rgba(168, 85, 247, 0.9),
+      0 12px 28px -6px rgba(124, 58, 237, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  .va-cta-btn:hover::before { transform: translateX(120%); }
+
+  .va-cta-btn-inner {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .va-cta-trust {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .va-cta-trust svg { color: rgba(192, 132, 252, 0.85); }
+
   /* ────────── Modal ────────── */
   .va-modal {
     position: fixed;
@@ -616,6 +729,9 @@ const testimonials = [
     .va-play { width: 58px; height: 58px; }
     .va-play svg { width: 22px; height: 22px; }
     .va-hook { font-size: 1rem; }
+    .va-cta-block { margin-top: 56px; gap: 18px; }
+    .va-cta-btn { padding: 17px 30px; font-size: 1.02rem; width: 100%; max-width: 340px; }
+    .va-cta-trust { font-size: 0.76rem; text-align: center; }
     .va-modal-close { top: -48px; }
     .va-grid { background-size: 44px 44px; }
   }

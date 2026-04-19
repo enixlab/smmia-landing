@@ -23,12 +23,12 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
       </div>
 
       <div class="crm-layout" style="display:grid;grid-template-columns:190px 1fr;min-height:480px;">
-        <div style="border-right:1px solid rgba(168,85,247,0.12);background:linear-gradient(180deg,rgba(26,13,51,0.7) 0%,rgba(15,6,33,0.85) 100%);display:flex;flex-direction:column;">
-          <div style="padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div class="crm-sidebar" style="border-right:1px solid rgba(168,85,247,0.12);background:linear-gradient(180deg,rgba(26,13,51,0.7) 0%,rgba(15,6,33,0.85) 100%);display:flex;flex-direction:column;">
+          <div class="crm-sidebar-logo" style="padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,0.04);">
             <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" style="width:76px;height:auto;" />
           </div>
-          <div style="padding:12px 8px;flex:1;">
-            <div style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 8px;margin-bottom:6px;">Menu</div>
+          <div class="crm-menu" style="padding:12px 8px;flex:1;">
+            <div class="crm-menu-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 8px;margin-bottom:6px;">Menu</div>
             <div class="si active" data-p="portfolio">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
               Portfolio
@@ -49,7 +49,7 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
               Replays
             </div>
-            <div style="margin:10px 0;border-top:1px solid rgba(255,255,255,0.04);"></div>
+            <div class="crm-menu-sep" style="margin:10px 0;border-top:1px solid rgba(255,255,255,0.04);"></div>
             <div class="si si-lock" data-p="mystery">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
               ???
@@ -61,7 +61,7 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
               <span style="margin-left:auto;font-size:0.58rem;padding:1px 6px;background:rgba(168,85,247,0.2);border-radius:9999px;color:#A855F7;">Soon</span>
             </div>
           </div>
-          <div style="padding:12px 16px;border-top:1px solid rgba(168,85,247,0.12);background:rgba(168,85,247,0.04);">
+          <div class="crm-sidebar-profile" style="padding:12px 16px;border-top:1px solid rgba(168,85,247,0.12);background:rgba(168,85,247,0.04);">
             <div style="display:flex;align-items:center;gap:10px;">
               <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#C084FC 0%,#A855F7 50%,#7C3AED 100%);border:1.5px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;color:#fff;box-shadow:0 4px 12px rgba(168,85,247,0.5);">TN</div>
               <div><div style="font-size:0.75rem;color:#fff;font-weight:700;line-height:1.2;">Toi · Niveau 1</div><div style="font-size:0.62rem;color:#C4B5FD;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;">Membre Focus</div></div>
@@ -303,74 +303,99 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
   @media (max-width: 1024px) { .crm-section { padding: 0 0 96px; } }
   @media (max-width: 640px)  { .crm-section { padding: 0 0 72px; } }
 
-  /* ── MOBILE FIXES ── */
-  @media (max-width: 768px) {
-    #crm-shell > div[style*="grid-template-columns:220px"] {
-      display: flex !important;
-      flex-direction: column !important;
+  /* ── MOBILE FIXES (jusqu'à 900px car la sidebar 190px + contenu serre trop) ── */
+  @media (max-width: 900px) {
+    .crm-layout {
+      grid-template-columns: 1fr !important;
       min-height: unset !important;
     }
 
-    /* Sidebar → nav horizontale scrollable */
-    #crm-shell > div[style*="grid-template-columns:220px"] > div:first-child {
-      display: flex !important;
+    /* Sidebar → barre de navigation horizontale */
+    .crm-sidebar {
       flex-direction: row !important;
-      overflow-x: auto !important;
-      overflow-y: visible !important;
       border-right: none !important;
-      border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-      padding: 8px 12px !important;
+      border-bottom: 1px solid rgba(168,85,247,0.18) !important;
       width: 100% !important;
       flex-shrink: 0 !important;
-      scrollbar-width: none !important;
-      -webkit-overflow-scrolling: touch;
-      gap: 4px !important;
-    }
-    #crm-shell > div[style*="grid-template-columns:220px"] > div:first-child::-webkit-scrollbar {
-      display: none;
+      overflow: hidden !important;
     }
 
-    /* Masquer logo + profil user dans la sidebar mobile */
-    #crm-shell > div[style*="grid-template-columns:220px"] > div:first-child > div:first-child,
-    #crm-shell > div[style*="grid-template-columns:220px"] > div:first-child > div:last-child {
+    .crm-sidebar-logo,
+    .crm-sidebar-profile,
+    .crm-menu-label,
+    .crm-menu-sep {
       display: none !important;
     }
 
-    /* Items de la sidebar = boutons horizontaux */
+    .crm-menu {
+      display: flex !important;
+      flex-direction: row !important;
+      gap: 6px !important;
+      padding: 10px 12px !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+    .crm-menu::-webkit-scrollbar { display: none; }
+
     .si {
       flex-shrink: 0 !important;
       white-space: nowrap !important;
-      padding: 8px 14px !important;
-      min-height: 40px !important;
-      border-radius: 8px !important;
+      padding: 9px 14px !important;
+      min-height: 38px !important;
+      border-radius: 10px !important;
+      font-size: 0.82rem !important;
     }
+    .si-lock { opacity: 0.5; }
 
-    /* Main content pleine largeur */
     #crm-main {
       min-height: unset !important;
       width: 100% !important;
     }
 
-    /* Section CRM padding réduit */
-    #crm {
-      padding: 60px 0 !important;
-    }
+    #crm { padding: 60px 0 !important; }
 
-    /* Header margin réduit */
     #crm > div > div[style*="margin-bottom:64px"] {
       margin-bottom: 32px !important;
+    }
+
+    /* Page portfolio — réduire padding interne */
+    .pg {
+      padding: 20px !important;
+    }
+  }
+
+  /* ── Grilles internes — responsive ── */
+  @media (max-width: 720px) {
+    #crm-main [style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
     }
   }
 
   @media (max-width: 480px) {
-    /* Grilles internes → 1 colonne */
     #crm-main [style*="grid-template-columns:repeat(3,1fr)"] {
-      grid-template-columns: 1fr 1fr !important;
-      gap: 6px !important;
+      grid-template-columns: 1fr !important;
+      gap: 8px !important;
     }
     #crm-main [style*="grid-template-columns:1fr 1fr"],
     #crm-main [style*="grid-template-columns:repeat(2,1fr)"] {
       grid-template-columns: 1fr !important;
+    }
+    .pg { padding: 16px !important; }
+
+    /* Cartes portfolio / services plus compactes */
+    .pc, .svc-card {
+      padding: 12px !important;
+    }
+
+    /* Modal portfolio — pleine largeur mobile */
+    #pf-modal .pf-modal-inner,
+    #pf-modal > div {
+      max-width: 100% !important;
+      margin: 0 16px !important;
     }
   }
 </style>
