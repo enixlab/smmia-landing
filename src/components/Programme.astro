@@ -1,4 +1,5 @@
 ---
+import BrandFloatingIcons from './BrandFloatingIcons.astro';
 
 const lives = Array.from({ length: 25 }, (_, i) =>
   `LIVE-${String(i + 1).padStart(2, '0')}.png`
@@ -6,6 +7,7 @@ const lives = Array.from({ length: 25 }, (_, i) =>
 ---
 
 <section id="programme" class="prog-section">
+  <BrandFloatingIcons icons={["Gemini", "Claude", "n8n", "TikTok"]} />
   <div class="prog-inner">
 
     <!-- Header -->
@@ -70,6 +72,8 @@ const lives = Array.from({ length: 25 }, (_, i) =>
     background:
       radial-gradient(ellipse 70% 60% at 15% 50%, rgba(168,85,247,0.05) 0%, transparent 60%),
       radial-gradient(ellipse 50% 40% at 85% 50%, rgba(168,85,247,0.03) 0%, transparent 60%);
+    content-visibility: auto;
+    contain-intrinsic-size: 1400px;
   }
   .prog-inner { position: relative; z-index: 2; }
 

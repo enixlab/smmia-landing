@@ -1,4 +1,5 @@
 ---
+import BrandFloatingIcons from './BrandFloatingIcons.astro';
 
 type Cat = 'programme' | 'prix' | 'resultats' | 'support' | 'logistique';
 
@@ -96,6 +97,8 @@ const catLabels: Record<Cat, string> = {
   <!-- Halos violets -->
   <div class="fq-halo fq-halo-l" aria-hidden="true"></div>
   <div class="fq-halo fq-halo-r" aria-hidden="true"></div>
+
+  <BrandFloatingIcons icons={["Sparkle", "Claude", "Gemini", "Stripe"]} />
 
   <div class="fq-inner">
 
@@ -320,6 +323,8 @@ const catLabels: Record<Cat, string> = {
     background: radial-gradient(ellipse at 50% 0%, #0f0622 0%, #070311 60%, #000 100%);
     overflow: hidden;
     isolation: isolate;
+    content-visibility: auto;
+    contain-intrinsic-size: 1200px;
   }
 
   .fq-halo {

@@ -1,63 +1,59 @@
 ---
+import BrandFloatingIcons from './BrandFloatingIcons.astro';
 
 // Videos d'avis : deposer les MP4 dans /public/videos/ avec le nom
 // "avis-{slug}.mp4" pour qu'ils se chargent automatiquement. Si le fichier
 // n'existe pas encore, la carte reste cliquable et montre le poster.
 
+// hook = titre click-bait extrait du contenu réel de la vidéo (lecture des sous-titres incrustés)
 const testimonials = [
   {
     slug: "sonny",
-    name: "Sonny M.",
-    role: "Freelance IA · Paris",
-    result: "+12 400€ / mois",
-    quote: "En 6 semaines, j'ai closé mon premier client à 3000€. Je ne savais même pas prompter avant SMMIA.",
-    poster: "/images/portraits/sonny-portrait-v3.png",
-    duration: "1:42",
+    hook: "\"Focus m'a vraiment aidé en e-com\"",
+    sub: "Il raconte ce qu'il a appris jour après jour.",
+    tag: "E-commerce",
+    poster: "/images/portraits-video/sonny.webp",
+    posterPos: "15%",
   },
   {
     slug: "jamel",
-    name: "Jamel R.",
-    role: "Agence UGC · Lyon",
-    result: "+8 clients",
-    quote: "Le système de closing de Val, c'est une machine. J'ai signé 8 contrats en 2 mois grâce à SMMIA.",
-    poster: "/images/portraits/jamel-portrait-v3.png",
-    duration: "2:08",
+    hook: "\"L'effet 360, c'est la dinguerie\"",
+    sub: "Pourquoi ceux qui testent Focus ne lâchent plus.",
+    tag: "Expérience",
+    poster: "/images/portraits-video/jamel.webp",
+    posterPos: "37%",
   },
   {
     slug: "idriss",
-    name: "Idriss B.",
-    role: "SaaS builder · Bordeaux",
-    result: "+5 200€ / mois",
-    quote: "Je pensais devoir coder pendant des mois. Avec les stacks IA du module, j'ai lancé mon SaaS en 3 semaines.",
-    poster: "/images/portraits/idriss-portrait-v2.png",
-    duration: "1:54",
+    hook: "\"Ils transmettent comme aucune autre formation\"",
+    sub: "Elle était sceptique. Maintenant elle parle sans filtre.",
+    tag: "Transmission",
+    poster: "/images/portraits-video/idriss.webp",
+    posterPos: "32%",
   },
   {
     slug: "moubak",
-    name: "Moubak L.",
-    role: "E-com IA · Marseille",
-    result: "x3 revenus",
-    quote: "J'avais déjà une agence. SMMIA m'a fait tripler mes revenus en automatisant tout avec l'IA.",
-    poster: "/images/portraits/moubak-portrait-v1.png",
-    duration: "2:21",
+    hook: "\"Ils m'ont aidé à me recentrer\"",
+    sub: "Avant : il dispersait tout. Après : cap clair.",
+    tag: "Clarté",
+    poster: "/images/portraits-video/moubak.webp",
+    posterPos: "46%",
   },
   {
     slug: "val",
-    name: "Val (Fondateur)",
-    role: "Focus · Paris",
-    result: "Coulisses",
-    quote: "Ce qu'on vise avec SMMIA : zéro bullshit, que du concret. Regarde pourquoi ce module change tout.",
-    poster: "/images/portraits/val-portrait-v1.png",
-    duration: "3:12",
+    hook: "\"La communauté, l'équipe — c'est ça Focus\"",
+    sub: "Le fondateur parle des vraies coulisses.",
+    tag: "Fondateur",
+    poster: "/images/portraits-video/val.webp",
+    posterPos: "43%",
   },
   {
     slug: "lea",
-    name: "Léa T.",
-    role: "Freelance · Toulouse",
-    result: "1er client en 21j",
-    quote: "Je suis partie de zéro, sans aucun réseau. 21 jours après le début du module, je signais mon premier client.",
-    poster: "/images/portraits/sonny-portrait-v3.png",
-    duration: "1:36",
+    hook: "\"Plutôt Focus qu'une formation générique\"",
+    sub: "Il hésitait. En 3 min, il donne la vraie raison.",
+    tag: "Choix",
+    poster: "/images/portraits-video/lea.webp",
+    posterPos: "56%",
   },
 ];
 ---
@@ -70,6 +66,7 @@ const testimonials = [
   <div class="va-halo va-halo-r" aria-hidden="true"></div>
 
   <!-- Logos brand flottants -->
+  <BrandFloatingIcons icons={["TikTok", "Shopify", "Facebook", "n8n"]} />
 
   <div class="va-inner">
 
@@ -98,42 +95,34 @@ const testimonials = [
           data-animate
           data-delay={0.04 * i}
           data-video={`/videos/avis-${t.slug}.mp4`}
-          data-name={t.name}
-          aria-label={`Voir le témoignage de ${t.name}`}
+          data-name={t.hook}
+          aria-label={`Lire le témoignage : ${t.hook}`}
         >
           <div class="va-card-media">
             <img
               src={t.poster}
-              alt={t.name}
+              alt={t.hook}
               loading="lazy"
               class="va-poster"
+              style={`object-position: center ${t.posterPos};`}
             />
 
-            <!-- Overlay + play -->
+            <!-- Overlay gradient léger (lisibilité play button) -->
             <div class="va-card-overlay" aria-hidden="true"></div>
 
+            <!-- Bouton play (seul élément conservé sur l'image) -->
             <div class="va-play" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M8 5v14l11-7z"/>
               </svg>
             </div>
-
-            <!-- Badge resultat + duree -->
-            <div class="va-result">{t.result}</div>
-            <div class="va-duration">
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              {t.duration}
-            </div>
           </div>
 
           <div class="va-card-body">
-            <p class="va-quote">“{t.quote}”</p>
-            <div class="va-author">
-              <div class="va-author-name">{t.name}</div>
-              <div class="va-author-role">{t.role}</div>
+            <h3 class="va-hook">{t.hook}</h3>
+            <div class="va-cta-watch">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              Regarder le témoignage
             </div>
           </div>
         </button>
@@ -150,7 +139,7 @@ const testimonials = [
         id="va-modal-video"
         controls
         playsinline
-        preload="metadata"
+        preload="none"
       ></video>
       <div class="va-modal-caption" id="va-modal-caption"></div>
     </div>
@@ -165,6 +154,8 @@ const testimonials = [
     background: radial-gradient(ellipse at 50% 0%, #140828 0%, #060211 55%, #000 100%);
     overflow: hidden;
     isolation: isolate;
+    content-visibility: auto;
+    contain-intrinsic-size: 1200px;
   }
 
   .va-inner {
@@ -190,12 +181,13 @@ const testimonials = [
 
   .va-halo {
     position: absolute;
-    width: 520px;
-    height: 520px;
+    width: 420px;
+    height: 420px;
     border-radius: 50%;
-    filter: blur(100px);
+    filter: blur(60px);
     pointer-events: none;
     z-index: 0;
+    will-change: transform;
   }
 
   .va-halo-l {
@@ -357,10 +349,31 @@ const testimonials = [
       transform 0.6s cubic-bezier(0.19, 1, 0.22, 1),
       box-shadow 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     box-shadow:
-      0 20px 50px -25px rgba(0, 0, 0, 0.9),
-      0 8px 22px -10px rgba(88, 28, 135, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      0 20px 50px -20px rgba(0, 0, 0, 0.95),
+      0 22px 44px -18px rgba(168, 85, 247, 0.55),
+      0 10px 24px -8px rgba(124, 58, 237, 0.45),
+      inset 0 1px 0 rgba(216, 180, 254, 0.12);
   }
+
+  /* Glow violet qui entoure chaque card (pulse doux) */
+  .va-card::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: radial-gradient(
+      120% 80% at 50% 0%,
+      rgba(192, 132, 252, 0.22) 0%,
+      rgba(168, 85, 247, 0.05) 35%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .va-card:hover::after { opacity: 1; }
 
   /* Bordure gradient */
   .va-card::before {
@@ -384,11 +397,12 @@ const testimonials = [
   }
 
   .va-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
     box-shadow:
-      0 30px 70px -20px rgba(0, 0, 0, 0.95),
-      0 20px 40px -10px rgba(168, 85, 247, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      0 36px 80px -20px rgba(0, 0, 0, 0.95),
+      0 30px 60px -12px rgba(168, 85, 247, 0.7),
+      0 14px 28px -6px rgba(124, 58, 237, 0.55),
+      inset 0 1px 0 rgba(216, 180, 254, 0.22);
   }
 
   /* Media */
@@ -402,26 +416,27 @@ const testimonials = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%;
     display: block;
     transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1),
                 filter 0.6s ease;
-    filter: brightness(0.85) saturate(1.05);
+    filter: brightness(0.82) saturate(1.08) hue-rotate(-4deg);
   }
 
   .va-card:hover .va-poster {
     transform: scale(1.06);
-    filter: brightness(1) saturate(1.1);
+    filter: brightness(1) saturate(1.15) hue-rotate(-4deg);
   }
 
+  /* Overlay violet branded léger (plus de texte, donc overlay plus subtil) */
   .va-card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0.15) 0%,
-      rgba(0, 0, 0, 0.35) 60%,
-      rgba(10, 6, 21, 0.85) 100%);
+    background:
+      radial-gradient(100% 70% at 50% 100%, rgba(168, 85, 247, 0.22) 0%, transparent 60%),
+      radial-gradient(70% 50% at 10% 0%, rgba(192, 132, 252, 0.16) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(14, 6, 26, 0) 0%, rgba(10, 4, 20, 0.18) 100%);
     z-index: 1;
+    transition: opacity 0.6s ease;
   }
 
   /* Play button */
@@ -430,19 +445,23 @@ const testimonials = [
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 72px;
-    height: 72px;
+    width: 76px;
+    height: 76px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.92);
+    background:
+      radial-gradient(circle at 30% 30%, #FFFFFF, #F5F0FF 60%, #E9D5FF 100%);
     color: #1a0627;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
     backdrop-filter: blur(4px);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
     box-shadow:
-      0 10px 40px rgba(168, 85, 247, 0.55),
-      0 0 0 0 rgba(192, 132, 252, 0.55);
+      0 14px 50px rgba(168, 85, 247, 0.75),
+      0 6px 22px rgba(124, 58, 237, 0.55),
+      0 0 0 0 rgba(192, 132, 252, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
     transition:
       transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
       box-shadow 0.4s;
@@ -465,75 +484,43 @@ const testimonials = [
     transform: translate(-50%, -50%) scale(1.12);
   }
 
-  /* Badges */
-  .va-result {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 2;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #A855F7, #6D28D9);
-    color: #fff;
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.02em;
-    box-shadow: 0 4px 18px rgba(168, 85, 247, 0.55);
-    white-space: nowrap;
+  /* Body — le hook vit ici (plus sur l'image) */
+  .va-card-body {
+    padding: 20px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
 
-  .va-duration {
-    position: absolute;
-    bottom: 14px;
-    right: 14px;
-    z-index: 2;
-    padding: 5px 10px;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 0.78rem;
-    font-weight: 600;
+  .va-hook {
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    line-height: 1.3;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -0.012em;
+  }
+
+  .va-cta-watch {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    font-variant-numeric: tabular-nums;
-  }
-
-  /* Body */
-  .va-card-body {
-    padding: 22px 22px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .va-quote {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: rgba(255, 255, 255, 0.82);
-    margin: 0;
-    font-weight: 500;
-    font-style: italic;
-  }
-
-  .va-author {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .va-author-name {
-    font-size: 0.95rem;
+    gap: 7px;
+    align-self: flex-start;
+    color: #C084FC;
+    font-size: 0.82rem;
     font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.02em;
+    transition: color 0.25s ease, transform 0.3s ease;
   }
 
-  .va-author-role {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: 500;
+  .va-card:hover .va-cta-watch {
+    color: #E9D5FF;
+    transform: translateX(3px);
+  }
+
+  .va-cta-watch svg {
+    color: #C084FC;
+    filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
   }
 
   /* ────────── Modal ────────── */
@@ -625,11 +612,10 @@ const testimonials = [
     .va-stats { padding: 14px 18px; gap: 18px; border-radius: 16px; }
     .va-stat-sep { height: 28px; }
     .va-grid-cards { grid-template-columns: 1fr; gap: 18px; }
-    .va-card-body { padding: 18px 18px 20px; gap: 12px; }
+    .va-card-body { padding: 16px 18px 18px; gap: 10px; }
     .va-play { width: 58px; height: 58px; }
     .va-play svg { width: 22px; height: 22px; }
-    .va-result { top: 12px; left: 12px; font-size: 0.72rem; padding: 5px 10px; }
-    .va-duration { bottom: 12px; right: 12px; font-size: 0.72rem; }
+    .va-hook { font-size: 1rem; }
     .va-modal-close { top: -48px; }
     .va-grid { background-size: 44px 44px; }
   }

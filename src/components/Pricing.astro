@@ -60,31 +60,43 @@ const liveActivity = [
   <div class="px-orb px-orb-3" aria-hidden="true"></div>
   <div class="px-orb px-orb-4" aria-hidden="true"></div>
 
-  <!-- Icones flottantes brand autour de la card -->
-  <div class="px-float px-float-1" aria-hidden="true">
+  <!-- Icones flottantes brand autour de la card (3D interactives) -->
+  <button type="button" class="px-float px-float-1" aria-label="Sparkle">
+    <span class="px-float-ring"></span>
     <span class="px-float-glow"></span>
-    <img src="/images/brand-icons/sparkle.png" alt="" loading="lazy" />
-  </div>
-  <div class="px-float px-float-2" aria-hidden="true">
+    <img src="/images/brand-icons/sparkle.png" alt="Sparkle" loading="lazy" />
+    <span class="px-float-label">Sparkle</span>
+  </button>
+  <button type="button" class="px-float px-float-2" aria-label="Facebook">
+    <span class="px-float-ring"></span>
     <span class="px-float-glow"></span>
-    <img src="/images/brand-icons/facebook.png" alt="" loading="lazy" />
-  </div>
-  <div class="px-float px-float-3" aria-hidden="true">
+    <img src="/images/brand-icons/facebook.png" alt="Facebook" loading="lazy" />
+    <span class="px-float-label">Facebook</span>
+  </button>
+  <button type="button" class="px-float px-float-3" aria-label="YouTube">
+    <span class="px-float-ring"></span>
     <span class="px-float-glow"></span>
-    <img src="/images/brand-icons/youtube.png" alt="" loading="lazy" />
-  </div>
-  <div class="px-float px-float-4" aria-hidden="true">
+    <img src="/images/brand-icons/youtube.png" alt="YouTube" loading="lazy" />
+    <span class="px-float-label">YouTube</span>
+  </button>
+  <button type="button" class="px-float px-float-4" aria-label="n8n">
+    <span class="px-float-ring"></span>
     <span class="px-float-glow"></span>
-    <img src="/images/brand-icons/n8n.png" alt="" loading="lazy" />
-  </div>
-  <div class="px-float px-float-5" aria-hidden="true">
+    <img src="/images/brand-icons/n8n.png" alt="n8n" loading="lazy" />
+    <span class="px-float-label">n8n</span>
+  </button>
+  <button type="button" class="px-float px-float-5" aria-label="TikTok">
+    <span class="px-float-ring"></span>
     <span class="px-float-glow"></span>
-    <img src="/images/brand-icons/tiktok.png" alt="" loading="lazy" />
-  </div>
-  <div class="px-float px-float-6" aria-hidden="true">
+    <img src="/images/brand-icons/tiktok.png" alt="TikTok" loading="lazy" />
+    <span class="px-float-label">TikTok</span>
+  </button>
+  <button type="button" class="px-float px-float-6" aria-label="Stripe">
+    <span class="px-float-ring"></span>
     <span class="px-float-glow"></span>
-    <img src="/images/brand-icons/stripe.png" alt="" loading="lazy" />
-  </div>
+    <img src="/images/brand-icons/stripe.png" alt="Stripe" loading="lazy" />
+    <span class="px-float-label">Stripe</span>
+  </button>
 
   <div class="px-inner">
 
@@ -137,26 +149,29 @@ const liveActivity = [
           </div>
         </div>
 
-        <!-- Price row -->
-        <div class="px-price-row">
+        <!-- Price block : centered, 3 niveaux -->
+        <div class="px-price-block">
+          <div class="px-price-strike-row">
+            <s>€2&nbsp;500</s>
+            <span class="px-price-save-badge">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 17l-5-5 5-5"/><path d="M8 12h12"/></svg>
+              −80%
+            </span>
+          </div>
+
           <div class="px-price-main">
             <span class="px-price-currency">€</span>
             <span class="px-price-amount">500</span>
-            <span class="px-price-frequency">
-              <span class="px-price-strike">
-                <s>€2&nbsp;500</s>
-              </span>
-              <span class="px-price-paiement">paiement unique · 3 mois d'accès</span>
-            </span>
           </div>
-          <div class="px-price-stack">
+
+          <div class="px-price-paiement">
+            paiement unique · 3 mois d'accès
+          </div>
+
+          <div class="px-price-chips">
             <div class="px-chip px-chip-win">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 13l3 3 7-7"/></svg>
               Économise 2 000€
-            </div>
-            <div class="px-chip">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
-              3× sans frais
             </div>
           </div>
         </div>
@@ -272,6 +287,21 @@ const liveActivity = [
   </div>
 </section>
 
+<script>
+  // Pin/unpin du label au clic sur les icônes brand flottantes de Pricing
+  document.querySelectorAll<HTMLElement>('.px-float').forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasActive = item.classList.contains('active');
+      document.querySelectorAll('.px-float.active').forEach((el) => el.classList.remove('active'));
+      if (!wasActive) item.classList.add('active');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.px-float.active').forEach((el) => el.classList.remove('active'));
+  });
+</script>
+
 <style>
   /* ═══════════════ SECTION ═══════════════ */
   .px-section {
@@ -281,6 +311,8 @@ const liveActivity = [
     overflow: hidden;
     isolation: isolate;
     perspective: 1600px;
+    content-visibility: auto;
+    contain-intrinsic-size: 1400px;
   }
 
   .px-inner {
@@ -310,15 +342,16 @@ const liveActivity = [
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 800px;
-    height: 800px;
+    width: 600px;
+    height: 600px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.35), transparent 65%);
-    filter: blur(90px);
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.32), transparent 65%);
+    filter: blur(60px);
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 0;
-    animation: px-aura-breath 8s ease-in-out infinite;
+    will-change: opacity;
+    animation: px-aura-breath 10s ease-in-out infinite;
   }
 
   @keyframes px-aura-breath {
@@ -330,10 +363,11 @@ const liveActivity = [
   .px-orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(40px);
+    filter: blur(30px);
     pointer-events: none;
     z-index: 1;
-    animation: px-orb-float 12s ease-in-out infinite;
+    will-change: transform;
+    animation: px-orb-float 18s ease-in-out infinite;
   }
 
   .px-orb-1 { top: 12%; left: 6%;  width: 260px; height: 260px; background: radial-gradient(circle, rgba(192, 132, 252, 0.5), transparent 60%); animation-delay: 0s; }
@@ -347,12 +381,18 @@ const liveActivity = [
     66%      { transform: translate(-18px, 24px) scale(0.96); }
   }
 
-  /* Logos brand 3D flottants autour */
+  /* Logos brand 3D flottants autour — interactifs (hover + click = label) */
   .px-float {
     position: absolute;
     z-index: 2;
-    pointer-events: none;
-    animation: px-float-rotate 10s ease-in-out infinite;
+    pointer-events: auto;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    will-change: transform;
+    animation: px-float-rotate 14s ease-in-out infinite;
+    transition: filter 0.4s ease;
   }
 
   .px-float img {
@@ -363,6 +403,17 @@ const liveActivity = [
     z-index: 2;
     opacity: 0.92;
     filter: drop-shadow(0 8px 24px rgba(168, 85, 247, 0.55));
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+                filter 0.4s ease,
+                opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .px-float:hover img,
+  .px-float.active img {
+    transform: scale(1.28);
+    opacity: 1;
+    filter: drop-shadow(0 14px 36px rgba(168, 85, 247, 0.95));
   }
 
   .px-float-glow {
@@ -370,13 +421,68 @@ const liveActivity = [
     inset: -35%;
     background: radial-gradient(
       circle at center,
-      rgba(168, 85, 247, 0.55) 0%,
-      rgba(192, 132, 252, 0.3) 35%,
+      rgba(168, 85, 247, 0.5) 0%,
+      rgba(192, 132, 252, 0.25) 35%,
       transparent 70%
     );
-    filter: blur(22px);
+    filter: blur(16px);
     z-index: 1;
-    animation: px-float-pulse 4s ease-in-out infinite;
+    opacity: 0.7;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .px-float:hover .px-float-glow,
+  .px-float.active .px-float-glow {
+    transform: scale(1.55);
+  }
+
+  /* Ring apparait au hover */
+  .px-float-ring {
+    position: absolute;
+    inset: -18%;
+    border-radius: 50%;
+    border: 1.5px solid rgba(168, 85, 247, 0.55);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .px-float:hover .px-float-ring,
+  .px-float.active .px-float-ring {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Tooltip label au hover / clic */
+  .px-float-label {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 10px);
+    transform: translateX(-50%) translateY(6px);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(216, 180, 254, 0.95);
+    background: rgba(20, 10, 30, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 3;
+  }
+
+  .px-float:hover .px-float-label,
+  .px-float.active .px-float-label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 
   .px-float-1 { top: 6%;   left: 8%;    width: 64px; height: 64px; animation-delay: 0s; }
@@ -471,19 +577,18 @@ const liveActivity = [
     isolation: isolate;
   }
 
-  /* Bordure gradient animée */
+  /* Bordure gradient statique (version perf — plus d'animation conic) */
   .px-card::before {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
     padding: 1.5px;
-    background: conic-gradient(from 0deg,
-      rgba(192, 132, 252, 0.8) 0deg,
-      rgba(168, 85, 247, 0.25) 90deg,
-      rgba(124, 58, 237, 0.65) 180deg,
-      rgba(168, 85, 247, 0.25) 270deg,
-      rgba(192, 132, 252, 0.8) 360deg);
+    background: linear-gradient(135deg,
+      rgba(192, 132, 252, 0.8) 0%,
+      rgba(168, 85, 247, 0.25) 30%,
+      rgba(124, 58, 237, 0.7) 70%,
+      rgba(192, 132, 252, 0.8) 100%);
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
@@ -491,11 +596,6 @@ const liveActivity = [
             mask-composite: exclude;
     pointer-events: none;
     z-index: 1;
-    animation: px-border-rotate 8s linear infinite;
-  }
-
-  @keyframes px-border-rotate {
-    to { --angle: 360deg; filter: hue-rotate(30deg); }
   }
 
   .px-card > * { position: relative; z-index: 2; }
@@ -632,33 +732,70 @@ const liveActivity = [
     filter: drop-shadow(0 0 4px rgba(250, 204, 21, 0.55));
   }
 
-  /* ═══════════ Prix ═══════════ */
-  .px-price-row {
+  /* ═══════════ Prix (block centré) ═══════════ */
+  .px-price-block {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-    padding: 20px 0 24px;
-    margin-bottom: 26px;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 24px 0 28px;
+    margin-bottom: 28px;
     border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+    text-align: center;
   }
 
-  .px-price-main {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
+  .px-price-strike-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 1.02rem;
+    font-weight: 600;
   }
 
-  .px-price-currency {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+  .px-price-strike-row s {
+    text-decoration: line-through;
+    text-decoration-color: rgba(192, 132, 252, 0.9);
+    text-decoration-thickness: 2px;
+  }
+
+  .px-price-save-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(192, 132, 252, 0.3), rgba(124, 58, 237, 0.18));
+    border: 1px solid rgba(168, 85, 247, 0.5);
+    color: #E9D5FF;
+    font-size: 0.7rem;
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.04em;
     line-height: 1;
   }
 
+  .px-price-main {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    line-height: 1;
+  }
+
+  .px-price-currency {
+    font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 60%, #C084FC 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 2px 16px rgba(168, 85, 247, 0.35));
+  }
+
   .px-price-amount {
-    font-size: clamp(4rem, 10vw, 6rem);
+    font-size: clamp(4.4rem, 11vw, 6.4rem);
     font-weight: 900;
     line-height: 0.9;
     letter-spacing: -0.04em;
@@ -669,54 +806,40 @@ const liveActivity = [
     filter: drop-shadow(0 4px 24px rgba(168, 85, 247, 0.5));
   }
 
-  .px-price-frequency {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin-left: 8px;
-    padding-bottom: 6px;
-  }
-
-  .px-price-strike {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: line-through;
-    text-decoration-color: rgba(192, 132, 252, 0.85);
-    text-decoration-thickness: 2px;
-  }
-  .px-price-strike s { text-decoration: inherit; }
-
   .px-price-paiement {
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.88rem;
     font-weight: 500;
+    letter-spacing: 0.01em;
   }
 
-  .px-price-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: flex-end;
+  .px-price-chips {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 4px;
   }
 
   .px-chip {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 11px;
+    padding: 7px 13px;
     border-radius: 999px;
     background: rgba(168, 85, 247, 0.12);
     border: 1px solid rgba(168, 85, 247, 0.35);
     color: #C4B5FD;
-    font-size: 0.76rem;
+    font-size: 0.78rem;
     font-weight: 700;
   }
 
   .px-chip-win {
-    background: linear-gradient(135deg, rgba(192, 132, 252, 0.28), rgba(124, 58, 237, 0.14));
+    background: linear-gradient(135deg, rgba(192, 132, 252, 0.3), rgba(124, 58, 237, 0.15));
     border-color: rgba(168, 85, 247, 0.55);
     color: #DDD6FE;
+    box-shadow: 0 6px 18px -8px rgba(168, 85, 247, 0.6);
   }
 
   /* ═══════════ Features ═══════════ */
@@ -1042,7 +1165,13 @@ const liveActivity = [
     .px-orb-1, .px-orb-4 { width: 200px; height: 200px; }
     .px-orb-2, .px-orb-3 { width: 160px; height: 160px; }
     .px-aura { width: 560px; height: 560px; }
-    .px-float { display: none; }
+    /* Tablette : icônes brand visibles mais plus petites et en arrière-plan */
+    .px-float-1, .px-float-4 { width: 42px; height: 42px; }
+    .px-float-2 { width: 38px; height: 38px; }
+    .px-float-3 { width: 40px; height: 40px; }
+    .px-float-5 { width: 34px; height: 34px; }
+    .px-float-6 { width: 36px; height: 36px; }
+    .px-float img { opacity: 0.4; }
     .px-card { padding: 30px 28px 28px; }
     .px-stamp { width: 110px; height: 110px; bottom: -20px; left: -20px; }
     .px-stamp-core { width: 54px; height: 54px; }
@@ -1057,8 +1186,9 @@ const liveActivity = [
     .px-corner { padding: 10px 16px; min-height: 40px; gap: 8px; }
     .px-corner-text { font-size: 0.74rem; }
     .px-corner-icon { width: 16px; height: 16px; }
-    .px-price-row { flex-direction: column; align-items: flex-start; gap: 14px; }
-    .px-price-stack { align-items: flex-start; flex-direction: row; }
+    .px-price-block { gap: 12px; padding: 18px 0 22px; }
+    .px-price-strike-row { font-size: 0.94rem; gap: 8px; }
+    .px-price-paiement { font-size: 0.82rem; }
     .px-features { grid-template-columns: 1fr; gap: 8px; }
     .px-feat { padding: 10px; gap: 10px; }
     .px-feat-icon { width: 36px; height: 36px; }

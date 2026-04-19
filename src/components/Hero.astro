@@ -47,14 +47,19 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       <span class="line-outline reveal" style="--d:0.15s">Tu vends.</span>
       <span class="line-fill reveal" style="--d:0.35s">
         Prime livre.
-        <svg class="underline-svg" viewBox="0 0 400 18" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M4 10 Q 200 2, 396 10" fill="none" stroke="url(#ug)" stroke-width="4" stroke-linecap="round"/>
+        <svg class="underline-svg" viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="ug" x1="0" x2="1">
-              <stop offset="0%" stop-color="#a855f7"/>
-              <stop offset="100%" stop-color="#d8b4fe"/>
+              <stop offset="0%"   stop-color="#c4b5fd"/>
+              <stop offset="50%"  stop-color="#a855f7"/>
+              <stop offset="100%" stop-color="#7c3aed"/>
             </linearGradient>
           </defs>
+          <path d="M 6 14 C 100 6, 200 18, 296 10 S 380 6, 394 14"
+                fill="none"
+                stroke="url(#ug)"
+                stroke-width="6"
+                stroke-linecap="round"/>
         </svg>
       </span>
     </h1>
@@ -305,12 +310,13 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   .underline-svg {
     position: absolute;
-    left: 4%;
-    right: 4%;
-    bottom: 0;
-    width: 92%;
-    height: 14px;
-    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5));
+    left: 2%;
+    right: 2%;
+    bottom: -4px;
+    width: 96%;
+    height: 22px;
+    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.6))
+            drop-shadow(0 2px 12px rgba(168, 85, 247, 0.4));
     transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
                 filter 0.4s ease;
     transform-origin: center;
@@ -344,9 +350,10 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   .aurora-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(50px);
     opacity: 0.6;
     mix-blend-mode: screen;
+    will-change: transform;
   }
 
   .aurora-blob.a1 {
@@ -410,10 +417,11 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     aspect-ratio: 2.5 / 1;
     transform: translate(-50%, -50%);
     background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.35), transparent 65%);
-    filter: blur(60px);
+    filter: blur(40px);
     z-index: 0;
     pointer-events: none;
-    animation: glowBreathe 6s ease-in-out infinite;
+    will-change: opacity;
+    animation: glowBreathe 10s ease-in-out infinite;
   }
 
   @keyframes glowBreathe {

@@ -1,10 +1,12 @@
 ---
+import BrandFloatingIcons from './BrandFloatingIcons.astro';
 ---
 
 <section id="crm" class="crm-section" style="position:relative;overflow:hidden;">
   <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(168,85,247,0.07),transparent 70%);pointer-events:none;"></div>
+  <BrandFloatingIcons icons={["TikTok", "Facebook", "YouTube", "Shopify"]} />
 
-  <div style="max-width:1040px;margin:0 auto;padding:0 24px;">
+  <div style="max-width:1040px;margin:0 auto;padding:0 24px;position:relative;z-index:2;">
     <div style="text-align:center;margin-bottom:64px;" data-animate>
       <div style="display:inline-flex;align-items:center;gap:8px;padding:7px 16px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.35);border-radius:9999px;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:#C4B5FD;font-weight:700;margin-bottom:24px;">Accès membre exclusif</div>
       <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:16px;line-height:1.1;">Ton Accès Exclusif <span style="color:#A855F7;">en un clic</span></h2>
