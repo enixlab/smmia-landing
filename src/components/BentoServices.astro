@@ -1,49 +1,30 @@
 ---
 const services = [
-  // SQUARE 1x1
-  { id: "01-tiktok-certif",        file: "01-tiktok-certif-SQUARE.png",        size: "square",   label: "Certification TikTok" },
-  { id: "02-snapchat-certif",      file: "02-snapchat-certif-SQUARE.png",      size: "square",   label: "Certification Snapchat" },
-  // WIDE 2x1
-  { id: "11-visuels",              file: "11-visuels-WIDE.png",                size: "wide",     label: "Visuels" },
-  // PORTRAIT 1x2
-  { id: "14-ugc-ia",               file: "14-ugc-ia-PORTRAIT.png",             size: "portrait", label: "UGC IA" },
-  // WIDE
-  { id: "12-sites-web",            file: "12-sites-web-WIDE.png",              size: "wide",     label: "Sites Web" },
-  // SQUARE
-  { id: "03-sms-mail",             file: "03-sms-mail-SQUARE.png",             size: "square",   label: "SMS / Mail Automatisé" },
-  { id: "04-chatbot-sav",          file: "04-chatbot-sav-SQUARE.png",          size: "square",   label: "Chatbot SAV" },
-  // WIDE
-  { id: "05-generation-leads",     file: "05-generation-leads-WIDE.png",       size: "wide",     label: "Génération de Leads" },
-  // PORTRAIT
-  { id: "07-apple-wallet",         file: "07-apple-wallet-PORTRAIT.png",       size: "portrait", label: "Cartes Push Apple Wallet" },
-  // SQUARE
-  { id: "08-landing-pages",        file: "08-landing-pages-SQUARE.png",        size: "square",   label: "Landing Pages" },
-  { id: "10-flyers",               file: "10-flyers-SQUARE.png",               size: "square",   label: "Flyers" },
-  // PORTRAIT
-  { id: "09-avis-google",          file: "09-avis-google-PORTRAIT.png",        size: "portrait", label: "Avis Google / Trustpilot" },
-  { id: "13-nfc",                  file: "13-nfc-PORTRAIT.png",                size: "portrait", label: "Cartes NFC" },
-  // WIDE
-  { id: "15-campagnes-ads",        file: "15-campagnes-ads-WIDE.png",          size: "wide",     label: "Campagnes Ads" },
-  // SQUARE
-  { id: "17-whatsapp",             file: "17-whatsapp-SQUARE.png",             size: "square",   label: "Automatisation WhatsApp" },
-  { id: "18-scrapping",            file: "18-scrapping-SQUARE.png",            size: "square",   label: "Scrapping" },
-  // WIDE
-  { id: "06-videos-montages",      file: "06-videos-montages-WIDE.png",        size: "wide",     label: "Vidéos IA / Montages" },
-  // SQUARE
-  { id: "19-seo",                  file: "19-seo-SQUARE.png",                  size: "square",   label: "SEO" },
-  // PORTRAIT
-  { id: "16-crm",                  file: "16-crm-PORTRAIT.png",                size: "portrait", label: "CRM / Logiciel / Automatisations" },
-  // SQUARE
-  { id: "20-audit",                file: "20-audit-SQUARE.png",                size: "square",   label: "Stratégie & Audit" },
-  { id: "21-e-reputation",         file: "21-e-reputation-SQUARE.png",         size: "square",   label: "Supprimer Avis / E-réputation" },
-  // PORTRAIT
-  { id: "22-osint",                file: "22-osint-PORTRAIT.png",              size: "portrait", label: "OSINT" },
-  // SQUARE
-  { id: "24-gmb",                  file: "24-gmb-SQUARE.png",                  size: "square",   label: "Google My Business" },
-  // PORTRAIT
-  { id: "23-creation-societe",     file: "23-creation-societe-PORTRAIT.png",   size: "portrait", label: "Création de Société" },
-  // WIDE
-  { id: "25-underground",          file: "25-underground-WIDE.png",            size: "wide",     label: "Service Underground / BlackHat" },
+  { id: "01-tiktok-certif",        file: "01-tiktok-certif-SQUARE.png",        label: "Certification TikTok" },
+  { id: "02-snapchat-certif",      file: "02-snapchat-certif-SQUARE.png",      label: "Certification Snapchat" },
+  { id: "11-visuels",              file: "11-visuels-SQUARE.png",              label: "Visuels" },
+  { id: "14-ugc-ia",               file: "14-ugc-ia-SQUARE.png",               label: "UGC IA" },
+  { id: "12-sites-web",            file: "12-sites-web-SQUARE.png",            label: "Sites Web" },
+  { id: "03-sms-mail",             file: "03-sms-mail-SQUARE.png",             label: "SMS / Mail Automatisé" },
+  { id: "04-chatbot-sav",          file: "04-chatbot-sav-SQUARE.png",          label: "Chatbot SAV" },
+  { id: "05-generation-leads",     file: "05-generation-leads-SQUARE.png",     label: "Génération de Leads" },
+  { id: "07-apple-wallet",         file: "07-apple-wallet-SQUARE.png",         label: "Cartes Push Apple Wallet" },
+  { id: "08-landing-pages",        file: "08-landing-pages-SQUARE.png",        label: "Landing Pages" },
+  { id: "10-flyers",               file: "10-flyers-SQUARE.png",               label: "Flyers" },
+  { id: "09-avis-google",          file: "09-avis-google-SQUARE.png",          label: "Avis Google / Trustpilot" },
+  { id: "13-nfc",                  file: "13-nfc-SQUARE.png",                  label: "Cartes NFC" },
+  { id: "15-campagnes-ads",        file: "15-campagnes-ads-SQUARE.png",        label: "Campagnes Ads" },
+  { id: "17-whatsapp",             file: "17-whatsapp-SQUARE.png",             label: "Automatisation WhatsApp" },
+  { id: "18-scrapping",            file: "18-scrapping-SQUARE.png",            label: "Scrapping" },
+  { id: "06-videos-montages",      file: "06-videos-montages-SQUARE.png",      label: "Vidéos IA / Montages" },
+  { id: "19-seo",                  file: "19-seo-SQUARE.png",                  label: "SEO" },
+  { id: "16-crm",                  file: "16-crm-SQUARE.png",                  label: "CRM / Logiciel / Automatisations" },
+  { id: "20-audit",                file: "20-audit-SQUARE.png",                label: "Stratégie & Audit" },
+  { id: "21-e-reputation",         file: "21-e-reputation-SQUARE.png",         label: "Supprimer Avis / E-réputation" },
+  { id: "22-osint",                file: "22-osint-SQUARE.png",                label: "OSINT" },
+  { id: "24-gmb",                  file: "24-gmb-SQUARE.png",                  label: "Google My Business" },
+  { id: "23-creation-societe",     file: "23-creation-societe-SQUARE.png",     label: "Création de Société" },
+  { id: "25-underground",          file: "25-underground-SQUARE.png",          label: "Service Underground / BlackHat" },
 ];
 ---
 
@@ -55,7 +36,7 @@ const services = [
 
   <div class="bento-grid">
     {services.map((s) => (
-      <div class={`bento-card bento-${s.size}`} data-id={s.id}>
+      <div class="bento-card" data-id={s.id}>
         <img
           src={`/images/services/bento/${s.file}`}
           alt={s.label}
@@ -102,9 +83,7 @@ const services = [
   /* ─── GRID ─── */
   .bento-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 300px;
-    grid-auto-flow: dense;
+    grid-template-columns: repeat(5, 1fr);
     gap: 12px;
   }
 
@@ -115,6 +94,7 @@ const services = [
     overflow: hidden;
     cursor: pointer;
     background: #111;
+    aspect-ratio: 1 / 1;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
@@ -155,37 +135,22 @@ const services = [
     text-transform: uppercase;
   }
 
-  /* ─── SIZES ─── */
-  .bento-wide {
-    grid-column: span 2;
-  }
-
-  .bento-portrait {
-    grid-row: span 2;
-  }
-
-  .bento-square {
-    /* default: 1x1 */
-  }
-
   /* ─── RESPONSIVE ─── */
+  @media (max-width: 1100px) {
+    .bento-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
   @media (max-width: 900px) {
     .bento-grid {
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 220px;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
-  @media (max-width: 560px) {
+  @media (max-width: 640px) {
     .bento-grid {
-      grid-template-columns: 1fr;
-      grid-auto-rows: 240px;
-    }
-
-    .bento-wide,
-    .bento-portrait {
-      grid-column: span 1;
-      grid-row: span 1;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
