@@ -80,7 +80,7 @@ const row2 = services.filter((_, i) => i % 2 === 1);
         <span class="live-label">EN DIRECT</span>
         <span class="live-sep" aria-hidden="true"></span>
         <span class="live-detail">
-          <span class="live-count" data-count="47">0</span> deals en cours de livraison
+          <span class="live-count" data-count="8">0</span> deals en cours de livraison
         </span>
       </div>
 
@@ -853,10 +853,10 @@ const row2 = services.filter((_, i) => i % 2 === 1);
   // ═══ Live count fluctuation (simule activite reelle) ═══
   const liveCount = document.querySelector<HTMLElement>('.live-count');
   if (liveCount) {
-    let current = 47;
+    let current = 8;
     setInterval(() => {
-      const delta = Math.floor(Math.random() * 5) - 2; // -2 à +2
-      current = Math.max(38, Math.min(62, current + delta));
+      const delta = Math.floor(Math.random() * 3) - 1; // -1 à +1
+      current = Math.max(4, Math.min(12, current + delta));
       liveCount.textContent = current.toString();
     }, 4500);
   }
