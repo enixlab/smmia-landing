@@ -152,11 +152,9 @@ const row2 = services.filter((_, i) => i % 2 === 1);
     <!-- Bande 1 : diagonale /  -->
     <div class="band band-1">
       <div class="track track-1">
-        {[...row1, ...row1, ...row1].map((file) => (
+        {[...row1, ...row1].map((file) => (
           <div class="tile" data-tilt data-cat={categories[file]}>
-            <img class="tile-bg" src={`/images/services-cards/${file}`} alt="" aria-hidden="true" loading="lazy" />
-            <div class="tile-bg-tint" aria-hidden="true"></div>
-            <img class="tile-fg" src={`/images/services-cards/${file}`} alt="" loading="lazy" />
+            <img class="tile-fg" src={`/images/services-cards/${file}`} alt="" loading="lazy" decoding="async" />
             <div class="tile-sheen" aria-hidden="true"></div>
           </div>
         ))}
@@ -166,11 +164,9 @@ const row2 = services.filter((_, i) => i % 2 === 1);
     <!-- Bande 2 : diagonale \ -->
     <div class="band band-2">
       <div class="track track-2">
-        {[...row2, ...row2, ...row2].map((file) => (
+        {[...row2, ...row2].map((file) => (
           <div class="tile" data-tilt data-cat={categories[file]}>
-            <img class="tile-bg" src={`/images/services-cards/${file}`} alt="" aria-hidden="true" loading="lazy" />
-            <div class="tile-bg-tint" aria-hidden="true"></div>
-            <img class="tile-fg" src={`/images/services-cards/${file}`} alt="" loading="lazy" />
+            <img class="tile-fg" src={`/images/services-cards/${file}`} alt="" loading="lazy" decoding="async" />
             <div class="tile-sheen" aria-hidden="true"></div>
           </div>
         ))}
@@ -793,22 +789,36 @@ const row2 = services.filter((_, i) => i % 2 === 1);
 </style>
 
 <script>
-  // ═══ Tilt 3D magnetique au hover sur chaque tuile ═══
-  const tiles = document.querySelectorAll<HTMLElement>('.tile[data-tilt]');
-  tiles.forEach((tile) => {
-    tile.addEventListener('mousemove', (e: MouseEvent) => {
-      const rect = tile.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const cx = rect.width / 2;
-      const cy = rect.height / 2;
-      const rx = ((y - cy) / cy) * -8;
-      const ry = ((x - cx) / cx) * 8;
-      tile.style.transform =
-        `translateY(-6px) scale(1.05) perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  // ═══ Tilt 3D — desktop only, rAF-throttled ═══
+  const hasFinePointer = window.matchMedia('(pointer: fine) and (min-width: 1024px)').matches;
+  if (hasFinePointer) {
+    const tiles = document.querySelectorAll<HTMLElement>('.tile[data-tilt]');
+    tiles.forEach((tile) => {
+      let raf = 0;
+      let pendingX = 0, pendingY = 0;
+      tile.addEventListener('mousemove', (e: MouseEvent) => {
+        pendingX = e.clientX;
+        pendingY = e.clientY;
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          const rect = tile.getBoundingClientRect();
+          const x = pendingX - rect.left;
+          const y = pendingY - rect.top;
+          const cx = rect.width / 2;
+          const cy = rect.height / 2;
+          const rx = ((y - cy) / cy) * -8;
+          const ry = ((x - cx) / cx) * 8;
+          tile.style.transform =
+            `translateY(-6px) scale(1.05) perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+          raf = 0;
+        });
+      }, { passive: true });
+      tile.addEventListener('mouseleave', () => {
+        if (raf) { cancelAnimationFrame(raf); raf = 0; }
+        tile.style.transform = '';
+      });
     });
-    tile.addEventListener('mouseleave', () => { tile.style.transform = ''; });
-  });
+  }
 
   // ═══ Counters animation on intersection ═══
   const counters = document.querySelectorAll<HTMLElement>('.stat-counter, .live-count');

@@ -4,12 +4,11 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
 // Screenshots réels : 32 Discord + 18 Trustpilot = 50 avis
 const discordImages = Array.from({length: 32}, (_, i) => {
   const num = String(i + 1).padStart(2, '0');
-  const ext = num === '16' ? 'webp' : 'png';
-  return `/images/avis/discord/discord-${num}.${ext}`;
+  return `/images/avis/discord/discord-${num}.webp`;
 });
 const trustpilotImages = Array.from({length: 18}, (_, i) => {
   const num = String(i + 1).padStart(2, '0');
-  return `/images/avis/trustpilot/trustpilot-${num}.png`;
+  return `/images/avis/trustpilot/trustpilot-${num}.webp`;
 });
 
 const totalCount = discordImages.length + trustpilotImages.length;
