@@ -303,3 +303,28 @@ section {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(0.85); }
 }
+
+/* ══════ MOBILE PERF KILL-SWITCH ══════
+   Sur mobile, backdrop-filter et filter: blur() créent chacun une GPU layer
+   distincte. Empilés sur 40+ éléments, ils provoquent STATUS_BREAKPOINT
+   (saturation mémoire GPU). On force des fallbacks légers. */
+@media (max-width: 768px) {
+  *, *::before, *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  /* Les décorations (halos, auras, blobs) sont hors flux — on baisse
+     drastiquement le rayon de blur (40px+ → 15px) pour rester peu coûteux */
+  [aria-hidden="true"] {
+    filter: none !important;
+  }
+}
+
+/* Réduit motion : kill toutes animations infinies */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.15s !important;
+  }
+}

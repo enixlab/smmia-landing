@@ -172,8 +172,11 @@ const testimonials = [
     background: radial-gradient(ellipse at 50% 0%, #140828 0%, #060211 55%, #000 100%);
     overflow: hidden;
     isolation: isolate;
-    content-visibility: auto;
-    contain-intrinsic-size: 1200px;
+  }
+
+  @media (max-width: 768px) {
+    .va-halo, .va-grid { display: none; }
+    .va-card::after { display: none; }
   }
 
   .va-inner {

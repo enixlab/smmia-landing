@@ -311,8 +311,6 @@ const liveActivity = [
     overflow: hidden;
     isolation: isolate;
     perspective: 1600px;
-    content-visibility: auto;
-    contain-intrinsic-size: 1400px;
   }
 
   .px-inner {
@@ -1162,9 +1160,9 @@ const liveActivity = [
   @media (max-width: 1024px) {
     .px-section { padding: 112px 0 128px; }
     .px-head { margin-bottom: 48px; }
-    .px-orb-1, .px-orb-4 { width: 200px; height: 200px; }
-    .px-orb-2, .px-orb-3 { width: 160px; height: 160px; }
-    .px-aura { width: 560px; height: 560px; }
+    .px-orb-2, .px-orb-3 { display: none; }
+    .px-orb-1, .px-orb-4 { width: 180px; height: 180px; filter: blur(24px); animation: none; }
+    .px-aura { width: 480px; height: 480px; filter: blur(40px); animation: none; }
     /* Tablette : icônes brand visibles mais plus petites et en arrière-plan */
     .px-float-1, .px-float-4 { width: 42px; height: 42px; }
     .px-float-2 { width: 38px; height: 38px; }
@@ -1180,6 +1178,10 @@ const liveActivity = [
   /* ═══════════════ MOBILE ═══════════════ */
   @media (max-width: 640px) {
     .px-section { padding: 80px 0 96px; }
+    .px-orb, .px-aura, .px-grid { display: none; }
+    .px-stamp { animation: none; }
+    .px-corner, .px-corner::before { animation: none; }
+    .px-cta-primary::before { display: none; }
     .px-head { margin-bottom: 36px; }
     .px-eyebrow { font-size: 0.68rem; padding: 6px 14px; }
     .px-card { padding: 22px 18px; border-radius: 22px; }
@@ -1219,11 +1221,12 @@ const liveActivity = [
 </style>
 
 <script>
-  // Tilt 3D de la card au mouvement de la souris
+  // Tilt 3D de la card — uniquement desktop avec pointer fine
   const card = document.getElementById('px-card') as HTMLDivElement | null;
   const wrap = card?.parentElement;
+  const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
 
-  if (card && wrap) {
+  if (card && wrap && hasFinePointer) {
     let raf = 0;
     let targetRx = 0, targetRy = 0;
     let curRx = 0, curRy = 0;
