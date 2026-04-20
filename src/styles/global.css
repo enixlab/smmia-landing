@@ -305,18 +305,27 @@ section {
 }
 
 /* ══════ MOBILE PERF KILL-SWITCH ══════
-   Sur mobile, backdrop-filter et filter: blur() créent chacun une GPU layer
-   distincte. Empilés sur 40+ éléments, ils provoquent STATUS_BREAKPOINT
+   Sur mobile, backdrop-filter + filter: blur() + perspective 3D créent
+   chacun une GPU layer. Empilés sur 50+ éléments → STATUS_BREAKPOINT
    (saturation mémoire GPU). On force des fallbacks légers. */
 @media (max-width: 768px) {
   *, *::before, *::after {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
-  /* Les décorations (halos, auras, blobs) sont hors flux — on baisse
-     drastiquement le rayon de blur (40px+ → 15px) pour rester peu coûteux */
+  /* Décorations hors-flux (halos, auras, blobs, grids) → suppression totale du filter */
   [aria-hidden="true"] {
     filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+  /* 3D transforms coûteux sur mobile (perspective = nouveau contexte de compositing) */
+  section, .hero, main {
+    perspective: none !important;
+    transform-style: flat !important;
+  }
+  /* Scroll behavior smooth peut déclencher du jank mobile quand trop de layers */
+  html {
+    scroll-behavior: auto !important;
   }
 }
 

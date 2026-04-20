@@ -279,28 +279,27 @@ const totalCount = discordImages.length + trustpilotImages.length;
 
   .av-halo {
     position: absolute;
-    width: 620px;
-    height: 620px;
+    width: 480px;
+    height: 480px;
     border-radius: 50%;
-    filter: blur(130px);
+    filter: blur(50px);
     pointer-events: none;
     z-index: 0;
   }
-  .av-halo-l { top: 5%;    left: -220px;  background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent 70%);  animation: avHaloFloat 18s ease-in-out infinite; }
-  .av-halo-r { bottom: 8%; right: -220px; background: radial-gradient(circle, rgba(192, 132, 252, 0.25), transparent 70%); animation: avHaloFloat 22s ease-in-out infinite reverse; }
+  .av-halo-l { top: 5%;    left: -180px;  background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent 70%); }
+  .av-halo-r { bottom: 8%; right: -180px; background: radial-gradient(circle, rgba(192, 132, 252, 0.25), transparent 70%); }
 
   .av-halo-c {
     position: absolute;
     top: 45%;
     left: 50%;
-    width: 800px;
-    height: 400px;
+    width: 640px;
+    height: 320px;
     background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.22), transparent 70%);
-    filter: blur(100px);
+    filter: blur(45px);
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 0;
-    animation: avHaloPulse 8s ease-in-out infinite;
   }
 
   .av-grid {
@@ -827,8 +826,15 @@ const totalCount = discordImages.length + trustpilotImages.length;
     .av-track-slow { animation-duration: 120s; }
   }
 
+  /* KILL GPU-killers sur tablette/mobile */
+  @media (max-width: 1024px) {
+    .av-halo-l, .av-halo-r, .av-halo-c { display: none !important; }
+  }
+
   @media (max-width: 640px) {
     .av-section { padding: 72px 0 60px; }
+    /* Stoppe hue-rotate, border-rotate, shine sur mobile (animations GPU continues) */
+    .av-card::before, .av-cta::before, .av-cta-shine { animation: none !important; }
     .av-head { margin-bottom: 36px; padding: 0 16px; }
     .av-title { font-size: clamp(1.85rem, 7.5vw, 2.4rem); }
     .av-sub { font-size: 0.92rem; margin-bottom: 24px; }
