@@ -309,10 +309,12 @@ section {
    (marquees, rotations continues, pulses) qui tournaient 24/24
    même quand l'utilisateur ne regardait pas leur section. */
 
-/* Marquees scrolling - static sur toutes tailles pour arrêter le GPU work permanent */
-.av-track-l, .av-track-r, .av-track-slow,
-.track-1, .track-2 {
-  animation: none !important;
+/* Marquees : désactivées uniquement en prefers-reduced-motion ou en cas de GPU faible */
+@media (prefers-reduced-motion: reduce) {
+  .av-track-l, .av-track-r, .av-track-slow,
+  .track-1, .track-2 {
+    animation: none !important;
+  }
 }
 
 /* Toutes les animations rotation / pulse infinies sur décorations */

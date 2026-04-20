@@ -632,44 +632,33 @@ const row2 = services.filter((_, i) => i % 2 === 1);
     transition: opacity 0.4s;
   }
 
-  /* Background : meme image, floutee + saturee (unifie le look violet des cards) */
-  .tile-bg {
+  /* Background : masqué (les cards ont déjà leur propre design coloré) */
+  .tile-bg { display: none; }
+
+  /* Tint léger en bas de la card pour lisibilité + vignette subtile */
+  .tile-bg-tint {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(0,0,0,0) 65%,
+      rgba(0,0,0,0.35) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Foreground : image pleine card avec object-fit cover pour remplir tout */
+  .tile-fg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: blur(20px) saturate(1.5) brightness(0.85);
-    transform: scale(1.25);
-    z-index: 0;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  /* Tint leger uniquement pour unifier + vignette subtile */
-  .tile-bg-tint {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.35) 100%);
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  /* Foreground : l'image entiere, centree avec contain, pas de crop */
-  .tile-fg {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-    padding: 10px;
     display: block;
     user-select: none;
     -webkit-user-drag: none;
     transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
     z-index: 2;
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
   }
 
   /* Reflet "sheen" diagonal qui balaie au hover */
