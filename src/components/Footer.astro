@@ -1,47 +1,651 @@
 ---
+const year = new Date().getFullYear();
+const DISCORD_URL = 'https://discord.com/invite/focus-1398487214215659612';
+const WA_URL = 'https://wa.me/33766814280';
+const EMAIL = 'contact@smmia.app';
 ---
 
-<footer style="padding:64px 0 40px;border-top:1px solid rgba(255,255,255,0.06);">
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px;text-align:center;">
+<footer class="ft">
 
-    <!-- Logo -->
-    <img
-      src="/images/logos/SMMIA-logo-transparent-v2.png"
-      alt="SMMIA"
-      style="height:70px;width:auto;margin:0 auto 16px;display:block;opacity:0.9;"
-    />
+  <!-- Décors de fond -->
+  <div class="ft-halo ft-halo-l" aria-hidden="true"></div>
+  <div class="ft-halo ft-halo-r" aria-hidden="true"></div>
 
-    <p style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:28px;">
-      Un module de la communauté Focus
-    </p>
+  <!-- Bande CTA "Prêt à démarrer" (pre-footer) -->
+  <div class="ft-precta">
+    <div class="ft-precta-inner">
+      <div class="ft-precta-text">
+        <div class="ft-precta-eyebrow">
+          <span class="ft-live-dot"></span>
+          10 places disponibles · Session Mai 2026
+        </div>
+        <h3 class="ft-precta-title">
+          Prêt à passer <span class="ft-gradient">de zéro à closer</span> ?
+        </h3>
+        <p class="ft-precta-sub">
+          3 mois d'accès · 2 lives/sem · Communauté Focus · Résultats garantis 14j
+        </p>
+      </div>
+      <div class="ft-precta-actions">
+        <a class="ft-btn ft-btn-primary" href="#prix">
+          <span>Rejoindre SMMIA</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="ft-btn ft-btn-ghost" href={DISCORD_URL} target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M20.3 4.4A19 19 0 0 0 15.7 3l-.2.4a17.4 17.4 0 0 0-6.9 0L8.3 3a19 19 0 0 0-4.6 1.4A19.8 19.8 0 0 0 .4 15.3a19.1 19.1 0 0 0 5.8 2.9l1.2-1.6a12.5 12.5 0 0 1-2-.9l.5-.4a13.7 13.7 0 0 0 12.3 0l.5.4a12.5 12.5 0 0 1-2 .9l1.2 1.6a19.1 19.1 0 0 0 5.8-2.9 19.8 19.8 0 0 0-3.4-10.9zM8 13.6c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4zm8 0c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4z"/></svg>
+          Discord Focus
+        </a>
+      </div>
+    </div>
+  </div>
 
-    <!-- Liens -->
-    <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 24px;margin-bottom:28px;">
-      <a href="#programme" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;">Programme</a>
-      <span style="color:rgba(255,255,255,0.15);">·</span>
-      <a href="#intervenants" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;">Intervenants</a>
-      <span style="color:rgba(255,255,255,0.15);">·</span>
-      <a href="https://wa.me/33766814280" target="_blank" rel="noopener" style="font-size:0.875rem;color:#A855F7;text-decoration:none;font-weight:600;transition:color 0.2s;">Rejoindre</a>
+  <!-- Séparateur -->
+  <div class="ft-divider"></div>
+
+  <!-- Grille principale 4 colonnes -->
+  <div class="ft-main">
+
+    <!-- Col 1 — Brand + Newsletter -->
+    <div class="ft-col ft-col-brand">
+      <a href="#hero" class="ft-logo">
+        <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" />
+      </a>
+      <p class="ft-tagline">
+        Le module IA business de la communauté Focus. Close des clients, livre avec Prime.
+      </p>
+
+      <!-- Newsletter -->
+      <form class="ft-newsletter" id="ft-newsletter" novalidate>
+        <label class="ft-newsletter-label" for="ft-email">Drops exclusifs · tips IA · 1 email/sem</label>
+        <div class="ft-newsletter-row">
+          <input
+            id="ft-email"
+            type="email"
+            name="email"
+            placeholder="ton@email.com"
+            autocomplete="email"
+            required
+            aria-label="Adresse email pour newsletter"
+          />
+          <button type="submit" class="ft-newsletter-btn" aria-label="S'inscrire">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <div class="ft-newsletter-msg" id="ft-newsletter-msg" aria-live="polite"></div>
+      </form>
     </div>
 
-    <!-- Social -->
-    <p style="font-size:0.875rem;color:rgba(255,255,255,0.35);margin-bottom:32px;">
-      @smmia_formation
-    </p>
+    <!-- Col 2 — Navigation -->
+    <div class="ft-col">
+      <h4 class="ft-col-title">Navigation</h4>
+      <nav class="ft-links">
+        <a href="#programme">Programme</a>
+        <a href="#temoignages">Témoignages</a>
+        <a href="#prime">Services Prime</a>
+        <a href="#prix">Tarif</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
 
-    <!-- Séparateur -->
-    <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(168,85,247,0.4),transparent);margin:0 auto 24px;"></div>
+    <!-- Col 3 — Communauté live -->
+    <div class="ft-col">
+      <h4 class="ft-col-title">Communauté</h4>
+      <a href={DISCORD_URL} target="_blank" rel="noopener" class="ft-community">
+        <div class="ft-community-head">
+          <svg class="ft-community-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19 19 0 0 0 15.7 3l-.2.4a17.4 17.4 0 0 0-6.9 0L8.3 3a19 19 0 0 0-4.6 1.4A19.8 19.8 0 0 0 .4 15.3a19.1 19.1 0 0 0 5.8 2.9l1.2-1.6a12.5 12.5 0 0 1-2-.9l.5-.4a13.7 13.7 0 0 0 12.3 0l.5.4a12.5 12.5 0 0 1-2 .9l1.2 1.6a19.1 19.1 0 0 0 5.8-2.9 19.8 19.8 0 0 0-3.4-10.9zM8 13.6c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4zm8 0c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4z"/></svg>
+          <div>
+            <div class="ft-community-name">Discord Focus</div>
+            <div class="ft-community-meta"><span class="ft-online-dot"></span> <span id="ft-online">128</span> en ligne · 847 membres</div>
+          </div>
+        </div>
+        <span class="ft-community-cta">Rejoindre →</span>
+      </a>
 
-    <!-- Copyright -->
-    <p style="font-size:0.8rem;color:rgba(255,255,255,0.2);">
-      &copy; 2026 SMMIA &nbsp;·&nbsp; Focus Business &nbsp;·&nbsp; Tous droits réservés
-    </p>
+      <a href={WA_URL} target="_blank" rel="noopener" class="ft-contact-row">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .1 5.4.1 12c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.7c1.7 1 3.7 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.6-8.3zm-5.6 13.5c-.3.7-1.6 1.4-2.2 1.4-.6 0-1.3.1-2.1-.1-.5-.2-1.1-.4-1.9-.7-3.3-1.4-5.5-4.7-5.6-4.9-.2-.2-1.4-1.9-1.4-3.6 0-1.7.9-2.6 1.2-2.9.3-.3.7-.4.9-.4h.7c.2 0 .5-.1.8.6.3.7.9 2.4 1 2.5.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.4-.5.6-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.6 1.6 2.9 1.8.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.9.9 2.3 1 .3.2.5.2.6.4.1.1.1.8-.2 1.5z"/></svg>
+        WhatsApp direct
+      </a>
 
+      <a href={`mailto:${EMAIL}`} class="ft-contact-row">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        {EMAIL}
+      </a>
+    </div>
+
+    <!-- Col 4 — Ressources + réseaux -->
+    <div class="ft-col">
+      <h4 class="ft-col-title">Ressources</h4>
+      <nav class="ft-links">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/cgv">CGV</a>
+        <a href="/confidentialite">Confidentialité</a>
+        <a href="/cookies">Cookies</a>
+      </nav>
+
+      <div class="ft-socials" aria-label="Réseaux sociaux">
+        <a href="https://tiktok.com/@smmia_formation" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.6 6.3a5.3 5.3 0 0 1-3.1-1.1 5.3 5.3 0 0 1-1.7-3.2h-3.3v11.4a2.5 2.5 0 1 1-1.9-2.4V7.3a5.9 5.9 0 1 0 5.1 5.9V9a8.5 8.5 0 0 0 4.9 1.6z"/></svg>
+        </a>
+        <a href="https://instagram.com/smmia_formation" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </a>
+        <a href="https://youtube.com/@smmia" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23 7.4a3 3 0 0 0-2.1-2.1C19 4.8 12 4.8 12 4.8s-7 0-8.9.5A3 3 0 0 0 1 7.4 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.6a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5A3 3 0 0 0 23 16.6 31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.4zM9.8 15.4V8.6L15.6 12z"/></svg>
+        </a>
+        <a href={DISCORD_URL} target="_blank" rel="noopener" aria-label="Discord">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.3 4.4A19 19 0 0 0 15.7 3l-.2.4a17.4 17.4 0 0 0-6.9 0L8.3 3a19 19 0 0 0-4.6 1.4A19.8 19.8 0 0 0 .4 15.3a19.1 19.1 0 0 0 5.8 2.9l1.2-1.6a12.5 12.5 0 0 1-2-.9l.5-.4a13.7 13.7 0 0 0 12.3 0l.5.4a12.5 12.5 0 0 1-2 .9l1.2 1.6a19.1 19.1 0 0 0 5.8-2.9 19.8 19.8 0 0 0-3.4-10.9zM8 13.6c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4zm8 0c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="ft-bottom">
+    <div class="ft-bottom-inner">
+      <div class="ft-copyright">
+        © {year} <strong>SMMIA</strong> · Un module Focus · Tous droits réservés
+      </div>
+      <div class="ft-trust">
+        <span class="ft-trust-item">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l7 4v6c0 4-3 8-7 10-4-2-7-6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          Paiement sécurisé Stripe
+        </span>
+        <span class="ft-trust-sep">·</span>
+        <span class="ft-trust-item">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          Satisfait ou remboursé 14j
+        </span>
+      </div>
+    </div>
   </div>
 </footer>
 
 <style>
-  footer a:hover {
-    color: #A855F7 !important;
+  /* ═══════════════ FOOTER ═══════════════ */
+  .ft {
+    position: relative;
+    background: linear-gradient(180deg, #07030f 0%, #050208 100%);
+    color: rgba(255, 255, 255, 0.75);
+    padding: 96px 0 0;
+    overflow: hidden;
+    isolation: isolate;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .ft-halo {
+    position: absolute;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ft-halo-l { top: -8%; left: -140px; background: radial-gradient(circle, rgba(168, 85, 247, 0.18), transparent 70%); }
+  .ft-halo-r { bottom: -20%; right: -120px; background: radial-gradient(circle, rgba(124, 58, 237, 0.14), transparent 70%); }
+
+  /* ─── Pre-CTA strip ─── */
+  .ft-precta {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 40px clamp(24px, 5vw, 64px);
+    border-radius: 28px;
+    background:
+      radial-gradient(140% 100% at 0% 0%, rgba(168, 85, 247, 0.22) 0%, transparent 55%),
+      linear-gradient(135deg, rgba(22, 10, 40, 0.85) 0%, rgba(10, 4, 20, 0.9) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.28);
+    box-shadow:
+      0 30px 80px -30px rgba(168, 85, 247, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .ft-precta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .ft-precta-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #C4B5FD;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .ft-live-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #C084FC;
+    box-shadow: 0 0 8px #A855F7;
+  }
+
+  .ft-precta-title {
+    font-size: clamp(1.6rem, 3.2vw, 2.25rem);
+    font-weight: 900;
+    line-height: 1.12;
+    color: #fff;
+    margin: 0 0 10px;
+    letter-spacing: -0.025em;
+  }
+
+  .ft-gradient {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 45%, #C084FC 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .ft-precta-sub {
+    font-size: 0.94rem;
+    color: rgba(255, 255, 255, 0.58);
+    margin: 0;
+    max-width: 520px;
+  }
+
+  .ft-precta-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .ft-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    transition: transform 0.25s, box-shadow 0.25s, background 0.25s, border-color 0.25s;
+    white-space: nowrap;
+  }
+
+  .ft-btn-primary {
+    background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%);
+    color: #fff;
+    box-shadow: 0 14px 40px -12px rgba(168, 85, 247, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  }
+  .ft-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 50px -10px rgba(168, 85, 247, 0.85); }
+
+  .ft-btn-ghost {
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+  }
+  .ft-btn-ghost:hover { background: rgba(168, 85, 247, 0.14); border-color: rgba(168, 85, 247, 0.7); }
+
+  /* ─── Divider ─── */
+  .ft-divider {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.35), transparent);
+  }
+
+  /* ─── Main grid ─── */
+  .ft-main {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 72px 24px 56px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.2fr 1fr;
+    gap: 56px;
+  }
+
+  .ft-col-brand { min-width: 0; }
+
+  .ft-logo {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  .ft-logo img {
+    height: 52px;
+    width: auto;
+    display: block;
+  }
+
+  .ft-tagline {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0 0 26px;
+    max-width: 340px;
+  }
+
+  /* ─── Newsletter ─── */
+  .ft-newsletter {
+    max-width: 360px;
+  }
+
+  .ft-newsletter-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #C4B5FD;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .ft-newsletter-row {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .ft-newsletter-row:focus-within {
+    border-color: rgba(168, 85, 247, 0.65);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+  }
+
+  .ft-newsletter-row input {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    padding: 12px 14px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    min-width: 0;
+  }
+  .ft-newsletter-row input::placeholder { color: rgba(255, 255, 255, 0.3); }
+
+  .ft-newsletter-btn {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    margin: 3px;
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, filter 0.2s;
+  }
+  .ft-newsletter-btn:hover { filter: brightness(1.1); transform: scale(1.04); }
+
+  .ft-newsletter-msg {
+    min-height: 18px;
+    margin-top: 10px;
+    font-size: 0.78rem;
+    color: rgba(192, 132, 252, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .ft-newsletter-msg.show { opacity: 1; }
+  .ft-newsletter-msg.error { color: #F87171; }
+
+  /* ─── Columns ─── */
+  .ft-col-title {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.18);
+  }
+
+  .ft-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ft-links a {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
+    width: fit-content;
+  }
+  .ft-links a:hover { color: #C4B5FD; transform: translateX(3px); }
+
+  /* ─── Community card ─── */
+  .ft-community {
+    display: block;
+    text-decoration: none;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(88, 101, 242, 0.16) 0%, rgba(168, 85, 247, 0.1) 100%);
+    border: 1px solid rgba(88, 101, 242, 0.3);
+    margin-bottom: 14px;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  }
+  .ft-community:hover {
+    transform: translateY(-2px);
+    border-color: rgba(88, 101, 242, 0.65);
+    box-shadow: 0 12px 30px -10px rgba(88, 101, 242, 0.4);
+  }
+
+  .ft-community-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ft-community-ic {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    color: #5865F2;
+  }
+
+  .ft-community-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+
+  .ft-community-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.74rem;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .ft-online-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+    animation: ft-online-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes ft-online-pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.55; }
+  }
+
+  .ft-community-cta {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #C4B5FD;
+  }
+
+  /* ─── Contact rows ─── */
+  .ft-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 2px;
+    font-size: 0.86rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: color 0.2s;
+  }
+  .ft-contact-row:last-of-type { border-bottom: 0; }
+  .ft-contact-row:hover { color: #C4B5FD; }
+  .ft-contact-row svg { color: rgba(168, 85, 247, 0.9); flex-shrink: 0; }
+
+  /* ─── Socials ─── */
+  .ft-socials {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .ft-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .ft-socials a:hover {
+    transform: translateY(-2px);
+    background: rgba(168, 85, 247, 0.15);
+    border-color: rgba(168, 85, 247, 0.5);
+    color: #E9D5FF;
+  }
+
+  /* ─── Bottom bar ─── */
+  .ft-bottom {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid rgba(168, 85, 247, 0.14);
+    padding: 20px 24px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .ft-bottom-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .ft-copyright {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .ft-copyright strong { color: #C4B5FD; font-weight: 700; }
+
+  .ft-trust {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.76rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .ft-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ft-trust-item svg { color: rgba(192, 132, 252, 0.85); }
+  .ft-trust-sep { opacity: 0.35; }
+
+  /* ═══════════════ RESPONSIVE ═══════════════ */
+  @media (max-width: 1024px) {
+    .ft-main { grid-template-columns: 1fr 1fr; gap: 44px 40px; }
+    .ft-col-brand { grid-column: 1 / -1; }
+    .ft-newsletter { max-width: 480px; }
+  }
+
+  @media (max-width: 640px) {
+    .ft { padding-top: 72px; }
+    .ft-precta { margin-bottom: 56px; padding: 28px 22px; border-radius: 22px; }
+    .ft-precta-inner { flex-direction: column; align-items: flex-start; gap: 22px; }
+    .ft-precta-actions { width: 100%; }
+    .ft-btn { width: 100%; justify-content: center; }
+    .ft-main { grid-template-columns: 1fr; gap: 36px; padding: 52px 20px 44px; }
+    .ft-col-brand { grid-column: auto; }
+    .ft-logo img { height: 44px; }
+    .ft-bottom-inner { flex-direction: column; align-items: flex-start; }
+    .ft-trust { flex-wrap: wrap; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ft-online-dot { animation: none; }
   }
 </style>
+
+<script>
+  // Compteur "en ligne" qui fluctue subtilement (réaliste)
+  const onlineEl = document.getElementById('ft-online');
+  if (onlineEl) {
+    let n = 128;
+    setInterval(() => {
+      const d = Math.floor(Math.random() * 5) - 2; // -2 à +2
+      n = Math.max(98, Math.min(162, n + d));
+      onlineEl.textContent = n.toString();
+    }, 6000);
+  }
+
+  // Newsletter : validation + UI feedback (sans backend réel — prêt à wire vers Resend / Mailchimp / Brevo)
+  const form = document.getElementById('ft-newsletter') as HTMLFormElement | null;
+  const msg  = document.getElementById('ft-newsletter-msg');
+  const emailInput = document.getElementById('ft-email') as HTMLInputElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!emailInput || !msg) return;
+    const email = emailInput.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    msg.classList.remove('error');
+
+    if (!valid) {
+      msg.textContent = 'Email invalide · vérifie ton adresse';
+      msg.classList.add('show', 'error');
+      return;
+    }
+
+    // Feedback immédiat
+    msg.textContent = 'Envoi en cours…';
+    msg.classList.add('show');
+
+    try {
+      // TODO: wire vers endpoint réel (Resend / Mailchimp / Brevo)
+      // const r = await fetch('/api/newsletter', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ email }) });
+      // if (!r.ok) throw new Error('fail');
+      await new Promise(r => setTimeout(r, 600));
+
+      msg.textContent = '✓ Inscrit ! Check tes mails.';
+      emailInput.value = '';
+      setTimeout(() => msg.classList.remove('show'), 4500);
+    } catch {
+      msg.textContent = 'Erreur · réessaie dans un instant';
+      msg.classList.add('error');
+    }
+  });
+</script>
