@@ -11,38 +11,7 @@ const EMAIL = 'contact@smmia.app';
   <div class="ft-halo ft-halo-l" aria-hidden="true"></div>
   <div class="ft-halo ft-halo-r" aria-hidden="true"></div>
 
-  <!-- Bande CTA "Prêt à démarrer" (pre-footer) -->
-  <div class="ft-precta">
-    <div class="ft-precta-inner">
-      <div class="ft-precta-text">
-        <div class="ft-precta-eyebrow">
-          <span class="ft-live-dot"></span>
-          10 places disponibles · Session Mai 2026
-        </div>
-        <h3 class="ft-precta-title">
-          Prêt à passer <span class="ft-gradient">de zéro à closer</span> ?
-        </h3>
-        <p class="ft-precta-sub">
-          3 mois d'accès · 2 lives/sem · Communauté Focus · Résultats garantis 14j
-        </p>
-      </div>
-      <div class="ft-precta-actions">
-        <a class="ft-btn ft-btn-primary" href="#prix">
-          <span>Rejoindre SMMIA</span>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a class="ft-btn ft-btn-ghost" href={DISCORD_URL} target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M20.3 4.4A19 19 0 0 0 15.7 3l-.2.4a17.4 17.4 0 0 0-6.9 0L8.3 3a19 19 0 0 0-4.6 1.4A19.8 19.8 0 0 0 .4 15.3a19.1 19.1 0 0 0 5.8 2.9l1.2-1.6a12.5 12.5 0 0 1-2-.9l.5-.4a13.7 13.7 0 0 0 12.3 0l.5.4a12.5 12.5 0 0 1-2 .9l1.2 1.6a19.1 19.1 0 0 0 5.8-2.9 19.8 19.8 0 0 0-3.4-10.9zM8 13.6c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4zm8 0c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4z"/></svg>
-          Discord Focus
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Séparateur -->
-  <div class="ft-divider"></div>
-
-  <!-- Grille principale 4 colonnes -->
+  <!-- Grille principale 3 colonnes -->
   <div class="ft-main">
 
     <!-- Col 1 — Brand + Newsletter -->
@@ -110,17 +79,6 @@ const EMAIL = 'contact@smmia.app';
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
         {EMAIL}
       </a>
-    </div>
-
-    <!-- Col 4 — Ressources + réseaux -->
-    <div class="ft-col">
-      <h4 class="ft-col-title">Ressources</h4>
-      <nav class="ft-links">
-        <a href="/mentions-legales">Mentions légales</a>
-        <a href="/cgv">CGV</a>
-        <a href="/confidentialite">Confidentialité</a>
-        <a href="/cookies">Cookies</a>
-      </nav>
 
       <div class="ft-socials" aria-label="Réseaux sociaux">
         <a href="https://tiktok.com/@smmia_formation" target="_blank" rel="noopener" aria-label="TikTok">
@@ -131,9 +89,6 @@ const EMAIL = 'contact@smmia.app';
         </a>
         <a href="https://youtube.com/@smmia" target="_blank" rel="noopener" aria-label="YouTube">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23 7.4a3 3 0 0 0-2.1-2.1C19 4.8 12 4.8 12 4.8s-7 0-8.9.5A3 3 0 0 0 1 7.4 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.6a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5A3 3 0 0 0 23 16.6 31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.4zM9.8 15.4V8.6L15.6 12z"/></svg>
-        </a>
-        <a href={DISCORD_URL} target="_blank" rel="noopener" aria-label="Discord">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.3 4.4A19 19 0 0 0 15.7 3l-.2.4a17.4 17.4 0 0 0-6.9 0L8.3 3a19 19 0 0 0-4.6 1.4A19.8 19.8 0 0 0 .4 15.3a19.1 19.1 0 0 0 5.8 2.9l1.2-1.6a12.5 12.5 0 0 1-2-.9l.5-.4a13.7 13.7 0 0 0 12.3 0l.5.4a12.5 12.5 0 0 1-2 .9l1.2 1.6a19.1 19.1 0 0 0 5.8-2.9 19.8 19.8 0 0 0-3.4-10.9zM8 13.6c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4zm8 0c-1.2 0-2.1-1.1-2.1-2.4 0-1.3 1-2.4 2.1-2.4 1.2 0 2.1 1.1 2.1 2.4 0 1.3-1 2.4-2.1 2.4z"/></svg>
         </a>
       </div>
     </div>
@@ -304,9 +259,9 @@ const EMAIL = 'contact@smmia.app';
     z-index: 2;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 72px 24px 56px;
+    padding: 8px 24px 56px;
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1.2fr 1fr;
+    grid-template-columns: 1.6fr 1fr 1.3fr;
     gap: 56px;
   }
 
@@ -577,7 +532,7 @@ const EMAIL = 'contact@smmia.app';
 
   /* ═══════════════ RESPONSIVE ═══════════════ */
   @media (max-width: 1024px) {
-    .ft-main { grid-template-columns: 1fr 1fr; gap: 44px 40px; }
+    .ft-main { grid-template-columns: 1fr 1fr; gap: 44px 40px; padding-top: 8px; }
     .ft-col-brand { grid-column: 1 / -1; }
     .ft-newsletter { max-width: 480px; }
   }
