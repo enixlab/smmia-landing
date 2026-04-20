@@ -22,26 +22,6 @@ const EMAIL = 'contact@smmia.app';
       <p class="ft-tagline">
         Le module IA business de la communauté Focus. Close des clients, livre avec Prime.
       </p>
-
-      <!-- Newsletter -->
-      <form class="ft-newsletter" id="ft-newsletter" novalidate>
-        <label class="ft-newsletter-label" for="ft-email">Drops exclusifs · tips IA · 1 email/sem</label>
-        <div class="ft-newsletter-row">
-          <input
-            id="ft-email"
-            type="email"
-            name="email"
-            placeholder="ton@email.com"
-            autocomplete="email"
-            required
-            aria-label="Adresse email pour newsletter"
-          />
-          <button type="submit" class="ft-newsletter-btn" aria-label="S'inscrire">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </div>
-        <div class="ft-newsletter-msg" id="ft-newsletter-msg" aria-live="polite"></div>
-      </form>
     </div>
 
     <!-- Col 2 — Navigation -->
@@ -273,75 +253,6 @@ const EMAIL = 'contact@smmia.app';
     max-width: 340px;
   }
 
-  /* ─── Newsletter ─── */
-  .ft-newsletter {
-    max-width: 360px;
-  }
-
-  .ft-newsletter-label {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #C4B5FD;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .ft-newsletter-row {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(168, 85, 247, 0.25);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: border-color 0.25s, box-shadow 0.25s;
-  }
-  .ft-newsletter-row:focus-within {
-    border-color: rgba(168, 85, 247, 0.65);
-    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
-  }
-
-  .ft-newsletter-row input {
-    flex: 1;
-    background: transparent;
-    border: 0;
-    padding: 12px 14px;
-    color: #fff;
-    font-family: inherit;
-    font-size: 0.9rem;
-    outline: none;
-    min-width: 0;
-  }
-  .ft-newsletter-row input::placeholder { color: rgba(255, 255, 255, 0.3); }
-
-  .ft-newsletter-btn {
-    flex-shrink: 0;
-    width: 42px;
-    height: 42px;
-    margin: 3px;
-    border: 0;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%);
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s, filter 0.2s;
-  }
-  .ft-newsletter-btn:hover { filter: brightness(1.1); transform: scale(1.04); }
-
-  .ft-newsletter-msg {
-    min-height: 18px;
-    margin-top: 10px;
-    font-size: 0.78rem;
-    color: rgba(192, 132, 252, 0.9);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .ft-newsletter-msg.show { opacity: 1; }
-  .ft-newsletter-msg.error { color: #F87171; }
 
   /* ─── Columns ─── */
   .ft-col-title {
@@ -522,7 +433,6 @@ const EMAIL = 'contact@smmia.app';
   @media (max-width: 1024px) {
     .ft-main { grid-template-columns: 1fr 1fr; gap: 44px 40px; padding-top: 8px; }
     .ft-col-brand { grid-column: 1 / -1; }
-    .ft-newsletter { max-width: 480px; }
   }
 
   @media (max-width: 640px) {
@@ -555,40 +465,4 @@ const EMAIL = 'contact@smmia.app';
     }, 6000);
   }
 
-  // Newsletter : validation + UI feedback (sans backend réel — prêt à wire vers Resend / Mailchimp / Brevo)
-  const form = document.getElementById('ft-newsletter') as HTMLFormElement | null;
-  const msg  = document.getElementById('ft-newsletter-msg');
-  const emailInput = document.getElementById('ft-email') as HTMLInputElement | null;
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!emailInput || !msg) return;
-    const email = emailInput.value.trim();
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-    msg.classList.remove('error');
-
-    if (!valid) {
-      msg.textContent = 'Email invalide · vérifie ton adresse';
-      msg.classList.add('show', 'error');
-      return;
-    }
-
-    // Feedback immédiat
-    msg.textContent = 'Envoi en cours…';
-    msg.classList.add('show');
-
-    try {
-      // TODO: wire vers endpoint réel (Resend / Mailchimp / Brevo)
-      // const r = await fetch('/api/newsletter', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ email }) });
-      // if (!r.ok) throw new Error('fail');
-      await new Promise(r => setTimeout(r, 600));
-
-      msg.textContent = '✓ Inscrit ! Check tes mails.';
-      emailInput.value = '';
-      setTimeout(() => msg.classList.remove('show'), 4500);
-    } catch {
-      msg.textContent = 'Erreur · réessaie dans un instant';
-      msg.classList.add('error');
-    }
-  });
 </script>
