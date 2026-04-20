@@ -304,10 +304,31 @@ section {
   50% { opacity: 0.4; transform: scale(0.85); }
 }
 
-/* ══════ MOBILE PERF KILL-SWITCH ══════
-   Sur mobile, backdrop-filter + filter: blur() + perspective 3D créent
-   chacun une GPU layer. Empilés sur 50+ éléments → STATUS_BREAKPOINT
-   (saturation mémoire GPU). On force des fallbacks légers. */
+/* ══════ GLOBAL PERF KILL-SWITCH (DESKTOP + MOBILE) ══════
+   Désactive les animations infinies les plus coûteuses GPU
+   (marquees, rotations continues, pulses) qui tournaient 24/24
+   même quand l'utilisateur ne regardait pas leur section. */
+
+/* Marquees scrolling - static sur toutes tailles pour arrêter le GPU work permanent */
+.av-track-l, .av-track-r, .av-track-slow,
+.track-1, .track-2 {
+  animation: none !important;
+}
+
+/* Toutes les animations rotation / pulse infinies sur décorations */
+[aria-hidden="true"] {
+  animation: none !important;
+}
+
+/* Border rotate + shine infinite = killers */
+.av-card-border, .av-cta-shine, .av-card::before,
+.va-cta-btn::before, .px-cta-primary::before,
+.cross-stage *[class*="pulse"],
+.cross-stage *[class*="spot"],
+.px-orb, .px-aura {
+  animation: none !important;
+}
+
 @media (max-width: 768px) {
   *, *::before, *::after {
     backdrop-filter: none !important;

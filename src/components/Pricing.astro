@@ -310,7 +310,6 @@ const liveActivity = [
     background: radial-gradient(ellipse at 50% 0%, #1a0c2e 0%, #070212 55%, #000 100%);
     overflow: hidden;
     isolation: isolate;
-    perspective: 1600px;
   }
 
   .px-inner {
@@ -553,9 +552,8 @@ const liveActivity = [
     filter: drop-shadow(0 6px 30px rgba(168, 85, 247, 0.45));
   }
 
-  /* ═══════════════ CARD 3D ═══════════════ */
+  /* ═══════════════ CARD (2D — perspective supprimé pour perf GPU) ═══════════════ */
   .px-card-wrap {
-    perspective: 1400px;
     margin-bottom: 56px;
   }
 
@@ -570,7 +568,6 @@ const liveActivity = [
       0 20px 60px -20px rgba(168, 85, 247, 0.5),
       inset 0 1px 0 rgba(255, 255, 255, 0.12),
       inset 0 -1px 0 rgba(0, 0, 0, 0.6);
-    transform-style: preserve-3d;
     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     isolation: isolate;
   }
@@ -1221,12 +1218,11 @@ const liveActivity = [
 </style>
 
 <script>
-  // Tilt 3D de la card — uniquement desktop avec pointer fine
+  // Tilt 3D de la card — DÉSACTIVÉ pour stabilité GPU
   const card = document.getElementById('px-card') as HTMLDivElement | null;
   const wrap = card?.parentElement;
-  const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
 
-  if (card && wrap && hasFinePointer) {
+  if (false) {
     let raf = 0;
     let targetRx = 0, targetRy = 0;
     let curRx = 0, curRy = 0;
