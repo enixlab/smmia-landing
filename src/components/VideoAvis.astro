@@ -129,7 +129,25 @@ const testimonials = [
       ))}
     </div>
 
-    <!-- CTA bas de section (card premium) -->
+  </div>
+
+  <!-- Modal lecteur -->
+  <div class="va-modal" id="va-modal" aria-hidden="true">
+    <button class="va-modal-close" id="va-modal-close" aria-label="Fermer">&times;</button>
+    <div class="va-modal-inner">
+      <video
+        id="va-modal-video"
+        controls
+        playsinline
+        preload="none"
+      ></video>
+      <div class="va-modal-caption" id="va-modal-caption"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA hors-section : fond noir pur, zéro bordure violette -->
+<div class="va-cta-outer">
     <div class="va-cta-card" data-animate>
 
       <!-- Eyebrow scarcity -->
@@ -149,17 +167,13 @@ const testimonials = [
         Rejoins 847 membres déjà passés à l'action. 3 mois d'accès · lives en direct · garantie 14j.
       </p>
 
-      <!-- CTA + secondary -->
+      <!-- CTA principal -->
       <div class="va-cta-actions">
         <a class="va-cta-btn" href="#prix">
           <span class="va-cta-btn-inner">
             Je veux ces résultats
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </span>
-        </a>
-        <a class="va-cta-secondary" href="https://wa.me/33766814280" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .1 5.4.1 12c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.7c1.7 1 3.7 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.6-8.3zm-5.6 13.5c-.3.7-1.6 1.4-2.2 1.4-.6 0-1.3.1-2.1-.1-.5-.2-1.1-.4-1.9-.7-3.3-1.4-5.5-4.7-5.6-4.9-.2-.2-1.4-1.9-1.4-3.6 0-1.7.9-2.6 1.2-2.9.3-.3.7-.4.9-.4h.7c.2 0 .5-.1.8.6.3.7.9 2.4 1 2.5.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.4-.5.6-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.6 1.6 2.9 1.8.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.9.9 2.3 1 .3.2.5.2.6.4.1.1.1.8-.2 1.5z"/></svg>
-          Parler à Val
         </a>
       </div>
 
@@ -182,23 +196,7 @@ const testimonials = [
       </div>
 
     </div>
-
   </div>
-
-  <!-- Modal lecteur -->
-  <div class="va-modal" id="va-modal" aria-hidden="true">
-    <button class="va-modal-close" id="va-modal-close" aria-label="Fermer">&times;</button>
-    <div class="va-modal-inner">
-      <video
-        id="va-modal-video"
-        controls
-        playsinline
-        preload="none"
-      ></video>
-      <div class="va-modal-caption" id="va-modal-caption"></div>
-    </div>
-  </div>
-</section>
 
 <style>
   /* ────────── Section ────────── */
@@ -580,11 +578,17 @@ const testimonials = [
     filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
   }
 
-  /* ────────── CTA card premium (rectangulaire, détaché des bordures) ────────── */
+  /* ────────── CTA hors-section (fond noir pur) ────────── */
+  .va-cta-outer {
+    background: #000;
+    padding: 96px 24px 120px;
+  }
+
+  /* ────────── CTA card premium rectangulaire ────────── */
   .va-cta-card {
     position: relative;
-    margin: 120px auto 140px;
-    width: min(960px, calc(100% - 80px));
+    margin: 0 auto;
+    max-width: 960px;
     padding: 44px clamp(32px, 5vw, 72px);
     border-radius: 24px;
     background:
@@ -868,7 +872,8 @@ const testimonials = [
     .va-play { width: 58px; height: 58px; }
     .va-play svg { width: 22px; height: 22px; }
     .va-hook { font-size: 1rem; }
-    .va-cta-card { margin: 72px auto 90px; width: calc(100% - 40px); padding: 32px 22px; border-radius: 20px; }
+    .va-cta-outer { padding: 64px 20px 80px; }
+    .va-cta-card { padding: 32px 22px; border-radius: 20px; }
     .va-cta-headline { font-size: clamp(1.45rem, 5.5vw, 1.85rem); }
     .va-cta-sub { font-size: 0.92rem; margin-bottom: 24px; }
     .va-cta-actions { flex-direction: column; width: 100%; gap: 10px; }
