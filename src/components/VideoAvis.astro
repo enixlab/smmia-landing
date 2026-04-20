@@ -129,22 +129,58 @@ const testimonials = [
       ))}
     </div>
 
-    <!-- CTA bas de section -->
-    <div class="va-cta-block" data-animate>
-      <p class="va-cta-line">
-        Tu as vu leurs résultats.
-        <strong>Maintenant c'est à ton tour.</strong>
-      </p>
-      <a class="va-cta-btn" href="#prix">
-        <span class="va-cta-btn-inner">
-          Je veux ces résultats
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </span>
-      </a>
-      <div class="va-cta-trust">
-        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        Réservation en moins de 3 min · 10 places restantes
+    <!-- CTA bas de section (card premium) -->
+    <div class="va-cta-card" data-animate>
+
+      <!-- Eyebrow scarcity -->
+      <div class="va-cta-eyebrow">
+        <span class="va-cta-eyebrow-dot"></span>
+        Session Mai 2026 · <strong>10 places restantes</strong>
       </div>
+
+      <!-- Headline -->
+      <h3 class="va-cta-headline">
+        Tu as vu leurs résultats.<br>
+        <span class="va-cta-headline-accent">Maintenant c'est ton tour.</span>
+      </h3>
+
+      <!-- Sub -->
+      <p class="va-cta-sub">
+        Rejoins 847 membres déjà passés à l'action. 3 mois d'accès · lives en direct · garantie 14j.
+      </p>
+
+      <!-- CTA + secondary -->
+      <div class="va-cta-actions">
+        <a class="va-cta-btn" href="#prix">
+          <span class="va-cta-btn-inner">
+            Je veux ces résultats
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+        <a class="va-cta-secondary" href="https://wa.me/33766814280" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .1 5.4.1 12c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.7c1.7 1 3.7 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.6-8.3zm-5.6 13.5c-.3.7-1.6 1.4-2.2 1.4-.6 0-1.3.1-2.1-.1-.5-.2-1.1-.4-1.9-.7-3.3-1.4-5.5-4.7-5.6-4.9-.2-.2-1.4-1.9-1.4-3.6 0-1.7.9-2.6 1.2-2.9.3-.3.7-.4.9-.4h.7c.2 0 .5-.1.8.6.3.7.9 2.4 1 2.5.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.4-.5.6-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.6 1.6 2.9 1.8.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.9.9 2.3 1 .3.2.5.2.6.4.1.1.1.8-.2 1.5z"/></svg>
+          Parler à Val
+        </a>
+      </div>
+
+      <!-- Trust row : 3 signals -->
+      <div class="va-cta-signals">
+        <div class="va-cta-signal">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Réservation en 3 min
+        </div>
+        <span class="va-cta-signal-sep" aria-hidden="true"></span>
+        <div class="va-cta-signal">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4-3 8-7 10-4-2-7-6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          Paiement sécurisé
+        </div>
+        <span class="va-cta-signal-sep" aria-hidden="true"></span>
+        <div class="va-cta-signal">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          Remboursé 14j
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -544,34 +580,105 @@ const testimonials = [
     filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
   }
 
-  /* ────────── CTA block ────────── */
-  .va-cta-block {
-    margin-top: 72px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
+  /* ────────── CTA card premium ────────── */
+  .va-cta-card {
+    position: relative;
+    margin: 80px auto 0;
+    max-width: 760px;
+    padding: 48px clamp(28px, 4vw, 56px);
+    border-radius: 28px;
+    background:
+      radial-gradient(120% 80% at 50% 0%, rgba(168, 85, 247, 0.18) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(22, 10, 40, 0.85) 0%, rgba(10, 4, 20, 0.9) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.32);
+    box-shadow:
+      0 40px 100px -30px rgba(168, 85, 247, 0.45),
+      0 16px 40px -12px rgba(88, 28, 135, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
     text-align: center;
+    overflow: hidden;
+    isolation: isolate;
   }
 
-  .va-cta-line {
-    margin: 0;
-    font-size: clamp(1.1rem, 1.8vw, 1.45rem);
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.4;
-    max-width: 620px;
-    letter-spacing: -0.01em;
+  /* Glow interne animé au top (halo violet) */
+  .va-cta-card::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(192, 132, 252, 0.85), transparent);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
   }
 
-  .va-cta-line strong {
-    color: #fff;
+  /* Eyebrow scarcity */
+  .va-cta-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(239, 68, 68, 0.14);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #FECACA;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .va-cta-eyebrow strong { color: #FCA5A5; font-weight: 800; }
+
+  .va-cta-eyebrow-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #EF4444;
+    box-shadow: 0 0 10px #EF4444;
+    animation: va-scarcity-pulse 1.4s ease-in-out infinite;
+  }
+
+  @keyframes va-scarcity-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  /* Headline */
+  .va-cta-headline {
+    margin: 0 0 14px;
+    font-size: clamp(1.7rem, 3.2vw, 2.6rem);
     font-weight: 900;
-    background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 50%, #C084FC 100%);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .va-cta-headline-accent {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 45%, #C084FC 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+  }
+
+  /* Sub */
+  .va-cta-sub {
+    margin: 0 auto 32px;
+    max-width: 520px;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+  }
+
+  /* Actions row */
+  .va-cta-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
   }
 
   .va-cta-btn {
@@ -579,11 +686,11 @@ const testimonials = [
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 40px;
-    border-radius: 18px;
+    padding: 18px 36px;
+    border-radius: 16px;
     background: linear-gradient(135deg, #A855F7 0%, #7C3AED 50%, #6D28D9 100%);
     color: #fff;
-    font-size: 1.12rem;
+    font-size: 1.06rem;
     font-weight: 800;
     letter-spacing: -0.01em;
     text-decoration: none;
@@ -591,33 +698,24 @@ const testimonials = [
     isolation: isolate;
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow:
-      0 24px 60px -14px rgba(168, 85, 247, 0.75),
-      0 8px 22px -6px rgba(124, 58, 237, 0.5),
+      0 22px 56px -14px rgba(168, 85, 247, 0.75),
       inset 0 1px 0 rgba(255, 255, 255, 0.18);
-    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1),
-                box-shadow 0.3s;
+    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s;
   }
 
   .va-cta-btn::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(115deg,
-      transparent 30%,
-      rgba(255, 255, 255, 0.32) 50%,
-      transparent 70%);
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
     transform: translateX(-120%);
     transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   .va-cta-btn:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow:
-      0 32px 80px -12px rgba(168, 85, 247, 0.9),
-      0 12px 28px -6px rgba(124, 58, 237, 0.6),
-      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    box-shadow: 0 32px 80px -10px rgba(168, 85, 247, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.25);
   }
-
   .va-cta-btn:hover::before { transform: translateX(120%); }
 
   .va-cta-btn-inner {
@@ -625,19 +723,57 @@ const testimonials = [
     z-index: 1;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
   }
 
-  .va-cta-trust {
+  .va-cta-secondary {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
+    padding: 18px 24px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+  }
+  .va-cta-secondary:hover {
+    background: rgba(34, 197, 94, 0.12);
+    border-color: rgba(34, 197, 94, 0.5);
+    color: #86EFAC;
+    transform: translateY(-2px);
+  }
+  .va-cta-secondary svg { color: #22C55E; }
+
+  /* Trust signals row */
+  .va-cta-signals {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(168, 85, 247, 0.14);
+  }
+
+  .va-cta-signal {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     color: rgba(255, 255, 255, 0.55);
     font-size: 0.82rem;
     font-weight: 600;
   }
+  .va-cta-signal svg { color: rgba(192, 132, 252, 0.85); }
 
-  .va-cta-trust svg { color: rgba(192, 132, 252, 0.85); }
+  .va-cta-signal-sep {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: rgba(168, 85, 247, 0.35);
+  }
 
   /* ────────── Modal ────────── */
   .va-modal {
@@ -732,9 +868,13 @@ const testimonials = [
     .va-play { width: 58px; height: 58px; }
     .va-play svg { width: 22px; height: 22px; }
     .va-hook { font-size: 1rem; }
-    .va-cta-block { margin-top: 56px; gap: 18px; }
-    .va-cta-btn { padding: 17px 30px; font-size: 1.02rem; width: 100%; max-width: 340px; }
-    .va-cta-trust { font-size: 0.76rem; text-align: center; }
+    .va-cta-card { margin-top: 56px; padding: 36px 22px; border-radius: 22px; }
+    .va-cta-headline { font-size: clamp(1.45rem, 5.5vw, 1.85rem); }
+    .va-cta-sub { font-size: 0.92rem; margin-bottom: 24px; }
+    .va-cta-actions { flex-direction: column; width: 100%; gap: 10px; }
+    .va-cta-btn, .va-cta-secondary { padding: 16px 24px; font-size: 1rem; width: 100%; }
+    .va-cta-signals { font-size: 0.74rem; gap: 8px 12px; }
+    .va-cta-signal-sep { display: none; }
     .va-modal-close { top: -48px; }
     .va-grid { background-size: 44px 44px; }
   }
