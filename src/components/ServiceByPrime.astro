@@ -154,6 +154,8 @@ const row2 = services.filter((_, i) => i % 2 === 1);
       <div class="track track-1">
         {[...row1, ...row1].map((file) => (
           <div class="tile" data-tilt data-cat={categories[file]}>
+            <img class="tile-bg" src={`/images/services-cards/${file}`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            <div class="tile-bg-tint" aria-hidden="true"></div>
             <img class="tile-fg" src={`/images/services-cards/${file}`} alt="" loading="lazy" decoding="async" />
             <div class="tile-sheen" aria-hidden="true"></div>
           </div>
@@ -166,6 +168,8 @@ const row2 = services.filter((_, i) => i % 2 === 1);
       <div class="track track-2">
         {[...row2, ...row2].map((file) => (
           <div class="tile" data-tilt data-cat={categories[file]}>
+            <img class="tile-bg" src={`/images/services-cards/${file}`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            <div class="tile-bg-tint" aria-hidden="true"></div>
             <img class="tile-fg" src={`/images/services-cards/${file}`} alt="" loading="lazy" decoding="async" />
             <div class="tile-sheen" aria-hidden="true"></div>
           </div>
@@ -596,7 +600,7 @@ const row2 = services.filter((_, i) => i % 2 === 1);
     height: 220px;
     border-radius: 22px;
     overflow: hidden;
-    background: radial-gradient(circle at 30% 20%, rgba(168,85,247,0.28), rgba(6,3,13,0.95) 70%);
+    background: #06030d;
     transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1),
                 box-shadow 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     box-shadow:
@@ -628,9 +632,19 @@ const row2 = services.filter((_, i) => i % 2 === 1);
     transition: opacity 0.4s;
   }
 
-  /* Background : gradient violet subtil (remplace l'image floutée — économie GPU) */
+  /* Background : meme image, floutee + saturee (unifie le look violet des cards) */
   .tile-bg {
-    display: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: blur(20px) saturate(1.5) brightness(0.85);
+    transform: scale(1.25);
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
   }
 
   /* Tint leger uniquement pour unifier + vignette subtile */
