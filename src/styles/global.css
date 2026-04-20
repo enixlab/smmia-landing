@@ -334,8 +334,9 @@ section {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
-  /* Décorations hors-flux (halos, auras, blobs, grids) → suppression totale du filter */
-  [aria-hidden="true"] {
+  /* Décorations hors-flux (halos, auras, blobs, grids) → suppression totale du filter
+     SAUF .tile-bg qui a besoin du blur pour le design des cards Prime */
+  [aria-hidden="true"]:not(.tile-bg):not(.tile-fg):not(img) {
     filter: none !important;
     mix-blend-mode: normal !important;
   }
