@@ -139,7 +139,7 @@ const testimonials = [
 
             <div class="tp-meta">
               <div class="tp-avatar" aria-hidden="true">
-                <img class="tp-avatar-img" src={t.photo} alt={`Photo ${t.name}`} loading="lazy" decoding="async" />
+                <span class="tp-avatar-initials">{t.initials}</span>
                 <span class="tp-avatar-ring"></span>
               </div>
               <div class="tp-identity">
@@ -443,27 +443,24 @@ const testimonials = [
   }
   .tp-avatar {
     position: relative;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
+    background: linear-gradient(135deg, #a855f7, #7c3aed 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    overflow: visible;
     box-shadow:
-      0 0 0 2px rgba(168,85,247,0.45),
-      0 0 0 3px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(216,180,254,0.3),
       0 6px 20px -4px rgba(168,85,247,0.5);
   }
-  .tp-avatar-img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-  .tp-card-featured .tp-avatar {
-    width: 54px;
-    height: 54px;
+  .tp-avatar-initials {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.02em;
   }
   .tp-avatar-ring {
     position: absolute;
