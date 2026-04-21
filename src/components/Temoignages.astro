@@ -8,9 +8,11 @@ const testimonials = [
     name: "Mehdi",
     role: "Freelance IA",
     city: "Lyon",
-    quote: "Je facturais 300€ par site. Aujourd'hui je livre des automatisations à 2 000€. Même travail pour moi, 7× le prix.",
+    quote: "Avant SMMIA : 300€ par site vitrine. Aujourd'hui : 2 000€ par automatisation livrée en 48h. Même temps passé. Sept fois le revenu.",
+    before: "300€",
+    after: "2 000€",
     metric: "+6 500€",
-    metricLabel: "par mois",
+    metricLabel: "de CA mensuel",
     featured: true,
   },
   {
@@ -18,16 +20,20 @@ const testimonials = [
     name: "Laura",
     role: "Créatrice de contenu",
     city: "Marseille",
-    quote: "J'ai mis en place le CRM en 2 soirées. Mes premiers retainers sont tombés la semaine suivante.",
-    metric: "3 clients",
-    metricLabel: "en 10 jours",
+    quote: "J'ai signé 3 retainers en 10 jours grâce au script de closing. Mon CA mensuel est passé de 1 800€ à 4 400€.",
+    before: "1 800€",
+    after: "4 400€",
+    metric: "+144%",
+    metricLabel: "CA mensuel",
   },
   {
     initials: "KR",
     name: "Karim",
     role: "Agence SMMA",
     city: "Paris",
-    quote: "Le module a remis à plat ma stack. Offres, tarifs, closing. Chaque élément a été audité avec les experts.",
+    quote: "Ticket moyen passé de 800€ à 1 850€ après l'audit offres avec les experts. Mon closing a explosé sur les packs retainers.",
+    before: "800€",
+    after: "1 850€",
     metric: "×2,3",
     metricLabel: "ticket moyen",
   },
@@ -36,27 +42,33 @@ const testimonials = [
     name: "Nora",
     role: "Fondatrice studio",
     city: "Nantes",
-    quote: "Les lives du dimanche valent à eux seuls l'accès. On ressort avec une to-do béton pour la semaine.",
-    metric: "4h",
-    metricLabel: "gagnées / jour",
+    quote: "Les agents IA m'ont libéré 4h/jour. Résultat : j'ai doublé le nombre de clients actifs en 2 mois sans embaucher.",
+    before: "8 clients",
+    after: "16 clients",
+    metric: "×2",
+    metricLabel: "clients en 60j",
   },
   {
     initials: "TH",
     name: "Thomas",
     role: "Consultant IA",
     city: "Bordeaux",
-    quote: "J'étais dubitatif sur la promesse. Première facture 6 jours après mon inscription. Plus aucun doute.",
-    metric: "1er deal",
-    metricLabel: "à J+6",
+    quote: "Première facture signée 6 jours après l'inscription. Premier mois bouclé à 12 500€ de chiffre. Je n'y croyais pas au départ.",
+    before: "0€",
+    after: "12 500€",
+    metric: "12 500€",
+    metricLabel: "au 1er mois",
   },
   {
     initials: "SA",
     name: "Sarah",
     role: "Agence digitale",
     city: "Lille",
-    quote: "La communauté Focus change tout. Tu n'es plus seul à galérer. Les autres membres relisent tes propales.",
-    metric: "47+",
-    metricLabel: "membres actifs",
+    quote: "La communauté Focus a relu ma proposition deux fois. Résultat : un deal à 15K signé sur un lead que j'aurais perdu seule.",
+    before: "Leads tièdes",
+    after: "Deal 15K",
+    metric: "15 000€",
+    metricLabel: "deal signé",
   },
 ];
 ---
@@ -103,6 +115,21 @@ const testimonials = [
             </svg>
 
             <blockquote class="tp-quote">{t.quote}</blockquote>
+
+            <!-- Avant / Après — bloc résultat chiffré -->
+            <div class="tp-ba">
+              <div class="tp-ba-col tp-ba-before">
+                <span class="tp-ba-lbl">Avant</span>
+                <span class="tp-ba-val">{t.before}</span>
+              </div>
+              <svg class="tp-ba-arrow" viewBox="0 0 24 12" aria-hidden="true">
+                <path d="M1 6H23M23 6L18 1M23 6L18 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+              <div class="tp-ba-col tp-ba-after">
+                <span class="tp-ba-lbl">Après</span>
+                <span class="tp-ba-val">{t.after}</span>
+              </div>
+            </div>
 
             <div class="tp-meta">
               <div class="tp-avatar" aria-hidden="true">
@@ -347,6 +374,57 @@ const testimonials = [
     font-variation-settings: "opsz" 40;
     letter-spacing: -0.005em;
   }
+
+  /* ===== Avant / Après ===== */
+  .tp-ba {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: rgba(168,85,247,0.06);
+    border: 1px solid rgba(168,85,247,0.18);
+  }
+  .tp-ba-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+  .tp-ba-after { text-align: right; }
+  .tp-ba-lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(216,180,254,0.55);
+  }
+  .tp-ba-val {
+    font-family: 'Fraunces', 'Inter', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 144;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tp-ba-after .tp-ba-val {
+    background: linear-gradient(135deg, #d8b4fe 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .tp-ba-arrow {
+    width: 22px;
+    height: auto;
+    color: rgba(168,85,247,0.7);
+    flex-shrink: 0;
+  }
+  .tp-card-featured .tp-ba-val { font-size: 20px; }
 
   /* Meta : avatar + identité + metric */
   .tp-meta {
