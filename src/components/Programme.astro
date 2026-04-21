@@ -2,10 +2,10 @@
 import BrandFloatingIcons from './BrandFloatingIcons.astro';
 
 const pillars = [
-  { id: "01", slug: "technique-ia",   title: "Technique IA",            sub: "Outils, agents, workflows maîtrisés." },
-  { id: "02", slug: "agence-saas",    title: "Agence / SaaS Prime",     sub: "Ton agence IA opérationnelle." },
-  { id: "03", slug: "closing-vente",  title: "Closing / Vente",         sub: "Des prospects qui signent." },
-  { id: "04", slug: "high-ticket",    title: "High Ticket / Recurring", sub: "Tarifs premium. Revenus récurrents." },
+  { id: "01", slug: "ia-quotidien",         title: "IA au quotidien",          sub: "Outils, robot, facturation — l'IA intégrée dans ton SMMA." },
+  { id: "02", slug: "prospection-24-7",     title: "Prospection auto 24/7",    sub: "Emails, cold DM, scraping : les leads arrivent seuls." },
+  { id: "03", slug: "automations-delivery", title: "Automations + Delivery IA",sub: "Closing, signature, livraison — le système tourne sans toi." },
+  { id: "04", slug: "high-ticket",          title: "High Ticket + Recurring",  sub: "Tickets premium 5K–20K + revenus mensuels récurrents." },
 ];
 ---
 
@@ -33,7 +33,7 @@ const pillars = [
         <div class="pillar-card" data-animate data-delay={0.2 + i * 0.08}>
           <div class="pillar-media">
             <img
-              src={`/images/programme/PILIER-${p.id}-${p.slug}.png?v=2`}
+              src={`/images/programme/PILIER-${p.id}-${p.slug}.png?v=3`}
               alt={p.title}
               loading="lazy"
             />
