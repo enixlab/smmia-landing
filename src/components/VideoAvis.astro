@@ -87,46 +87,44 @@ const testimonials = [
 
     </div>
 
-    <!-- Grille de videos -->
-    <div class="va-grid-cards" id="va-grid">
-      {testimonials.map((t, i) => (
-        <button
-          class="va-card"
-          data-animate
-          data-delay={0.04 * i}
-          data-video={`/videos/avis-${t.slug}.mp4`}
-          data-name={t.hook}
-          aria-label={`Lire le témoignage : ${t.hook}`}
-        >
-          <div class="va-card-media">
-            <img
-              src={t.poster}
-              alt={t.hook}
-              loading="lazy"
-              class="va-poster"
-              style={`object-position: center ${t.posterPos};`}
-            />
-
-            <!-- Overlay gradient léger (lisibilité play button) -->
-            <div class="va-card-overlay" aria-hidden="true"></div>
-
-            <!-- Bouton play (seul élément conservé sur l'image) -->
-            <div class="va-play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
+    <!-- Marquee vidéos défilant infini -->
+    <div class="va-marquee-wrap" data-animate>
+      <div class="va-marquee-fade va-marquee-fade-l" aria-hidden="true"></div>
+      <div class="va-marquee-fade va-marquee-fade-r" aria-hidden="true"></div>
+      <div class="va-marquee-track" id="va-marquee-track">
+        {[...testimonials, ...testimonials].map((t, i) => (
+          <button
+            class="va-card"
+            data-video={`/videos/avis-${t.slug}.mp4`}
+            data-name={t.hook}
+            aria-label={`Lire le témoignage : ${t.hook}`}
+          >
+            <div class="va-card-media">
+              <img
+                src={t.poster}
+                alt={t.hook}
+                loading="lazy"
+                class="va-poster"
+                style={`object-position: center ${t.posterPos};`}
+              />
+              <div class="va-card-overlay" aria-hidden="true"></div>
+              <div class="va-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
             </div>
-          </div>
 
-          <div class="va-card-body">
-            <h3 class="va-hook">{t.hook}</h3>
-            <div class="va-cta-watch">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-              Regarder le témoignage
+            <div class="va-card-body">
+              <h3 class="va-hook">{t.hook}</h3>
+              <div class="va-cta-watch">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                Regarder le témoignage
+              </div>
             </div>
-          </div>
-        </button>
-      ))}
+          </button>
+        ))}
+      </div>
     </div>
 
   </div>
@@ -365,16 +363,53 @@ const testimonials = [
     background: linear-gradient(to bottom, transparent, rgba(168, 85, 247, 0.5), transparent);
   }
 
-  /* ────────── Grille cards ────────── */
-  .va-grid-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+  /* ────────── Marquee vidéos ────────── */
+  .va-marquee-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+  }
+  .va-marquee-fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 140px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .va-marquee-fade-l {
+    left: 0;
+    background: linear-gradient(90deg, #060211 0%, rgba(6, 2, 17, 0.85) 40%, transparent 100%);
+  }
+  .va-marquee-fade-r {
+    right: 0;
+    background: linear-gradient(270deg, #060211 0%, rgba(6, 2, 17, 0.85) 40%, transparent 100%);
+  }
+  .va-marquee-track {
+    display: flex;
+    gap: 22px;
+    width: max-content;
+    animation: va-marquee 65s linear infinite;
+    will-change: transform;
+  }
+  .va-marquee-wrap:hover .va-marquee-track,
+  .va-marquee-wrap:focus-within .va-marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes va-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .va-marquee-track { animation: none; }
   }
 
   .va-card {
     position: relative;
     all: unset;
+    flex: 0 0 auto;
+    width: 340px;
     display: flex;
     flex-direction: column;
     background: linear-gradient(180deg, rgba(23, 10, 42, 0.6), rgba(10, 6, 21, 0.8));
@@ -383,13 +418,21 @@ const testimonials = [
     cursor: pointer;
     isolation: isolate;
     transition:
-      transform 0.6s cubic-bezier(0.19, 1, 0.22, 1),
-      box-shadow 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+      transform 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+      box-shadow 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     box-shadow:
       0 20px 50px -20px rgba(0, 0, 0, 0.95),
       0 22px 44px -18px rgba(168, 85, 247, 0.55),
       0 10px 24px -8px rgba(124, 58, 237, 0.45),
       inset 0 1px 0 rgba(216, 180, 254, 0.12);
+  }
+  .va-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+      0 30px 70px -20px rgba(0, 0, 0, 0.95),
+      0 32px 60px -18px rgba(168, 85, 247, 0.75),
+      0 16px 34px -8px rgba(124, 58, 237, 0.6),
+      inset 0 1px 0 rgba(216, 180, 254, 0.22);
   }
 
   /* Glow violet qui entoure chaque card (pulse doux) */
@@ -837,7 +880,8 @@ const testimonials = [
   @media (max-width: 1024px) {
     .va-section { padding: 96px 0 112px; }
     .va-header { margin-bottom: 56px; }
-    .va-grid-cards { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .va-card { width: 300px; }
+    .va-marquee-track { gap: 18px; animation-duration: 60s; }
     .va-play { width: 64px; height: 64px; }
     .va-play svg { width: 24px; height: 24px; }
     .va-halo { width: 380px; height: 380px; filter: blur(80px); }
@@ -849,7 +893,9 @@ const testimonials = [
     .va-header { margin-bottom: 44px; }
     .va-stats { padding: 14px 18px; gap: 18px; border-radius: 16px; }
     .va-stat-sep { height: 28px; }
-    .va-grid-cards { grid-template-columns: 1fr; gap: 18px; }
+    .va-card { width: 260px; }
+    .va-marquee-track { gap: 14px; animation-duration: 50s; }
+    .va-marquee-fade { width: 60px; }
     .va-card-body { padding: 16px 18px 18px; gap: 10px; }
     .va-play { width: 58px; height: 58px; }
     .va-play svg { width: 22px; height: 22px; }
