@@ -30,10 +30,9 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     </div>
 
     <!-- Tagline principale -->
-    <h1 class="hero-title">
-      <span class="line-outline reveal" style="--d:0.15s">L'IA maîtrisée.</span>
-      <span class="line-fill reveal" style="--d:0.35s">
-        Un avantage décisif.
+    <h1 class="hero-title hero-title--solo">
+      <span class="line-fill reveal" style="--d:0.2s">
+        L'IA débridée.
         <svg class="underline-svg" viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="ug" x1="0" x2="1">
@@ -314,6 +313,11 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     align-items: center;
     gap: 4px;
   }
+  .hero-title--solo {
+    font-size: clamp(56px, 10vw, 150px);
+    letter-spacing: -0.04em;
+  }
+  .hero-title--solo .line-fill { padding-bottom: 20px; }
 
   .reveal {
     opacity: 0;
