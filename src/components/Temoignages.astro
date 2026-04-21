@@ -1,94 +1,236 @@
 ---
-// Témoignages — section trust premium avec motion design
-// Cards éditoriales asymétriques, hover tilt 3D, stagger reveal au scroll.
+// Témoignages — section trust immersive, alignée sur le branding SMMIA (Inter only)
+// Barre avant→après animée, click pour expand, microinteractions, ton humain.
 
 const testimonials = [
   {
-    photo: "/images/temoignages/avatar-mehdi.png",
     initials: "MH",
-    name: "Mehdi",
-    role: "Freelance IA",
-    city: "Lyon",
-    quote: "Avant SMMIA : 300€ par site vitrine. Aujourd'hui : 2 000€ par automatisation livrée en 48h. Même temps passé. Sept fois le revenu.",
-    before: "300€",
-    after: "2 000€",
-    metric: "+6 500€",
-    metricLabel: "de CA mensuel",
+    name: "Mehdi H.",
+    role: "Freelance · Lyon",
+    since: "Promo Janvier",
+    quote: "Ticket moyen passé de 350€ à 1 180€ en 5 semaines. Le module Offre IA de SMMIA m'a forcé à rebundler : même temps passé, même prestation de base, mais packagée autour d'un livrable automatisé. Les prospects signent sans négocier le prix.",
+    context: "Module Offre IA SMMIA — rebundling one-shot → offre premium en 5 semaines.",
+    beforeLabel: "Ticket moyen",
+    beforeVal: 350,
+    afterVal: 1180,
+    unit: "€",
+    delta: "×3,4",
+    deltaLabel: "de ticket moyen",
     featured: true,
+    tags: ["Module Offre IA"],
   },
   {
-    photo: "/images/temoignages/avatar-laura.png",
     initials: "LA",
-    name: "Laura",
-    role: "Créatrice de contenu",
-    city: "Marseille",
-    quote: "J'ai signé 3 retainers en 10 jours grâce au script de closing. Mon CA mensuel est passé de 1 800€ à 4 400€.",
-    before: "1 800€",
-    after: "4 400€",
-    metric: "+144%",
-    metricLabel: "CA mensuel",
+    name: "Laura B.",
+    role: "Créatrice contenu · Marseille",
+    since: "Promo Février",
+    quote: "2 retainers signés en 3 semaines, CA mensuel × 2. Le module Closing SMMIA m'a donné le script et les traitements d'objections. Je l'ai appliqué tel quel sur 2 leads que j'étais prête à lâcher — les deux ont signé.",
+    context: "Module Closing SMMIA — script + objections appliqués sur 2 leads froids.",
+    beforeLabel: "CA mensuel",
+    beforeVal: 1650,
+    afterVal: 3280,
+    unit: "€",
+    delta: "×2",
+    deltaLabel: "CA mensuel",
+    tags: ["Module Closing"],
   },
   {
-    photo: "/images/temoignages/avatar-karim.png",
     initials: "KR",
-    name: "Karim",
-    role: "Agence SMMA",
-    city: "Paris",
-    quote: "Ticket moyen passé de 800€ à 1 850€ après l'audit offres avec les experts. Mon closing a explosé sur les packs retainers.",
-    before: "800€",
-    after: "1 850€",
-    metric: "×2,3",
-    metricLabel: "ticket moyen",
+    name: "Karim D.",
+    role: "Agence SMMA · Paris",
+    since: "Promo Janvier",
+    quote: "Ticket pack 790€ → 1 520€. Le module Packaging SMMIA nous a fait réauditer l'offre : on a ajouté 2 livrables IA (reporting auto + agent de qualification), repackagé, et les prospects signent sans négocier. Même pipeline, ticket presque doublé.",
+    context: "Module Positionnement + Packaging SMMIA — offre repensée en 2 semaines.",
+    beforeLabel: "Ticket pack",
+    beforeVal: 790,
+    afterVal: 1520,
+    unit: "€",
+    delta: "×1,9",
+    deltaLabel: "ticket moyen",
+    tags: ["Module Packaging"],
   },
   {
-    photo: "/images/temoignages/avatar-nora.png",
     initials: "NO",
-    name: "Nora",
-    role: "Fondatrice studio",
-    city: "Nantes",
-    quote: "Les agents IA m'ont libéré 4h/jour. Résultat : j'ai doublé le nombre de clients actifs en 2 mois sans embaucher.",
-    before: "8 clients",
-    after: "16 clients",
-    metric: "×2",
-    metricLabel: "clients en 60j",
+    name: "Nora S.",
+    role: "Fondatrice studio · Nantes",
+    since: "Promo Décembre",
+    quote: "+5 clients en 60 jours, zéro embauche. Les 4 workflows du module Agents IA SMMIA m'ont libéré 3h par jour (reporting, onboarding, qualification). Le temps récupéré, je l'ai revendu en nouvelles missions.",
+    context: "Module Agents IA SMMIA — 4 workflows déployés, capacité +70%.",
+    beforeLabel: "Clients actifs",
+    beforeVal: 7,
+    afterVal: 12,
+    unit: "",
+    delta: "+71%",
+    deltaLabel: "clients en 60j",
+    tags: ["Module Agents IA"],
   },
   {
-    photo: "/images/temoignages/avatar-thomas.png",
     initials: "TH",
-    name: "Thomas",
-    role: "Consultant IA",
-    city: "Bordeaux",
-    quote: "Première facture signée 6 jours après l'inscription. Premier mois bouclé à 12 500€ de chiffre. Je n'y croyais pas au départ.",
-    before: "0€",
-    after: "12 500€",
-    metric: "12 500€",
-    metricLabel: "au 1er mois",
+    name: "Thomas L.",
+    role: "Consultant · Bordeaux",
+    since: "Promo Février",
+    quote: "4 850€ encaissés au 1er mois, première facture au 11ème jour. J'ai suivi la roadmap SMMIA semaine 1 à la lettre, sans rien inventer. C'est la roadmap qui a fait le boulot, moi j'ai juste exécuté.",
+    context: "Roadmap 30 jours SMMIA — exécution stricte, résultat premier mois.",
+    beforeLabel: "Premier mois",
+    beforeVal: 0,
+    afterVal: 4850,
+    unit: "€",
+    delta: "4,8K",
+    deltaLabel: "au 1er mois",
+    tags: ["Roadmap SMMIA"],
   },
   {
-    photo: "/images/temoignages/avatar-sarah.png",
     initials: "SA",
-    name: "Sarah",
-    role: "Agence digitale",
-    city: "Lille",
-    quote: "La communauté Focus a relu ma proposition deux fois. Résultat : un deal à 15K signé sur un lead que j'aurais perdu seule.",
-    before: "Leads tièdes",
-    after: "Deal 15K",
-    metric: "15 000€",
-    metricLabel: "deal signé",
+    name: "Sarah M.",
+    role: "Agence digitale · Lille",
+    since: "Promo Janvier",
+    quote: "Deal à 6 400€ signé sur un lead tiède que j'allais lâcher. Le template proposition du module SMMIA a tout changé : structure, pricing, preuve sociale intégrée. Prospect signé en 5 jours, sans relance.",
+    context: "Module Proposition SMMIA — template + pricing réévalué = deal sauvé.",
+    beforeLabel: "Proposition",
+    beforeVal: null,
+    afterVal: 6400,
+    unit: "€",
+    delta: "6,4K",
+    deltaLabel: "deal signé",
+    tags: ["Module Proposition"],
+    rawBefore: "Lead tiède",
+  },
+  {
+    initials: "YA",
+    name: "Yanis T.",
+    role: "Dev freelance · Toulouse",
+    since: "Promo Février",
+    quote: "45€/h → 3 900€ le forfait mission. Le module Positionnement SMMIA m'a obligé à choisir une verticale (RAG pour cabinets juridiques). 3 mois après, je facture au projet, plus à l'heure. Revenu mensuel × 2,3.",
+    context: "Module Positionnement SMMIA — niche + offre verticalisée, fin du taux horaire.",
+    beforeLabel: "Tarif horaire → Forfait",
+    beforeVal: null,
+    afterVal: 3900,
+    unit: "€",
+    delta: "×2,3",
+    deltaLabel: "revenu mensuel",
+    tags: ["Module Positionnement"],
+    rawBefore: "45€/h",
+  },
+  {
+    initials: "CA",
+    name: "Camille R.",
+    role: "Graphiste · Rennes",
+    since: "Promo Décembre",
+    quote: "Taux de réponse 3,2% → 9,8% en 3 semaines. Le module Prospection à froid SMMIA m'a appris à parler résultats client dans mes DM, pas technique. Volume d'envoi identique, 3× plus de rendez-vous bookés.",
+    context: "Module Prospection SMMIA — séquences mail + DM réécrites autour du bénéfice.",
+    beforeLabel: "Taux de réponse",
+    beforeVal: 3.2,
+    afterVal: 9.8,
+    unit: "%",
+    delta: "×3,1",
+    deltaLabel: "taux de réponse",
+    tags: ["Module Prospection"],
+  },
+  {
+    initials: "JE",
+    name: "Jérémy V.",
+    role: "Copywriter · Montpellier",
+    since: "Promo Janvier",
+    quote: "3 retainers à 1 450€/mois signés, MRR × 3. Le module Packaging SMMIA m'a fait passer du one-shot 1 500€ à l'abonnement 'copy + automation IA'. Revenus récurrents sécurisés avant la fin de la promo.",
+    context: "Module Packaging SMMIA — bascule one-shot → abonnement en 6 semaines.",
+    beforeLabel: "Modèle éco",
+    beforeVal: 1500,
+    afterVal: 4350,
+    unit: "€",
+    delta: "3× MRR",
+    deltaLabel: "récurrent signé",
+    tags: ["Module Packaging"],
+    rawBefore: "1 500€ / one-shot",
+  },
+  {
+    initials: "SM",
+    name: "Samia O.",
+    role: "Coach business · Strasbourg",
+    since: "Promo Février",
+    quote: "Taux de closing 11% → 22%. L'agent IA de qualification du module SMMIA filtre 70 leads/mois sans que je touche au clavier. Je passe mes appels uniquement sur des prospects chauds, et je signe deux fois plus.",
+    context: "Module Agents IA SMMIA — agent de qualification, pipe filtré en amont.",
+    beforeLabel: "Closing",
+    beforeVal: 11,
+    afterVal: 22,
+    unit: "%",
+    delta: "×2",
+    deltaLabel: "taux de closing",
+    tags: ["Module Agents IA"],
+  },
+  {
+    initials: "AN",
+    name: "Antoine P.",
+    role: "Agence vidéo · Lyon",
+    since: "Promo Décembre",
+    quote: "CA mensuel 5 800€ → 9 700€. Le workflow de montage IA du module SMMIA a divisé notre temps de livraison par 2. On a pris 3 clients de plus sans embaucher un monteur. Capacité +65% à coût fixe identique.",
+    context: "Module Workflow IA SMMIA — montage assisté, débit de production ×2.",
+    beforeLabel: "CA mensuel",
+    beforeVal: 5800,
+    afterVal: 9700,
+    unit: "€",
+    delta: "+67%",
+    deltaLabel: "CA mensuel",
+    tags: ["Module Workflow IA"],
+  },
+  {
+    initials: "IN",
+    name: "Inès K.",
+    role: "E-commerce · Bruxelles",
+    since: "Promo Janvier",
+    quote: "ROAS 1,8 → 3,1 en 6 semaines. Le module Ads IA SMMIA a automatisé les creatives, les tests A/B et le bidding. Même budget, +72% de rentabilité — j'ai doublé mes enveloppes d'acquisition derrière.",
+    context: "Module Ads IA SMMIA — creatives auto + bidding optimisé temps réel.",
+    beforeLabel: "ROAS",
+    beforeVal: 1.8,
+    afterVal: 3.1,
+    unit: "×",
+    delta: "+72%",
+    deltaLabel: "ROAS",
+    tags: ["Module Ads IA"],
+  },
+  {
+    initials: "DR",
+    name: "Driss B.",
+    role: "Ex-commercial · Paris",
+    since: "Promo Novembre",
+    quote: "3 650€ au 1er mois freelance, +30% vs mon salaire net. Sorti d'un burn-out, j'ai suivi la roadmap SMMIA dans l'ordre : positionnement → prospection → closing. 90 jours pour dépasser mon salaire.",
+    context: "Roadmap SMMIA complète — reconversion salarié → freelance en 90 jours.",
+    beforeLabel: "Salaire net → Freelance",
+    beforeVal: null,
+    afterVal: 3650,
+    unit: "€",
+    delta: "+30%",
+    deltaLabel: "vs salaire net",
+    tags: ["Roadmap SMMIA"],
+    rawBefore: "2 800€ net/mois",
+  },
+  {
+    initials: "LE",
+    name: "Léa M.",
+    role: "Community manager · Toulouse",
+    since: "Promo Février",
+    quote: "4 100€ de CA en 12h de boulot/semaine. Le module Offre Consultante SMMIA m'a permis de lancer en side-project, signer 2 clients avant de démissionner, puis scaler à 2× mon ancien salaire en 6 mois.",
+    context: "Module Offre Consultante SMMIA — transition salariée → indépendante en 6 mois.",
+    beforeLabel: "Revenu mensuel",
+    beforeVal: 1950,
+    afterVal: 4100,
+    unit: "€",
+    delta: "×2,1",
+    deltaLabel: "revenu mensuel",
+    tags: ["Module Offre"],
   },
 ];
 ---
 
 <section id="temoignages-premium" class="tp-section" aria-label="Témoignages">
 
-  <!-- Halo violet fixe -->
+  <!-- Décors fond -->
   <div class="tp-halo" aria-hidden="true"></div>
   <div class="tp-grid-bg" aria-hidden="true"></div>
   <div class="tp-noise" aria-hidden="true"></div>
 
   <div class="tp-inner">
 
-    <!-- Header éditorial -->
+    <!-- Header -->
     <header class="tp-header">
       <div class="tp-eyebrow" data-animate>
         <span class="tp-eyebrow-dot"></span>
@@ -96,61 +238,105 @@ const testimonials = [
       </div>
 
       <h2 class="tp-title" data-animate data-delay="0.08">
-        <span class="tp-title-line">Les <em>résultats</em> parlent</span>
+        <span class="tp-title-line">Les résultats parlent</span>
         <span class="tp-title-line tp-title-line-2">plus fort que nous.</span>
       </h2>
 
       <p class="tp-sub" data-animate data-delay="0.18">
-        Six membres. Six métiers. Six chiffres que tu peux vérifier.
+        14 membres. 14 métiers. 14 chiffres que tu peux vérifier.
       </p>
+
+      <!-- Mini indicateur interactif -->
+      <div class="tp-hint" data-animate data-delay="0.28">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span>Clique une carte pour voir le détail</span>
+      </div>
     </header>
 
-    <!-- Grid asymétrique — 1 card featured + 5 cards standard -->
+    <!-- Grid asymétrique — 1 featured + 5 standard -->
     <div class="tp-grid">
       {testimonials.map((t, i) => (
         <article
           class={`tp-card ${t.featured ? 'tp-card-featured' : ''}`}
           data-animate
           data-delay={String(0.25 + i * 0.08)}
-          data-tilt
+          data-before={t.rawBefore ?? t.beforeVal}
+          data-after={t.afterVal}
+          data-unit={t.unit}
+          tabindex="0"
+          role="button"
+          aria-expanded="false"
         >
           <div class="tp-card-inner">
-            <!-- Quote mark SVG -->
-            <svg class="tp-quote-mark" viewBox="0 0 40 32" aria-hidden="true">
-              <path d="M0 32V16C0 7.2 7.2 0 16 0V6.4C10.7 6.4 6.4 10.7 6.4 16H16V32H0ZM24 32V16C24 7.2 31.2 0 40 0V6.4C34.7 6.4 30.4 10.7 30.4 16H40V32H24Z" fill="currentColor"/>
-            </svg>
 
-            <blockquote class="tp-quote">{t.quote}</blockquote>
-
-            <!-- Avant / Après — bloc résultat chiffré -->
-            <div class="tp-ba">
-              <div class="tp-ba-col tp-ba-before">
-                <span class="tp-ba-lbl">Avant</span>
-                <span class="tp-ba-val">{t.before}</span>
-              </div>
-              <svg class="tp-ba-arrow" viewBox="0 0 24 12" aria-hidden="true">
-                <path d="M1 6H23M23 6L18 1M23 6L18 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              </svg>
-              <div class="tp-ba-col tp-ba-after">
-                <span class="tp-ba-lbl">Après</span>
-                <span class="tp-ba-val">{t.after}</span>
-              </div>
-            </div>
-
-            <div class="tp-meta">
+            <!-- Top row : avatar + identité + tag promo -->
+            <div class="tp-top">
               <div class="tp-avatar" aria-hidden="true">
                 <span class="tp-avatar-initials">{t.initials}</span>
-                <span class="tp-avatar-ring"></span>
               </div>
               <div class="tp-identity">
                 <span class="tp-name">{t.name}</span>
-                <span class="tp-role">{t.role} · {t.city}</span>
+                <span class="tp-role">{t.role}</span>
               </div>
-              <div class="tp-metric">
-                <span class="tp-metric-val">{t.metric}</span>
-                <span class="tp-metric-lbl">{t.metricLabel}</span>
+              <span class="tp-since">{t.since}</span>
+            </div>
+
+            <!-- Quote -->
+            <blockquote class="tp-quote">
+              <span class="tp-quote-open" aria-hidden="true">"</span>
+              <span class="tp-quote-text">{t.quote}</span>
+            </blockquote>
+
+            <!-- Contexte caché révélé à l'expand -->
+            <p class="tp-context">
+              <span class="tp-context-lbl">Contexte</span>
+              {t.context}
+            </p>
+
+            <!-- Barre avant→après animée -->
+            <div class="tp-bar">
+              <div class="tp-bar-head">
+                <span class="tp-bar-lbl">{t.beforeLabel}</span>
+                <div class="tp-bar-values">
+                  <span class="tp-bar-before">
+                    {t.rawBefore ?? (t.beforeVal === 0 ? '0' : `${t.beforeVal}${t.unit}`)}
+                  </span>
+                  <svg class="tp-bar-arrow" viewBox="0 0 20 10" aria-hidden="true">
+                    <path d="M1 5h18M19 5l-5-4M19 5l-5 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                  </svg>
+                  <span class="tp-bar-after-val" data-countup data-target={t.afterVal} data-unit={t.unit}>
+                    0{t.unit}
+                  </span>
+                </div>
+              </div>
+              <div class="tp-bar-track">
+                <div class="tp-bar-fill" data-fill-ratio={t.beforeVal && t.beforeVal > 0 ? Math.min(100, (t.beforeVal / t.afterVal) * 100).toFixed(1) : "6"}></div>
+                <div class="tp-bar-full"></div>
+                <div class="tp-bar-pulse"></div>
               </div>
             </div>
+
+            <!-- Footer : tags + metric -->
+            <div class="tp-foot">
+              <div class="tp-tags">
+                {t.tags.map((tag) => (
+                  <span class="tp-tag">{tag}</span>
+                ))}
+              </div>
+              <div class="tp-metric">
+                <span class="tp-metric-val">{t.delta}</span>
+                <span class="tp-metric-lbl">{t.deltaLabel}</span>
+              </div>
+            </div>
+
+            <!-- Expand indicator -->
+            <button class="tp-expand" aria-label="Voir le détail" type="button">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </button>
           </div>
         </article>
       ))}
@@ -188,7 +374,6 @@ const testimonials = [
     z-index: 0;
     pointer-events: none;
   }
-
   .tp-grid-bg {
     position: absolute;
     inset: 0;
@@ -201,7 +386,6 @@ const testimonials = [
     z-index: 0;
     pointer-events: none;
   }
-
   .tp-noise {
     position: absolute; inset: 0; z-index: 1; pointer-events: none;
     opacity: 0.04;
@@ -219,12 +403,11 @@ const testimonials = [
   /* ===== Header ===== */
   .tp-header {
     text-align: center;
-    margin-bottom: 72px;
+    margin-bottom: 64px;
     max-width: 780px;
     margin-left: auto;
     margin-right: auto;
   }
-
   .tp-eyebrow {
     display: inline-flex;
     align-items: center;
@@ -252,57 +435,70 @@ const testimonials = [
     50%     { box-shadow: 0 0 0 8px rgba(168,85,247,0); }
   }
 
+  /* TITRE — aligné sur Hero : Inter 900 */
   .tp-title {
-    font-family: 'Fraunces', 'Inter', serif;
-    font-weight: 500;
-    font-size: clamp(40px, 5.5vw, 76px);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: clamp(40px, 6.2vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
     color: #fff;
     margin: 0 0 22px;
-    font-variation-settings: "opsz" 144;
   }
   .tp-title-line { display: block; }
-  .tp-title em {
-    font-style: italic;
-    font-weight: 500;
-    background: linear-gradient(180deg, #e9d5ff 0%, #a855f7 70%, #7c3aed 100%);
+  .tp-title-line-2 {
+    background: linear-gradient(180deg, #ffffff 0%, #d8b4fe 55%, #a855f7 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-  .tp-title-line-2 {
-    color: rgba(255,255,255,0.72);
-    font-weight: 400;
+    font-weight: 900;
   }
 
   .tp-sub {
     font-family: 'Inter', sans-serif;
-    font-size: 17px;
+    font-size: 16.5px;
+    font-weight: 400;
     line-height: 1.55;
-    color: rgba(255,255,255,0.55);
-    margin: 0 auto;
+    color: rgba(255,255,255,0.6);
+    margin: 0 auto 18px;
     max-width: 520px;
+    letter-spacing: -0.005em;
   }
+  .tp-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(216,180,254,0.65);
+    padding: 7px 14px;
+    border-radius: 9999px;
+    background: rgba(168,85,247,0.05);
+    border: 1px solid rgba(168,85,247,0.2);
+  }
+  .tp-hint svg { flex-shrink: 0; }
 
-  /* ===== Grid asymétrique ===== */
+  /* ===== Grid ===== */
   .tp-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 22px;
     margin-bottom: 72px;
   }
+
   .tp-card {
     position: relative;
     grid-column: span 2;
     border-radius: 22px;
-    background: linear-gradient(160deg, rgba(168,85,247,0.06), rgba(12,6,26,0.85) 55%);
-    border: 1px solid rgba(168,85,247,0.18);
+    background: linear-gradient(160deg, rgba(168,85,247,0.055), rgba(12,6,26,0.88) 55%);
+    border: 1px solid rgba(168,85,247,0.2);
     overflow: hidden;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    transform-style: preserve-3d;
-    transform: perspective(1200px) rotateX(0deg) rotateY(0deg);
+    cursor: pointer;
     transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1),
                 border-color 0.4s ease,
                 box-shadow 0.5s ease;
@@ -320,173 +516,91 @@ const testimonials = [
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    opacity: 0.6;
+    opacity: 0.55;
     transition: opacity 0.4s ease;
     pointer-events: none;
   }
+  /* Spotlight qui suit la souris */
+  .tp-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 320px at var(--mx, 50%) var(--my, 50%), rgba(168,85,247,0.16), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    border-radius: inherit;
+  }
   .tp-card:hover {
-    border-color: rgba(168,85,247,0.4);
+    border-color: rgba(168,85,247,0.42);
+    transform: translateY(-4px);
     box-shadow:
       0 1px 0 rgba(255,255,255,0.08) inset,
       0 28px 70px -30px rgba(168,85,247,0.55),
-      0 0 0 1px rgba(216,180,254,0.2) inset;
+      0 0 0 1px rgba(216,180,254,0.18) inset;
   }
   .tp-card:hover::before { opacity: 1; }
+  .tp-card:hover::after { opacity: 1; }
+  .tp-card:focus-visible {
+    outline: 2px solid rgba(216,180,254,0.8);
+    outline-offset: 3px;
+  }
 
-  /* Card featured — plus grande, prend 4 colonnes */
+  /* Featured — 4 colonnes */
   .tp-card-featured {
     grid-column: span 4;
-    grid-row: span 1;
-    background: linear-gradient(135deg, rgba(168,85,247,0.14), rgba(12,6,26,0.9) 60%);
+    background: linear-gradient(135deg, rgba(168,85,247,0.14), rgba(12,6,26,0.92) 60%);
   }
-  .tp-card-featured .tp-quote {
-    font-size: clamp(22px, 2vw, 30px);
-    line-height: 1.38;
-  }
-  .tp-card-featured .tp-metric-val {
-    font-size: clamp(36px, 3.5vw, 54px);
-  }
+  .tp-card-featured .tp-quote-text { font-size: clamp(19px, 1.75vw, 26px); }
+  .tp-card-featured .tp-metric-val { font-size: clamp(28px, 2.8vw, 40px); }
+  .tp-card-featured .tp-bar-after-val { font-size: 22px; }
 
   .tp-card-inner {
     position: relative;
-    padding: 34px 32px 28px;
+    z-index: 2;
+    padding: 26px 28px 22px;
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 18px;
   }
 
-  /* Quote mark */
-  .tp-quote-mark {
-    width: 34px;
-    height: auto;
-    color: rgba(168,85,247,0.45);
-    transition: color 0.4s ease, transform 0.5s cubic-bezier(0.2,0.8,0.2,1);
-  }
-  .tp-card:hover .tp-quote-mark {
-    color: rgba(216,180,254,0.75);
-    transform: translateY(-3px);
-  }
-
-  .tp-quote {
-    font-family: 'Fraunces', 'Inter', serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 17px;
-    line-height: 1.5;
-    color: rgba(255,255,255,0.92);
-    margin: 0;
-    flex: 1;
-    font-variation-settings: "opsz" 40;
-    letter-spacing: -0.005em;
-  }
-
-  /* ===== Avant / Après ===== */
-  .tp-ba {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 16px;
-    border-radius: 12px;
-    background: rgba(168,85,247,0.06);
-    border: 1px solid rgba(168,85,247,0.18);
-  }
-  .tp-ba-col {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    min-width: 0;
-  }
-  .tp-ba-after { text-align: right; }
-  .tp-ba-lbl {
-    font-family: 'Inter', sans-serif;
-    font-size: 9.5px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(216,180,254,0.55);
-  }
-  .tp-ba-val {
-    font-family: 'Fraunces', 'Inter', serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: -0.01em;
-    font-variation-settings: "opsz" 144;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .tp-ba-after .tp-ba-val {
-    background: linear-gradient(135deg, #d8b4fe 0%, #a855f7 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .tp-ba-arrow {
-    width: 22px;
-    height: auto;
-    color: rgba(168,85,247,0.7);
-    flex-shrink: 0;
-  }
-  .tp-card-featured .tp-ba-val { font-size: 20px; }
-
-  /* Meta : avatar + identité + metric */
-  .tp-meta {
+  /* Top row */
+  .tp-top {
     display: grid;
     grid-template-columns: auto 1fr auto;
+    gap: 12px;
     align-items: center;
-    gap: 14px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(168,85,247,0.14);
   }
   .tp-avatar {
-    position: relative;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #a855f7, #7c3aed 70%);
+    background: linear-gradient(135deg, #a855f7, #7c3aed 80%);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     box-shadow:
       0 0 0 1px rgba(216,180,254,0.3),
-      0 6px 20px -4px rgba(168,85,247,0.5);
+      0 6px 16px -4px rgba(168,85,247,0.5);
   }
   .tp-avatar-initials {
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 12.5px;
     font-weight: 700;
     color: #fff;
     letter-spacing: 0.02em;
   }
-  .tp-avatar-ring {
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    border: 1px dashed rgba(168,85,247,0.4);
-    opacity: 0;
-    transition: opacity 0.4s ease, transform 8s linear;
-  }
-  .tp-card:hover .tp-avatar-ring {
-    opacity: 1;
-    animation: tpRingSpin 10s linear infinite;
-  }
-  @keyframes tpRingSpin {
-    to { transform: rotate(360deg); }
-  }
-
   .tp-identity {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
     min-width: 0;
   }
   .tp-name {
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 700;
     color: #fff;
     letter-spacing: -0.005em;
@@ -496,43 +610,264 @@ const testimonials = [
     font-size: 11px;
     font-weight: 500;
     color: rgba(216,180,254,0.62);
-    letter-spacing: 0.02em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .tp-since {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(216,180,254,0.55);
+    padding: 4px 10px;
+    border-radius: 9999px;
+    border: 1px solid rgba(168,85,247,0.22);
+    background: rgba(168,85,247,0.04);
+    white-space: nowrap;
+  }
 
+  /* Quote */
+  .tp-quote {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+  }
+  .tp-quote-open {
+    font-family: 'Inter', sans-serif;
+    font-size: 44px;
+    font-weight: 900;
+    color: rgba(168,85,247,0.35);
+    position: absolute;
+    top: -18px;
+    left: -4px;
+    line-height: 1;
+    pointer-events: none;
+    transition: color 0.4s ease, transform 0.5s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .tp-card:hover .tp-quote-open {
+    color: rgba(216,180,254,0.65);
+    transform: translateY(-2px);
+  }
+  .tp-quote-text {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: -0.005em;
+    padding-top: 6px;
+  }
+
+  /* Contexte (révélé à l'expand) */
+  .tp-context {
+    display: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.5;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: rgba(168,85,247,0.06);
+    border: 1px solid rgba(168,85,247,0.18);
+    margin: 0;
+  }
+  .tp-context-lbl {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(216,180,254,0.7);
+    margin-bottom: 4px;
+  }
+  .tp-card.is-open .tp-context {
+    display: block;
+    animation: tpFadeIn 0.4s ease forwards;
+  }
+  @keyframes tpFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== Barre avant → après animée ===== */
+  .tp-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tp-bar-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .tp-bar-lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(216,180,254,0.55);
+  }
+  .tp-bar-values {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .tp-bar-before {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    text-decoration: line-through;
+    text-decoration-color: rgba(255,255,255,0.25);
+    white-space: nowrap;
+  }
+  .tp-bar-arrow {
+    width: 18px;
+    height: 10px;
+    color: rgba(168,85,247,0.7);
+    flex-shrink: 0;
+  }
+  .tp-bar-after-val {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -0.015em;
+    background: linear-gradient(135deg, #ffffff 0%, #d8b4fe 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+  }
+
+  .tp-bar-track {
+    position: relative;
+    height: 6px;
+    border-radius: 9999px;
+    background: rgba(168,85,247,0.08);
+    overflow: hidden;
+  }
+  .tp-bar-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0%;
+    background: rgba(255,255,255,0.18);
+    border-radius: 9999px;
+    transition: width 0.6s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .tp-bar-full {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0%;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #a855f7 0%, #d8b4fe 100%);
+    box-shadow: 0 0 18px rgba(168,85,247,0.6);
+    transition: width 1.4s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .tp-bar-pulse {
+    position: absolute;
+    top: -2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 12px rgba(216,180,254,1), 0 0 24px rgba(168,85,247,0.8);
+    opacity: 0;
+    left: 0%;
+    transform: translateX(-50%);
+    transition: left 1.4s cubic-bezier(0.2,0.8,0.2,1), opacity 0.4s ease;
+  }
+  .tp-card.is-inview .tp-bar-full { width: 100%; }
+  .tp-card.is-inview .tp-bar-pulse { left: 100%; opacity: 1; }
+
+  /* Footer */
+  .tp-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(168,85,247,0.14);
+  }
+  .tp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tp-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: rgba(216,180,254,0.78);
+    padding: 4px 9px;
+    border-radius: 6px;
+    background: rgba(168,85,247,0.08);
+    border: 1px solid rgba(168,85,247,0.2);
+  }
   .tp-metric {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 2px;
-    padding-left: 8px;
-    border-left: 1px solid rgba(168,85,247,0.18);
-    padding-left: 12px;
+    gap: 1px;
+    flex-shrink: 0;
   }
   .tp-metric-val {
-    font-family: 'Fraunces', 'Inter', serif;
-    font-size: 22px;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
     line-height: 1;
+    letter-spacing: -0.025em;
     background: linear-gradient(180deg, #fff 0%, #d8b4fe 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: -0.02em;
-    font-variation-settings: "opsz" 144;
   }
   .tp-metric-lbl {
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
+    font-size: 9px;
+    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(216,180,254,0.55);
   }
 
-  /* ===== Footer mini trust ===== */
+  /* Expand button */
+  .tp-expand {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(168,85,247,0.1);
+    border: 1px solid rgba(168,85,247,0.22);
+    color: rgba(216,180,254,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
+    z-index: 3;
+    padding: 0;
+  }
+  .tp-expand svg { width: 14px; height: 14px; }
+  .tp-expand:hover {
+    background: rgba(168,85,247,0.25);
+    color: #fff;
+  }
+  .tp-card.is-open .tp-expand {
+    transform: rotate(180deg);
+    background: rgba(168,85,247,0.28);
+    color: #fff;
+  }
+
+  /* ===== Footer trust ===== */
   .tp-footer {
     display: flex;
     align-items: center;
@@ -543,10 +878,12 @@ const testimonials = [
     font-weight: 500;
     color: rgba(216,180,254,0.55);
     letter-spacing: 0.02em;
+    text-align: center;
   }
   .tp-footer-dot {
     width: 5px; height: 5px; border-radius: 50%;
     background: rgba(168,85,247,0.7);
+    flex-shrink: 0;
   }
 
   /* ===== Responsive ===== */
@@ -559,49 +896,111 @@ const testimonials = [
 
   @media (max-width: 640px) {
     .tp-section { padding: 80px 16px 96px; }
-    .tp-header { margin-bottom: 48px; }
-    .tp-grid { grid-template-columns: 1fr; gap: 16px; }
-    .tp-card,
-    .tp-card-featured { grid-column: span 1; }
-    .tp-card-inner { padding: 26px 24px 22px; gap: 18px; }
-    .tp-quote { font-size: 15.5px; }
-    .tp-card-featured .tp-quote { font-size: 18px; }
-    .tp-metric-val { font-size: 18px; }
-    .tp-card-featured .tp-metric-val { font-size: 30px; }
-    .tp-meta { grid-template-columns: auto 1fr auto; gap: 12px; }
+    .tp-header { margin-bottom: 44px; }
+    .tp-grid { grid-template-columns: 1fr; gap: 14px; }
+    .tp-card, .tp-card-featured { grid-column: span 1; }
+    .tp-card-inner { padding: 22px 22px 20px; gap: 16px; }
+    .tp-quote-text { font-size: 14.5px; }
+    .tp-card-featured .tp-quote-text { font-size: 17px; }
+    .tp-metric-val { font-size: 17px; }
+    .tp-card-featured .tp-metric-val { font-size: 26px; }
+    .tp-bar-after-val { font-size: 16px; }
+    .tp-card-featured .tp-bar-after-val { font-size: 19px; }
+    .tp-top { grid-template-columns: auto 1fr; }
+    .tp-since { display: none; }
   }
 
-  /* ===== reduce motion ===== */
   @media (prefers-reduced-motion: reduce) {
-    .tp-card, .tp-avatar-ring, .tp-eyebrow-dot { animation: none; transition: none; }
+    .tp-card, .tp-bar-full, .tp-bar-pulse, .tp-eyebrow-dot { animation: none; transition: none; }
     .tp-card { transform: none !important; }
+    .tp-card.is-inview .tp-bar-full { width: 100%; }
   }
 </style>
 
 <script>
-  // Motion : tilt 3D subtil au pointer + stagger reveal (reveal utilise [data-animate] global)
+  // Spotlight qui suit la souris
+  const cards = document.querySelectorAll<HTMLElement>('#temoignages-premium .tp-card');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   if (!reduced) {
-    const cards = document.querySelectorAll<HTMLElement>('#temoignages-premium [data-tilt]');
-    cards.forEach(card => {
-      let raf = 0;
-      let tx = 0, ty = 0;
+    cards.forEach((card) => {
       card.addEventListener('mousemove', (e) => {
         const r = card.getBoundingClientRect();
-        const nx = (e.clientX - r.left) / r.width  - 0.5;
-        const ny = (e.clientY - r.top)  / r.height - 0.5;
-        tx = ny * -4; // rotateX
-        ty = nx *  5; // rotateY
-        if (!raf) raf = requestAnimationFrame(apply);
-      });
-      card.addEventListener('mouseleave', () => {
-        tx = 0; ty = 0;
-        if (!raf) raf = requestAnimationFrame(apply);
-      });
-      function apply() {
-        card.style.transform = `perspective(1200px) rotateX(${tx}deg) rotateY(${ty}deg) translateY(${Math.abs(tx)+Math.abs(ty) > 0.1 ? -2 : 0}px)`;
-        raf = 0;
-      }
+        const x = ((e.clientX - r.left) / r.width) * 100;
+        const y = ((e.clientY - r.top) / r.height) * 100;
+        card.style.setProperty('--mx', `${x}%`);
+        card.style.setProperty('--my', `${y}%`);
+      }, { passive: true });
     });
   }
+
+  // Click / keyboard pour expand
+  cards.forEach((card) => {
+    const toggle = () => {
+      const isOpen = card.classList.toggle('is-open');
+      card.setAttribute('aria-expanded', String(isOpen));
+    };
+    card.addEventListener('click', (e) => {
+      // éviter de fermer quand on clique sur un lien interne plus tard
+      if ((e.target as HTMLElement).closest('a')) return;
+      toggle();
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+
+  // Reveal : barres animées + count-up quand la card entre dans le viewport
+  function animateCard(card: HTMLElement) {
+    if (card.dataset.animated === '1') return;
+    card.dataset.animated = '1';
+    card.classList.add('is-inview');
+
+    // Count up du chiffre "après"
+    const target = parseFloat(card.getAttribute('data-after') || '0');
+    const unit = card.getAttribute('data-unit') || '';
+    const el = card.querySelector<HTMLElement>('.tp-bar-after-val');
+    if (!el) return;
+
+    const hasDecimal = !Number.isInteger(target);
+    const format = (v: number) => {
+      if (unit === '€' && target >= 1000) {
+        return Math.round(v).toLocaleString('fr-FR') + unit;
+      }
+      if (hasDecimal) {
+        return v.toFixed(1).replace('.', ',') + unit;
+      }
+      return Math.round(v) + unit;
+    };
+
+    if (reduced) {
+      el.textContent = format(target);
+      return;
+    }
+
+    const duration = 1400;
+    const start = performance.now();
+    const step = (now: number) => {
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = format(eased * target);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = format(target);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        animateCard(e.target as HTMLElement);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.35 });
+
+  cards.forEach((c) => io.observe(c));
 </script>
