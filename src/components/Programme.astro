@@ -1,9 +1,12 @@
 ---
 import BrandFloatingIcons from './BrandFloatingIcons.astro';
 
-const lives = Array.from({ length: 25 }, (_, i) =>
-  `LIVE-${String(i + 1).padStart(2, '0')}.webp`
-);
+const pillars = [
+  { id: "01", slug: "agence-ia",       title: "Ton agence IA",       sub: "Montée en 48h, client-ready." },
+  { id: "02", slug: "automatisations", title: "Systèmes 24/7",       sub: "Ta boîte tourne pendant que tu vis." },
+  { id: "03", slug: "closing",         title: "Scripts qui closent", sub: "Prospects signés sans négocier." },
+  { id: "04", slug: "prime",           title: "Services Prime",      sub: "Livraison sans toi, tu gardes la marge." },
+];
 ---
 
 <section id="programme" class="prog-section">
@@ -24,36 +27,23 @@ const lives = Array.from({ length: 25 }, (_, i) =>
       </p>
     </div>
 
-    <!-- Main Preview -->
-    <div class="main-preview" data-animate data-delay="0.15">
-      <img
-        id="preview-img"
-        src={`/images/lives/${lives[0]}`}
-        alt="Live aperçu"
-      />
-      <button class="arrow arrow--prev" id="arrow-prev" aria-label="Précédent">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <button class="arrow arrow--next" id="arrow-next" aria-label="Suivant">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-    </div>
-
-    <!-- Thumbnail Strip -->
-    <div class="strip-wrap" data-animate data-delay="0.2">
-      <div class="thumb-strip" id="thumb-strip">
-        {lives.map((file, i) => (
-          <button
-            class={`thumb${i === 0 ? ' thumb--active' : ''}`}
-            data-src={`/images/lives/${file}`}
-            data-index={i}
-            aria-label={`Live ${i + 1}`}
-          >
-            <img src={`/images/lives/${file}`} alt="" loading="lazy" />
-            <span class="thumb-num">{String(i + 1).padStart(2, '0')}</span>
-          </button>
-        ))}
-      </div>
+    <!-- 4 Piliers -->
+    <div class="pillars-grid" data-animate data-delay="0.15">
+      {pillars.map((p, i) => (
+        <div class="pillar-card" data-animate data-delay={0.2 + i * 0.08}>
+          <div class="pillar-media">
+            <img
+              src={`/images/programme/PILIER-${p.id}-${p.slug}.png`}
+              alt={p.title}
+              loading="lazy"
+            />
+          </div>
+          <div class="pillar-body">
+            <h3 class="pillar-title">{p.title}</h3>
+            <p class="pillar-sub">{p.sub}</p>
+          </div>
+        </div>
+      ))}
     </div>
 
   </div>
@@ -127,164 +117,77 @@ const lives = Array.from({ length: 25 }, (_, i) =>
     margin: 0 auto;
   }
 
-  /* ── Main Preview ── */
-  .main-preview {
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1.5px solid rgba(168,85,247,0.35);
-    box-shadow: 0 0 60px rgba(168,85,247,0.15), 0 0 120px rgba(168,85,247,0.06);
-    margin-bottom: 16px;
-    aspect-ratio: 16/9;
-    background: #0a0510;
-    position: relative;
+  /* ── 4 Piliers Grid ── */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
   }
 
-  .main-preview img {
+  .pillar-card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(23, 10, 42, 0.5), rgba(10, 5, 16, 0.8));
+    border: 1px solid rgba(168, 85, 247, 0.22);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+                border-color 0.3s ease,
+                box-shadow 0.5s ease;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  }
+  .pillar-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(168, 85, 247, 0.5);
+    box-shadow: 0 20px 54px rgba(0,0,0,0.5), 0 10px 32px rgba(168, 85, 247, 0.3);
+  }
+
+  .pillar-media {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: #06020F;
+  }
+  .pillar-media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: opacity 0.2s ease;
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .pillar-card:hover .pillar-media img {
+    transform: scale(1.05);
   }
 
-  .main-preview img.fade {
-    opacity: 0;
+  .pillar-body {
+    padding: 20px 20px 22px;
   }
-
-  /* ── Arrows on preview ── */
-  .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.55);
-    border: 1.5px solid rgba(168,85,247,0.4);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
-    backdrop-filter: blur(6px);
-  }
-  .arrow:hover {
-    background: rgba(168,85,247,0.3);
-    border-color: #A855F7;
-    transform: translateY(-50%) scale(1.08);
-  }
-  .arrow--prev { left: 16px; }
-  .arrow--next { right: 16px; }
-  .arrow:disabled {
-    opacity: 0.25;
-    cursor: default;
-    pointer-events: none;
-  }
-
-  /* ── Thumbnail Strip ── */
-  .strip-wrap {
-    position: relative;
-  }
-
-  .thumb-strip {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 4px 2px;
-  }
-  .thumb-strip::-webkit-scrollbar { display: none; }
-
-  .thumb {
-    flex: 0 0 auto;
-    width: calc((100% - 240px) / 25);
-    min-width: 70px;
-    max-width: 100px;
-    aspect-ratio: 16/9;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 2px solid rgba(255,255,255,0.07);
-    background: #0a0510;
-    cursor: pointer;
-    padding: 0;
-    position: relative;
-    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-  }
-  .thumb:hover {
-    border-color: rgba(168,85,247,0.45);
-    transform: translateY(-2px);
-  }
-  .thumb--active {
-    border-color: #A855F7 !important;
-    box-shadow: 0 0 16px rgba(168,85,247,0.5);
-  }
-
-  .thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .thumb-num {
-    position: absolute;
-    bottom: 4px;
-    right: 6px;
-    font-size: 0.6rem;
+  .pillar-title {
+    font-size: 1.12rem;
     font-weight: 800;
-    color: rgba(255,255,255,0.55);
-    letter-spacing: 0.05em;
-    line-height: 1;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0 0 8px;
   }
-  .thumb--active .thumb-num {
-    color: rgba(168,85,247,0.9);
+  .pillar-sub {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.58);
+    line-height: 1.45;
+    margin: 0;
   }
 
   /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .pillars-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  }
   @media (max-width: 768px) {
     .prog-inner { padding: 0 16px; }
     .prog-section { padding: 80px 0 100px; }
-    .thumb {
-      min-width: 70px;
-    }
+    .pillar-body { padding: 16px 18px 18px; }
+    .pillar-title { font-size: 1.02rem; }
+    .pillar-sub { font-size: 0.82rem; }
+  }
+  @media (max-width: 520px) {
+    .pillars-grid { grid-template-columns: 1fr; gap: 16px; }
   }
 </style>
-
-<script>
-  const preview = document.getElementById('preview-img') as HTMLImageElement;
-  const thumbs = document.querySelectorAll<HTMLButtonElement>('.thumb');
-  const btnPrev = document.getElementById('arrow-prev') as HTMLButtonElement;
-  const btnNext = document.getElementById('arrow-next') as HTMLButtonElement;
-  let current = 0;
-  const total = thumbs.length;
-
-  function goTo(index: number) {
-    if (index < 0 || index >= total) return;
-    current = index;
-    const thumb = thumbs[current];
-    const src = thumb.dataset.src!;
-    preview.classList.add('fade');
-    setTimeout(() => {
-      preview.src = src;
-      preview.onload = () => preview.classList.remove('fade');
-    }, 150);
-    thumbs.forEach(t => t.classList.remove('thumb--active'));
-    thumb.classList.add('thumb--active');
-    thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    btnPrev.disabled = current === 0;
-    btnNext.disabled = current === total - 1;
-  }
-
-  thumbs.forEach((thumb, i) => {
-    thumb.addEventListener('click', () => goTo(i));
-  });
-
-  btnPrev.addEventListener('click', () => goTo(current - 1));
-  btnNext.addEventListener('click', () => goTo(current + 1));
-
-  // init state
-  btnPrev.disabled = true;
-</script>
