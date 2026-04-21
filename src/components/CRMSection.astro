@@ -301,6 +301,27 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
 <style>
   .crm-section {
     padding: 0 0 120px;
+    perspective: 2400px;
+    perspective-origin: 50% 0%;
+  }
+  #crm-shell {
+    transform: perspective(2400px) rotateX(4deg) rotateY(-1deg);
+    transform-style: preserve-3d;
+    transform-origin: 50% 10%;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease;
+    will-change: transform;
+  }
+  #crm-shell:hover {
+    transform: perspective(2400px) rotateX(1deg) rotateY(0deg) translateY(-4px);
+    box-shadow:
+      0 40px 100px rgba(168, 85, 247, 0.35),
+      0 20px 60px rgba(168, 85, 247, 0.25),
+      0 0 0 1px rgba(168, 85, 247, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  }
+  @media (max-width: 900px) {
+    .crm-section { perspective: none; }
+    #crm-shell { transform: none !important; }
   }
   @media (max-width: 1024px) { .crm-section { padding: 0 0 96px; } }
   @media (max-width: 640px)  { .crm-section { padding: 0 0 72px; } }
