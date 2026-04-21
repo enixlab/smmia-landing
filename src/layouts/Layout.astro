@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
 
 export interface Props {
   title?: string;
@@ -56,6 +57,7 @@ const {
       <img id="modal-img" src="" alt="Avis membre" />
     </div>
 
+    <Navbar />
     <slot />
 
     <script>
