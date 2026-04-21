@@ -214,7 +214,10 @@ const row2 = services.filter((_, i) => i % 2 === 1);
   .bg-vignette {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 60% 40% at 50% 55%, rgba(168, 85, 247, 0.12), transparent 70%);
+    background:
+      radial-gradient(ellipse 45% 35% at 20% 50%, rgba(34, 211, 238, 0.08), transparent 65%),
+      radial-gradient(ellipse 60% 40% at 50% 55%, rgba(168, 85, 247, 0.12), transparent 70%),
+      radial-gradient(ellipse 40% 35% at 80% 50%, rgba(251, 146, 60, 0.07), transparent 65%);
     pointer-events: none;
     z-index: 0;
   }

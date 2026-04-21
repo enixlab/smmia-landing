@@ -1,9 +1,9 @@
 ---
 const stats = [
-  { value: 47, suffix: "+", label: "Membres actifs", icon: "👥" },
-  { value: 3, suffix: " mois", label: "Pour rentabiliser", icon: "⚡" },
-  { value: 2, suffix: " lives/sem", label: "Avec les experts", icon: "🎥" },
-  { value: 3, suffix: "×", label: "Revenus moyens générés", icon: "📈" },
+  { value: 47, suffix: "+", label: "Membres actifs", icon: "👥", grad: "linear-gradient(135deg,#22D3EE 0%,#A855F7 100%)", glow: "rgba(34,211,238,0.35)", border: "rgba(34,211,238,0.28)" },
+  { value: 3, suffix: " mois", label: "Pour rentabiliser", icon: "⚡", grad: "linear-gradient(135deg,#FB923C 0%,#F97316 100%)", glow: "rgba(251,146,60,0.35)", border: "rgba(251,146,60,0.30)" },
+  { value: 2, suffix: " lives/sem", label: "Avec les experts", icon: "🎥", grad: "linear-gradient(135deg,#A855F7 0%,#7C3AED 100%)", glow: "rgba(168,85,247,0.35)", border: "rgba(168,85,247,0.28)" },
+  { value: 3, suffix: "×", label: "Revenus moyens générés", icon: "📈", grad: "linear-gradient(135deg,#FCD34D 0%,#FB923C 100%)", glow: "rgba(252,211,77,0.35)", border: "rgba(252,211,77,0.30)" },
 ];
 ---
 
@@ -13,16 +13,16 @@ const stats = [
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;" id="stats-grid">
       {stats.map((stat, i) => (
         <div
-          class="glass-card"
+          class="stat-card"
           data-animate
           data-delay={String(i * 0.1)}
-          style="padding:40px 24px;text-align:center;"
+          style={`padding:40px 24px;text-align:center;position:relative;background:rgba(255,255,255,0.03);backdrop-filter:blur(20px);border:1px solid ${stat.border};border-radius:16px;box-shadow:0 0 40px ${stat.glow}, inset 0 1px 0 rgba(255,255,255,0.05);transition:transform 0.35s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.35s ease;`}
         >
           <div style="font-size:2rem;margin-bottom:12px;">{stat.icon}</div>
-          <div style="font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:1;background:linear-gradient(135deg,#A855F7,#E8442A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;">
+          <div style={`font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:1;background:${stat.grad};-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;filter:drop-shadow(0 4px 18px ${stat.glow});`}>
             <span data-countup={stat.value} data-suffix={stat.suffix}>0{stat.suffix}</span>
           </div>
-          <p style="color:rgba(255,255,255,0.6);font-size:0.875rem;font-weight:500;line-height:1.4;">{stat.label}</p>
+          <p style="color:rgba(255,255,255,0.7);font-size:0.875rem;font-weight:500;line-height:1.4;">{stat.label}</p>
         </div>
       ))}
     </div>
@@ -31,6 +31,9 @@ const stats = [
 </section>
 
 <style>
+  .stat-card:hover {
+    transform: translateY(-6px);
+  }
   @media (max-width: 768px) {
     #stats-grid {
       grid-template-columns: repeat(2, 1fr) !important;

@@ -1,7 +1,7 @@
 ---
 ---
 
-<nav id="navbar" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.92);backdrop-filter:blur(20px);transition:border-bottom 0.3s ease;border-bottom:1px solid transparent;">
+<nav id="navbar" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,2,15,0.85);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);transition:border-bottom 0.3s ease;border-bottom:1px solid transparent;">
   <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:88px;">
     <!-- Logo -->
     <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
@@ -10,11 +10,11 @@
 
     <!-- Liens desktop -->
     <div class="nav-links" style="display:flex;align-items:center;gap:32px;">
-      <a href="#programme" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Programme</a>
-      <a href="#intervenants" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Intervenants</a>
-      <a href="#temoignages" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Témoignages</a>
-      <a href="#prix" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Prix</a>
-      <a href="https://discord.com/invite/focus-1398487214215659612" target="_blank" rel="noopener" class="btn-membre" style="padding:10px 20px;border:1px solid rgba(168,85,247,0.4);border-radius:9999px;font-size:0.85rem;color:rgba(255,255,255,0.7);text-decoration:none;transition:all 0.2s;white-space:nowrap;">Espace membre</a>
+      <a href="#programme" class="nav-link" style="color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s, text-shadow 0.2s;">Programme</a>
+      <a href="#intervenants" class="nav-link" style="color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s, text-shadow 0.2s;">Intervenants</a>
+      <a href="#temoignages" class="nav-link" style="color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s, text-shadow 0.2s;">Témoignages</a>
+      <a href="#prix" class="nav-link" style="color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s, text-shadow 0.2s;">Prix</a>
+      <a href="https://discord.com/invite/focus-1398487214215659612" target="_blank" rel="noopener" class="btn-membre" style="padding:10px 20px;border-radius:9999px;font-size:0.85rem;color:rgba(255,255,255,0.85);text-decoration:none;transition:all 0.3s;white-space:nowrap;">Espace membre</a>
       <a href="https://wa.me/33766814280" target="_blank" rel="noopener" class="btn-pill" style="padding:10px 22px;font-size:0.875rem;">Rejoindre &rarr;</a>
     </div>
 
@@ -39,6 +39,39 @@
 </nav>
 
 <style>
+  /* Bordure aurora au scroll */
+  #navbar.scrolled {
+    border-bottom-color: transparent !important;
+    background:
+      linear-gradient(rgba(6,2,15,0.92), rgba(6,2,15,0.92)) padding-box,
+      linear-gradient(90deg, rgba(34,211,238,0.55), rgba(168,85,247,0.7), rgba(251,146,60,0.55), rgba(252,211,77,0.45)) border-box !important;
+    border-bottom: 1px solid transparent !important;
+  }
+
+  /* Liens nav avec hover prism */
+  .nav-link:hover {
+    color: #FFFFFF !important;
+    text-shadow: 0 0 18px rgba(168,85,247,0.6);
+  }
+
+  /* Espace membre : bordure aurora animée */
+  .btn-membre {
+    position: relative;
+    border: 1px solid transparent;
+    background-image:
+      linear-gradient(rgba(6,2,15,0.9), rgba(6,2,15,0.9)),
+      linear-gradient(135deg, #22D3EE 0%, #A855F7 50%, #FB923C 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+  .btn-membre:hover {
+    color: #FFFFFF !important;
+    background-image:
+      linear-gradient(rgba(168,85,247,0.14), rgba(251,146,60,0.14)),
+      linear-gradient(135deg, #67E8F9 0%, #C084FC 50%, #F97316 100%);
+    box-shadow: 0 6px 24px rgba(168,85,247,0.35);
+  }
+
   @media (max-width: 768px) {
     .nav-links {
       display: none !important;
@@ -47,9 +80,6 @@
       display: flex !important;
     }
     .nav-logo { height: 52px !important; }
-  }
-  a:hover {
-    color: #A855F7 !important;
   }
 </style>
 

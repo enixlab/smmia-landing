@@ -354,7 +354,7 @@ const testimonials = [
 <style>
   .tp-section {
     position: relative;
-    background: #000;
+    background: transparent;
     padding: 140px 24px 160px;
     overflow: hidden;
     isolation: isolate;
@@ -369,7 +369,10 @@ const testimonials = [
     max-width: 1400px;
     aspect-ratio: 2.5/1;
     transform: translateX(-50%);
-    background: radial-gradient(ellipse at center, rgba(168,85,247,0.22) 0%, rgba(139,92,246,0.10) 40%, transparent 70%);
+    background:
+      radial-gradient(ellipse 50% 70% at 30% 50%, rgba(34,211,238,0.14) 0%, transparent 65%),
+      radial-gradient(ellipse 55% 75% at 55% 50%, rgba(168,85,247,0.24) 0%, rgba(124,58,237,0.12) 40%, transparent 70%),
+      radial-gradient(ellipse 45% 65% at 80% 55%, rgba(251,146,60,0.12) 0%, transparent 65%);
     filter: blur(60px);
     z-index: 0;
     pointer-events: none;
@@ -378,8 +381,8 @@ const testimonials = [
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(168,85,247,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(168,85,247,0.035) 1px, transparent 1px);
+      linear-gradient(rgba(168,85,247,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34,211,238,0.03) 1px, transparent 1px);
     background-size: 72px 72px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
@@ -414,25 +417,29 @@ const testimonials = [
     gap: 10px;
     padding: 8px 18px 8px 14px;
     border-radius: 9999px;
-    background: rgba(168,85,247,0.08);
-    border: 1px solid rgba(168,85,247,0.3);
+    border: 1px solid transparent;
+    background-image:
+      linear-gradient(rgba(15,8,32,0.75), rgba(15,8,32,0.75)),
+      linear-gradient(135deg, #22D3EE 0%, #A855F7 50%, #FB923C 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
     font-family: 'Inter', sans-serif;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(216,180,254,0.9);
+    color: #FFFFFF;
     margin-bottom: 26px;
   }
   .tp-eyebrow-dot {
     width: 7px; height: 7px; border-radius: 50%;
-    background: #a855f7;
-    box-shadow: 0 0 0 0 rgba(168,85,247,0.6);
+    background: #22D3EE;
+    box-shadow: 0 0 0 0 rgba(34,211,238,0.7);
     animation: tpPulse 2.2s ease-in-out infinite;
   }
   @keyframes tpPulse {
-    0%,100% { box-shadow: 0 0 0 0 rgba(168,85,247,0.6); }
-    50%     { box-shadow: 0 0 0 8px rgba(168,85,247,0); }
+    0%,100% { box-shadow: 0 0 0 0 rgba(34,211,238,0.7); }
+    50%     { box-shadow: 0 0 0 9px rgba(34,211,238,0); }
   }
 
   /* TITRE — aligné sur Hero : Inter 900 */
@@ -447,10 +454,11 @@ const testimonials = [
   }
   .tp-title-line { display: block; }
   .tp-title-line-2 {
-    background: linear-gradient(180deg, #ffffff 0%, #d8b4fe 55%, #a855f7 100%);
+    background: linear-gradient(135deg, #22D3EE 0%, #A855F7 50%, #FB923C 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 6px 24px rgba(168,85,247,0.35));
     font-weight: 900;
   }
 

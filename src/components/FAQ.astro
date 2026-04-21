@@ -320,7 +320,7 @@ const catLabels: Record<Cat, string> = {
   .fq-section {
     position: relative;
     padding: 120px 0 128px;
-    background: radial-gradient(ellipse at 50% 0%, #0f0622 0%, #070311 60%, #000 100%);
+    background: radial-gradient(ellipse at 50% 0%, #10082a 0%, #08041a 60%, #06020F 100%);
     overflow: hidden;
     isolation: isolate;
   }
@@ -329,12 +329,12 @@ const catLabels: Record<Cat, string> = {
     position: absolute;
     width: 420px; height: 420px;
     border-radius: 50%;
-    filter: blur(40px);
+    filter: blur(50px);
     pointer-events: none;
     z-index: 0;
   }
-  .fq-halo-l { top: 10%; left: -160px;  background: radial-gradient(circle, rgba(168, 85, 247, 0.25), transparent 70%); }
-  .fq-halo-r { bottom: 8%; right: -160px; background: radial-gradient(circle, rgba(192, 132, 252, 0.20), transparent 70%); }
+  .fq-halo-l { top: 10%; left: -160px;  background: radial-gradient(circle, rgba(34, 211, 238, 0.22), transparent 70%); }
+  .fq-halo-r { bottom: 8%; right: -160px; background: radial-gradient(circle, rgba(251, 146, 60, 0.20), transparent 70%); }
 
   .fq-inner {
     position: relative;
@@ -353,19 +353,23 @@ const catLabels: Record<Cat, string> = {
     gap: 8px;
     padding: 7px 16px;
     border-radius: 999px;
-    background: rgba(168, 85, 247, 0.12);
-    border: 1px solid rgba(168, 85, 247, 0.35);
+    border: 1px solid transparent;
+    background-image:
+      linear-gradient(rgba(15, 8, 32, 0.8), rgba(15, 8, 32, 0.8)),
+      linear-gradient(135deg, #22D3EE 0%, #A855F7 50%, #FB923C 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
     font-size: 0.72rem;
     font-weight: 700;
-    color: #C4B5FD;
+    color: #FFFFFF;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 22px;
   }
   .fq-badge-dot {
     width: 7px; height: 7px; border-radius: 50%;
-    background: #A855F7;
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.85);
+    background: #FB923C;
+    box-shadow: 0 0 10px rgba(251, 146, 60, 0.9);
     animation: fq-pulse 2s ease-in-out infinite;
   }
   @keyframes fq-pulse {
@@ -382,9 +386,10 @@ const catLabels: Record<Cat, string> = {
     margin-bottom: 14px;
   }
   .fq-title-accent {
-    background: linear-gradient(135deg, #C084FC 0%, #A855F7 50%, #7C3AED 100%);
+    background: linear-gradient(135deg, #22D3EE 0%, #A855F7 50%, #FB923C 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 4px 22px rgba(168,85,247,0.35));
   }
   .fq-sub {
     max-width: 620px;
@@ -639,8 +644,16 @@ const catLabels: Record<Cat, string> = {
     padding: 32px 28px;
     border-radius: 24px;
     background: linear-gradient(135deg, #1a0d33 0%, #0f0621 100%);
-    border: 1px solid rgba(168, 85, 247, 0.35);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid transparent;
+    background-image:
+      linear-gradient(135deg, #1a0d33 0%, #0f0621 100%),
+      linear-gradient(135deg, rgba(34,211,238,0.5), rgba(168,85,247,0.7), rgba(251,146,60,0.45));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      0 10px 40px rgba(168,85,247,0.12),
+      0 6px 28px rgba(34,211,238,0.08);
     position: relative;
     overflow: hidden;
   }
@@ -648,7 +661,10 @@ const catLabels: Record<Cat, string> = {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at top left, rgba(168, 85, 247, 0.14), transparent 60%);
+    background:
+      radial-gradient(ellipse at top left, rgba(34,211,238,0.12), transparent 55%),
+      radial-gradient(ellipse at top right, rgba(168,85,247,0.14), transparent 55%),
+      radial-gradient(ellipse at bottom right, rgba(251,146,60,0.1), transparent 60%);
     pointer-events: none;
   }
 

@@ -3,23 +3,23 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
 ---
 
 <section id="crm" class="crm-section" style="position:relative;overflow:hidden;">
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(168,85,247,0.07),transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:1100px;height:560px;background:radial-gradient(ellipse 40% 60% at 22% 50%,rgba(34,211,238,0.07),transparent 65%),radial-gradient(ellipse 50% 70% at 55% 50%,rgba(168,85,247,0.1),transparent 65%),radial-gradient(ellipse 40% 55% at 82% 50%,rgba(251,146,60,0.07),transparent 65%);pointer-events:none;"></div>
   <BrandFloatingIcons icons={["TikTok", "Facebook", "YouTube", "Shopify"]} />
 
   <div style="max-width:1040px;margin:0 auto;padding:0 24px;position:relative;z-index:2;">
     <div style="text-align:center;margin-bottom:64px;" data-animate>
-      <div style="display:inline-flex;align-items:center;gap:8px;padding:7px 16px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.35);border-radius:9999px;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:#C4B5FD;font-weight:700;margin-bottom:24px;">Accès membre exclusif</div>
-      <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:16px;line-height:1.1;">Ton Accès Exclusif <span style="color:#A855F7;">en un clic</span></h2>
-      <p style="font-size:1rem;color:rgba(255,255,255,0.5);max-width:520px;margin:0 auto;">Clique sur chaque section pour voir comment ça marche en vrai.</p>
+      <div class="crm-eyebrow" style="display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid transparent;border-radius:9999px;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:#FFFFFF;font-weight:700;margin-bottom:24px;background-image:linear-gradient(rgba(15,8,32,0.75),rgba(15,8,32,0.75)),linear-gradient(135deg,#22D3EE 0%,#A855F7 50%,#FB923C 100%);background-origin:border-box;background-clip:padding-box,border-box;">Accès membre exclusif</div>
+      <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:16px;line-height:1.1;color:#fff;">Ton Accès Exclusif <span style="background:linear-gradient(135deg,#22D3EE 0%,#A855F7 50%,#FB923C 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 4px 18px rgba(168,85,247,0.35));">en un clic</span></h2>
+      <p style="font-size:1rem;color:rgba(255,255,255,0.6);max-width:520px;margin:0 auto;">Clique sur chaque section pour voir comment ça marche en vrai.</p>
     </div>
 
-    <div id="crm-shell" style="border:1px solid rgba(168,85,247,0.3);border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#140828 0%,#0a0413 100%);box-shadow:0 20px 60px rgba(168,85,247,0.18),0 0 0 1px rgba(168,85,247,0.1),inset 0 1px 0 rgba(255,255,255,0.06);" data-animate data-delay="0.1">
+    <div id="crm-shell" style="border:1.5px solid transparent;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#140828 0%,#0a0413 100%) padding-box,linear-gradient(135deg,rgba(34,211,238,0.6) 0%,rgba(168,85,247,0.85) 40%,rgba(251,146,60,0.7) 80%,rgba(252,211,77,0.55) 100%) border-box;box-shadow:0 24px 72px rgba(168,85,247,0.25),0 16px 56px rgba(34,211,238,0.12),0 12px 40px rgba(251,146,60,0.12),inset 0 1px 0 rgba(255,255,255,0.06);" data-animate data-delay="0.1">
       <div style="padding:11px 20px;border-bottom:1px solid rgba(168,85,247,0.12);display:flex;align-items:center;gap:8px;background:linear-gradient(180deg,rgba(168,85,247,0.08) 0%,rgba(0,0,0,0.3) 100%);">
-        <div style="width:10px;height:10px;border-radius:50%;background:#6D28D9;box-shadow:0 0 4px rgba(109,40,217,0.6);"></div>
-        <div style="width:10px;height:10px;border-radius:50%;background:#A855F7;box-shadow:0 0 4px rgba(168,85,247,0.6);"></div>
-        <div style="width:10px;height:10px;border-radius:50%;background:#C084FC;box-shadow:0 0 4px rgba(192,132,252,0.6);"></div>
-        <span style="margin-left:12px;font-size:0.73rem;color:rgba(196,181,253,0.5);font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em;">smmia.app/dashboard</span>
-        <div style="margin-left:auto;display:flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3);"><div style="width:6px;height:6px;border-radius:50%;background:#C084FC;box-shadow:0 0 8px #A855F7;animation:blink 1.8s infinite;"></div><span style="font-size:0.64rem;color:#DDD6FE;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Connecté</span></div>
+        <div style="width:11px;height:11px;border-radius:50%;background:#FF5F57;box-shadow:0 0 4px rgba(255,95,87,0.6);"></div>
+        <div style="width:11px;height:11px;border-radius:50%;background:#FEBC2E;box-shadow:0 0 4px rgba(254,188,46,0.6);"></div>
+        <div style="width:11px;height:11px;border-radius:50%;background:#28C840;box-shadow:0 0 4px rgba(40,200,64,0.6);"></div>
+        <span style="margin-left:12px;font-size:0.73rem;color:rgba(196,181,253,0.6);font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em;">smmia.app/dashboard</span>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;border:1px solid transparent;background:linear-gradient(rgba(15,8,32,0.8),rgba(15,8,32,0.8)) padding-box,linear-gradient(135deg,#22D3EE 0%,#A855F7 100%) border-box;"><div style="width:6px;height:6px;border-radius:50%;background:#22D3EE;box-shadow:0 0 8px #22D3EE;animation:blink 1.8s infinite;"></div><span style="font-size:0.64rem;color:#fff;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;">Connecté</span></div>
       </div>
 
       <div class="crm-layout" style="display:grid;grid-template-columns:190px 1fr;min-height:480px;">
@@ -78,12 +78,42 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
               <button class="cb" id="btn-share-portfolio">⬆ Partager</button>
             </div>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-              <div class="pc" data-id="0"><div class="pt" style="background:linear-gradient(135deg,#A855F722,#7C3AED11);"><div class="pi" style="border-color:#A855F744;color:#A855F7;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Site Restaurant</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Site web IA</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">1 200€</div></div></div>
-              <div class="pc" data-id="1"><div class="pt" style="background:linear-gradient(135deg,#A855F722,#A855F711);"><div class="pi" style="border-color:#A855F744;color:#A855F7;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Meta Ads Salon</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Meta Ads</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">2 400€</div></div></div>
-              <div class="pc" data-id="2"><div class="pt" style="background:linear-gradient(135deg,#A855F722,#7C3AED11);"><div class="pi" style="border-color:#A855F744;color:#A855F7;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Branding Barbershop</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Visuels Lovart</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">600€</div></div></div>
-              <div class="pc" data-id="3"><div class="pt" style="background:linear-gradient(135deg,#A855F722,#A855F711);"><div class="pi" style="border-color:#A855F744;color:#A855F7;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Google Ads Plombier</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Google Ads</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">1 800€</div></div></div>
-              <div class="pc" data-id="4"><div class="pt" style="background:linear-gradient(135deg,#A855F722,#7C3AED11);"><div class="pi" style="border-color:#A855F744;color:#A855F7;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">NFC Avis Google</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">NFC justpush.fr</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">400€</div></div></div>
-              <div class="pc" data-id="5"><div class="pt" style="background:linear-gradient(135deg,#A855F722,#A855F711);"><div class="pi" style="border-color:#A855F744;color:#A855F7;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Automation N8N</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">N8N</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">3 200€</div></div></div>
+              <div class="pc" data-id="0">
+                <div class="pt pt-img" style="background:linear-gradient(135deg,#22D3EE33,#22D3EE11);">
+                  <img src="/images/services/bento/12-sites-web-SQUARE.webp" alt="Site Restaurant" loading="lazy" />
+                </div>
+                <div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Site Restaurant</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:6px;">Site web IA</div><div style="font-size:0.8rem;font-weight:800;color:#22D3EE;">1 200€</div></div>
+              </div>
+              <div class="pc" data-id="1">
+                <div class="pt pt-img" style="background:linear-gradient(135deg,#FB923C33,#F9731611);">
+                  <img src="/images/services/bento/15-campagnes-ads-SQUARE.webp" alt="Meta Ads" loading="lazy" />
+                </div>
+                <div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Meta Ads Salon</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:6px;">Meta Ads</div><div style="font-size:0.8rem;font-weight:800;color:#FB923C;">2 400€</div></div>
+              </div>
+              <div class="pc" data-id="2">
+                <div class="pt pt-img" style="background:linear-gradient(135deg,#FCD34D33,#FBBF2411);">
+                  <img src="/images/services/bento/11-visuels-SQUARE.webp" alt="Branding Barbershop" loading="lazy" />
+                </div>
+                <div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Branding Barbershop</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:6px;">Visuels Lovart</div><div style="font-size:0.8rem;font-weight:800;color:#FCD34D;">600€</div></div>
+              </div>
+              <div class="pc" data-id="3">
+                <div class="pt pt-img" style="background:linear-gradient(135deg,#A855F733,#7C3AED11);">
+                  <img src="/images/services/bento/15-campagnes-ads-SQUARE.webp" alt="Google Ads" loading="lazy" />
+                </div>
+                <div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Google Ads Plombier</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:6px;">Google Ads</div><div style="font-size:0.8rem;font-weight:800;color:#A855F7;">1 800€</div></div>
+              </div>
+              <div class="pc" data-id="4">
+                <div class="pt pt-img" style="background:linear-gradient(135deg,#22D3EE33,#67E8F911);">
+                  <img src="/images/services/bento/13-nfc-SQUARE.webp" alt="NFC Avis Google" loading="lazy" />
+                </div>
+                <div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">NFC Avis Google</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:6px;">NFC justpush.fr</div><div style="font-size:0.8rem;font-weight:800;color:#22D3EE;">400€</div></div>
+              </div>
+              <div class="pc" data-id="5">
+                <div class="pt pt-img" style="background:linear-gradient(135deg,#FB923C33,#A855F711);">
+                  <img src="/images/services/bento/16-crm-SQUARE.webp" alt="Automation N8N" loading="lazy" />
+                </div>
+                <div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Automation N8N</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:6px;">N8N</div><div style="font-size:0.8rem;font-weight:800;background:linear-gradient(90deg,#FB923C 0%,#A855F7 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">3 200€</div></div>
+              </div>
             </div>
           </div>
 
@@ -280,8 +310,12 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
   .cinput:focus{border-color:rgba(168,85,247,0.55);background:rgba(168,85,247,0.08);box-shadow:0 0 0 3px rgba(168,85,247,0.14);}
   .cinput::placeholder{color:rgba(196,181,253,0.3);}
   .pc{border:1px solid rgba(168,85,247,0.16);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .25s ease;background:linear-gradient(135deg,rgba(26,13,51,0.6),rgba(15,6,33,0.4));}
-  .pc:hover{border-color:rgba(192,132,252,0.5);transform:translateY(-3px);box-shadow:0 10px 28px rgba(168,85,247,0.25);}
-  .pt{height:76px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(168,85,247,0.08);}
+  .pc:nth-child(3n+1):hover{border-color:rgba(34,211,238,0.55);transform:translateY(-3px);box-shadow:0 12px 32px rgba(34,211,238,0.28);}
+  .pc:nth-child(3n+2):hover{border-color:rgba(251,146,60,0.55);transform:translateY(-3px);box-shadow:0 12px 32px rgba(251,146,60,0.28);}
+  .pc:nth-child(3n+3):hover{border-color:rgba(252,211,77,0.55);transform:translateY(-3px);box-shadow:0 12px 32px rgba(252,211,77,0.28);}
+  .pt{height:92px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(168,85,247,0.08);position:relative;overflow:hidden;}
+  .pt-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.92;transition:transform 0.45s cubic-bezier(0.2,0.8,0.2,1), opacity 0.3s ease;}
+  .pc:hover .pt-img img{transform:scale(1.08);opacity:1;}
   .pi{width:36px;height:36px;border-radius:10px;background:rgba(0,0,0,0.35);border:1px solid;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);}
   .cr{display:flex;align-items:center;border:1px solid rgba(168,85,247,0.14);border-radius:12px;padding:14px 16px;gap:12px;background:linear-gradient(135deg,rgba(168,85,247,0.04),rgba(168,85,247,0.02));cursor:pointer;transition:all .2s;}
   .cr:hover{border-color:rgba(192,132,252,0.4);background:rgba(168,85,247,0.08);transform:translateX(2px);}
