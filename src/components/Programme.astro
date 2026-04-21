@@ -91,27 +91,23 @@ const lives = Array.from({ length: 25 }, (_, i) =>
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.35);
     border-radius: 100px;
-    padding: 7px 17px;
+    padding: 6px 16px;
     margin-bottom: 22px;
     font-size: 0.72rem;
     font-weight: 800;
-    color: #FFFFFF;
+    color: #C4B5FD;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    background-image:
-      linear-gradient(rgba(15, 8, 32, 0.75), rgba(15, 8, 32, 0.75)),
-      linear-gradient(135deg, #22D3EE 0%, #A855F7 50%, #FB923C 100%);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    border: 1px solid transparent;
   }
   .eyebrow-dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #22D3EE;
-    box-shadow: 0 0 10px rgba(34, 211, 238, 0.9);
+    background: #A855F7;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
     animation: blink 1.4s ease-in-out infinite;
   }
 
@@ -135,16 +131,12 @@ const lives = Array.from({ length: 25 }, (_, i) =>
   .main-preview {
     border-radius: 20px;
     overflow: hidden;
-    padding: 2px;
-    background: linear-gradient(135deg, rgba(34,211,238,0.55) 0%, rgba(168,85,247,0.85) 40%, rgba(124,58,237,0.7) 70%, rgba(251,146,60,0.5) 100%);
-    box-shadow: 0 0 50px rgba(168,85,247,0.22), 0 0 80px rgba(251,146,60,0.08);
+    border: 1.5px solid rgba(168,85,247,0.35);
+    box-shadow: 0 0 60px rgba(168,85,247,0.15), 0 0 120px rgba(168,85,247,0.06);
     margin-bottom: 16px;
     aspect-ratio: 16/9;
-    position: relative;
-  }
-  .main-preview img {
-    border-radius: 18px;
     background: #0a0510;
+    position: relative;
   }
 
   .main-preview img {

@@ -2,54 +2,18 @@
 @import "tailwindcss";
 
 :root {
-  /* ═══ BG deep premium (violet-black au lieu de noir plat) ═══ */
-  --bg: #06020F;
-  --bg-elev-1: #0D0720;
-  --bg-elev-2: #15092E;
-  --bg-card: #0D0720;
-  --bg-card-2: #15092E;
-
-  /* ═══ CORE VIOLET (ADN SMMIA — conservé) ═══ */
+  --bg: #000000;
+  --bg-card: #0a0a0a;
+  --bg-card-2: #111111;
   --violet: #A855F7;
-  --violet-light: #C084FC;
   --violet-dark: #7C3AED;
-  --violet-deep: #5B21B6;
-
-  /* ═══ ACCENTS PRISM (palette : violet + cyan + orange + gold) ═══ */
-  --cyan: #22D3EE;
-  --cyan-light: #67E8F9;
-  --orange: #FB923C;
-  --orange-warm: #F97316;
-  --gold: #FCD34D;
-  --gold-warm: #FBBF24;
-
-  /* ═══ Texte ═══ */
+  --orange: #E8442A;
   --white: #FFFFFF;
-  --text-muted: rgba(255,255,255,0.65);
-  --text-dim: rgba(255,255,255,0.45);
-
-  /* ═══ Glass & borders tintés ═══ */
+  --text-muted: rgba(255,255,255,0.6);
   --glass: rgba(255,255,255,0.04);
   --glass-border: rgba(168,85,247,0.25);
-  --glass-border-cyan: rgba(34,211,238,0.28);
-  --glass-border-orange: rgba(251,146,60,0.30);
-  --glass-border-gold: rgba(252,211,77,0.30);
-
-  /* ═══ Glows ═══ */
-  --glow-violet: 0 0 40px rgba(168,85,247,0.35);
-  --glow-cyan: 0 0 40px rgba(34,211,238,0.35);
-  --glow-orange: 0 0 40px rgba(251,146,60,0.35);
-  --glow-gold: 0 0 40px rgba(252,211,77,0.35);
-
-  /* ═══ Gradients signature (sans rose) ═══ */
-  --grad-aurora: linear-gradient(135deg, #A855F7 0%, #7C3AED 45%, #FB923C 100%);
-  --grad-aurora-hover: linear-gradient(135deg, #C084FC 0%, #A855F7 45%, #F97316 100%);
-  --grad-prism: linear-gradient(135deg, #22D3EE 0%, #A855F7 50%, #FB923C 100%);
-  --grad-prism-hero: linear-gradient(180deg, #FFFFFF 0%, #E9D5FF 30%, #A855F7 65%, #FB923C 100%);
-  --grad-violet-cyan: linear-gradient(135deg, #A855F7 0%, #22D3EE 100%);
-  --grad-violet-orange: linear-gradient(135deg, #A855F7 0%, #FB923C 100%);
-  --grad-cyan-orange: linear-gradient(135deg, #22D3EE 0%, #FB923C 100%);
-  --grad-gold-premium: linear-gradient(135deg, #FCD34D 0%, #FB923C 100%);
+  --glow-violet: 0 0 40px rgba(168,85,247,0.3);
+  --glow-orange: 0 0 40px rgba(232,68,42,0.3);
 }
 
 *, *::before, *::after {
@@ -96,58 +60,33 @@ section:not(:hover) .fbi-img {
   border-radius: 16px;
 }
 
-/* Pill button — Aurora gradient signature (violet→orange) */
+/* Pill button */
 .btn-pill {
-  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   border-radius: 9999px;
   padding: 14px 32px;
-  background: var(--grad-aurora);
-  background-size: 180% 100%;
-  background-position: 0% 50%;
+  background: linear-gradient(135deg, #A855F7, #7C3AED);
   font-weight: 700;
   letter-spacing: 0.05em;
   color: #fff;
   text-decoration: none;
-  transition: background-position 0.5s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.12) inset,
-    0 8px 30px rgba(168,85,247,0.4),
-    0 4px 20px rgba(251,146,60,0.28);
+  transition: all 0.2s;
+  box-shadow: 0 0 30px rgba(168,85,247,0.4);
   cursor: pointer;
   border: none;
   font-size: 1rem;
   font-family: 'Inter', sans-serif;
-  overflow: hidden;
 }
 .btn-pill:hover {
   transform: translateY(-3px) scale(1.03);
-  background-position: 100% 50%;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.2) inset,
-    0 14px 44px rgba(168,85,247,0.6),
-    0 8px 28px rgba(251,146,60,0.45);
+  box-shadow: 0 0 50px rgba(168,85,247,0.7);
 }
 
-/* Gradient text — Prism (violet→cyan→pink) pour titres */
+/* Gradient text */
 .gradient-text {
-  background: var(--grad-prism);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-text-aurora {
-  background: var(--grad-aurora);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-text-gold {
-  background: var(--grad-gold-premium);
+  background: linear-gradient(135deg, #A855F7, #E8442A);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -341,24 +280,21 @@ section {
   align-items: center;
 }
 
-/* Scrollbar — dégradé aurora */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #06020F;
+  background: #000;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #A855F7 0%, #7C3AED 50%, #FB923C 100%);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #C084FC 0%, #A855F7 50%, #F97316 100%);
+  background: #A855F7;
+  border-radius: 2px;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(168,85,247,0.35);
+  background: rgba(168,85,247,0.3);
   color: #fff;
 }
 
@@ -425,4 +361,3 @@ section {
     transition-duration: 0.15s !important;
   }
 }
-
