@@ -26,3 +26,4 @@ pnpm-debug.log*
 
 # scratch poster candidates
 public/images/portraits-video/candidates/
+_backup_webp/
