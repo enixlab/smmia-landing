@@ -60,10 +60,8 @@ const testimonials = [
 
 <section id="video-avis" class="va-section">
 
-  <!-- Pattern & halos de fond -->
+  <!-- Pattern -->
   <div class="va-grid" aria-hidden="true"></div>
-  <div class="va-halo va-halo-l" aria-hidden="true"></div>
-  <div class="va-halo va-halo-r" aria-hidden="true"></div>
 
   <!-- Logos brand flottants -->
   <BrandFloatingIcons icons={["TikTok", "Shopify", "Facebook", "n8n"]} />
@@ -89,8 +87,6 @@ const testimonials = [
 
     <!-- Marquee vidéos défilant infini -->
     <div class="va-marquee-wrap" data-animate>
-      <div class="va-marquee-fade va-marquee-fade-l" aria-hidden="true"></div>
-      <div class="va-marquee-fade va-marquee-fade-r" aria-hidden="true"></div>
       <div class="va-marquee-track" id="va-marquee-track">
         {[...testimonials, ...testimonials].map((t, i) => (
           <button
@@ -366,25 +362,10 @@ const testimonials = [
   /* ────────── Marquee vidéos ────────── */
   .va-marquee-wrap {
     position: relative;
-    width: 100%;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
     overflow: hidden;
     padding: 20px 0;
-  }
-  .va-marquee-fade {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 140px;
-    z-index: 3;
-    pointer-events: none;
-  }
-  .va-marquee-fade-l {
-    left: 0;
-    background: linear-gradient(90deg, #060211 0%, rgba(6, 2, 17, 0.85) 40%, transparent 100%);
-  }
-  .va-marquee-fade-r {
-    right: 0;
-    background: linear-gradient(270deg, #060211 0%, rgba(6, 2, 17, 0.85) 40%, transparent 100%);
   }
   .va-marquee-track {
     display: flex;
@@ -895,7 +876,6 @@ const testimonials = [
     .va-stat-sep { height: 28px; }
     .va-card { width: 260px; }
     .va-marquee-track { gap: 14px; animation-duration: 50s; }
-    .va-marquee-fade { width: 60px; }
     .va-card-body { padding: 16px 18px 18px; gap: 10px; }
     .va-play { width: 58px; height: 58px; }
     .va-play svg { width: 22px; height: 22px; }
