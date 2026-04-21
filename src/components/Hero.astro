@@ -90,7 +90,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   #hero {
     position: relative;
     width: 100%;
-    background: #06020F;
+    background: #000;
     padding: 90px 24px 130px;
     display: flex;
     flex-direction: column;
@@ -114,29 +114,19 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     transform-style: preserve-3d;
   }
 
-  /* Spotlight multi-halo aurora derrière la tagline */
+  /* Spotlight violet fixe derrière la tagline */
   .hero-spotlight {
     position: absolute;
     top: 48%;
     left: 50%;
-    width: 90%;
-    max-width: 1200px;
+    width: 72%;
+    max-width: 1000px;
     aspect-ratio: 3/1;
     transform: translate(-50%, -50%);
-    background:
-      radial-gradient(ellipse 55% 70% at 22% 50%, rgba(168, 85, 247, 0.34) 0%, transparent 65%),
-      radial-gradient(ellipse 45% 60% at 78% 40%, rgba(34, 211, 238, 0.22) 0%, transparent 65%),
-      radial-gradient(ellipse 40% 55% at 55% 75%, rgba(251, 146, 60, 0.18) 0%, transparent 65%),
-      radial-gradient(ellipse 30% 45% at 92% 80%, rgba(252, 211, 77, 0.12) 0%, transparent 65%);
-    filter: blur(32px);
+    background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.28) 0%, rgba(139, 92, 246, 0.15) 35%, transparent 70%);
+    filter: blur(28px);
     z-index: 0;
     pointer-events: none;
-    animation: spotlightShift 14s ease-in-out infinite alternate;
-  }
-  @keyframes spotlightShift {
-    0%   { transform: translate(-50%, -50%) scale(1);       opacity: 0.9; }
-    50%  { transform: translate(-48%, -52%) scale(1.05);    opacity: 1;   }
-    100% { transform: translate(-52%, -48%) scale(1.02);    opacity: 0.95;}
   }
 
   /* ===== EYEBROW badge session ===== */
@@ -461,8 +451,8 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(168, 85, 247, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+      linear-gradient(rgba(168, 85, 247, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168, 85, 247, 0.06) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
@@ -475,8 +465,8 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     left: 0;
     right: 0;
     bottom: 0;
-    height: 120px;
-    background: linear-gradient(to bottom, transparent, #06020F);
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, #000);
     pointer-events: none;
     z-index: 2;
   }

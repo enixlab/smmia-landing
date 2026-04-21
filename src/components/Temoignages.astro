@@ -354,7 +354,7 @@ const testimonials = [
 <style>
   .tp-section {
     position: relative;
-    background: transparent;
+    background: #000;
     padding: 140px 24px 160px;
     overflow: hidden;
     isolation: isolate;
@@ -369,10 +369,7 @@ const testimonials = [
     max-width: 1400px;
     aspect-ratio: 2.5/1;
     transform: translateX(-50%);
-    background:
-      radial-gradient(ellipse 50% 70% at 30% 50%, rgba(34,211,238,0.14) 0%, transparent 65%),
-      radial-gradient(ellipse 55% 75% at 55% 50%, rgba(168,85,247,0.24) 0%, rgba(124,58,237,0.12) 40%, transparent 70%),
-      radial-gradient(ellipse 45% 65% at 80% 55%, rgba(251,146,60,0.12) 0%, transparent 65%);
+    background: radial-gradient(ellipse at center, rgba(168,85,247,0.22) 0%, rgba(139,92,246,0.10) 40%, transparent 70%);
     filter: blur(60px);
     z-index: 0;
     pointer-events: none;
@@ -381,8 +378,8 @@ const testimonials = [
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(168,85,247,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(34,211,238,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(168,85,247,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168,85,247,0.035) 1px, transparent 1px);
     background-size: 72px 72px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
