@@ -2,10 +2,10 @@
 import BrandFloatingIcons from './BrandFloatingIcons.astro';
 
 const pillars = [
-  { id: "01", slug: "agence-ia",       title: "Ton agence IA",       sub: "Montée en 48h, client-ready." },
-  { id: "02", slug: "automatisations", title: "Systèmes 24/7",       sub: "Ta boîte tourne pendant que tu vis." },
-  { id: "03", slug: "closing",         title: "Scripts qui closent", sub: "Prospects signés sans négocier." },
-  { id: "04", slug: "prime",           title: "Services Prime",      sub: "Livraison sans toi, tu gardes la marge." },
+  { id: "01", slug: "agence-prete",       title: "Agence IA prête ce soir",  sub: "Monte ta boîte en 48h. Client-ready." },
+  { id: "02", slug: "leads-h24",          title: "Des leads H24",            sub: "La prospection tourne nuit et jour." },
+  { id: "03", slug: "prospects-signent",  title: "Prospects qui signent",    sub: "Scripts qui closent, objections cassées." },
+  { id: "04", slug: "tout-en-auto",       title: "Tout tourne sans toi",     sub: "Signature, paiement, livraison en auto." },
 ];
 ---
 
@@ -33,7 +33,7 @@ const pillars = [
         <div class="pillar-card" data-animate data-delay={0.2 + i * 0.08}>
           <div class="pillar-media">
             <img
-              src={`/images/programme/PILIER-${p.id}-${p.slug}.png`}
+              src={`/images/programme/PILIER-${p.id}-${p.slug}.png?v=2`}
               alt={p.title}
               loading="lazy"
             />
