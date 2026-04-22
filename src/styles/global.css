@@ -1088,13 +1088,22 @@ body:not(.footer-in-view) .ft-online-dot {
 [data-theme="light"] .px-price-save-badge *,
 [data-theme="light"] .px-chip-win * { color: #5B21B6 !important; }
 
-/* Prix "500 €" — gradient violet foncé bien lisible */
+/* Prix "500 €" — gradient violet vif signature (light) */
 [data-theme="light"] .px-price-amount {
-  background: linear-gradient(135deg, #1a0a33 0%, #5B21B6 40%, #A855F7 100%) !important;
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 40%, #C084FC 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: transparent;
+  color: transparent !important;
+  filter: drop-shadow(0 4px 18px rgba(124, 58, 237, 0.35)) !important;
+}
+[data-theme="light"] .px-price-currency {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #C084FC 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  filter: drop-shadow(0 3px 12px rgba(124, 58, 237, 0.3)) !important;
 }
 [data-theme="light"] .px-price-currency { color: var(--theme-text); }
 [data-theme="light"] .px-price-paiement { color: var(--theme-text-muted); }
@@ -1276,17 +1285,28 @@ body:not(.footer-in-view) .ft-online-dot {
 
 /* Contact rows (WhatsApp, mail) — inline row intégrée au footer lavande */
 [data-theme="light"] .ft-contact-row {
-  background: transparent !important;
-  border: 0 !important;
-  border-bottom: 1px solid rgba(124, 58, 237, 0.12) !important;
-  border-radius: 0 !important;
-  padding: 12px 2px !important;
+  background: rgba(168, 85, 247, 0.08) !important;
+  border: 1px solid rgba(124, 58, 237, 0.25) !important;
+  border-radius: 9999px !important;
+  padding: 10px 20px 10px 10px !important;
   color: var(--theme-text-muted);
   box-shadow: none !important;
 }
 [data-theme="light"] .ft-contact-row:last-of-type { border-bottom: 0 !important; }
-[data-theme="light"] .ft-contact-row:hover { color: var(--theme-violet); }
-[data-theme="light"] .ft-contact-row svg { color: var(--theme-violet); }
+[data-theme="light"] .ft-contact-row {
+  color: #0F0720 !important;
+  font-weight: 600 !important;
+}
+[data-theme="light"] .ft-contact-row:hover {
+  background: rgba(168, 85, 247, 0.16) !important;
+  border-color: rgba(124, 58, 237, 0.55) !important;
+  color: #0F0720 !important;
+}
+[data-theme="light"] .ft-contact-row svg {
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, #A855F7, #5B21B6) !important;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4) !important;
+}
 
 /* Bottom strip */
 [data-theme="light"] .ft-bottom {

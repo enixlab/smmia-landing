@@ -346,21 +346,23 @@ const EMAIL = 'contact@smmia.app';
     color: #C4B5FD;
   }
 
-  /* ─── Contact rows (pills arrondis premium) ─── */
+  /* ─── Contact rows (pills arrondis premium avec icône circulaire) ─── */
   .ft-contact-row {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 20px;
-    margin: 6px 0;
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.85);
+    gap: 14px;
+    padding: 10px 20px 10px 10px;
+    margin: 8px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     border-radius: 9999px;
     background: rgba(168, 85, 247, 0.08);
-    border: 1px solid rgba(168, 85, 247, 0.25);
+    border: 1px solid rgba(168, 85, 247, 0.22);
     transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
+    width: fit-content;
+    max-width: 100%;
   }
   .ft-contact-row:hover {
     color: #FFFFFF;
@@ -369,11 +371,21 @@ const EMAIL = 'contact@smmia.app';
     transform: translateX(4px);
   }
   .ft-contact-row svg {
-    color: rgba(216, 180, 254, 0.95);
+    width: 18px;
+    height: 18px;
+    color: #FFFFFF;
     flex-shrink: 0;
-    transition: color 0.25s ease;
+    padding: 9px;
+    box-sizing: content-box;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #A855F7, #7C3AED);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-  .ft-contact-row:hover svg { color: #FFFFFF; }
+  .ft-contact-row:hover svg {
+    transform: scale(1.06);
+    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.55);
+  }
 
   /* ─── Socials ─── */
   .ft-socials {
