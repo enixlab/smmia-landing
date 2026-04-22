@@ -1639,18 +1639,21 @@ section:not(.in-view) .spot-core {
   border-color: rgba(124, 58, 237, 0.4) !important;
 }
 
-/* ═══ LIGHT : bouton play vidéo — violet plein propre ═══ */
+/* ═══ LIGHT : bouton play vidéo — JUSTE le triangle noir, aucun fond ═══ */
 [data-theme="light"] .va-play,
 [data-theme="light"] .va-play-core {
-  background: #7C3AED !important;
-  color: #FFFFFF !important;
+  background: transparent !important;
+  color: #000000 !important;
   border: none !important;
-  box-shadow: 0 6px 18px rgba(15, 7, 32, 0.25) !important;
+  box-shadow: none !important;
 }
 [data-theme="light"] .va-play svg,
 [data-theme="light"] .va-play-core svg {
-  color: #FFFFFF !important;
-  fill: #FFFFFF !important;
+  color: #000000 !important;
+  fill: #000000 !important;
+  width: 56px !important;
+  height: 56px !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)) !important;
 }
 [data-theme="light"] .va-play::before,
 [data-theme="light"] .va-play::after,
@@ -1660,8 +1663,7 @@ section:not(.in-view) .spot-core {
 [data-theme="light"] .va-play-ring--2 {
   display: none !important;
 }
-/* Hover : pas de pulse blanc gênant */
 [data-theme="light"] .va-card:hover .va-play-core {
   animation: none !important;
-  box-shadow: 0 10px 28px rgba(15, 7, 32, 0.35) !important;
+  box-shadow: none !important;
 }
