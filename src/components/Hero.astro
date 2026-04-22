@@ -26,8 +26,8 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
     <!-- Logo SMMIA seul (switch dark/light) -->
     <div class="hero-brand" data-depth="0.5">
-      <img src="/images/logos/SMMIA-logo-cropped.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--dark" />
-      <img src="/images/logos/SMMIA-logo-light.png?v=vdv556" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--light" />
+      <img src="/images/logos/SMMIA-banner.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--dark" />
+      <img src="/images/logos/SMMIA-banner.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--light" />
     </div>
 
     <!-- Tagline principale -->
@@ -289,11 +289,11 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   .brand-smmia {
     height: 110px;
-    filter: drop-shadow(0 10px 35px rgba(168, 85, 247, 0.45));
+    filter: none;
   }
 
   .hero-brand:hover .brand-smmia {
-    filter: drop-shadow(0 18px 50px rgba(168, 85, 247, 0.75));
+    filter: none;
   }
 
   /* Switch logo dark / light — Astro style scoping forces global via :global() */
