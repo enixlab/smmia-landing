@@ -418,29 +418,29 @@ section {
 
 /* ───────────────────── Body & halos globaux ───────────────────── */
 [data-theme="light"] body {
-  background: var(--theme-bg) !important;
+  background: var(--theme-bg) !important !important;
   color: var(--theme-text);
 }
 /* Halo fullscreen ambiant (body::before) : réduit en light */
 [data-theme="light"] body::before { opacity: 0.4; }
 
 /* ─── Backgrounds sombres hardcoded → light (force !important pour battre Astro-scoped) ─── */
-[data-theme="light"] #hero { background: var(--theme-bg) !important; }
-[data-theme="light"] .hero-fade { background: linear-gradient(to bottom, transparent, var(--theme-bg)) !important; }
-[data-theme="light"] .va-section { background: radial-gradient(ellipse at 50% 0%, #EFE8FF 0%, #F5F0FF 60%, var(--theme-bg) 100%) !important; }
-[data-theme="light"] .va-cta-outer { background: var(--theme-bg) !important; }
-[data-theme="light"] .prime-section { background: radial-gradient(ellipse at 50% 0%, #F5F0FF 0%, var(--theme-bg) 60%, #FFFFFF 100%) !important; }
-[data-theme="light"] .px-section { background: radial-gradient(ellipse at 50% 0%, #F0EBFF 0%, #F5F0FF 55%, var(--theme-bg) 100%) !important; }
-[data-theme="light"] .av-section { background: radial-gradient(ellipse at 50% 0%, #EFE8FF 0%, #F5F0FF 60%, var(--theme-bg) 100%) !important; }
-[data-theme="light"] .bento-section { background: transparent !important; }
+[data-theme="light"] #hero { background: var(--theme-bg) !important !important; }
+[data-theme="light"] .hero-fade { background: linear-gradient(to bottom, transparent, var(--theme-bg)) !important !important; }
+[data-theme="light"] .va-section { background: radial-gradient(ellipse at 50% 0%, #EFE8FF 0%, #F5F0FF 60%, var(--theme-bg) 100%) !important !important; }
+[data-theme="light"] .va-cta-outer { background: var(--theme-bg) !important !important; }
+[data-theme="light"] .prime-section { background: radial-gradient(ellipse at 50% 0%, #F5F0FF 0%, var(--theme-bg) 60%, #FFFFFF 100%) !important !important; }
+[data-theme="light"] .px-section { background: radial-gradient(ellipse at 50% 0%, #F0EBFF 0%, #F5F0FF 55%, var(--theme-bg) 100%) !important !important; }
+[data-theme="light"] .av-section { background: radial-gradient(ellipse at 50% 0%, #EFE8FF 0%, #F5F0FF 60%, var(--theme-bg) 100%) !important !important; }
+[data-theme="light"] .bento-section { background: transparent !important !important; }
 [data-theme="light"] .ft,
-[data-theme="light"] footer { background: linear-gradient(180deg, #EFE8FF 0%, var(--theme-bg) 100%) !important; }
-[data-theme="light"] #crm { background: var(--theme-bg) !important; }
-[data-theme="light"] .prog-section { background: radial-gradient(ellipse 60% 50% at 15% 50%, rgba(168,85,247,0.06) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 85% 50%, rgba(168,85,247,0.04) 0%, transparent 60%), var(--theme-bg) !important; }
+[data-theme="light"] footer { background: linear-gradient(180deg, #EFE8FF 0%, var(--theme-bg) 100%) !important !important; }
+[data-theme="light"] #crm { background: var(--theme-bg) !important !important; }
+[data-theme="light"] .prog-section { background: radial-gradient(ellipse 60% 50% at 15% 50%, rgba(168,85,247,0.06) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 85% 50%, rgba(168,85,247,0.04) 0%, transparent 60%), var(--theme-bg) !important !important; }
 
 /* ═══════════════════════ 1. NAVBAR ═══════════════════════ */
 [data-theme="light"] #navbar {
-  background: rgba(250, 250, 255, 0.78);
+  background: rgba(250, 250, 255, 0.78) !important;
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   border-bottom: 1px solid var(--theme-border-subtle);
@@ -449,13 +449,13 @@ section {
 [data-theme="light"] #navbar a:hover { color: var(--theme-violet); }
 [data-theme="light"] .btn-membre {
   color: var(--theme-text);
-  background: rgba(124, 58, 237, 0.06);
+  background: rgba(124, 58, 237, 0.06) !important;
   border-color: var(--theme-border);
 }
-[data-theme="light"] .btn-membre:hover { background: rgba(124, 58, 237, 0.12); }
+[data-theme="light"] .btn-membre:hover { background: rgba(124, 58, 237, 0.12) !important; }
 [data-theme="light"] #burger { color: var(--theme-text); }
 [data-theme="light"] #mobile-menu {
-  background: rgba(250, 250, 255, 0.98);
+  background: rgba(250, 250, 255, 0.98) !important;
   border-top-color: var(--theme-border);
 }
 [data-theme="light"] #mobile-menu a {
@@ -464,9 +464,9 @@ section {
 }
 
 /* ═══════════════════════ 2. HERO ═══════════════════════ */
-[data-theme="light"] #hero { background: var(--theme-bg); }
+[data-theme="light"] #hero { background: var(--theme-bg) !important !important; }
 [data-theme="light"] .hero-fade {
-  background: linear-gradient(to bottom, transparent, var(--theme-bg));
+  background: linear-gradient(to bottom, transparent, var(--theme-bg)) !important !important;
 }
 [data-theme="light"] .hero-grid {
   background-image:
@@ -483,18 +483,18 @@ section {
 
 /* Eyebrow "Session Mai 2026" */
 [data-theme="light"] .hero-eyebrow {
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(124, 58, 237, 0.08) !important;
   border-color: rgba(124, 58, 237, 0.35);
 }
 [data-theme="light"] .eyebrow-text { color: var(--theme-text); }
-[data-theme="light"] .pulse-dot { background: var(--theme-violet); }
+[data-theme="light"] .pulse-dot { background: var(--theme-violet) !important; }
 
 /* Title outline + fill — gradient violet profond, parfaitement lisible */
 [data-theme="light"] .line-outline {
   -webkit-text-stroke: 2px rgba(10, 5, 32, 0.9);
 }
 [data-theme="light"] .line-fill {
-  background: linear-gradient(180deg, #1a0a33 0%, #5B21B6 45%, #A855F7 100%);
+  background: linear-gradient(180deg, #1a0a33 0%, #5B21B6 45%, #A855F7 100%) !important;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -515,7 +515,7 @@ section {
 [data-theme="light"] .scroll-text { color: rgba(15, 7, 32, 0.78); }
 [data-theme="light"] .hero-scroll-cta:hover .scroll-text { color: var(--theme-text); }
 [data-theme="light"] .scroll-mouse { border-color: rgba(124, 58, 237, 0.55); }
-[data-theme="light"] .scroll-wheel { background: var(--theme-violet); }
+[data-theme="light"] .scroll-wheel { background: var(--theme-violet) !important; }
 
 /* Switch logo dark/light */
 [data-theme="light"] .brand-smmia--dark { display: none; }
@@ -525,10 +525,10 @@ section {
 }
 
 /* ═══════════════════════ 3. PROGRAMME (5 piliers) ═══════════════════════ */
-[data-theme="light"] .prog-section { background: var(--theme-bg); }
+[data-theme="light"] .prog-section { background: var(--theme-bg) !important; }
 [data-theme="light"] .prog-eyebrow {
   color: var(--theme-violet-deep);
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(124, 58, 237, 0.08) !important;
   border-color: rgba(124, 58, 237, 0.3);
 }
 [data-theme="light"] .prog-title { color: var(--theme-text); }
@@ -536,7 +536,7 @@ section {
 
 /* Cards piliers : fond blanc + shadow subtile + border fine */
 [data-theme="light"] .pillar-card {
-  background: var(--theme-bg-elev);
+  background: var(--theme-bg-elev) !important;
   border: 1px solid var(--theme-border);
   box-shadow: var(--theme-shadow-card);
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
@@ -547,10 +547,10 @@ section {
   transform: translateY(-2px);
 }
 /* pillar-media = zone avec image/visual, garde son fond sombre si typé .pillar-media */
-[data-theme="light"] .pillar-body { background: transparent; }
+[data-theme="light"] .pillar-body { background: transparent !important; }
 [data-theme="light"] .pillar-title { color: var(--theme-text); }
 [data-theme="light"] .pillar-sub { color: var(--theme-text-muted); }
-[data-theme="light"] .pillars-marquee-wrap { background: transparent; }
+[data-theme="light"] .pillars-marquee-wrap { background: transparent !important; }
 
 /* ═══════════════════════ 4. MARQUEE AVIS ═══════════════════════ */
 [data-theme="light"] .av-section {
@@ -567,21 +567,21 @@ section {
 }
 
 [data-theme="light"] .av-badge {
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(124, 58, 237, 0.08) !important;
   border-color: rgba(124, 58, 237, 0.32);
   color: var(--theme-violet-deep);
 }
 [data-theme="light"] .av-badge-dot,
 [data-theme="light"] .av-badge-text,
 [data-theme="light"] .av-live { color: var(--theme-violet-deep); }
-[data-theme="light"] .av-badge-dot { background: var(--theme-violet); }
+[data-theme="light"] .av-badge-dot { background: var(--theme-violet) !important; }
 
 [data-theme="light"] .av-title { color: var(--theme-text); }
 [data-theme="light"] .av-sub { color: var(--theme-text-muted); }
 [data-theme="light"] .av-sub-strong { color: var(--theme-text); font-weight: 600; }
 /* Accent "avec le SMMIA" — gradient signature */
 [data-theme="light"] .av-title-accent {
-  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%);
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -592,21 +592,21 @@ section {
 [data-theme="light"] .av-stat-val,
 [data-theme="light"] .av-stat-val-sub { color: var(--theme-text); }
 [data-theme="light"] .av-stat-lbl { color: var(--theme-text-muted); }
-[data-theme="light"] .av-stat-sep { background: var(--theme-border); }
+[data-theme="light"] .av-stat-sep { background: var(--theme-border) !important; }
 
 /* Tabs : Tous / Discord / Trustpilot */
 [data-theme="light"] .av-tab {
   color: var(--theme-text-muted);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.85) !important;
   border-color: var(--theme-border);
 }
 [data-theme="light"] .av-tab:hover { color: var(--theme-text); }
 [data-theme="light"] .av-tab.is-active {
   color: var(--theme-violet-deep);
-  background: rgba(124, 58, 237, 0.12);
+  background: rgba(124, 58, 237, 0.12) !important;
   border-color: rgba(124, 58, 237, 0.45);
 }
-[data-theme="light"] .av-tab-dot { background: var(--theme-violet); }
+[data-theme="light"] .av-tab-dot { background: var(--theme-violet) !important; }
 [data-theme="light"] .av-tab-count { color: var(--theme-text-dim); }
 
 /* Cards d'avis — RESTENT DARK (screenshots Discord/Trustpilot) */
@@ -617,10 +617,10 @@ section {
 
 /* Fades des marquee */
 [data-theme="light"] .av-fade-l {
-  background: linear-gradient(to right, var(--theme-bg), transparent);
+  background: linear-gradient(to right, var(--theme-bg), transparent) !important;
 }
 [data-theme="light"] .av-fade-r {
-  background: linear-gradient(to left, var(--theme-bg), transparent);
+  background: linear-gradient(to left, var(--theme-bg), transparent) !important;
 }
 
 /* ═══════════════════════ 5. SERVICE BY PRIME ═══════════════════════ */
@@ -651,19 +651,19 @@ section {
 
 /* Live status pill "EN DIRECT · 8 deals" */
 [data-theme="light"] .live-status {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9) !important;
   border: 1px solid var(--theme-border);
   box-shadow: 0 4px 14px rgba(15, 7, 32, 0.04);
 }
-[data-theme="light"] .live-dot { background: #16A34A; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2); }
+[data-theme="light"] .live-dot { background: #16A34A !important; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2); }
 [data-theme="light"] .live-label { color: var(--theme-violet-deep); }
-[data-theme="light"] .live-sep { background: var(--theme-border); }
+[data-theme="light"] .live-sep { background: var(--theme-border) !important; }
 [data-theme="light"] .live-detail,
 [data-theme="light"] .live-count { color: var(--theme-text); }
 
 /* headline-mark (bloc violet "t'osais pas prendre") — RESTE violet + blanc */
 [data-theme="light"] .headline-mark {
-  background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+  background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%) !important;
   box-shadow: 0 10px 30px rgba(124, 58, 237, 0.32);
 }
 [data-theme="light"] .headline-mark,
@@ -672,7 +672,7 @@ section {
 
 /* Stats cards (25 services / 72h / -70%) */
 [data-theme="light"] .stat-card {
-  background: var(--theme-bg-elev);
+  background: var(--theme-bg-elev) !important;
   border: 1px solid var(--theme-border);
   box-shadow: var(--theme-shadow-card),
               inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -680,7 +680,7 @@ section {
 }
 [data-theme="light"] .stat-card * { color: inherit; }
 [data-theme="light"] .stat-card-accent {
-  background: linear-gradient(135deg, rgba(192, 132, 252, 0.10), rgba(124, 58, 237, 0.04));
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.10), rgba(124, 58, 237, 0.04)) !important;
   border-color: rgba(124, 58, 237, 0.45);
 }
 [data-theme="light"] .stat-icon { color: var(--theme-violet); }
@@ -727,23 +727,23 @@ section {
 }
 
 [data-theme="light"] .va-badge {
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(124, 58, 237, 0.08) !important;
   border-color: rgba(124, 58, 237, 0.35);
   color: var(--theme-violet-deep);
 }
-[data-theme="light"] .va-badge-dot { background: var(--theme-violet); }
+[data-theme="light"] .va-badge-dot { background: var(--theme-violet) !important; }
 
 [data-theme="light"] .va-title { color: var(--theme-text); }
 /* "en direct" accent gradient */
 [data-theme="light"] .va-accent {
-  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%);
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 [data-theme="light"] .va-sub { color: var(--theme-text-muted); }
-[data-theme="light"] .va-marquee-wrap { background: transparent; }
+[data-theme="light"] .va-marquee-wrap { background: transparent !important; }
 
 /* Cards vidéo RESTENT DARK (elles montrent des posters vidéos) */
 [data-theme="light"] .va-card {
@@ -756,22 +756,22 @@ section {
 [data-theme="light"] .va-cta-watch { color: #FFFFFF; }
 
 /* CTA card blanche "Tu as vu leurs résultats. Maintenant c'est ton tour." */
-[data-theme="light"] .va-cta-outer { background: var(--theme-bg); }
+[data-theme="light"] .va-cta-outer { background: var(--theme-bg) !important; }
 [data-theme="light"] .va-cta-card {
-  background: var(--theme-bg-elev);
+  background: var(--theme-bg-elev) !important;
   border: 1px solid var(--theme-border);
   box-shadow: 0 20px 60px rgba(15, 7, 32, 0.08);
   color: var(--theme-text);
 }
 [data-theme="light"] .va-cta-eyebrow {
   color: var(--theme-violet-deep);
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(124, 58, 237, 0.08) !important;
   border-color: rgba(124, 58, 237, 0.35);
 }
-[data-theme="light"] .va-cta-eyebrow-dot { background: var(--theme-violet); }
+[data-theme="light"] .va-cta-eyebrow-dot { background: var(--theme-violet) !important; }
 [data-theme="light"] .va-cta-headline { color: var(--theme-text); }
 [data-theme="light"] .va-cta-headline-accent {
-  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%);
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -796,15 +796,15 @@ section {
 
 /* Brand floating buttons (Sparkle, Facebook, YouTube, n8n, TikTok, Stripe) */
 [data-theme="light"] .px-float {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9) !important;
   border: 1px solid var(--theme-border);
   box-shadow: 0 6px 18px rgba(15, 7, 32, 0.08);
 }
 [data-theme="light"] .px-float-ring { border-color: rgba(124, 58, 237, 0.35); }
-[data-theme="light"] .px-float-glow { background: rgba(124, 58, 237, 0.22); }
+[data-theme="light"] .px-float-glow { background: rgba(124, 58, 237, 0.22) !important; }
 [data-theme="light"] .px-float-label {
   color: var(--theme-text);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.95) !important;
   border: 1px solid var(--theme-border);
   box-shadow: 0 4px 12px rgba(15, 7, 32, 0.08);
 }
@@ -812,16 +812,16 @@ section {
 /* Eyebrow */
 [data-theme="light"] .px-eyebrow {
   color: var(--theme-violet-deep);
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(124, 58, 237, 0.08) !important;
   border-color: rgba(124, 58, 237, 0.3);
 }
-[data-theme="light"] .px-eyebrow-dot { background: var(--theme-violet); }
+[data-theme="light"] .px-eyebrow-dot { background: var(--theme-violet) !important; }
 
 /* Titre "Un Module. Une décision. Tout change." */
 [data-theme="light"] .px-title,
 [data-theme="light"] .px-section h2 { color: var(--theme-text); }
 [data-theme="light"] .px-title-accent {
-  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%);
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -830,7 +830,7 @@ section {
 
 /* Card de prix */
 [data-theme="light"] .px-card {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F5F0FF 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5F0FF 100%) !important;
   border: 1px solid var(--theme-border);
   box-shadow:
     0 30px 80px -20px rgba(15, 7, 32, 0.10),
@@ -839,7 +839,7 @@ section {
 
 /* Corner badge (px-corner reste violet foncé + texte blanc — c'est un label type "-60% session") */
 [data-theme="light"] .px-corner {
-  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  background: linear-gradient(135deg, #7C3AED, #5B21B6) !important;
   box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
 }
 [data-theme="light"] .px-corner,
@@ -851,11 +851,11 @@ section {
 
 /* Brand pill (dans la card, "SMMIA · Programme") */
 [data-theme="light"] .px-brand-pill {
-  background: rgba(124, 58, 237, 0.06);
+  background: rgba(124, 58, 237, 0.06) !important;
   border: 1px solid var(--theme-border);
   color: var(--theme-text);
 }
-[data-theme="light"] .px-brand-dot { background: var(--theme-violet); }
+[data-theme="light"] .px-brand-dot { background: var(--theme-violet) !important; }
 [data-theme="light"] .px-brand-rating,
 [data-theme="light"] .px-brand-rating-val { color: var(--theme-text); }
 [data-theme="light"] .px-brand-stars { color: #F59E0B; }
@@ -864,14 +864,14 @@ section {
 [data-theme="light"] .px-price-strike-row,
 [data-theme="light"] .px-price-strike { color: var(--theme-text-dim); }
 [data-theme="light"] .px-price-save-badge {
-  background: rgba(22, 163, 74, 0.12);
+  background: rgba(22, 163, 74, 0.12) !important;
   color: #15803D;
   border: 1px solid rgba(22, 163, 74, 0.3);
 }
 
 /* Prix "500 €" — gradient violet foncé bien lisible */
 [data-theme="light"] .px-price-amount {
-  background: linear-gradient(135deg, #1a0a33 0%, #5B21B6 40%, #A855F7 100%);
+  background: linear-gradient(135deg, #1a0a33 0%, #5B21B6 40%, #A855F7 100%) !important;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -880,7 +880,7 @@ section {
 [data-theme="light"] .px-price-currency { color: var(--theme-text); }
 [data-theme="light"] .px-price-paiement { color: var(--theme-text-muted); }
 [data-theme="light"] .px-price-paiement-gradient {
-  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%) !important;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -889,12 +889,12 @@ section {
 
 /* Chips (pay in 3x, etc.) */
 [data-theme="light"] .px-chip {
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(124, 58, 237, 0.08) !important;
   border: 1px solid var(--theme-border);
   color: var(--theme-violet-deep);
 }
 [data-theme="light"] .px-chip-win {
-  background: rgba(22, 163, 74, 0.08);
+  background: rgba(22, 163, 74, 0.08) !important;
   border-color: rgba(22, 163, 74, 0.3);
   color: #15803D;
 }
@@ -904,14 +904,14 @@ section {
 [data-theme="light"] .px-feature-tag { color: var(--theme-text-muted); }
 [data-theme="light"] .px-feature-icon {
   color: var(--theme-violet);
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(124, 58, 237, 0.08) !important;
 }
 
 /* CTA principal reste violet + blanc (voir règles globales en bas) */
 
 /* Live "Thomas a réservé son appel" */
 [data-theme="light"] .px-live-avatar {
-  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  background: linear-gradient(135deg, #7C3AED, #5B21B6) !important;
   color: #FFFFFF;
 }
 [data-theme="light"] .px-live-text { color: var(--theme-text); }
@@ -919,13 +919,13 @@ section {
 [data-theme="light"] .px-live-time { color: var(--theme-text-dim); }
 
 /* ═══════════════════════ 8. CRM SECTION ═══════════════════════ */
-[data-theme="light"] #crm { background: var(--theme-bg); }
+[data-theme="light"] #crm { background: var(--theme-bg) !important; }
 [data-theme="light"] #crm h2 { color: var(--theme-text); }
 [data-theme="light"] #crm p { color: var(--theme-text-muted); }
 
 /* Eyebrow du bloc CRM "Accès membre exclusif" */
 [data-theme="light"] .cat-pill {
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(124, 58, 237, 0.08) !important;
   border: 1px solid var(--theme-border);
   color: var(--theme-violet-deep);
 }
@@ -947,7 +947,7 @@ section {
 /* ═══════════════════════ 9. FOOTER ═══════════════════════ */
 [data-theme="light"] footer,
 [data-theme="light"] .ft {
-  background: linear-gradient(180deg, #EFE8FF 0%, var(--theme-bg) 100%);
+  background: linear-gradient(180deg, #EFE8FF 0%, var(--theme-bg) 100%) !important;
   color: var(--theme-text);
   border-top: 1px solid var(--theme-border-subtle);
 }
@@ -966,19 +966,19 @@ section {
 
 /* Community card (Discord Focus) */
 [data-theme="light"] .ft-community {
-  background: var(--theme-bg-elev);
+  background: var(--theme-bg-elev) !important;
   border: 1px solid var(--theme-border);
   box-shadow: var(--theme-shadow-card);
 }
 [data-theme="light"] .ft-community:hover { border-color: rgba(124, 58, 237, 0.5); }
 [data-theme="light"] .ft-community-name { color: var(--theme-text); }
 [data-theme="light"] .ft-community-meta { color: var(--theme-text-muted); }
-[data-theme="light"] .ft-online-dot { background: #16A34A; }
+[data-theme="light"] .ft-online-dot { background: #16A34A !important; }
 [data-theme="light"] .ft-community-cta { color: var(--theme-violet); }
 
 /* Contact rows (WhatsApp, mail) */
 [data-theme="light"] .ft-contact-row {
-  background: var(--theme-bg-elev);
+  background: var(--theme-bg-elev) !important;
   border: 1px solid var(--theme-border);
   color: var(--theme-text);
 }
@@ -994,7 +994,7 @@ section {
 
 /* Footer title accent gradient */
 [data-theme="light"] .footer-title-accent {
-  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%);
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1013,7 +1013,7 @@ section {
 /* Fond noir/quasi-noir inline → transparent (sauf blocs sombres volontaires) */
 [data-theme="light"] [style*="background:#000"]:not(.btn-pill):not(#crm-shell):not(#crm-shell *),
 [data-theme="light"] [style*="background: #000"]:not(.btn-pill):not(#crm-shell):not(#crm-shell *) {
-  background: transparent;
+  background: transparent !important;
 }
 
 /* CTAs principaux : fond violet + texte blanc (priorité absolue, on utilise !important
