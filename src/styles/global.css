@@ -650,6 +650,83 @@ section {
 [data-theme="light"] .brand-smmia--dark { display: none !important; }
 [data-theme="light"] .brand-smmia--light { display: block !important; }
 
+/* ═══ FORCE COULEUR SOMBRE sur TOUT en light mode ═══ */
+[data-theme="light"] body,
+[data-theme="light"] body * {
+  color: #0F0720;
+}
+[data-theme="light"] p,
+[data-theme="light"] .sub,
+[data-theme="light"] .prog-sub,
+[data-theme="light"] .va-sub,
+[data-theme="light"] .av-sub,
+[data-theme="light"] .pillar-sub,
+[data-theme="light"] .px-price-paiement {
+  color: rgba(15, 7, 32, 0.72) !important;
+}
+[data-theme="light"] strong,
+[data-theme="light"] b { color: #0F0720 !important; }
+
+/* ServiceByPrime headline en light : "Dis oui aux deals" + "que...prendre" */
+[data-theme="light"] .headline,
+[data-theme="light"] .headline-line-1,
+[data-theme="light"] .headline-soft { color: #0F0720 !important; }
+
+/* Sous-titres sombres */
+[data-theme="light"] .va-sub,
+[data-theme="light"] .va-cta-sub,
+[data-theme="light"] .av-sub,
+[data-theme="light"] .prog-sub,
+[data-theme="light"] .sub,
+[data-theme="light"] .px-price-paiement,
+[data-theme="light"] .pillar-sub { color: rgba(15, 7, 32, 0.72) !important; }
+
+/* EXCEPTIONS : éléments/blocs qui doivent rester BLANC en light mode (car fond sombre) */
+[data-theme="light"] .btn-pill,
+[data-theme="light"] .btn-pill *,
+[data-theme="light"] .hero-cta-primary,
+[data-theme="light"] .hero-cta-primary *,
+[data-theme="light"] .hero-cta-primary span,
+[data-theme="light"] .av-cta,
+[data-theme="light"] .av-cta *,
+[data-theme="light"] .av-cta span,
+[data-theme="light"] .va-cta-btn,
+[data-theme="light"] .va-cta-btn *,
+[data-theme="light"] .px-cta-primary,
+[data-theme="light"] .px-cta-primary *,
+[data-theme="light"] .px-corner,
+[data-theme="light"] .px-corner *,
+[data-theme="light"] .px-corner strong,
+[data-theme="light"] .headline-mark,
+[data-theme="light"] .headline-mark *,
+[data-theme="light"] .headline-mark-text,
+[data-theme="light"] .tile,
+[data-theme="light"] .tile *,
+[data-theme="light"] .tile span,
+[data-theme="light"] .tile-label,
+[data-theme="light"] .tile-tag,
+[data-theme="light"] #crm-shell,
+[data-theme="light"] #crm-shell *,
+[data-theme="light"] #crm-shell h3,
+[data-theme="light"] #crm-shell span,
+[data-theme="light"] #crm-shell div,
+[data-theme="light"] .va-card,
+[data-theme="light"] .va-card *,
+[data-theme="light"] .va-hook,
+[data-theme="light"] .va-cta-watch,
+[data-theme="light"] .av-card,
+[data-theme="light"] .av-card *,
+[data-theme="light"] .pillar-card .pillar-media,
+[data-theme="light"] .pillar-card .pillar-media * {
+  color: #fff !important;
+}
+
+/* Exceptions fines : within pillar-body, le texte reste sombre */
+[data-theme="light"] .pillar-body,
+[data-theme="light"] .pillar-body * { color: inherit; }
+[data-theme="light"] .pillar-title { color: #0F0720 !important; }
+[data-theme="light"] .pillar-sub { color: rgba(15, 7, 32, 0.72) !important; }
+
 /* FORCE : tous textes blancs/clair → sombre sur light mode */
 [data-theme="light"] * {
   /* Par défaut, si le composant n'a pas override spécifique, on override les blancs */
