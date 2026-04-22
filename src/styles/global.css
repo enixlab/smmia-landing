@@ -528,6 +528,42 @@ section {
   background: #F7F4FF !important;
 }
 
+/* ServiceByPrime tiles (mini cards services) + stat-cards */
+[data-theme="light"] .tile {
+  background: #FFFFFF !important;
+  box-shadow: 0 10px 30px rgba(15, 7, 32, 0.1), 0 4px 12px rgba(168, 85, 247, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+[data-theme="light"] .tile-bg-tint {
+  background: linear-gradient(180deg, rgba(247, 244, 255, 0.2) 0%, rgba(247, 244, 255, 0.6) 100%) !important;
+}
+[data-theme="light"] .tile-label,
+[data-theme="light"] .tile span,
+[data-theme="light"] .tile-tag {
+  color: #FFFFFF !important;
+}
+[data-theme="light"] .stat-card {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(168, 85, 247, 0.25) !important;
+  box-shadow: 0 10px 30px rgba(15, 7, 32, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  color: #0F0720 !important;
+}
+[data-theme="light"] .stat-card * { color: #0F0720 !important; }
+[data-theme="light"] .stat-card-accent {
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.12), rgba(168, 85, 247, 0.06)) !important;
+  border-color: rgba(168, 85, 247, 0.45) !important;
+}
+[data-theme="light"] .stat-icon { color: #5B21B6 !important; }
+[data-theme="light"] .live-status { background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.35) !important; }
+[data-theme="light"] .live-label,
+[data-theme="light"] .live-count,
+[data-theme="light"] .live-detail { color: #0F0720 !important; }
+[data-theme="light"] .headline,
+[data-theme="light"] .headline-line-1,
+[data-theme="light"] .headline-line-2,
+[data-theme="light"] .headline-soft { color: #0F0720 !important; }
+[data-theme="light"] .sub { color: rgba(15, 7, 32, 0.65) !important; }
+[data-theme="light"] .cat-pill { background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.3) !important; color: #5B21B6 !important; }
+
 /* Stats values numbers hors gradient (reste lisible) */
 [data-theme="light"] .stat-card div[data-countup] { filter: drop-shadow(0 4px 14px rgba(168,85,247,0.2)); }
 
