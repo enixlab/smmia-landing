@@ -27,7 +27,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     <!-- Logo SMMIA seul (switch dark/light) -->
     <div class="hero-brand" data-depth="0.5">
       <img src="/images/logos/SMMIA-logo-cropped.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--dark" />
-      <img src="/images/logos/SMMIA-logo-light.png?v=vdv556" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--light" />
+      <img src="/images/logos/DCC.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--light" />
     </div>
 
     <!-- Tagline principale -->
@@ -266,6 +266,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   .hero-brand {
     --tx: 0px;
     --ty: 0px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -273,6 +274,27 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     opacity: 0;
     animation: brandEnter 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards;
     transform: translate3d(var(--tx), var(--ty), 0);
+  }
+
+  /* Halo lumineux derrière le logo */
+  .hero-brand::before {
+    content: "";
+    position: absolute;
+    inset: -40% -20%;
+    background: radial-gradient(ellipse at center,
+      rgba(168, 85, 247, 0.55) 0%,
+      rgba(168, 85, 247, 0.30) 25%,
+      rgba(124, 58, 237, 0.15) 45%,
+      rgba(168, 85, 247, 0) 70%);
+    filter: blur(28px);
+    z-index: -1;
+    pointer-events: none;
+    animation: haloGlow 4s ease-in-out infinite;
+  }
+
+  @keyframes haloGlow {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.06); }
   }
 
   .brand-logo {
@@ -298,6 +320,17 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   /* Switch logo dark / light — Astro style scoping forces global via :global() */
   .brand-smmia--light { display: none; }
+
+  /* Halo plus lumineux en mode clair pour faire ressortir le logo */
+  :global([data-theme="light"]) .hero-brand::before {
+    inset: -50% -25%;
+    background: radial-gradient(ellipse at center,
+      rgba(168, 85, 247, 0.75) 0%,
+      rgba(251, 146, 60, 0.35) 30%,
+      rgba(168, 85, 247, 0.25) 50%,
+      rgba(168, 85, 247, 0) 75%);
+    filter: blur(32px);
+  }
 
   @keyframes brandEnter {
     0%   { opacity: 0; transform: translateY(-6px); }
