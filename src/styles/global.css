@@ -1705,12 +1705,12 @@ body:not(.footer-in-view) .ft-online-dot {
   filter: drop-shadow(0 4px 22px rgba(168, 85, 247, 0.45)) !important;
 }
 [data-theme="light"] .px-price-currency {
-  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #C084FC 100%) !important;
+  background: linear-gradient(135deg, #A855F7 0%, #C084FC 50%, #D8B4FE 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: transparent !important;
-  filter: drop-shadow(0 3px 14px rgba(168, 85, 247, 0.4)) !important;
+  filter: drop-shadow(0 3px 14px rgba(168, 85, 247, 0.35)) !important;
   opacity: 1 !important;
 }
 
