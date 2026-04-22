@@ -1896,14 +1896,15 @@ body:not(.footer-in-view) .ft-online-dot {
   color: #5B21B6 !important;
 }
 
-/* 2. "€" après le 500 — px-price-currency utilise gradient text-clip (blanc→violet clair) */
+/* 2. "€" après le 500 — beaucoup plus clair que "500" */
 [data-theme="light"] .px-price-currency {
-  background: linear-gradient(135deg, #1a0a33 0%, #5B21B6 50%, #7C3AED 100%) !important;
+  background: linear-gradient(135deg, #D8B4FE 0%, #E9D5FF 50%, #F5EBFF 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: transparent !important;
   opacity: 1 !important;
+  filter: drop-shadow(0 2px 10px rgba(216, 180, 254, 0.55)) !important;
 }
 
 /* 2bis. "€2 500" barré + "−80%" badge — rgba(255,255,255,0.45) invisible en light */
