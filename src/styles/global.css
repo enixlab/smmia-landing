@@ -418,25 +418,79 @@ section {
 
 /* ───────────────────── Body & halos globaux ───────────────────── */
 [data-theme="light"] body {
-  background: var(--theme-bg) !important !important;
+  background: var(--theme-bg) !important;
   color: var(--theme-text);
 }
 /* Halo fullscreen ambiant (body::before) : réduit en light */
 [data-theme="light"] body::before { opacity: 0.4; }
 
-/* ─── Backgrounds sombres hardcoded → light (force !important pour battre Astro-scoped) ─── */
-[data-theme="light"] #hero { background: var(--theme-bg) !important !important; }
-[data-theme="light"] .hero-fade { background: linear-gradient(to bottom, transparent, var(--theme-bg)) !important !important; }
-[data-theme="light"] .va-section { background: radial-gradient(ellipse at 50% 0%, #EFE8FF 0%, #F5F0FF 60%, var(--theme-bg) 100%) !important !important; }
-[data-theme="light"] .va-cta-outer { background: var(--theme-bg) !important !important; }
-[data-theme="light"] .prime-section { background: radial-gradient(ellipse at 50% 0%, #F5F0FF 0%, var(--theme-bg) 60%, #FFFFFF 100%) !important !important; }
-[data-theme="light"] .px-section { background: radial-gradient(ellipse at 50% 0%, #F0EBFF 0%, #F5F0FF 55%, var(--theme-bg) 100%) !important !important; }
-[data-theme="light"] .av-section { background: radial-gradient(ellipse at 50% 0%, #EFE8FF 0%, #F5F0FF 60%, var(--theme-bg) 100%) !important !important; }
-[data-theme="light"] .bento-section { background: transparent !important !important; }
+/* ─── FORCE LIGHT: toutes sections sombres → clair ─── */
+[data-theme="light"] section,
+[data-theme="light"] main,
+[data-theme="light"] .prog-section,
+[data-theme="light"] .prime-section,
+[data-theme="light"] .va-section,
+[data-theme="light"] .px-section,
+[data-theme="light"] .av-section,
+[data-theme="light"] .bento-section,
+[data-theme="light"] .crm-section,
+[data-theme="light"] .va-cta-outer,
+[data-theme="light"] #hero,
+[data-theme="light"] #programme,
+[data-theme="light"] #video-avis,
+[data-theme="light"] #prime,
+[data-theme="light"] #prix,
+[data-theme="light"] #crm,
+[data-theme="light"] #temoignages {
+  background: var(--theme-bg) !important;
+}
+[data-theme="light"] .hero-fade {
+  background: linear-gradient(to bottom, transparent, var(--theme-bg)) !important;
+}
 [data-theme="light"] .ft,
-[data-theme="light"] footer { background: linear-gradient(180deg, #EFE8FF 0%, var(--theme-bg) 100%) !important !important; }
-[data-theme="light"] #crm { background: var(--theme-bg) !important !important; }
-[data-theme="light"] .prog-section { background: radial-gradient(ellipse 60% 50% at 15% 50%, rgba(168,85,247,0.06) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 85% 50%, rgba(168,85,247,0.04) 0%, transparent 60%), var(--theme-bg) !important !important; }
+[data-theme="light"] footer {
+  background: linear-gradient(180deg, #EFE8FF 0%, var(--theme-bg) 100%) !important;
+}
+/* Textes blancs inline → dark en light mode */
+[data-theme="light"] [style*="color:#fff"]:not(.btn-pill):not(.hero-cta-primary):not(.av-cta):not(.va-cta-btn):not(.px-cta-primary):not(.px-corner):not(.headline-mark-text),
+[data-theme="light"] [style*="color: #fff"]:not(.btn-pill):not(.hero-cta-primary):not(.av-cta):not(.va-cta-btn):not(.px-cta-primary):not(.px-corner):not(.headline-mark-text),
+[data-theme="light"] [style*="color:rgba(255"],
+[data-theme="light"] [style*="color: rgba(255"] {
+  color: #0F0720 !important;
+}
+/* Exceptions blanc */
+[data-theme="light"] .btn-pill,
+[data-theme="light"] .btn-pill *,
+[data-theme="light"] .hero-cta-primary *,
+[data-theme="light"] .av-cta,
+[data-theme="light"] .av-cta *,
+[data-theme="light"] .va-cta-btn,
+[data-theme="light"] .va-cta-btn *,
+[data-theme="light"] .px-cta-primary,
+[data-theme="light"] .px-cta-primary *,
+[data-theme="light"] .px-corner,
+[data-theme="light"] .px-corner *,
+[data-theme="light"] .headline-mark,
+[data-theme="light"] .headline-mark *,
+[data-theme="light"] #crm-shell *,
+[data-theme="light"] .tile *,
+[data-theme="light"] .va-card *,
+[data-theme="light"] .av-card * {
+  color: inherit !important;
+}
+/* CTAs restent sur fond violet avec texte blanc */
+[data-theme="light"] .btn-pill,
+[data-theme="light"] .hero-cta-primary,
+[data-theme="light"] .av-cta,
+[data-theme="light"] .va-cta-btn,
+[data-theme="light"] .px-cta-primary,
+[data-theme="light"] .px-corner { color: #fff !important; }
+[data-theme="light"] .btn-pill *,
+[data-theme="light"] .hero-cta-primary *,
+[data-theme="light"] .av-cta *,
+[data-theme="light"] .va-cta-btn *,
+[data-theme="light"] .px-cta-primary *,
+[data-theme="light"] .px-corner * { color: #fff !important; }
 
 /* ═══════════════════════ 1. NAVBAR ═══════════════════════ */
 [data-theme="light"] #navbar {
@@ -464,9 +518,9 @@ section {
 }
 
 /* ═══════════════════════ 2. HERO ═══════════════════════ */
-[data-theme="light"] #hero { background: var(--theme-bg) !important !important; }
+[data-theme="light"] #hero { background: var(--theme-bg) !important; }
 [data-theme="light"] .hero-fade {
-  background: linear-gradient(to bottom, transparent, var(--theme-bg)) !important !important;
+  background: linear-gradient(to bottom, transparent, var(--theme-bg)) !important;
 }
 [data-theme="light"] .hero-grid {
   background-image:
