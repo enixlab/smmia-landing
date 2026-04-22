@@ -386,367 +386,624 @@ section {
   }
 }
 
-/* ═══════════════════════════════════════════
-   LIGHT MODE — Overrides pour adapter au fond clair
-   ═══════════════════════════════════════════ */
-[data-theme="light"] { color-scheme: light; }
+/* ═══════════════════════════════════════════════════════════════════
+   SMMIA LANDING — LIGHT MODE v2
+   Palette / tokens dédiés. WCAG AA+ sur tous les textes.
+   ─ N'affecte JAMAIS le dark mode.
+   ─ CTAs / cards vidéo / cards avis / dashboard mock / tiles services
+     gardent leur fond sombre voulu.
+   ─ Aurora gradient conservé uniquement sur éléments "signature".
+═══════════════════════════════════════════════════════════════════ */
 
-/* Hero section */
-[data-theme="light"] #hero { background: #F7F4FF !important; }
-[data-theme="light"] .hero-fade { background: linear-gradient(to bottom, transparent, #F7F4FF) !important; }
-[data-theme="light"] .line-outline { -webkit-text-stroke: 2px rgba(15, 7, 32, 0.85) !important; }
-[data-theme="light"] .line-fill {
-  background: linear-gradient(180deg, #1a0a33 0%, #5B21B6 40%, #A855F7 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+[data-theme="light"] {
+  /* Theme tokens (override root defaults) */
+  --theme-bg:            #FAFAFF;  /* BG primaire (body) */
+  --theme-bg-section:    #FAFAFF;  /* BG section générique */
+  --theme-bg-elev:       #FFFFFF;  /* BG cards */
+  --theme-bg-accent:     #F0EBFF;  /* BG accent léger */
+  --theme-bg-card:       rgba(255, 255, 255, 0.96);
+  --theme-text:          #0A0520;  /* Near-black violet — AA sur tout bg clair */
+  --theme-text-muted:    rgba(15, 7, 32, 0.72);
+  --theme-text-dim:      rgba(15, 7, 32, 0.55);
+  --theme-violet:        #7C3AED;  /* AA compliant sur blanc */
+  --theme-violet-light:  #A855F7;
+  --theme-violet-deep:   #5B21B6;
+  --theme-border:        rgba(124, 58, 237, 0.22);
+  --theme-border-subtle: rgba(15, 7, 32, 0.08);
+  --theme-shadow-card:   0 10px 30px rgba(15, 7, 32, 0.08);
+  --theme-shadow-hover:  0 20px 54px rgba(15, 7, 32, 0.12), 0 10px 32px rgba(124, 58, 237, 0.18);
+
+  color-scheme: light;
 }
-[data-theme="light"] .eyebrow-text { color: #0F0720 !important; }
-[data-theme="light"] .hero-eyebrow { background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.4) !important; }
-[data-theme="light"] .scroll-text { color: rgba(15, 7, 32, 0.7) !important; }
-[data-theme="light"] .hero-scroll-cta:hover .scroll-text { color: #0F0720 !important; }
-[data-theme="light"] .hero-cta-secondary { color: rgba(15, 7, 32, 0.8) !important; }
-[data-theme="light"] .hero-cta-secondary:hover { color: #0F0720 !important; }
+
+/* ───────────────────── Body & halos globaux ───────────────────── */
+[data-theme="light"] body {
+  background: var(--theme-bg);
+  color: var(--theme-text);
+}
+/* Halo fullscreen ambiant (body::before) : réduit en light */
+[data-theme="light"] body::before { opacity: 0.4; }
+
+/* ═══════════════════════ 1. NAVBAR ═══════════════════════ */
+[data-theme="light"] #navbar {
+  background: rgba(250, 250, 255, 0.78);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--theme-border-subtle);
+}
+[data-theme="light"] #navbar a { color: rgba(15, 7, 32, 0.82); }
+[data-theme="light"] #navbar a:hover { color: var(--theme-violet); }
+[data-theme="light"] .btn-membre {
+  color: var(--theme-text);
+  background: rgba(124, 58, 237, 0.06);
+  border-color: var(--theme-border);
+}
+[data-theme="light"] .btn-membre:hover { background: rgba(124, 58, 237, 0.12); }
+[data-theme="light"] #burger { color: var(--theme-text); }
+[data-theme="light"] #mobile-menu {
+  background: rgba(250, 250, 255, 0.98);
+  border-top-color: var(--theme-border);
+}
+[data-theme="light"] #mobile-menu a {
+  color: var(--theme-text);
+  border-bottom-color: var(--theme-border-subtle);
+}
+
+/* ═══════════════════════ 2. HERO ═══════════════════════ */
+[data-theme="light"] #hero { background: var(--theme-bg); }
+[data-theme="light"] .hero-fade {
+  background: linear-gradient(to bottom, transparent, var(--theme-bg));
+}
 [data-theme="light"] .hero-grid {
   background-image:
-    linear-gradient(rgba(168, 85, 247, 0.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(168, 85, 247, 0.14) 1px, transparent 1px) !important;
+    linear-gradient(rgba(124, 58, 237, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.10) 1px, transparent 1px);
 }
-[data-theme="light"] .hero-noise { opacity: 0.025 !important; mix-blend-mode: multiply !important; }
+[data-theme="light"] .hero-noise { opacity: 0.02; mix-blend-mode: multiply; }
+[data-theme="light"] .hero-spotlight {
+  background: radial-gradient(ellipse at center,
+    rgba(168, 85, 247, 0.22) 0%,
+    rgba(124, 58, 237, 0.12) 35%,
+    transparent 70%);
+}
 
-/* Navbar */
-[data-theme="light"] #navbar { background: rgba(247, 244, 255, 0.88) !important; }
-[data-theme="light"] #navbar a { color: rgba(15, 7, 32, 0.78) !important; }
-[data-theme="light"] #navbar a:hover { color: #A855F7 !important; }
-[data-theme="light"] .btn-membre { color: rgba(15, 7, 32, 0.85) !important; background: rgba(168, 85, 247, 0.06) !important; }
-[data-theme="light"] #burger { color: #0F0720 !important; }
-[data-theme="light"] #mobile-menu { background: rgba(247, 244, 255, 0.98) !important; border-top-color: rgba(168, 85, 247, 0.2) !important; }
-[data-theme="light"] #mobile-menu a { color: rgba(15, 7, 32, 0.85) !important; border-bottom-color: rgba(15, 7, 32, 0.06) !important; }
+/* Eyebrow "Session Mai 2026" */
+[data-theme="light"] .hero-eyebrow {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.35);
+}
+[data-theme="light"] .eyebrow-text { color: var(--theme-text); }
+[data-theme="light"] .pulse-dot { background: var(--theme-violet); }
 
-/* Programme */
-[data-theme="light"] .prog-title { color: #0F0720 !important; }
-[data-theme="light"] .prog-sub { color: rgba(15, 7, 32, 0.6) !important; }
-[data-theme="light"] .prog-eyebrow { color: #5B21B6 !important; background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.3) !important; }
+/* Title outline + fill — gradient violet profond, parfaitement lisible */
+[data-theme="light"] .line-outline {
+  -webkit-text-stroke: 2px rgba(10, 5, 32, 0.9);
+}
+[data-theme="light"] .line-fill {
+  background: linear-gradient(180deg, #1a0a33 0%, #5B21B6 45%, #A855F7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* CTAs hero : primary garde son fond violet + texte blanc (ne pas toucher) */
+[data-theme="light"] .hero-cta-secondary {
+  color: rgba(15, 7, 32, 0.82);
+  border-bottom-color: rgba(124, 58, 237, 0.45);
+}
+[data-theme="light"] .hero-cta-secondary:hover {
+  color: var(--theme-text);
+  border-bottom-color: var(--theme-violet);
+}
+
+/* Scroll CTA "Découvrir" */
+[data-theme="light"] .scroll-text { color: rgba(15, 7, 32, 0.78); }
+[data-theme="light"] .hero-scroll-cta:hover .scroll-text { color: var(--theme-text); }
+[data-theme="light"] .scroll-mouse { border-color: rgba(124, 58, 237, 0.55); }
+[data-theme="light"] .scroll-wheel { background: var(--theme-violet); }
+
+/* Switch logo dark/light */
+[data-theme="light"] .brand-smmia--dark { display: none; }
+[data-theme="light"] .brand-smmia--light { display: block; }
+[data-theme="light"] .brand-smmia {
+  filter: drop-shadow(0 10px 35px rgba(124, 58, 237, 0.35));
+}
+
+/* ═══════════════════════ 3. PROGRAMME (5 piliers) ═══════════════════════ */
+[data-theme="light"] .prog-section { background: var(--theme-bg); }
+[data-theme="light"] .prog-eyebrow {
+  color: var(--theme-violet-deep);
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+[data-theme="light"] .prog-title { color: var(--theme-text); }
+[data-theme="light"] .prog-sub { color: var(--theme-text-muted); }
+
+/* Cards piliers : fond blanc + shadow subtile + border fine */
 [data-theme="light"] .pillar-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(247, 244, 255, 0.95)) !important;
-  border-color: rgba(168, 85, 247, 0.2) !important;
-  box-shadow: 0 10px 40px rgba(15, 7, 32, 0.08) !important;
+  background: var(--theme-bg-elev);
+  border: 1px solid var(--theme-border);
+  box-shadow: var(--theme-shadow-card);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
-[data-theme="light"] .pillar-card:hover { border-color: rgba(168, 85, 247, 0.5) !important; box-shadow: 0 20px 54px rgba(15, 7, 32, 0.12), 0 10px 32px rgba(168, 85, 247, 0.2) !important; }
-[data-theme="light"] .pillar-title { color: #0F0720 !important; }
-[data-theme="light"] .pillar-sub { color: rgba(15, 7, 32, 0.65) !important; }
+[data-theme="light"] .pillar-card:hover {
+  border-color: rgba(124, 58, 237, 0.45);
+  box-shadow: var(--theme-shadow-hover);
+  transform: translateY(-2px);
+}
+/* pillar-media = zone avec image/visual, garde son fond sombre si typé .pillar-media */
+[data-theme="light"] .pillar-body { background: transparent; }
+[data-theme="light"] .pillar-title { color: var(--theme-text); }
+[data-theme="light"] .pillar-sub { color: var(--theme-text-muted); }
+[data-theme="light"] .pillars-marquee-wrap { background: transparent; }
 
-/* MarqueeAvis */
-[data-theme="light"] .av-title { color: #0F0720 !important; }
-[data-theme="light"] .av-sub { color: rgba(15, 7, 32, 0.65) !important; }
-[data-theme="light"] .av-sub-strong { color: #0F0720 !important; }
-[data-theme="light"] .av-badge { background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.3) !important; color: #5B21B6 !important; }
+/* ═══════════════════════ 4. MARQUEE AVIS ═══════════════════════ */
+[data-theme="light"] .av-section {
+  background: radial-gradient(ellipse at 50% 0%,
+    #F0EBFF 0%, #F5F0FF 55%, var(--theme-bg) 100%);
+}
+[data-theme="light"] .av-halo-l,
+[data-theme="light"] .av-halo-r,
+[data-theme="light"] .av-halo-c { opacity: 0.5; }
+[data-theme="light"] .av-grid {
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.08) 1px, transparent 1px);
+}
 
-/* ServiceByPrime */
+[data-theme="light"] .av-badge {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.32);
+  color: var(--theme-violet-deep);
+}
+[data-theme="light"] .av-badge-dot,
+[data-theme="light"] .av-badge-text,
+[data-theme="light"] .av-live { color: var(--theme-violet-deep); }
+[data-theme="light"] .av-badge-dot { background: var(--theme-violet); }
+
+[data-theme="light"] .av-title { color: var(--theme-text); }
+[data-theme="light"] .av-sub { color: var(--theme-text-muted); }
+[data-theme="light"] .av-sub-strong { color: var(--theme-text); font-weight: 600; }
+/* Accent "avec le SMMIA" — gradient signature */
+[data-theme="light"] .av-title-accent {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Stats row (34+ / 3,4 / 68%) */
+[data-theme="light"] .av-stat-val,
+[data-theme="light"] .av-stat-val-sub { color: var(--theme-text); }
+[data-theme="light"] .av-stat-lbl { color: var(--theme-text-muted); }
+[data-theme="light"] .av-stat-sep { background: var(--theme-border); }
+
+/* Tabs : Tous / Discord / Trustpilot */
+[data-theme="light"] .av-tab {
+  color: var(--theme-text-muted);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: var(--theme-border);
+}
+[data-theme="light"] .av-tab:hover { color: var(--theme-text); }
+[data-theme="light"] .av-tab.is-active {
+  color: var(--theme-violet-deep);
+  background: rgba(124, 58, 237, 0.12);
+  border-color: rgba(124, 58, 237, 0.45);
+}
+[data-theme="light"] .av-tab-dot { background: var(--theme-violet); }
+[data-theme="light"] .av-tab-count { color: var(--theme-text-dim); }
+
+/* Cards d'avis — RESTENT DARK (screenshots Discord/Trustpilot) */
+[data-theme="light"] .av-card {
+  box-shadow: 0 14px 34px rgba(15, 7, 32, 0.14);
+  border: 1px solid rgba(15, 7, 32, 0.08);
+}
+
+/* Fades des marquee */
+[data-theme="light"] .av-fade-l {
+  background: linear-gradient(to right, var(--theme-bg), transparent);
+}
+[data-theme="light"] .av-fade-r {
+  background: linear-gradient(to left, var(--theme-bg), transparent);
+}
+
+/* ═══════════════════════ 5. SERVICE BY PRIME ═══════════════════════ */
+[data-theme="light"] .prime-section {
+  background: radial-gradient(ellipse at 50% 0%,
+    #F5F0FF 0%, #FAFAFF 55%, #FFFFFF 100%);
+}
+[data-theme="light"] .bg-grid {
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.08) 1px, transparent 1px);
+}
+[data-theme="light"] .bg-vignette {
+  background: radial-gradient(ellipse at 50% 40%,
+    transparent 0%, rgba(255, 255, 255, 0.6) 100%);
+}
+
 [data-theme="light"] .prime-section h1,
 [data-theme="light"] .prime-section h2,
 [data-theme="light"] .prime-section h3,
-[data-theme="light"] .prime-title { color: #0F0720 !important; }
-[data-theme="light"] .prime-section p { color: rgba(15, 7, 32, 0.65) !important; }
+[data-theme="light"] .prime-title,
+[data-theme="light"] .headline,
+[data-theme="light"] .headline-line-1,
+[data-theme="light"] .headline-soft { color: var(--theme-text); }
 
-/* VideoAvis */
-[data-theme="light"] .va-section { background: radial-gradient(ellipse at 50% 0%, #EFE8FF 0%, #F5F0FF 60%, #F7F4FF 100%) !important; }
-[data-theme="light"] .va-title { color: #0F0720 !important; }
-[data-theme="light"] .va-sub { color: rgba(15, 7, 32, 0.65) !important; }
-[data-theme="light"] .va-badge { background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.35) !important; color: #5B21B6 !important; }
-[data-theme="light"] .va-cta-card { background: #FFFFFF !important; border-color: rgba(168, 85, 247, 0.2) !important; box-shadow: 0 20px 60px rgba(15, 7, 32, 0.1) !important; }
-[data-theme="light"] .va-cta-headline { color: #0F0720 !important; }
-[data-theme="light"] .va-cta-sub { color: rgba(15, 7, 32, 0.65) !important; }
-[data-theme="light"] .va-cta-eyebrow { color: #5B21B6 !important; background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.35) !important; }
-[data-theme="light"] .va-cta-outer { background: #F7F4FF !important; }
-[data-theme="light"] .va-hook { color: #FFFFFF !important; }
-
-/* Gradients text-clip avec #FFFFFF invisibles sur fond clair → remplacer par gradient violet foncé */
-[data-theme="light"] .px-title-accent,
-[data-theme="light"] .va-accent,
-[data-theme="light"] .av-title-accent,
-[data-theme="light"] .va-cta-headline-accent,
-[data-theme="light"] .px-title,
-[data-theme="light"] .px-price-paiement-gradient,
-[data-theme="light"] .footer-title-accent {
-  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-}
-
-/* Prix 500€ en gradient violet foncé (pas blanc→violet) en light */
-[data-theme="light"] .px-price-amount {
-  background: linear-gradient(135deg, #1a0a33 0%, #5B21B6 40%, #A855F7 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-}
-
-/* MarqueeAvis — cards d'avis restent dark (c'est les screenshots originaux Discord/Trustpilot) */
-[data-theme="light"] .av-card { box-shadow: 0 14px 34px rgba(15, 7, 32, 0.15) !important; }
-
-/* Pricing */
-[data-theme="light"] .px-card {
-  background: linear-gradient(180deg, #FFFFFF, #F5F0FF) !important;
-  box-shadow: 0 30px 80px -20px rgba(15, 7, 32, 0.12), 0 20px 50px -18px rgba(168, 85, 247, 0.25) !important;
-}
-[data-theme="light"] .px-title,
-[data-theme="light"] .px-section h2 { color: #0F0720 !important; }
-[data-theme="light"] .px-price-amount {
-  background: linear-gradient(135deg, #1a0a33, #5B21B6, #A855F7) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-}
-[data-theme="light"] .px-chip { background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.3) !important; color: #5B21B6 !important; }
-[data-theme="light"] .px-price-paiement { color: rgba(15, 7, 32, 0.65) !important; }
-[data-theme="light"] .px-feature-label { color: #0F0720 !important; }
-[data-theme="light"] .px-feature-tag { color: rgba(15, 7, 32, 0.55) !important; }
-
-/* CRMSection — garder le dashboard sombre (c'est une mock UI) mais adapter les titres autour */
-[data-theme="light"] #crm h2 { color: #0F0720 !important; }
-[data-theme="light"] #crm p { color: rgba(15, 7, 32, 0.65) !important; }
-
-/* Stats cards */
-[data-theme="light"] .stat-card { background: rgba(255, 255, 255, 0.8) !important; border-color: rgba(168, 85, 247, 0.2) !important; box-shadow: 0 10px 40px rgba(15, 7, 32, 0.08) !important; }
-[data-theme="light"] .stat-card p { color: rgba(15, 7, 32, 0.7) !important; }
-
-/* Footer */
-[data-theme="light"] footer,
-[data-theme="light"] .ft {
-  background: linear-gradient(180deg, #EFE8FF 0%, #F7F4FF 100%) !important;
-  color: #0F0720 !important;
-}
-[data-theme="light"] footer a,
-[data-theme="light"] .ft a { color: #0F0720 !important; }
-[data-theme="light"] .ft * { color: inherit; }
-[data-theme="light"] .ft h3,
-[data-theme="light"] .ft h4,
-[data-theme="light"] .ft strong { color: #0F0720 !important; }
-
-/* ServiceByPrime */
-[data-theme="light"] .prime-section {
-  background: radial-gradient(ellipse at 50% 0%, #F5F0FF 0%, #F7F4FF 60%, #FFFFFF 100%) !important;
-}
-[data-theme="light"] .prime-section h2,
-[data-theme="light"] .prime-section h3,
-[data-theme="light"] .prime-title { color: #0F0720 !important; }
 [data-theme="light"] .prime-section p,
-[data-theme="light"] .prime-section span { color: rgba(15, 7, 32, 0.75) !important; }
+[data-theme="light"] .sub { color: var(--theme-text-muted); }
 
-/* Pricing section bg */
-[data-theme="light"] .px-section {
-  background: radial-gradient(ellipse at 50% 0%, #F0EBFF 0%, #F5F0FF 55%, #F7F4FF 100%) !important;
+/* Live status pill "EN DIRECT · 8 deals" */
+[data-theme="light"] .live-status {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 4px 14px rgba(15, 7, 32, 0.04);
+}
+[data-theme="light"] .live-dot { background: #16A34A; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2); }
+[data-theme="light"] .live-label { color: var(--theme-violet-deep); }
+[data-theme="light"] .live-sep { background: var(--theme-border); }
+[data-theme="light"] .live-detail,
+[data-theme="light"] .live-count { color: var(--theme-text); }
+
+/* headline-mark (bloc violet "t'osais pas prendre") — RESTE violet + blanc */
+[data-theme="light"] .headline-mark {
+  background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.32);
+}
+[data-theme="light"] .headline-mark,
+[data-theme="light"] .headline-mark *,
+[data-theme="light"] .headline-mark-text { color: #FFFFFF; }
+
+/* Stats cards (25 services / 72h / -70%) */
+[data-theme="light"] .stat-card {
+  background: var(--theme-bg-elev);
+  border: 1px solid var(--theme-border);
+  box-shadow: var(--theme-shadow-card),
+              inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: var(--theme-text);
+}
+[data-theme="light"] .stat-card * { color: inherit; }
+[data-theme="light"] .stat-card-accent {
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.10), rgba(124, 58, 237, 0.04));
+  border-color: rgba(124, 58, 237, 0.45);
+}
+[data-theme="light"] .stat-icon { color: var(--theme-violet); }
+[data-theme="light"] .stat-icon-orange { color: #EA580C; }
+[data-theme="light"] .stat-icon-green { color: #16A34A; }
+[data-theme="light"] .stat-value { color: var(--theme-text); }
+[data-theme="light"] .stat-label { color: var(--theme-text-muted); font-weight: 500; }
+[data-theme="light"] .stat-sub { color: var(--theme-text-dim); }
+[data-theme="light"] .stat-card div[data-countup] {
+  filter: drop-shadow(0 4px 14px rgba(124, 58, 237, 0.15));
 }
 
-/* MarqueeAvis section */
-[data-theme="light"] .av-section {
-  background: radial-gradient(ellipse at 50% 0%, #EFE8FF 0%, #F5F0FF 60%, #F7F4FF 100%) !important;
-}
-[data-theme="light"] .av-tab { color: rgba(15, 7, 32, 0.7) !important; background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.2) !important; }
-[data-theme="light"] .av-tab.is-active { color: #0F0720 !important; background: rgba(168, 85, 247, 0.15) !important; }
-[data-theme="light"] .av-tab-count { color: rgba(15, 7, 32, 0.55) !important; }
+/* Scroll hint + chevron */
+[data-theme="light"] .scroll-hint-text,
+[data-theme="light"] .scroll-hint-arrow { color: var(--theme-text-muted); }
 
-/* CRM section wrapper (shell interne reste dark - c'est une mock UI d'app) */
-[data-theme="light"] #crm {
-  background: #F7F4FF !important;
-}
-
-/* ServiceByPrime tiles (mini cards services) + stat-cards */
-/* NOTE: on garde le fond dark des tiles (ce sont des mini cards avec image floutée en bg) */
+/* Tiles services (25 tiles image floutée) — RESTENT DARK */
 [data-theme="light"] .tile {
-  box-shadow: 0 14px 34px rgba(15, 7, 32, 0.18), 0 6px 16px rgba(168, 85, 247, 0.22) !important;
+  box-shadow: 0 14px 34px rgba(15, 7, 32, 0.15),
+              0 6px 16px rgba(124, 58, 237, 0.14);
+  border: 1px solid rgba(15, 7, 32, 0.08);
 }
+[data-theme="light"] .tile,
+[data-theme="light"] .tile *,
 [data-theme="light"] .tile-label,
 [data-theme="light"] .tile span,
 [data-theme="light"] .tile-tag {
-  color: #FFFFFF !important; /* reste blanc car sur image de service floutée */
-  text-shadow: 0 2px 10px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.9);
+  color: #FFFFFF;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65), 0 1px 3px rgba(0, 0, 0, 0.85);
 }
 
-/* Global safety: tout texte de couleur blanche hardcodée qui se retrouve sur fond clair */
-[data-theme="light"] [style*="color:#fff"],
-[data-theme="light"] [style*="color: #fff"],
-[data-theme="light"] [style*="color:#FFF"],
-[data-theme="light"] [style*="color: #FFF"],
-[data-theme="light"] [style*="color:white"],
-[data-theme="light"] [style*="color: white"] {
-  color: #0F0720 !important;
-}
-/* Exceptions : éléments DANS des blocs sombres (CTA, dashboard mock, CTA card, boutons à fond sombre) */
-[data-theme="light"] .btn-pill,
-[data-theme="light"] .btn-pill *,
-[data-theme="light"] .hero-cta-primary,
-[data-theme="light"] .hero-cta-primary *,
-[data-theme="light"] .av-cta,
-[data-theme="light"] .av-cta *,
-[data-theme="light"] .px-cta-primary,
-[data-theme="light"] .px-cta-primary *,
-[data-theme="light"] .va-cta-btn,
-[data-theme="light"] .va-cta-btn *,
-[data-theme="light"] #crm-shell,
-[data-theme="light"] #crm-shell *,
-[data-theme="light"] .tile-label,
-[data-theme="light"] .tile span {
-  color: inherit;
-}
-[data-theme="light"] .btn-pill,
-[data-theme="light"] .hero-cta-primary,
-[data-theme="light"] .av-cta,
-[data-theme="light"] .px-cta-primary,
-[data-theme="light"] .va-cta-btn { color: #fff !important; }
-[data-theme="light"] #crm-shell,
-[data-theme="light"] #crm-shell .pg,
-[data-theme="light"] #crm-shell h3,
-[data-theme="light"] #crm-shell span,
-[data-theme="light"] #crm-shell div { color: #fff; }
-[data-theme="light"] .tile-label,
-[data-theme="light"] .tile span { color: #fff !important; }
-[data-theme="light"] .stat-card {
-  background: rgba(255, 255, 255, 0.85) !important;
-  border-color: rgba(168, 85, 247, 0.25) !important;
-  box-shadow: 0 10px 30px rgba(15, 7, 32, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
-  color: #0F0720 !important;
-}
-[data-theme="light"] .stat-card * { color: #0F0720 !important; }
-[data-theme="light"] .stat-card-accent {
-  background: linear-gradient(135deg, rgba(192, 132, 252, 0.12), rgba(168, 85, 247, 0.06)) !important;
-  border-color: rgba(168, 85, 247, 0.45) !important;
-}
-[data-theme="light"] .stat-icon { color: #5B21B6 !important; }
-[data-theme="light"] .live-status { background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.35) !important; }
-[data-theme="light"] .live-label,
-[data-theme="light"] .live-count,
-[data-theme="light"] .live-detail { color: #0F0720 !important; }
-[data-theme="light"] .headline,
-[data-theme="light"] .headline-line-1,
-[data-theme="light"] .headline-line-2,
-[data-theme="light"] .headline-soft { color: #0F0720 !important; }
-[data-theme="light"] .sub { color: rgba(15, 7, 32, 0.65) !important; }
-[data-theme="light"] .cat-pill { background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.3) !important; color: #5B21B6 !important; }
+/* Cross-stage (halos violets derrière les tiles) */
+[data-theme="light"] .cross-stage .spot { opacity: 0.35; }
 
-/* Stats values numbers hors gradient (reste lisible) */
-[data-theme="light"] .stat-card div[data-countup] { filter: drop-shadow(0 4px 14px rgba(168,85,247,0.2)); }
-
-/* Pillars marquee bg fix */
-[data-theme="light"] .pillars-marquee-wrap { background: transparent !important; }
-
-/* Video marquee */
-[data-theme="light"] .va-marquee-wrap { background: transparent !important; }
-[data-theme="light"] .va-cta-card { color: #0F0720 !important; }
-
-/* Tout élément qui hérite bg noir générique */
-[data-theme="light"] [style*="background:#000"],
-[data-theme="light"] [style*="background: #000"],
-[data-theme="light"] [style*="background: #0a"],
-[data-theme="light"] [style*="background: #07"] {
-  background: transparent !important;
+/* ═══════════════════════ 6. VIDEO AVIS ═══════════════════════ */
+[data-theme="light"] .va-section {
+  background: radial-gradient(ellipse at 50% 0%,
+    #EFE8FF 0%, #F5F0FF 55%, var(--theme-bg) 100%);
+}
+[data-theme="light"] .va-grid {
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.07) 1px, transparent 1px);
 }
 
-/* Switch logo dark/light (Hero) */
-[data-theme="light"] .brand-smmia--dark { display: none !important; }
-[data-theme="light"] .brand-smmia--light { display: block !important; }
-
-/* ═══ FORCE COULEUR SOMBRE sur TOUT en light mode ═══ */
-[data-theme="light"] body,
-[data-theme="light"] body * {
-  color: #0F0720;
+[data-theme="light"] .va-badge {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.35);
+  color: var(--theme-violet-deep);
 }
-[data-theme="light"] p,
-[data-theme="light"] .sub,
-[data-theme="light"] .prog-sub,
-[data-theme="light"] .va-sub,
-[data-theme="light"] .av-sub,
-[data-theme="light"] .pillar-sub,
-[data-theme="light"] .px-price-paiement {
-  color: rgba(15, 7, 32, 0.72) !important;
+[data-theme="light"] .va-badge-dot { background: var(--theme-violet); }
+
+[data-theme="light"] .va-title { color: var(--theme-text); }
+/* "en direct" accent gradient */
+[data-theme="light"] .va-accent {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
-[data-theme="light"] strong,
-[data-theme="light"] b { color: #0F0720 !important; }
+[data-theme="light"] .va-sub { color: var(--theme-text-muted); }
+[data-theme="light"] .va-marquee-wrap { background: transparent; }
 
-/* ServiceByPrime headline en light : "Dis oui aux deals" + "que...prendre" */
-[data-theme="light"] .headline,
-[data-theme="light"] .headline-line-1,
-[data-theme="light"] .headline-soft { color: #0F0720 !important; }
-
-/* Sous-titres sombres */
-[data-theme="light"] .va-sub,
-[data-theme="light"] .va-cta-sub,
-[data-theme="light"] .av-sub,
-[data-theme="light"] .prog-sub,
-[data-theme="light"] .sub,
-[data-theme="light"] .px-price-paiement,
-[data-theme="light"] .pillar-sub { color: rgba(15, 7, 32, 0.72) !important; }
-
-/* EXCEPTIONS : éléments/blocs qui doivent rester BLANC en light mode (car fond sombre) */
-[data-theme="light"] .btn-pill,
-[data-theme="light"] .btn-pill *,
-[data-theme="light"] .hero-cta-primary,
-[data-theme="light"] .hero-cta-primary *,
-[data-theme="light"] .hero-cta-primary span,
-[data-theme="light"] .av-cta,
-[data-theme="light"] .av-cta *,
-[data-theme="light"] .av-cta span,
-[data-theme="light"] .va-cta-btn,
-[data-theme="light"] .va-cta-btn *,
-[data-theme="light"] .px-cta-primary,
-[data-theme="light"] .px-cta-primary *,
-[data-theme="light"] .px-corner,
-[data-theme="light"] .px-corner *,
-[data-theme="light"] .px-corner strong,
-[data-theme="light"] .headline-mark,
-[data-theme="light"] .headline-mark *,
-[data-theme="light"] .headline-mark-text,
-[data-theme="light"] .tile,
-[data-theme="light"] .tile *,
-[data-theme="light"] .tile span,
-[data-theme="light"] .tile-label,
-[data-theme="light"] .tile-tag,
-[data-theme="light"] #crm-shell,
-[data-theme="light"] #crm-shell *,
-[data-theme="light"] #crm-shell h3,
-[data-theme="light"] #crm-shell span,
-[data-theme="light"] #crm-shell div,
+/* Cards vidéo RESTENT DARK (elles montrent des posters vidéos) */
+[data-theme="light"] .va-card {
+  box-shadow: 0 14px 40px rgba(15, 7, 32, 0.18);
+  border: 1px solid rgba(15, 7, 32, 0.08);
+}
 [data-theme="light"] .va-card,
 [data-theme="light"] .va-card *,
 [data-theme="light"] .va-hook,
-[data-theme="light"] .va-cta-watch,
-[data-theme="light"] .av-card,
-[data-theme="light"] .av-card *,
-[data-theme="light"] .pillar-card .pillar-media,
-[data-theme="light"] .pillar-card .pillar-media * {
-  color: #fff !important;
+[data-theme="light"] .va-cta-watch { color: #FFFFFF; }
+
+/* CTA card blanche "Tu as vu leurs résultats. Maintenant c'est ton tour." */
+[data-theme="light"] .va-cta-outer { background: var(--theme-bg); }
+[data-theme="light"] .va-cta-card {
+  background: var(--theme-bg-elev);
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 20px 60px rgba(15, 7, 32, 0.08);
+  color: var(--theme-text);
+}
+[data-theme="light"] .va-cta-eyebrow {
+  color: var(--theme-violet-deep);
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.35);
+}
+[data-theme="light"] .va-cta-eyebrow-dot { background: var(--theme-violet); }
+[data-theme="light"] .va-cta-headline { color: var(--theme-text); }
+[data-theme="light"] .va-cta-headline-accent {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+[data-theme="light"] .va-cta-sub { color: var(--theme-text-muted); }
+
+/* Modal vidéo reste dark (overlay noir) */
+
+/* ═══════════════════════ 7. PRICING ═══════════════════════ */
+[data-theme="light"] .px-section {
+  background: radial-gradient(ellipse at 50% 0%,
+    #F0EBFF 0%, #F5F0FF 55%, var(--theme-bg) 100%);
+}
+[data-theme="light"] .px-grid {
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.08) 1px, transparent 1px);
+}
+[data-theme="light"] .px-aura { opacity: 0.45; }
+[data-theme="light"] .px-orb { opacity: 0.35; }
+
+/* Brand floating buttons (Sparkle, Facebook, YouTube, n8n, TikTok, Stripe) */
+[data-theme="light"] .px-float {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 6px 18px rgba(15, 7, 32, 0.08);
+}
+[data-theme="light"] .px-float-ring { border-color: rgba(124, 58, 237, 0.35); }
+[data-theme="light"] .px-float-glow { background: rgba(124, 58, 237, 0.22); }
+[data-theme="light"] .px-float-label {
+  color: var(--theme-text);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 4px 12px rgba(15, 7, 32, 0.08);
 }
 
-/* Exceptions fines : within pillar-body, le texte reste sombre */
-[data-theme="light"] .pillar-body,
-[data-theme="light"] .pillar-body * { color: inherit; }
-[data-theme="light"] .pillar-title { color: #0F0720 !important; }
-[data-theme="light"] .pillar-sub { color: rgba(15, 7, 32, 0.72) !important; }
-
-/* FORCE : tous textes blancs/clair → sombre sur light mode */
-[data-theme="light"] * {
-  /* Par défaut, si le composant n'a pas override spécifique, on override les blancs */
+/* Eyebrow */
+[data-theme="light"] .px-eyebrow {
+  color: var(--theme-violet-deep);
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.3);
 }
-[data-theme="light"] p,
-[data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, [data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6,
-[data-theme="light"] span:not([class*="cta"]):not([class*="btn"]):not([class*="pill"]):not(.tile span),
-[data-theme="light"] li,
-[data-theme="light"] label {
-  color: #0F0720;
-}
-[data-theme="light"] p { color: rgba(15, 7, 32, 0.75); }
+[data-theme="light"] .px-eyebrow-dot { background: var(--theme-violet); }
 
-/* Cibles additionnelles (tous les rgba(255,255,255,X) pour du texte) */
-[data-theme="light"] [style*="rgba(255,255,255"],
-[data-theme="light"] [style*="rgba(255, 255, 255"] {
-  /* ne pas modifier via attribute selector car trop large — on utilise des overrides ciblés plus haut */
+/* Titre "Un Module. Une décision. Tout change." */
+[data-theme="light"] .px-title,
+[data-theme="light"] .px-section h2 { color: var(--theme-text); }
+[data-theme="light"] .px-title-accent {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-/* Exceptions — elements qui doivent RESTER blancs */
+/* Card de prix */
+[data-theme="light"] .px-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5F0FF 100%);
+  border: 1px solid var(--theme-border);
+  box-shadow:
+    0 30px 80px -20px rgba(15, 7, 32, 0.10),
+    0 20px 50px -18px rgba(124, 58, 237, 0.18);
+}
+
+/* Corner badge (px-corner reste violet foncé + texte blanc — c'est un label type "-60% session") */
+[data-theme="light"] .px-corner {
+  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+}
+[data-theme="light"] .px-corner,
+[data-theme="light"] .px-corner *,
+[data-theme="light"] .px-corner strong,
+[data-theme="light"] .px-corner-text,
+[data-theme="light"] .px-corner-icon,
+[data-theme="light"] .px-corner-sep { color: #FFFFFF; }
+
+/* Brand pill (dans la card, "SMMIA · Programme") */
+[data-theme="light"] .px-brand-pill {
+  background: rgba(124, 58, 237, 0.06);
+  border: 1px solid var(--theme-border);
+  color: var(--theme-text);
+}
+[data-theme="light"] .px-brand-dot { background: var(--theme-violet); }
+[data-theme="light"] .px-brand-rating,
+[data-theme="light"] .px-brand-rating-val { color: var(--theme-text); }
+[data-theme="light"] .px-brand-stars { color: #F59E0B; }
+
+/* Prix strike + save badge */
+[data-theme="light"] .px-price-strike-row,
+[data-theme="light"] .px-price-strike { color: var(--theme-text-dim); }
+[data-theme="light"] .px-price-save-badge {
+  background: rgba(22, 163, 74, 0.12);
+  color: #15803D;
+  border: 1px solid rgba(22, 163, 74, 0.3);
+}
+
+/* Prix "500 €" — gradient violet foncé bien lisible */
+[data-theme="light"] .px-price-amount {
+  background: linear-gradient(135deg, #1a0a33 0%, #5B21B6 40%, #A855F7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+[data-theme="light"] .px-price-currency { color: var(--theme-text); }
+[data-theme="light"] .px-price-paiement { color: var(--theme-text-muted); }
+[data-theme="light"] .px-price-paiement-gradient {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Chips (pay in 3x, etc.) */
+[data-theme="light"] .px-chip {
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid var(--theme-border);
+  color: var(--theme-violet-deep);
+}
+[data-theme="light"] .px-chip-win {
+  background: rgba(22, 163, 74, 0.08);
+  border-color: rgba(22, 163, 74, 0.3);
+  color: #15803D;
+}
+
+/* Features (liste avec icônes) */
+[data-theme="light"] .px-feature-label { color: var(--theme-text); font-weight: 600; }
+[data-theme="light"] .px-feature-tag { color: var(--theme-text-muted); }
+[data-theme="light"] .px-feature-icon {
+  color: var(--theme-violet);
+  background: rgba(124, 58, 237, 0.08);
+}
+
+/* CTA principal reste violet + blanc (voir règles globales en bas) */
+
+/* Live "Thomas a réservé son appel" */
+[data-theme="light"] .px-live-avatar {
+  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  color: #FFFFFF;
+}
+[data-theme="light"] .px-live-text { color: var(--theme-text); }
+[data-theme="light"] .px-live-action { color: var(--theme-text-muted); }
+[data-theme="light"] .px-live-time { color: var(--theme-text-dim); }
+
+/* ═══════════════════════ 8. CRM SECTION ═══════════════════════ */
+[data-theme="light"] #crm { background: var(--theme-bg); }
+[data-theme="light"] #crm h2 { color: var(--theme-text); }
+[data-theme="light"] #crm p { color: var(--theme-text-muted); }
+
+/* Eyebrow du bloc CRM "Accès membre exclusif" */
+[data-theme="light"] .cat-pill {
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid var(--theme-border);
+  color: var(--theme-violet-deep);
+}
+
+/* Dashboard shell (#crm-shell) RESTE DARK — c'est une mock app UI */
+[data-theme="light"] #crm-shell,
+[data-theme="light"] #crm-shell *,
+[data-theme="light"] #crm-shell .pg,
+[data-theme="light"] #crm-shell h3,
+[data-theme="light"] #crm-shell span,
+[data-theme="light"] #crm-shell div { color: inherit; }
+/* On enveloppe le shell d'un cadre clair élégant pour qu'il "flotte" sur fond clair */
+[data-theme="light"] #crm-shell {
+  box-shadow: 0 30px 80px -20px rgba(15, 7, 32, 0.2),
+              0 10px 30px rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+/* ═══════════════════════ 9. FOOTER ═══════════════════════ */
+[data-theme="light"] footer,
+[data-theme="light"] .ft {
+  background: linear-gradient(180deg, #EFE8FF 0%, var(--theme-bg) 100%);
+  color: var(--theme-text);
+  border-top: 1px solid var(--theme-border-subtle);
+}
+[data-theme="light"] .ft-halo-l,
+[data-theme="light"] .ft-halo-r { opacity: 0.4; }
+
+[data-theme="light"] .ft a { color: var(--theme-text); }
+[data-theme="light"] .ft a:hover { color: var(--theme-violet); }
+[data-theme="light"] .ft h3,
+[data-theme="light"] .ft h4,
+[data-theme="light"] .ft .ft-col-title,
+[data-theme="light"] .ft strong { color: var(--theme-text); }
+[data-theme="light"] .ft-tagline { color: var(--theme-text-muted); }
+[data-theme="light"] .ft-links a { color: var(--theme-text-muted); }
+[data-theme="light"] .ft-links a:hover { color: var(--theme-violet); }
+
+/* Community card (Discord Focus) */
+[data-theme="light"] .ft-community {
+  background: var(--theme-bg-elev);
+  border: 1px solid var(--theme-border);
+  box-shadow: var(--theme-shadow-card);
+}
+[data-theme="light"] .ft-community:hover { border-color: rgba(124, 58, 237, 0.5); }
+[data-theme="light"] .ft-community-name { color: var(--theme-text); }
+[data-theme="light"] .ft-community-meta { color: var(--theme-text-muted); }
+[data-theme="light"] .ft-online-dot { background: #16A34A; }
+[data-theme="light"] .ft-community-cta { color: var(--theme-violet); }
+
+/* Contact rows (WhatsApp, mail) */
+[data-theme="light"] .ft-contact-row {
+  background: var(--theme-bg-elev);
+  border: 1px solid var(--theme-border);
+  color: var(--theme-text);
+}
+[data-theme="light"] .ft-contact-row:hover { border-color: rgba(124, 58, 237, 0.5); }
+
+/* Bottom strip */
+[data-theme="light"] .ft-bottom {
+  border-top: 1px solid var(--theme-border-subtle);
+}
+[data-theme="light"] .ft-copyright,
+[data-theme="light"] .ft-trust-item { color: var(--theme-text-muted); }
+[data-theme="light"] .ft-trust-sep { color: var(--theme-text-dim); }
+
+/* Footer title accent gradient */
+[data-theme="light"] .footer-title-accent {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ═══════════════════════ 10. RÈGLES GLOBALES + EXCEPTIONS CTAs ═══════════════════════ */
+
+/* Inline style="color:white" hors blocs CTA/dark → force sombre (garde-fou) */
+[data-theme="light"] [style*="color:#fff"]:not(.btn-pill):not(.hero-cta-primary):not(.av-cta):not(.px-cta-primary):not(.va-cta-btn):not(.headline-mark):not(.tile):not(.va-card):not(.av-card):not(.px-corner):not(#crm-shell):not(#crm-shell *),
+[data-theme="light"] [style*="color: #fff"]:not(.btn-pill):not(.hero-cta-primary):not(.av-cta):not(.px-cta-primary):not(.va-cta-btn):not(.headline-mark):not(.tile):not(.va-card):not(.av-card):not(.px-corner):not(#crm-shell):not(#crm-shell *),
+[data-theme="light"] [style*="color:white"]:not(.btn-pill):not(.hero-cta-primary):not(.av-cta):not(.px-cta-primary):not(.va-cta-btn):not(.headline-mark):not(.tile):not(.va-card):not(.av-card):not(.px-corner):not(#crm-shell):not(#crm-shell *) {
+  color: var(--theme-text) !important;
+}
+
+/* Fond noir/quasi-noir inline → transparent (sauf blocs sombres volontaires) */
+[data-theme="light"] [style*="background:#000"]:not(.btn-pill):not(#crm-shell):not(#crm-shell *),
+[data-theme="light"] [style*="background: #000"]:not(.btn-pill):not(#crm-shell):not(#crm-shell *) {
+  background: transparent;
+}
+
+/* CTAs principaux : fond violet + texte blanc (priorité absolue, on utilise !important
+   uniquement ici car ces boutons sont pris pour cibles par des règles globales héritées) */
 [data-theme="light"] .btn-pill,
 [data-theme="light"] .btn-pill *,
 [data-theme="light"] .hero-cta-primary,
@@ -756,27 +1013,19 @@ section {
 [data-theme="light"] .va-cta-btn,
 [data-theme="light"] .va-cta-btn *,
 [data-theme="light"] .px-cta-primary,
-[data-theme="light"] .px-cta-primary *,
-[data-theme="light"] .px-corner,
-[data-theme="light"] .px-corner *,
-[data-theme="light"] .tile,
-[data-theme="light"] .tile *,
-[data-theme="light"] #crm-shell,
-[data-theme="light"] #crm-shell *,
-[data-theme="light"] .va-card,
-[data-theme="light"] .va-card *,
-[data-theme="light"] .av-card,
-[data-theme="light"] .av-card *,
-[data-theme="light"] .pillar-card .pillar-media,
-[data-theme="light"] .pillar-card .pillar-media * {
-  color: inherit;
-}
-[data-theme="light"] .btn-pill,
-[data-theme="light"] .hero-cta-primary,
-[data-theme="light"] .av-cta,
-[data-theme="light"] .va-cta-btn,
-[data-theme="light"] .px-cta-primary,
-[data-theme="light"] .px-corner { color: #fff !important; }
+[data-theme="light"] .px-cta-primary * { color: #FFFFFF !important; }
 
-/* Body::before halos — réduire opacité en light mode */
-[data-theme="light"] body::before { opacity: 0.5; }
+/* Textes body généraux : mapping sémantique */
+[data-theme="light"] p { color: var(--theme-text-muted); }
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6 { color: var(--theme-text); }
+[data-theme="light"] strong,
+[data-theme="light"] b { color: var(--theme-text); }
+[data-theme="light"] label,
+[data-theme="light"] li { color: var(--theme-text); }
+
+/* reduce motion : rien de plus */
