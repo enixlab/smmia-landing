@@ -5,7 +5,8 @@
   <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:88px;">
     <!-- Logo -->
     <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
-      <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" class="nav-logo" style="height:64px;width:auto;display:block;" />
+      <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" class="nav-logo nav-logo-dark" style="height:64px;width:auto;display:block;" />
+      <img src="/images/logos/DCC.png" alt="SMMIA" class="nav-logo nav-logo-light" style="height:64px;width:auto;display:none;" />
     </a>
 
     <!-- Liens desktop : retirés à la demande — on garde uniquement le CTA Rejoindre -->
@@ -71,6 +72,10 @@
   :root[data-theme="light"] .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg); }
   :root[data-theme="light"] .theme-toggle { color: #5B21B6; border-color: rgba(168,85,247,0.7); background: rgba(168,85,247,0.1); }
   :root[data-theme="light"] .theme-toggle:hover { background: rgba(168,85,247,0.18); }
+
+  /* Logo swap : DCC en clair, SMMIA v2 en sombre */
+  :root[data-theme="light"] .nav-logo-dark { display: none !important; }
+  :root[data-theme="light"] .nav-logo-light { display: block !important; }
 
   @media (max-width: 768px) {
     /* On garde le bouton Rejoindre visible en mobile (seul item restant) */
