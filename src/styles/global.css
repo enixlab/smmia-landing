@@ -1750,11 +1750,11 @@ body:not(.footer-in-view) .ft-online-dot {
   text-decoration-color: rgba(124, 58, 237, 0.7) !important;
 }
 [data-theme="light"] .px-price-save-badge {
-  color: #15803D !important;
-  background: rgba(34, 197, 94, 0.14) !important;
-  border: 1px solid rgba(34, 197, 94, 0.35) !important;
+  color: #5B21B6 !important;
+  background: rgba(168, 85, 247, 0.12) !important;
+  border: 1px solid rgba(124, 58, 237, 0.45) !important;
 }
-[data-theme="light"] .px-price-save-badge * { color: #15803D !important; }
+[data-theme="light"] .px-price-save-badge * { color: #5B21B6 !important; }
 
 /* 3. "Réservé aux membres de la communauté Focus" — px-eyebrow */
 [data-theme="light"] .px-eyebrow,
