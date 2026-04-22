@@ -1331,3 +1331,135 @@ section {
 /* Live channel icons (whatsapp/discord/mail) gardent leur gradient natif */
 [data-theme="light"] .fq-channel-ic,
 [data-theme="light"] .fq-channel-ic * { color: #FFFFFF !important; }
+/* ═══════════════════════════════════════════════════════════════════
+   LIGHT MODE — FIX TEXTES BLANCS MANQUANTS
+   Cible les classes CSS (définies dans les blocs <style> des composants
+   Astro) dont la couleur blanche n'est PAS encore override dans global.css
+   et qui tombent sur un fond CLAIR en light mode.
+
+   Ignorés (exceptions OK) :
+   .btn-pill, .hero-cta-primary, .av-cta, .va-cta-btn, .px-cta-primary,
+   .px-corner, .headline-mark, #crm-shell, .tile, .va-card, .av-card.
+═══════════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────────────────────────────────────────────────
+   MarqueeAvis.astro
+   Classe .av-cta-sub — sous-texte sous le CTA (hors bouton), sur bg section light.
+─────────────────────────────────────────────────────────────────── */
+[data-theme="light"] .av-cta-sub {
+  color: #0F0720 !important;
+  opacity: 0.72;
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   Pricing.astro — Cards prix (.px-card devient blanc en light)
+   Certaines classes internes n'étaient pas ciblées (px-feat vs px-feature).
+─────────────────────────────────────────────────────────────────── */
+[data-theme="light"] .px-feat-label,
+[data-theme="light"] .px-feat-tag,
+[data-theme="light"] .px-trust,
+[data-theme="light"] .px-trust-item,
+[data-theme="light"] .px-trust-item svg,
+[data-theme="light"] .px-cta-secondary,
+[data-theme="light"] .px-cta-secondary:hover,
+[data-theme="light"] .px-cta-secondary svg,
+[data-theme="light"] .px-live,
+[data-theme="light"] .px-live-label,
+[data-theme="light"] .px-live-text strong {
+  color: #0F0720 !important;
+}
+[data-theme="light"] .px-feat-tag,
+[data-theme="light"] .px-trust-item,
+[data-theme="light"] .px-live-label {
+  opacity: 0.7;
+}
+[data-theme="light"] .px-cta-secondary {
+  background: rgba(124, 58, 237, 0.06) !important;
+  border-color: rgba(124, 58, 237, 0.3) !important;
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   VideoAvis.astro
+   .va-stat-label / .va-stat-value / .va-cta-secondary
+   (la stats ribbon vit sur le bg section light, pas dans une card sombre)
+─────────────────────────────────────────────────────────────────── */
+[data-theme="light"] .va-stat-label,
+[data-theme="light"] .va-stat-value,
+[data-theme="light"] .va-cta-secondary,
+[data-theme="light"] .va-cta-secondary:hover {
+  color: #0F0720 !important;
+}
+[data-theme="light"] .va-stat-label {
+  opacity: 0.72;
+}
+[data-theme="light"] .va-cta-secondary {
+  background: rgba(124, 58, 237, 0.06) !important;
+  border-color: rgba(124, 58, 237, 0.3) !important;
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   FAQ.astro
+   Les tabs, search, trust strip et empty state vivent sur bg section light
+   (ne sont PAS dans .fq-item qui, lui, garde son fond sombre).
+─────────────────────────────────────────────────────────────────── */
+[data-theme="light"] .fq-trust,
+[data-theme="light"] .fq-trust-val-sub,
+[data-theme="light"] .fq-trust-lbl,
+[data-theme="light"] .fq-trust-sep,
+[data-theme="light"] .fq-search,
+[data-theme="light"] .fq-search svg,
+[data-theme="light"] .fq-search input,
+[data-theme="light"] .fq-search-clear,
+[data-theme="light"] .fq-tab,
+[data-theme="light"] .fq-tab:hover,
+[data-theme="light"] .fq-empty-title,
+[data-theme="light"] .fq-empty-sub {
+  color: #0F0720 !important;
+}
+[data-theme="light"] .fq-trust-val-sub,
+[data-theme="light"] .fq-trust-lbl,
+[data-theme="light"] .fq-empty-sub,
+[data-theme="light"] .fq-tab {
+  opacity: 0.72;
+}
+[data-theme="light"] .fq-search input::placeholder {
+  color: rgba(15, 7, 32, 0.45) !important;
+}
+[data-theme="light"] .fq-search {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(124, 58, 237, 0.22) !important;
+}
+[data-theme="light"] .fq-search-clear {
+  background: rgba(124, 58, 237, 0.1) !important;
+}
+[data-theme="light"] .fq-tab {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(124, 58, 237, 0.22) !important;
+}
+[data-theme="light"] .fq-tab:hover {
+  border-color: rgba(124, 58, 237, 0.45) !important;
+}
+/* .fq-tab.is-active reste violet+blanc (CTA state) */
+[data-theme="light"] .fq-tab.is-active,
+[data-theme="light"] .fq-tab.is-active * {
+  color: #FFFFFF !important;
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   ServiceByPrime.astro — hover state non couvert
+─────────────────────────────────────────────────────────────────── */
+[data-theme="light"] .cat-pill:hover {
+  color: #0F0720 !important;
+  background: rgba(124, 58, 237, 0.12) !important;
+  border-color: rgba(124, 58, 237, 0.5) !important;
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   Hero.astro — hover de .scroll-text déjà couvert ligne 570,
+   mais .line-outline fallback mobile mérite un override explicite
+─────────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  [data-theme="light"] .line-outline {
+    -webkit-text-stroke: 1.5px #0F0720 !important;
+  }
+}
