@@ -729,7 +729,7 @@ body:not(.footer-in-view) .ft-online-dot {
   [data-theme="light"] .brand-smmia--light { height: 105px !important; }
 }
 [data-theme="light"] .brand-smmia {
-  filter: drop-shadow(0 10px 35px rgba(124, 58, 237, 0.35));
+  filter: none;
 }
 
 /* ═══════════════════════ 3. PROGRAMME (5 piliers) ═══════════════════════ */
@@ -1273,13 +1273,19 @@ body:not(.footer-in-view) .ft-online-dot {
 [data-theme="light"] .ft-online-dot { background: #16A34A !important; }
 [data-theme="light"] .ft-community-cta { color: var(--theme-violet); }
 
-/* Contact rows (WhatsApp, mail) */
+/* Contact rows (WhatsApp, mail) — inline row intégrée au footer lavande */
 [data-theme="light"] .ft-contact-row {
-  background: var(--theme-bg-elev) !important;
-  border: 1px solid var(--theme-border);
-  color: var(--theme-text);
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.12) !important;
+  border-radius: 0 !important;
+  padding: 12px 2px !important;
+  color: var(--theme-text-muted);
+  box-shadow: none !important;
 }
-[data-theme="light"] .ft-contact-row:hover { border-color: rgba(124, 58, 237, 0.5); }
+[data-theme="light"] .ft-contact-row:last-of-type { border-bottom: 0 !important; }
+[data-theme="light"] .ft-contact-row:hover { color: var(--theme-violet); }
+[data-theme="light"] .ft-contact-row svg { color: var(--theme-violet); }
 
 /* Bottom strip */
 [data-theme="light"] .ft-bottom {
