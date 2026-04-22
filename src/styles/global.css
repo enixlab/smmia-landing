@@ -691,11 +691,12 @@ body:not(.footer-in-view) .ft-online-dot {
   -webkit-text-stroke: 2px rgba(10, 5, 32, 0.9);
 }
 [data-theme="light"] .line-fill {
-  background: linear-gradient(180deg, #5B21B6 0%, #A855F7 45%, #C4B5FD 100%) !important;
+  background: linear-gradient(135deg, #3B0A8C 0%, #5B21B6 25%, #7C3AED 50%, #A855F7 75%, #C084FC 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: transparent !important;
+  filter: drop-shadow(0 4px 18px rgba(124, 58, 237, 0.30));
 }
 
 /* CTAs hero : primary garde son fond violet + texte blanc (ne pas toucher) */

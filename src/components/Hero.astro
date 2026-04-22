@@ -320,6 +320,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   .hero-title--solo {
     font-size: clamp(34px, 5.5vw, 76px);
     letter-spacing: -0.03em;
+    margin-top: -18px;
   }
   .hero-title--solo .line-fill { padding-bottom: 14px; }
 
@@ -354,12 +355,13 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   .line-fill {
     position: relative;
-    background: linear-gradient(180deg, #ffffff 0%, #e9d5ff 45%, #a855f7 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #e9d5ff 30%, #c4b5fd 60%, #a855f7 85%, #7c3aed 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     padding-bottom: 14px;
     cursor: default;
+    filter: drop-shadow(0 4px 20px rgba(168, 85, 247, 0.25));
     transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
                 filter 0.4s ease;
   }
