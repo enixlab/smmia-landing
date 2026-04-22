@@ -732,9 +732,63 @@ body:not(.footer-in-view) .ft-online-dot {
 @media (max-width: 380px) {
   [data-theme="light"] .brand-smmia--light { height: 105px !important; }
 }
-[data-theme="light"] .brand-smmia,
-[data-theme="light"] .hero-brand:hover .brand-smmia {
-  filter: none !important;
+[data-theme="light"] .brand-smmia--light {
+  filter:
+    drop-shadow(0 0 18px rgba(168, 85, 247, 0.75))
+    drop-shadow(0 10px 32px rgba(168, 85, 247, 0.55))
+    drop-shadow(0 0 6px rgba(168, 85, 247, 0.45)) !important;
+}
+[data-theme="light"] .hero-brand:hover .brand-smmia--light {
+  filter:
+    drop-shadow(0 0 26px rgba(168, 85, 247, 0.90))
+    drop-shadow(0 14px 42px rgba(168, 85, 247, 0.70))
+    drop-shadow(0 0 10px rgba(168, 85, 247, 0.55)) !important;
+}
+
+/* Halo violet intense derrière le logo en mode clair — 2 couches */
+[data-theme="light"] .hero-brand {
+  position: relative;
+  isolation: isolate;
+}
+[data-theme="light"] .hero-brand::before,
+[data-theme="light"] .hero-brand::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  pointer-events: none;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+[data-theme="light"] .hero-brand::before {
+  width: 180%;
+  height: 240%;
+  background: radial-gradient(ellipse at center,
+    rgba(168, 85, 247, 0.85) 0%,
+    rgba(168, 85, 247, 0.55) 22%,
+    rgba(124, 58, 237, 0.32) 42%,
+    rgba(168, 85, 247, 0.10) 65%,
+    rgba(168, 85, 247, 0) 80%);
+  filter: blur(48px);
+  animation: heroHaloLight 4s ease-in-out infinite;
+}
+[data-theme="light"] .hero-brand::after {
+  width: 110%;
+  height: 150%;
+  background: radial-gradient(ellipse at center,
+    rgba(168, 85, 247, 0.90) 0%,
+    rgba(168, 85, 247, 0.45) 35%,
+    rgba(168, 85, 247, 0) 70%);
+  filter: blur(24px);
+  animation: heroHaloLightCore 4s ease-in-out infinite;
+}
+@keyframes heroHaloLight {
+  0%, 100% { opacity: 0.85; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
+}
+@keyframes heroHaloLightCore {
+  0%, 100% { opacity: 0.80; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.05); }
 }
 
 /* ═══════════════════════ 3. PROGRAMME (5 piliers) ═══════════════════════ */
