@@ -26,6 +26,8 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
     <!-- Logo SMMIA seul (switch dark/light) -->
     <div class="hero-brand" data-depth="0.5">
+      <div class="brand-halo brand-halo--outer" aria-hidden="true"></div>
+      <div class="brand-halo brand-halo--inner" aria-hidden="true"></div>
       <img src="/images/logos/SMMIA-logo-cropped.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--dark" />
       <img src="/images/logos/DCC.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--light" />
     </div>
@@ -276,46 +278,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     transform: translate3d(var(--tx), var(--ty), 0);
   }
 
-  /* Halo lumineux derrière le logo — couche 1 (large, diffus) */
-  .hero-brand::before {
-    content: "";
-    position: absolute;
-    inset: -60% -30%;
-    background: radial-gradient(ellipse at center,
-      rgba(168, 85, 247, 0.60) 0%,
-      rgba(168, 85, 247, 0.35) 22%,
-      rgba(124, 58, 237, 0.18) 45%,
-      rgba(168, 85, 247, 0) 72%);
-    filter: blur(38px);
-    z-index: -2;
-    pointer-events: none;
-    animation: haloGlow 4s ease-in-out infinite;
-  }
-
-  /* Halo lumineux derrière le logo — couche 2 (noyau concentré) */
-  .hero-brand::after {
-    content: "";
-    position: absolute;
-    inset: -25% -10%;
-    background: radial-gradient(ellipse at center,
-      rgba(168, 85, 247, 0.55) 0%,
-      rgba(168, 85, 247, 0.25) 35%,
-      rgba(168, 85, 247, 0) 65%);
-    filter: blur(18px);
-    z-index: -1;
-    pointer-events: none;
-    animation: haloGlowCore 4s ease-in-out infinite;
-  }
-
-  @keyframes haloGlow {
-    0%, 100% { opacity: 0.90; transform: scale(1); }
-    50%      { opacity: 1;    transform: scale(1.08); }
-  }
-
-  @keyframes haloGlowCore {
-    0%, 100% { opacity: 0.85; transform: scale(1); }
-    50%      { opacity: 1;    transform: scale(1.04); }
-  }
+  /* Halos divs — styles dans global.css pour éviter le scoping Astro */
 
   .brand-logo {
     display: block;
@@ -340,32 +303,6 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   /* Switch logo dark / light — Astro style scoping forces global via :global() */
   .brand-smmia--light { display: none; }
-
-  /* Halo violet plus dense en mode clair — logo blanc sur fond clair */
-  :global([data-theme="light"]) .hero-brand::before {
-    inset: -70% -35%;
-    background: radial-gradient(ellipse at center,
-      rgba(168, 85, 247, 0.85) 0%,
-      rgba(168, 85, 247, 0.55) 22%,
-      rgba(124, 58, 237, 0.30) 45%,
-      rgba(168, 85, 247, 0) 75%);
-    filter: blur(44px);
-  }
-
-  :global([data-theme="light"]) .hero-brand::after {
-    inset: -30% -15%;
-    background: radial-gradient(ellipse at center,
-      rgba(168, 85, 247, 0.80) 0%,
-      rgba(168, 85, 247, 0.40) 35%,
-      rgba(168, 85, 247, 0) 65%);
-    filter: blur(22px);
-  }
-
-  /* Drop-shadow violet plus marqué en mode clair pour le contour du logo */
-  :global([data-theme="light"]) .brand-smmia--light {
-    filter: drop-shadow(0 8px 28px rgba(168, 85, 247, 0.55))
-            drop-shadow(0 0 12px rgba(168, 85, 247, 0.35));
-  }
 
   @keyframes brandEnter {
     0%   { opacity: 0; transform: translateY(-6px); }

@@ -732,63 +732,90 @@ body:not(.footer-in-view) .ft-online-dot {
 @media (max-width: 380px) {
   [data-theme="light"] .brand-smmia--light { height: 105px !important; }
 }
+/* ═══════ Halo violet derrière le logo Hero ═══════ */
+.hero-brand {
+  position: relative !important;
+  isolation: isolate;
+}
+.brand-halo {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0 !important;
+}
+.brand-halo--outer {
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(ellipse at center,
+    rgba(168, 85, 247, 0.55) 0%,
+    rgba(168, 85, 247, 0.30) 28%,
+    rgba(124, 58, 237, 0.15) 50%,
+    rgba(168, 85, 247, 0) 75%);
+  filter: blur(40px);
+  animation: brandHaloOuter 4s ease-in-out infinite;
+}
+.brand-halo--inner {
+  width: 500px;
+  height: 320px;
+  background: radial-gradient(ellipse at center,
+    rgba(168, 85, 247, 0.60) 0%,
+    rgba(168, 85, 247, 0.30) 40%,
+    rgba(168, 85, 247, 0) 70%);
+  filter: blur(22px);
+  animation: brandHaloInner 4s ease-in-out infinite;
+}
+/* Les images doivent passer au-dessus des halos */
+.hero-brand .brand-logo { position: relative; z-index: 1; }
+
+/* Mode CLAIR — halo ultra-renforcé (logo blanc sur fond blanc) */
+[data-theme="light"] .brand-halo--outer {
+  width: 1000px !important;
+  height: 640px !important;
+  background: radial-gradient(ellipse at center,
+    rgba(139, 92, 246, 0.95) 0%,
+    rgba(168, 85, 247, 0.75) 18%,
+    rgba(168, 85, 247, 0.50) 35%,
+    rgba(124, 58, 237, 0.28) 55%,
+    rgba(168, 85, 247, 0) 80%) !important;
+  filter: blur(50px) !important;
+}
+[data-theme="light"] .brand-halo--inner {
+  width: 620px !important;
+  height: 400px !important;
+  background: radial-gradient(ellipse at center,
+    rgba(139, 92, 246, 1) 0%,
+    rgba(168, 85, 247, 0.75) 30%,
+    rgba(168, 85, 247, 0.35) 55%,
+    rgba(168, 85, 247, 0) 75%) !important;
+  filter: blur(26px) !important;
+}
 [data-theme="light"] .brand-smmia--light {
   filter:
-    drop-shadow(0 0 18px rgba(168, 85, 247, 0.75))
-    drop-shadow(0 10px 32px rgba(168, 85, 247, 0.55))
-    drop-shadow(0 0 6px rgba(168, 85, 247, 0.45)) !important;
+    drop-shadow(0 0 24px rgba(139, 92, 246, 0.85))
+    drop-shadow(0 10px 36px rgba(168, 85, 247, 0.65))
+    drop-shadow(0 0 8px rgba(168, 85, 247, 0.55)) !important;
 }
 [data-theme="light"] .hero-brand:hover .brand-smmia--light {
   filter:
-    drop-shadow(0 0 26px rgba(168, 85, 247, 0.90))
-    drop-shadow(0 14px 42px rgba(168, 85, 247, 0.70))
-    drop-shadow(0 0 10px rgba(168, 85, 247, 0.55)) !important;
+    drop-shadow(0 0 32px rgba(139, 92, 246, 1))
+    drop-shadow(0 16px 48px rgba(168, 85, 247, 0.80))
+    drop-shadow(0 0 12px rgba(168, 85, 247, 0.65)) !important;
 }
 
-/* Halo violet intense derrière le logo en mode clair — 2 couches */
-[data-theme="light"] .hero-brand {
-  position: relative;
-  isolation: isolate;
-}
-[data-theme="light"] .hero-brand::before,
-[data-theme="light"] .hero-brand::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  pointer-events: none;
-  z-index: -1;
-  transform: translate(-50%, -50%);
-}
-[data-theme="light"] .hero-brand::before {
-  width: 180%;
-  height: 240%;
-  background: radial-gradient(ellipse at center,
-    rgba(168, 85, 247, 0.85) 0%,
-    rgba(168, 85, 247, 0.55) 22%,
-    rgba(124, 58, 237, 0.32) 42%,
-    rgba(168, 85, 247, 0.10) 65%,
-    rgba(168, 85, 247, 0) 80%);
-  filter: blur(48px);
-  animation: heroHaloLight 4s ease-in-out infinite;
-}
-[data-theme="light"] .hero-brand::after {
-  width: 110%;
-  height: 150%;
-  background: radial-gradient(ellipse at center,
-    rgba(168, 85, 247, 0.90) 0%,
-    rgba(168, 85, 247, 0.45) 35%,
-    rgba(168, 85, 247, 0) 70%);
-  filter: blur(24px);
-  animation: heroHaloLightCore 4s ease-in-out infinite;
-}
-@keyframes heroHaloLight {
+@keyframes brandHaloOuter {
   0%, 100% { opacity: 0.85; transform: translate(-50%, -50%) scale(1); }
-  50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
+  50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.10); }
 }
-@keyframes heroHaloLightCore {
+@keyframes brandHaloInner {
   0%, 100% { opacity: 0.80; transform: translate(-50%, -50%) scale(1); }
-  50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.05); }
+  50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.06); }
+}
+@media (max-width: 640px) {
+  .brand-halo--outer { width: 90vw !important; height: 60vw !important; }
+  .brand-halo--inner { width: 65vw !important; height: 45vw !important; }
 }
 
 /* ═══════════════════════ 3. PROGRAMME (5 piliers) ═══════════════════════ */
