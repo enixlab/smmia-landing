@@ -1696,21 +1696,26 @@ section:not(.in-view) .spot-core {
   border-color: rgba(124, 58, 237, 0.4) !important;
 }
 
-/* ═══ LIGHT : bouton play — cercle violet dégradé propre ═══ */
+/* ═══ LIGHT : bouton play — JUSTE le triangle, pas de cercle/carré ═══ */
 [data-theme="light"] .va-play,
 [data-theme="light"] .va-play-core {
-  background: linear-gradient(135deg, #A855F7 0%, #7C3AED 50%, #5B21B6 100%) !important;
-  color: #FFFFFF !important;
+  background: transparent !important;
+  color: transparent !important;
   border: none !important;
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.45), 0 4px 12px rgba(15, 7, 32, 0.25) !important;
+  box-shadow: none !important;
 }
 [data-theme="light"] .va-play svg,
 [data-theme="light"] .va-play-core svg {
-  color: #FFFFFF !important;
-  fill: #FFFFFF !important;
-  width: 26px !important;
-  height: 26px !important;
-  filter: none !important;
+  color: #7C3AED !important;
+  fill: #7C3AED !important;
+  width: 64px !important;
+  height: 64px !important;
+  /* Outline blanc pour visibilité sur toutes images */
+  filter:
+    drop-shadow(0 0 2px #FFFFFF)
+    drop-shadow(0 0 2px #FFFFFF)
+    drop-shadow(0 0 4px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 3px 8px rgba(15, 7, 32, 0.4)) !important;
 }
 [data-theme="light"] .va-play::before,
 [data-theme="light"] .va-play::after,
