@@ -1463,3 +1463,46 @@ section {
     -webkit-text-stroke: 1.5px #0F0720 !important;
   }
 }
+
+/* ═══ LIGHT : textes mal contrastés signalés par user ═══ */
+
+/* 1. "Accès membre exclusif" (CRMSection eyebrow inline style) */
+[data-theme="light"] #crm > div > div > div[style*="C4B5FD"],
+[data-theme="light"] #crm [style*="color:#C4B5FD"],
+[data-theme="light"] #crm [style*="color: #C4B5FD"] {
+  color: #5B21B6 !important;
+  background: rgba(168, 85, 247, 0.14) !important;
+  border-color: rgba(124, 58, 237, 0.5) !important;
+}
+/* Fallback : premier enfant eyebrow dans #crm */
+[data-theme="light"] .crm-section div[style*="letter-spacing:0.08em"],
+[data-theme="light"] .crm-section div[style*="letter-spacing: 0.08em"] {
+  color: #5B21B6 !important;
+}
+
+/* 2. "€" après le 500 — px-price-currency en blanc */
+[data-theme="light"] .px-price-currency {
+  color: #5B21B6 !important;
+  opacity: 1 !important;
+}
+
+/* 3. "Réservé aux membres de la communauté Focus" — px-eyebrow */
+[data-theme="light"] .px-eyebrow,
+[data-theme="light"] .px-eyebrow * {
+  color: #5B21B6 !important;
+}
+[data-theme="light"] .px-eyebrow {
+  background: rgba(168, 85, 247, 0.12) !important;
+  border: 1px solid rgba(124, 58, 237, 0.4) !important;
+}
+
+/* 4. Bonus : av-badge-text ("50 AVIS VÉRIFIÉS · COMMUNAUTÉ FOCUS") — pour contraste */
+[data-theme="light"] .av-badge,
+[data-theme="light"] .av-badge-text,
+[data-theme="light"] .av-live {
+  color: #5B21B6 !important;
+}
+[data-theme="light"] .av-badge {
+  background: rgba(168, 85, 247, 0.1) !important;
+  border-color: rgba(124, 58, 237, 0.4) !important;
+}
