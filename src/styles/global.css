@@ -728,8 +728,9 @@ body:not(.footer-in-view) .ft-online-dot {
 @media (max-width: 380px) {
   [data-theme="light"] .brand-smmia--light { height: 105px !important; }
 }
-[data-theme="light"] .brand-smmia {
-  filter: none;
+[data-theme="light"] .brand-smmia,
+[data-theme="light"] .hero-brand:hover .brand-smmia {
+  filter: none !important;
 }
 
 /* ═══════════════════════ 3. PROGRAMME (5 piliers) ═══════════════════════ */
@@ -1075,17 +1076,17 @@ body:not(.footer-in-view) .ft-online-dot {
 /* Prix strike + save badge */
 [data-theme="light"] .px-price-strike-row,
 [data-theme="light"] .px-price-strike { color: var(--theme-text-dim); }
-/* Badges -80% et Economise 2000€ : PAS d'encadré vert — texte violet simple sans bordure */
+/* Badges -80% et Economise 2000€ : encadré VIOLET */
 [data-theme="light"] .px-price-save-badge,
 [data-theme="light"] .px-chip-win {
-  background: transparent !important;
-  border: none !important;
-  color: #7C3AED !important;
-  box-shadow: none !important;
+  background: rgba(168, 85, 247, 0.12) !important;
+  border: 1px solid rgba(124, 58, 237, 0.45) !important;
+  color: #5B21B6 !important;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.12) !important;
   font-weight: 800 !important;
 }
 [data-theme="light"] .px-price-save-badge *,
-[data-theme="light"] .px-chip-win * { color: #7C3AED !important; }
+[data-theme="light"] .px-chip-win * { color: #5B21B6 !important; }
 
 /* Prix "500 €" — gradient violet foncé bien lisible */
 [data-theme="light"] .px-price-amount {
