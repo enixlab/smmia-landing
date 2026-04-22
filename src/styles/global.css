@@ -1696,26 +1696,21 @@ section:not(.in-view) .spot-core {
   border-color: rgba(124, 58, 237, 0.4) !important;
 }
 
-/* ═══ LIGHT : bouton play vidéo — JUSTE le triangle noir, aucun fond ═══ */
+/* ═══ LIGHT : bouton play — cercle violet dégradé propre ═══ */
 [data-theme="light"] .va-play,
 [data-theme="light"] .va-play-core {
-  background: transparent !important;
-  color: #000000 !important;
+  background: linear-gradient(135deg, #A855F7 0%, #7C3AED 50%, #5B21B6 100%) !important;
+  color: #FFFFFF !important;
   border: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.45), 0 4px 12px rgba(15, 7, 32, 0.25) !important;
 }
 [data-theme="light"] .va-play svg,
 [data-theme="light"] .va-play-core svg {
-  color: #000000 !important;
-  fill: #000000 !important;
-  width: 60px !important;
-  height: 60px !important;
-  /* outline blanc pour visibilité sur fonds sombres (visages) */
-  filter:
-    drop-shadow(0 0 3px #FFFFFF)
-    drop-shadow(0 0 3px #FFFFFF)
-    drop-shadow(0 0 2px #FFFFFF)
-    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3)) !important;
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  width: 26px !important;
+  height: 26px !important;
+  filter: none !important;
 }
 [data-theme="light"] .va-play::before,
 [data-theme="light"] .va-play::after,
