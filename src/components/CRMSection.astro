@@ -282,9 +282,6 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
   .pc:hover .pt-img img{transform:scale(1.08);opacity:1;}
   .pi{width:36px;height:36px;border-radius:10px;background:rgba(0,0,0,0.35);border:1px solid;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);}
   .cr{display:grid;align-items:center;border:1px solid rgba(168,85,247,0.14);border-radius:12px;padding:18px 26px;gap:18px;background:linear-gradient(135deg,rgba(168,85,247,0.04),rgba(168,85,247,0.02));cursor:pointer;transition:all .2s;}
-  .cr-client{grid-template-columns:44px 1fr auto 88px;}
-  .cr-svc{grid-template-columns:56px 1fr auto 112px;}
-  .cr-replay{grid-template-columns:84px 1fr 88px;}
   .cr:hover{border-color:rgba(192,132,252,0.4);background:rgba(168,85,247,0.08);transform:translateX(2px);}
   .audit-ex{font-size:0.68rem;padding:3px 11px;background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.25);border-radius:9999px;color:#C4B5FD;cursor:pointer;transition:all .15s;font-weight:600;}
   .audit-ex:hover{border-color:rgba(168,85,247,0.5);background:rgba(168,85,247,0.18);color:#fff;}
@@ -525,7 +522,7 @@ function renderSvc(){
   const c=el('svc-rows');c.innerHTML='';
   SVC_DATA.forEach((s,i)=>{
     const row=document.createElement('div');
-    row.className='cr cr-svc';
+    row.className='cr cr-svc';row.style.gridTemplateColumns='56px 1fr auto 112px';
     // Thumbnail image service
     const thumb=document.createElement('div');
     thumb.className='svc-thumb';
@@ -621,7 +618,7 @@ function renderClients(){
   const c=el('cl-rows');c.innerHTML='';
   const total=CL_DATA.filter(x=>x.mrr>0).reduce((a,x)=>a+x.mrr,0);
   CL_DATA.forEach((cl,i)=>{
-    const row=document.createElement('div');row.className='cr cr-client';
+    const row=document.createElement('div');row.className='cr cr-client';row.style.gridTemplateColumns='44px 1fr auto 88px';
     const av=document.createElement('div');av.style.cssText='width:44px;height:44px;border-radius:10px;background:rgba(168,85,247,.14);display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800;color:#A855F7;';av.textContent=cl.i;
     const left=document.createElement('div');left.style.cssText='min-width:0;';
     const na=document.createElement('div');na.style.cssText='font-size:.88rem;font-weight:700;color:#fff;margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';na.textContent=cl.n;
@@ -706,7 +703,7 @@ let rpTimer=null,rpOn=false,rpIdx=0,rpElapsed=0;
 function renderReplays(){
   const c=el('rp-rows');c.innerHTML='';
   RP_DATA.forEach((r,i)=>{
-    const row=document.createElement('div');row.className='cr cr-replay';
+    const row=document.createElement('div');row.className='cr cr-replay';row.style.gridTemplateColumns='84px 1fr 88px';
     const thumb=document.createElement('div');
     thumb.className='rp-thumb-row';
     thumb.style.cssText='width:84px;height:52px;border-radius:10px;overflow:hidden;position:relative;border:1px solid rgba(168,85,247,.28);box-shadow:0 3px 10px rgba(15,7,32,.15);background:#0a0413;';
