@@ -238,19 +238,33 @@ const {
       }, { passive: true });
 
       // ═══════════════════════════════════════════════════════════════════
-      // FIX CRASH CHROME STATUS_BREAKPOINT — 2026-04-21
+      // FIX CRASH CHROME STATUS_BREAKPOINT — 2026-04-21 (v2)
       // Pause animations CSS des sections hors viewport (marquees, pulses,
       // rings, spins, filter-blur halos) en togglant .in-view sur <section>.
       // CSS: les règles `section:not(.in-view) .xxx { animation-play-state: paused }`
       // arrêtent le compositor/GPU pour les sections invisibles.
+      // rootMargin réduit à 0 — plus agressif — pour vraiment couper les
+      // animations qui ne sont pas à l'écran pendant un scroll rapide.
       // ═══════════════════════════════════════════════════════════════════
       const sectionIO = new IntersectionObserver((entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) e.target.classList.add('in-view');
           else e.target.classList.remove('in-view');
         });
-      }, { rootMargin: '150px 0px', threshold: 0 });
+      }, { rootMargin: '0px 0px', threshold: 0 });
       document.querySelectorAll('section').forEach((s) => sectionIO.observe(s));
+
+      // Footer observer (pause ft-online-dot hors viewport)
+      const footerEl = document.querySelector('footer');
+      if (footerEl) {
+        const ftIO = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) document.body.classList.add('footer-in-view');
+            else document.body.classList.remove('footer-in-view');
+          });
+        }, { rootMargin: '0px', threshold: 0 });
+        ftIO.observe(footerEl);
+      }
     </script>
 
     <style>

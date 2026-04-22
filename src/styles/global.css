@@ -57,10 +57,13 @@ body {
   transition: background-color 0.4s ease, color 0.3s ease;
 }
 
-/* PERF: sections hors viewport = skip rendering */
+/* PERF: sections hors viewport = skip rendering
+   DÉSACTIVÉ 2026-04-21 : content-visibility:auto trigger un layout reflow
+   pour chaque section lors d'un scroll rapide top↔bottom, ce qui amplifie
+   le compositor thrash et déclenche le crash STATUS_BREAKPOINT Chrome.
+   On garde uniquement contain (contain: layout paint style) qui est safe. */
 section {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 800px;
+  contain: layout paint style;
 }
 
 /* PERF: pause toutes les animations hors viewport */
@@ -398,8 +401,9 @@ section {
 ═══════════════════════════════════════════════════════════════════════ */
 
 /* 1. Pause animations quand leur parent section n'est pas visible.
-   content-visibility:auto sur section (défini plus haut) + cette règle =
-   le compositor skip les animations offscreen. */
+   Liste élargie 2026-04-21 : ajout de tous les keyframes infinis restants
+   (px-dot, px-live-blink, px-live-cycle, px-stamp-spin, live-pulse, wave,
+   blink, avBorderRotate, avShine, avHaloFloat, avHaloPulse, ft-online-pulse). */
 section:not(.in-view) .va-marquee-track,
 section:not(.in-view) .pillars-marquee-track,
 section:not(.in-view) .av-track-l,
@@ -411,16 +415,41 @@ section:not(.in-view) .marquee-track-l,
 section:not(.in-view) .marquee-track-r,
 section:not(.in-view) .marquee-tools,
 section:not(.in-view) .va-play-ring,
+section:not(.in-view) .va-play-ring--2,
+section:not(.in-view) .va-play-core,
+section:not(.in-view) .va-badge-dot,
 section:not(.in-view) .av-cta-shine,
+section:not(.in-view) .av-card-border,
+section:not(.in-view) .av-halo,
+section:not(.in-view) .av-halo-c,
 section:not(.in-view) .px-aura,
 section:not(.in-view) .px-orb,
+section:not(.in-view) .px-stamp,
 section:not(.in-view) .px-stamp-ring,
 section:not(.in-view) .px-corner,
 section:not(.in-view) .px-corner::before,
+section:not(.in-view) .px-dot,
+section:not(.in-view) .px-eyebrow-dot,
+section:not(.in-view) .px-brand-dot,
+section:not(.in-view) .px-live-dot,
+section:not(.in-view) .px-live-row,
 section:not(.in-view) .fbi-item,
 section:not(.in-view) .fbi-glow,
 section:not(.in-view) .fbi-img,
-section:not(.in-view) .spot-core {
+section:not(.in-view) .spot-core,
+section:not(.in-view) .live-dot,
+section:not(.in-view) .pulse-dot,
+section:not(.in-view) .va-scarcity-dot,
+section:not(.in-view) .wb,
+section:not(.in-view) *,
+section:not(.in-view) *::before,
+section:not(.in-view) *::after {
+  animation-play-state: paused !important;
+}
+
+/* Footer : pause animations quand hors viewport (footer n'est pas un <section>
+   donc il faut une règle dédiée via body.scroll-low-bottom toggle JS) */
+body:not(.footer-in-view) .ft-online-dot {
   animation-play-state: paused !important;
 }
 
@@ -478,13 +507,26 @@ section:not(.in-view) .spot-core {
 }
 
 /* 5. Limite le nombre de blur simultanés — remplace les filter:blur
-   sur halos décoratifs par des fonds opaques statiques à travers display:none */
-@media (max-width: 1280px) {
-  .va-halo,
-  .px-orb-2, .px-orb-3,
-  .av-halo-c {
-    display: none !important;
-  }
+   sur halos décoratifs par des fonds opaques statiques à travers display:none
+   ÉLARGI 2026-04-21 : on supprime les gros halos SUR TOUS les viewports
+   car ils sont la cause principale du crash compositor (filter:blur + grande
+   surface = layer GPU très lourd pendant le scroll rapide). */
+.va-halo,
+.px-orb-2, .px-orb-3,
+.av-halo-c,
+.ft-halo,
+.ft-halo-l,
+.ft-halo-r,
+.av-halo-l,
+.av-halo-r,
+.px-aura {
+  display: none !important;
+}
+/* Orb-1 et Orb-4 : réduit drastiquement (étaient 260px x blur(30px) = 516px de layer) */
+.px-orb-1, .px-orb-4 {
+  filter: blur(20px) !important;
+  width: 160px !important;
+  height: 160px !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
