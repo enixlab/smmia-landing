@@ -418,11 +418,25 @@ section {
 
 /* ───────────────────── Body & halos globaux ───────────────────── */
 [data-theme="light"] body {
-  background: var(--theme-bg);
+  background: var(--theme-bg) !important;
   color: var(--theme-text);
 }
 /* Halo fullscreen ambiant (body::before) : réduit en light */
 [data-theme="light"] body::before { opacity: 0.4; }
+
+/* ─── Backgrounds sombres hardcoded → light (force !important pour battre Astro-scoped) ─── */
+[data-theme="light"] #hero { background: var(--theme-bg) !important; }
+[data-theme="light"] .hero-fade { background: linear-gradient(to bottom, transparent, var(--theme-bg)) !important; }
+[data-theme="light"] .va-section { background: radial-gradient(ellipse at 50% 0%, #EFE8FF 0%, #F5F0FF 60%, var(--theme-bg) 100%) !important; }
+[data-theme="light"] .va-cta-outer { background: var(--theme-bg) !important; }
+[data-theme="light"] .prime-section { background: radial-gradient(ellipse at 50% 0%, #F5F0FF 0%, var(--theme-bg) 60%, #FFFFFF 100%) !important; }
+[data-theme="light"] .px-section { background: radial-gradient(ellipse at 50% 0%, #F0EBFF 0%, #F5F0FF 55%, var(--theme-bg) 100%) !important; }
+[data-theme="light"] .av-section { background: radial-gradient(ellipse at 50% 0%, #EFE8FF 0%, #F5F0FF 60%, var(--theme-bg) 100%) !important; }
+[data-theme="light"] .bento-section { background: transparent !important; }
+[data-theme="light"] .ft,
+[data-theme="light"] footer { background: linear-gradient(180deg, #EFE8FF 0%, var(--theme-bg) 100%) !important; }
+[data-theme="light"] #crm { background: var(--theme-bg) !important; }
+[data-theme="light"] .prog-section { background: radial-gradient(ellipse 60% 50% at 15% 50%, rgba(168,85,247,0.06) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 85% 50%, rgba(168,85,247,0.04) 0%, transparent 60%), var(--theme-bg) !important; }
 
 /* ═══════════════════════ 1. NAVBAR ═══════════════════════ */
 [data-theme="light"] #navbar {
