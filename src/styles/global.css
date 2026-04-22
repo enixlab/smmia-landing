@@ -1490,6 +1490,22 @@ section {
   opacity: 1 !important;
 }
 
+/* 2bis. "€2 500" barré + "−80%" badge — rgba(255,255,255,0.45) invisible en light */
+[data-theme="light"] .px-price-strike-row,
+[data-theme="light"] .px-price-strike-row s,
+[data-theme="light"] .px-price-strike-row * {
+  color: rgba(15, 7, 32, 0.65) !important;
+}
+[data-theme="light"] .px-price-strike-row s {
+  text-decoration-color: rgba(124, 58, 237, 0.7) !important;
+}
+[data-theme="light"] .px-price-save-badge {
+  color: #15803D !important;
+  background: rgba(34, 197, 94, 0.14) !important;
+  border: 1px solid rgba(34, 197, 94, 0.35) !important;
+}
+[data-theme="light"] .px-price-save-badge * { color: #15803D !important; }
+
 /* 3. "Réservé aux membres de la communauté Focus" — px-eyebrow */
 [data-theme="light"] .px-eyebrow,
 [data-theme="light"] .px-eyebrow * {
