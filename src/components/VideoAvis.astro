@@ -13,7 +13,7 @@ const testimonials = [
     sub: "Ticket moyen ×3 après le module Offre IA.",
     tag: "+3K€/mois",
     poster: "/images/portraits-video/mohamed-ali.webp",
-    posterPos: "center",
+    posterPos: "30%",
   },
   {
     slug: "oumya",
@@ -21,15 +21,7 @@ const testimonials = [
     sub: "Scripts Closing appliqués, résultats immédiats.",
     tag: "2 clients",
     poster: "/images/portraits-video/oumya.webp",
-    posterPos: "center",
-  },
-  {
-    slug: "oussmane",
-    hook: "\"Revenus ×2 en 60 jours grâce à SMMIA\"",
-    sub: "Workflows IA : 3h gagnées par jour.",
-    tag: "×2 revenus",
-    poster: "/images/portraits-video/oussmane.webp",
-    posterPos: "center",
+    posterPos: "30%",
   },
   {
     slug: "rm",
@@ -37,7 +29,7 @@ const testimonials = [
     sub: "Packaging refait, prospects signent sans négocier.",
     tag: "×3,4 ticket",
     poster: "/images/portraits-video/rm.webp",
-    posterPos: "center",
+    posterPos: "30%",
   },
   {
     slug: "awais",
@@ -45,7 +37,7 @@ const testimonials = [
     sub: "MRR sécurisé avant la fin du module.",
     tag: "5 retainers",
     poster: "/images/portraits-video/awais.webp",
-    posterPos: "center",
+    posterPos: "30%",
   },
   {
     slug: "velox",
@@ -53,9 +45,19 @@ const testimonials = [
     sub: "Agents IA déployés, capacité +70%.",
     tag: "×3 CA",
     poster: "/images/portraits-video/velox.webp",
-    posterPos: "center",
+    posterPos: "30%",
+  },
+  {
+    slug: "oussmane",
+    hook: "\"Revenus ×2 en 60 jours grâce à SMMIA\"",
+    sub: "Workflows IA : 3h gagnées par jour.",
+    tag: "×2 revenus",
+    poster: "/images/portraits-video/oussmane.webp",
+    posterPos: "30%",
   },
 ];
+const rowA = testimonials.slice(0, 3);
+const rowB = testimonials.slice(3);
 ---
 
 <section id="video-avis" class="va-section">
@@ -85,10 +87,12 @@ const testimonials = [
 
     </div>
 
-    <!-- Marquee vidéos défilant infini -->
+    <!-- Marquee vidéos : 2 lignes qui défilent en sens opposés -->
     <div class="va-marquee-wrap" data-animate>
-      <div class="va-marquee-track" id="va-marquee-track">
-        {[...testimonials, ...testimonials].map((t, i) => (
+
+      <!-- Ligne 1 : défile vers la gauche -->
+      <div class="va-marquee-track va-marquee-track--l">
+        {[...rowA, ...rowA].map((t) => (
           <button
             class="va-card"
             data-video={`/videos/avis-${t.slug}.mp4`}
@@ -121,6 +125,43 @@ const testimonials = [
           </button>
         ))}
       </div>
+
+      <!-- Ligne 2 : défile vers la droite -->
+      <div class="va-marquee-track va-marquee-track--r">
+        {[...rowB, ...rowB].map((t) => (
+          <button
+            class="va-card"
+            data-video={`/videos/avis-${t.slug}.mp4`}
+            data-name={t.hook}
+            aria-label={`Lire le témoignage : ${t.hook}`}
+          >
+            <div class="va-card-media">
+              <img
+                src={t.poster}
+                alt={t.hook}
+                loading="lazy"
+                class="va-poster"
+                style={`object-position: center ${t.posterPos};`}
+              />
+              <div class="va-card-overlay" aria-hidden="true"></div>
+              <div class="va-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="va-card-body">
+              <h3 class="va-hook">{t.hook}</h3>
+              <div class="va-cta-watch">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                Regarder le témoignage
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+
     </div>
 
   </div>
@@ -359,28 +400,41 @@ const testimonials = [
     background: linear-gradient(to bottom, transparent, rgba(168, 85, 247, 0.5), transparent);
   }
 
-  /* ────────── Marquee vidéos ────────── */
+  /* ────────── Marquee vidéos — 2 lignes sens opposés ────────── */
   .va-marquee-wrap {
     position: relative;
     width: 100vw;
     margin-left: calc(50% - 50vw);
     overflow: hidden;
     padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
   }
   .va-marquee-track {
     display: flex;
     gap: 22px;
     width: max-content;
-    animation: va-marquee 65s linear infinite;
     will-change: transform;
+  }
+  .va-marquee-track--l {
+    animation: va-marquee-l 65s linear infinite;
+  }
+  .va-marquee-track--r {
+    animation: va-marquee-r 72s linear infinite;
+    margin-left: -8%; /* offset pour que les 2 lignes ne s'alignent pas parfaitement */
   }
   .va-marquee-wrap:hover .va-marquee-track,
   .va-marquee-wrap:focus-within .va-marquee-track {
     animation-play-state: paused;
   }
-  @keyframes va-marquee {
+  @keyframes va-marquee-l {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
+  }
+  @keyframes va-marquee-r {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
   }
   @media (prefers-reduced-motion: reduce) {
     .va-marquee-track { animation: none; }
@@ -861,8 +915,11 @@ const testimonials = [
   @media (max-width: 1024px) {
     .va-section { padding: 96px 0 112px; }
     .va-header { margin-bottom: 56px; }
-    .va-card { width: 480px; }
-    .va-marquee-track { gap: 22px; animation-duration: 70s; }
+    .va-card { width: 320px; }
+    .va-marquee-wrap { gap: 18px; }
+    .va-marquee-track { gap: 18px; }
+    .va-marquee-track--l { animation-duration: 58s; }
+    .va-marquee-track--r { animation-duration: 64s; }
     .va-play { width: 64px; height: 64px; }
     .va-play svg { width: 24px; height: 24px; }
     .va-halo { width: 380px; height: 380px; filter: blur(80px); }
@@ -874,8 +931,11 @@ const testimonials = [
     .va-header { margin-bottom: 44px; }
     .va-stats { padding: 14px 18px; gap: 18px; border-radius: 16px; }
     .va-stat-sep { height: 28px; }
-    .va-card { width: 360px; }
-    .va-marquee-track { gap: 18px; animation-duration: 55s; }
+    .va-card { width: 260px; }
+    .va-marquee-wrap { gap: 14px; }
+    .va-marquee-track { gap: 14px; }
+    .va-marquee-track--l { animation-duration: 44s; }
+    .va-marquee-track--r { animation-duration: 50s; }
     .va-card-body { padding: 16px 18px 18px; gap: 10px; }
     .va-play { width: 58px; height: 58px; }
     .va-play svg { width: 22px; height: 22px; }
