@@ -1256,6 +1256,72 @@ body:not(.footer-in-view) .ft-online-dot {
 [data-theme="light"] #crm-shell .crm-sidebar-profile div[style*="color:#fff"] { color: #0F0720 !important; }
 [data-theme="light"] #crm-shell .crm-sidebar-profile div[style*="C4B5FD"] { color: #5B21B6 !important; }
 
+/* Services/Replays rows (.cr) : textes lisibles en light mode */
+[data-theme="light"] #crm-shell .cr {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(124, 58, 237, 0.18) !important;
+  box-shadow: 0 3px 10px rgba(15, 7, 32, 0.05) !important;
+}
+[data-theme="light"] #crm-shell .cr > div,
+[data-theme="light"] #crm-shell .cr > div > div {
+  color: #0F0720 !important;
+}
+/* Titres principaux (font-weight 600+) en noir pur */
+[data-theme="light"] #crm-shell .cr div[style*="font-weight:600"],
+[data-theme="light"] #crm-shell .cr div[style*="font-weight: 600"],
+[data-theme="light"] #crm-shell .cr div[style*="font-weight:700"],
+[data-theme="light"] #crm-shell .cr div[style*="font-weight: 700"] {
+  color: #0F0720 !important;
+}
+/* Sous-textes (dates, descriptions) en gris foncé */
+[data-theme="light"] #crm-shell .cr div[style*="font-size:.68rem"],
+[data-theme="light"] #crm-shell .cr div[style*="font-size: .68rem"],
+[data-theme="light"] #crm-shell .cr div[style*="font-size:.65rem"],
+[data-theme="light"] #crm-shell .cr div[style*="font-size: .65rem"] {
+  color: rgba(15, 7, 32, 0.55) !important;
+}
+/* "Ta marge" labels */
+[data-theme="light"] #crm-shell .cr div[style*="font-size:.65rem"] {
+  color: rgba(15, 7, 32, 0.5) !important;
+}
+/* Prix/marge en violet vif */
+[data-theme="light"] #crm-shell .cr div[style*="color:#A855F7"],
+[data-theme="light"] #crm-shell .cr div[style*="color: #A855F7"] {
+  color: #7C3AED !important;
+}
+/* Player replay : titre + labels */
+[data-theme="light"] #crm-shell #p-replays #rp-player-view > div {
+  background: #FFFFFF !important;
+}
+[data-theme="light"] #crm-shell #p-replays #rp-player-view div[style*="#fff"],
+[data-theme="light"] #crm-shell #rp-player-label { color: #0F0720 !important; }
+[data-theme="light"] #crm-shell #rp-thumb-title { color: rgba(15, 7, 32, 0.7) !important; }
+/* Form views : labels + inputs */
+[data-theme="light"] #crm-shell label { color: rgba(15, 7, 32, 0.6) !important; }
+[data-theme="light"] #crm-shell .cinput {
+  background: #F7F4FF !important;
+  border-color: rgba(124, 58, 237, 0.25) !important;
+  color: #0F0720 !important;
+}
+[data-theme="light"] #crm-shell .cinput::placeholder { color: rgba(15, 7, 32, 0.4) !important; }
+/* Audit scores + portfolio link */
+[data-theme="light"] #crm-shell div[style*="font-weight:900"] { color: #7C3AED !important; }
+/* Audit boxes */
+[data-theme="light"] #crm-shell #p-audit div[style*="border:1px solid rgba(255"] {
+  background: #FFFFFF !important;
+  border-color: rgba(124, 58, 237, 0.18) !important;
+}
+[data-theme="light"] #crm-shell .audit-ex {
+  background: rgba(168, 85, 247, 0.1) !important;
+  border-color: rgba(124, 58, 237, 0.25) !important;
+  color: #5B21B6 !important;
+}
+/* Svc thumb / rp thumb : border plus clair */
+[data-theme="light"] #crm-shell .svc-thumb,
+[data-theme="light"] #crm-shell .rp-thumb-row {
+  border-color: rgba(124, 58, 237, 0.25) !important;
+}
+
 /* ═══════════════════════ 9. FOOTER ═══════════════════════ */
 [data-theme="light"] footer,
 [data-theme="light"] .ft {

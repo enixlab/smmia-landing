@@ -26,7 +26,7 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
         <div class="crm-sidebar" style="border-right:1px solid rgba(168,85,247,0.12);background:linear-gradient(180deg,rgba(26,13,51,0.7) 0%,rgba(15,6,33,0.85) 100%);display:flex;flex-direction:column;">
           <div class="crm-sidebar-logo" style="padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,0.04);">
             <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" class="crm-logo-dark" style="width:76px;height:auto;" />
-            <img src="/images/logos/SMMIA-logo-transparent-light.png" alt="SMMIA" class="crm-logo-light" style="width:76px;height:auto;display:none;" />
+            <img src="/images/logos/SMMIA-logo-light.png" alt="SMMIA" class="crm-logo-light" style="width:96px;height:auto;display:none;" />
           </div>
           <div class="crm-menu" style="padding:12px 8px;flex:1;">
             <div class="crm-menu-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 8px;margin-bottom:6px;">Menu</div>
@@ -451,27 +451,8 @@ const SVC_DATA = [
   {s:"Meta Ads Setup",d:"24h",c:"200€",m:"600€+",desc:"Création compte + campagnes + créatifs Lovart.",img:"/images/services/bento/15-campagnes-ads-SQUARE.webp"},
   {s:"Google Ads Setup",d:"24h",c:"180€",m:"620€+",desc:"Campagnes Search + Local, extensions, tracking.",img:"/images/services/bento/15-campagnes-ads-SQUARE.webp"},
   {s:"Visuels & Logo IA",d:"24h",c:"80€",m:"320€+",desc:"Pack complet : logo, bannières, stories, publications.",img:"/images/services/bento/11-visuels-SQUARE.webp"},
-  {s:"Flyers IA",d:"24h",c:"50€",m:"200€+",desc:"Flyers, affiches, supports print prêts à imprimer.",img:"/images/services/bento/10-flyers-SQUARE.webp"},
-  {s:"Landing Page IA",d:"48h",c:"220€",m:"680€+",desc:"Page de vente haute conversion, intégration Stripe.",img:"/images/services/bento/08-landing-pages-SQUARE.webp"},
   {s:"NFC Avis Google",d:"72h",c:"60€",m:"240€+",desc:"Cartes NFC + landing page + QR code.",img:"/images/services/bento/13-nfc-SQUARE.webp"},
-  {s:"Génération Leads",d:"5j",c:"300€",m:"900€+",desc:"Scrapping ciblé + enrichissement + export CSV.",img:"/images/services/bento/05-generation-leads-SQUARE.webp"},
-  {s:"Scrapping Data",d:"3j",c:"180€",m:"500€+",desc:"Extraction base de données prospects ultra-ciblée.",img:"/images/services/bento/18-scrapping-SQUARE.webp"},
   {s:"Automation N8N",d:"5j",c:"500€",m:"1500€+",desc:"Workflow sur-mesure selon le besoin client.",img:"/images/services/bento/16-crm-SQUARE.webp"},
-  {s:"Chatbot SAV IA",d:"4j",c:"280€",m:"780€+",desc:"Chatbot GPT entraîné sur la data du client.",img:"/images/services/bento/04-chatbot-sav-SQUARE.webp"},
-  {s:"WhatsApp Business",d:"48h",c:"150€",m:"450€+",desc:"Setup API + templates + automation messages.",img:"/images/services/bento/17-whatsapp-SQUARE.webp"},
-  {s:"SMS & Email Campagnes",d:"48h",c:"120€",m:"380€+",desc:"Setup + séquences + tracking conversions.",img:"/images/services/bento/03-sms-mail-SQUARE.webp"},
-  {s:"SEO Complet",d:"7j",c:"450€",m:"1200€+",desc:"Audit + optimisations + contenus + backlinks.",img:"/images/services/bento/19-seo-SQUARE.webp"},
-  {s:"Apple Wallet Card",d:"48h",c:"90€",m:"280€+",desc:"Carte digitale fidélité multi-plateformes.",img:"/images/services/bento/07-apple-wallet-SQUARE.webp"},
-  {s:"Vidéos IA & Montages",d:"3j",c:"200€",m:"600€+",desc:"Montage vertical pour TikTok/Reels/Shorts.",img:"/images/services/bento/06-videos-montages-SQUARE.webp"},
-  {s:"UGC IA",d:"5j",c:"320€",m:"900€+",desc:"Avatars IA qui parlent pour ton produit.",img:"/images/services/bento/14-ugc-ia-SQUARE.webp"},
-  {s:"Google My Business",d:"48h",c:"120€",m:"350€+",desc:"Optimisation complète fiche GMB + photos.",img:"/images/services/bento/24-gmb-SQUARE.webp"},
-  {s:"Audit Digital Complet",d:"72h",c:"180€",m:"500€+",desc:"Rapport PDF 30 pages avec recommandations.",img:"/images/services/bento/20-audit-SQUARE.webp"},
-  {s:"E-réputation",d:"7j",c:"400€",m:"1100€+",desc:"Nettoyage + veille + stratégie avis positifs.",img:"/images/services/bento/21-e-reputation-SQUARE.webp"},
-  {s:"Certification TikTok",d:"15j",c:"250€",m:"750€+",desc:"Processus complet de certification compte.",img:"/images/services/bento/01-tiktok-certif-SQUARE.webp"},
-  {s:"Certification Snapchat",d:"15j",c:"250€",m:"750€+",desc:"Processus complet de certification compte.",img:"/images/services/bento/02-snapchat-certif-SQUARE.webp"},
-  {s:"Création Société",d:"10j",c:"400€",m:"1200€+",desc:"SASU, SAS, Auto-entrepreneur — tout inclus.",img:"/images/services/bento/23-creation-societe-SQUARE.webp"},
-  {s:"OSINT Prospects",d:"5j",c:"350€",m:"950€+",desc:"Investigation approfondie sur leads B2B.",img:"/images/services/bento/22-osint-SQUARE.webp"},
-  {s:"Pack Underground",d:"15j",c:"800€",m:"2500€+",desc:"Techniques avancées réservées aux membres.",img:"/images/services/bento/25-underground-SQUARE.webp"},
 ];
 let CL_DATA = [
   {n:"Salon Léa Beauty",i:"L",s:"Meta Ads + SMM",mrr:400,st:"Actif",dot:"#A855F7",notes:"RDV mensuel le 1er. Campagnes Q2 à optimiser.",last:"Rapport envoyé il y a 3 jours"},
