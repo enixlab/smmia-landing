@@ -527,7 +527,7 @@ const row2 = services.filter((_, i) => i % 2 === 1);
     height: 240px;
     background: radial-gradient(circle, rgba(192, 132, 252, 0.55) 0%, rgba(168, 85, 247, 0.25) 35%, transparent 70%);
     filter: blur(20px);
-    animation: pulse-core 6s ease-in-out infinite;
+    /* animation retirée : filter:blur + scale infini = GPU kill (cause crash Chrome) */
   }
 
   .spot-halo {

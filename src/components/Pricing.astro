@@ -330,7 +330,7 @@ const liveActivity = [
     z-index: 0;
   }
 
-  /* Aura centrale derriere la card */
+  /* Aura centrale derriere la card — STATIQUE (anim coûteuse supprimée) */
   .px-aura {
     position: absolute;
     top: 50%;
@@ -343,8 +343,7 @@ const liveActivity = [
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 0;
-    will-change: opacity;
-    animation: px-aura-breath 10s ease-in-out infinite;
+    /* animation retirée : filter:blur + scale infini = GPU killer */
   }
 
   @keyframes px-aura-breath {
@@ -352,15 +351,14 @@ const liveActivity = [
     50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.12); }
   }
 
-  /* Orbs 3D flottants */
+  /* Orbs 3D flottants — STATIQUES (anim coûteuse supprimée) */
   .px-orb {
     position: absolute;
     border-radius: 50%;
     filter: blur(30px);
     pointer-events: none;
     z-index: 1;
-    will-change: transform;
-    animation: px-orb-float 18s ease-in-out infinite;
+    /* animation retirée : 4 orbs × filter:blur × translate/scale = compositor thrash */
   }
 
   .px-orb-1 { top: 12%; left: 6%;  width: 260px; height: 260px; background: radial-gradient(circle, rgba(192, 132, 252, 0.5), transparent 60%); animation-delay: 0s; }
@@ -383,8 +381,7 @@ const liveActivity = [
     background: transparent;
     border: 0;
     padding: 0;
-    will-change: transform;
-    animation: px-float-rotate 14s ease-in-out infinite;
+    /* will-change + animation infinite retirés : 6 icones × rotate continu = GPU cost */
     transition: filter 0.4s ease;
   }
 
@@ -617,6 +614,9 @@ const liveActivity = [
     white-space: nowrap;
     overflow: hidden;
     isolation: isolate;
+    /* Pulse infinie retirée : remplacée par animation pausable via .in-view */
+  }
+  section.in-view .px-corner {
     animation: px-corner-pulse 3.2s ease-in-out infinite;
   }
 
@@ -629,8 +629,10 @@ const liveActivity = [
       rgba(255, 255, 255, 0.3) 50%,
       transparent 100%);
     transform: translateX(-100%);
-    animation: px-corner-sweep 3.5s ease-in-out infinite;
     z-index: 0;
+  }
+  section.in-view .px-corner::before {
+    animation: px-corner-sweep 3.5s ease-in-out infinite;
   }
 
   @keyframes px-corner-sweep {

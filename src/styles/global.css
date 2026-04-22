@@ -386,6 +386,107 @@ section {
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   FIX CRASH STATUS_BREAKPOINT CHROME — 2026-04-21
+   Cause : 185 backdrop-filter + 98 animations infinites + 73 blur filter
+           = compositor thrash → GPU renderer crash au scroll
+   Strategy :
+   1) Pause marquees + pulse/ring animations quand section hors viewport
+   2) Réduit backdrop-filter décoratifs (garde uniquement navbar + cards signature)
+   3) Décorations [aria-hidden="true"] : animation-play-state contrôlé par JS
+   4) Force compositeur à libérer ses layers en retirant will-change inutiles
+═══════════════════════════════════════════════════════════════════════ */
+
+/* 1. Pause animations quand leur parent section n'est pas visible.
+   content-visibility:auto sur section (défini plus haut) + cette règle =
+   le compositor skip les animations offscreen. */
+section:not(.in-view) .va-marquee-track,
+section:not(.in-view) .pillars-marquee-track,
+section:not(.in-view) .av-track-l,
+section:not(.in-view) .av-track-r,
+section:not(.in-view) .av-track-slow,
+section:not(.in-view) .track-1,
+section:not(.in-view) .track-2,
+section:not(.in-view) .marquee-track-l,
+section:not(.in-view) .marquee-track-r,
+section:not(.in-view) .marquee-tools,
+section:not(.in-view) .va-play-ring,
+section:not(.in-view) .av-cta-shine,
+section:not(.in-view) .px-aura,
+section:not(.in-view) .px-orb,
+section:not(.in-view) .px-stamp-ring,
+section:not(.in-view) .px-corner,
+section:not(.in-view) .px-corner::before,
+section:not(.in-view) .fbi-item,
+section:not(.in-view) .fbi-glow,
+section:not(.in-view) .fbi-img,
+section:not(.in-view) .spot-core {
+  animation-play-state: paused !important;
+}
+
+/* 2. Retire les will-change qui créent des layers permanents inutiles
+   (will-change = layer créé même sans animation en cours). */
+.brand-logo,
+.hero-brand,
+.px-orb,
+.px-float,
+.va-halo,
+.marquee-tools,
+.fbi-item {
+  will-change: auto !important;
+}
+/* Garde will-change uniquement sur les tracks de marquee en scroll actif */
+.va-marquee-track,
+.pillars-marquee-track,
+.av-track,
+.track,
+.marquee-track-l,
+.marquee-track-r {
+  will-change: transform;
+}
+
+/* 3. Réduit backdrop-filter sur éléments décoratifs (pills, badges).
+   Garde uniquement navbar, modals et cards signature principales. */
+.va-metric-badge,
+.va-live-badge,
+.va-cta-watch,
+.bfi-label,
+.fbi-label,
+.px-brand-pill,
+.av-pill,
+.av-live,
+.av-tabs,
+.av-stats,
+.av-lb-counter,
+.av-lb-close,
+.av-lb-nav,
+.va-badge,
+.px-eyebrow,
+.px-live,
+.av-badge,
+.live-status,
+.tp-card,
+.hero-eyebrow {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* 4. Désactive l'animation hue-rotate au hover (coûteux GPU, pas critique UX) */
+.av-card:hover .av-card-border,
+.av-card:focus-visible .av-card-border {
+  animation: none !important;
+}
+
+/* 5. Limite le nombre de blur simultanés — remplace les filter:blur
+   sur halos décoratifs par des fonds opaques statiques à travers display:none */
+@media (max-width: 1280px) {
+  .va-halo,
+  .px-orb-2, .px-orb-3,
+  .av-halo-c {
+    display: none !important;
+  }
+}
+
 /* ═══════════════════════════════════════════════════════════════════
    SMMIA LANDING — LIGHT MODE v2
    Palette / tokens dédiés. WCAG AA+ sur tous les textes.

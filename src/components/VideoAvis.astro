@@ -740,16 +740,20 @@ const rowB = testimonials.slice(3);
     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
-  /* Rings (halos qui pulsent vers l'extérieur) */
+  /* Rings (halos qui pulsent vers l'extérieur) — seulement au hover (pas en permanence) */
   .va-play-ring {
     position: absolute;
     inset: 0;
     border-radius: 50%;
     border: 2px solid rgba(192, 132, 252, 0.7);
-    animation: va-ring-pulse 2.4s ease-out infinite;
+    opacity: 0;
     pointer-events: none;
   }
-  .va-play-ring--2 {
+  .va-card:hover .va-play-ring {
+    animation: va-ring-pulse 2.4s ease-out infinite;
+    opacity: 1;
+  }
+  .va-card:hover .va-play-ring--2 {
     animation-delay: 1.2s;
   }
   @keyframes va-ring-pulse {

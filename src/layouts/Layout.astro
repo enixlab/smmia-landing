@@ -194,6 +194,21 @@ const {
           scrollRaf = 0;
         });
       }, { passive: true });
+
+      // ═══════════════════════════════════════════════════════════════════
+      // FIX CRASH CHROME STATUS_BREAKPOINT — 2026-04-21
+      // Pause animations CSS des sections hors viewport (marquees, pulses,
+      // rings, spins, filter-blur halos) en togglant .in-view sur <section>.
+      // CSS: les règles `section:not(.in-view) .xxx { animation-play-state: paused }`
+      // arrêtent le compositor/GPU pour les sections invisibles.
+      // ═══════════════════════════════════════════════════════════════════
+      const sectionIO = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add('in-view');
+          else e.target.classList.remove('in-view');
+        });
+      }, { rootMargin: '150px 0px', threshold: 0 });
+      document.querySelectorAll('section').forEach((s) => sectionIO.observe(s));
     </script>
 
     <style>
