@@ -1096,19 +1096,76 @@ section:not(.in-view) .spot-core {
   color: var(--theme-violet-deep);
 }
 
-/* Dashboard shell (#crm-shell) RESTE DARK — c'est une mock app UI */
-[data-theme="light"] #crm-shell,
-[data-theme="light"] #crm-shell *,
-[data-theme="light"] #crm-shell .pg,
-[data-theme="light"] #crm-shell h3,
-[data-theme="light"] #crm-shell span,
-[data-theme="light"] #crm-shell div { color: inherit; }
-/* On enveloppe le shell d'un cadre clair élégant pour qu'il "flotte" sur fond clair */
+/* Dashboard shell #crm-shell EN CLAIR en light mode */
 [data-theme="light"] #crm-shell {
-  box-shadow: 0 30px 80px -20px rgba(15, 7, 32, 0.2),
-              0 10px 30px rgba(124, 58, 237, 0.15);
-  border: 1px solid rgba(124, 58, 237, 0.2);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F7F4FF 100%) !important;
+  box-shadow: 0 30px 80px -20px rgba(15, 7, 32, 0.12),
+              0 10px 30px rgba(124, 58, 237, 0.18) !important;
+  border: 1px solid rgba(124, 58, 237, 0.22) !important;
 }
+/* Top bar (smmia.app/dashboard) — fond très clair */
+[data-theme="light"] #crm-shell > div:first-child {
+  background: linear-gradient(180deg, rgba(168,85,247,0.05) 0%, rgba(247,244,255,0.8) 100%) !important;
+  border-bottom-color: rgba(124, 58, 237, 0.12) !important;
+}
+[data-theme="light"] #crm-shell span[style*="smmia.app"] {
+  color: rgba(15, 7, 32, 0.6) !important;
+}
+/* Sidebar / menu items */
+[data-theme="light"] #crm-shell .crm-sidebar {
+  background: linear-gradient(180deg, rgba(240,235,255,0.7) 0%, rgba(247,244,255,0.85) 100%) !important;
+  border-right-color: rgba(124, 58, 237, 0.12) !important;
+}
+[data-theme="light"] #crm-shell .si,
+[data-theme="light"] #crm-shell .si span,
+[data-theme="light"] #crm-shell .si-lock {
+  color: rgba(15, 7, 32, 0.75) !important;
+}
+[data-theme="light"] #crm-shell .si:hover,
+[data-theme="light"] #crm-shell .si.active {
+  background: rgba(168, 85, 247, 0.12) !important;
+  color: #0F0720 !important;
+}
+[data-theme="light"] #crm-shell .crm-menu-label {
+  color: rgba(15, 7, 32, 0.4) !important;
+}
+/* Main content area */
+[data-theme="light"] #crm-main,
+[data-theme="light"] #crm-shell .pg {
+  background: #FFFFFF !important;
+}
+[data-theme="light"] #crm-shell h3,
+[data-theme="light"] #crm-shell div[style*="color:#fff"],
+[data-theme="light"] #crm-shell div[style*="color: #fff"] {
+  color: #0F0720 !important;
+}
+[data-theme="light"] #crm-shell p,
+[data-theme="light"] #crm-shell div[style*="rgba(255"] {
+  color: rgba(15, 7, 32, 0.65) !important;
+}
+/* Portfolio cards (.pc) */
+[data-theme="light"] #crm-shell .pc {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(124, 58, 237, 0.18) !important;
+  box-shadow: 0 4px 14px rgba(15, 7, 32, 0.06) !important;
+}
+[data-theme="light"] #crm-shell .pc > div:last-child,
+[data-theme="light"] #crm-shell .pc div[style*="#fff"] { color: #0F0720 !important; }
+[data-theme="light"] #crm-shell .pc div[style*="rgba(255"] { color: rgba(15, 7, 32, 0.6) !important; }
+[data-theme="light"] #crm-shell .cb {
+  color: #FFFFFF !important;
+}
+[data-theme="light"] #crm-shell .cb-ghost {
+  color: rgba(15, 7, 32, 0.7) !important;
+  background: rgba(168, 85, 247, 0.08) !important;
+  border-color: rgba(124, 58, 237, 0.3) !important;
+}
+[data-theme="light"] #crm-shell .crm-sidebar-profile {
+  background: rgba(168, 85, 247, 0.05) !important;
+  border-top-color: rgba(124, 58, 237, 0.12) !important;
+}
+[data-theme="light"] #crm-shell .crm-sidebar-profile div[style*="color:#fff"] { color: #0F0720 !important; }
+[data-theme="light"] #crm-shell .crm-sidebar-profile div[style*="C4B5FD"] { color: #5B21B6 !important; }
 
 /* ═══════════════════════ 9. FOOTER ═══════════════════════ */
 [data-theme="light"] footer,
@@ -1651,9 +1708,14 @@ section:not(.in-view) .spot-core {
 [data-theme="light"] .va-play-core svg {
   color: #000000 !important;
   fill: #000000 !important;
-  width: 56px !important;
-  height: 56px !important;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)) !important;
+  width: 60px !important;
+  height: 60px !important;
+  /* outline blanc pour visibilité sur fonds sombres (visages) */
+  filter:
+    drop-shadow(0 0 3px #FFFFFF)
+    drop-shadow(0 0 3px #FFFFFF)
+    drop-shadow(0 0 2px #FFFFFF)
+    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3)) !important;
 }
 [data-theme="light"] .va-play::before,
 [data-theme="light"] .va-play::after,
