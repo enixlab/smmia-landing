@@ -495,10 +495,10 @@ section {
 }
 [data-theme="light"] .line-fill {
   background: linear-gradient(180deg, #1a0a33 0%, #5B21B6 45%, #A855F7 100%) !important;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 /* CTAs hero : primary garde son fond violet + texte blanc (ne pas toucher) */
@@ -582,9 +582,9 @@ section {
 /* Accent "avec le SMMIA" — gradient signature */
 [data-theme="light"] .av-title-accent {
   background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   color: transparent;
 }
 
@@ -737,9 +737,9 @@ section {
 /* "en direct" accent gradient */
 [data-theme="light"] .va-accent {
   background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   color: transparent;
 }
 [data-theme="light"] .va-sub { color: var(--theme-text-muted); }
@@ -772,9 +772,9 @@ section {
 [data-theme="light"] .va-cta-headline { color: var(--theme-text); }
 [data-theme="light"] .va-cta-headline-accent {
   background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   color: transparent;
 }
 [data-theme="light"] .va-cta-sub { color: var(--theme-text-muted); }
@@ -822,9 +822,9 @@ section {
 [data-theme="light"] .px-section h2 { color: var(--theme-text); }
 [data-theme="light"] .px-title-accent {
   background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   color: transparent;
 }
 
@@ -872,18 +872,18 @@ section {
 /* Prix "500 €" — gradient violet foncé bien lisible */
 [data-theme="light"] .px-price-amount {
   background: linear-gradient(135deg, #1a0a33 0%, #5B21B6 40%, #A855F7 100%) !important;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   color: transparent;
 }
 [data-theme="light"] .px-price-currency { color: var(--theme-text); }
 [data-theme="light"] .px-price-paiement { color: var(--theme-text-muted); }
 [data-theme="light"] .px-price-paiement-gradient {
   background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%) !important;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   color: transparent;
 }
 
@@ -995,9 +995,9 @@ section {
 /* Footer title accent gradient */
 [data-theme="light"] .footer-title-accent {
   background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   color: transparent;
 }
 
