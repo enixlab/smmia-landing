@@ -27,10 +27,13 @@ const pillars = [
       </p>
     </div>
 
-    <!-- 4 Piliers -->
-    <div class="pillars-grid" data-animate data-delay="0.15">
-      {pillars.map((p, i) => (
-        <div class="pillar-card" data-animate data-delay={0.2 + i * 0.08}>
+  </div>
+
+  <!-- Marquee piliers défilant -->
+  <div class="pillars-marquee-wrap" data-animate data-delay="0.15">
+    <div class="pillars-marquee-track">
+      {[...pillars, ...pillars].map((p) => (
+        <div class="pillar-card">
           <div class="pillar-media">
             <img
               src={`/images/programme/PILIER-${p.id}-${p.slug}.png?v=3`}
@@ -45,7 +48,6 @@ const pillars = [
         </div>
       ))}
     </div>
-
   </div>
 </section>
 
@@ -117,28 +119,49 @@ const pillars = [
     margin: 0 auto;
   }
 
-  /* ── 4 Piliers Grid ── */
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+  /* ── Marquee piliers défilant ── */
+  .pillars-marquee-wrap {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+    padding: 20px 0;
+  }
+  .pillars-marquee-track {
+    display: flex;
+    gap: 28px;
+    width: max-content;
+    animation: pillars-marquee 70s linear infinite;
+    will-change: transform;
+  }
+  .pillars-marquee-wrap:hover .pillars-marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes pillars-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pillars-marquee-track { animation: none; }
   }
 
   .pillar-card {
     position: relative;
-    border-radius: 18px;
+    flex: 0 0 auto;
+    width: 680px;
+    border-radius: 22px;
     overflow: hidden;
-    background: linear-gradient(180deg, rgba(23, 10, 42, 0.5), rgba(10, 5, 16, 0.8));
-    border: 1px solid rgba(168, 85, 247, 0.22);
+    background: linear-gradient(180deg, rgba(23, 10, 42, 0.55), rgba(10, 5, 16, 0.85));
+    border: 1px solid rgba(168, 85, 247, 0.25);
     transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
                 border-color 0.3s ease,
                 box-shadow 0.5s ease;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    box-shadow: 0 14px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(168,85,247,0.08) inset;
   }
   .pillar-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(168, 85, 247, 0.5);
-    box-shadow: 0 20px 54px rgba(0,0,0,0.5), 0 10px 32px rgba(168, 85, 247, 0.3);
+    transform: translateY(-10px);
+    border-color: rgba(168, 85, 247, 0.6);
+    box-shadow: 0 26px 64px rgba(0,0,0,0.55), 0 16px 40px rgba(168, 85, 247, 0.4);
   }
 
   .pillar-media {
@@ -155,39 +178,44 @@ const pillars = [
     transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
   .pillar-card:hover .pillar-media img {
-    transform: scale(1.05);
+    transform: scale(1.04);
   }
 
   .pillar-body {
-    padding: 20px 20px 22px;
+    padding: 26px 28px 28px;
   }
   .pillar-title {
-    font-size: 1.12rem;
+    font-size: 1.38rem;
     font-weight: 800;
     color: #fff;
     letter-spacing: -0.01em;
     line-height: 1.2;
-    margin: 0 0 8px;
+    margin: 0 0 10px;
   }
   .pillar-sub {
-    font-size: 0.88rem;
-    color: rgba(255, 255, 255, 0.58);
-    line-height: 1.45;
+    font-size: 0.98rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
     margin: 0;
   }
 
   /* ── Responsive ── */
   @media (max-width: 1024px) {
-    .pillars-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .pillar-card { width: 560px; }
+    .pillars-marquee-track { gap: 22px; animation-duration: 60s; }
+    .pillar-title { font-size: 1.24rem; }
   }
   @media (max-width: 768px) {
     .prog-inner { padding: 0 16px; }
     .prog-section { padding: 80px 0 100px; }
-    .pillar-body { padding: 16px 18px 18px; }
-    .pillar-title { font-size: 1.02rem; }
-    .pillar-sub { font-size: 0.82rem; }
+    .pillar-card { width: 440px; }
+    .pillars-marquee-track { gap: 18px; animation-duration: 55s; }
+    .pillar-body { padding: 20px 22px 22px; }
+    .pillar-title { font-size: 1.1rem; }
+    .pillar-sub { font-size: 0.88rem; }
   }
   @media (max-width: 520px) {
-    .pillars-grid { grid-template-columns: 1fr; gap: 16px; }
+    .pillar-card { width: 330px; }
+    .pillars-marquee-track { gap: 14px; animation-duration: 45s; }
   }
 </style>

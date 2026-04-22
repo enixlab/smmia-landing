@@ -488,8 +488,63 @@ section {
 [data-theme="light"] .stat-card p { color: rgba(15, 7, 32, 0.7) !important; }
 
 /* Footer */
-[data-theme="light"] footer { background: #EFE8FF !important; color: #0F0720 !important; }
-[data-theme="light"] footer a { color: #0F0720 !important; }
+[data-theme="light"] footer,
+[data-theme="light"] .ft {
+  background: linear-gradient(180deg, #EFE8FF 0%, #F7F4FF 100%) !important;
+  color: #0F0720 !important;
+}
+[data-theme="light"] footer a,
+[data-theme="light"] .ft a { color: #0F0720 !important; }
+[data-theme="light"] .ft * { color: inherit; }
+[data-theme="light"] .ft h3,
+[data-theme="light"] .ft h4,
+[data-theme="light"] .ft strong { color: #0F0720 !important; }
+
+/* ServiceByPrime */
+[data-theme="light"] .prime-section {
+  background: radial-gradient(ellipse at 50% 0%, #F5F0FF 0%, #F7F4FF 60%, #FFFFFF 100%) !important;
+}
+[data-theme="light"] .prime-section h2,
+[data-theme="light"] .prime-section h3,
+[data-theme="light"] .prime-title { color: #0F0720 !important; }
+[data-theme="light"] .prime-section p,
+[data-theme="light"] .prime-section span { color: rgba(15, 7, 32, 0.75) !important; }
+
+/* Pricing section bg */
+[data-theme="light"] .px-section {
+  background: radial-gradient(ellipse at 50% 0%, #F0EBFF 0%, #F5F0FF 55%, #F7F4FF 100%) !important;
+}
+
+/* MarqueeAvis section */
+[data-theme="light"] .av-section {
+  background: radial-gradient(ellipse at 50% 0%, #EFE8FF 0%, #F5F0FF 60%, #F7F4FF 100%) !important;
+}
+[data-theme="light"] .av-tab { color: rgba(15, 7, 32, 0.7) !important; background: rgba(168, 85, 247, 0.08) !important; border-color: rgba(168, 85, 247, 0.2) !important; }
+[data-theme="light"] .av-tab.is-active { color: #0F0720 !important; background: rgba(168, 85, 247, 0.15) !important; }
+[data-theme="light"] .av-tab-count { color: rgba(15, 7, 32, 0.55) !important; }
+
+/* CRM section wrapper (shell interne reste dark - c'est une mock UI d'app) */
+[data-theme="light"] #crm {
+  background: #F7F4FF !important;
+}
+
+/* Stats values numbers hors gradient (reste lisible) */
+[data-theme="light"] .stat-card div[data-countup] { filter: drop-shadow(0 4px 14px rgba(168,85,247,0.2)); }
+
+/* Pillars marquee bg fix */
+[data-theme="light"] .pillars-marquee-wrap { background: transparent !important; }
+
+/* Video marquee */
+[data-theme="light"] .va-marquee-wrap { background: transparent !important; }
+[data-theme="light"] .va-cta-card { color: #0F0720 !important; }
+
+/* Tout élément qui hérite bg noir générique */
+[data-theme="light"] [style*="background:#000"],
+[data-theme="light"] [style*="background: #000"],
+[data-theme="light"] [style*="background: #0a"],
+[data-theme="light"] [style*="background: #07"] {
+  background: transparent !important;
+}
 
 /* Body::before halos — réduire opacité en light mode */
 [data-theme="light"] body::before { opacity: 0.5; }
