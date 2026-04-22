@@ -1122,10 +1122,11 @@ body:not(.footer-in-view) .ft-online-dot {
   color: var(--theme-violet-deep);
 }
 [data-theme="light"] .px-chip-win {
-  background: rgba(22, 163, 74, 0.08) !important;
-  border-color: rgba(22, 163, 74, 0.3);
-  color: #15803D;
+  background: rgba(168, 85, 247, 0.12) !important;
+  border-color: rgba(124, 58, 237, 0.45) !important;
+  color: #5B21B6 !important;
 }
+[data-theme="light"] .px-chip-win * { color: #5B21B6 !important; }
 
 /* Features (liste avec icônes) */
 [data-theme="light"] .px-feature-label { color: var(--theme-text); font-weight: 600; }
@@ -1280,33 +1281,31 @@ body:not(.footer-in-view) .ft-online-dot {
 [data-theme="light"] .ft-community:hover { border-color: rgba(124, 58, 237, 0.5); }
 [data-theme="light"] .ft-community-name { color: var(--theme-text); }
 [data-theme="light"] .ft-community-meta { color: var(--theme-text-muted); }
-[data-theme="light"] .ft-online-dot { background: #16A34A !important; }
+[data-theme="light"] .ft-online-dot { background: #7C3AED !important; box-shadow: 0 0 8px rgba(124, 58, 237, 0.6) !important; }
 [data-theme="light"] .ft-community-cta { color: var(--theme-violet); }
 
-/* Contact rows (WhatsApp, mail) — inline row intégrée au footer lavande */
+/* Contact rows (WhatsApp, mail) — pills premium light */
 [data-theme="light"] .ft-contact-row {
   background: rgba(168, 85, 247, 0.08) !important;
   border: 1px solid rgba(124, 58, 237, 0.25) !important;
   border-radius: 9999px !important;
-  padding: 10px 20px 10px 10px !important;
-  color: var(--theme-text-muted);
-  box-shadow: none !important;
-}
-[data-theme="light"] .ft-contact-row:last-of-type { border-bottom: 0 !important; }
-[data-theme="light"] .ft-contact-row {
+  padding: 8px 20px 8px 8px !important;
   color: #0F0720 !important;
   font-weight: 600 !important;
+  box-shadow: none !important;
 }
 [data-theme="light"] .ft-contact-row:hover {
   background: rgba(168, 85, 247, 0.16) !important;
   border-color: rgba(124, 58, 237, 0.55) !important;
   color: #0F0720 !important;
+  box-shadow: 0 8px 24px -10px rgba(124, 58, 237, 0.35) !important;
 }
-[data-theme="light"] .ft-contact-row svg {
-  color: #FFFFFF !important;
+[data-theme="light"] .ft-contact-ic {
   background: linear-gradient(135deg, #A855F7, #5B21B6) !important;
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35) !important;
 }
+[data-theme="light"] .ft-contact-ic svg { color: #FFFFFF !important; background: none !important; }
+[data-theme="light"] .ft-contact-label { color: #0F0720 !important; }
 
 /* Bottom strip */
 [data-theme="light"] .ft-bottom {
