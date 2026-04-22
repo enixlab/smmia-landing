@@ -87,7 +87,7 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
           <div id="p-services" class="pg" style="display:none;padding:28px;height:100%;overflow:auto;">
             <div id="svc-list-view">
               <div style="margin-bottom:20px;"><h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;">Services Prime</h3><p style="font-size:0.72rem;color:rgba(255,255,255,0.35);">Tu vends. Prime livre. Tu gardes la marge.</p></div>
-              <div style="display:flex;flex-direction:column;gap:8px;" id="svc-rows"></div>
+              <div style="display:flex;flex-direction:column;gap:12px;" id="svc-rows"></div>
             </div>
             <div id="svc-form-view" style="display:none;">
               <button class="cb-ghost" id="btn-svc-back" style="margin-bottom:16px;">← Retour</button>
@@ -164,7 +164,7 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
                 <div><h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;">Portefeuille</h3><p style="font-size:0.72rem;color:rgba(255,255,255,0.35);" id="cl-subtitle">1 200€ récurrents · 3 clients actifs</p></div>
                 <button class="cb" id="btn-add-client">+ Client</button>
               </div>
-              <div style="display:flex;flex-direction:column;gap:7px;" id="cl-rows"></div>
+              <div style="display:flex;flex-direction:column;gap:12px;" id="cl-rows"></div>
             </div>
             <div id="cl-detail-view" style="display:none;">
               <button class="cb-ghost" id="btn-cl-back" style="margin-bottom:16px;">← Portefeuille</button>
@@ -190,7 +190,7 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
           <div id="p-replays" class="pg" style="display:none;padding:28px;height:100%;overflow:auto;">
             <div id="rp-list-view">
               <div style="margin-bottom:20px;"><h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;">Replays des lives</h3><p style="font-size:0.72rem;color:rgba(255,255,255,0.35);">À vie. Revois autant de fois que nécessaire.</p></div>
-              <div style="display:flex;flex-direction:column;gap:7px;" id="rp-rows"></div>
+              <div style="display:flex;flex-direction:column;gap:12px;" id="rp-rows"></div>
             </div>
             <div id="rp-player-view" style="display:none;">
               <button class="cb-ghost" id="btn-rp-back" style="margin-bottom:16px;">← Replays</button>
@@ -281,7 +281,10 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
   .pt-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.95;transition:transform 0.45s cubic-bezier(0.2,0.8,0.2,1), opacity 0.3s ease;}
   .pc:hover .pt-img img{transform:scale(1.08);opacity:1;}
   .pi{width:36px;height:36px;border-radius:10px;background:rgba(0,0,0,0.35);border:1px solid;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);}
-  .cr{display:flex;align-items:center;border:1px solid rgba(168,85,247,0.14);border-radius:12px;padding:14px 16px;gap:12px;background:linear-gradient(135deg,rgba(168,85,247,0.04),rgba(168,85,247,0.02));cursor:pointer;transition:all .2s;}
+  .cr{display:grid;align-items:center;border:1px solid rgba(168,85,247,0.14);border-radius:12px;padding:18px 26px;gap:18px;background:linear-gradient(135deg,rgba(168,85,247,0.04),rgba(168,85,247,0.02));cursor:pointer;transition:all .2s;}
+  .cr-client{grid-template-columns:44px 1fr auto 88px;}
+  .cr-svc{grid-template-columns:56px 1fr auto 112px;}
+  .cr-replay{grid-template-columns:84px 1fr 88px;}
   .cr:hover{border-color:rgba(192,132,252,0.4);background:rgba(168,85,247,0.08);transform:translateX(2px);}
   .audit-ex{font-size:0.68rem;padding:3px 11px;background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.25);border-radius:9999px;color:#C4B5FD;cursor:pointer;transition:all .15s;font-weight:600;}
   .audit-ex:hover{border-color:rgba(168,85,247,0.5);background:rgba(168,85,247,0.18);color:#fff;}
@@ -522,27 +525,27 @@ function renderSvc(){
   const c=el('svc-rows');c.innerHTML='';
   SVC_DATA.forEach((s,i)=>{
     const row=document.createElement('div');
-    row.className='cr';
+    row.className='cr cr-svc';
     // Thumbnail image service
+    const thumb=document.createElement('div');
+    thumb.className='svc-thumb';
+    thumb.style.cssText='width:56px;height:56px;border-radius:12px;overflow:hidden;border:1px solid rgba(168,85,247,.28);box-shadow:0 3px 10px rgba(15,7,32,.15);background:#0a0413;';
     if(s.img){
-      const thumb=document.createElement('div');
-      thumb.className='svc-thumb';
-      thumb.style.cssText='width:48px;height:48px;border-radius:10px;overflow:hidden;flex-shrink:0;border:1px solid rgba(168,85,247,.22);box-shadow:0 3px 10px rgba(15,7,32,.15);background:#0a0413;';
       const im=document.createElement('img');
       im.src=s.img;im.alt=s.s;im.loading='lazy';
       im.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
       thumb.appendChild(im);
-      row.appendChild(thumb);
     }
-    const left=document.createElement('div');left.style.cssText='flex:1;min-width:0;';
-    const name=document.createElement('div');name.style.cssText='font-size:.85rem;font-weight:600;color:#fff;margin-bottom:2px;';name.textContent=s.s;
-    const sub=document.createElement('div');sub.style.cssText='font-size:.68rem;color:rgba(255,255,255,.35);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';sub.textContent='Délai: '+s.d+' · '+s.desc;
+    row.appendChild(thumb);
+    const left=document.createElement('div');left.style.cssText='min-width:0;';
+    const name=document.createElement('div');name.style.cssText='font-size:.9rem;font-weight:700;color:#fff;margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';name.textContent=s.s;
+    const sub=document.createElement('div');sub.style.cssText='font-size:.72rem;color:rgba(255,255,255,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';sub.textContent='Délai: '+s.d+' · '+s.desc;
     left.appendChild(name);left.appendChild(sub);
-    const right=document.createElement('div');right.style.cssText='text-align:right;margin-right:10px;flex-shrink:0;';
-    const rl=document.createElement('div');rl.style.cssText='font-size:.65rem;color:rgba(255,255,255,.3);';rl.textContent='Ta marge';
-    const rv=document.createElement('div');rv.style.cssText='font-size:.9rem;font-weight:700;color:#A855F7;';rv.textContent=s.m;
+    const right=document.createElement('div');right.style.cssText='text-align:right;';
+    const rl=document.createElement('div');rl.style.cssText='font-size:.62rem;color:rgba(255,255,255,.4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px;';rl.textContent='Ta marge';
+    const rv=document.createElement('div');rv.style.cssText='font-size:1rem;font-weight:800;color:#C084FC;line-height:1;';rv.textContent=s.m;
     right.appendChild(rl);right.appendChild(rv);
-    const btn=document.createElement('button');btn.className='cb';btn.style.cssText='font-size:.72rem;padding:6px 12px;flex-shrink:0;';btn.textContent='Commander';
+    const btn=document.createElement('button');btn.className='cb';btn.style.cssText='font-size:.75rem;padding:8px 14px;justify-self:end;';btn.textContent='Commander';
     btn.addEventListener('click',e=>{e.stopPropagation();openSvcForm(i);});
     row.appendChild(left);row.appendChild(right);row.appendChild(btn);
     c.appendChild(row);
@@ -618,19 +621,19 @@ function renderClients(){
   const c=el('cl-rows');c.innerHTML='';
   const total=CL_DATA.filter(x=>x.mrr>0).reduce((a,x)=>a+x.mrr,0);
   CL_DATA.forEach((cl,i)=>{
-    const row=document.createElement('div');row.className='cr';
-    const av=document.createElement('div');av.style.cssText='width:34px;height:34px;border-radius:8px;background:rgba(168,85,247,.1);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#A855F7;flex-shrink:0;';av.textContent=cl.i;
-    const left=document.createElement('div');left.style.flex='1';
-    const na=document.createElement('div');na.style.cssText='font-size:.83rem;font-weight:600;color:#fff;margin-bottom:2px;';na.textContent=cl.n;
-    const sv=document.createElement('div');sv.style.cssText='font-size:.68rem;color:rgba(255,255,255,.35);';sv.textContent=cl.s;
+    const row=document.createElement('div');row.className='cr cr-client';
+    const av=document.createElement('div');av.style.cssText='width:44px;height:44px;border-radius:10px;background:rgba(168,85,247,.14);display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800;color:#A855F7;';av.textContent=cl.i;
+    const left=document.createElement('div');left.style.cssText='min-width:0;';
+    const na=document.createElement('div');na.style.cssText='font-size:.88rem;font-weight:700;color:#fff;margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';na.textContent=cl.n;
+    const sv=document.createElement('div');sv.style.cssText='font-size:.72rem;color:rgba(255,255,255,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';sv.textContent=cl.s;
     left.appendChild(na);left.appendChild(sv);
-    const mr=document.createElement('div');mr.style.cssText='text-align:right;margin-right:10px;flex-shrink:0;';
-    const mv=document.createElement('div');mv.style.cssText='font-size:.83rem;font-weight:700;color:#fff;';mv.textContent=cl.mrr>0?cl.mrr+'€':'—';
-    const ml=document.createElement('div');ml.style.cssText='font-size:.62rem;color:rgba(255,255,255,.25);';ml.textContent='MRR';
+    const mr=document.createElement('div');mr.style.cssText='text-align:right;';
+    const mv=document.createElement('div');mv.style.cssText='font-size:1rem;font-weight:800;color:#fff;line-height:1.1;';mv.textContent=cl.mrr>0?cl.mrr+'€':'—';
+    const ml=document.createElement('div');ml.style.cssText='font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.06em;margin-top:2px;';ml.textContent='MRR';
     mr.appendChild(mv);mr.appendChild(ml);
-    const badge=document.createElement('div');badge.style.cssText='display:flex;align-items:center;gap:4px;padding:3px 9px;border-radius:9999px;background:'+cl.dot+'18;border:1px solid '+cl.dot+'33;flex-shrink:0;';
-    const dot=document.createElement('div');dot.style.cssText='width:5px;height:5px;border-radius:50%;background:'+cl.dot+';';
-    const stl=document.createElement('span');stl.style.cssText='font-size:.62rem;color:'+cl.dot+';font-weight:600;';stl.textContent=cl.st;
+    const badge=document.createElement('div');badge.style.cssText='display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:5px 10px;border-radius:9999px;background:'+cl.dot+'22;border:1px solid '+cl.dot+'55;justify-self:end;';
+    const dot=document.createElement('div');dot.style.cssText='width:6px;height:6px;border-radius:50%;background:'+cl.dot+';box-shadow:0 0 6px '+cl.dot+';';
+    const stl=document.createElement('span');stl.style.cssText='font-size:.68rem;color:'+cl.dot+';font-weight:700;letter-spacing:.02em;';stl.textContent=cl.st;
     badge.appendChild(dot);badge.appendChild(stl);
     row.appendChild(av);row.appendChild(left);row.appendChild(mr);row.appendChild(badge);
     row.addEventListener('click',()=>openClientDetail(i));
@@ -703,30 +706,28 @@ let rpTimer=null,rpOn=false,rpIdx=0,rpElapsed=0;
 function renderReplays(){
   const c=el('rp-rows');c.innerHTML='';
   RP_DATA.forEach((r,i)=>{
-    const row=document.createElement('div');row.className='cr';
-    // Thumbnail replay (image LIVE-XX)
+    const row=document.createElement('div');row.className='cr cr-replay';
     const thumb=document.createElement('div');
     thumb.className='rp-thumb-row';
-    thumb.style.cssText='width:72px;height:44px;border-radius:8px;overflow:hidden;flex-shrink:0;position:relative;border:1px solid rgba(168,85,247,.22);box-shadow:0 3px 10px rgba(15,7,32,.15);background:#0a0413;';
+    thumb.style.cssText='width:84px;height:52px;border-radius:10px;overflow:hidden;position:relative;border:1px solid rgba(168,85,247,.28);box-shadow:0 3px 10px rgba(15,7,32,.15);background:#0a0413;';
     if(r.img){
       const im=document.createElement('img');
       im.src=r.img;im.alt=r.t;im.loading='lazy';
       im.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
       thumb.appendChild(im);
     }
-    // Play badge overlay
     const pb=document.createElement('div');
     pb.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,0.15),rgba(0,0,0,0.55));';
-    pb.innerHTML='<svg width="16" height="16" fill="#fff" viewBox="0 0 24 24" style="filter:drop-shadow(0 2px 6px rgba(0,0,0,0.7));"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+    pb.innerHTML='<svg width="18" height="18" fill="#fff" viewBox="0 0 24 24" style="filter:drop-shadow(0 2px 6px rgba(0,0,0,0.7));"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
     thumb.appendChild(pb);
 
-    const left=document.createElement('div');left.style.cssText='flex:1;min-width:0;';
-    const trow=document.createElement('div');trow.style.cssText='font-size:.82rem;font-weight:600;color:#fff;margin-bottom:2px;display:flex;align-items:center;gap:7px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';
-    trow.textContent=r.t;
-    if(r.nw){const nb=document.createElement('span');nb.style.cssText='font-size:.58rem;padding:1px 6px;background:#A855F7;border-radius:9999px;color:#fff;font-weight:700;flex-shrink:0;';nb.textContent='NEW';trow.appendChild(nb);}
-    const sub=document.createElement('div');sub.style.cssText='font-size:.68rem;color:rgba(255,255,255,.35);';sub.textContent=r.date+' · '+r.d;
+    const left=document.createElement('div');left.style.cssText='min-width:0;';
+    const trow=document.createElement('div');trow.style.cssText='font-size:.9rem;font-weight:700;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:8px;overflow:hidden;';
+    const titleText=document.createElement('span');titleText.style.cssText='overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';titleText.textContent=r.t;trow.appendChild(titleText);
+    if(r.nw){const nb=document.createElement('span');nb.style.cssText='font-size:.58rem;padding:2px 7px;background:#A855F7;border-radius:9999px;color:#fff;font-weight:800;letter-spacing:.04em;flex-shrink:0;';nb.textContent='NEW';trow.appendChild(nb);}
+    const sub=document.createElement('div');sub.style.cssText='font-size:.72rem;color:rgba(255,255,255,.45);';sub.textContent=r.date+' · '+r.d;
     left.appendChild(trow);left.appendChild(sub);
-    const btn=document.createElement('button');btn.className='cb';btn.style.cssText='font-size:.72rem;padding:6px 12px;flex-shrink:0;';btn.textContent='▶ Voir';
+    const btn=document.createElement('button');btn.className='cb';btn.style.cssText='font-size:.75rem;padding:8px 14px;justify-self:end;';btn.textContent='▶ Voir';
     btn.addEventListener('click',e=>{e.stopPropagation();openPlayer(i);});
     row.appendChild(thumb);row.appendChild(left);row.appendChild(btn);
     c.appendChild(row);
