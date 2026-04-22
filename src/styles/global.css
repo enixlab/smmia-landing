@@ -461,11 +461,27 @@ section {
 [data-theme="light"] .va-cta-outer { background: #F7F4FF !important; }
 [data-theme="light"] .va-hook { color: #FFFFFF !important; }
 
-/* Pricing title accent (Tout change.) — gradient pour light mode */
-[data-theme="light"] .px-title-accent {
-  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #C084FC 100%) !important;
+/* Gradients text-clip avec #FFFFFF invisibles sur fond clair → remplacer par gradient violet foncé */
+[data-theme="light"] .px-title-accent,
+[data-theme="light"] .va-accent,
+[data-theme="light"] .av-title-accent,
+[data-theme="light"] .va-cta-headline-accent,
+[data-theme="light"] .px-title,
+[data-theme="light"] .px-price-paiement-gradient,
+[data-theme="light"] .footer-title-accent {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* Prix 500€ en gradient violet foncé (pas blanc→violet) en light */
+[data-theme="light"] .px-price-amount {
+  background: linear-gradient(135deg, #1a0a33 0%, #5B21B6 40%, #A855F7 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   color: transparent !important;
 }
 
