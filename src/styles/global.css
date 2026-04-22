@@ -1480,9 +1480,13 @@ section {
   color: #5B21B6 !important;
 }
 
-/* 2. "€" après le 500 — px-price-currency en blanc */
+/* 2. "€" après le 500 — px-price-currency utilise gradient text-clip (blanc→violet clair) */
 [data-theme="light"] .px-price-currency {
-  color: #5B21B6 !important;
+  background: linear-gradient(135deg, #1a0a33 0%, #5B21B6 50%, #7C3AED 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
   opacity: 1 !important;
 }
 
