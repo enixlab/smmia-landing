@@ -461,6 +461,17 @@ section {
 [data-theme="light"] .va-cta-outer { background: #F7F4FF !important; }
 [data-theme="light"] .va-hook { color: #FFFFFF !important; }
 
+/* Pricing title accent (Tout change.) — gradient pour light mode */
+[data-theme="light"] .px-title-accent {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #C084FC 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+/* MarqueeAvis — cards d'avis restent dark (c'est les screenshots originaux Discord/Trustpilot) */
+[data-theme="light"] .av-card { box-shadow: 0 14px 34px rgba(15, 7, 32, 0.15) !important; }
+
 /* Pricing */
 [data-theme="light"] .px-card {
   background: linear-gradient(180deg, #FFFFFF, #F5F0FF) !important;
@@ -529,12 +540,9 @@ section {
 }
 
 /* ServiceByPrime tiles (mini cards services) + stat-cards */
+/* NOTE: on garde le fond dark des tiles (ce sont des mini cards avec image floutée en bg) */
 [data-theme="light"] .tile {
-  background: #FFFFFF !important;
-  box-shadow: 0 10px 30px rgba(15, 7, 32, 0.1), 0 4px 12px rgba(168, 85, 247, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
-}
-[data-theme="light"] .tile-bg-tint {
-  background: linear-gradient(180deg, rgba(247, 244, 255, 0.2) 0%, rgba(247, 244, 255, 0.6) 100%) !important;
+  box-shadow: 0 14px 34px rgba(15, 7, 32, 0.18), 0 6px 16px rgba(168, 85, 247, 0.22) !important;
 }
 [data-theme="light"] .tile-label,
 [data-theme="light"] .tile span,
