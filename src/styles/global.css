@@ -675,6 +675,17 @@ section:not(.in-view) .spot-core {
 /* Switch logo dark/light (force !important pour battre Astro scoped) */
 [data-theme="light"] .brand-smmia--dark { display: none !important; }
 [data-theme="light"] .brand-smmia--light { display: block !important; }
+/* Light mode : logo plus grand (comme taille d'origine) */
+[data-theme="light"] .brand-smmia--light { height: 170px !important; }
+@media (max-width: 1024px) {
+  [data-theme="light"] .brand-smmia--light { height: 140px !important; }
+}
+@media (max-width: 640px) {
+  [data-theme="light"] .brand-smmia--light { height: 110px !important; }
+}
+@media (max-width: 380px) {
+  [data-theme="light"] .brand-smmia--light { height: 90px !important; }
+}
 [data-theme="light"] .brand-smmia {
   filter: drop-shadow(0 10px 35px rgba(124, 58, 237, 0.35));
 }
