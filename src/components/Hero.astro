@@ -24,9 +24,10 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       <span class="eyebrow-text">Session Mai 2026 · Places limitées</span>
     </div>
 
-    <!-- Logo SMMIA seul (Prime retiré) -->
+    <!-- Logo SMMIA seul (switch dark/light) -->
     <div class="hero-brand" data-depth="0.5">
-      <img src="/images/logos/SMMIA-logo-cropped.png" alt="SMMIA" class="brand-logo brand-smmia" />
+      <img src="/images/logos/SMMIA-logo-cropped.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--dark" />
+      <img src="/images/logos/SMMIA-logo-light.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--light" />
     </div>
 
     <!-- Tagline principale -->
@@ -294,6 +295,9 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   .hero-brand:hover .brand-smmia {
     filter: drop-shadow(0 18px 50px rgba(168, 85, 247, 0.75));
   }
+
+  /* Switch logo dark / light — Astro style scoping forces global via :global() */
+  .brand-smmia--light { display: none; }
 
   @keyframes brandEnter {
     0%   { opacity: 0; transform: translateY(-6px); }

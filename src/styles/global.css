@@ -630,5 +630,60 @@ section {
   background: transparent !important;
 }
 
+/* Switch logo dark/light (Hero) */
+[data-theme="light"] .brand-smmia--dark { display: none !important; }
+[data-theme="light"] .brand-smmia--light { display: block !important; }
+
+/* FORCE : tous textes blancs/clair → sombre sur light mode */
+[data-theme="light"] * {
+  /* Par défaut, si le composant n'a pas override spécifique, on override les blancs */
+}
+[data-theme="light"] p,
+[data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, [data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6,
+[data-theme="light"] span:not([class*="cta"]):not([class*="btn"]):not([class*="pill"]):not(.tile span),
+[data-theme="light"] li,
+[data-theme="light"] label {
+  color: #0F0720;
+}
+[data-theme="light"] p { color: rgba(15, 7, 32, 0.75); }
+
+/* Cibles additionnelles (tous les rgba(255,255,255,X) pour du texte) */
+[data-theme="light"] [style*="rgba(255,255,255"],
+[data-theme="light"] [style*="rgba(255, 255, 255"] {
+  /* ne pas modifier via attribute selector car trop large — on utilise des overrides ciblés plus haut */
+}
+
+/* Exceptions — elements qui doivent RESTER blancs */
+[data-theme="light"] .btn-pill,
+[data-theme="light"] .btn-pill *,
+[data-theme="light"] .hero-cta-primary,
+[data-theme="light"] .hero-cta-primary *,
+[data-theme="light"] .av-cta,
+[data-theme="light"] .av-cta *,
+[data-theme="light"] .va-cta-btn,
+[data-theme="light"] .va-cta-btn *,
+[data-theme="light"] .px-cta-primary,
+[data-theme="light"] .px-cta-primary *,
+[data-theme="light"] .px-corner,
+[data-theme="light"] .px-corner *,
+[data-theme="light"] .tile,
+[data-theme="light"] .tile *,
+[data-theme="light"] #crm-shell,
+[data-theme="light"] #crm-shell *,
+[data-theme="light"] .va-card,
+[data-theme="light"] .va-card *,
+[data-theme="light"] .av-card,
+[data-theme="light"] .av-card *,
+[data-theme="light"] .pillar-card .pillar-media,
+[data-theme="light"] .pillar-card .pillar-media * {
+  color: inherit;
+}
+[data-theme="light"] .btn-pill,
+[data-theme="light"] .hero-cta-primary,
+[data-theme="light"] .av-cta,
+[data-theme="light"] .va-cta-btn,
+[data-theme="light"] .px-cta-primary,
+[data-theme="light"] .px-corner { color: #fff !important; }
+
 /* Body::before halos — réduire opacité en light mode */
 [data-theme="light"] body::before { opacity: 0.5; }
