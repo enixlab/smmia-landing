@@ -26,8 +26,6 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
     <!-- Logo SMMIA seul (switch dark/light) -->
     <div class="hero-brand" data-depth="0.5">
-      <div class="brand-halo brand-halo--outer" aria-hidden="true"></div>
-      <div class="brand-halo brand-halo--inner" aria-hidden="true"></div>
       <img src="/images/logos/SMMIA-logo-cropped.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--dark" />
       <img src="/images/logos/DCC.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--light" />
     </div>
@@ -277,8 +275,6 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     animation: brandEnter 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards;
     transform: translate3d(var(--tx), var(--ty), 0);
   }
-
-  /* Halos divs — styles dans global.css pour éviter le scoping Astro */
 
   .brand-logo {
     display: block;
