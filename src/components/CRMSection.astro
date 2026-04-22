@@ -25,7 +25,8 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
       <div class="crm-layout" style="display:grid;grid-template-columns:190px 1fr;min-height:480px;">
         <div class="crm-sidebar" style="border-right:1px solid rgba(168,85,247,0.12);background:linear-gradient(180deg,rgba(26,13,51,0.7) 0%,rgba(15,6,33,0.85) 100%);display:flex;flex-direction:column;">
           <div class="crm-sidebar-logo" style="padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,0.04);">
-            <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" style="width:76px;height:auto;" />
+            <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" class="crm-logo-dark" style="width:76px;height:auto;" />
+            <img src="/images/logos/SMMIA-logo-transparent-light.png" alt="SMMIA" class="crm-logo-light" style="width:76px;height:auto;display:none;" />
           </div>
           <div class="crm-menu" style="padding:12px 8px;flex:1;">
             <div class="crm-menu-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 8px;margin-bottom:6px;">Menu</div>
@@ -84,6 +85,12 @@ import BrandFloatingIcons from './BrandFloatingIcons.astro';
               <div class="pc" data-id="3"><div class="pt pt-img"><img src="/images/services/bento/15-campagnes-ads-SQUARE.webp" alt="Google Ads" loading="lazy" /></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Google Ads Plombier</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Google Ads</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">1 800€</div></div></div>
               <div class="pc" data-id="4"><div class="pt pt-img"><img src="/images/services/bento/13-nfc-SQUARE.webp" alt="NFC Avis Google" loading="lazy" /></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">NFC Avis Google</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">NFC justpush.fr</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">400€</div></div></div>
               <div class="pc" data-id="5"><div class="pt pt-img"><img src="/images/services/bento/16-crm-SQUARE.webp" alt="Automation N8N" loading="lazy" /></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Automation N8N</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">N8N</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">3 200€</div></div></div>
+              <div class="pc" data-id="6"><div class="pt pt-img"><img src="/images/services/bento/08-landing-pages-SQUARE.webp" alt="Landing Coach" loading="lazy" /></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Landing Coach</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Landing Page IA</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">900€</div></div></div>
+              <div class="pc" data-id="7"><div class="pt pt-img"><img src="/images/services/bento/17-whatsapp-SQUARE.webp" alt="WhatsApp Immo" loading="lazy" /></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">WhatsApp Immobilier</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">WhatsApp API</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">700€</div></div></div>
+              <div class="pc" data-id="8"><div class="pt pt-img"><img src="/images/services/bento/04-chatbot-sav-SQUARE.webp" alt="Chatbot E-com" loading="lazy" /></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Chatbot E-commerce</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Chatbot IA</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">1 100€</div></div></div>
+              <div class="pc" data-id="9"><div class="pt pt-img"><img src="/images/services/bento/05-generation-leads-SQUARE.webp" alt="Leads B2B" loading="lazy" /></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">Leads B2B Saas</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Scrapping + Enrichissement</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">1 500€</div></div></div>
+              <div class="pc" data-id="10"><div class="pt pt-img"><img src="/images/services/bento/06-videos-montages-SQUARE.webp" alt="UGC TikTok" loading="lazy" /></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">UGC TikTok E-com</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">Vidéos IA</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">850€</div></div></div>
+              <div class="pc" data-id="11"><div class="pt pt-img"><img src="/images/services/bento/19-seo-SQUARE.webp" alt="SEO Local" loading="lazy" /></div><div style="padding:10px;"><div style="font-size:0.78rem;font-weight:600;color:#fff;margin-bottom:2px;">SEO Local Dentiste</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-bottom:6px;">SEO Complet</div><div style="font-size:0.8rem;font-weight:700;color:#A855F7;">1 400€</div></div></div>
             </div>
           </div>
 
@@ -432,14 +439,39 @@ const PF_DATA = [
   {t:"Google Ads Plombier",cat:"Google Ads · SEA",rev:"1 800€/mois",desc:"Setup + gestion mensuelle Google Ads pour plombier indépendant. Campagnes Search + Local, extensions appel.",result:"x4.2 ROAS · 23 leads qualifiés/mois.",tags:["Google Ads","SEA","Local"]},
   {t:"NFC Avis Google",cat:"NFC · justpush.fr",rev:"400€",desc:"Déploiement cartes NFC justpush.fr dans un restaurant. Scan → landing → avis Google en 20 secondes.",result:"+200 avis en 3 mois · Note 3.8 → 4.7.",tags:["NFC","Google","justpush"]},
   {t:"Automation N8N",cat:"N8N · Zapier",rev:"3 200€",desc:"Workflow complet pour agence immobilière. Qualif prospects auto, email+SMS, CRM, relances planifiées.",result:"80h économisées/mois. ROI en 6 semaines.",tags:["N8N","Automation","CRM"]},
+  {t:"Landing Coach",cat:"Landing Page · Stripe",rev:"900€",desc:"Page de vente haute conversion pour coach business. Intégration Stripe, sections preuve sociale, calendly.",result:"+42% conversion vs ancien site.",tags:["Landing","Stripe","Conversion"]},
+  {t:"WhatsApp Immobilier",cat:"WhatsApp API · Automation",rev:"700€",desc:"Setup WhatsApp Business API pour agence immo. Templates automatisés, filtrage prospects, notifs équipe.",result:"4x plus de RDV qualifiés.",tags:["WhatsApp","API","Immo"]},
+  {t:"Chatbot E-commerce",cat:"Chatbot IA · GPT-4",rev:"1 100€",desc:"Chatbot SAV pour Shopify entrainé sur la FAQ + docs produits. Support 24/7 automatique.",result:"−68% tickets SAV humains.",tags:["GPT-4","Shopify","SAV"]},
+  {t:"Leads B2B Saas",cat:"Scrapping · Enrichissement",rev:"1 500€",desc:"2 400 leads B2B ultra-ciblés pour une startup Saas. LinkedIn + Apollo + enrichissement email.",result:"12% taux de réponse. 38 RDV.",tags:["B2B","LinkedIn","Saas"]},
+  {t:"UGC TikTok E-com",cat:"Vidéos IA · Avatar",rev:"850€",desc:"Pack 20 vidéos UGC avec avatars IA pour boutique bijoux. Scripts IA + montages verticaux.",result:"+260% vues TikTok organique.",tags:["UGC","TikTok","Avatar IA"]},
+  {t:"SEO Local Dentiste",cat:"SEO · GMB optimisé",rev:"1 400€",desc:"SEO local complet pour cabinet dentaire. GMB optimisé, backlinks, contenus, tracking positions.",result:"Top 3 Google sur 18 mots-clés.",tags:["SEO","GMB","Local"]},
 ];
 const SVC_DATA = [
-  {s:"Site web IA",d:"48h",c:"350€",m:"850€+",desc:"WordPress ou Webflow, responsive, SEO de base inclus."},
-  {s:"Meta Ads Setup",d:"24h",c:"200€",m:"600€+",desc:"Création compte + campagnes + créatifs Lovart."},
-  {s:"Google Ads Setup",d:"24h",c:"180€",m:"620€+",desc:"Campagnes Search + Local, extensions, tracking."},
-  {s:"Visuels & Logo IA",d:"24h",c:"80€",m:"320€+",desc:"Pack complet : logo, bannières, stories, publications."},
-  {s:"NFC Avis Google",d:"72h",c:"60€",m:"240€+",desc:"Cartes NFC + landing page + QR code."},
-  {s:"Automation N8N",d:"5j",c:"500€",m:"1500€+",desc:"Workflow sur-mesure selon le besoin client."},
+  {s:"Site web IA",d:"48h",c:"350€",m:"850€+",desc:"WordPress ou Webflow, responsive, SEO de base inclus.",img:"/images/services/bento/12-sites-web-SQUARE.webp"},
+  {s:"Meta Ads Setup",d:"24h",c:"200€",m:"600€+",desc:"Création compte + campagnes + créatifs Lovart.",img:"/images/services/bento/15-campagnes-ads-SQUARE.webp"},
+  {s:"Google Ads Setup",d:"24h",c:"180€",m:"620€+",desc:"Campagnes Search + Local, extensions, tracking.",img:"/images/services/bento/15-campagnes-ads-SQUARE.webp"},
+  {s:"Visuels & Logo IA",d:"24h",c:"80€",m:"320€+",desc:"Pack complet : logo, bannières, stories, publications.",img:"/images/services/bento/11-visuels-SQUARE.webp"},
+  {s:"Flyers IA",d:"24h",c:"50€",m:"200€+",desc:"Flyers, affiches, supports print prêts à imprimer.",img:"/images/services/bento/10-flyers-SQUARE.webp"},
+  {s:"Landing Page IA",d:"48h",c:"220€",m:"680€+",desc:"Page de vente haute conversion, intégration Stripe.",img:"/images/services/bento/08-landing-pages-SQUARE.webp"},
+  {s:"NFC Avis Google",d:"72h",c:"60€",m:"240€+",desc:"Cartes NFC + landing page + QR code.",img:"/images/services/bento/13-nfc-SQUARE.webp"},
+  {s:"Génération Leads",d:"5j",c:"300€",m:"900€+",desc:"Scrapping ciblé + enrichissement + export CSV.",img:"/images/services/bento/05-generation-leads-SQUARE.webp"},
+  {s:"Scrapping Data",d:"3j",c:"180€",m:"500€+",desc:"Extraction base de données prospects ultra-ciblée.",img:"/images/services/bento/18-scrapping-SQUARE.webp"},
+  {s:"Automation N8N",d:"5j",c:"500€",m:"1500€+",desc:"Workflow sur-mesure selon le besoin client.",img:"/images/services/bento/16-crm-SQUARE.webp"},
+  {s:"Chatbot SAV IA",d:"4j",c:"280€",m:"780€+",desc:"Chatbot GPT entraîné sur la data du client.",img:"/images/services/bento/04-chatbot-sav-SQUARE.webp"},
+  {s:"WhatsApp Business",d:"48h",c:"150€",m:"450€+",desc:"Setup API + templates + automation messages.",img:"/images/services/bento/17-whatsapp-SQUARE.webp"},
+  {s:"SMS & Email Campagnes",d:"48h",c:"120€",m:"380€+",desc:"Setup + séquences + tracking conversions.",img:"/images/services/bento/03-sms-mail-SQUARE.webp"},
+  {s:"SEO Complet",d:"7j",c:"450€",m:"1200€+",desc:"Audit + optimisations + contenus + backlinks.",img:"/images/services/bento/19-seo-SQUARE.webp"},
+  {s:"Apple Wallet Card",d:"48h",c:"90€",m:"280€+",desc:"Carte digitale fidélité multi-plateformes.",img:"/images/services/bento/07-apple-wallet-SQUARE.webp"},
+  {s:"Vidéos IA & Montages",d:"3j",c:"200€",m:"600€+",desc:"Montage vertical pour TikTok/Reels/Shorts.",img:"/images/services/bento/06-videos-montages-SQUARE.webp"},
+  {s:"UGC IA",d:"5j",c:"320€",m:"900€+",desc:"Avatars IA qui parlent pour ton produit.",img:"/images/services/bento/14-ugc-ia-SQUARE.webp"},
+  {s:"Google My Business",d:"48h",c:"120€",m:"350€+",desc:"Optimisation complète fiche GMB + photos.",img:"/images/services/bento/24-gmb-SQUARE.webp"},
+  {s:"Audit Digital Complet",d:"72h",c:"180€",m:"500€+",desc:"Rapport PDF 30 pages avec recommandations.",img:"/images/services/bento/20-audit-SQUARE.webp"},
+  {s:"E-réputation",d:"7j",c:"400€",m:"1100€+",desc:"Nettoyage + veille + stratégie avis positifs.",img:"/images/services/bento/21-e-reputation-SQUARE.webp"},
+  {s:"Certification TikTok",d:"15j",c:"250€",m:"750€+",desc:"Processus complet de certification compte.",img:"/images/services/bento/01-tiktok-certif-SQUARE.webp"},
+  {s:"Certification Snapchat",d:"15j",c:"250€",m:"750€+",desc:"Processus complet de certification compte.",img:"/images/services/bento/02-snapchat-certif-SQUARE.webp"},
+  {s:"Création Société",d:"10j",c:"400€",m:"1200€+",desc:"SASU, SAS, Auto-entrepreneur — tout inclus.",img:"/images/services/bento/23-creation-societe-SQUARE.webp"},
+  {s:"OSINT Prospects",d:"5j",c:"350€",m:"950€+",desc:"Investigation approfondie sur leads B2B.",img:"/images/services/bento/22-osint-SQUARE.webp"},
+  {s:"Pack Underground",d:"15j",c:"800€",m:"2500€+",desc:"Techniques avancées réservées aux membres.",img:"/images/services/bento/25-underground-SQUARE.webp"},
 ];
 let CL_DATA = [
   {n:"Salon Léa Beauty",i:"L",s:"Meta Ads + SMM",mrr:400,st:"Actif",dot:"#A855F7",notes:"RDV mensuel le 1er. Campagnes Q2 à optimiser.",last:"Rapport envoyé il y a 3 jours"},
@@ -448,11 +480,31 @@ let CL_DATA = [
   {n:"Restaurant Le Zinc",i:"Z",s:"Site web",mrr:0,st:"Livré",dot:"#A855F7",notes:"One-shot terminé. Proposer gestion réseaux.",last:"Livré il y a 2 semaines"},
 ];
 const RP_DATA = [
-  {t:"Live 01 — Maîtriser Claude & Gemini",d:"1h 24min",ds:5040,date:"3 mai 2026",nw:true},
-  {t:"Live 02 — Visuels IA avec Lovart",d:"58min",ds:3480,date:"6 mai 2026",nw:true},
-  {t:"Live 03 — Sites web IA",d:"1h 12min",ds:4320,date:"10 mai 2026",nw:false},
-  {t:"Live 04 — Google Ads",d:"1h 05min",ds:3900,date:"13 mai 2026",nw:false},
-  {t:"Live 05 — Meta Ads & Réseaux",d:"1h 18min",ds:4680,date:"17 mai 2026",nw:false},
+  {t:"Live 01 — Maîtriser Claude & Gemini",d:"1h 24min",ds:5040,date:"3 mai 2026",nw:true,img:"/images/lives/LIVE-01.webp"},
+  {t:"Live 02 — Visuels IA avec Lovart",d:"58min",ds:3480,date:"6 mai 2026",nw:true,img:"/images/lives/LIVE-02.webp"},
+  {t:"Live 03 — Sites web IA",d:"1h 12min",ds:4320,date:"10 mai 2026",nw:true,img:"/images/lives/LIVE-03.webp"},
+  {t:"Live 04 — Google Ads Setup",d:"1h 05min",ds:3900,date:"13 mai 2026",nw:false,img:"/images/lives/LIVE-04.webp"},
+  {t:"Live 05 — Meta Ads & Réseaux",d:"1h 18min",ds:4680,date:"17 mai 2026",nw:false,img:"/images/lives/LIVE-05.webp"},
+  {t:"Live 06 — TikTok organique",d:"52min",ds:3120,date:"20 mai 2026",nw:false,img:"/images/lives/LIVE-06.webp"},
+  {t:"Live 07 — Apple Wallet & cartes digitales",d:"48min",ds:2880,date:"24 mai 2026",nw:false,img:"/images/lives/LIVE-07.webp"},
+  {t:"Live 08 — IA dans mon SMMA au quotidien",d:"1h 32min",ds:5520,date:"27 mai 2026",nw:false,img:"/images/lives/LIVE-08.webp"},
+  {t:"Live 09 — Avis Google & NFC",d:"55min",ds:3300,date:"31 mai 2026",nw:false,img:"/images/lives/LIVE-09.webp"},
+  {t:"Live 10 — Flyers IA",d:"42min",ds:2520,date:"3 juin 2026",nw:false,img:"/images/lives/LIVE-10.webp"},
+  {t:"Live 11 — Visuels marketing",d:"1h 08min",ds:4080,date:"7 juin 2026",nw:false,img:"/images/lives/LIVE-11.webp"},
+  {t:"Live 12 — Sites web WordPress/Webflow",d:"1h 45min",ds:6300,date:"10 juin 2026",nw:false,img:"/images/lives/LIVE-12.webp"},
+  {t:"Live 13 — Branding Design & Flyers IA",d:"1h 14min",ds:4440,date:"14 juin 2026",nw:false,img:"/images/lives/LIVE-13.webp"},
+  {t:"Live 14 — UGC IA avec avatars",d:"1h 02min",ds:3720,date:"17 juin 2026",nw:false,img:"/images/lives/LIVE-14.webp"},
+  {t:"Live 15 — Campagnes Ads avancées",d:"1h 28min",ds:5280,date:"21 juin 2026",nw:false,img:"/images/lives/LIVE-15.webp"},
+  {t:"Live 16 — CRM & Automation N8N",d:"2h 04min",ds:7440,date:"24 juin 2026",nw:false,img:"/images/lives/LIVE-16.webp"},
+  {t:"Live 17 — WhatsApp Business API",d:"58min",ds:3480,date:"28 juin 2026",nw:false,img:"/images/lives/LIVE-17.webp"},
+  {t:"Live 18 — Scrapping & Data Leads",d:"1h 22min",ds:4920,date:"1 juil 2026",nw:false,img:"/images/lives/LIVE-18.webp"},
+  {t:"Live 19 — Prospection auto 24/7",d:"1h 35min",ds:5700,date:"5 juil 2026",nw:false,img:"/images/lives/LIVE-19.webp"},
+  {t:"Live 20 — Closing + Delivery automations",d:"1h 42min",ds:6120,date:"8 juil 2026",nw:false,img:"/images/lives/LIVE-20.webp"},
+  {t:"Live 21 — E-réputation & avis positifs",d:"1h 12min",ds:4320,date:"12 juil 2026",nw:false,img:"/images/lives/LIVE-21.webp"},
+  {t:"Live 22 — High Ticket & Recurring",d:"1h 48min",ds:6480,date:"15 juil 2026",nw:false,img:"/images/lives/LIVE-22.webp"},
+  {t:"Live 23 — Création de société (SASU)",d:"1h 05min",ds:3900,date:"19 juil 2026",nw:false,img:"/images/lives/LIVE-23.webp"},
+  {t:"Live 24 — Google My Business Mastery",d:"52min",ds:3120,date:"22 juil 2026",nw:false,img:"/images/lives/LIVE-24.webp"},
+  {t:"Live 25 — Underground techniques",d:"2h 11min",ds:7860,date:"26 juil 2026",nw:false,img:"/images/lives/LIVE-25.webp"},
 ];
 
 function fmt(s){const m=Math.floor(s/60),ss=s%60;return m+':'+(ss<10?'0':'')+ss;}
@@ -521,9 +573,20 @@ function renderSvc(){
   SVC_DATA.forEach((s,i)=>{
     const row=document.createElement('div');
     row.className='cr';
-    const left=document.createElement('div');left.style.flex='1';
+    // Thumbnail image service
+    if(s.img){
+      const thumb=document.createElement('div');
+      thumb.className='svc-thumb';
+      thumb.style.cssText='width:48px;height:48px;border-radius:10px;overflow:hidden;flex-shrink:0;border:1px solid rgba(168,85,247,.22);box-shadow:0 3px 10px rgba(15,7,32,.15);background:#0a0413;';
+      const im=document.createElement('img');
+      im.src=s.img;im.alt=s.s;im.loading='lazy';
+      im.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
+      thumb.appendChild(im);
+      row.appendChild(thumb);
+    }
+    const left=document.createElement('div');left.style.cssText='flex:1;min-width:0;';
     const name=document.createElement('div');name.style.cssText='font-size:.85rem;font-weight:600;color:#fff;margin-bottom:2px;';name.textContent=s.s;
-    const sub=document.createElement('div');sub.style.cssText='font-size:.68rem;color:rgba(255,255,255,.35);';sub.textContent='Délai: '+s.d+' · '+s.desc;
+    const sub=document.createElement('div');sub.style.cssText='font-size:.68rem;color:rgba(255,255,255,.35);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';sub.textContent='Délai: '+s.d+' · '+s.desc;
     left.appendChild(name);left.appendChild(sub);
     const right=document.createElement('div');right.style.cssText='text-align:right;margin-right:10px;flex-shrink:0;';
     const rl=document.createElement('div');rl.style.cssText='font-size:.65rem;color:rgba(255,255,255,.3);';rl.textContent='Ta marge';
@@ -691,17 +754,31 @@ function renderReplays(){
   const c=el('rp-rows');c.innerHTML='';
   RP_DATA.forEach((r,i)=>{
     const row=document.createElement('div');row.className='cr';
-    const ico=document.createElement('div');ico.style.cssText='width:36px;height:36px;border-radius:8px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;';
-    ico.innerHTML='<svg width="12" height="12" fill="#A855F7" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
-    const left=document.createElement('div');left.style.flex='1';
-    const trow=document.createElement('div');trow.style.cssText='font-size:.82rem;font-weight:600;color:#fff;margin-bottom:2px;display:flex;align-items:center;gap:7px;';
+    // Thumbnail replay (image LIVE-XX)
+    const thumb=document.createElement('div');
+    thumb.className='rp-thumb-row';
+    thumb.style.cssText='width:72px;height:44px;border-radius:8px;overflow:hidden;flex-shrink:0;position:relative;border:1px solid rgba(168,85,247,.22);box-shadow:0 3px 10px rgba(15,7,32,.15);background:#0a0413;';
+    if(r.img){
+      const im=document.createElement('img');
+      im.src=r.img;im.alt=r.t;im.loading='lazy';
+      im.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
+      thumb.appendChild(im);
+    }
+    // Play badge overlay
+    const pb=document.createElement('div');
+    pb.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,0.15),rgba(0,0,0,0.55));';
+    pb.innerHTML='<svg width="16" height="16" fill="#fff" viewBox="0 0 24 24" style="filter:drop-shadow(0 2px 6px rgba(0,0,0,0.7));"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+    thumb.appendChild(pb);
+
+    const left=document.createElement('div');left.style.cssText='flex:1;min-width:0;';
+    const trow=document.createElement('div');trow.style.cssText='font-size:.82rem;font-weight:600;color:#fff;margin-bottom:2px;display:flex;align-items:center;gap:7px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';
     trow.textContent=r.t;
-    if(r.nw){const nb=document.createElement('span');nb.style.cssText='font-size:.58rem;padding:1px 6px;background:#A855F7;border-radius:9999px;color:#fff;font-weight:700;';nb.textContent='NEW';trow.appendChild(nb);}
+    if(r.nw){const nb=document.createElement('span');nb.style.cssText='font-size:.58rem;padding:1px 6px;background:#A855F7;border-radius:9999px;color:#fff;font-weight:700;flex-shrink:0;';nb.textContent='NEW';trow.appendChild(nb);}
     const sub=document.createElement('div');sub.style.cssText='font-size:.68rem;color:rgba(255,255,255,.35);';sub.textContent=r.date+' · '+r.d;
     left.appendChild(trow);left.appendChild(sub);
     const btn=document.createElement('button');btn.className='cb';btn.style.cssText='font-size:.72rem;padding:6px 12px;flex-shrink:0;';btn.textContent='▶ Voir';
     btn.addEventListener('click',e=>{e.stopPropagation();openPlayer(i);});
-    row.appendChild(ico);row.appendChild(left);row.appendChild(btn);
+    row.appendChild(thumb);row.appendChild(left);row.appendChild(btn);
     c.appendChild(row);
   });
 }
@@ -713,6 +790,12 @@ function openPlayer(i){
   el('rp-player-label').textContent=r.t;
   el('rp-time').textContent='0:00 / '+r.d;
   el('rp-fill').style.width='0%';
+  // Background thumbnail image du live
+  if(r.img){
+    el('rp-thumb').style.background='linear-gradient(180deg,rgba(10,4,19,0.45),rgba(10,4,19,0.85)),url("'+r.img+'") center/cover';
+  } else {
+    el('rp-thumb').style.background='linear-gradient(135deg,#0a0a0a,#1a0a2e)';
+  }
   el('rp-thumb').style.display='flex';
   el('rp-live').style.display='none';
   el('rp-play-icon').innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';

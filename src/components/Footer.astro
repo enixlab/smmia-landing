@@ -17,7 +17,8 @@ const EMAIL = 'contact@smmia.app';
     <!-- Col 1 — Brand + Newsletter -->
     <div class="ft-col ft-col-brand">
       <a href="#hero" class="ft-logo">
-        <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" />
+        <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" class="ft-logo-dark" />
+        <img src="/images/logos/SMMIA-logo-transparent-light.png" alt="SMMIA" class="ft-logo-light" />
       </a>
       <p class="ft-tagline">
         Le module IA business de la communauté Focus. Close des clients, livre avec Prime.
@@ -248,6 +249,9 @@ const EMAIL = 'contact@smmia.app';
     width: auto;
     display: block;
   }
+  .ft-logo-light { display: none !important; }
+  :root[data-theme="light"] .ft-logo-dark  { display: none !important; }
+  :root[data-theme="light"] .ft-logo-light { display: block !important; }
 
   .ft-tagline {
     font-size: 0.92rem;
@@ -403,6 +407,16 @@ const EMAIL = 'contact@smmia.app';
     display: inline-block;
     line-height: 1.15;
     padding: 2px 0;
+  }
+
+  /* LIGHT MODE : icônes WhatsApp/email plus CLAIRES (violet trop foncé) */
+  :root[data-theme="light"] .ft-contact-ic {
+    background: linear-gradient(135deg, #C084FC, #A855F7) !important;
+    box-shadow: 0 4px 14px rgba(192, 132, 252, 0.5) !important;
+  }
+  :root[data-theme="light"] .ft-contact-row:hover .ft-contact-ic {
+    background: linear-gradient(135deg, #D8B4FE, #C084FC) !important;
+    box-shadow: 0 6px 20px rgba(192, 132, 252, 0.65) !important;
   }
 
   /* ─── Socials ─── */

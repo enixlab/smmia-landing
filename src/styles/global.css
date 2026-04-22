@@ -717,6 +717,10 @@ body:not(.footer-in-view) .ft-online-dot {
 /* Switch logo dark/light (force !important pour battre Astro scoped) */
 [data-theme="light"] .brand-smmia--dark { display: none !important; }
 [data-theme="light"] .brand-smmia--light { display: block !important; }
+
+/* Logo CRM dashboard — swap dark/light */
+[data-theme="light"] .crm-logo-dark  { display: none !important; }
+[data-theme="light"] .crm-logo-light { display: block !important; }
 /* Light mode : logo plus grand */
 [data-theme="light"] .brand-smmia--light { height: 210px !important; }
 @media (max-width: 1024px) {
@@ -1560,11 +1564,21 @@ body:not(.footer-in-view) .ft-online-dot {
   color: transparent !important;
 }
 [data-theme="light"] .px-price-amount {
-  background: linear-gradient(135deg, #1a0a33 0%, #5B21B6 45%, #A855F7 100%) !important;
+  background: linear-gradient(135deg, #9333EA 0%, #A855F7 40%, #C084FC 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: transparent !important;
+  filter: drop-shadow(0 4px 22px rgba(168, 85, 247, 0.45)) drop-shadow(0 2px 8px rgba(124, 58, 237, 0.3)) !important;
+}
+[data-theme="light"] .px-price-currency {
+  background: linear-gradient(135deg, #9333EA 0%, #A855F7 50%, #C084FC 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  filter: drop-shadow(0 3px 14px rgba(168, 85, 247, 0.4)) !important;
+  opacity: 1 !important;
 }
 
 /* Navbar: text sombre */

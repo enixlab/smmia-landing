@@ -36,10 +36,33 @@ const {
     <meta property="og:image" content="/images/logos/SMMIA-logo-transparent-v2.png" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/logos/smmia-favicon-64.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/logos/smmia-favicon-512.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/logos/smmia-favicon-180.png" />
-    <link rel="shortcut icon" href="/images/logos/smmia-favicon-64.png" />
+    <link id="favicon-32" rel="icon" type="image/png" sizes="32x32" href="/images/logos/smmia-favicon-64.png" />
+    <link id="favicon-192" rel="icon" type="image/png" sizes="192x192" href="/images/logos/smmia-favicon-512.png" />
+    <link id="favicon-apple" rel="apple-touch-icon" sizes="180x180" href="/images/logos/smmia-favicon-180.png" />
+    <link id="favicon-shortcut" rel="shortcut icon" href="/images/logos/smmia-favicon-64.png" />
+    <script is:inline>
+      // Swap favicon selon theme (dark/light)
+      (function() {
+        function setFavicon(theme) {
+          var suffix = theme === 'light' ? '-light' : '';
+          var map = {
+            'favicon-32':       '/images/logos/smmia-favicon' + suffix + '-64.png',
+            'favicon-192':      '/images/logos/smmia-favicon' + suffix + '-512.png',
+            'favicon-apple':    '/images/logos/smmia-favicon' + suffix + '-180.png',
+            'favicon-shortcut': '/images/logos/smmia-favicon' + suffix + '-64.png',
+          };
+          Object.keys(map).forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.href = map[id];
+          });
+        }
+        try {
+          var saved = localStorage.getItem('theme');
+          setFavicon(saved === 'light' ? 'light' : 'dark');
+        } catch(e) {}
+        window.__swapFavicon = setFavicon;
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700;1,9..144,900&display=swap" rel="stylesheet" />
@@ -98,6 +121,7 @@ const {
         const next = cur === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         try { localStorage.setItem('theme', next); } catch(e) {}
+        if (typeof window.__swapFavicon === 'function') window.__swapFavicon(next);
       });
     </script>
     <slot />
