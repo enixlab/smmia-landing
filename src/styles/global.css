@@ -732,9 +732,9 @@ body:not(.footer-in-view) .ft-online-dot {
 @media (max-width: 380px) {
   [data-theme="light"] .brand-smmia--light { height: 105px !important; }
 }
-/* Léger halo violet sur le logo en mode clair — logo blanc sur fond clair */
-[data-theme="light"] .brand-smmia--light {
-  filter: drop-shadow(0 6px 24px rgba(168, 85, 247, 0.35)) !important;
+[data-theme="light"] .brand-smmia,
+[data-theme="light"] .hero-brand:hover .brand-smmia {
+  filter: none !important;
 }
 
 /* ═══════════════════════ 3. PROGRAMME (5 piliers) ═══════════════════════ */
