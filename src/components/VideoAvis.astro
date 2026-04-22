@@ -90,6 +90,10 @@ const rowB = testimonials.slice(3);
     <!-- Marquee vidéos : 2 lignes qui défilent en sens opposés -->
     <div class="va-marquee-wrap" data-animate>
 
+      <!-- Fade edges (masque pour effet "flottant") -->
+      <div class="va-marquee-fade va-marquee-fade--l" aria-hidden="true"></div>
+      <div class="va-marquee-fade va-marquee-fade--r" aria-hidden="true"></div>
+
       <!-- Ligne 1 : défile vers la gauche -->
       <div class="va-marquee-track va-marquee-track--l">
         {[...rowA, ...rowA].map((t) => (
@@ -107,20 +111,45 @@ const rowB = testimonials.slice(3);
                 class="va-poster"
                 style={`object-position: center ${t.posterPos};`}
               />
-              <div class="va-card-overlay" aria-hidden="true"></div>
-              <div class="va-play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
 
-            <div class="va-card-body">
-              <h3 class="va-hook">{t.hook}</h3>
-              <div class="va-cta-watch">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                Regarder le témoignage
+              <!-- Overlay cinéma (dégradé bas + spotlight haut) -->
+              <div class="va-card-overlay" aria-hidden="true"></div>
+
+              <!-- Badge métrique (top-left) -->
+              <div class="va-metric-badge" aria-hidden="true">
+                <span class="va-metric-spark"></span>
+                {t.tag}
               </div>
+
+              <!-- Badge LIVE (top-right) -->
+              <div class="va-live-badge" aria-hidden="true">
+                <span class="va-live-dot"></span>
+                TÉMOIGNAGE
+              </div>
+
+              <!-- Play button signature : violet aurora + ring animé -->
+              <div class="va-play" aria-hidden="true">
+                <span class="va-play-ring"></span>
+                <span class="va-play-ring va-play-ring--2"></span>
+                <span class="va-play-core">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </span>
+              </div>
+
+              <!-- Bas de poster : hook incrusté + CTA subtil (hiérarchie cinéma) -->
+              <div class="va-card-footer">
+                <h3 class="va-hook">{t.hook}</h3>
+                <div class="va-cta-watch">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                  Regarder le témoignage
+                  <svg class="va-cta-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </div>
+              </div>
+
+              <!-- Shine sweep au hover -->
+              <div class="va-shine" aria-hidden="true"></div>
             </div>
           </button>
         ))}
@@ -143,20 +172,39 @@ const rowB = testimonials.slice(3);
                 class="va-poster"
                 style={`object-position: center ${t.posterPos};`}
               />
-              <div class="va-card-overlay" aria-hidden="true"></div>
-              <div class="va-play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
 
-            <div class="va-card-body">
-              <h3 class="va-hook">{t.hook}</h3>
-              <div class="va-cta-watch">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                Regarder le témoignage
+              <div class="va-card-overlay" aria-hidden="true"></div>
+
+              <div class="va-metric-badge" aria-hidden="true">
+                <span class="va-metric-spark"></span>
+                {t.tag}
               </div>
+
+              <div class="va-live-badge" aria-hidden="true">
+                <span class="va-live-dot"></span>
+                TÉMOIGNAGE
+              </div>
+
+              <div class="va-play" aria-hidden="true">
+                <span class="va-play-ring"></span>
+                <span class="va-play-ring va-play-ring--2"></span>
+                <span class="va-play-core">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </span>
+              </div>
+
+              <div class="va-card-footer">
+                <h3 class="va-hook">{t.hook}</h3>
+                <div class="va-cta-watch">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                  Regarder le témoignage
+                  <svg class="va-cta-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </div>
+              </div>
+
+              <div class="va-shine" aria-hidden="true"></div>
             </div>
           </button>
         ))}
@@ -225,9 +273,13 @@ const rowB = testimonials.slice(3);
     isolation: isolate;
   }
 
+  /* Light mode section background */
+  :global([data-theme="light"]) .va-section {
+    background: radial-gradient(ellipse at 50% 0%, #F5F0FF 0%, #FAFAFC 55%, #FFFFFF 100%);
+  }
+
   @media (max-width: 768px) {
     .va-halo, .va-grid { display: none; }
-    .va-card::after { display: none; }
   }
 
   .va-inner {
@@ -249,6 +301,12 @@ const rowB = testimonials.slice(3);
     -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
     pointer-events: none;
     z-index: 0;
+  }
+
+  :global([data-theme="light"]) .va-grid {
+    background-image:
+      linear-gradient(rgba(168, 85, 247, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168, 85, 247, 0.08) 1px, transparent 1px);
   }
 
   .va-halo {
@@ -302,6 +360,12 @@ const rowB = testimonials.slice(3);
     margin-bottom: 24px;
   }
 
+  :global([data-theme="light"]) .va-badge {
+    background: rgba(168, 85, 247, 0.08);
+    border-color: rgba(168, 85, 247, 0.3);
+    color: #7C3AED;
+  }
+
   .va-badge-dot {
     width: 8px;
     height: 8px;
@@ -325,12 +389,23 @@ const rowB = testimonials.slice(3);
     margin: 0 0 18px;
   }
 
+  :global([data-theme="light"]) .va-title {
+    color: #0A0418;
+  }
+
   .va-accent {
     background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 40%, #C084FC 80%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     filter: drop-shadow(0 6px 30px rgba(168, 85, 247, 0.45));
+  }
+
+  :global([data-theme="light"]) .va-accent {
+    background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #C084FC 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .va-sub {
@@ -341,63 +416,8 @@ const rowB = testimonials.slice(3);
     line-height: 1.6;
   }
 
-  /* Stats ribbon */
-  .va-stats {
-    display: inline-flex;
-    align-items: center;
-    gap: clamp(20px, 4vw, 44px);
-    padding: 18px 28px;
-    border-radius: 20px;
-    background: rgba(168, 85, 247, 0.05);
-    border: 1px solid rgba(168, 85, 247, 0.18);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-
-  .va-stat {
-    text-align: center;
-    min-width: 72px;
-  }
-
-  .va-stat-value {
-    font-size: clamp(1.6rem, 3vw, 2.25rem);
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    background: linear-gradient(135deg, #FFFFFF, #C084FC);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .va-star {
-    color: #FACC15;
-    display: inline-flex;
-    -webkit-text-fill-color: #FACC15;
-  }
-
-  .va-star svg {
-    width: 0.8em;
-    height: 0.8em;
-    filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.6));
-  }
-
-  .va-stat-label {
-    font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.55);
-    margin-top: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
-  }
-
-  .va-stat-sep {
-    width: 1px;
-    height: 36px;
-    background: linear-gradient(to bottom, transparent, rgba(168, 85, 247, 0.5), transparent);
+  :global([data-theme="light"]) .va-sub {
+    color: rgba(10, 4, 24, 0.65);
   }
 
   /* ────────── Marquee vidéos — 2 lignes sens opposés ────────── */
@@ -406,14 +426,40 @@ const rowB = testimonials.slice(3);
     width: 100vw;
     margin-left: calc(50% - 50vw);
     overflow: hidden;
-    padding: 20px 0;
+    padding: 30px 0;
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 28px;
   }
+
+  /* Fade edges — masques gauche/droite pour effet "cards flottent dans le fade" */
+  .va-marquee-fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 14%;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .va-marquee-fade--l {
+    left: 0;
+    background: linear-gradient(90deg, #060211 0%, rgba(6, 2, 17, 0.8) 40%, transparent 100%);
+  }
+  .va-marquee-fade--r {
+    right: 0;
+    background: linear-gradient(-90deg, #060211 0%, rgba(6, 2, 17, 0.8) 40%, transparent 100%);
+  }
+
+  :global([data-theme="light"]) .va-marquee-fade--l {
+    background: linear-gradient(90deg, #FAFAFC 0%, rgba(250, 250, 252, 0.8) 40%, transparent 100%);
+  }
+  :global([data-theme="light"]) .va-marquee-fade--r {
+    background: linear-gradient(-90deg, #FAFAFC 0%, rgba(250, 250, 252, 0.8) 40%, transparent 100%);
+  }
+
   .va-marquee-track {
     display: flex;
-    gap: 22px;
+    gap: 28px;
     width: max-content;
     will-change: transform;
   }
@@ -422,7 +468,7 @@ const rowB = testimonials.slice(3);
   }
   .va-marquee-track--r {
     animation: va-marquee-r 72s linear infinite;
-    margin-left: -8%; /* offset pour que les 2 lignes ne s'alignent pas parfaitement */
+    margin-left: -8%;
   }
   .va-marquee-wrap:hover .va-marquee-track,
   .va-marquee-wrap:focus-within .va-marquee-track {
@@ -440,57 +486,72 @@ const rowB = testimonials.slice(3);
     .va-marquee-track { animation: none; }
   }
 
+  /* ────────── CARD PREMIUM — format portrait cinéma ────────── */
   .va-card {
     position: relative;
     all: unset;
     flex: 0 0 auto;
-    width: 620px;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(180deg, rgba(23, 10, 42, 0.6), rgba(10, 6, 21, 0.8));
-    border-radius: 22px;
+    width: 380px;
+    aspect-ratio: 9 / 14;
+    border-radius: 28px;
     overflow: hidden;
     cursor: pointer;
     isolation: isolate;
     transition:
-      transform 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-      box-shadow 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+      transform 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+      box-shadow 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     box-shadow:
-      0 20px 50px -20px rgba(0, 0, 0, 0.95),
-      0 22px 44px -18px rgba(168, 85, 247, 0.55),
-      0 10px 24px -8px rgba(124, 58, 237, 0.45),
-      inset 0 1px 0 rgba(216, 180, 254, 0.12);
-  }
-  .va-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow:
-      0 30px 70px -20px rgba(0, 0, 0, 0.95),
-      0 32px 60px -18px rgba(168, 85, 247, 0.75),
-      0 16px 34px -8px rgba(124, 58, 237, 0.6),
-      inset 0 1px 0 rgba(216, 180, 254, 0.22);
+      0 30px 60px -20px rgba(0, 0, 0, 0.8),
+      0 20px 40px -16px rgba(168, 85, 247, 0.45),
+      0 8px 20px -6px rgba(124, 58, 237, 0.35),
+      inset 0 1px 0 rgba(216, 180, 254, 0.14);
   }
 
-  /* Glow violet qui entoure chaque card (pulse doux) */
+  :global([data-theme="light"]) .va-card {
+    box-shadow:
+      0 30px 70px -24px rgba(124, 58, 237, 0.35),
+      0 16px 36px -14px rgba(168, 85, 247, 0.28),
+      0 4px 12px -4px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  .va-card:hover {
+    transform: translateY(-14px) scale(1.025);
+    box-shadow:
+      0 50px 100px -24px rgba(0, 0, 0, 0.85),
+      0 34px 70px -18px rgba(168, 85, 247, 0.85),
+      0 18px 40px -10px rgba(124, 58, 237, 0.7),
+      inset 0 1px 0 rgba(216, 180, 254, 0.3);
+  }
+
+  :global([data-theme="light"]) .va-card:hover {
+    box-shadow:
+      0 48px 100px -24px rgba(124, 58, 237, 0.55),
+      0 28px 60px -18px rgba(168, 85, 247, 0.45),
+      0 8px 20px -6px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  /* Glow radial autour de la card au hover */
   .va-card::after {
     content: "";
     position: absolute;
-    inset: -1px;
+    inset: -2px;
     border-radius: inherit;
     background: radial-gradient(
       120% 80% at 50% 0%,
-      rgba(192, 132, 252, 0.22) 0%,
-      rgba(168, 85, 247, 0.05) 35%,
-      transparent 70%
+      rgba(192, 132, 252, 0.28) 0%,
+      rgba(168, 85, 247, 0.06) 40%,
+      transparent 75%
     );
     opacity: 0;
     transition: opacity 0.6s ease;
     pointer-events: none;
-    z-index: 2;
+    z-index: 4;
   }
-
   .va-card:hover::after { opacity: 1; }
 
-  /* Bordure gradient */
+  /* Bordure gradient aurora */
   .va-card::before {
     content: "";
     position: absolute;
@@ -498,33 +559,35 @@ const rowB = testimonials.slice(3);
     border-radius: inherit;
     padding: 1.5px;
     background: linear-gradient(135deg,
-      rgba(192, 132, 252, 0.55) 0%,
-      rgba(168, 85, 247, 0.12) 40%,
-      rgba(168, 85, 247, 0) 60%,
-      rgba(192, 132, 252, 0.35) 100%);
+      rgba(192, 132, 252, 0.65) 0%,
+      rgba(168, 85, 247, 0.15) 35%,
+      rgba(0, 200, 255, 0.25) 60%,
+      rgba(192, 132, 252, 0.55) 100%);
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
             mask-composite: exclude;
     pointer-events: none;
-    z-index: 3;
+    z-index: 5;
+    transition: opacity 0.4s ease;
   }
 
-  .va-card:hover {
-    transform: translateY(-10px);
-    box-shadow:
-      0 36px 80px -20px rgba(0, 0, 0, 0.95),
-      0 30px 60px -12px rgba(168, 85, 247, 0.7),
-      0 14px 28px -6px rgba(124, 58, 237, 0.55),
-      inset 0 1px 0 rgba(216, 180, 254, 0.22);
+  :global([data-theme="light"]) .va-card::before {
+    background: linear-gradient(135deg,
+      rgba(168, 85, 247, 0.55) 0%,
+      rgba(192, 132, 252, 0.2) 35%,
+      rgba(0, 200, 255, 0.3) 60%,
+      rgba(124, 58, 237, 0.5) 100%);
   }
 
-  /* Media */
+  /* Media : la card EST le poster, tout est en overlay */
   .va-card-media {
     position: relative;
-    aspect-ratio: 16 / 11;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+    border-radius: inherit;
   }
 
   .va-poster {
@@ -532,116 +595,285 @@ const rowB = testimonials.slice(3);
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1),
-                filter 0.6s ease;
-    filter: brightness(0.82) saturate(1.08) hue-rotate(-4deg);
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1),
+                filter 0.8s ease;
+    filter: brightness(0.88) saturate(1.1) contrast(1.05);
+  }
+
+  :global([data-theme="light"]) .va-poster {
+    filter: brightness(0.95) saturate(1.12) contrast(1.03);
   }
 
   .va-card:hover .va-poster {
-    transform: scale(1.06);
-    filter: brightness(1) saturate(1.15) hue-rotate(-4deg);
+    transform: scale(1.09);
+    filter: brightness(1) saturate(1.2) contrast(1.08);
   }
 
-  /* Overlay violet branded léger (plus de texte, donc overlay plus subtil) */
+  /* Overlay cinéma : dark bas lisibilité + spotlight haut */
   .va-card-overlay {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(100% 70% at 50% 100%, rgba(168, 85, 247, 0.22) 0%, transparent 60%),
-      radial-gradient(70% 50% at 10% 0%, rgba(192, 132, 252, 0.16) 0%, transparent 60%),
-      linear-gradient(180deg, rgba(14, 6, 26, 0) 0%, rgba(10, 4, 20, 0.18) 100%);
+      /* spotlight violet haut (derrière le play) */
+      radial-gradient(70% 50% at 50% 38%, rgba(168, 85, 247, 0.32) 0%, transparent 55%),
+      /* gradient bas pour le texte */
+      linear-gradient(180deg,
+        rgba(8, 4, 20, 0) 0%,
+        rgba(8, 4, 20, 0) 45%,
+        rgba(8, 4, 20, 0.55) 72%,
+        rgba(8, 4, 20, 0.92) 100%),
+      /* teinte violette globale subtile */
+      linear-gradient(145deg, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
     z-index: 1;
     transition: opacity 0.6s ease;
   }
 
-  /* Play button */
+  .va-card:hover .va-card-overlay {
+    background:
+      radial-gradient(70% 50% at 50% 38%, rgba(168, 85, 247, 0.42) 0%, transparent 55%),
+      linear-gradient(180deg,
+        rgba(8, 4, 20, 0) 0%,
+        rgba(8, 4, 20, 0) 40%,
+        rgba(8, 4, 20, 0.6) 70%,
+        rgba(8, 4, 20, 0.95) 100%),
+      linear-gradient(145deg, rgba(124, 58, 237, 0.12) 0%, transparent 50%);
+  }
+
+  /* Shine sweep diagonal au hover */
+  .va-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 65%);
+    transform: translateX(-120%);
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: none;
+    z-index: 3;
+    mix-blend-mode: overlay;
+  }
+  .va-card:hover .va-shine {
+    transform: translateX(120%);
+  }
+
+  /* ────────── Metric badge (top-left) ────────── */
+  .va-metric-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 13px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.95), rgba(124, 58, 237, 0.9));
+    border: 1px solid rgba(216, 180, 254, 0.45);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: -0.005em;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow:
+      0 8px 22px rgba(124, 58, 237, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .va-metric-spark {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00C8FF;
+    box-shadow: 0 0 10px #00C8FF, 0 0 4px #fff;
+    animation: va-spark 1.8s ease-in-out infinite;
+  }
+  @keyframes va-spark {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.6; transform: scale(0.8); }
+  }
+
+  /* ────────── Live badge (top-right) ────────── */
+  .va-live-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 11px;
+    border-radius: 8px;
+    background: rgba(10, 4, 20, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .va-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #EF4444;
+    box-shadow: 0 0 8px #EF4444;
+    animation: va-live-pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes va-live-pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.4; }
+  }
+
+  /* ────────── PLAY BUTTON SIGNATURE (violet aurora + double ring animé) ────────── */
   .va-play {
     position: absolute;
-    top: 50%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 76px;
-    height: 76px;
+    width: 96px;
+    height: 96px;
+    z-index: 3;
+    pointer-events: none;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  /* Rings (halos qui pulsent vers l'extérieur) */
+  .va-play-ring {
+    position: absolute;
+    inset: 0;
     border-radius: 50%;
-    background:
-      radial-gradient(circle at 30% 30%, #FFFFFF, #F5F0FF 60%, #E9D5FF 100%);
-    color: #1a0627;
+    border: 2px solid rgba(192, 132, 252, 0.7);
+    animation: va-ring-pulse 2.4s ease-out infinite;
+    pointer-events: none;
+  }
+  .va-play-ring--2 {
+    animation-delay: 1.2s;
+  }
+  @keyframes va-ring-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.85;
+      border-color: rgba(192, 132, 252, 0.85);
+    }
+    100% {
+      transform: scale(1.9);
+      opacity: 0;
+      border-color: rgba(192, 132, 252, 0);
+    }
+  }
+
+  /* Core du play button — aurora gradient + ring solide + inner shadow blanc */
+  .va-play-core {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2;
-    backdrop-filter: blur(4px);
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    background:
+      radial-gradient(circle at 35% 30%, #FFFFFF 0%, #F5F0FF 20%, #C084FC 55%, #A855F7 80%, #7C3AED 100%);
+    color: #1a0627;
+    border: 2px solid rgba(255, 255, 255, 0.6);
     box-shadow:
-      0 14px 50px rgba(168, 85, 247, 0.75),
-      0 6px 22px rgba(124, 58, 237, 0.55),
-      0 0 0 0 rgba(192, 132, 252, 0.55),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    transition:
-      transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
-      box-shadow 0.4s;
-    animation: va-play-pulse 2.2s ease-out infinite;
+      /* halo externe fort (visible même light mode) */
+      0 0 0 4px rgba(168, 85, 247, 0.3),
+      0 0 30px rgba(168, 85, 247, 0.9),
+      0 18px 50px rgba(124, 58, 237, 0.75),
+      0 6px 18px rgba(0, 0, 0, 0.45),
+      /* gloss interne */
+      inset 0 2px 4px rgba(255, 255, 255, 0.95),
+      inset 0 -4px 10px rgba(124, 58, 237, 0.3);
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
-  .va-play svg {
-    width: 28px;
-    height: 28px;
-    margin-left: 4px;
-  }
-
-  @keyframes va-play-pulse {
-    0%   { box-shadow: 0 10px 40px rgba(168, 85, 247, 0.55), 0 0 0 0 rgba(192, 132, 252, 0.55); }
-    70%  { box-shadow: 0 10px 40px rgba(168, 85, 247, 0.55), 0 0 0 22px rgba(192, 132, 252, 0); }
-    100% { box-shadow: 0 10px 40px rgba(168, 85, 247, 0.55), 0 0 0 0 rgba(192, 132, 252, 0); }
+  .va-play-core svg {
+    width: 34px;
+    height: 34px;
+    margin-left: 5px;
+    filter: drop-shadow(0 2px 4px rgba(124, 58, 237, 0.4));
   }
 
   .va-card:hover .va-play {
-    transform: translate(-50%, -50%) scale(1.12);
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  .va-card:hover .va-play-core {
+    background:
+      radial-gradient(circle at 35% 30%, #FFFFFF 0%, #F5F0FF 15%, #E9D5FF 40%, #C084FC 70%, #A855F7 100%);
+    box-shadow:
+      0 0 0 6px rgba(168, 85, 247, 0.4),
+      0 0 44px rgba(168, 85, 247, 1),
+      0 24px 60px rgba(124, 58, 237, 0.9),
+      0 8px 24px rgba(0, 0, 0, 0.5),
+      inset 0 2px 4px rgba(255, 255, 255, 1),
+      inset 0 -4px 10px rgba(124, 58, 237, 0.4);
   }
 
-  /* Body — le hook vit ici (plus sur l'image) */
-  .va-card-body {
-    padding: 20px 22px 22px;
+  /* ────────── Card footer (bas poster) — hook + CTA ────────── */
+  .va-card-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 22px 22px 22px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
   }
 
   .va-hook {
-    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-    line-height: 1.3;
+    font-size: 1.08rem;
+    line-height: 1.28;
     font-weight: 800;
     color: #fff;
     margin: 0;
-    letter-spacing: -0.012em;
+    letter-spacing: -0.015em;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
   }
 
   .va-cta-watch {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
+    gap: 6px;
     align-self: flex-start;
-    color: #C084FC;
-    font-size: 0.82rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(168, 85, 247, 0.22);
+    border: 1px solid rgba(192, 132, 252, 0.4);
+    color: #E9D5FF;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.02em;
-    transition: color 0.25s ease, transform 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .va-cta-arrow {
+    transition: transform 0.3s ease;
   }
 
   .va-card:hover .va-cta-watch {
-    color: #E9D5FF;
+    background: rgba(168, 85, 247, 0.4);
+    border-color: rgba(192, 132, 252, 0.7);
+    color: #fff;
     transform: translateX(3px);
   }
-
-  .va-cta-watch svg {
-    color: #C084FC;
-    filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
+  .va-card:hover .va-cta-arrow {
+    transform: translateX(3px);
   }
 
   /* ────────── CTA hors-section (fond noir pur) ────────── */
   .va-cta-outer {
     background: #000;
     padding: 96px 24px 120px;
+  }
+
+  :global([data-theme="light"]) .va-cta-outer {
+    background: #FFFFFF;
   }
 
   /* ────────── CTA card premium rectangulaire ────────── */
@@ -662,6 +894,17 @@ const rowB = testimonials.slice(3);
     text-align: center;
     overflow: hidden;
     isolation: isolate;
+  }
+
+  :global([data-theme="light"]) .va-cta-card {
+    background:
+      radial-gradient(120% 80% at 50% 0%, rgba(168, 85, 247, 0.1) 0%, transparent 60%),
+      linear-gradient(180deg, #FFFFFF 0%, #FAFAFC 100%);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    box-shadow:
+      0 40px 100px -30px rgba(124, 58, 237, 0.3),
+      0 16px 40px -12px rgba(168, 85, 247, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
 
   /* Glow interne animé au top (halo violet) */
@@ -695,6 +938,13 @@ const rowB = testimonials.slice(3);
   }
   .va-cta-eyebrow strong { color: #E9D5FF; font-weight: 800; }
 
+  :global([data-theme="light"]) .va-cta-eyebrow {
+    background: rgba(168, 85, 247, 0.08);
+    border-color: rgba(168, 85, 247, 0.3);
+    color: #7C3AED;
+  }
+  :global([data-theme="light"]) .va-cta-eyebrow strong { color: #6D28D9; }
+
   .va-cta-eyebrow-dot {
     width: 7px; height: 7px;
     border-radius: 50%;
@@ -718,12 +968,23 @@ const rowB = testimonials.slice(3);
     color: rgba(255, 255, 255, 0.88);
   }
 
+  :global([data-theme="light"]) .va-cta-headline {
+    color: #0A0418;
+  }
+
   .va-cta-headline-accent {
     background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 45%, #C084FC 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+  }
+
+  :global([data-theme="light"]) .va-cta-headline-accent {
+    background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #C084FC 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   /* Sub */
@@ -734,6 +995,10 @@ const rowB = testimonials.slice(3);
     line-height: 1.55;
     color: rgba(255, 255, 255, 0.6);
     font-weight: 500;
+  }
+
+  :global([data-theme="light"]) .va-cta-sub {
+    color: rgba(10, 4, 24, 0.65);
   }
 
   /* Actions row */
@@ -790,55 +1055,6 @@ const rowB = testimonials.slice(3);
     gap: 10px;
   }
 
-  .va-cta-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 18px 24px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
-  }
-  .va-cta-secondary:hover {
-    background: rgba(34, 197, 94, 0.12);
-    border-color: rgba(34, 197, 94, 0.5);
-    color: #86EFAC;
-    transform: translateY(-2px);
-  }
-  .va-cta-secondary svg { color: #22C55E; }
-
-  /* Trust signals row */
-  .va-cta-signals {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px 16px;
-    padding-top: 22px;
-    border-top: 1px solid rgba(168, 85, 247, 0.14);
-  }
-
-  .va-cta-signal {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 0.82rem;
-    font-weight: 600;
-  }
-  .va-cta-signal svg { color: rgba(192, 132, 252, 0.85); }
-
-  .va-cta-signal-sep {
-    width: 3px; height: 3px;
-    border-radius: 50%;
-    background: rgba(168, 85, 247, 0.35);
-  }
-
   /* ────────── Modal ────────── */
   .va-modal {
     position: fixed;
@@ -863,7 +1079,7 @@ const rowB = testimonials.slice(3);
   .va-modal-inner {
     position: relative;
     width: 100%;
-    max-width: 980px;
+    max-width: 480px;
     max-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -915,47 +1131,49 @@ const rowB = testimonials.slice(3);
   @media (max-width: 1024px) {
     .va-section { padding: 96px 0 112px; }
     .va-header { margin-bottom: 56px; }
-    .va-card { width: 320px; }
-    .va-marquee-wrap { gap: 18px; }
-    .va-marquee-track { gap: 18px; }
+    .va-card { width: 320px; border-radius: 24px; }
+    .va-marquee-wrap { gap: 22px; }
+    .va-marquee-track { gap: 22px; }
     .va-marquee-track--l { animation-duration: 58s; }
     .va-marquee-track--r { animation-duration: 64s; }
-    .va-play { width: 64px; height: 64px; }
-    .va-play svg { width: 24px; height: 24px; }
+    .va-play { width: 80px; height: 80px; }
+    .va-play-core svg { width: 28px; height: 28px; }
     .va-halo { width: 380px; height: 380px; filter: blur(80px); }
+    .va-metric-badge { font-size: 0.72rem; padding: 7px 11px; }
+    .va-hook { font-size: 1rem; }
   }
 
   /* ────────── Mobile ────────── */
   @media (max-width: 640px) {
     .va-section { padding: 72px 0 88px; }
     .va-header { margin-bottom: 44px; }
-    .va-stats { padding: 14px 18px; gap: 18px; border-radius: 16px; }
-    .va-stat-sep { height: 28px; }
-    .va-card { width: 260px; }
-    .va-marquee-wrap { gap: 14px; }
-    .va-marquee-track { gap: 14px; }
+    .va-card { width: 260px; border-radius: 20px; }
+    .va-marquee-wrap { gap: 16px; padding: 20px 0; }
+    .va-marquee-track { gap: 16px; }
     .va-marquee-track--l { animation-duration: 44s; }
     .va-marquee-track--r { animation-duration: 50s; }
-    .va-card-body { padding: 16px 18px 18px; gap: 10px; }
-    .va-play { width: 58px; height: 58px; }
-    .va-play svg { width: 22px; height: 22px; }
-    .va-hook { font-size: 1rem; }
+    .va-play { width: 68px; height: 68px; }
+    .va-play-core svg { width: 24px; height: 24px; margin-left: 4px; }
+    .va-card-footer { padding: 16px 16px 16px; gap: 8px; }
+    .va-hook { font-size: 0.92rem; }
+    .va-cta-watch { font-size: 0.66rem; padding: 5px 10px; }
+    .va-metric-badge { font-size: 0.68rem; padding: 6px 10px; top: 12px; left: 12px; }
+    .va-live-badge { font-size: 0.6rem; padding: 5px 9px; top: 12px; right: 12px; }
     .va-cta-outer { padding: 64px 20px 80px; }
     .va-cta-card { padding: 32px 22px; border-radius: 20px; }
     .va-cta-headline { font-size: clamp(1.45rem, 5.5vw, 1.85rem); }
     .va-cta-sub { font-size: 0.92rem; margin-bottom: 24px; }
     .va-cta-actions { flex-direction: column; width: 100%; gap: 10px; }
-    .va-cta-btn, .va-cta-secondary { padding: 16px 24px; font-size: 1rem; width: 100%; }
-    .va-cta-signals { font-size: 0.74rem; gap: 8px 12px; }
-    .va-cta-signal-sep { display: none; }
+    .va-cta-btn { padding: 16px 24px; font-size: 1rem; width: 100%; }
     .va-modal-close { top: -48px; }
     .va-grid { background-size: 44px 44px; }
+    .va-marquee-fade { width: 8%; }
   }
 
   /* Reduce motion */
   @media (prefers-reduced-motion: reduce) {
-    .va-play, .va-badge-dot { animation: none; }
-    .va-card, .va-poster { transition: none; }
+    .va-play-ring, .va-badge-dot, .va-metric-spark, .va-live-dot { animation: none; }
+    .va-card, .va-poster, .va-shine { transition: none; }
   }
 </style>
 
