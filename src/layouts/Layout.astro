@@ -57,7 +57,49 @@ const {
       <img id="modal-img" src="" alt="Avis membre" />
     </div>
 
-    <Navbar />
+    <!-- Toggle thème en position fixed (coin top-right) -->
+    <button id="theme-toggle" aria-label="Basculer thème clair / sombre" class="theme-toggle-fixed">
+      <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <style>
+      .theme-toggle-fixed {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 999;
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        background: rgba(168, 85, 247, 0.14);
+        border: 1.5px solid rgba(168, 85, 247, 0.55);
+        color: #fff;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 4px 14px rgba(168, 85, 247, 0.25);
+        transition: transform 0.3s, background 0.2s;
+        padding: 0;
+      }
+      .theme-toggle-fixed:hover { transform: scale(1.08); background: rgba(168, 85, 247, 0.24); }
+      .theme-toggle-fixed .icon-sun,
+      .theme-toggle-fixed .icon-moon { position: absolute; transition: opacity 0.25s ease, transform 0.35s ease; }
+      .theme-toggle-fixed .icon-moon { opacity: 1; }
+      .theme-toggle-fixed .icon-sun  { opacity: 0; transform: rotate(-90deg); }
+      :root[data-theme="light"] .theme-toggle-fixed .icon-sun  { opacity: 1; transform: rotate(0); }
+      :root[data-theme="light"] .theme-toggle-fixed .icon-moon { opacity: 0; transform: rotate(90deg); }
+      :root[data-theme="light"] .theme-toggle-fixed { color: #5B21B6; background: rgba(168, 85, 247, 0.1); border-color: rgba(124, 58, 237, 0.5); }
+    </style>
+    <script>
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch(e) {}
+      });
+    </script>
     <slot />
 
     <script>
