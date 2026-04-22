@@ -1729,3 +1729,23 @@ section:not(.in-view) .spot-core {
   animation: none !important;
   box-shadow: none !important;
 }
+
+/* ═══ LIGHT : retire halos violet derriere icons brand flottantes ═══ */
+[data-theme="light"] .fbi-glow,
+[data-theme="light"] .fbi-ring,
+[data-theme="light"] .px-float-glow,
+[data-theme="light"] .px-float-ring {
+  opacity: 0 !important;
+  display: none !important;
+}
+/* Garder juste l'icon avec un drop-shadow léger */
+[data-theme="light"] .fbi-img,
+[data-theme="light"] .px-float img {
+  filter: drop-shadow(0 4px 12px rgba(15, 7, 32, 0.15)) !important;
+  opacity: 0.95 !important;
+  animation: none !important;
+}
+[data-theme="light"] .fbi-item:hover .fbi-img,
+[data-theme="light"] .px-float:hover img {
+  filter: drop-shadow(0 8px 20px rgba(124, 58, 237, 0.35)) !important;
+}

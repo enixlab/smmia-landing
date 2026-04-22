@@ -8,13 +8,8 @@
       <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" class="nav-logo" style="height:64px;width:auto;display:block;" />
     </a>
 
-    <!-- Liens desktop -->
+    <!-- Liens desktop : retirés à la demande — on garde uniquement le CTA Rejoindre -->
     <div class="nav-links" style="display:flex;align-items:center;gap:32px;">
-      <a href="#programme" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Programme</a>
-      <a href="#intervenants" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Intervenants</a>
-      <a href="#temoignages" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Témoignages</a>
-      <a href="#prix" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;">Prix</a>
-      <a href="https://discord.com/invite/focus-1398487214215659612" target="_blank" rel="noopener" class="btn-membre" style="padding:10px 20px;border:1px solid rgba(168,85,247,0.4);border-radius:9999px;font-size:0.85rem;color:rgba(255,255,255,0.7);text-decoration:none;transition:all 0.2s;white-space:nowrap;">Espace membre</a>
       <a href="https://wa.me/33766814280" target="_blank" rel="noopener" class="btn-pill" style="padding:10px 22px;font-size:0.875rem;">Rejoindre &rarr;</a>
     </div>
 
@@ -36,10 +31,6 @@
 
   <!-- Mobile menu -->
   <div id="mobile-menu" style="display:none;padding:16px 24px 24px;border-top:1px solid rgba(168,85,247,0.2);">
-    <a href="#programme" style="display:block;padding:12px 0;color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;border-bottom:1px solid rgba(255,255,255,0.05);">Programme</a>
-    <a href="#intervenants" style="display:block;padding:12px 0;color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;border-bottom:1px solid rgba(255,255,255,0.05);">Intervenants</a>
-    <a href="#temoignages" style="display:block;padding:12px 0;color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;border-bottom:1px solid rgba(255,255,255,0.05);">Témoignages</a>
-    <a href="#prix" style="display:block;padding:12px 0;color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;margin-bottom:16px;">Prix</a>
     <a href="https://wa.me/33766814280" target="_blank" rel="noopener" class="btn-pill" style="width:100%;justify-content:center;">Rejoindre &rarr;</a>
   </div>
 </nav>
@@ -82,12 +73,10 @@
   :root[data-theme="light"] .theme-toggle:hover { background: rgba(168,85,247,0.18); }
 
   @media (max-width: 768px) {
-    .nav-links {
-      display: none !important;
-    }
-    #burger {
-      display: flex !important;
-    }
+    /* On garde le bouton Rejoindre visible en mobile (seul item restant) */
+    .nav-links { gap: 10px !important; }
+    .nav-links .btn-pill { padding: 8px 16px !important; font-size: 0.8rem !important; }
+    #burger { display: none !important; }
     .nav-logo { height: 52px !important; }
   }
   a:hover {
