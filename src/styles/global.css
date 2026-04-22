@@ -1285,6 +1285,30 @@ body:not(.footer-in-view) .ft-online-dot {
   border: 1px solid rgba(124, 58, 237, 0.22) !important;
   box-shadow: 0 4px 14px rgba(124, 58, 237, 0.07), 0 1px 3px rgba(15, 7, 32, 0.04) !important;
 }
+/* Forcer le texte des rows en noir (flex/grid heritance parfois casse) */
+[data-theme="light"] #crm-shell .cr,
+[data-theme="light"] #crm-shell .cr div,
+[data-theme="light"] #crm-shell .cr span {
+  color: #0F0720 !important;
+}
+[data-theme="light"] #crm-shell .cr div[style*="rgba(255, 255, 255"],
+[data-theme="light"] #crm-shell .cr div[style*="rgba(255,255,255"] {
+  color: rgba(15, 7, 32, 0.55) !important;
+}
+/* Badge NEW garde son violet + blanc */
+[data-theme="light"] #crm-shell .cr span[style*="background:#A855F7"],
+[data-theme="light"] #crm-shell .cr span[style*="background: #A855F7"] {
+  color: #FFFFFF !important;
+}
+/* Badge statut (Actif, etc) — le texte prend la couleur du dot */
+[data-theme="light"] #crm-shell .cr span[style*="color:#A855F7"]:not([style*="background:#A855F7"]),
+[data-theme="light"] #crm-shell .cr span[style*="color: #A855F7"]:not([style*="background: #A855F7"]) {
+  color: #7C3AED !important;
+}
+/* "Ta marge" en violet visible */
+[data-theme="light"] #crm-shell .cr div[style*="color:#C084FC"] {
+  color: #7C3AED !important;
+}
 [data-theme="light"] #crm-shell .cr:hover {
   background: linear-gradient(135deg, #FFFFFF 0%, #F0E9FF 100%) !important;
   border-color: rgba(124, 58, 237, 0.4) !important;
