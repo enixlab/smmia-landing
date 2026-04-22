@@ -96,7 +96,7 @@ const rowB = testimonials.slice(3);
 
       <!-- Ligne 1 : défile vers la gauche -->
       <div class="va-marquee-track va-marquee-track--l">
-        {[...rowA, ...rowA].map((t) => (
+        {[...rowA, ...rowA, ...rowA, ...rowA].map((t) => (
           <button
             class="va-card"
             data-video={`/videos/avis-${t.slug}.mp4`}
@@ -141,7 +141,7 @@ const rowB = testimonials.slice(3);
 
       <!-- Ligne 2 : défile vers la droite -->
       <div class="va-marquee-track va-marquee-track--r">
-        {[...rowB, ...rowB].map((t) => (
+        {[...rowB, ...rowB, ...rowB, ...rowB].map((t) => (
           <button
             class="va-card"
             data-video={`/videos/avis-${t.slug}.mp4`}
