@@ -539,8 +539,48 @@ section {
 [data-theme="light"] .tile-label,
 [data-theme="light"] .tile span,
 [data-theme="light"] .tile-tag {
-  color: #FFFFFF !important;
+  color: #FFFFFF !important; /* reste blanc car sur image de service floutée */
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.9);
 }
+
+/* Global safety: tout texte de couleur blanche hardcodée qui se retrouve sur fond clair */
+[data-theme="light"] [style*="color:#fff"],
+[data-theme="light"] [style*="color: #fff"],
+[data-theme="light"] [style*="color:#FFF"],
+[data-theme="light"] [style*="color: #FFF"],
+[data-theme="light"] [style*="color:white"],
+[data-theme="light"] [style*="color: white"] {
+  color: #0F0720 !important;
+}
+/* Exceptions : éléments DANS des blocs sombres (CTA, dashboard mock, CTA card, boutons à fond sombre) */
+[data-theme="light"] .btn-pill,
+[data-theme="light"] .btn-pill *,
+[data-theme="light"] .hero-cta-primary,
+[data-theme="light"] .hero-cta-primary *,
+[data-theme="light"] .av-cta,
+[data-theme="light"] .av-cta *,
+[data-theme="light"] .px-cta-primary,
+[data-theme="light"] .px-cta-primary *,
+[data-theme="light"] .va-cta-btn,
+[data-theme="light"] .va-cta-btn *,
+[data-theme="light"] #crm-shell,
+[data-theme="light"] #crm-shell *,
+[data-theme="light"] .tile-label,
+[data-theme="light"] .tile span {
+  color: inherit;
+}
+[data-theme="light"] .btn-pill,
+[data-theme="light"] .hero-cta-primary,
+[data-theme="light"] .av-cta,
+[data-theme="light"] .px-cta-primary,
+[data-theme="light"] .va-cta-btn { color: #fff !important; }
+[data-theme="light"] #crm-shell,
+[data-theme="light"] #crm-shell .pg,
+[data-theme="light"] #crm-shell h3,
+[data-theme="light"] #crm-shell span,
+[data-theme="light"] #crm-shell div { color: #fff; }
+[data-theme="light"] .tile-label,
+[data-theme="light"] .tile span { color: #fff !important; }
 [data-theme="light"] .stat-card {
   background: rgba(255, 255, 255, 0.85) !important;
   border-color: rgba(168, 85, 247, 0.25) !important;
