@@ -1097,3 +1097,237 @@ section {
 [data-theme="light"] li { color: var(--theme-text); }
 
 /* reduce motion : rien de plus */
+
+/* ═══════════════════════════════════════════════════════════════════
+   LIGHT MODE — BRUTE FORCE : tous textes → dark sauf exceptions
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6,
+[data-theme="light"] p,
+[data-theme="light"] span,
+[data-theme="light"] strong,
+[data-theme="light"] b,
+[data-theme="light"] li,
+[data-theme="light"] label,
+[data-theme="light"] small,
+[data-theme="light"] em,
+[data-theme="light"] i,
+[data-theme="light"] a,
+[data-theme="light"] div,
+[data-theme="light"] button {
+  color: #0F0720;
+}
+
+/* Classes spécifiques blanches par défaut — forcées dark */
+[data-theme="light"] .av-title,
+[data-theme="light"] .av-title *:not(.av-title-accent):not(.av-title-accent *),
+[data-theme="light"] .av-stat-val,
+[data-theme="light"] .av-stat-val-sub,
+[data-theme="light"] .av-stat-lbl,
+[data-theme="light"] .av-counter,
+[data-theme="light"] .av-tab,
+[data-theme="light"] .av-tab-count,
+[data-theme="light"] .av-pill,
+[data-theme="light"] .av-badge,
+[data-theme="light"] .av-live,
+[data-theme="light"] .av-sub,
+[data-theme="light"] .av-sub-strong,
+[data-theme="light"] .va-title,
+[data-theme="light"] .va-title *:not(.va-accent):not(.va-accent *),
+[data-theme="light"] .va-sub,
+[data-theme="light"] .va-badge,
+[data-theme="light"] .va-badge-text,
+[data-theme="light"] .va-cta-headline,
+[data-theme="light"] .va-cta-headline *:not(.va-cta-headline-accent):not(.va-cta-headline-accent *),
+[data-theme="light"] .va-cta-sub,
+[data-theme="light"] .va-cta-eyebrow,
+[data-theme="light"] .va-cta-eyebrow *,
+[data-theme="light"] .va-cta-signal,
+[data-theme="light"] .headline,
+[data-theme="light"] .headline-line-1,
+[data-theme="light"] .headline-line-2:not(.headline-mark):not(.headline-mark *),
+[data-theme="light"] .headline-soft,
+[data-theme="light"] .sub,
+[data-theme="light"] .sub strong,
+[data-theme="light"] .sub em,
+[data-theme="light"] .sub *:not(.headline-mark):not(.headline-mark *),
+[data-theme="light"] .stat-card,
+[data-theme="light"] .stat-card *,
+[data-theme="light"] .live-status,
+[data-theme="light"] .live-status *,
+[data-theme="light"] .live-label,
+[data-theme="light"] .live-count,
+[data-theme="light"] .live-detail,
+[data-theme="light"] .cat-pill,
+[data-theme="light"] .cat-pills *,
+[data-theme="light"] .prog-title,
+[data-theme="light"] .prog-sub,
+[data-theme="light"] .prog-eyebrow,
+[data-theme="light"] .prog-eyebrow *,
+[data-theme="light"] .pillar-title,
+[data-theme="light"] .pillar-sub,
+[data-theme="light"] .px-title:not(.px-title-accent):not(.px-title-accent *),
+[data-theme="light"] .px-title *:not(.px-title-accent):not(.px-title-accent *),
+[data-theme="light"] .px-sub,
+[data-theme="light"] .px-feature-label,
+[data-theme="light"] .px-feature-tag,
+[data-theme="light"] .px-chip,
+[data-theme="light"] .px-chip *,
+[data-theme="light"] .px-brand-pill,
+[data-theme="light"] .px-brand-pill *,
+[data-theme="light"] .px-price-paiement,
+[data-theme="light"] .px-price-crossed,
+[data-theme="light"] .px-price-currency,
+[data-theme="light"] .px-economies,
+[data-theme="light"] .px-stars,
+[data-theme="light"] .px-review-text,
+[data-theme="light"] .tp-title,
+[data-theme="light"] .tp-sub,
+[data-theme="light"] .tp-hint,
+[data-theme="light"] .tp-eyebrow,
+[data-theme="light"] .tp-eyebrow *,
+[data-theme="light"] .tp-name,
+[data-theme="light"] .tp-role,
+[data-theme="light"] .tp-since,
+[data-theme="light"] .tp-quote-text,
+[data-theme="light"] .tp-metric-label,
+[data-theme="light"] .tp-metric-val,
+[data-theme="light"] .fq-title,
+[data-theme="light"] .fq-sub,
+[data-theme="light"] .fq-badge,
+[data-theme="light"] .fq-badge *,
+[data-theme="light"] .faq-btn,
+[data-theme="light"] .faq-answer,
+[data-theme="light"] .fq-q,
+[data-theme="light"] .fq-a,
+[data-theme="light"] .fq-support-title,
+[data-theme="light"] .fq-support-sub,
+[data-theme="light"] .fq-channel,
+[data-theme="light"] .fq-channel *:not(.fq-channel-ic):not(.fq-channel-ic *),
+[data-theme="light"] .fq-trust-val,
+[data-theme="light"] .ft,
+[data-theme="light"] .ft * {
+  color: #0F0720 !important;
+}
+
+/* Opacity sub / muted → plus lisibles en light */
+[data-theme="light"] .av-stat-lbl,
+[data-theme="light"] .av-stat-val-sub,
+[data-theme="light"] .tp-since,
+[data-theme="light"] .tp-role,
+[data-theme="light"] .tp-metric-label,
+[data-theme="light"] .va-sub,
+[data-theme="light"] .va-cta-sub,
+[data-theme="light"] .prog-sub,
+[data-theme="light"] .sub,
+[data-theme="light"] .pillar-sub,
+[data-theme="light"] .px-price-paiement,
+[data-theme="light"] .px-feature-tag,
+[data-theme="light"] .fq-sub,
+[data-theme="light"] .fq-support-sub,
+[data-theme="light"] .fq-channel-meta {
+  color: rgba(15, 7, 32, 0.7) !important;
+}
+
+/* ═══ EXCEPTIONS : ÉLÉMENTS QUI GARDENT TEXTE BLANC ═══ */
+/* CTAs principaux (fond violet plein) */
+[data-theme="light"] .btn-pill,
+[data-theme="light"] .btn-pill *,
+[data-theme="light"] .hero-cta-primary,
+[data-theme="light"] .hero-cta-primary *,
+[data-theme="light"] .av-cta,
+[data-theme="light"] .av-cta *,
+[data-theme="light"] .va-cta-btn,
+[data-theme="light"] .va-cta-btn *,
+[data-theme="light"] .px-cta-primary,
+[data-theme="light"] .px-cta-primary *,
+[data-theme="light"] .px-corner,
+[data-theme="light"] .px-corner *,
+[data-theme="light"] .headline-mark,
+[data-theme="light"] .headline-mark *,
+[data-theme="light"] .headline-mark-text {
+  color: #FFFFFF !important;
+}
+
+/* Cards avec fond sombre intrinsèque */
+[data-theme="light"] #crm-shell,
+[data-theme="light"] #crm-shell *,
+[data-theme="light"] .tile,
+[data-theme="light"] .tile *,
+[data-theme="light"] .tile-label,
+[data-theme="light"] .tile-tag,
+[data-theme="light"] .va-card,
+[data-theme="light"] .va-card *,
+[data-theme="light"] .va-hook,
+[data-theme="light"] .va-cta-watch,
+[data-theme="light"] .av-card,
+[data-theme="light"] .av-card *,
+[data-theme="light"] .av-pill,
+[data-theme="light"] .av-pill-discord,
+[data-theme="light"] .av-pill-trustpilot,
+[data-theme="light"] .pillar-card .pillar-media,
+[data-theme="light"] .pillar-card .pillar-media *,
+[data-theme="light"] .va-card-body *,
+[data-theme="light"] .va-cta-card .va-cta-btn {
+  color: #FFFFFF !important;
+}
+
+/* Gradients text-clip — forcer le clip en light (éviter blocs violets solides) */
+[data-theme="light"] .line-fill,
+[data-theme="light"] .va-accent,
+[data-theme="light"] .av-title-accent,
+[data-theme="light"] .va-cta-headline-accent,
+[data-theme="light"] .px-title-accent,
+[data-theme="light"] .footer-title-accent,
+[data-theme="light"] .tp-title-accent {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #5B21B6 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+[data-theme="light"] .px-price-amount {
+  background: linear-gradient(135deg, #1a0a33 0%, #5B21B6 45%, #A855F7 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* Navbar: text sombre */
+[data-theme="light"] #navbar a,
+[data-theme="light"] #navbar a *,
+[data-theme="light"] .nav-link,
+[data-theme="light"] .btn-membre,
+[data-theme="light"] #mobile-menu a {
+  color: #0F0720 !important;
+}
+[data-theme="light"] #navbar .btn-pill,
+[data-theme="light"] #navbar .btn-pill * { color: #FFFFFF !important; }
+
+/* Hero textes */
+[data-theme="light"] .line-outline {
+  -webkit-text-stroke: 2px #0F0720 !important;
+}
+[data-theme="light"] .eyebrow-text,
+[data-theme="light"] .hero-sub,
+[data-theme="light"] .sub-main,
+[data-theme="light"] .scroll-text,
+[data-theme="light"] .hero-cta-secondary { color: #0F0720 !important; }
+
+/* Pulse-dot et icons stay accent */
+[data-theme="light"] .pulse-dot,
+[data-theme="light"] .av-badge-dot,
+[data-theme="light"] .va-badge-dot,
+[data-theme="light"] .tp-eyebrow-dot,
+[data-theme="light"] .eyebrow-dot,
+[data-theme="light"] .fq-badge-dot,
+[data-theme="light"] .va-cta-eyebrow-dot { background: #7C3AED !important; }
+
+/* Live channel icons (whatsapp/discord/mail) gardent leur gradient natif */
+[data-theme="light"] .fq-channel-ic,
+[data-theme="light"] .fq-channel-ic * { color: #FFFFFF !important; }
