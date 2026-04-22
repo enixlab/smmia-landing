@@ -672,9 +672,9 @@ section:not(.in-view) .spot-core {
 [data-theme="light"] .scroll-mouse { border-color: rgba(124, 58, 237, 0.55); }
 [data-theme="light"] .scroll-wheel { background: var(--theme-violet) !important; }
 
-/* Switch logo dark/light */
-[data-theme="light"] .brand-smmia--dark { display: none; }
-[data-theme="light"] .brand-smmia--light { display: block; }
+/* Switch logo dark/light (force !important pour battre Astro scoped) */
+[data-theme="light"] .brand-smmia--dark { display: none !important; }
+[data-theme="light"] .brand-smmia--light { display: block !important; }
 [data-theme="light"] .brand-smmia {
   filter: drop-shadow(0 10px 35px rgba(124, 58, 237, 0.35));
 }
