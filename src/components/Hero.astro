@@ -11,11 +11,8 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     <div class="galaxy-nebula galaxy-nebula--a"></div>
     <div class="galaxy-nebula galaxy-nebula--b"></div>
 
-    <!-- Grid perspective floor (cyberpunk/futuriste) -->
-    <div class="grid-floor" aria-hidden="true"></div>
-
-    <!-- Scan lines subtiles -->
-    <div class="scan-lines" aria-hidden="true"></div>
+    <!-- Noise texture grain analogique (signature Awwwards) -->
+    <div class="hero-noise" aria-hidden="true"></div>
 
     <!-- GLOBE WIREFRAME 3D + HUD -->
     <div class="orb-scene">
@@ -65,31 +62,12 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
         </div>
       </div>
 
-      <!-- HUD overlay -->
-      <div class="hud hud--tl">
-        <div class="hud-bracket"></div>
-        <div class="hud-label">SYS.ORB / 01</div>
-        <div class="hud-value">48.8566°N · 2.3522°E</div>
-      </div>
-      <div class="hud hud--tr">
-        <div class="hud-bracket hud-bracket--tr"></div>
-        <div class="hud-label">STATUS</div>
-        <div class="hud-value hud-value--active"><span class="hud-dot"></span>ONLINE</div>
-      </div>
+      <!-- HUD minimaliste : un seul label élégant -->
       <div class="hud hud--br">
-        <div class="hud-bracket hud-bracket--br"></div>
         <div class="hud-label">BOOST RATE</div>
-        <div class="hud-value hud-value--big">+347%</div>
+        <div class="hud-value hud-value--big" data-count="347">+0%</div>
       </div>
     </div>
-  </div>
-
-  <!-- Corner brackets de la section (HUD frame) -->
-  <div class="hero-corners" aria-hidden="true">
-    <span class="corner corner--tl"></span>
-    <span class="corner corner--tr"></span>
-    <span class="corner corner--bl"></span>
-    <span class="corner corner--br"></span>
   </div>
 
   <!-- Logos brand flottants -->
@@ -100,52 +78,73 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   <div class="hero-inner">
 
-    <!-- Eyebrow : badge session live -->
-    <div class="hero-eyebrow reveal" style="--d:0s">
-      <span class="pulse-dot"></span>
-      <span class="eyebrow-text">Session Mai 2026 · Places limitées</span>
-    </div>
-
     <!-- Logo SMMIA -->
     <div class="hero-brand" data-depth="0.5">
       <img src="/images/logos/nj.png" alt="SMMIA" class="brand-logo brand-smmia" />
     </div>
 
-    <!-- Tagline -->
+    <!-- Tagline éditoriale : typo split fill/outline (signature Awwwards) -->
     <h1 class="hero-title">
-      <span class="tagline-top reveal" style="--d:0.2s">Ton agence rentable</span>
-      <span class="tagline-boost reveal" style="--d:0.4s">
-        <span class="boost-bracket boost-bracket--l" aria-hidden="true">[</span>
-        <span class="boost-holo-border" aria-hidden="true"></span>
-        <span class="boost-aura" aria-hidden="true"></span>
-        <span class="boost-word">BOOSTER</span>
-        <span class="boost-bracket boost-bracket--r" aria-hidden="true">]</span>
+      <span class="tagline-top reveal" style="--d:0.2s">
+        <span class="serif-italic">Ton</span> agence rentable
       </span>
-      <span class="tagline-bottom reveal" style="--d:0.6s">par l'IA.</span>
+      <span class="tagline-boost reveal" style="--d:0.4s">
+        <span class="boost-aura" aria-hidden="true"></span>
+        <span class="boost-word">
+          <span class="boost-seg boost-seg--fill">BOO</span><span class="boost-seg boost-seg--outline">STER</span>
+        </span>
+      </span>
+      <span class="tagline-bottom reveal" style="--d:0.6s">par l'<span class="serif-italic">intelligence</span>.</span>
     </h1>
 
-    <!-- Data readouts sous la tagline (mono futuriste) -->
+    <!-- Data readouts sous la tagline (mono futuriste, compteurs animés) -->
     <div class="hero-readouts reveal" style="--d:0.65s" aria-hidden="true">
+      <span class="readout"><span class="readout-key">UPTIME</span><span class="readout-val"><span data-count="99.98" data-suffix="%">0</span></span></span>
+      <span class="readout-sep"></span>
+      <span class="readout"><span class="readout-key">AGENCES</span><span class="readout-val" data-count="847">0</span></span>
+      <span class="readout-sep"></span>
       <span class="readout"><span class="readout-key">v11.0</span><span class="readout-val">// STABLE</span></span>
-      <span class="readout-sep"></span>
-      <span class="readout"><span class="readout-key">UPTIME</span><span class="readout-val">99.98%</span></span>
-      <span class="readout-sep"></span>
-      <span class="readout"><span class="readout-key">AGENCES</span><span class="readout-val">847</span></span>
     </div>
 
-    <!-- CTA -->
-    <div class="hero-ctas reveal" style="--d:0.8s">
-      <a href="#pricing" class="hero-cta-primary">
-        <span class="cta-label">Rejoindre la session</span>
-        <span class="cta-arrow" aria-hidden="true">
-          <svg viewBox="0 0 14 12" fill="none" width="14" height="12">
-            <path d="M1 6H13M13 6L8 1M13 6L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-      </a>
-      <a href="#programme" class="hero-cta-secondary">Voir le programme</a>
-    </div>
+  </div>
 
+  <!-- Scroll indicator minimaliste -->
+  <a href="#programme" class="scroll-indicator" aria-label="Faire défiler">
+    <span class="scroll-line"></span>
+    <span class="scroll-text">SCROLL</span>
+  </a>
+
+  <!-- Marquee ticker en bas (scroll infini, signature Awwwards) -->
+  <div class="hero-marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">BOOSTER ·</span>
+      <span class="marquee-item marquee-item--dim">AI AUTOMATION</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item marquee-item--dim">HIGH TICKET</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item marquee-item--dim">MRR RECURRING</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item marquee-item--dim">SCALE x10</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item marquee-item--dim">PROSPECTION 24/7</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item marquee-item--dim">SESSION 2026</span>
+      <span class="marquee-item">·</span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item">BOOSTER ·</span>
+      <span class="marquee-item marquee-item--dim">AI AUTOMATION</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item marquee-item--dim">HIGH TICKET</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item marquee-item--dim">MRR RECURRING</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item marquee-item--dim">SCALE x10</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item marquee-item--dim">PROSPECTION 24/7</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item marquee-item--dim">SESSION 2026</span>
+      <span class="marquee-item">·</span>
+    </div>
   </div>
 
   <div class="hero-fade" aria-hidden="true"></div>
@@ -247,41 +246,15 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     50%      { transform: translate(40px, -20px); opacity: 0.75; }
   }
 
-  /* Grid perspective floor (cyberpunk vibe) */
-  .grid-floor {
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    height: 45%;
-    background-image:
-      linear-gradient(to right, rgba(168,85,247,0.18) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(168,85,247,0.18) 1px, transparent 1px);
-    background-size: 60px 60px;
-    transform: perspective(700px) rotateX(66deg);
-    transform-origin: bottom center;
-    mask-image: linear-gradient(to top, #000 0%, #000 30%, transparent 90%);
-    -webkit-mask-image: linear-gradient(to top, #000 0%, #000 30%, transparent 90%);
-    opacity: 0.6;
-    animation: gridScroll 6s linear infinite;
-  }
-  @keyframes gridScroll {
-    from { background-position: 0 0; }
-    to   { background-position: 0 60px; }
-  }
-
-  /* Scan lines */
-  .scan-lines {
+  /* Noise texture grain analogique (signature Awwwards premium) */
+  .hero-noise {
     position: absolute;
     inset: 0;
-    background-image: repeating-linear-gradient(
-      0deg,
-      rgba(216, 180, 254, 0.025) 0,
-      rgba(216, 180, 254, 0.025) 1px,
-      transparent 1px,
-      transparent 3px
-    );
+    z-index: 3;
     pointer-events: none;
-    mix-blend-mode: screen;
-    opacity: 0.5;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
   }
 
   /* =============== ORB SCÈNE =============== */
@@ -446,98 +419,36 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     50%      { opacity: 1;   transform: scale(1.1); }
   }
 
-  /* =============== HUD overlay =============== */
+  /* =============== HUD minimaliste (seulement BOOST RATE) =============== */
   .hud {
     position: absolute;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
     font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
     color: rgba(216, 180, 254, 0.85);
     pointer-events: none;
     z-index: 6;
   }
-  .hud-bracket {
-    position: absolute;
-    width: 24px; height: 24px;
-    border: 1.5px solid rgba(216, 180, 254, 0.7);
-    border-right: none;
-    border-bottom: none;
-    top: -8px; left: -8px;
-  }
-  .hud-bracket--tr {
-    left: auto; right: -8px;
-    border-right: 1.5px solid rgba(216, 180, 254, 0.7);
-    border-left: none;
-  }
-  .hud-bracket--br {
-    top: auto; bottom: -8px; left: auto; right: -8px;
-    border: 1.5px solid rgba(216, 180, 254, 0.7);
-    border-left: none;
-    border-top: none;
-  }
   .hud-label {
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: rgba(216, 180, 254, 0.55);
     line-height: 1;
   }
-  .hud-value {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: #F3E8FF;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
   .hud-value--big {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 700;
     letter-spacing: -0.02em;
     background: linear-gradient(135deg, #F3E8FF 0%, #C084FC 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    line-height: 1;
   }
-  .hud-value--active {
-    color: #86EFAC;
-  }
-  .hud-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #86EFAC;
-    box-shadow: 0 0 8px rgba(134, 239, 172, 0.9);
-    animation: hudDot 1.6s ease-in-out infinite;
-  }
-  @keyframes hudDot {
-    0%, 100% { opacity: 1; }
-    50%      { opacity: 0.45; }
-  }
-  .hud--tl { top: -20px; left: -40px; }
-  .hud--tr { top: -20px; right: -40px; text-align: right; align-items: flex-end; }
-  .hud--br { bottom: -20px; right: -40px; text-align: right; align-items: flex-end; }
-
-  /* Corner brackets de la section entière */
-  .hero-corners {
-    position: absolute;
-    inset: 24px;
-    pointer-events: none;
-    z-index: 3;
-  }
-  .corner {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    border: 1.5px solid rgba(168, 85, 247, 0.4);
-  }
-  .corner--tl { top: 0; left: 0; border-right: none; border-bottom: none; }
-  .corner--tr { top: 0; right: 0; border-left: none; border-bottom: none; }
-  .corner--bl { bottom: 0; left: 0; border-right: none; border-top: none; }
-  .corner--br { bottom: 0; right: 0; border-left: none; border-top: none; }
+  .hud--br { bottom: -30px; right: -20px; text-align: right; align-items: flex-end; }
 
   /* =============== Halo spotlight =============== */
   .hero-spotlight {
@@ -557,39 +468,6 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   @keyframes spotlightBreath {
     0%, 100% { opacity: 0.85; }
     50%      { opacity: 1; }
-  }
-
-  /* =============== EYEBROW badge =============== */
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 18px 8px 14px;
-    border-radius: 9999px;
-    background: rgba(168, 85, 247, 0.08);
-    border: 1px solid rgba(168, 85, 247, 0.35);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  .pulse-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #a855f7;
-    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7);
-    animation: pulseDot 2s ease-in-out infinite;
-  }
-  @keyframes pulseDot {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7); }
-    50%      { box-shadow: 0 0 0 8px rgba(168, 85, 247, 0); }
-  }
-  .eyebrow-text {
-    font-family: 'JetBrains Mono', 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.92);
   }
 
   /* =============== LOGO =============== */
@@ -652,65 +530,21 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* =============== BOOSTER holographique =============== */
+  /* =============== BOOSTER éditorial (fill/outline mix) =============== */
   .tagline-boost {
     position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 24px;
+    display: inline-block;
+    padding: 8px 0;
     line-height: 1;
   }
 
-  /* Brackets [ ] autour du mot */
-  .boost-bracket {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(50px, 10vw, 140px);
-    font-weight: 300;
-    color: rgba(216, 180, 254, 0.8);
-    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.6));
-    transform: translateY(-4px);
-  }
-
-  /* Border holographique conic-gradient animée */
-  .boost-holo-border {
-    position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    padding: 2px;
-    background: conic-gradient(from var(--rot, 0deg),
-      transparent 0deg,
-      rgba(216, 180, 254, 0.8) 30deg,
-      rgba(168, 85, 247, 1) 60deg,
-      transparent 90deg,
-      transparent 180deg,
-      rgba(233, 213, 255, 0.7) 220deg,
-      rgba(124, 58, 237, 1) 260deg,
-      transparent 290deg,
-      transparent 360deg);
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
-    animation: holoBorder 4s linear infinite;
-    pointer-events: none;
-    opacity: 0.8;
-  }
-  @property --rot {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-  }
-  @keyframes holoBorder {
-    to { --rot: 360deg; }
-  }
-  /* Fallback pour navigateurs sans @property */
-  @supports not (background: conic-gradient(from 0deg, red, blue)) {
-    .boost-holo-border { display: none; }
+  /* Touches éditoriales : mot en italique serif Fraunces */
+  .serif-italic {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: rgba(216, 180, 254, 0.95);
   }
 
   /* Aura derrière */
@@ -718,13 +552,13 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 160%;
-    height: 240%;
+    width: 130%;
+    height: 220%;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 0;
-    background: radial-gradient(ellipse 55% 45% at 50% 50%, rgba(233, 213, 255, 0.5) 0%, rgba(168, 85, 247, 0.3) 35%, rgba(124, 58, 237, 0.15) 60%, transparent 80%);
-    filter: blur(22px);
+    background: radial-gradient(ellipse 55% 45% at 50% 50%, rgba(233, 213, 255, 0.45) 0%, rgba(168, 85, 247, 0.28) 35%, rgba(124, 58, 237, 0.12) 60%, transparent 80%);
+    filter: blur(24px);
     opacity: 0.9;
     mix-blend-mode: screen;
     animation: auraBreath 4s ease-in-out infinite;
@@ -734,16 +568,31 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
   }
 
-  /* Le mot BOOSTER : gradient chrome holographique + pulse */
+  /* Le mot BOOSTER : font XXL éditoriale */
   .boost-word {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
     font-family: 'Inter', sans-serif;
     font-weight: 900;
     font-style: italic;
-    font-size: clamp(64px, 11vw, 160px);
-    line-height: 1;
-    letter-spacing: -0.045em;
+    font-size: clamp(72px, 13vw, 200px);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+    filter:
+      drop-shadow(0 0 18px rgba(216, 180, 254, 0.4))
+      drop-shadow(0 0 38px rgba(168, 85, 247, 0.35));
+    z-index: 2;
+    transform-origin: center;
+    will-change: transform;
+    animation: boostPulse 3.4s ease-in-out infinite;
+  }
+  @keyframes boostPulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.025); }
+  }
+
+  /* Segment 1 : BOO — fill gradient chrome violet */
+  .boost-seg--fill {
     background: linear-gradient(135deg,
       #FFFFFF 0%,
       #F3E8FF 15%,
@@ -756,22 +605,111 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    filter:
-      drop-shadow(0 0 18px rgba(216, 180, 254, 0.55))
-      drop-shadow(0 0 38px rgba(168, 85, 247, 0.4));
-    animation: boostGradientShift 6s ease-in-out infinite, boostPulse 3.4s ease-in-out infinite;
-    z-index: 2;
-    transform-origin: center;
-    will-change: transform, background-position;
+    animation: boostGradientShift 6s ease-in-out infinite;
   }
   @keyframes boostGradientShift {
     0%, 100% { background-position: 0% 50%; }
     50%      { background-position: 100% 50%; }
   }
-  @keyframes boostPulse {
-    0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.04); }
+
+  /* Segment 2 : STER — outline stroke violet (éditorial premium) */
+  .boost-seg--outline {
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(216, 180, 254, 0.9);
+    text-stroke: 2px rgba(216, 180, 254, 0.9);
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.6));
   }
+
+  /* =============== Marquee ticker (signature Awwwards) =============== */
+  .hero-marquee {
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 3;
+    padding: 14px 0;
+    border-top: 1px solid rgba(168, 85, 247, 0.15);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+    background: rgba(6, 2, 15, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+  .marquee-track {
+    display: inline-flex;
+    gap: 28px;
+    white-space: nowrap;
+    animation: marqueeScroll 32s linear infinite;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .marquee-item {
+    color: rgba(233, 213, 255, 0.95);
+    flex-shrink: 0;
+  }
+  .marquee-item--dim {
+    color: rgba(216, 180, 254, 0.45);
+  }
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* =============== Scroll indicator minimaliste =============== */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    z-index: 4;
+    opacity: 0;
+    animation: scrollIndicatorIn 0.8s ease 1.2s forwards;
+  }
+  @keyframes scrollIndicatorIn {
+    to { opacity: 1; }
+  }
+  .scroll-line {
+    width: 1px;
+    height: 42px;
+    background: linear-gradient(to bottom, transparent, rgba(216, 180, 254, 0.8));
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -42px;
+    left: 0;
+    width: 100%;
+    height: 42px;
+    background: linear-gradient(to bottom, transparent, #F3E8FF);
+    animation: scrollLineMove 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollLineMove {
+    0%   { top: -42px; }
+    60%  { top: 42px; }
+    100% { top: 42px; }
+  }
+  .scroll-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(216, 180, 254, 0.65);
+    transition: color 0.3s ease;
+  }
+  .scroll-indicator:hover .scroll-text { color: #F3E8FF; }
 
   /* =============== Data readouts =============== */
   .hero-readouts {
@@ -804,67 +742,11 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     background: rgba(168, 85, 247, 0.3);
   }
 
-  /* =============== CTAs =============== */
-  .hero-ctas {
-    display: inline-flex;
-    align-items: center;
-    gap: 22px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hero-cta-primary {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 18px 34px;
-    border-radius: 9999px;
-    background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    box-shadow:
-      0 0 0 1px rgba(216, 180, 254, 0.25) inset,
-      0 8px 30px rgba(168, 85, 247, 0.38);
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-                box-shadow 0.35s ease;
-    overflow: hidden;
-  }
-  .hero-cta-primary:hover {
-    transform: translateY(-3px);
-    box-shadow:
-      0 0 0 1px rgba(216, 180, 254, 0.4) inset,
-      0 14px 42px rgba(168, 85, 247, 0.6);
-  }
-  .cta-arrow {
-    display: inline-flex;
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-  .hero-cta-primary:hover .cta-arrow { transform: translateX(4px); }
-  .hero-cta-secondary {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: rgba(216, 180, 254, 0.85);
-    text-decoration: none;
-    padding: 14px 4px;
-    border-bottom: 1px solid rgba(168, 85, 247, 0.4);
-    transition: color 0.3s ease, border-color 0.3s ease;
-  }
-  .hero-cta-secondary:hover {
-    color: #fff;
-    border-bottom-color: #a855f7;
-  }
-
   /* =============== Fade bas =============== */
   .hero-fade {
     position: absolute;
     left: 0; right: 0; bottom: 0;
-    height: 100px;
+    height: 70px;
     background: linear-gradient(to bottom, transparent, #000);
     pointer-events: none;
     z-index: 2;
@@ -876,46 +758,46 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     .hero-spotlight { left: 36%; }
   }
   @media (max-width: 1024px) {
-    #hero { padding: 90px 20px 130px; min-height: 800px; }
+    #hero { padding: 90px 20px 150px; min-height: 820px; }
     .hero-inner { gap: 22px; }
     .brand-smmia { height: 95px; }
     .orb-scene { right: -6%; width: 300px; height: 300px; opacity: 0.6; }
     .hero-spotlight { left: 50%; }
-    .hud--tl, .hud--tr, .hud--br { display: none; }
+    .hud--br { display: none; }
   }
   @media (max-width: 768px) {
     .orb-scene { display: none; }
-    .grid-floor { height: 35%; opacity: 0.35; }
+    .scroll-indicator { bottom: 130px; }
   }
   @media (max-width: 640px) {
-    #hero { padding: 70px 16px 110px; min-height: 680px; }
+    #hero { padding: 70px 16px 130px; min-height: 720px; }
     .hero-inner { gap: 18px; }
     .brand-smmia { height: 72px; }
-    .hero-cta-primary { padding: 15px 26px; font-size: 14px; }
-    .eyebrow-text { font-size: 10px; letter-spacing: 0.16em; }
     .tagline-top, .tagline-bottom { font-size: clamp(18px, 5vw, 22px); }
-    .boost-word { font-size: clamp(48px, 14vw, 72px); }
-    .boost-bracket { font-size: clamp(40px, 11vw, 60px); }
+    .boost-word { font-size: clamp(56px, 15vw, 90px); letter-spacing: -0.04em; }
+    .boost-seg--outline { -webkit-text-stroke-width: 1.5px; }
     .galaxy-nebula { filter: blur(35px); }
     .hero-readouts { font-size: 10px; gap: 14px; padding: 8px 14px; flex-wrap: wrap; justify-content: center; }
     .readout-sep { display: none; }
-    .corner { width: 20px; height: 20px; }
-    .hero-corners { inset: 14px; }
+    .scroll-indicator { bottom: 120px; }
+    .scroll-line { height: 32px; }
+    .marquee-track { font-size: 11px; gap: 20px; }
   }
   @media (max-width: 380px) {
-    #hero { padding: 60px 14px 100px; }
+    #hero { padding: 60px 14px 120px; }
     .brand-smmia { height: 58px; }
-    .boost-word { font-size: clamp(42px, 13vw, 56px); }
+    .boost-word { font-size: clamp(46px, 14vw, 68px); }
   }
 
   /* reduce motion */
   @media (prefers-reduced-motion: reduce) {
     .hero-brand, .reveal,
     .galaxy-stars, .galaxy-nebula,
-    .boost-word, .boost-aura, .boost-holo-border,
+    .boost-word, .boost-aura, .boost-seg--fill,
     .orb-glow, .orb-expose, .orb-ring, .globe-spin,
     .globe-core, .globe-target,
-    .grid-floor, .hero-spotlight, .pulse-dot, .hud-dot {
+    .hero-spotlight, .marquee-track,
+    .scroll-indicator, .scroll-line::after {
       animation: none;
       opacity: 1;
     }
@@ -958,4 +840,26 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       } else { rafId = 0; }
     }
   }
+
+  // Number counters animés (signature Awwwards)
+  const counters = document.querySelectorAll<HTMLElement>('[data-count]');
+  counters.forEach((el) => {
+    const target = parseFloat(el.dataset.count || '0');
+    const suffix = el.dataset.suffix || '';
+    const isFloat = target % 1 !== 0;
+    const duration = 1800;
+    const start = performance.now();
+    const prefix = el.textContent?.match(/^\+/) ? '+' : '';
+
+    function step(now: number) {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const value = target * eased;
+      el.textContent = prefix + (isFloat ? value.toFixed(2) : Math.floor(value).toString()) + suffix;
+      if (t < 1) requestAnimationFrame(step);
+      else el.textContent = prefix + (isFloat ? target.toFixed(2) : target.toString()) + suffix;
+    }
+    // Démarrer après un léger délai (après reveal)
+    setTimeout(() => requestAnimationFrame(step), 900);
+  });
 </script>
