@@ -106,17 +106,17 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       <span class="tagline-boost">
         <span class="boost-aura" aria-hidden="true"></span>
 
-        <!-- Burst radial style manga (lignes qui partent du centre) -->
+        <!-- Burst radial ultra-subtil (24 rayons, opacity 0.14) -->
         <span class="boost-burst" aria-hidden="true">
           <svg viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid meet">
-            {Array.from({length: 36}, (_, i) => {
-              const a = (i / 36) * 360;
-              const long = i % 2 === 0;
+            {Array.from({length: 24}, (_, i) => {
+              const a = (i / 24) * 360;
+              const long = i % 3 === 0;
               return (
                 <line
                   x1="0" y1="0"
-                  x2={long ? 90 : 70} y2="0"
-                  stroke-width={long ? 3.2 : 1.6}
+                  x2={long ? 96 : 72} y2="0"
+                  stroke-width={long ? 0.9 : 0.5}
                   transform={`rotate(${a})`}
                 />
               );
@@ -124,9 +124,9 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
           </svg>
         </span>
 
-        <!-- Éclats 3D qui flottent en permanence autour du mot -->
+        <!-- 6 éclats monochromes subtils (lavande / blanc) -->
         <span class="boost-shards" aria-hidden="true">
-          {Array.from({length: 14}, (_, i) => (
+          {Array.from({length: 6}, (_, i) => (
             <span class={`shard shard--${i + 1}`}>
               <svg viewBox="0 0 20 20">
                 <polygon points="10,0 20,10 10,20 0,10" />
@@ -139,7 +139,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
         <span class="b3d-stage" id="boosterStage">
           <span class="b3d-rotator" id="boosterRotator">
             {['B','O','O','S','T','E','R'].map((l, i) => (
-              <span class="b3d-letter" style={`--li:${i}`}>
+              <span class="b3d-letter" style={`--li:${i}`} data-letter={l}>
                 {Array.from({length: 28}, (_, d) => (
                   <span class="b3d-layer" style={`--d:${d}`}>{l}</span>
                 ))}
@@ -742,19 +742,19 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
   }
 
-  /* =============== BURST RADIAL style manga =============== */
+  /* =============== BURST RADIAL ultra-subtil (premium discrete) =============== */
   .boost-burst {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 140%;
-    height: 260%;
+    width: 130%;
+    height: 240%;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 1;
-    opacity: 0.42;
-    mix-blend-mode: screen;
-    animation: burstSpin 60s linear infinite;
+    opacity: 0.14;
+    mix-blend-mode: plus-lighter;
+    animation: burstSpin 90s linear infinite;
   }
   .boost-burst svg {
     width: 100%;
@@ -762,17 +762,15 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     overflow: visible;
   }
   .boost-burst line {
-    stroke: url(#burstGrad);
-    stroke: rgba(216, 180, 254, 0.55);
+    stroke: rgba(216, 180, 254, 0.5);
     stroke-linecap: round;
-    filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.6));
   }
   @keyframes burstSpin {
     from { transform: translate(-50%, -50%) rotate(0deg); }
     to   { transform: translate(-50%, -50%) rotate(360deg); }
   }
 
-  /* =============== ÉCLATS 3D PERMANENTS qui tournent autour =============== */
+  /* =============== 6 ÉCLATS MONOCHROMES subtils (lavande/blanc) =============== */
   .boost-shards {
     position: absolute;
     top: 50%;
@@ -782,91 +780,66 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 3;
+    mix-blend-mode: screen;
   }
   .shard {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 18px;
-    height: 18px;
-    margin: -9px 0 0 -9px;
     will-change: transform;
-    filter: drop-shadow(0 0 6px rgba(216, 180, 254, 0.7));
   }
   .shard svg {
     width: 100%;
     height: 100%;
-    fill: url(#shardGrad);
   }
   .shard polygon {
-    fill: #E9D5FF;
-    opacity: 0.85;
+    fill: rgba(243, 232, 255, 0.7);
   }
-  .shard--1  { animation: shardOrbit 11s linear infinite;     }
-  .shard--2  { animation: shardOrbit 13s linear infinite -1.8s; }
-  .shard--3  { animation: shardOrbit 15s linear infinite -3.2s reverse; }
-  .shard--4  { animation: shardOrbit 9s  linear infinite -5s;   }
-  .shard--5  { animation: shardOrbit 14s linear infinite -2.2s; }
-  .shard--6  { animation: shardOrbit 16s linear infinite -6s reverse; }
-  .shard--7  { animation: shardOrbit 10s linear infinite -4.4s; }
-  .shard--8  { animation: shardOrbit 12s linear infinite -7.1s; }
-  .shard--9  { animation: shardOrbit 17s linear infinite -1s reverse; }
-  .shard--10 { animation: shardOrbit 8s  linear infinite -3s;   }
-  .shard--11 { animation: shardOrbit 13s linear infinite -8s;   }
-  .shard--12 { animation: shardOrbit 15s linear infinite -5.5s reverse; }
-  .shard--13 { animation: shardOrbit 11s linear infinite -9s;   }
-  .shard--14 { animation: shardOrbit 14s linear infinite -6.8s; }
+  /* 2 shards plus "denses" (lavande) */
+  .shard--2 polygon, .shard--5 polygon { fill: rgba(216, 180, 254, 0.55); }
 
-  .shard--1  { --r: 280px; --tilt: 8deg;   --size: 14px; }
-  .shard--2  { --r: 340px; --tilt: -12deg; --size: 10px; }
-  .shard--3  { --r: 300px; --tilt: 18deg;  --size: 16px; }
-  .shard--4  { --r: 400px; --tilt: -6deg;  --size: 9px;  }
-  .shard--5  { --r: 260px; --tilt: 22deg;  --size: 12px; }
-  .shard--6  { --r: 380px; --tilt: -16deg; --size: 11px; }
-  .shard--7  { --r: 320px; --tilt: 14deg;  --size: 13px; }
-  .shard--8  { --r: 430px; --tilt: -10deg; --size: 8px;  }
-  .shard--9  { --r: 290px; --tilt: 6deg;   --size: 15px; }
-  .shard--10 { --r: 360px; --tilt: -20deg; --size: 10px; }
-  .shard--11 { --r: 310px; --tilt: 12deg;  --size: 11px; }
-  .shard--12 { --r: 410px; --tilt: -8deg;  --size: 9px;  }
-  .shard--13 { --r: 270px; --tilt: 24deg;  --size: 14px; }
-  .shard--14 { --r: 350px; --tilt: -14deg; --size: 10px; }
+  .shard--1 { --r: 300px; --size: 10px; animation: shardOrbit 18s linear infinite; }
+  .shard--2 { --r: 360px; --size: 7px;  animation: shardOrbit 22s linear infinite -4s reverse; }
+  .shard--3 { --r: 320px; --size: 9px;  animation: shardOrbit 24s linear infinite -8s; }
+  .shard--4 { --r: 400px; --size: 6px;  animation: shardOrbit 20s linear infinite -12s reverse; }
+  .shard--5 { --r: 280px; --size: 11px; animation: shardOrbit 26s linear infinite -6s; }
+  .shard--6 { --r: 380px; --size: 8px;  animation: shardOrbit 21s linear infinite -14s reverse; }
 
-  .shard { width: var(--size, 12px); height: var(--size, 12px); margin: calc(var(--size, 12px) / -2) 0 0 calc(var(--size, 12px) / -2); }
-  .shard polygon { fill: #E9D5FF; }
-  .shard--2 polygon,  .shard--6 polygon,  .shard--10 polygon { fill: #C084FC; }
-  .shard--3 polygon,  .shard--7 polygon,  .shard--11 polygon { fill: #FB923C; opacity: 0.9; }
-  .shard--4 polygon,  .shard--8 polygon,  .shard--12 polygon { fill: #22D3EE; opacity: 0.85; }
+  .shard {
+    width: var(--size, 8px);
+    height: var(--size, 8px);
+    margin: calc(var(--size, 8px) / -2) 0 0 calc(var(--size, 8px) / -2);
+  }
 
   @keyframes shardOrbit {
     0% {
-      transform: rotate(0deg) translateX(var(--r, 300px)) rotate(var(--tilt, 0deg)) rotateZ(0deg);
-      opacity: 0.2;
+      transform: rotate(0deg) translateX(var(--r, 300px)) rotateZ(0deg);
+      opacity: 0;
     }
-    10% { opacity: 0.95; }
-    90% { opacity: 0.95; }
+    15% { opacity: 0.85; }
+    85% { opacity: 0.85; }
     100% {
-      transform: rotate(360deg) translateX(var(--r, 300px)) rotate(calc(var(--tilt, 0deg) + 720deg)) rotateZ(360deg);
-      opacity: 0.2;
+      transform: rotate(360deg) translateX(var(--r, 300px)) rotateZ(720deg);
+      opacity: 0;
     }
   }
 
-  /* =============== VRAI MOT 3D Z-STACKED INTERACTIF =============== */
+  /* =============== VRAI MOT 3D Z-STACKED CHROME PREMIUM =============== */
   .b3d-stage {
     position: relative;
     display: inline-block;
-    font-family: 'Bowlby One', 'Inter', sans-serif;
-    font-weight: 400;
+    font-family: 'Archivo Black', 'Unbounded', 'Inter', sans-serif;
+    font-weight: 900;
     font-style: normal;
     font-size: clamp(92px, 19vw, 320px);
     line-height: 0.86;
     letter-spacing: -0.025em;
-    perspective: 1600px;
+    perspective: 1800px;
     z-index: 2;
     cursor: none;
     user-select: none;
-    /* Skew pour simuler italique style SMMIA */
-    transform: skewX(-9deg);
+    /* Skew italique style SMMIA + tilt perspective permanente */
+    transform: skewX(-10deg) perspective(1200px) rotateX(4deg);
   }
 
   .b3d-rotator {
@@ -885,55 +858,116 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     line-height: 0.86;
     transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
     will-change: transform;
-    animation: b3dIdle 5.5s ease-in-out infinite;
+    animation: b3dIdle 6s ease-in-out infinite;
     animation-delay: calc(var(--li) * 0.18s);
   }
   @keyframes b3dIdle {
     0%, 100% { transform: translateZ(0) translateY(0) rotateY(0deg) rotateX(0deg); }
-    25%      { transform: translateZ(14px) translateY(-3px) rotateY(5deg) rotateX(-2deg); }
-    50%      { transform: translateZ(20px) translateY(-6px) rotateY(0deg) rotateX(-3deg); }
-    75%      { transform: translateZ(14px) translateY(-3px) rotateY(-5deg) rotateX(-2deg); }
+    25%      { transform: translateZ(10px) translateY(-2px) rotateY(4deg) rotateX(-1.5deg); }
+    50%      { transform: translateZ(16px) translateY(-4px) rotateY(0deg) rotateX(-2.5deg); }
+    75%      { transform: translateZ(10px) translateY(-2px) rotateY(-4deg) rotateX(-1.5deg); }
   }
 
-  /* Chaque couche = copie de la lettre translatée en Z — 28 couches, -2.4px step = profondeur 67px */
+  /* Chaque couche = copie de la lettre translatée en Z — 28 couches, -2.2px step = 60px profondeur */
   .b3d-layer {
     display: inline-block;
-    transform: translateZ(calc(var(--d) * -2.4px));
-    /* Dégradé progressif vers le fond : chrome lavande → violet profond */
-    background: linear-gradient(160deg,
-      hsla(285, calc(20% + var(--d, 0) * 2.8%), calc(96% - var(--d, 0) * 2.6%), 1) 0%,
-      hsla(275, calc(55% + var(--d, 0) * 1.4%), calc(72% - var(--d, 0) * 2.1%), 1) 48%,
-      hsla(262, calc(60% + var(--d, 0) * 1.2%), calc(28% - var(--d, 0) * 0.8%), 1) 100%);
+    transform: translateZ(calc(var(--d) * -2.2px));
+    /* Couches internes : dégradé désaturé progressif vers le violet deep (fond de la ville) */
+    background: linear-gradient(165deg,
+      hsla(278, calc(22% + var(--d, 0) * 1.2%), calc(84% - var(--d, 0) * 2.4%), 1) 0%,
+      hsla(270, calc(48% - var(--d, 0) * 0.6%), calc(52% - var(--d, 0) * 1.6%), 1) 55%,
+      hsla(258, calc(50% - var(--d, 0) * 0.8%), calc(16% - var(--d, 0) * 0.4%), 1) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
   }
 
-  /* Première couche (d=0) = face avant — chrome violet lumineux avec glow */
+  /* Face avant (d=0) : CONIC-GRADIENT chrome curved reflection + glow 4-layer */
   .b3d-layer[style*="--d:0"] {
     position: relative;
-    background: linear-gradient(160deg,
-      #FFFFFF 0%,
-      #F3E8FF 18%,
-      #D8B4FE 42%,
-      #A855F7 72%,
-      #7C3AED 100%);
+    background:
+      conic-gradient(from 210deg at 35% 28%,
+        #FFFFFF 0deg,
+        #F3E8FF 40deg,
+        #DCC7FF 85deg,
+        #A855F7 150deg,
+        #6D28D9 220deg,
+        #4C1D95 280deg,
+        #C7A9FF 330deg,
+        #FFFFFF 360deg);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     filter:
-      drop-shadow(0 2px 0 rgba(216, 180, 254, 0.4))
-      drop-shadow(0 0 22px rgba(216, 180, 254, 0.7))
-      drop-shadow(0 0 44px rgba(168, 85, 247, 0.55))
-      drop-shadow(0 10px 28px rgba(88, 28, 135, 0.7));
+      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.5))
+      drop-shadow(0 3px 0 rgba(168, 85, 247, 0.4))
+      drop-shadow(0 0 28px rgba(216, 180, 254, 0.55))
+      drop-shadow(0 0 68px rgba(168, 85, 247, 0.45))
+      drop-shadow(0 18px 40px rgba(88, 28, 135, 0.75));
   }
+
   /* Toutes les autres couches en absolute par-dessus */
   .b3d-layer:not([style*="--d:0"]) {
     position: absolute;
     top: 0;
     left: 0;
     pointer-events: none;
+  }
+
+  /* Shine métallique balayage (signature Awwwards SOTD) — pseudo overlay par lettre */
+  .b3d-letter::after {
+    content: attr(data-letter);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 12;
+    pointer-events: none;
+    background: linear-gradient(115deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.0) 46%,
+      rgba(255, 255, 255, 0.85) 50%,
+      rgba(255, 255, 255, 0.0) 54%,
+      transparent 65%);
+    background-size: 320% 100%;
+    background-position: 180% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    mix-blend-mode: screen;
+    animation: shineSweep 5s ease-in-out infinite;
+    animation-delay: calc(var(--li, 0) * 0.08s);
+  }
+  @keyframes shineSweep {
+    0%        { background-position: 180% 0; opacity: 0; }
+    10%       { opacity: 1; }
+    50%       { opacity: 1; background-position: -180% 0; }
+    55%, 100% { background-position: -180% 0; opacity: 0; }
+  }
+
+  /* Chromatic aberration subtile via pseudos (RGB split 2px) */
+  .b3d-stage::before,
+  .b3d-stage::after {
+    content: 'BOOSTER';
+    position: absolute;
+    top: 0;
+    left: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    color: transparent;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.22;
+    mix-blend-mode: screen;
+  }
+  .b3d-stage::before {
+    transform: translateX(-3px);
+    -webkit-text-stroke: 1px rgba(255, 64, 160, 0.7);
+  }
+  .b3d-stage::after {
+    transform: translateX(3px);
+    -webkit-text-stroke: 1px rgba(64, 196, 255, 0.7);
   }
 
   /* Hover sur la scène = EXPLOSION : chaque lettre s'éjecte en rotateZ/translate */
@@ -1110,13 +1144,13 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     .scroll-indicator { bottom: 120px; }
     .scroll-line { height: 32px; }
     .marquee-track { font-size: 11px; gap: 20px; }
-    /* Réduire charge visuelle sur mobile : burst + 8 shards seulement */
-    .boost-burst { opacity: 0.28; }
-    .shard--9, .shard--10, .shard--11, .shard--12, .shard--13, .shard--14 { display: none; }
-    .shard--1 { --r: 160px; } .shard--2 { --r: 190px; } .shard--3 { --r: 170px; }
-    .shard--4 { --r: 220px; } .shard--5 { --r: 150px; } .shard--6 { --r: 210px; }
-    .shard--7 { --r: 180px; } .shard--8 { --r: 230px; }
+    /* Réduire charge visuelle sur mobile : 4 shards seulement, burst quasi invisible */
+    .boost-burst { opacity: 0.08; }
+    .shard--5, .shard--6 { display: none; }
+    .shard--1 { --r: 170px; } .shard--2 { --r: 210px; }
+    .shard--3 { --r: 180px; } .shard--4 { --r: 230px; }
     .b3d-stage { font-size: clamp(72px, 18vw, 120px); }
+    .b3d-stage::before, .b3d-stage::after { display: none; }
   }
   @media (max-width: 380px) {
     #hero { padding: 60px 14px 120px; }
