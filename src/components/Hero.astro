@@ -4,6 +4,73 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
 <section id="hero">
 
+  <!-- Star field (nébuleuse cosmos) -->
+  <svg class="hero-stars" aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+        <stop offset="50%" stop-color="#E9D5FF" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#E9D5FF" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <!-- 80 étoiles de taille/position pseudo-aléatoire -->
+    <g class="stars-small">
+      <circle cx="120" cy="80" r="0.8" fill="#fff"/><circle cx="320" cy="150" r="1" fill="#fff"/><circle cx="580" cy="60" r="0.6" fill="#fff"/><circle cx="820" cy="120" r="1.2" fill="#fff"/><circle cx="1100" cy="90" r="0.8" fill="#fff"/><circle cx="1320" cy="170" r="1" fill="#fff"/>
+      <circle cx="60" cy="280" r="0.7" fill="#fff"/><circle cx="250" cy="340" r="1" fill="#fff"/><circle cx="440" cy="260" r="0.8" fill="#fff"/><circle cx="920" cy="290" r="1.2" fill="#fff"/><circle cx="1180" cy="310" r="0.6" fill="#fff"/><circle cx="1380" cy="350" r="1" fill="#fff"/>
+      <circle cx="180" cy="480" r="0.9" fill="#fff"/><circle cx="380" cy="520" r="0.7" fill="#fff"/><circle cx="1060" cy="470" r="1.1" fill="#fff"/><circle cx="1260" cy="540" r="0.8" fill="#fff"/>
+      <circle cx="80" cy="660" r="1" fill="#fff"/><circle cx="280" cy="720" r="0.8" fill="#fff"/><circle cx="480" cy="680" r="0.6" fill="#fff"/><circle cx="720" cy="780" r="1" fill="#fff"/><circle cx="980" cy="720" r="0.9" fill="#fff"/><circle cx="1220" cy="760" r="1.2" fill="#fff"/><circle cx="1400" cy="700" r="0.7" fill="#fff"/>
+      <circle cx="160" cy="40" r="0.5" fill="#E9D5FF"/><circle cx="420" cy="210" r="0.5" fill="#E9D5FF"/><circle cx="680" cy="180" r="0.5" fill="#E9D5FF"/><circle cx="880" cy="420" r="0.5" fill="#E9D5FF"/><circle cx="1140" cy="220" r="0.5" fill="#E9D5FF"/>
+      <circle cx="340" cy="420" r="0.6" fill="#C084FC"/><circle cx="560" cy="390" r="0.5" fill="#C084FC"/><circle cx="760" cy="350" r="0.5" fill="#C084FC"/><circle cx="1020" cy="360" r="0.6" fill="#C084FC"/>
+      <circle cx="100" cy="580" r="0.4" fill="#fff"/><circle cx="600" cy="640" r="0.5" fill="#fff"/><circle cx="860" cy="620" r="0.4" fill="#fff"/><circle cx="1160" cy="640" r="0.5" fill="#fff"/>
+      <circle cx="240" cy="100" r="0.4" fill="#fff"/><circle cx="520" cy="280" r="0.4" fill="#fff"/><circle cx="780" cy="240" r="0.4" fill="#fff"/><circle cx="1000" cy="180" r="0.4" fill="#fff"/>
+    </g>
+    <!-- 8 étoiles brillantes avec twinkle -->
+    <g class="stars-bright">
+      <circle cx="220" cy="200" r="2.5" fill="url(#starGlow)" class="star-twinkle" style="--td:0s"/>
+      <circle cx="640" cy="120" r="3" fill="url(#starGlow)" class="star-twinkle" style="--td:0.8s"/>
+      <circle cx="1080" cy="250" r="2" fill="url(#starGlow)" class="star-twinkle" style="--td:1.5s"/>
+      <circle cx="140" cy="420" r="2.8" fill="url(#starGlow)" class="star-twinkle" style="--td:2.2s"/>
+      <circle cx="1280" cy="480" r="2.2" fill="url(#starGlow)" class="star-twinkle" style="--td:0.3s"/>
+      <circle cx="840" cy="560" r="2.5" fill="url(#starGlow)" class="star-twinkle" style="--td:1.1s"/>
+      <circle cx="420" cy="660" r="2" fill="url(#starGlow)" class="star-twinkle" style="--td:1.8s"/>
+      <circle cx="1160" cy="800" r="2.8" fill="url(#starGlow)" class="star-twinkle" style="--td:2.5s"/>
+    </g>
+  </svg>
+
+  <!-- Hyperspace streaks (lignes radiales qui jaillissent du centre — image 2) -->
+  <div class="hero-streaks" aria-hidden="true"></div>
+
+  <!-- Éclairs violets convergents (image 1 — purple lightning) -->
+  <svg class="hero-lightning" aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <filter id="lightningGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#7C3AED" stop-opacity="0"/>
+        <stop offset="20%" stop-color="#A855F7" stop-opacity="0.8"/>
+        <stop offset="50%" stop-color="#E9D5FF" stop-opacity="1"/>
+        <stop offset="80%" stop-color="#A855F7" stop-opacity="0.8"/>
+        <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- 8 éclairs qui convergent vers le centre (720, 450) -->
+    <g filter="url(#lightningGlow)" stroke="url(#boltGrad)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <polyline class="bolt" style="--bd:0s"    points="80,120 180,220 240,200 340,290 420,310 520,380 640,420 720,450"/>
+      <polyline class="bolt" style="--bd:0.3s"  points="1360,100 1240,180 1180,260 1040,310 940,350 820,410 720,450"/>
+      <polyline class="bolt" style="--bd:0.7s"  points="60,780 160,690 280,650 400,580 520,540 620,490 720,450"/>
+      <polyline class="bolt" style="--bd:1.1s"  points="1380,820 1260,720 1140,680 1020,600 900,560 810,490 720,450"/>
+      <polyline class="bolt" style="--bd:1.5s"  points="720,60 700,160 740,240 700,330 730,400 720,450"/>
+      <polyline class="bolt" style="--bd:1.9s"  points="720,840 740,750 700,660 740,560 710,500 720,450"/>
+      <polyline class="bolt" style="--bd:2.3s"  points="40,450 180,430 320,470 460,440 580,460 700,450 720,450"/>
+      <polyline class="bolt" style="--bd:2.7s"  points="1400,450 1260,430 1120,470 980,440 860,460 740,450 720,450"/>
+    </g>
+  </svg>
+
   <!-- Grille subtile -->
   <div class="hero-grid" aria-hidden="true"></div>
 
@@ -51,6 +118,27 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
         <!-- Reflet de sol (le mot se reflète comme posé sur un miroir avant de tomber) -->
         <span class="booster-reflection" aria-hidden="true">BOOSTER</span>
+
+        <!-- SPIDER-WEB CRACKS — apparaissent AVANT le shatter (ref Envato) -->
+        <svg class="booster-cracks" aria-hidden="true" viewBox="0 0 800 200" preserveAspectRatio="none">
+          <defs>
+            <filter id="crackGlow" x="-10%" y="-10%" width="120%" height="120%">
+              <feGaussianBlur stdDeviation="0.4" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g filter="url(#crackGlow)" stroke="#FFFFFF" stroke-width="1" fill="none" stroke-linecap="round">
+            <!-- Fissures principales radiantes depuis 3 points d'impact (barycentres des lettres) -->
+            <path class="crack c1" style="--cd:0s"    d="M200,100 L150,40 M200,100 L260,30 M200,100 L310,95 M200,100 L270,170 M200,100 L130,165 M200,100 L80,110 M200,100 L95,45"/>
+            <path class="crack c2" style="--cd:0.08s" d="M400,100 L380,30 M400,100 L470,50 M400,100 L510,110 M400,100 L450,175 M400,100 L340,170 M400,100 L290,115 M400,100 L320,40"/>
+            <path class="crack c3" style="--cd:0.16s" d="M600,100 L610,25 M600,100 L690,60 M600,100 L720,130 M600,100 L640,180 M600,100 L555,175 M600,100 L490,130 M600,100 L530,40"/>
+            <!-- Fissures secondaires (ramifications) -->
+            <path class="crack c4" style="--cd:0.24s" d="M150,40 L110,15 M260,30 L300,10 M310,95 L370,100 M130,165 L100,190 M470,50 L510,20 M450,175 L480,195 M690,60 L730,35 M720,130 L760,165"/>
+            <path class="crack c5" style="--cd:0.32s" d="M95,45 L50,30 M270,170 L260,195 M380,30 L360,5 M340,170 L320,190 M610,25 L600,5 M555,175 L560,195 M290,115 L240,140 M530,40 L490,15"/>
+            <!-- Petites fissures fines (détails) -->
+            <path class="crack c6" style="--cd:0.4s"  d="M175,85 L155,75 M215,85 L235,70 M375,90 L355,80 M425,85 L440,70 M580,85 L560,75 M625,85 L640,68 M180,120 L160,135 M230,120 L250,135 M380,125 L365,140 M425,120 L445,135 M575,125 L555,140 M625,125 L650,140"/>
+          </g>
+        </svg>
 
         <!-- Flash d'impact (positionné en BAS — comme un verre qui touche le sol) -->
         <span class="booster-impact" aria-hidden="true"></span>
@@ -189,7 +277,13 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   #hero {
     position: relative;
     width: 100%;
-    background: #000;
+    /* Fond nébuleuse cosmos violet (PAS NOIR) — inspiré image lightning + galaxy */
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 42%, rgba(168, 85, 247, 0.38) 0%, rgba(124, 58, 237, 0.18) 30%, transparent 60%),
+      radial-gradient(ellipse 60% 45% at 18% 82%, rgba(139, 92, 246, 0.32) 0%, transparent 55%),
+      radial-gradient(ellipse 55% 40% at 82% 18%, rgba(192, 132, 252, 0.28) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 35% at 88% 78%, rgba(124, 58, 237, 0.22) 0%, transparent 50%),
+      linear-gradient(180deg, #12062A 0%, #1B0A40 35%, #1E0B4C 55%, #140732 85%, #0E0527 100%);
     padding: 90px 24px 130px;
     display: flex;
     flex-direction: column;
@@ -226,6 +320,101 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     filter: blur(28px);
     z-index: 0;
     pointer-events: none;
+  }
+
+  /* ===== STAR FIELD (nébuleuse cosmos) ===== */
+  .hero-stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.95;
+  }
+  .hero-stars .stars-small circle {
+    animation: starPulse 3.5s ease-in-out infinite;
+  }
+  @keyframes starPulse {
+    0%, 100% { opacity: 0.35; }
+    50%      { opacity: 1;    }
+  }
+  .star-twinkle {
+    transform-origin: center;
+    animation: starTwinkle 4s ease-in-out infinite;
+    animation-delay: var(--td, 0s);
+  }
+  @keyframes starTwinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50%      { opacity: 1;   transform: scale(1.3); }
+  }
+
+  /* ===== HYPERSPACE STREAKS — lignes radiales depuis le centre (image 2) =====
+     Effet "warp speed" avec conic-gradient + animation de rotation + radial fade */
+  .hero-streaks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180%;
+    height: 180%;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 50%;
+    background:
+      /* radial lines via repeating-conic-gradient (streaks radiaux) */
+      repeating-conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 3deg,
+        rgba(216, 180, 254, 0.12) 3.5deg,
+        rgba(168, 85, 247, 0.18) 4deg,
+        transparent 4.5deg,
+        transparent 6deg,
+        rgba(192, 132, 252, 0.1) 6.3deg,
+        transparent 7deg
+      );
+    /* masque radial : opaque au centre, fade vers extérieur */
+    -webkit-mask-image: radial-gradient(ellipse at center, black 8%, rgba(0,0,0,0.6) 35%, transparent 70%);
+            mask-image: radial-gradient(ellipse at center, black 8%, rgba(0,0,0,0.6) 35%, transparent 70%);
+    mix-blend-mode: screen;
+    animation: streaksRotate 60s linear infinite;
+    opacity: 0.75;
+  }
+  @keyframes streaksRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg);    }
+    to   { transform: translate(-50%, -50%) rotate(360deg);  }
+  }
+
+  /* ===== ÉCLAIRS VIOLETS (purple lightning — image 1) =====
+     8 bolts polyline qui convergent vers le centre du mot BOOSTER.
+     Chaque bolt flicker avec stroke-dasharray (illusion de décharge) */
+  .hero-lightning {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0.85;
+  }
+  .hero-lightning .bolt {
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    filter: drop-shadow(0 0 4px #E9D5FF) drop-shadow(0 0 10px #A855F7);
+    animation: boltStrike 5.5s cubic-bezier(0.3, 0.1, 0.4, 1) infinite;
+    animation-delay: var(--bd, 0s);
+  }
+  @keyframes boltStrike {
+    0%       { stroke-dashoffset: 1400; opacity: 0;   stroke-width: 1.2; }
+    8%       { stroke-dashoffset: 0;    opacity: 1;   stroke-width: 2.5; }
+    12%      { stroke-dashoffset: 0;    opacity: 0.2; stroke-width: 1.8; }
+    16%      { stroke-dashoffset: 0;    opacity: 1;   stroke-width: 3;   }
+    20%      { stroke-dashoffset: 0;    opacity: 0.4; stroke-width: 2;   }
+    24%      { stroke-dashoffset: 0;    opacity: 1;   stroke-width: 2.5; }
+    30%      { stroke-dashoffset: 0;    opacity: 0;   stroke-width: 1.2; }
+    100%     { stroke-dashoffset: 1400; opacity: 0;   stroke-width: 1.2; }
   }
 
   /* ===== ORBES VIOLETTES FLOTTANTES (background scenery) ===== */
@@ -809,6 +998,48 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     72%           { opacity: 0.6; transform: translate(-50%, -50%) scale(1.5);  }
     85%           { opacity: 0.2; transform: translate(-50%, -50%) scale(0.95); }
     92%           { opacity: 1;   transform: translate(-50%, -50%) scale(1.1);  }
+  }
+
+  /* ===== SPIDER-WEB CRACKS (ref Envato) — fissures radiales pré-shatter =====
+     Le SVG est positionné en absolute par-dessus le mot. Les paths ont un
+     stroke-dasharray élevé pour qu'ils se dessinent progressivement de 58% à 62% */
+  .booster-cracks {
+    position: absolute;
+    top: -4%;
+    left: -2%;
+    width: 104%;
+    height: 108%;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
+            drop-shadow(0 0 10px rgba(216, 180, 254, 0.85))
+            drop-shadow(0 0 22px rgba(168, 85, 247, 0.6));
+    animation: cracksReveal 10s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  }
+  @keyframes cracksReveal {
+    0%, 57% { opacity: 0; }
+    58%     { opacity: 0.4; }
+    60%     { opacity: 0.9; }
+    61%     { opacity: 1;   }
+    /* BANG 62% : les cracks disparaissent, les shards prennent le relais */
+    62%     { opacity: 0.7; }
+    63%     { opacity: 0;   }
+    100%    { opacity: 0;   }
+  }
+  .booster-cracks .crack {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: crackGrow 10s cubic-bezier(0.3, 0, 0.2, 1) infinite;
+    animation-delay: var(--cd, 0s);
+  }
+  @keyframes crackGrow {
+    0%, 56% { stroke-dashoffset: 300; }
+    58%     { stroke-dashoffset: 240; }
+    60%     { stroke-dashoffset: 60;  }
+    62%     { stroke-dashoffset: 0;   }
+    100%    { stroke-dashoffset: 300; }
   }
 
   /* ===== REFLET DE SOL — le mot se reflète en dessous (miroir cristal) ===== */
