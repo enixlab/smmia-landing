@@ -4,14 +4,36 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
 <section id="hero">
 
-  <!-- Galaxy starfield (layers) -->
+  <!-- Galaxy : atmosphère violet deep + planète + starfield + nébuleuses -->
   <div class="hero-galaxy" aria-hidden="true">
+    <div class="galaxy-deep"></div>
     <div class="galaxy-stars galaxy-stars--far"></div>
     <div class="galaxy-stars galaxy-stars--mid"></div>
     <div class="galaxy-stars galaxy-stars--near"></div>
     <div class="galaxy-nebula galaxy-nebula--a"></div>
     <div class="galaxy-nebula galaxy-nebula--b"></div>
     <div class="galaxy-nebula galaxy-nebula--c"></div>
+
+    <!-- Planète violette avec anneaux, atmosphère et terminator -->
+    <div class="galaxy-planet">
+      <div class="planet-glow-outer"></div>
+      <div class="planet-ring planet-ring--back"></div>
+      <div class="planet-sphere">
+        <div class="planet-atmosphere"></div>
+        <div class="planet-terminator"></div>
+        <div class="planet-surface"></div>
+        <div class="planet-shine"></div>
+      </div>
+      <div class="planet-ring planet-ring--front"></div>
+      <div class="planet-moon"></div>
+    </div>
+
+    <!-- Mini planète 2 (lointaine, droite haute) -->
+    <div class="galaxy-planet-mini">
+      <div class="planet-mini-glow"></div>
+      <div class="planet-mini-body"></div>
+    </div>
+
     <span class="galaxy-shooting galaxy-shooting--1"></span>
     <span class="galaxy-shooting galaxy-shooting--2"></span>
     <span class="galaxy-shooting galaxy-shooting--3"></span>
@@ -50,33 +72,54 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       </span>
       <span class="tagline-line tagline-boost-line reveal" style="--d:0.4s">
         <span class="boost-word" aria-label="Boostée">
-          <!-- Rayons d'explosion SVG -->
+          <!-- Onde de choc (shockwave violette) -->
+          <span class="boost-shockwave boost-shockwave--1" aria-hidden="true"></span>
+          <span class="boost-shockwave boost-shockwave--2" aria-hidden="true"></span>
+
+          <!-- Rayons d'explosion SVG — full violet -->
           <svg class="boost-rays" viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
             <defs>
               <linearGradient id="rayG" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#FCD34D"/>
-                <stop offset="35%" stop-color="#FB923C"/>
-                <stop offset="70%" stop-color="#A855F7"/>
-                <stop offset="100%" stop-color="#22D3EE"/>
+                <stop offset="0%"  stop-color="#F3E8FF"/>
+                <stop offset="25%" stop-color="#D8B4FE"/>
+                <stop offset="55%" stop-color="#A855F7"/>
+                <stop offset="100%" stop-color="#6D28D9"/>
               </linearGradient>
+              <radialGradient id="rayCore" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0%"  stop-color="#FFFFFF" stop-opacity="0.95"/>
+                <stop offset="40%" stop-color="#E9D5FF" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#A855F7" stop-opacity="0"/>
+              </radialGradient>
             </defs>
-            <g class="boost-rays-group" stroke="url(#rayG)" stroke-width="2.2" stroke-linecap="round" opacity="0.85">
-              <line x1="-92" y1="0"   x2="-44" y2="0"   />
-              <line x1="92"  y1="0"   x2="44"  y2="0"   />
-              <line x1="0"   y1="-92" x2="0"   y2="-44" />
-              <line x1="0"   y1="92"  x2="0"   y2="44"  />
-              <line x1="-66" y1="-66" x2="-32" y2="-32" />
-              <line x1="66"  y1="66"  x2="32"  y2="32"  />
-              <line x1="-66" y1="66"  x2="-32" y2="32"  />
-              <line x1="66"  y1="-66" x2="32"  y2="-32" />
-              <line x1="-82" y1="-34" x2="-42" y2="-18" stroke-width="1.4"/>
-              <line x1="82"  y1="34"  x2="42"  y2="18"  stroke-width="1.4"/>
-              <line x1="-34" y1="-82" x2="-18" y2="-42" stroke-width="1.4"/>
-              <line x1="34"  y1="82"  x2="18"  y2="42"  stroke-width="1.4"/>
-              <line x1="-82" y1="34"  x2="-42" y2="18"  stroke-width="1.4"/>
-              <line x1="82"  y1="-34" x2="42"  y2="-18" stroke-width="1.4"/>
-              <line x1="-34" y1="82"  x2="-18" y2="42"  stroke-width="1.4"/>
-              <line x1="34"  y1="-82" x2="18"  y2="-42" stroke-width="1.4"/>
+            <!-- Core glow -->
+            <circle cx="0" cy="0" r="34" fill="url(#rayCore)" class="boost-core-glow"/>
+            <g class="boost-rays-group" stroke="url(#rayG)" stroke-width="2.4" stroke-linecap="round" opacity="0.9">
+              <line x1="-96" y1="0"   x2="-40" y2="0"   />
+              <line x1="96"  y1="0"   x2="40"  y2="0"   />
+              <line x1="0"   y1="-96" x2="0"   y2="-40" />
+              <line x1="0"   y1="96"  x2="0"   y2="40"  />
+              <line x1="-68" y1="-68" x2="-30" y2="-30" />
+              <line x1="68"  y1="68"  x2="30"  y2="30"  />
+              <line x1="-68" y1="68"  x2="-30" y2="30"  />
+              <line x1="68"  y1="-68" x2="30"  y2="-30" />
+              <line x1="-86" y1="-36" x2="-40" y2="-16" stroke-width="1.4"/>
+              <line x1="86"  y1="36"  x2="40"  y2="16"  stroke-width="1.4"/>
+              <line x1="-36" y1="-86" x2="-16" y2="-40" stroke-width="1.4"/>
+              <line x1="36"  y1="86"  x2="16"  y2="40"  stroke-width="1.4"/>
+              <line x1="-86" y1="36"  x2="-40" y2="16"  stroke-width="1.4"/>
+              <line x1="86"  y1="-36" x2="40"  y2="-16" stroke-width="1.4"/>
+              <line x1="-36" y1="86"  x2="-16" y2="40"  stroke-width="1.4"/>
+              <line x1="36"  y1="-86" x2="16"  y2="-40" stroke-width="1.4"/>
+            </g>
+            <g class="boost-rays-group boost-rays-group--counter" stroke="#D8B4FE" stroke-width="1" stroke-linecap="round" opacity="0.55">
+              <line x1="-76" y1="-20" x2="-38" y2="-10" />
+              <line x1="76"  y1="20"  x2="38"  y2="10"  />
+              <line x1="-20" y1="-76" x2="-10" y2="-38" />
+              <line x1="20"  y1="76"  x2="10"  y2="38"  />
+              <line x1="-76" y1="20"  x2="-38" y2="10"  />
+              <line x1="76"  y1="-20" x2="38"  y2="-10" />
+              <line x1="-20" y1="76"  x2="-10" y2="38"  />
+              <line x1="20"  y1="-76" x2="10"  y2="-38" />
             </g>
           </svg>
           <!-- Particules d'explosion -->
@@ -120,7 +163,8 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   #hero {
     position: relative;
     width: 100%;
-    background: #000;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% 0%, #1a0730 0%, #0d0320 40%, #06010F 75%, #000 100%);
     padding: 90px 24px 130px;
     display: flex;
     flex-direction: column;
@@ -128,8 +172,25 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     justify-content: center;
     overflow: hidden;
     text-align: center;
-    min-height: 800px;
+    min-height: 860px;
     perspective: 1200px;
+  }
+
+  /* Atmosphère deep space — voile radial qui crée la profondeur */
+  .galaxy-deep {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 40%, rgba(124, 58, 237, 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 70% at 20% 80%, rgba(88, 28, 135, 0.22) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 60% at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+    animation: deepShift 18s ease-in-out infinite alternate;
+  }
+  @keyframes deepShift {
+    from { transform: scale(1) translate(0, 0); }
+    to   { transform: scale(1.08) translate(-2%, 1%); }
   }
 
   .hero-inner {
@@ -144,27 +205,27 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     transform-style: preserve-3d;
   }
 
-  /* Spotlight pulsant multi-couleur derrière la tagline */
+  /* Spotlight violet pulsant derrière la tagline — full violet aurora */
   .hero-spotlight {
     position: absolute;
     top: 48%;
     left: 50%;
-    width: 78%;
-    max-width: 1100px;
+    width: 82%;
+    max-width: 1200px;
     aspect-ratio: 3/1;
     transform: translate(-50%, -50%);
     background:
-      radial-gradient(ellipse at 30% 50%, rgba(251, 146, 60, 0.22) 0%, transparent 55%),
-      radial-gradient(ellipse at center, rgba(168, 85, 247, 0.35) 0%, rgba(124, 58, 237, 0.18) 40%, transparent 72%),
-      radial-gradient(ellipse at 72% 50%, rgba(34, 211, 238, 0.22) 0%, transparent 55%);
-    filter: blur(32px);
+      radial-gradient(ellipse at 30% 50%, rgba(192, 132, 252, 0.32) 0%, transparent 55%),
+      radial-gradient(ellipse at center, rgba(168, 85, 247, 0.55) 0%, rgba(124, 58, 237, 0.28) 38%, transparent 72%),
+      radial-gradient(ellipse at 72% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 55%);
+    filter: blur(36px);
     z-index: 0;
     pointer-events: none;
-    animation: spotlightBreath 7s ease-in-out infinite;
+    animation: spotlightBreath 6s ease-in-out infinite;
   }
   @keyframes spotlightBreath {
     0%, 100% { opacity: 0.85; transform: translate(-50%, -50%) scale(1); }
-    50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.06); }
+    50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
   }
 
   /* ===================== GALAXIE ACTIVE ===================== */
@@ -224,25 +285,25 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     background: #fff;
     box-shadow:
       180px 120px rgba(255,255,255,1),
-      340px 260px rgba(34,211,238,0.9),
+      340px 260px rgba(216,180,254,0.95),
       520px 80px rgba(255,255,255,0.85),
-      680px 360px rgba(251,146,60,0.8),
+      680px 360px rgba(192,132,252,0.9),
       840px 190px rgba(255,255,255,0.9),
-      1020px 80px rgba(252,211,77,0.85),
+      1020px 80px rgba(233,213,255,0.95),
       1200px 320px rgba(255,255,255,0.8),
-      1380px 220px rgba(34,211,238,0.85),
+      1380px 220px rgba(216,180,254,0.9),
       1560px 140px rgba(255,255,255,0.9),
-      1720px 300px rgba(251,146,60,0.8),
+      1720px 300px rgba(192,132,252,0.85),
       140px 480px rgba(255,255,255,0.85),
-      320px 560px rgba(34,211,238,0.9),
+      320px 560px rgba(216,180,254,0.95),
       500px 620px rgba(255,255,255,0.8),
-      680px 480px rgba(252,211,77,0.9),
+      680px 480px rgba(233,213,255,0.95),
       860px 600px rgba(255,255,255,0.85),
-      1040px 520px rgba(251,146,60,0.8),
+      1040px 520px rgba(192,132,252,0.85),
       1220px 640px rgba(255,255,255,0.9),
-      1400px 560px rgba(34,211,238,0.85),
+      1400px 560px rgba(216,180,254,0.9),
       1580px 620px rgba(255,255,255,0.8),
-      1760px 500px rgba(252,211,77,0.9);
+      1760px 500px rgba(233,213,255,0.95);
     animation: starsTwinkle 3s ease-in-out infinite 0.5s, starsDriftMid 80s linear infinite;
   }
   .galaxy-stars--near::before {
@@ -251,17 +312,17 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     box-shadow:
       240px 100px rgba(255,255,255,1),
       480px 240px rgba(216,180,254,1),
-      760px 160px rgba(34,211,238,0.95),
+      760px 160px rgba(192,132,252,0.95),
       1040px 300px rgba(255,255,255,1),
-      1320px 180px rgba(251,146,60,0.95),
+      1320px 180px rgba(233,213,255,0.95),
       1620px 240px rgba(255,255,255,1),
-      200px 440px rgba(252,211,77,1),
+      200px 440px rgba(192,132,252,1),
       460px 560px rgba(255,255,255,1),
       760px 620px rgba(216,180,254,0.95),
-      1060px 480px rgba(34,211,238,1),
+      1060px 480px rgba(233,213,255,1),
       1360px 580px rgba(255,255,255,1),
-      1660px 420px rgba(251,146,60,0.9);
-    filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+      1660px 420px rgba(192,132,252,0.9);
+    filter: drop-shadow(0 0 6px rgba(216,180,254,0.7));
     animation: starsTwinkle 2.2s ease-in-out infinite 1s, starsDriftNear 60s linear infinite;
   }
 
@@ -282,31 +343,31 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     to   { transform: translate3d(-140px, 50px, 0); }
   }
 
-  /* Nébuleuses colorées qui bougent lentement */
+  /* Nébuleuses violettes qui bougent lentement — full violet atmosphere */
   .galaxy-nebula {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(90px);
     mix-blend-mode: screen;
-    opacity: 0.55;
+    opacity: 0.7;
     will-change: transform, opacity;
   }
   .galaxy-nebula--a {
-    width: 520px; height: 520px;
-    top: -8%; left: -6%;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.7) 0%, rgba(124, 58, 237, 0.3) 45%, transparent 70%);
+    width: 580px; height: 580px;
+    top: -10%; left: -8%;
+    background: radial-gradient(circle, rgba(192, 132, 252, 0.75) 0%, rgba(124, 58, 237, 0.35) 45%, transparent 70%);
     animation: nebulaFloatA 22s ease-in-out infinite;
   }
   .galaxy-nebula--b {
-    width: 460px; height: 460px;
-    top: 55%; right: -8%;
-    background: radial-gradient(circle, rgba(34, 211, 238, 0.6) 0%, rgba(14, 165, 233, 0.25) 45%, transparent 70%);
+    width: 520px; height: 520px;
+    top: 50%; right: -10%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.7) 0%, rgba(88, 28, 135, 0.3) 45%, transparent 70%);
     animation: nebulaFloatB 28s ease-in-out infinite;
   }
   .galaxy-nebula--c {
-    width: 380px; height: 380px;
-    bottom: -6%; left: 30%;
-    background: radial-gradient(circle, rgba(251, 146, 60, 0.5) 0%, rgba(252, 211, 77, 0.2) 45%, transparent 70%);
+    width: 440px; height: 440px;
+    bottom: -8%; left: 28%;
+    background: radial-gradient(circle, rgba(147, 51, 234, 0.6) 0%, rgba(109, 40, 217, 0.25) 45%, transparent 70%);
     animation: nebulaFloatC 26s ease-in-out infinite;
   }
   @keyframes nebulaFloatA {
@@ -362,6 +423,200 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     100% { transform: translate3d(130vw, 24vh, 0); opacity: 0; }
   }
 
+  /* ============ PLANÈTE VIOLETTE PREMIUM ============ */
+  .galaxy-planet {
+    position: absolute;
+    bottom: -14%;
+    left: 8%;
+    width: 380px;
+    height: 380px;
+    z-index: 1;
+    pointer-events: none;
+    animation: planetFloat 14s ease-in-out infinite;
+    filter: drop-shadow(0 30px 80px rgba(124, 58, 237, 0.45));
+  }
+  @keyframes planetFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-18px) rotate(0.6deg); }
+  }
+
+  /* Halo atmosphérique externe */
+  .planet-glow-outer {
+    position: absolute;
+    inset: -22%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(192, 132, 252, 0.3) 0%, rgba(168, 85, 247, 0.15) 40%, transparent 70%);
+    filter: blur(28px);
+    animation: planetGlowPulse 5s ease-in-out infinite;
+  }
+  @keyframes planetGlowPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50%      { opacity: 1;   transform: scale(1.08); }
+  }
+
+  /* Sphère violette avec lighting réaliste */
+  .planet-sphere {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 32% 30%,
+        #E9D5FF 0%,
+        #C084FC 8%,
+        #A855F7 22%,
+        #7C3AED 45%,
+        #5B21B6 68%,
+        #2E1065 88%,
+        #0a0418 100%);
+    box-shadow:
+      inset -24px -24px 80px rgba(10, 4, 24, 0.85),
+      inset 18px 18px 50px rgba(216, 180, 254, 0.3),
+      inset 0 0 0 1px rgba(216, 180, 254, 0.2);
+  }
+
+  /* Surface : bandes de "gaz" (style Jupiter violet) */
+  .planet-surface {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+      repeating-linear-gradient(
+        8deg,
+        transparent 0px,
+        transparent 16px,
+        rgba(76, 29, 149, 0.22) 16px,
+        rgba(76, 29, 149, 0.22) 22px,
+        transparent 22px,
+        transparent 38px,
+        rgba(216, 180, 254, 0.12) 38px,
+        rgba(216, 180, 254, 0.12) 43px
+      );
+    mix-blend-mode: overlay;
+    opacity: 0.85;
+    animation: surfaceDrift 22s linear infinite;
+  }
+  @keyframes surfaceDrift {
+    from { background-position: 0 0; }
+    to   { background-position: 0 200px; }
+  }
+
+  /* Atmosphère violet lumineuse au limbe */
+  .planet-atmosphere {
+    position: absolute;
+    inset: -2%;
+    border-radius: 50%;
+    box-shadow:
+      inset 0 0 24px rgba(216, 180, 254, 0.55),
+      0 0 40px rgba(168, 85, 247, 0.35);
+    pointer-events: none;
+  }
+
+  /* Terminator (ligne jour/nuit) */
+  .planet-terminator {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 72% 62%, transparent 0%, transparent 30%, rgba(0, 0, 0, 0.55) 80%);
+    pointer-events: none;
+  }
+
+  /* Specular highlight */
+  .planet-shine {
+    position: absolute;
+    top: 14%;
+    left: 20%;
+    width: 40%;
+    height: 32%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.45) 0%, rgba(233, 213, 255, 0.15) 40%, transparent 70%);
+    filter: blur(12px);
+    pointer-events: none;
+    animation: shineBreath 6s ease-in-out infinite;
+  }
+  @keyframes shineBreath {
+    0%, 100% { opacity: 0.8; }
+    50%      { opacity: 1; }
+  }
+
+  /* Anneaux en perspective */
+  .planet-ring {
+    position: absolute;
+    left: -32%;
+    right: -32%;
+    top: 44%;
+    height: 46px;
+    border-radius: 50%;
+    transform: rotateX(76deg) rotateZ(-14deg);
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at center,
+        transparent 0%,
+        transparent 38%,
+        rgba(216, 180, 254, 0.7) 44%,
+        rgba(168, 85, 247, 0.6) 52%,
+        rgba(124, 58, 237, 0.5) 62%,
+        rgba(88, 28, 135, 0.35) 72%,
+        transparent 82%);
+    filter: drop-shadow(0 0 14px rgba(168, 85, 247, 0.45));
+  }
+  .planet-ring--back {
+    clip-path: inset(0 0 50% 0);
+    z-index: 0;
+  }
+  .planet-ring--front {
+    clip-path: inset(50% 0 0 0);
+    z-index: 3;
+  }
+
+  /* Lune en orbite */
+  .planet-moon {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    background: radial-gradient(circle at 30% 30%, #F3E8FF 0%, #C084FC 40%, #6D28D9 100%);
+    box-shadow: 0 0 18px rgba(192, 132, 252, 0.7), inset -4px -4px 8px rgba(0, 0, 0, 0.5);
+    transform-origin: -160px -20px;
+    animation: moonOrbit 16s linear infinite;
+  }
+  @keyframes moonOrbit {
+    from { transform: translate(-50%, -50%) rotate(0deg) translate(220px) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg) translate(220px) rotate(-360deg); }
+  }
+
+  /* Mini planète 2 (coin haut droit) */
+  .galaxy-planet-mini {
+    position: absolute;
+    top: 12%;
+    right: 6%;
+    width: 90px;
+    height: 90px;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.85;
+    animation: planetFloat 18s ease-in-out infinite 3s;
+  }
+  .planet-mini-glow {
+    position: absolute;
+    inset: -40%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(192, 132, 252, 0.35) 0%, transparent 70%);
+    filter: blur(18px);
+  }
+  .planet-mini-body {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 30%, #D8B4FE 0%, #A855F7 30%, #6D28D9 65%, #2E1065 100%);
+    box-shadow:
+      inset -8px -8px 20px rgba(0, 0, 0, 0.7),
+      inset 4px 4px 10px rgba(216, 180, 254, 0.3),
+      0 0 20px rgba(168, 85, 247, 0.4);
+  }
+
   /* =============== TAGLINE — multilignes =============== */
   .tagline-line {
     display: block;
@@ -406,23 +661,60 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     z-index: 1;
   }
 
-  /* Rayons d'explosion */
+  /* Shockwaves violettes concentriques */
+  .boost-shockwave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(216, 180, 254, 0.8);
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    box-shadow:
+      0 0 20px rgba(168, 85, 247, 0.6),
+      inset 0 0 16px rgba(216, 180, 254, 0.45);
+  }
+  .boost-shockwave--1 { animation: shockwave 3s ease-out infinite; }
+  .boost-shockwave--2 { animation: shockwave 3s ease-out 1.5s infinite; }
+  @keyframes shockwave {
+    0%   { transform: translate(-50%, -50%) scale(0);   opacity: 0.85; border-width: 3px; }
+    70%  { opacity: 0.25; border-width: 1.5px; }
+    100% { transform: translate(-50%, -50%) scale(14);  opacity: 0;    border-width: 1px; }
+  }
+
+  /* Rayons d'explosion — full violet */
   .boost-rays {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 160%;
-    height: 320%;
+    width: 200%;
+    height: 380%;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 0;
     overflow: visible;
-    filter: drop-shadow(0 0 14px rgba(168, 85, 247, 0.65))
-            drop-shadow(0 0 28px rgba(251, 146, 60, 0.35));
+    filter: drop-shadow(0 0 14px rgba(168, 85, 247, 0.8))
+            drop-shadow(0 0 32px rgba(124, 58, 237, 0.55))
+            drop-shadow(0 0 56px rgba(88, 28, 135, 0.35));
+  }
+  .boost-core-glow {
+    animation: corePulse 2.4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes corePulse {
+    0%, 100% { opacity: 0.9; transform: scale(1); }
+    50%      { opacity: 1;   transform: scale(1.18); }
   }
   .boost-rays-group {
     transform-origin: center;
     animation: raysPulse 3.4s ease-in-out infinite, raysSpin 38s linear infinite;
+  }
+  .boost-rays-group--counter {
+    animation: raysPulse 2.8s ease-in-out infinite 0.6s, raysSpin 52s linear infinite reverse;
   }
   @keyframes raysPulse {
     0%, 100% { opacity: 0.55; transform: scale(1); }
@@ -433,11 +725,11 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     to   { transform: rotate(360deg); }
   }
 
-  /* Particules d'explosion */
+  /* Particules d'explosion — full violet + blanc */
   .boost-particle {
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     top: 50%;
     left: 50%;
@@ -445,19 +737,19 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     z-index: 0;
     opacity: 0;
   }
-  .boost-particle--1 { background: #FCD34D; box-shadow: 0 0 12px 2px rgba(252, 211, 77, 0.85); animation: particleBurst 3s ease-out 0.4s infinite;  --px: -240px; --py: -110px; }
-  .boost-particle--2 { background: #FB923C; box-shadow: 0 0 12px 2px rgba(251, 146, 60, 0.85); animation: particleBurst 3.2s ease-out 0.9s infinite; --px:  240px; --py: -130px; }
-  .boost-particle--3 { background: #A855F7; box-shadow: 0 0 12px 2px rgba(168, 85, 247, 0.85); animation: particleBurst 3.6s ease-out 0.2s infinite; --px: -280px; --py:  120px; }
-  .boost-particle--4 { background: #22D3EE; box-shadow: 0 0 12px 2px rgba(34, 211, 238, 0.85); animation: particleBurst 3.4s ease-out 1.3s infinite; --px:  280px; --py:  110px; }
-  .boost-particle--5 { background: #FFFFFF; box-shadow: 0 0 14px 2px rgba(255, 255, 255, 0.9);  animation: particleBurst 3.8s ease-out 0.7s infinite; --px:  -60px; --py: -160px; }
-  .boost-particle--6 { background: #FFFFFF; box-shadow: 0 0 14px 2px rgba(255, 255, 255, 0.9);  animation: particleBurst 3s ease-out 1.7s infinite;   --px:   60px; --py:  160px; }
+  .boost-particle--1 { background: #D8B4FE; box-shadow: 0 0 14px 3px rgba(216, 180, 254, 0.9); animation: particleBurst 3s ease-out 0.4s infinite;  --px: -240px; --py: -110px; }
+  .boost-particle--2 { background: #C084FC; box-shadow: 0 0 14px 3px rgba(192, 132, 252, 0.9); animation: particleBurst 3.2s ease-out 0.9s infinite; --px:  240px; --py: -130px; }
+  .boost-particle--3 { background: #A855F7; box-shadow: 0 0 14px 3px rgba(168, 85, 247, 0.9); animation: particleBurst 3.6s ease-out 0.2s infinite; --px: -280px; --py:  120px; }
+  .boost-particle--4 { background: #E9D5FF; box-shadow: 0 0 14px 3px rgba(233, 213, 255, 0.9); animation: particleBurst 3.4s ease-out 1.3s infinite; --px:  280px; --py:  110px; }
+  .boost-particle--5 { background: #FFFFFF; box-shadow: 0 0 16px 3px rgba(255, 255, 255, 0.95), 0 0 32px 6px rgba(216, 180, 254, 0.6); animation: particleBurst 3.8s ease-out 0.7s infinite; --px:  -60px; --py: -180px; }
+  .boost-particle--6 { background: #FFFFFF; box-shadow: 0 0 16px 3px rgba(255, 255, 255, 0.95), 0 0 32px 6px rgba(192, 132, 252, 0.6); animation: particleBurst 3s ease-out 1.7s infinite;   --px:   60px; --py:  180px; }
   @keyframes particleBurst {
     0%   { transform: translate(-50%, -50%) scale(0.4); opacity: 0; }
     15%  { opacity: 1; }
     100% { transform: translate(calc(-50% + var(--px)), calc(-50% + var(--py))) scale(0.2); opacity: 0; }
   }
 
-  /* Le mot BOOSTÉE */
+  /* Le mot BOOSTÉE — gradient full violet + chrome */
   .boost-word-text {
     position: relative;
     display: inline-block;
@@ -468,20 +760,21 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     line-height: 1;
     letter-spacing: -0.045em;
     background: linear-gradient(135deg,
-      #FCD34D 0%,
-      #FB923C 25%,
+      #FFFFFF 0%,
+      #F3E8FF 15%,
+      #D8B4FE 32%,
       #A855F7 55%,
       #7C3AED 78%,
-      #22D3EE 100%);
-    background-size: 200% 200%;
+      #4C1D95 100%);
+    background-size: 220% 220%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
     filter:
-      drop-shadow(0 0 18px rgba(251, 146, 60, 0.55))
-      drop-shadow(0 0 36px rgba(168, 85, 247, 0.5))
-      drop-shadow(0 0 56px rgba(34, 211, 238, 0.35));
+      drop-shadow(0 0 22px rgba(216, 180, 254, 0.7))
+      drop-shadow(0 0 42px rgba(168, 85, 247, 0.65))
+      drop-shadow(0 0 72px rgba(124, 58, 237, 0.45));
     animation: boostGradientShift 6s ease-in-out infinite, boostPulseScale 3.2s ease-in-out infinite;
     z-index: 2;
     transform-origin: center;
@@ -492,7 +785,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     inset: 0;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.28);
+    -webkit-text-stroke: 1.5px rgba(216, 180, 254, 0.35);
     z-index: -1;
     pointer-events: none;
   }
@@ -502,13 +795,13 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   }
   @keyframes boostPulseScale {
     0%, 100% { transform: scale(1); filter:
-                drop-shadow(0 0 18px rgba(251, 146, 60, 0.55))
-                drop-shadow(0 0 36px rgba(168, 85, 247, 0.5))
-                drop-shadow(0 0 56px rgba(34, 211, 238, 0.35)); }
-    50%      { transform: scale(1.035); filter:
-                drop-shadow(0 0 26px rgba(251, 146, 60, 0.8))
-                drop-shadow(0 0 52px rgba(168, 85, 247, 0.75))
-                drop-shadow(0 0 80px rgba(34, 211, 238, 0.55)); }
+                drop-shadow(0 0 22px rgba(216, 180, 254, 0.7))
+                drop-shadow(0 0 42px rgba(168, 85, 247, 0.65))
+                drop-shadow(0 0 72px rgba(124, 58, 237, 0.45)); }
+    50%      { transform: scale(1.04); filter:
+                drop-shadow(0 0 32px rgba(233, 213, 255, 0.9))
+                drop-shadow(0 0 60px rgba(168, 85, 247, 0.9))
+                drop-shadow(0 0 100px rgba(124, 58, 237, 0.65)); }
   }
 
   :global([data-theme="light"]) .boost-word-text::before {
@@ -890,25 +1183,30 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   /* ===== TABLETTE ===== */
   @media (max-width: 1024px) {
-    #hero { padding: 70px 20px 110px; min-height: 720px; }
+    #hero { padding: 70px 20px 110px; min-height: 780px; }
     .hero-inner { gap: 24px; }
     .brand-smmia { height: 95px; }
     .boost-word-text { font-size: clamp(56px, 11vw, 110px); }
-    .boost-rays { width: 170%; height: 340%; }
+    .boost-rays { width: 220%; height: 380%; }
+    .galaxy-planet { width: 280px; height: 280px; bottom: -10%; left: 2%; }
+    .galaxy-planet-mini { width: 70px; height: 70px; }
   }
 
   /* ===== MOBILE ===== */
   @media (max-width: 640px) {
-    #hero { padding: 60px 16px 100px; min-height: 620px; }
+    #hero { padding: 60px 16px 100px; min-height: 680px; }
     .hero-inner { gap: 20px; }
     .brand-smmia { height: 72px; }
     .hero-cta-primary { padding: 15px 26px; font-size: 14px; }
     .eyebrow-text { font-size: 11px; letter-spacing: 0.14em; }
     .tagline-top, .tagline-bottom { font-size: clamp(18px, 5vw, 22px); }
     .boost-word-text { font-size: clamp(52px, 15vw, 78px); }
-    .boost-rays { width: 200%; height: 360%; }
-    .boost-particle { width: 4px; height: 4px; }
+    .boost-rays { width: 240%; height: 420%; }
+    .boost-particle { width: 5px; height: 5px; }
     .galaxy-nebula { filter: blur(60px); }
+    .galaxy-planet { width: 200px; height: 200px; bottom: -6%; left: -6%; opacity: 0.85; }
+    .galaxy-planet-mini { width: 56px; height: 56px; top: 9%; right: 4%; }
+    .planet-moon { display: none; }
   }
 
   /* ===== PETIT MOBILE ===== */
@@ -916,6 +1214,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     #hero { padding: 50px 14px 90px; }
     .brand-smmia { height: 58px; }
     .boost-word-text { font-size: clamp(44px, 14vw, 60px); }
+    .galaxy-planet { width: 170px; height: 170px; }
   }
 
   /* reduce motion */
@@ -923,12 +1222,16 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     .hero-brand, .reveal,
     .galaxy-stars::before, .galaxy-nebula, .galaxy-shooting,
     .boost-rays-group, .boost-particle, .boost-word-text,
+    .boost-shockwave, .boost-core-glow, .galaxy-deep,
+    .galaxy-planet, .planet-moon, .planet-shine,
+    .galaxy-planet-mini, .planet-surface,
     .hero-spotlight {
       animation: none;
       opacity: 1;
       transform: none;
     }
-    .boost-particle { display: none; }
+    .boost-particle, .boost-shockwave { display: none; }
+    .planet-moon { display: none; }
   }
 </style>
 
