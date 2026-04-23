@@ -1,1629 +1,211 @@
 ---
-import FloatingBrandIcons from './FloatingBrandIcons.astro';
+// Hero SMMIA — Prism Coin Spline en BANNIÈRE plein écran (2026-04-23)
+// Le Spline prend 100vw × 100vh. Overlay SMMIA minimal, zéro ombre.
 ---
 
-<section id="hero">
+<section id="hero" class="hero-spline">
 
-  <!-- Star field (nébuleuse cosmos) -->
-  <svg class="hero-stars" aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
-        <stop offset="50%" stop-color="#E9D5FF" stop-opacity="0.5"/>
-        <stop offset="100%" stop-color="#E9D5FF" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <!-- 80 étoiles de taille/position pseudo-aléatoire -->
-    <g class="stars-small">
-      <circle cx="120" cy="80" r="0.8" fill="#fff"/><circle cx="320" cy="150" r="1" fill="#fff"/><circle cx="580" cy="60" r="0.6" fill="#fff"/><circle cx="820" cy="120" r="1.2" fill="#fff"/><circle cx="1100" cy="90" r="0.8" fill="#fff"/><circle cx="1320" cy="170" r="1" fill="#fff"/>
-      <circle cx="60" cy="280" r="0.7" fill="#fff"/><circle cx="250" cy="340" r="1" fill="#fff"/><circle cx="440" cy="260" r="0.8" fill="#fff"/><circle cx="920" cy="290" r="1.2" fill="#fff"/><circle cx="1180" cy="310" r="0.6" fill="#fff"/><circle cx="1380" cy="350" r="1" fill="#fff"/>
-      <circle cx="180" cy="480" r="0.9" fill="#fff"/><circle cx="380" cy="520" r="0.7" fill="#fff"/><circle cx="1060" cy="470" r="1.1" fill="#fff"/><circle cx="1260" cy="540" r="0.8" fill="#fff"/>
-      <circle cx="80" cy="660" r="1" fill="#fff"/><circle cx="280" cy="720" r="0.8" fill="#fff"/><circle cx="480" cy="680" r="0.6" fill="#fff"/><circle cx="720" cy="780" r="1" fill="#fff"/><circle cx="980" cy="720" r="0.9" fill="#fff"/><circle cx="1220" cy="760" r="1.2" fill="#fff"/><circle cx="1400" cy="700" r="0.7" fill="#fff"/>
-      <circle cx="160" cy="40" r="0.5" fill="#E9D5FF"/><circle cx="420" cy="210" r="0.5" fill="#E9D5FF"/><circle cx="680" cy="180" r="0.5" fill="#E9D5FF"/><circle cx="880" cy="420" r="0.5" fill="#E9D5FF"/><circle cx="1140" cy="220" r="0.5" fill="#E9D5FF"/>
-      <circle cx="340" cy="420" r="0.6" fill="#C084FC"/><circle cx="560" cy="390" r="0.5" fill="#C084FC"/><circle cx="760" cy="350" r="0.5" fill="#C084FC"/><circle cx="1020" cy="360" r="0.6" fill="#C084FC"/>
-      <circle cx="100" cy="580" r="0.4" fill="#fff"/><circle cx="600" cy="640" r="0.5" fill="#fff"/><circle cx="860" cy="620" r="0.4" fill="#fff"/><circle cx="1160" cy="640" r="0.5" fill="#fff"/>
-      <circle cx="240" cy="100" r="0.4" fill="#fff"/><circle cx="520" cy="280" r="0.4" fill="#fff"/><circle cx="780" cy="240" r="0.4" fill="#fff"/><circle cx="1000" cy="180" r="0.4" fill="#fff"/>
-    </g>
-    <!-- 8 étoiles brillantes avec twinkle -->
-    <g class="stars-bright">
-      <circle cx="220" cy="200" r="2.5" fill="url(#starGlow)" class="star-twinkle" style="--td:0s"/>
-      <circle cx="640" cy="120" r="3" fill="url(#starGlow)" class="star-twinkle" style="--td:0.8s"/>
-      <circle cx="1080" cy="250" r="2" fill="url(#starGlow)" class="star-twinkle" style="--td:1.5s"/>
-      <circle cx="140" cy="420" r="2.8" fill="url(#starGlow)" class="star-twinkle" style="--td:2.2s"/>
-      <circle cx="1280" cy="480" r="2.2" fill="url(#starGlow)" class="star-twinkle" style="--td:0.3s"/>
-      <circle cx="840" cy="560" r="2.5" fill="url(#starGlow)" class="star-twinkle" style="--td:1.1s"/>
-      <circle cx="420" cy="660" r="2" fill="url(#starGlow)" class="star-twinkle" style="--td:1.8s"/>
-      <circle cx="1160" cy="800" r="2.8" fill="url(#starGlow)" class="star-twinkle" style="--td:2.5s"/>
-    </g>
-  </svg>
-
-  <!-- Hyperspace streaks (lignes radiales qui jaillissent du centre — image 2) -->
-  <div class="hero-streaks" aria-hidden="true"></div>
-
-  <!-- Éclairs violets convergents (image 1 — purple lightning) -->
-  <svg class="hero-lightning" aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <filter id="lightningGlow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="3" result="blur"/>
-        <feMerge>
-          <feMergeNode in="blur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-      <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#4C1D95" stop-opacity="0"/>
-        <stop offset="20%" stop-color="#6D28D9" stop-opacity="0.85"/>
-        <stop offset="50%" stop-color="#7C3AED" stop-opacity="1"/>
-        <stop offset="80%" stop-color="#6D28D9" stop-opacity="0.85"/>
-        <stop offset="100%" stop-color="#4C1D95" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-    <!-- 8 éclairs qui convergent vers le centre (720, 450) -->
-    <g filter="url(#lightningGlow)" stroke="url(#boltGrad)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <polyline class="bolt" style="--bd:0s"    points="80,120 180,220 240,200 340,290 420,310 520,380 640,420 720,450"/>
-      <polyline class="bolt" style="--bd:0.3s"  points="1360,100 1240,180 1180,260 1040,310 940,350 820,410 720,450"/>
-      <polyline class="bolt" style="--bd:0.7s"  points="60,780 160,690 280,650 400,580 520,540 620,490 720,450"/>
-      <polyline class="bolt" style="--bd:1.1s"  points="1380,820 1260,720 1140,680 1020,600 900,560 810,490 720,450"/>
-      <polyline class="bolt" style="--bd:1.5s"  points="720,60 700,160 740,240 700,330 730,400 720,450"/>
-      <polyline class="bolt" style="--bd:1.9s"  points="720,840 740,750 700,660 740,560 710,500 720,450"/>
-      <polyline class="bolt" style="--bd:2.3s"  points="40,450 180,430 320,470 460,440 580,460 700,450 720,450"/>
-      <polyline class="bolt" style="--bd:2.7s"  points="1400,450 1260,430 1120,470 980,440 860,460 740,450 720,450"/>
-    </g>
-  </svg>
-
-  <!-- Grille subtile -->
-  <div class="hero-grid" aria-hidden="true"></div>
-
-  <!-- Noise texture (grain) -->
-  <div class="hero-noise" aria-hidden="true"></div>
-
-  <!-- Logos brand flottants -->
-  <FloatingBrandIcons variant="subtle" seed={12} />
-
-  <!-- Halo violet fixe derrière la tagline (pas pulsant) -->
-  <div class="hero-spotlight" aria-hidden="true"></div>
-
-  <!-- Orbes violettes flottantes (fond de scène) -->
-  <div class="hero-orbs" aria-hidden="true">
-    <span class="orb orb-1"></span>
-    <span class="orb orb-2"></span>
-    <span class="orb orb-3"></span>
-    <span class="orb orb-4"></span>
+  <!-- Scène Spline PLEIN ÉCRAN — c'est la bannière -->
+  <div class="hero-spline__stage">
+    <spline-viewer
+      url="https://prod.spline.design/c1hpRlTUtuLLXEFU/scene.splinecode"
+      loading-anim-type="none"
+      events-target="global"
+    ></spline-viewer>
   </div>
 
-  <div class="hero-inner">
+  <!-- Overlay SMMIA — logo + CTA en bas, ultra léger -->
+  <div class="hero-spline__overlay">
 
-    <!-- Eyebrow : badge agence IA -->
-    <div class="hero-eyebrow reveal" style="--d:0s">
-      <span class="pulse-dot" aria-hidden="true"></span>
-      <span class="eyebrow-text">Agence IA · E-commerce · 2026</span>
+    <div class="hero-spline__top">
+      <div class="hero-spline__eyebrow reveal" style="--d:0s">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span>Agence IA · E-commerce · 2026</span>
+      </div>
+
+      <div class="hero-spline__brand reveal" style="--d:0.15s">
+        <img src="/images/logos/SMMIA-logo-transparent-v2.png" alt="SMMIA" class="hero-brand-img hero-brand-img--dark" />
+        <img src="/images/logos/SMMIA-logo-transparent-light.png" alt="SMMIA" class="hero-brand-img hero-brand-img--light" />
+      </div>
     </div>
 
-    <!-- Logo SMMIA seul (switch dark/light) -->
-    <div class="hero-brand" data-depth="0.5">
-      <img src="/images/logos/nj.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--dark" />
-      <img src="/images/logos/nj.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--light" />
-    </div>
-
-    <!-- Tagline principale : Ton agence BOOSTER par l'IA -->
-    <h1 class="hero-title hero-title--solo">
-      <span class="tl-line tl-line--top reveal" style="--d:0.15s">
-        <span class="tl-kicker-bar" aria-hidden="true"></span>
-        <span class="tl-kicker-text">Ton agence</span>
-      </span>
-
-      <span class="booster-3d reveal" style="--d:0.3s">
-        <!-- Halo néon violet enveloppant -->
-        <span class="booster-halo" aria-hidden="true"></span>
-
-        <!-- Reflet de sol (le mot se reflète comme posé sur un miroir avant de tomber) -->
-        <span class="booster-reflection" aria-hidden="true">BOOSTER</span>
-
-        <!-- SPIDER-WEB CRACKS — apparaissent AVANT le shatter (ref Envato) -->
-        <svg class="booster-cracks" aria-hidden="true" viewBox="0 0 800 200" preserveAspectRatio="none">
-          <defs>
-            <filter id="crackGlow" x="-10%" y="-10%" width="120%" height="120%">
-              <feGaussianBlur stdDeviation="0.4" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <g filter="url(#crackGlow)" stroke="#4C1D95" stroke-width="1" fill="none" stroke-linecap="round">
-            <!-- Fissures principales radiantes depuis 3 points d'impact (barycentres des lettres) -->
-            <path class="crack c1" style="--cd:0s"    d="M200,100 L150,40 M200,100 L260,30 M200,100 L310,95 M200,100 L270,170 M200,100 L130,165 M200,100 L80,110 M200,100 L95,45"/>
-            <path class="crack c2" style="--cd:0.08s" d="M400,100 L380,30 M400,100 L470,50 M400,100 L510,110 M400,100 L450,175 M400,100 L340,170 M400,100 L290,115 M400,100 L320,40"/>
-            <path class="crack c3" style="--cd:0.16s" d="M600,100 L610,25 M600,100 L690,60 M600,100 L720,130 M600,100 L640,180 M600,100 L555,175 M600,100 L490,130 M600,100 L530,40"/>
-            <!-- Fissures secondaires (ramifications) -->
-            <path class="crack c4" style="--cd:0.24s" d="M150,40 L110,15 M260,30 L300,10 M310,95 L370,100 M130,165 L100,190 M470,50 L510,20 M450,175 L480,195 M690,60 L730,35 M720,130 L760,165"/>
-            <path class="crack c5" style="--cd:0.32s" d="M95,45 L50,30 M270,170 L260,195 M380,30 L360,5 M340,170 L320,190 M610,25 L600,5 M555,175 L560,195 M290,115 L240,140 M530,40 L490,15"/>
-            <!-- Petites fissures fines (détails) -->
-            <path class="crack c6" style="--cd:0.4s"  d="M175,85 L155,75 M215,85 L235,70 M375,90 L355,80 M425,85 L440,70 M580,85 L560,75 M625,85 L640,68 M180,120 L160,135 M230,120 L250,135 M380,125 L365,140 M425,120 L445,135 M575,125 L555,140 M625,125 L650,140"/>
-          </g>
-        </svg>
-
-        <!-- Flash d'impact (positionné en BAS — comme un verre qui touche le sol) -->
-        <span class="booster-impact" aria-hidden="true"></span>
-
-        <!-- Shockwave ring (onde de choc au sol) -->
-        <span class="booster-shockwave" aria-hidden="true"></span>
-
-        <!-- Nuage de poussière violette post-explosion -->
-        <span class="booster-dust" aria-hidden="true"></span>
-
-        <!-- Mot : 7 lettres × 8 shards polygonaux avec gravité -->
-        <span class="booster-3d__word">
-          <span class="glass-letter" style="--i:0">
-            <span class="glyph">B</span>
-            <span class="shard s1" aria-hidden="true">B</span>
-            <span class="shard s2" aria-hidden="true">B</span>
-            <span class="shard s3" aria-hidden="true">B</span>
-            <span class="shard s4" aria-hidden="true">B</span>
-            <span class="shard s5" aria-hidden="true">B</span>
-            <span class="shard s6" aria-hidden="true">B</span>
-            <span class="shard s7" aria-hidden="true">B</span>
-            <span class="shard s8" aria-hidden="true">B</span>
-          </span>
-          <span class="glass-letter" style="--i:1">
-            <span class="glyph">O</span>
-            <span class="shard s1" aria-hidden="true">O</span>
-            <span class="shard s2" aria-hidden="true">O</span>
-            <span class="shard s3" aria-hidden="true">O</span>
-            <span class="shard s4" aria-hidden="true">O</span>
-            <span class="shard s5" aria-hidden="true">O</span>
-            <span class="shard s6" aria-hidden="true">O</span>
-            <span class="shard s7" aria-hidden="true">O</span>
-            <span class="shard s8" aria-hidden="true">O</span>
-          </span>
-          <span class="glass-letter" style="--i:2">
-            <span class="glyph">O</span>
-            <span class="shard s1" aria-hidden="true">O</span>
-            <span class="shard s2" aria-hidden="true">O</span>
-            <span class="shard s3" aria-hidden="true">O</span>
-            <span class="shard s4" aria-hidden="true">O</span>
-            <span class="shard s5" aria-hidden="true">O</span>
-            <span class="shard s6" aria-hidden="true">O</span>
-            <span class="shard s7" aria-hidden="true">O</span>
-            <span class="shard s8" aria-hidden="true">O</span>
-          </span>
-          <span class="glass-letter" style="--i:3">
-            <span class="glyph">S</span>
-            <span class="shard s1" aria-hidden="true">S</span>
-            <span class="shard s2" aria-hidden="true">S</span>
-            <span class="shard s3" aria-hidden="true">S</span>
-            <span class="shard s4" aria-hidden="true">S</span>
-            <span class="shard s5" aria-hidden="true">S</span>
-            <span class="shard s6" aria-hidden="true">S</span>
-            <span class="shard s7" aria-hidden="true">S</span>
-            <span class="shard s8" aria-hidden="true">S</span>
-          </span>
-          <span class="glass-letter" style="--i:4">
-            <span class="glyph">T</span>
-            <span class="shard s1" aria-hidden="true">T</span>
-            <span class="shard s2" aria-hidden="true">T</span>
-            <span class="shard s3" aria-hidden="true">T</span>
-            <span class="shard s4" aria-hidden="true">T</span>
-            <span class="shard s5" aria-hidden="true">T</span>
-            <span class="shard s6" aria-hidden="true">T</span>
-            <span class="shard s7" aria-hidden="true">T</span>
-            <span class="shard s8" aria-hidden="true">T</span>
-          </span>
-          <span class="glass-letter" style="--i:5">
-            <span class="glyph">E</span>
-            <span class="shard s1" aria-hidden="true">E</span>
-            <span class="shard s2" aria-hidden="true">E</span>
-            <span class="shard s3" aria-hidden="true">E</span>
-            <span class="shard s4" aria-hidden="true">E</span>
-            <span class="shard s5" aria-hidden="true">E</span>
-            <span class="shard s6" aria-hidden="true">E</span>
-            <span class="shard s7" aria-hidden="true">E</span>
-            <span class="shard s8" aria-hidden="true">E</span>
-          </span>
-          <span class="glass-letter" style="--i:6">
-            <span class="glyph">R</span>
-            <span class="shard s1" aria-hidden="true">R</span>
-            <span class="shard s2" aria-hidden="true">R</span>
-            <span class="shard s3" aria-hidden="true">R</span>
-            <span class="shard s4" aria-hidden="true">R</span>
-            <span class="shard s5" aria-hidden="true">R</span>
-            <span class="shard s6" aria-hidden="true">R</span>
-            <span class="shard s7" aria-hidden="true">R</span>
-            <span class="shard s8" aria-hidden="true">R</span>
-          </span>
-        </span>
-      </span>
-
-      <span class="tl-line tl-line--bottom reveal" style="--d:0.45s">
-        <span class="tl-prefix">par l'</span><span class="tl-accent">IA</span><span class="tl-dot">.</span>
-      </span>
-    </h1>
-
-    <!-- CTAs primary + ghost -->
-    <div class="hero-ctas reveal" style="--d:0.7s">
-      <a href="#pricing" class="hero-cta-primary">
-        <span>Booster mon agence</span>
-        <span class="cta-arrow" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </span>
-      </a>
-      <a href="#services" class="hero-cta-secondary">Voir les offres</a>
-    </div>
-
-    <!-- Trust strip : note + agences boostées -->
-    <div class="hero-trust reveal" style="--d:0.85s">
-      <span class="trust-stars" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 6.91-1.01L12 2z"/></svg>
-      </span>
-      <span class="trust-text"><strong>4.9/5</strong> · clients accompagnés</span>
-      <span class="trust-sep" aria-hidden="true"></span>
-      <span class="trust-text"><strong>+50</strong> agences boostées</span>
+    <div class="hero-spline__bottom">
+      <div class="hero-spline__ctas reveal" style="--d:0.4s">
+        <a href="#pricing" class="cta-primary">
+          Rejoindre SMMIA
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#programme" class="cta-ghost">Voir le programme</a>
+      </div>
     </div>
 
   </div>
 
-  <!-- Scroll indicator -->
-  <div class="hero-scroll reveal" style="--d:1s" aria-hidden="true">
-    <span class="scroll-line"></span>
-    <span class="scroll-text">Scroll</span>
-  </div>
-
-  <!-- Fade vers le noir en bas -->
-  <div class="hero-fade" aria-hidden="true"></div>
 </section>
 
 <style>
-  #hero {
+  /* === HERO — Bannière Spline plein écran, zéro ombre === */
+  .hero-spline {
     position: relative;
-    width: 100%;
-    /* FOND BLANC (brand SMMIA) — subtil halo violet/bleu centré + 2 orbes colorés aux angles */
-    background:
-      radial-gradient(ellipse 70% 60% at 50% 38%, rgba(124, 58, 237, 0.08) 0%, rgba(0, 71, 255, 0.04) 40%, transparent 70%),
-      radial-gradient(ellipse 50% 45% at 12% 80%, rgba(124, 58, 237, 0.06) 0%, transparent 55%),
-      radial-gradient(ellipse 45% 40% at 88% 25%, rgba(6, 182, 212, 0.05) 0%, transparent 55%),
-      linear-gradient(180deg, #FFFFFF 0%, #FAFAFF 50%, #F4F7FF 100%);
-    padding: 110px 24px 140px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    text-align: center;
-    min-height: 820px;
-    perspective: 1400px;
-    color: #0F0A2E;
-  }
-
-  /* Motif géométrique : grille de points violets très léger (style espace.mentalitefocus) */
-  #hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle, rgba(124, 58, 237, 0.12) 1px, transparent 1.5px);
-    background-size: 32px 32px;
-    mask-image: radial-gradient(ellipse at 50% 40%, transparent 20%, black 80%);
-    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, transparent 20%, black 80%);
-    opacity: 0.6;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .hero-inner {
-    position: relative;
-    z-index: 4;
-    max-width: 1200px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    transform-style: preserve-3d;
-  }
-
-  /* Spotlight violet fixe derrière la tagline */
-  .hero-spotlight {
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    width: 72%;
-    max-width: 1000px;
-    aspect-ratio: 3/1;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.14) 0%, rgba(0, 71, 255, 0.08) 40%, transparent 75%);
-    filter: blur(32px);
-    z-index: 0;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-  }
-
-  /* ===== STAR FIELD — masqué sur fond blanc (remplacé par le motif géométrique) ===== */
-  .hero-stars { display: none; }
-
-  /* ===== HYPERSPACE STREAKS — lignes radiales depuis le centre (image 2) =====
-     Effet "warp speed" avec conic-gradient + animation de rotation + radial fade */
-  .hero-streaks {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 180%;
-    height: 180%;
-    z-index: 1;
-    pointer-events: none;
-    border-radius: 50%;
-    background:
-      repeating-conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 3deg,
-        rgba(124, 58, 237, 0.08) 3.5deg,
-        rgba(0, 71, 255, 0.1) 4deg,
-        transparent 4.5deg,
-        transparent 6deg,
-        rgba(6, 182, 212, 0.07) 6.3deg,
-        transparent 7deg
-      );
-    -webkit-mask-image: radial-gradient(ellipse at center, black 8%, rgba(0,0,0,0.5) 30%, transparent 65%);
-            mask-image: radial-gradient(ellipse at center, black 8%, rgba(0,0,0,0.5) 30%, transparent 65%);
-    mix-blend-mode: multiply;
-    animation: streaksRotate 60s linear infinite;
-    opacity: 0.6;
-  }
-  @keyframes streaksRotate {
-    from { transform: translate(-50%, -50%) rotate(0deg);    }
-    to   { transform: translate(-50%, -50%) rotate(360deg);  }
-  }
-
-  /* ===== ÉCLAIRS VIOLETS (purple lightning — image 1) =====
-     8 bolts polyline qui convergent vers le centre du mot BOOSTER.
-     Chaque bolt flicker avec stroke-dasharray (illusion de décharge) */
-  .hero-lightning {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    opacity: 0.75;
-  }
-  .hero-lightning .bolt {
-    stroke-dasharray: 1400;
-    stroke-dashoffset: 1400;
-    filter: drop-shadow(0 0 2px rgba(124, 58, 237, 0.8)) drop-shadow(0 0 6px rgba(124, 58, 237, 0.4));
-    animation: boltStrike 5.5s cubic-bezier(0.3, 0.1, 0.4, 1) infinite;
-    animation-delay: var(--bd, 0s);
-  }
-  @keyframes boltStrike {
-    0%       { stroke-dashoffset: 1400; opacity: 0;   stroke-width: 1.2; }
-    8%       { stroke-dashoffset: 0;    opacity: 1;   stroke-width: 2.5; }
-    12%      { stroke-dashoffset: 0;    opacity: 0.2; stroke-width: 1.8; }
-    16%      { stroke-dashoffset: 0;    opacity: 1;   stroke-width: 3;   }
-    20%      { stroke-dashoffset: 0;    opacity: 0.4; stroke-width: 2;   }
-    24%      { stroke-dashoffset: 0;    opacity: 1;   stroke-width: 2.5; }
-    30%      { stroke-dashoffset: 0;    opacity: 0;   stroke-width: 1.2; }
-    100%     { stroke-dashoffset: 1400; opacity: 0;   stroke-width: 1.2; }
-  }
-
-  /* ===== ORBES VIOLETTES FLOTTANTES (background scenery) ===== */
-  .hero-orbs {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-  }
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    mix-blend-mode: screen;
-    will-change: transform, opacity;
-  }
-  .orb-1 {
-    top: 12%;
-    left: 14%;
-    width: 360px;
-    height: 360px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.22) 0%, rgba(124, 58, 237, 0) 70%);
-    animation: orbFloat 18s ease-in-out infinite;
-  }
-  .orb-2 {
-    top: 60%;
-    right: 10%;
-    width: 420px;
-    height: 420px;
-    background: radial-gradient(circle, rgba(0, 71, 255, 0.18) 0%, rgba(0, 71, 255, 0) 70%);
-    animation: orbFloat 22s ease-in-out infinite reverse;
-    animation-delay: -4s;
-  }
-  .orb-3 {
-    top: 72%;
-    left: 18%;
-    width: 280px;
-    height: 280px;
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(6, 182, 212, 0) 70%);
-    animation: orbFloat 25s ease-in-out infinite;
-    animation-delay: -8s;
-  }
-  .orb-4 {
-    top: 20%;
-    right: 18%;
-    width: 240px;
-    height: 240px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, rgba(124, 58, 237, 0) 70%);
-    animation: orbFloat 20s ease-in-out infinite;
-    animation-delay: -12s;
-  }
-  @keyframes orbFloat {
-    0%, 100% { transform: translate(0, 0)       scale(1);   opacity: 0.9; }
-    25%      { transform: translate(40px, -30px) scale(1.1); opacity: 1;   }
-    50%      { transform: translate(-20px, 40px) scale(0.95);opacity: 0.75;}
-    75%      { transform: translate(-50px, -20px) scale(1.05);opacity: 0.85;}
-  }
-
-  /* ===== TRUST STRIP : note + agences ===== */
-  .hero-trust {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    padding: 10px 22px;
-    margin-top: 8px;
-    border-radius: 9999px;
-    background: #FFFFFF;
-    border: 1px solid rgba(124, 58, 237, 0.18);
-    box-shadow:
-      0 2px 8px rgba(124, 58, 237, 0.08),
-      0 8px 24px rgba(0, 71, 255, 0.06);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .trust-stars {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    color: #7C3AED;
-    filter: drop-shadow(0 1px 2px rgba(124, 58, 237, 0.3));
-  }
-  .trust-stars svg {
-    width: 14px;
-    height: 14px;
-  }
-  .trust-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    color: rgba(15, 10, 46, 0.7);
-    letter-spacing: 0.005em;
-    white-space: nowrap;
-  }
-  .trust-text strong {
-    color: #0F0A2E;
-    font-weight: 700;
-  }
-  .trust-sep {
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #7C3AED;
-  }
-
-  /* ===== SCROLL INDICATOR ===== */
-  .hero-scroll {
-    position: absolute;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    z-index: 5;
-    pointer-events: none;
-  }
-  .scroll-line {
-    width: 1px;
-    height: 32px;
-    background: linear-gradient(to bottom, rgba(124, 58, 237, 0), rgba(124, 58, 237, 0.85));
-    position: relative;
-    overflow: hidden;
-  }
-  .scroll-line::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(124, 58, 237, 0), #7C3AED, rgba(124, 58, 237, 0));
-    animation: scrollLineMove 2.2s ease-in-out infinite;
-  }
-  @keyframes scrollLineMove {
-    0%   { top: -100%; }
-    100% { top: 100%;  }
-  }
-  .scroll-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(124, 58, 237, 0.7);
-  }
-
-  /* ===== EYEBROW badge session (fond blanc) ===== */
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 18px 8px 14px;
-    border-radius: 9999px;
-    background: rgba(124, 58, 237, 0.06);
-    border: 1px solid rgba(124, 58, 237, 0.25);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  .pulse-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #7C3AED;
-    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.55);
-    animation: pulseDot 2s ease-in-out infinite;
-  }
-  @keyframes pulseDot {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.55); }
-    50%      { box-shadow: 0 0 0 8px rgba(124, 58, 237, 0); }
-  }
-  .eyebrow-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(15, 10, 46, 0.78);
-  }
-
-  /* ===== SOUS-PHRASE ===== */
-  .hero-sub {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    /* taille adaptative : suffisamment petite en mobile pour que la phrase tienne sur une ligne */
-    font-size: clamp(11px, 2.15vw, 20px);
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.68);
-    max-width: none;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
     margin: 0;
-    letter-spacing: -0.005em;
-    padding: 0 10px;
-    white-space: nowrap;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-  }
-  .sub-main {
-    display: inline-block;
-    white-space: nowrap;
-  }
-  /* "tourne seul." toujours ensemble */
-  .nobr {
-    white-space: nowrap;
-  }
-  .sub-accent {
-    font-weight: 500;
-    color: rgba(216, 180, 254, 0.85);
-    font-size: 0.9em;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-
-  /* ===== CTAs ===== */
-  .hero-ctas {
-    display: inline-flex;
-    align-items: center;
-    gap: 22px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .hero-cta-primary {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 18px 34px;
-    border-radius: 9999px;
-    background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    box-shadow:
-      0 0 0 1px rgba(216, 180, 254, 0.25) inset,
-      0 8px 30px rgba(168, 85, 247, 0.38),
-      0 2px 0 rgba(255, 255, 255, 0.08) inset;
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-                box-shadow 0.35s ease;
+    padding: 0;
     overflow: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+    isolation: isolate;
+    background: transparent;
   }
-  .hero-cta-primary::before {
-    content: '';
+
+  /* Décalage pour compenser la Navbar si elle est fixed */
+  :global([data-theme="dark"]) .hero-spline { --hero-fg: #FFFFFF; --hero-muted: rgba(255,255,255,0.72); --hero-border: rgba(255,255,255,0.18); --hero-card: rgba(0,0,0,0.35); }
+  :global([data-theme="light"]) .hero-spline { --hero-fg: #0A0514; --hero-muted: rgba(10,5,20,0.68); --hero-border: rgba(10,5,20,0.18); --hero-card: rgba(255,255,255,0.72); }
+
+  /* Stage Spline = tout l'écran */
+  .hero-spline__stage {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
-    opacity: 0;
-    transition: opacity 0.35s ease;
-  }
-  .hero-cta-primary > * { position: relative; z-index: 1; }
-  .hero-cta-primary:hover {
-    transform: translateY(-3px);
-    box-shadow:
-      0 0 0 1px rgba(216, 180, 254, 0.4) inset,
-      0 14px 42px rgba(168, 85, 247, 0.6),
-      0 2px 0 rgba(255, 255, 255, 0.12) inset;
-  }
-  .hero-cta-primary:hover::before { opacity: 1; }
-  .cta-arrow {
-    display: inline-flex;
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-  .hero-cta-primary:hover .cta-arrow { transform: translateX(4px); }
-
-  .hero-cta-secondary {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: rgba(216, 180, 254, 0.85);
-    text-decoration: none;
-    padding: 14px 4px;
-    border-bottom: 1px solid rgba(168, 85, 247, 0.4);
-    transition: color 0.3s ease, border-color 0.3s ease;
-  }
-  .hero-cta-secondary:hover {
-    color: #fff;
-    border-bottom-color: #a855f7;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
   }
 
-
-  /* ===== LOGO SMMIA seul ===== */
-  .hero-brand {
-    --tx: 0px;
-    --ty: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    will-change: transform;
-    opacity: 0;
-    animation: brandEnter 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards;
-    transform: translate3d(var(--tx), var(--ty), 0);
-  }
-
-  .brand-logo {
+  .hero-spline__stage spline-viewer {
+    width: 100%;
+    height: 100%;
     display: block;
-    width: auto;
-    object-fit: contain;
-    transition: filter 0.5s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    will-change: filter, transform;
+    background: transparent !important;
+    --spline-logo: none;
   }
+  .hero-spline__stage spline-viewer::part(logo) { display: none !important; }
 
-  .hero-brand:hover .brand-logo {
-    transform: scale(1.04);
+  /* Overlay SMMIA — ultra minimal, PAS DE SHADOW */
+  .hero-spline__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(5rem, 10vh, 7rem) clamp(1.5rem, 4vw, 3rem) clamp(2rem, 5vh, 3.5rem);
+    pointer-events: none;
   }
+  .hero-spline__overlay > * { pointer-events: auto; }
 
-  .brand-smmia {
-    height: 110px;
-    /* Logo original blanc — sur fond blanc, on le teinte violet profond via filter pour le rendre visible */
-    filter: brightness(0) saturate(100%) invert(13%) sepia(80%) saturate(4200%) hue-rotate(260deg) brightness(90%) contrast(115%);
-    transition: filter 0.5s ease;
-  }
-
-  .hero-brand:hover .brand-smmia {
-    filter: brightness(0) saturate(100%) invert(18%) sepia(95%) saturate(4500%) hue-rotate(245deg) brightness(95%) contrast(120%);
-  }
-
-  /* Switch logo dark / light — Astro style scoping forces global via :global() */
-  .brand-smmia--light { display: none; }
-
-  @keyframes brandEnter {
-    0%   { opacity: 0; transform: translateY(-6px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ===== TITRE PRINCIPAL ===== */
-  .hero-title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    font-size: clamp(44px, 7.5vw, 112px);
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    margin: 0;
+  /* Top overlay : eyebrow + logo */
+  .hero-spline__top {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 0.9rem;
   }
-  .hero-title--solo {
-    font-size: clamp(34px, 5.5vw, 76px);
-    letter-spacing: -0.03em;
-    margin-top: -70px;
+
+  .hero-spline__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 0.95rem;
+    border: 1px solid var(--hero-border);
+    border-radius: 999px;
+    background: var(--hero-card);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--hero-fg);
   }
-  .hero-title--solo .line-fill { padding-bottom: 14px; }
+  .hero-spline__eyebrow .pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22D3EE;
+    animation: pulse-dot 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.85); }
+  }
+
+  .hero-spline__brand { display: flex; justify-content: center; }
+  .hero-brand-img {
+    height: clamp(34px, 4.5vw, 48px);
+    width: auto;
+    display: none;
+  }
+  :global([data-theme="dark"]) .hero-brand-img--dark { display: block; }
+  :global([data-theme="light"]) .hero-brand-img--light { display: block; }
+
+  /* Bottom overlay : CTAs */
+  .hero-spline__bottom {
+    display: flex;
+    justify-content: center;
+  }
+  .hero-spline__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.95rem 1.75rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #A855F7 0%, #7C3AED 45%, #FB923C 100%);
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 0.98rem;
+    text-decoration: none;
+    border: none;
+    transition: transform 0.25s ease;
+  }
+  .cta-primary:hover { transform: translateY(-2px); }
+  .cta-primary svg { transition: transform 0.25s ease; }
+  .cta-primary:hover svg { transform: translateX(3px); }
+
+  .cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.95rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--hero-border);
+    background: var(--hero-card);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: var(--hero-fg);
+    font-weight: 500;
+    font-size: 0.98rem;
+    text-decoration: none;
+    transition: border-color 0.25s ease;
+  }
+  .cta-ghost:hover { border-color: var(--hero-fg); }
 
   .reveal {
     opacity: 0;
-    transform: translateY(20px);
-    animation: reveal 1s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s) forwards;
+    transform: translateY(14px);
+    animation: reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: var(--d, 0s);
   }
+  @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
 
-  @keyframes reveal {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .line-outline {
-    color: transparent;
-    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.85);
-    font-style: italic;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    cursor: default;
-    transition: -webkit-text-stroke 0.4s ease,
-                transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
-                filter 0.4s ease;
-    display: inline-block;
-  }
-
-  .line-outline:hover {
-    -webkit-text-stroke: 2px rgba(216, 180, 254, 1);
-    filter: drop-shadow(0 0 14px rgba(168, 85, 247, 0.55));
-    transform: translateY(-2px);
-  }
-
-  .line-fill {
-    position: relative;
-    background: linear-gradient(135deg, #ffffff 0%, #e9d5ff 30%, #c4b5fd 60%, #a855f7 85%, #7c3aed 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    padding-bottom: 14px;
-    cursor: default;
-    filter: drop-shadow(0 4px 20px rgba(168, 85, 247, 0.25));
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
-                filter 0.4s ease;
-  }
-
-  .line-fill:hover {
-    transform: translateY(-2px);
-    filter: drop-shadow(0 0 24px rgba(168, 85, 247, 0.55));
-  }
-
-  .underline-svg {
-    position: absolute;
-    left: 2%;
-    right: 2%;
-    bottom: -4px;
-    width: 96%;
-    height: 22px;
-    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.6))
-            drop-shadow(0 2px 12px rgba(168, 85, 247, 0.4));
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
-                filter 0.4s ease;
-    transform-origin: center;
-    transform: scaleX(1);
-  }
-
-  .underline-svg path {
-    stroke-dasharray: 800;
-    stroke-dashoffset: 800;
-    animation: drawLine 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.9s forwards;
-  }
-
-  @keyframes drawLine {
-    to { stroke-dashoffset: 0; }
-  }
-
-  .line-fill:hover .underline-svg {
-    transform: scaleX(1.08);
-    filter: drop-shadow(0 0 16px rgba(216, 180, 254, 0.9));
-  }
-
-  /* ========== TAGLINE : Ton agence BOOSTER par l'IA ========== */
-  .tl-line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: clamp(28px, 3.6vw, 52px);
-    line-height: 1.05;
-    letter-spacing: -0.018em;
-    color: #0F0A2E;
-  }
-
-  /* "Ton agence" — kicker éditorial avec barre néon gauche */
-  .tl-line--top {
-    margin-bottom: 0.18em;
-    font-weight: 600;
-    letter-spacing: 0.002em;
-  }
-  .tl-kicker-bar {
-    display: inline-block;
-    width: 44px;
-    height: 3px;
-    border-radius: 2px;
-    background: linear-gradient(90deg,
-      rgba(124, 58, 237, 0) 0%,
-      #7C3AED 35%,
-      #0047FF 100%);
-    box-shadow:
-      0 0 10px rgba(124, 58, 237, 0.5),
-      0 0 20px rgba(0, 71, 255, 0.3);
-    transform: translateY(2px);
-  }
-  .tl-kicker-text {
-    color: #0F0A2E;
-    font-weight: 600;
-  }
-
-  /* "par l'IA." — prefix sobre + IA en gradient violet→bleu sur fond blanc */
-  .tl-line--bottom {
-    margin-top: 0.35em;
-    gap: 12px;
-    font-weight: 500;
-  }
-  .tl-prefix {
-    color: rgba(15, 10, 46, 0.65);
-    font-weight: 500;
-    letter-spacing: 0;
-    font-style: normal;
-  }
-  .tl-accent {
-    position: relative;
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    font-style: normal;
-    letter-spacing: -0.03em;
-    background: linear-gradient(135deg,
-      #06B6D4 0%,
-      #0047FF 40%,
-      #7C3AED 75%,
-      #4C1D95 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    filter:
-      drop-shadow(0 2px 8px rgba(124, 58, 237, 0.3))
-      drop-shadow(0 4px 16px rgba(0, 71, 255, 0.2));
-    padding: 0 0.04em;
-  }
-  .tl-accent::after {
-    content: '';
-    position: absolute;
-    left: -4%;
-    right: -4%;
-    bottom: -5px;
-    height: 3px;
-    border-radius: 2px;
-    background: linear-gradient(90deg,
-      rgba(6, 182, 212, 0) 0%,
-      #06B6D4 18%,
-      #0047FF 52%,
-      #7C3AED 100%);
-    box-shadow:
-      0 0 10px rgba(124, 58, 237, 0.5),
-      0 0 18px rgba(0, 71, 255, 0.35);
-  }
-  .tl-dot {
-    color: #7C3AED;
-    font-weight: 900;
-    margin-left: -2px;
-  }
-
-  /* ========== BOOSTER — VERRE QUI TOMBE ET ÉCLATE AU SOL ==========
-     Cycle 10s. Le mot BOOSTER est en cristal blanc pur avec néon violet intense.
-     Physique simulée : lettre stable → fissure → impact en bas → shards explosent PUIS
-     tombent avec gravité → reformation depuis le haut.
-
-     Timeline (10s) :
-       0-60%   STABLE  — mot cristal lumineux, flotte + shimmer subtil (6s de lecture)
-       60-62%  CHARGE  — brightness monte, léger tremor, fissure visible
-       62%     BANG    — glyph disparaît, 56 shards (7×8) apparaissent assemblés
-       62-68%  BURST   — shards projetés radialement depuis leur position d'origine
-       68-82%  GRAVITY — shards TOMBENT (translateY augmente parabolique), rotation accélère
-       82-88%  VOID    — tout est parti au sol + fade dust cloud
-       88-100% REFORM  — lettres retombent depuis le haut (impact inversé, gravité positive)
-  */
-
-  .booster-3d {
-    position: relative;
-    display: inline-block;
-    line-height: 0.9;
-    margin: 0.1em 0 0.16em;
-    perspective: 1800px;
-    transform-style: preserve-3d;
-    --bg-floor: rgba(168, 85, 247, 0.85);
-  }
-
-  /* ===== HALO VIOLET PERMANENT (énergie contenue dans le verre) ===== */
-  .booster-halo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 150%;
-    height: 240%;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at center,
-      rgba(124, 58, 237, 0.18) 0%,
-      rgba(0, 71, 255, 0.12) 25%,
-      rgba(6, 182, 212, 0.08) 50%,
-      transparent 76%);
-    filter: blur(40px);
-    transform: translate(-50%, -50%) scale(1);
-    pointer-events: none;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    animation: boosterHaloPulse 10s ease-in-out infinite;
-  }
-  @keyframes boosterHaloPulse {
-    0%, 55%, 100% { opacity: 0.9; transform: translate(-50%, -50%) scale(1);    }
-    58%           { opacity: 1;   transform: translate(-50%, -50%) scale(1.15); }
-    62%           { opacity: 1.2; transform: translate(-50%, -50%) scale(1.35); }
-    72%           { opacity: 0.6; transform: translate(-50%, -50%) scale(1.5);  }
-    85%           { opacity: 0.2; transform: translate(-50%, -50%) scale(0.95); }
-    92%           { opacity: 1;   transform: translate(-50%, -50%) scale(1.1);  }
-  }
-
-  /* ===== SPIDER-WEB CRACKS (ref Envato) — fissures radiales pré-shatter =====
-     Le SVG est positionné en absolute par-dessus le mot. Les paths ont un
-     stroke-dasharray élevé pour qu'ils se dessinent progressivement de 58% à 62% */
-  .booster-cracks {
-    position: absolute;
-    top: -4%;
-    left: -2%;
-    width: 104%;
-    height: 108%;
-    pointer-events: none;
-    z-index: 3;
-    opacity: 0;
-    mix-blend-mode: multiply;
-    filter: drop-shadow(0 0 1px rgba(76, 29, 149, 0.85))
-            drop-shadow(0 0 6px rgba(124, 58, 237, 0.55));
-    animation: cracksReveal 10s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
-  }
-  @keyframes cracksReveal {
-    0%, 57% { opacity: 0; }
-    58%     { opacity: 0.4; }
-    60%     { opacity: 0.9; }
-    61%     { opacity: 1;   }
-    /* BANG 62% : les cracks disparaissent, les shards prennent le relais */
-    62%     { opacity: 0.7; }
-    63%     { opacity: 0;   }
-    100%    { opacity: 0;   }
-  }
-  .booster-cracks .crack {
-    stroke-dasharray: 300;
-    stroke-dashoffset: 300;
-    animation: crackGrow 10s cubic-bezier(0.3, 0, 0.2, 1) infinite;
-    animation-delay: var(--cd, 0s);
-  }
-  @keyframes crackGrow {
-    0%, 56% { stroke-dashoffset: 300; }
-    58%     { stroke-dashoffset: 240; }
-    60%     { stroke-dashoffset: 60;  }
-    62%     { stroke-dashoffset: 0;   }
-    100%    { stroke-dashoffset: 300; }
-  }
-
-  /* ===== REFLET DE SOL — le mot se reflète en dessous (miroir cristal) ===== */
-  .booster-reflection {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, 0) scaleY(-1);
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    font-size: clamp(62px, 10.5vw, 152px);
-    line-height: 0.92;
-    letter-spacing: -0.028em;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    background: linear-gradient(to top,
-      rgba(124, 58, 237, 0) 0%,
-      rgba(124, 58, 237, 0.18) 40%,
-      rgba(0, 71, 255, 0.28) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    filter: blur(4px) saturate(1.1);
-    opacity: 0.4;
-    mask-image: linear-gradient(to top, transparent 0%, black 55%, black 100%);
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 55%, black 100%);
-    pointer-events: none;
-    z-index: 0;
-    user-select: none;
-    animation: boosterReflectionLife 10s linear infinite;
-  }
-  @keyframes boosterReflectionLife {
-    0%, 60%   { opacity: 0.55; }
-    62%, 87%  { opacity: 0;    }
-    90%, 100% { opacity: 0.55; }
-  }
-
-  /* ===== IMPACT FLASH — au BAS du mot (point de contact avec le "sol") ===== */
-  .booster-impact {
-    position: absolute;
-    top: 95%;
-    left: 50%;
-    width: 220%;
-    height: 140%;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at center,
-      rgba(124, 58, 237, 0.85) 0%,
-      rgba(124, 58, 237, 0.6) 15%,
-      rgba(0, 71, 255, 0.4) 35%,
-      rgba(6, 182, 212, 0.22) 58%,
-      transparent 78%);
-    filter: blur(20px);
-    transform: translate(-50%, -50%) scaleX(0.2) scaleY(0.1);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 1;
-    mix-blend-mode: multiply;
-    animation: boosterImpact 10s cubic-bezier(0.15, 0.85, 0.2, 1) infinite;
-  }
-  @keyframes boosterImpact {
-    0%, 59%  { opacity: 0;    transform: translate(-50%, -50%) scaleX(0.2) scaleY(0.1); }
-    61%      { opacity: 1;    transform: translate(-50%, -50%) scaleX(0.6) scaleY(0.4); }
-    62%      { opacity: 1;    transform: translate(-50%, -50%) scaleX(1.1) scaleY(0.7); }
-    66%      { opacity: 0.85; transform: translate(-50%, -50%) scaleX(1.5) scaleY(0.9); }
-    74%      { opacity: 0.4;  transform: translate(-50%, -50%) scaleX(2.0) scaleY(1.1); }
-    82%      { opacity: 0;    transform: translate(-50%, -50%) scaleX(2.4) scaleY(1.3); }
-    100%     { opacity: 0;    transform: translate(-50%, -50%) scaleX(0.2) scaleY(0.1); }
-  }
-
-  /* ===== SHOCKWAVE — onde de choc circulaire au point d'impact (bas) ===== */
-  .booster-shockwave {
-    position: absolute;
-    top: 95%;
-    left: 50%;
-    width: 40%;
-    height: 80%;
-    border-radius: 50%;
-    border: 2px solid rgba(124, 58, 237, 0.75);
-    box-shadow:
-      0 0 18px rgba(124, 58, 237, 0.5),
-      0 0 38px rgba(0, 71, 255, 0.35),
-      0 0 70px rgba(6, 182, 212, 0.2),
-      inset 0 0 14px rgba(124, 58, 237, 0.4);
-    transform: translate(-50%, -50%) scaleX(0.3) scaleY(0.15);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 1;
-    mix-blend-mode: multiply;
-    animation: boosterShockwave 10s cubic-bezier(0.18, 0.8, 0.25, 1) infinite;
-  }
-  @keyframes boosterShockwave {
-    0%, 60%  { opacity: 0;    transform: translate(-50%, -50%) scaleX(0.3) scaleY(0.15); border-width: 4px; }
-    62%      { opacity: 1;    transform: translate(-50%, -50%) scaleX(0.6) scaleY(0.3);  border-width: 3px; }
-    68%      { opacity: 0.75; transform: translate(-50%, -50%) scaleX(2.2) scaleY(1.1);  border-width: 1.5px; }
-    76%      { opacity: 0.3;  transform: translate(-50%, -50%) scaleX(3.4) scaleY(1.7);  border-width: 0.8px; }
-    82%      { opacity: 0;    transform: translate(-50%, -50%) scaleX(4.2) scaleY(2.1);  border-width: 0.3px; }
-    100%     { opacity: 0;    transform: translate(-50%, -50%) scaleX(0.3) scaleY(0.15); border-width: 4px; }
-  }
-
-  /* ===== DUST CLOUD — au bas du mot après impact ===== */
-  .booster-dust {
-    position: absolute;
-    top: 98%;
-    left: 50%;
-    width: 240%;
-    height: 180%;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at center,
-      rgba(124, 58, 237, 0.4) 0%,
-      rgba(0, 71, 255, 0.3) 28%,
-      rgba(6, 182, 212, 0.2) 55%,
-      transparent 80%);
-    filter: blur(44px);
-    transform: translate(-50%, -50%) scale(0.3);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    animation: boosterDust 10s ease-out infinite;
-  }
-  @keyframes boosterDust {
-    0%, 62%  { opacity: 0;   transform: translate(-50%, -50%) scale(0.3); }
-    68%      { opacity: 0.9; transform: translate(-50%, -50%) scale(1.2); }
-    78%      { opacity: 0.5; transform: translate(-50%, -50%) scale(1.8) translateY(10px); }
-    88%      { opacity: 0;   transform: translate(-50%, -50%) scale(2.4) translateY(20px); }
-    100%     { opacity: 0;   transform: translate(-50%, -50%) scale(0.3); }
-  }
-
-  /* ===== WORD CONTAINER — tilt 3D interactif souris ===== */
-  .booster-3d__word {
-    position: relative;
-    display: inline-flex;
-    z-index: 2;
-    transform: rotateX(var(--br-rx, 0deg)) rotateY(var(--br-ry, 0deg));
-    transform-style: preserve-3d;
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-
-  /* ===== GLASS-LETTER FOND BLANC : gradient violet→bleu→cyan filled =====
-     Stratégie : sur fond blanc, le néon blanc serait invisible. On utilise un
-     remplissage en gradient (background-clip:text) pour un rendu coloré lisible.
-     Drop-shadow violet subtil pour la profondeur + stroke fin violet foncé. */
-  .glass-letter {
-    display: inline-block;
-    position: relative;
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    font-style: normal;
-    font-size: clamp(68px, 11.5vw, 168px);
-    line-height: 0.88;
-    letter-spacing: -0.034em;
-    /* Couleur FALLBACK solide (si gradient échoue) : violet profond bien lisible sur blanc */
-    color: #1E1B4B;
-    /* Gradient décoratif par-dessus (s'il ne clip pas, le color fallback reste visible) */
-    background: linear-gradient(180deg,
-      #1E1B4B 0%,
-      #3730A3 20%,
-      #4C1D95 40%,
-      #6D28D9 60%,
-      #0047FF 82%,
-      #06B6D4 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0;
-    /* Shadow simple mais visible (pas de drop-shadow lourd qui fadeout le gradient) */
-    text-shadow:
-      0 2px 0 rgba(30, 27, 75, 0.18),
-      0 4px 14px rgba(76, 29, 149, 0.25),
-      0 10px 40px rgba(0, 71, 255, 0.2);
-    transform-style: preserve-3d;
-    padding: 0 0.03em;
-  }
-
-  /* ===== GLYPH : la lettre visible — animation pilotée par GSAP en JS ===== */
-  .glass-letter .glyph {
-    display: inline-block;
-    position: relative;
-    z-index: 2;
-    will-change: opacity, filter, transform;
-    /* pas d'animation CSS — GSAP prend le contrôle */
-  }
-
-  /* ===== SHARDS : 8 fragments polygonaux par lettre, clones du glyph avec clip-path =====
-     Chaque shard part de la position 0 (assemblé = reconstitue la lettre) puis
-     est PROJETÉ radialement, puis TOMBE avec gravité en accélérant. */
-  .shard {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    font: inherit;
-    color: inherit;
-    -webkit-text-stroke: inherit;
-    text-shadow: inherit;
-    letter-spacing: inherit;
-    line-height: inherit;
-    padding: inherit;
-    pointer-events: none;
-    opacity: 0;
-    z-index: 1;
-    will-change: transform, opacity, filter;
-    transform-origin: 50% 50%;
-    /* pas d'animation CSS — GSAP prend le contrôle pour un rendu motion design pro */
-  }
-
-  /* ============================================
-     8 SHARDS par lettre — polygons qui s'imbriquent PARFAITEMENT pour reconstituer la lettre
-     + trajectoires :
-       --bx / --by  = burst (projection initiale radiale, 0-0.5s après bang)
-       --fx / --fy  = fall (position finale après gravité — tous avec --fy positif)
-       --rz         = rotation finale (deg)
-     ============================================ */
-  .shard.s1 { /* top-left triangle */
-    clip-path: polygon(0% 0%, 54% 0%, 32% 44%, 0% 54%);
-    --bx:  -58px; --by: -42px;
-    --fx:  -88px; --fy: 180px; --rz: -340deg;
-  }
-  .shard.s2 { /* top-right triangle */
-    clip-path: polygon(54% 0%, 100% 0%, 100% 40%, 70% 36%, 32% 44%);
-    --bx:   62px; --by: -48px;
-    --fx:   98px; --fy: 210px; --rz:  380deg;
-  }
-  .shard.s3 { /* middle-right polygon */
-    clip-path: polygon(100% 40%, 100% 76%, 64% 70%, 70% 36%);
-    --bx:   82px; --by:  -8px;
-    --fx:  124px; --fy: 240px; --rz:  290deg;
-  }
-  .shard.s4 { /* middle-left polygon */
-    clip-path: polygon(0% 54%, 32% 44%, 46% 70%, 28% 82%, 0% 78%);
-    --bx:  -86px; --by:  10px;
-    --fx: -132px; --fy: 220px; --rz: -280deg;
-  }
-  .shard.s5 { /* center small fragment */
-    clip-path: polygon(32% 44%, 70% 36%, 64% 70%, 46% 70%);
-    --bx:   -4px; --by: -24px;
-    --fx:   16px; --fy: 260px; --rz:  420deg;
-  }
-  .shard.s6 { /* bottom-right triangle */
-    clip-path: polygon(100% 76%, 100% 100%, 58% 100%, 64% 70%);
-    --bx:   68px; --by:  38px;
-    --fx:   92px; --fy: 200px; --rz:  240deg;
-  }
-  .shard.s7 { /* bottom-left triangle */
-    clip-path: polygon(0% 78%, 28% 82%, 30% 100%, 0% 100%);
-    --bx:  -64px; --by:  44px;
-    --fx:  -76px; --fy: 170px; --rz: -220deg;
-  }
-  .shard.s8 { /* bottom-center polygon */
-    clip-path: polygon(28% 82%, 46% 70%, 64% 70%, 58% 100%, 30% 100%);
-    --bx:    6px; --by:  52px;
-    --fx:   24px; --fy: 160px; --rz:  180deg;
-  }
-
-  /* ========================================================================
-     SHARD ANIMATION — le vrai glass shatter avec gravité :
-       0-60%    : invisible (la lettre entière est visible via glyph)
-       62%      : BANG — tous les shards apparaissent à leur position native
-                  (ensemble, ils reconstituent visuellement la lettre)
-       64%      : burst initial (--bx/--by) + début rotation + flash blanc
-       70%      : mi-chute, rotation s'emballe, position entre burst et chute
-       78%      : chute avancée — gravité forte, rotation finale presque atteinte
-       84%      : au sol, opacity fade out, blur fort
-       85-100%  : invisible (glyph reform prend le relais)
-     ======================================================================== */
-  /* keyframes shardGlassShatter SUPPRIMÉS — GSAP prend le contrôle en JS */
-
-  /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
-    .glass-letter { font-size: clamp(56px, 14vw, 118px); }
-    .booster-reflection { font-size: clamp(56px, 14vw, 118px); }
-    .shard.s1 { --bx: -40px; --by: -30px; --fx:  -60px; --fy: 130px; }
-    .shard.s2 { --bx:  42px; --by: -34px; --fx:   66px; --fy: 150px; }
-    .shard.s3 { --bx:  54px; --by:  -6px; --fx:   82px; --fy: 170px; }
-    .shard.s4 { --bx: -58px; --by:   8px; --fx:  -88px; --fy: 155px; }
-    .shard.s5 { --bx:  -2px; --by: -18px; --fx:   12px; --fy: 180px; }
-    .shard.s6 { --bx:  48px; --by:  28px; --fx:   62px; --fy: 140px; }
-    .shard.s7 { --bx: -44px; --by:  32px; --fx:  -52px; --fy: 118px; }
-    .shard.s8 { --bx:   4px; --by:  36px; --fx:   18px; --fy: 110px; }
-  }
-  @media (max-width: 480px) {
-    .glass-letter {
-      filter:
-        drop-shadow(0 1px 0  rgba(76, 29, 149, 0.25))
-        drop-shadow(0 3px 8px rgba(124, 58, 237, 0.4))
-        drop-shadow(0 6px 22px rgba(0, 71, 255, 0.25));
+    .hero-spline__ctas {
+      flex-direction: column;
+      width: 100%;
+      max-width: 320px;
+    }
+    .cta-primary, .cta-ghost {
+      justify-content: center;
+      width: 100%;
     }
   }
+
   @media (prefers-reduced-motion: reduce) {
-    .glyph, .shard,
-    .booster-impact, .booster-shockwave, .booster-dust,
-    .booster-halo, .booster-reflection {
-      animation: none;
-    }
-    .glyph { opacity: 1; transform: none; filter: none; }
-    .shard, .booster-impact, .booster-shockwave, .booster-dust { opacity: 0; }
-    .booster-halo { opacity: 0.8; }
-    .booster-reflection { opacity: 0.45; }
-    .booster-3d__word { transform: none; }
-  }
-
-  /* ===== NOISE TEXTURE ===== */
-  .hero-noise {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0.02;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    mix-blend-mode: multiply;
-  }
-
-  /* ===== DECORATIONS BG (fond blanc) ===== */
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0, 71, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 71, 255, 0.035) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse at center, black 45%, transparent 85%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 45%, transparent 85%);
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .hero-fade {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 80px;
-    background: linear-gradient(to bottom, transparent, #F4F7FF);
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  /* ===== SCROLL CTA PREMIUM ===== */
-  .hero-scroll-cta {
-    position: absolute;
-    left: 50%;
-    bottom: 24px;
-    transform: translateX(-50%);
-    z-index: 5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    opacity: 0;
-    animation: ctaFadeIn 0.8s ease 1.2s forwards;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  .hero-scroll-cta:hover { transform: translateX(-50%) translateY(-4px); }
-
-  .scroll-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(216, 180, 254, 0.8);
-    transition: color 0.3s ease;
-  }
-  .hero-scroll-cta:hover .scroll-text { color: #fff; }
-
-  .scroll-mouse {
-    width: 22px;
-    height: 36px;
-    border: 1.5px solid rgba(168, 85, 247, 0.7);
-    border-radius: 12px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    padding-top: 6px;
-  }
-
-  .scroll-wheel {
-    width: 3px;
-    height: 7px;
-    background: #a855f7;
-    border-radius: 2px;
-    animation: wheelScroll 1.8s ease-in-out infinite;
-  }
-
-  @keyframes wheelScroll {
-    0%   { transform: translateY(0);  opacity: 1; }
-    80%  { transform: translateY(12px); opacity: 0; }
-    100% { transform: translateY(0);  opacity: 0; }
-  }
-
-  @keyframes ctaFadeIn {
-    to { opacity: 1; }
-  }
-
-  /* ===== TABLETTE ===== */
-  @media (max-width: 1024px) {
-    #hero { padding: 70px 20px 110px; min-height: 700px; }
-    .hero-inner { gap: 28px; }
-    .brand-smmia { height: 95px; }
-  }
-
-  /* ===== MOBILE ===== */
-  @media (max-width: 640px) {
-    #hero { padding: 60px 16px 100px; min-height: 560px; }
-    .hero-inner { gap: 24px; }
-    .brand-smmia { height: 72px; }
-    .line-outline { -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85); }
-    .hero-cta-primary { padding: 15px 26px; font-size: 14px; }
-    .eyebrow-text { font-size: 11px; letter-spacing: 0.14em; }
-  }
-
-  /* ===== PETIT MOBILE ===== */
-  @media (max-width: 380px) {
-    #hero { padding: 50px 14px 90px; }
-    .brand-smmia { height: 58px; }
-  }
-
-  /* reduce motion */
-  @media (prefers-reduced-motion: reduce) {
-    .hero-brand, .reveal {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
+    .reveal { animation: none; opacity: 1; transform: none; }
+    .pulse-dot { animation: none; }
   }
 </style>
-
-<script>
-  // Parallaxe subtile sur les logos au deplacement du curseur
-  const hero = document.querySelector<HTMLElement>('#hero');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (hero && !reduced) {
-    const items = hero.querySelectorAll<HTMLElement>('[data-depth]');
-    let rafId = 0;
-    let tx = 0, ty = 0, cx = 0, cy = 0;
-
-    hero.addEventListener('mousemove', (e) => {
-      const r = hero.getBoundingClientRect();
-      tx = ((e.clientX - r.left) / r.width  - 0.5) * 2;
-      ty = ((e.clientY - r.top)  / r.height - 0.5) * 2;
-      if (!rafId) rafId = requestAnimationFrame(loop);
-    });
-
-    hero.addEventListener('mouseleave', () => {
-      tx = 0; ty = 0;
-      if (!rafId) rafId = requestAnimationFrame(loop);
-    });
-
-    function loop() {
-      cx += (tx - cx) * 0.06;
-      cy += (ty - cy) * 0.06;
-      items.forEach((el) => {
-        const d = parseFloat(el.dataset.depth || '1');
-        el.style.setProperty('--tx', `${cx * 8 * d}px`);
-        el.style.setProperty('--ty', `${cy * 5 * d}px`);
-      });
-      if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) {
-        rafId = requestAnimationFrame(loop);
-      } else { rafId = 0; }
-    }
-  }
-
-  /* ========== GSAP GLASS SHATTER TIMELINE — VRAIE MOTION DESIGN ==========
-     Remplace les keyframes CSS par une timeline GSAP avec easing physique.
-     Contrôle frame-par-frame à 60fps, stagger par shard, physics de chute réaliste. */
-  import('gsap').then(({ gsap }) => {
-    const letters = document.querySelectorAll<HTMLElement>('.glass-letter');
-    if (!letters.length || reduced) return;
-
-    const getVar = (el: HTMLElement, name: string) => {
-      const v = getComputedStyle(el).getPropertyValue(name).trim();
-      return parseFloat(v) || 0;
-    };
-
-    const tl = gsap.timeline({ repeat: -1, defaults: { force3D: true } });
-    const CYCLE = 10; // seconds
-
-    letters.forEach((letter, letterIdx) => {
-      const glyph = letter.querySelector<HTMLElement>('.glyph');
-      const shards = letter.querySelectorAll<HTMLElement>('.shard');
-      if (!glyph || !shards.length) return;
-
-      const letterStagger = letterIdx * 0.025; // wave effect across letters
-
-      // ===== PHASE 1 : STABLE (0-5s) — respiration crystal subtile =====
-      tl.set(glyph,  { opacity: 1, filter: 'brightness(1)', y: 0, scale: 1 }, 0);
-      tl.set(shards, { opacity: 0, x: 0, y: 0, rotation: 0, filter: 'blur(0px) brightness(1)' }, 0);
-
-      // Micro-float du glyph pendant la phase stable (breath effect)
-      tl.to(glyph, { y: -1.5, duration: 2, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 0.5 + letterStagger);
-
-      // ===== PHASE 2 : TENSION (5-5.8s) — le verre "charge" sous pression =====
-      tl.to(glyph, {
-        scale: 1.04,
-        filter: 'brightness(1.8)',
-        y: -1,
-        duration: 0.8,
-        ease: 'power2.in',
-      }, 5 + letterStagger);
-
-      // ===== PHASE 3 : FLICKER (5.8-6.0s) — pic lumineux juste avant le break =====
-      tl.to(glyph, {
-        scale: 1.08,
-        filter: 'brightness(2.8) contrast(1.3)',
-        duration: 0.2,
-        ease: 'power4.in',
-      }, 5.8 + letterStagger);
-
-      // ===== PHASE 4 : BANG (6.0s) — glyph disparaît, shards apparaissent assemblés =====
-      tl.set(glyph, { opacity: 0, filter: 'blur(10px) brightness(3)', scale: 1.15 }, 6.0 + letterStagger);
-      tl.set(shards, { opacity: 1, filter: 'brightness(2.5)' }, 6.0 + letterStagger);
-
-      // ===== PHASE 5 : BURST (6.0-6.6s) — projection radiale violente avec Power4.out =====
-      shards.forEach((shard, si) => {
-        const bx = getVar(shard, '--bx');
-        const by = getVar(shard, '--by');
-        const rz = getVar(shard, '--rz');
-        // Direction aléatoire de rotation finale par shard pour plus de chaos naturel
-        const spin = rz + (si % 2 === 0 ? 60 : -60);
-
-        tl.to(shard, {
-          x: bx,
-          y: by,
-          rotation: spin * 0.25,
-          z: 40,
-          filter: 'blur(0.3px) brightness(2)',
-          duration: 0.6,
-          ease: 'power4.out',
-        }, 6.0 + letterStagger);
-
-        // ===== PHASE 6 : FALL avec GRAVITÉ (6.6-8.3s) — power2.in simule l'accélération =====
-        const fx = getVar(shard, '--fx');
-        const fy = getVar(shard, '--fy');
-
-        tl.to(shard, {
-          x: fx,
-          y: fy,
-          rotation: spin,
-          z: 0,
-          opacity: 0,
-          filter: 'blur(3px) brightness(0.8)',
-          duration: 1.7,
-          ease: 'power2.in', // accélération de la chute (gravité réaliste)
-        }, 6.6 + letterStagger);
-      });
-
-      // ===== PHASE 7 : VOID (8.3-8.8s) — reset silencieux des shards hors vue =====
-      tl.set(shards, { opacity: 0, x: 0, y: 0, rotation: 0, z: 0, filter: 'blur(0px) brightness(1)' }, 8.3 + letterStagger);
-
-      // ===== PHASE 8 : REFORM (8.8-9.5s) — le glyph retombe d'au-dessus avec elastic =====
-      tl.fromTo(glyph,
-        { opacity: 0, y: -80, scale: 0.7, filter: 'blur(2px) brightness(2)' },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          filter: 'blur(0px) brightness(1)',
-          duration: 1.2,
-          ease: 'back.out(1.8)', // léger rebond élastique
-        },
-      8.8 + letterStagger);
-    });
-
-    // Synchronise sur la durée totale — assure que le dernier stagger se termine avant le loop
-    tl.duration(CYCLE);
-  }).catch(err => console.warn('GSAP load failed, falling back to CSS', err));
-
-  /* ========== TILT 3D INTERACTIF sur BOOSTER ==========
-     Le mot suit la souris : rotateX suivant Y curseur, rotateY suivant X curseur.
-     Lerp doux + reset au mouseleave. */
-  const boosterBox = document.querySelector<HTMLElement>('.booster-3d');
-  const boosterWord = boosterBox?.querySelector<HTMLElement>('.booster-3d__word');
-
-  if (boosterBox && boosterWord && !reduced) {
-    let targetRx = 0, targetRy = 0;
-    let currRx = 0, currRy = 0;
-    let tiltRaf = 0;
-
-    boosterBox.addEventListener('mousemove', (e: MouseEvent) => {
-      const r = boosterBox.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width  - 0.5;
-      const py = (e.clientY - r.top)  / r.height - 0.5;
-      targetRy = px * 22;
-      targetRx = -py * 14;
-      if (!tiltRaf) tiltRaf = requestAnimationFrame(tiltLoop);
-    });
-
-    boosterBox.addEventListener('mouseleave', () => {
-      targetRx = 0; targetRy = 0;
-      if (!tiltRaf) tiltRaf = requestAnimationFrame(tiltLoop);
-    });
-
-    function tiltLoop() {
-      currRx += (targetRx - currRx) * 0.12;
-      currRy += (targetRy - currRy) * 0.12;
-      boosterWord!.style.setProperty('--br-rx', `${currRx.toFixed(2)}deg`);
-      boosterWord!.style.setProperty('--br-ry', `${currRy.toFixed(2)}deg`);
-      if (Math.abs(targetRx - currRx) > 0.05 || Math.abs(targetRy - currRy) > 0.05) {
-        tiltRaf = requestAnimationFrame(tiltLoop);
-      } else { tiltRaf = 0; }
-    }
-  }
-</script>
