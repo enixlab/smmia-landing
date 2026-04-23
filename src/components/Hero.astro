@@ -51,11 +51,11 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
         </feMerge>
       </filter>
       <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#7C3AED" stop-opacity="0"/>
-        <stop offset="20%" stop-color="#A855F7" stop-opacity="0.8"/>
-        <stop offset="50%" stop-color="#E9D5FF" stop-opacity="1"/>
-        <stop offset="80%" stop-color="#A855F7" stop-opacity="0.8"/>
-        <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
+        <stop offset="0%" stop-color="#4C1D95" stop-opacity="0"/>
+        <stop offset="20%" stop-color="#6D28D9" stop-opacity="0.85"/>
+        <stop offset="50%" stop-color="#7C3AED" stop-opacity="1"/>
+        <stop offset="80%" stop-color="#6D28D9" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#4C1D95" stop-opacity="0"/>
       </linearGradient>
     </defs>
     <!-- 8 éclairs qui convergent vers le centre (720, 450) -->
@@ -127,7 +127,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
               <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
           </defs>
-          <g filter="url(#crackGlow)" stroke="#FFFFFF" stroke-width="1" fill="none" stroke-linecap="round">
+          <g filter="url(#crackGlow)" stroke="#4C1D95" stroke-width="1" fill="none" stroke-linecap="round">
             <!-- Fissures principales radiantes depuis 3 points d'impact (barycentres des lettres) -->
             <path class="crack c1" style="--cd:0s"    d="M200,100 L150,40 M200,100 L260,30 M200,100 L310,95 M200,100 L270,170 M200,100 L130,165 M200,100 L80,110 M200,100 L95,45"/>
             <path class="crack c2" style="--cd:0.08s" d="M400,100 L380,30 M400,100 L470,50 M400,100 L510,110 M400,100 L450,175 M400,100 L340,170 M400,100 L290,115 M400,100 L320,40"/>
@@ -277,22 +277,37 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   #hero {
     position: relative;
     width: 100%;
-    /* Fond nébuleuse cosmos violet (PAS NOIR) — inspiré image lightning + galaxy */
+    /* FOND BLANC (brand SMMIA) — subtil halo violet/bleu centré + 2 orbes colorés aux angles */
     background:
-      radial-gradient(ellipse 80% 50% at 50% 42%, rgba(168, 85, 247, 0.38) 0%, rgba(124, 58, 237, 0.18) 30%, transparent 60%),
-      radial-gradient(ellipse 60% 45% at 18% 82%, rgba(139, 92, 246, 0.32) 0%, transparent 55%),
-      radial-gradient(ellipse 55% 40% at 82% 18%, rgba(192, 132, 252, 0.28) 0%, transparent 55%),
-      radial-gradient(ellipse 50% 35% at 88% 78%, rgba(124, 58, 237, 0.22) 0%, transparent 50%),
-      linear-gradient(180deg, #12062A 0%, #1B0A40 35%, #1E0B4C 55%, #140732 85%, #0E0527 100%);
-    padding: 90px 24px 130px;
+      radial-gradient(ellipse 70% 60% at 50% 38%, rgba(124, 58, 237, 0.08) 0%, rgba(0, 71, 255, 0.04) 40%, transparent 70%),
+      radial-gradient(ellipse 50% 45% at 12% 80%, rgba(124, 58, 237, 0.06) 0%, transparent 55%),
+      radial-gradient(ellipse 45% 40% at 88% 25%, rgba(6, 182, 212, 0.05) 0%, transparent 55%),
+      linear-gradient(180deg, #FFFFFF 0%, #FAFAFF 50%, #F4F7FF 100%);
+    padding: 110px 24px 140px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     text-align: center;
-    min-height: 800px;
-    perspective: 1200px;
+    min-height: 820px;
+    perspective: 1400px;
+    color: #0F0A2E;
+  }
+
+  /* Motif géométrique : grille de points violets très léger (style espace.mentalitefocus) */
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(124, 58, 237, 0.12) 1px, transparent 1.5px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse at 50% 40%, transparent 20%, black 80%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, transparent 20%, black 80%);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .hero-inner {
@@ -316,38 +331,15 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     max-width: 1000px;
     aspect-ratio: 3/1;
     transform: translate(-50%, -50%);
-    background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.28) 0%, rgba(139, 92, 246, 0.15) 35%, transparent 70%);
-    filter: blur(28px);
+    background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.14) 0%, rgba(0, 71, 255, 0.08) 40%, transparent 75%);
+    filter: blur(32px);
     z-index: 0;
     pointer-events: none;
+    mix-blend-mode: multiply;
   }
 
-  /* ===== STAR FIELD (nébuleuse cosmos) ===== */
-  .hero-stars {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.95;
-  }
-  .hero-stars .stars-small circle {
-    animation: starPulse 3.5s ease-in-out infinite;
-  }
-  @keyframes starPulse {
-    0%, 100% { opacity: 0.35; }
-    50%      { opacity: 1;    }
-  }
-  .star-twinkle {
-    transform-origin: center;
-    animation: starTwinkle 4s ease-in-out infinite;
-    animation-delay: var(--td, 0s);
-  }
-  @keyframes starTwinkle {
-    0%, 100% { opacity: 0.3; transform: scale(0.8); }
-    50%      { opacity: 1;   transform: scale(1.3); }
-  }
+  /* ===== STAR FIELD — masqué sur fond blanc (remplacé par le motif géométrique) ===== */
+  .hero-stars { display: none; }
 
   /* ===== HYPERSPACE STREAKS — lignes radiales depuis le centre (image 2) =====
      Effet "warp speed" avec conic-gradient + animation de rotation + radial fade */
@@ -362,24 +354,22 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     pointer-events: none;
     border-radius: 50%;
     background:
-      /* radial lines via repeating-conic-gradient (streaks radiaux) */
       repeating-conic-gradient(
         from 0deg,
         transparent 0deg,
         transparent 3deg,
-        rgba(216, 180, 254, 0.12) 3.5deg,
-        rgba(168, 85, 247, 0.18) 4deg,
+        rgba(124, 58, 237, 0.08) 3.5deg,
+        rgba(0, 71, 255, 0.1) 4deg,
         transparent 4.5deg,
         transparent 6deg,
-        rgba(192, 132, 252, 0.1) 6.3deg,
+        rgba(6, 182, 212, 0.07) 6.3deg,
         transparent 7deg
       );
-    /* masque radial : opaque au centre, fade vers extérieur */
-    -webkit-mask-image: radial-gradient(ellipse at center, black 8%, rgba(0,0,0,0.6) 35%, transparent 70%);
-            mask-image: radial-gradient(ellipse at center, black 8%, rgba(0,0,0,0.6) 35%, transparent 70%);
-    mix-blend-mode: screen;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 8%, rgba(0,0,0,0.5) 30%, transparent 65%);
+            mask-image: radial-gradient(ellipse at center, black 8%, rgba(0,0,0,0.5) 30%, transparent 65%);
+    mix-blend-mode: multiply;
     animation: streaksRotate 60s linear infinite;
-    opacity: 0.75;
+    opacity: 0.6;
   }
   @keyframes streaksRotate {
     from { transform: translate(-50%, -50%) rotate(0deg);    }
@@ -396,13 +386,13 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     height: 100%;
     z-index: 2;
     pointer-events: none;
-    mix-blend-mode: screen;
-    opacity: 0.85;
+    mix-blend-mode: multiply;
+    opacity: 0.75;
   }
   .hero-lightning .bolt {
     stroke-dasharray: 1400;
     stroke-dashoffset: 1400;
-    filter: drop-shadow(0 0 4px #E9D5FF) drop-shadow(0 0 10px #A855F7);
+    filter: drop-shadow(0 0 2px rgba(124, 58, 237, 0.8)) drop-shadow(0 0 6px rgba(124, 58, 237, 0.4));
     animation: boltStrike 5.5s cubic-bezier(0.3, 0.1, 0.4, 1) infinite;
     animation-delay: var(--bd, 0s);
   }
@@ -437,7 +427,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     left: 14%;
     width: 360px;
     height: 360px;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.45) 0%, rgba(168, 85, 247, 0) 70%);
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.22) 0%, rgba(124, 58, 237, 0) 70%);
     animation: orbFloat 18s ease-in-out infinite;
   }
   .orb-2 {
@@ -445,7 +435,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     right: 10%;
     width: 420px;
     height: 420px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.38) 0%, rgba(124, 58, 237, 0) 70%);
+    background: radial-gradient(circle, rgba(0, 71, 255, 0.18) 0%, rgba(0, 71, 255, 0) 70%);
     animation: orbFloat 22s ease-in-out infinite reverse;
     animation-delay: -4s;
   }
@@ -454,7 +444,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     left: 18%;
     width: 280px;
     height: 280px;
-    background: radial-gradient(circle, rgba(192, 132, 252, 0.32) 0%, rgba(192, 132, 252, 0) 70%);
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(6, 182, 212, 0) 70%);
     animation: orbFloat 25s ease-in-out infinite;
     animation-delay: -8s;
   }
@@ -463,7 +453,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     right: 18%;
     width: 240px;
     height: 240px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(139, 92, 246, 0) 70%);
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, rgba(124, 58, 237, 0) 70%);
     animation: orbFloat 20s ease-in-out infinite;
     animation-delay: -12s;
   }
@@ -482,10 +472,11 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     padding: 10px 22px;
     margin-top: 8px;
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(168, 85, 247, 0.22);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: #FFFFFF;
+    border: 1px solid rgba(124, 58, 237, 0.18);
+    box-shadow:
+      0 2px 8px rgba(124, 58, 237, 0.08),
+      0 8px 24px rgba(0, 71, 255, 0.06);
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -493,8 +484,8 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     display: inline-flex;
     align-items: center;
     gap: 2px;
-    color: #C084FC;
-    filter: drop-shadow(0 0 6px rgba(192, 132, 252, 0.6));
+    color: #7C3AED;
+    filter: drop-shadow(0 1px 2px rgba(124, 58, 237, 0.3));
   }
   .trust-stars svg {
     width: 14px;
@@ -504,12 +495,12 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(15, 10, 46, 0.7);
     letter-spacing: 0.005em;
     white-space: nowrap;
   }
   .trust-text strong {
-    color: #FFFFFF;
+    color: #0F0A2E;
     font-weight: 700;
   }
   .trust-sep {
@@ -517,8 +508,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: rgba(192, 132, 252, 0.6);
-    box-shadow: 0 0 6px rgba(192, 132, 252, 0.8);
+    background: #7C3AED;
   }
 
   /* ===== SCROLL INDICATOR ===== */
@@ -537,7 +527,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   .scroll-line {
     width: 1px;
     height: 32px;
-    background: linear-gradient(to bottom, rgba(192, 132, 252, 0), rgba(192, 132, 252, 0.9));
+    background: linear-gradient(to bottom, rgba(124, 58, 237, 0), rgba(124, 58, 237, 0.85));
     position: relative;
     overflow: hidden;
   }
@@ -548,7 +538,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     top: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFFFFF, rgba(255, 255, 255, 0));
+    background: linear-gradient(to bottom, rgba(124, 58, 237, 0), #7C3AED, rgba(124, 58, 237, 0));
     animation: scrollLineMove 2.2s ease-in-out infinite;
   }
   @keyframes scrollLineMove {
@@ -561,18 +551,18 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     font-weight: 500;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(216, 180, 254, 0.6);
+    color: rgba(124, 58, 237, 0.7);
   }
 
-  /* ===== EYEBROW badge session ===== */
+  /* ===== EYEBROW badge session (fond blanc) ===== */
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     padding: 8px 18px 8px 14px;
     border-radius: 9999px;
-    background: rgba(168, 85, 247, 0.08);
-    border: 1px solid rgba(168, 85, 247, 0.35);
+    background: rgba(124, 58, 237, 0.06);
+    border: 1px solid rgba(124, 58, 237, 0.25);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
@@ -580,13 +570,13 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #a855f7;
-    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7);
+    background: #7C3AED;
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.55);
     animation: pulseDot 2s ease-in-out infinite;
   }
   @keyframes pulseDot {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7); }
-    50%      { box-shadow: 0 0 0 8px rgba(168, 85, 247, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.55); }
+    50%      { box-shadow: 0 0 0 8px rgba(124, 58, 237, 0); }
   }
   .eyebrow-text {
     font-family: 'Inter', sans-serif;
@@ -594,7 +584,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(15, 10, 46, 0.78);
   }
 
   /* ===== SOUS-PHRASE ===== */
@@ -730,11 +720,13 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   .brand-smmia {
     height: 110px;
-    filter: none;
+    /* Logo original blanc — sur fond blanc, on le teinte violet profond via filter pour le rendre visible */
+    filter: brightness(0) saturate(100%) invert(13%) sepia(80%) saturate(4200%) hue-rotate(260deg) brightness(90%) contrast(115%);
+    transition: filter 0.5s ease;
   }
 
   .hero-brand:hover .brand-smmia {
-    filter: none;
+    filter: brightness(0) saturate(100%) invert(18%) sepia(95%) saturate(4500%) hue-rotate(245deg) brightness(95%) contrast(120%);
   }
 
   /* Switch logo dark / light — Astro style scoping forces global via :global() */
@@ -853,7 +845,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     font-size: clamp(28px, 3.6vw, 52px);
     line-height: 1.05;
     letter-spacing: -0.018em;
-    color: #FFFFFF;
+    color: #0F0A2E;
   }
 
   /* "Ton agence" — kicker éditorial avec barre néon gauche */
@@ -868,31 +860,27 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     height: 3px;
     border-radius: 2px;
     background: linear-gradient(90deg,
-      rgba(192, 132, 252, 0) 0%,
-      #C084FC 35%,
-      #E9D5FF 100%);
+      rgba(124, 58, 237, 0) 0%,
+      #7C3AED 35%,
+      #0047FF 100%);
     box-shadow:
-      0 0 12px rgba(192, 132, 252, 1),
-      0 0 28px rgba(168, 85, 247, 0.7),
-      0 0 52px rgba(139, 92, 246, 0.4);
+      0 0 10px rgba(124, 58, 237, 0.5),
+      0 0 20px rgba(0, 71, 255, 0.3);
     transform: translateY(2px);
   }
   .tl-kicker-text {
-    color: #FFFFFF;
+    color: #0F0A2E;
     font-weight: 600;
-    text-shadow:
-      0 0 4px rgba(255, 255, 255, 0.5),
-      0 0 18px rgba(216, 180, 254, 0.45);
   }
 
-  /* "par l'IA." — prefix sobre + IA en gradient néon + glow violet/cyan */
+  /* "par l'IA." — prefix sobre + IA en gradient violet→bleu sur fond blanc */
   .tl-line--bottom {
     margin-top: 0.35em;
     gap: 12px;
     font-weight: 500;
   }
   .tl-prefix {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(15, 10, 46, 0.65);
     font-weight: 500;
     letter-spacing: 0;
     font-style: normal;
@@ -905,17 +893,17 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     font-style: normal;
     letter-spacing: -0.03em;
     background: linear-gradient(135deg,
-      #22D3EE 0%,
-      #A855F7 42%,
-      #C084FC 72%,
-      #FFFFFF 100%);
+      #06B6D4 0%,
+      #0047FF 40%,
+      #7C3AED 75%,
+      #4C1D95 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    -webkit-text-fill-color: transparent;
     filter:
-      drop-shadow(0 0 10px rgba(192, 132, 252, 0.75))
-      drop-shadow(0 0 24px rgba(168, 85, 247, 0.55))
-      drop-shadow(0 0 48px rgba(34, 211, 238, 0.25));
+      drop-shadow(0 2px 8px rgba(124, 58, 237, 0.3))
+      drop-shadow(0 4px 16px rgba(0, 71, 255, 0.2));
     padding: 0 0.04em;
   }
   .tl-accent::after {
@@ -927,21 +915,17 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     height: 3px;
     border-radius: 2px;
     background: linear-gradient(90deg,
-      rgba(34, 211, 238, 0) 0%,
-      #22D3EE 18%,
-      #A855F7 52%,
-      #E9D5FF 100%);
+      rgba(6, 182, 212, 0) 0%,
+      #06B6D4 18%,
+      #0047FF 52%,
+      #7C3AED 100%);
     box-shadow:
-      0 0 12px rgba(168, 85, 247, 1),
-      0 0 26px rgba(192, 132, 252, 0.65);
+      0 0 10px rgba(124, 58, 237, 0.5),
+      0 0 18px rgba(0, 71, 255, 0.35);
   }
   .tl-dot {
-    color: #FFFFFF;
+    color: #7C3AED;
     font-weight: 900;
-    text-shadow:
-      0 0 6px rgba(255, 255, 255, 1),
-      0 0 14px rgba(192, 132, 252, 0.95),
-      0 0 28px rgba(168, 85, 247, 0.6);
     margin-left: -2px;
   }
 
@@ -979,16 +963,15 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     height: 240%;
     border-radius: 50%;
     background: radial-gradient(ellipse at center,
-      rgba(255, 255, 255, 0.2) 0%,
-      rgba(216, 180, 254, 0.32) 15%,
-      rgba(168, 85, 247, 0.22) 38%,
-      rgba(124, 58, 237, 0.12) 58%,
+      rgba(124, 58, 237, 0.18) 0%,
+      rgba(0, 71, 255, 0.12) 25%,
+      rgba(6, 182, 212, 0.08) 50%,
       transparent 76%);
-    filter: blur(38px);
+    filter: blur(40px);
     transform: translate(-50%, -50%) scale(1);
     pointer-events: none;
     z-index: 0;
-    mix-blend-mode: screen;
+    mix-blend-mode: multiply;
     animation: boosterHaloPulse 10s ease-in-out infinite;
   }
   @keyframes boosterHaloPulse {
@@ -1012,10 +995,9 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     pointer-events: none;
     z-index: 3;
     opacity: 0;
-    mix-blend-mode: screen;
-    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
-            drop-shadow(0 0 10px rgba(216, 180, 254, 0.85))
-            drop-shadow(0 0 22px rgba(168, 85, 247, 0.6));
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 0 1px rgba(76, 29, 149, 0.85))
+            drop-shadow(0 0 6px rgba(124, 58, 237, 0.55));
     animation: cracksReveal 10s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
   }
   @keyframes cracksReveal {
@@ -1054,17 +1036,17 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     line-height: 0.92;
     letter-spacing: -0.028em;
     color: transparent;
-    -webkit-text-stroke: 0;
+    -webkit-text-fill-color: transparent;
     background: linear-gradient(to top,
-      rgba(192, 132, 252, 0) 0%,
-      rgba(192, 132, 252, 0.15) 40%,
-      rgba(233, 213, 255, 0.4) 100%);
+      rgba(124, 58, 237, 0) 0%,
+      rgba(124, 58, 237, 0.18) 40%,
+      rgba(0, 71, 255, 0.28) 100%);
     -webkit-background-clip: text;
     background-clip: text;
-    filter: blur(4px) saturate(1.2);
-    opacity: 0.55;
-    mask-image: linear-gradient(to top, transparent 0%, black 50%, black 100%);
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 50%, black 100%);
+    filter: blur(4px) saturate(1.1);
+    opacity: 0.4;
+    mask-image: linear-gradient(to top, transparent 0%, black 55%, black 100%);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 55%, black 100%);
     pointer-events: none;
     z-index: 0;
     user-select: none;
@@ -1085,18 +1067,17 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     height: 140%;
     border-radius: 50%;
     background: radial-gradient(ellipse at center,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(243, 232, 255, 0.9) 10%,
-      rgba(216, 180, 254, 0.7) 22%,
-      rgba(192, 132, 252, 0.45) 40%,
-      rgba(168, 85, 247, 0.22) 58%,
+      rgba(124, 58, 237, 0.85) 0%,
+      rgba(124, 58, 237, 0.6) 15%,
+      rgba(0, 71, 255, 0.4) 35%,
+      rgba(6, 182, 212, 0.22) 58%,
       transparent 78%);
-    filter: blur(18px);
+    filter: blur(20px);
     transform: translate(-50%, -50%) scaleX(0.2) scaleY(0.1);
     opacity: 0;
     pointer-events: none;
     z-index: 1;
-    mix-blend-mode: screen;
+    mix-blend-mode: multiply;
     animation: boosterImpact 10s cubic-bezier(0.15, 0.85, 0.2, 1) infinite;
   }
   @keyframes boosterImpact {
@@ -1117,17 +1098,17 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     width: 40%;
     height: 80%;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(124, 58, 237, 0.75);
     box-shadow:
-      0 0 24px rgba(243, 232, 255, 0.9),
-      0 0 48px rgba(192, 132, 252, 0.7),
-      0 0 96px rgba(168, 85, 247, 0.4),
-      inset 0 0 16px rgba(233, 213, 255, 0.6);
+      0 0 18px rgba(124, 58, 237, 0.5),
+      0 0 38px rgba(0, 71, 255, 0.35),
+      0 0 70px rgba(6, 182, 212, 0.2),
+      inset 0 0 14px rgba(124, 58, 237, 0.4);
     transform: translate(-50%, -50%) scaleX(0.3) scaleY(0.15);
     opacity: 0;
     pointer-events: none;
     z-index: 1;
-    mix-blend-mode: screen;
+    mix-blend-mode: multiply;
     animation: boosterShockwave 10s cubic-bezier(0.18, 0.8, 0.25, 1) infinite;
   }
   @keyframes boosterShockwave {
@@ -1148,17 +1129,16 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     height: 180%;
     border-radius: 50%;
     background: radial-gradient(ellipse at center,
-      rgba(233, 213, 255, 0.55) 0%,
-      rgba(192, 132, 252, 0.42) 22%,
-      rgba(168, 85, 247, 0.28) 45%,
-      rgba(124, 58, 237, 0.12) 65%,
+      rgba(124, 58, 237, 0.4) 0%,
+      rgba(0, 71, 255, 0.3) 28%,
+      rgba(6, 182, 212, 0.2) 55%,
       transparent 80%);
-    filter: blur(42px);
+    filter: blur(44px);
     transform: translate(-50%, -50%) scale(0.3);
     opacity: 0;
     pointer-events: none;
     z-index: 0;
-    mix-blend-mode: screen;
+    mix-blend-mode: multiply;
     animation: boosterDust 10s ease-out infinite;
   }
   @keyframes boosterDust {
@@ -1179,10 +1159,10 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
-  /* ===== GLASS-LETTER : CORE BLANC PUR + halo violet EN EXTÉRIEUR uniquement =====
-     Stratégie : le remplissage des lettres reste BLANC solide (color + fill + stroke blanc),
-     et le violet n'intervient QU'EN HALO EXTÉRIEUR (grandes distances, opacité faible)
-     pour ne pas "manger" le cœur blanc. */
+  /* ===== GLASS-LETTER FOND BLANC : gradient violet→bleu→cyan filled =====
+     Stratégie : sur fond blanc, le néon blanc serait invisible. On utilise un
+     remplissage en gradient (background-clip:text) pour un rendu coloré lisible.
+     Drop-shadow violet subtil pour la profondeur + stroke fin violet foncé. */
   .glass-letter {
     display: inline-block;
     position: relative;
@@ -1190,25 +1170,27 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     font-weight: 900;
     font-style: normal;
     font-size: clamp(68px, 11.5vw, 168px);
-    line-height: 0.92;
-    letter-spacing: -0.032em;
-    color: #FFFFFF !important;
-    -webkit-text-fill-color: #FFFFFF !important;
-    -webkit-text-stroke: 1.5px #FFFFFF;
+    line-height: 0.88;
+    letter-spacing: -0.034em;
+    /* Couleur FALLBACK solide (si gradient échoue) : violet profond bien lisible sur blanc */
+    color: #1E1B4B;
+    /* Gradient décoratif par-dessus (s'il ne clip pas, le color fallback reste visible) */
+    background: linear-gradient(180deg,
+      #1E1B4B 0%,
+      #3730A3 20%,
+      #4C1D95 40%,
+      #6D28D9 60%,
+      #0047FF 82%,
+      #06B6D4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0;
+    /* Shadow simple mais visible (pas de drop-shadow lourd qui fadeout le gradient) */
     text-shadow:
-      /* COEUR BLANC SOLIDE — plusieurs couches blanches très proches */
-      0 0 1px  #FFFFFF,
-      0 0 2px  #FFFFFF,
-      0 0 4px  #FFFFFF,
-      0 0 8px  rgba(255, 255, 255, 0.85),
-      /* Transition blanc → lavender (encore très clair, opacité moyenne) */
-      0 0 16px rgba(245, 240, 255, 0.55),
-      0 0 28px rgba(221, 214, 254, 0.45),
-      /* Halo violet EN DEHORS des lettres (faible opacité, grands rayons) */
-      0 0 52px rgba(192, 132, 252, 0.55),
-      0 0 92px rgba(168, 85, 247, 0.45),
-      0 0 160px rgba(139, 92, 246, 0.32),
-      0 0 240px rgba(124, 58, 237, 0.2);
+      0 2px 0 rgba(30, 27, 75, 0.18),
+      0 4px 14px rgba(76, 29, 149, 0.25),
+      0 10px 40px rgba(0, 71, 255, 0.2);
     transform-style: preserve-3d;
     padding: 0 0.03em;
   }
@@ -1321,16 +1303,10 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   }
   @media (max-width: 480px) {
     .glass-letter {
-      -webkit-text-stroke: 1px #FFFFFF;
-      text-shadow:
-        0 0 1px  #FFFFFF,
-        0 0 2px  #FFFFFF,
-        0 0 4px  #FFFFFF,
-        0 0 8px  rgba(255, 255, 255, 0.8),
-        0 0 16px rgba(221, 214, 254, 0.4),
-        0 0 36px rgba(192, 132, 252, 0.5),
-        0 0 70px rgba(168, 85, 247, 0.38),
-        0 0 120px rgba(139, 92, 246, 0.25);
+      filter:
+        drop-shadow(0 1px 0  rgba(76, 29, 149, 0.25))
+        drop-shadow(0 3px 8px rgba(124, 58, 237, 0.4))
+        drop-shadow(0 6px 22px rgba(0, 71, 255, 0.25));
     }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -1352,21 +1328,21 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     inset: 0;
     z-index: 2;
     pointer-events: none;
-    opacity: 0.035;
+    opacity: 0.02;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    mix-blend-mode: overlay;
+    mix-blend-mode: multiply;
   }
 
-  /* ===== DECORATIONS BG ===== */
+  /* ===== DECORATIONS BG (fond blanc) ===== */
   .hero-grid {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(168, 85, 247, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(168, 85, 247, 0.06) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+      linear-gradient(rgba(0, 71, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 71, 255, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at center, black 45%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 45%, transparent 85%);
     z-index: 1;
     pointer-events: none;
   }
@@ -1377,7 +1353,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     right: 0;
     bottom: 0;
     height: 80px;
-    background: linear-gradient(to bottom, transparent, #000);
+    background: linear-gradient(to bottom, transparent, #F4F7FF);
     pointer-events: none;
     z-index: 2;
   }
