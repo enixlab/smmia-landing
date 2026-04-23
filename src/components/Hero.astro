@@ -1213,30 +1213,13 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     padding: 0 0.03em;
   }
 
-  /* ===== GLYPH : la lettre visible — charge, casse, reform ===== */
+  /* ===== GLYPH : la lettre visible — animation pilotée par GSAP en JS ===== */
   .glass-letter .glyph {
     display: inline-block;
     position: relative;
     z-index: 2;
     will-change: opacity, filter, transform;
-    animation: glyphGlassLife 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    animation-delay: calc(var(--i, 0) * -0.015s);
-  }
-  @keyframes glyphGlassLife {
-    /* STABLE 0-55% : subtile respiration crystal */
-    0%,   55% { opacity: 1; filter: blur(0) brightness(1);                   transform: translateY(0)     scale(1);    }
-    /* TENSION 57% : la lumière monte (verre sous pression) */
-    57%       { opacity: 1; filter: blur(0) brightness(1.35) contrast(1.1);  transform: translateY(-1px)  scale(1.02); }
-    /* CHARGE 60% : flicker violent juste avant le break */
-    60%       { opacity: 1; filter: blur(0) brightness(2.2)  contrast(1.3);  transform: translateY(-2px)  scale(1.05); }
-    /* BANG 62% : la lettre DISPARAÎT instantanément (opacity 0) — les shards prennent le relais */
-    62%       { opacity: 0; filter: blur(8px) brightness(3);                 transform: translateY(0)     scale(1.12); }
-    /* VOID 62-88% : rien */
-    87%       { opacity: 0; filter: blur(0) brightness(1);                   transform: translateY(-40px) scale(0.9);  }
-    /* REFORM 88-96% : la lettre RETOMBE depuis au-dessus (inverse de la chute des shards) */
-    92%       { opacity: 1; filter: blur(0) brightness(1.6);                 transform: translateY(-8px)  scale(1.04); }
-    96%       { opacity: 1; filter: blur(0) brightness(1.2);                 transform: translateY(2px)   scale(0.99); }
-    100%      { opacity: 1; filter: blur(0) brightness(1);                   transform: translateY(0)     scale(1);    }
+    /* pas d'animation CSS — GSAP prend le contrôle */
   }
 
   /* ===== SHARDS : 8 fragments polygonaux par lettre, clones du glyph avec clip-path =====
@@ -1259,8 +1242,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     z-index: 1;
     will-change: transform, opacity, filter;
     transform-origin: 50% 50%;
-    animation: shardGlassShatter 10s cubic-bezier(0.22, 0.55, 0.3, 1) infinite;
-    animation-delay: calc(var(--i, 0) * -0.015s);
+    /* pas d'animation CSS — GSAP prend le contrôle pour un rendu motion design pro */
   }
 
   /* ============================================
@@ -1322,82 +1304,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
        84%      : au sol, opacity fade out, blur fort
        85-100%  : invisible (glyph reform prend le relais)
      ======================================================================== */
-  @keyframes shardGlassShatter {
-    0%, 60%   {
-      opacity: 0;
-      transform: translate3d(0, 0, 0) rotate3d(1, 0.3, 0.2, 0deg);
-      filter: blur(0) brightness(1);
-    }
-    /* BANG 61% : flash blanc, tous shards visibles assemblés */
-    61%       {
-      opacity: 1;
-      transform: translate3d(0, 0, 0) rotate3d(1, 0.3, 0.2, 0deg);
-      filter: blur(0) brightness(2.5);
-    }
-    /* 63% : BURST initial violent (projection forte) */
-    63%       {
-      opacity: 1;
-      transform:
-        translate3d(var(--bx), var(--by), 40px)
-        rotate3d(1, 0.3, 0.2, calc(var(--rz) * 0.12));
-      filter: blur(0) brightness(2);
-    }
-    /* 66% : fragments encore très visibles (pleine opacité) */
-    66%       {
-      opacity: 1;
-      transform:
-        translate3d(
-          calc(var(--bx) * 1.2 + var(--fx) * 0.1),
-          calc(var(--by) * 0.6 + var(--fy) * 0.15),
-          30px)
-        rotate3d(1, 0.3, 0.3, calc(var(--rz) * 0.32));
-      filter: blur(0.4px) brightness(1.7);
-    }
-    /* 72% : mi-chute, encore bien lisibles */
-    72%       {
-      opacity: 0.95;
-      transform:
-        translate3d(
-          calc(var(--bx) * 0.5 + var(--fx) * 0.45),
-          calc(var(--fy) * 0.4),
-          20px)
-        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 0.6));
-      filter: blur(0.8px) brightness(1.4);
-    }
-    /* 78% : chute avancée */
-    78%       {
-      opacity: 0.85;
-      transform:
-        translate3d(
-          calc(var(--fx) * 0.85),
-          calc(var(--fy) * 0.75),
-          12px)
-        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 0.88));
-      filter: blur(1.5px) brightness(1.15);
-    }
-    /* 83% : presque au sol, fade commence */
-    83%       {
-      opacity: 0.5;
-      transform:
-        translate3d(calc(var(--fx) * 0.98), calc(var(--fy) * 0.95), 4px)
-        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 1.05));
-      filter: blur(2.5px) brightness(1);
-    }
-    /* 86% : au sol, fade out final */
-    86%       {
-      opacity: 0;
-      transform:
-        translate3d(var(--fx), var(--fy), 0)
-        rotate3d(1, 0.4, 0.3, var(--rz));
-      filter: blur(4px) brightness(0.85);
-    }
-    /* VOID 86-100% : shards invisibles, le glyph reform prend le relais */
-    88%, 100% {
-      opacity: 0;
-      transform: translate3d(0, 0, 0) rotate3d(1, 0.3, 0.2, 0deg);
-      filter: blur(0) brightness(1);
-    }
-  }
+  /* keyframes shardGlassShatter SUPPRIMÉS — GSAP prend le contrôle en JS */
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
@@ -1602,6 +1509,111 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       } else { rafId = 0; }
     }
   }
+
+  /* ========== GSAP GLASS SHATTER TIMELINE — VRAIE MOTION DESIGN ==========
+     Remplace les keyframes CSS par une timeline GSAP avec easing physique.
+     Contrôle frame-par-frame à 60fps, stagger par shard, physics de chute réaliste. */
+  import('gsap').then(({ gsap }) => {
+    const letters = document.querySelectorAll<HTMLElement>('.glass-letter');
+    if (!letters.length || reduced) return;
+
+    const getVar = (el: HTMLElement, name: string) => {
+      const v = getComputedStyle(el).getPropertyValue(name).trim();
+      return parseFloat(v) || 0;
+    };
+
+    const tl = gsap.timeline({ repeat: -1, defaults: { force3D: true } });
+    const CYCLE = 10; // seconds
+
+    letters.forEach((letter, letterIdx) => {
+      const glyph = letter.querySelector<HTMLElement>('.glyph');
+      const shards = letter.querySelectorAll<HTMLElement>('.shard');
+      if (!glyph || !shards.length) return;
+
+      const letterStagger = letterIdx * 0.025; // wave effect across letters
+
+      // ===== PHASE 1 : STABLE (0-5s) — respiration crystal subtile =====
+      tl.set(glyph,  { opacity: 1, filter: 'brightness(1)', y: 0, scale: 1 }, 0);
+      tl.set(shards, { opacity: 0, x: 0, y: 0, rotation: 0, filter: 'blur(0px) brightness(1)' }, 0);
+
+      // Micro-float du glyph pendant la phase stable (breath effect)
+      tl.to(glyph, { y: -1.5, duration: 2, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 0.5 + letterStagger);
+
+      // ===== PHASE 2 : TENSION (5-5.8s) — le verre "charge" sous pression =====
+      tl.to(glyph, {
+        scale: 1.04,
+        filter: 'brightness(1.8)',
+        y: -1,
+        duration: 0.8,
+        ease: 'power2.in',
+      }, 5 + letterStagger);
+
+      // ===== PHASE 3 : FLICKER (5.8-6.0s) — pic lumineux juste avant le break =====
+      tl.to(glyph, {
+        scale: 1.08,
+        filter: 'brightness(2.8) contrast(1.3)',
+        duration: 0.2,
+        ease: 'power4.in',
+      }, 5.8 + letterStagger);
+
+      // ===== PHASE 4 : BANG (6.0s) — glyph disparaît, shards apparaissent assemblés =====
+      tl.set(glyph, { opacity: 0, filter: 'blur(10px) brightness(3)', scale: 1.15 }, 6.0 + letterStagger);
+      tl.set(shards, { opacity: 1, filter: 'brightness(2.5)' }, 6.0 + letterStagger);
+
+      // ===== PHASE 5 : BURST (6.0-6.6s) — projection radiale violente avec Power4.out =====
+      shards.forEach((shard, si) => {
+        const bx = getVar(shard, '--bx');
+        const by = getVar(shard, '--by');
+        const rz = getVar(shard, '--rz');
+        // Direction aléatoire de rotation finale par shard pour plus de chaos naturel
+        const spin = rz + (si % 2 === 0 ? 60 : -60);
+
+        tl.to(shard, {
+          x: bx,
+          y: by,
+          rotation: spin * 0.25,
+          z: 40,
+          filter: 'blur(0.3px) brightness(2)',
+          duration: 0.6,
+          ease: 'power4.out',
+        }, 6.0 + letterStagger);
+
+        // ===== PHASE 6 : FALL avec GRAVITÉ (6.6-8.3s) — power2.in simule l'accélération =====
+        const fx = getVar(shard, '--fx');
+        const fy = getVar(shard, '--fy');
+
+        tl.to(shard, {
+          x: fx,
+          y: fy,
+          rotation: spin,
+          z: 0,
+          opacity: 0,
+          filter: 'blur(3px) brightness(0.8)',
+          duration: 1.7,
+          ease: 'power2.in', // accélération de la chute (gravité réaliste)
+        }, 6.6 + letterStagger);
+      });
+
+      // ===== PHASE 7 : VOID (8.3-8.8s) — reset silencieux des shards hors vue =====
+      tl.set(shards, { opacity: 0, x: 0, y: 0, rotation: 0, z: 0, filter: 'blur(0px) brightness(1)' }, 8.3 + letterStagger);
+
+      // ===== PHASE 8 : REFORM (8.8-9.5s) — le glyph retombe d'au-dessus avec elastic =====
+      tl.fromTo(glyph,
+        { opacity: 0, y: -80, scale: 0.7, filter: 'blur(2px) brightness(2)' },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          filter: 'blur(0px) brightness(1)',
+          duration: 1.2,
+          ease: 'back.out(1.8)', // léger rebond élastique
+        },
+      8.8 + letterStagger);
+    });
+
+    // Synchronise sur la durée totale — assure que le dernier stagger se termine avant le loop
+    tl.duration(CYCLE);
+  }).catch(err => console.warn('GSAP load failed, falling back to CSS', err));
 
   /* ========== TILT 3D INTERACTIF sur BOOSTER ==========
      Le mot suit la souris : rotateX suivant Y curseur, rotateY suivant X curseur.
