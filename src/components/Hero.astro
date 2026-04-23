@@ -29,38 +29,19 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       <span class="tl-line tl-line--top reveal" style="--d:0.15s">Ton agence</span>
 
       <span class="booster-3d reveal" style="--d:0.3s">
-        <!-- Mot principal (visible 0-32% du cycle, fade out avant explosion) -->
-        <span class="booster-3d__word" data-text="BOOSTER">BOOSTER</span>
+        <!-- Flash blanc au moment de la rupture -->
+        <span class="booster-flash" aria-hidden="true"></span>
 
-        <!-- 6 fragments du mot en clip-path qui s'éjectent -->
-        <span class="booster-frags" aria-hidden="true">
-          <span class="frag frag--1" data-text="BOOSTER">BOOSTER</span>
-          <span class="frag frag--2" data-text="BOOSTER">BOOSTER</span>
-          <span class="frag frag--3" data-text="BOOSTER">BOOSTER</span>
-          <span class="frag frag--4" data-text="BOOSTER">BOOSTER</span>
-          <span class="frag frag--5" data-text="BOOSTER">BOOSTER</span>
-          <span class="frag frag--6" data-text="BOOSTER">BOOSTER</span>
+        <!-- Mot splitté par lettre, chaque lettre = trajectoire 3D individuelle -->
+        <span class="booster-3d__word">
+          <span class="boost-letter" style="--i:0">B</span>
+          <span class="boost-letter" style="--i:1">O</span>
+          <span class="boost-letter" style="--i:2">O</span>
+          <span class="boost-letter" style="--i:3">S</span>
+          <span class="boost-letter" style="--i:4">T</span>
+          <span class="boost-letter" style="--i:5">E</span>
+          <span class="boost-letter" style="--i:6">R</span>
         </span>
-
-        <!-- Fissures SVG qui précèdent l'explosion -->
-        <svg class="booster-3d__cracks" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true">
-          <g class="cracks-glow">
-            <path class="crack crack--1" d="M 20 38 L 62 30 L 96 46 L 142 28 L 188 44 L 232 26 L 276 48 L 320 32 L 378 50"/>
-            <path class="crack crack--2" d="M 28 84 L 72 94 L 118 78 L 166 92 L 218 80 L 268 96 L 318 82 L 372 94"/>
-            <path class="crack crack--3" d="M 72 18 L 68 38 L 82 52 L 76 72"/>
-            <path class="crack crack--4" d="M 186 62 L 192 78 L 180 92 L 196 108"/>
-            <path class="crack crack--5" d="M 262 20 L 272 44 L 264 60 L 278 78"/>
-            <path class="crack crack--6" d="M 340 24 L 334 48 L 346 64 L 338 84"/>
-          </g>
-          <g class="cracks-main">
-            <path class="crack crack--1" d="M 20 38 L 62 30 L 96 46 L 142 28 L 188 44 L 232 26 L 276 48 L 320 32 L 378 50"/>
-            <path class="crack crack--2" d="M 28 84 L 72 94 L 118 78 L 166 92 L 218 80 L 268 96 L 318 82 L 372 94"/>
-            <path class="crack crack--3" d="M 72 18 L 68 38 L 82 52 L 76 72"/>
-            <path class="crack crack--4" d="M 186 62 L 192 78 L 180 92 L 196 108"/>
-            <path class="crack crack--5" d="M 262 20 L 272 44 L 264 60 L 278 78"/>
-            <path class="crack crack--6" d="M 340 24 L 334 48 L 346 64 L 338 84"/>
-          </g>
-        </svg>
       </span>
 
       <span class="tl-line tl-line--bottom reveal" style="--d:0.45s">
@@ -414,15 +395,14 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     color: rgba(216, 180, 254, 0.95);
   }
 
-  /* ========== BOOSTER 3D — cycle fissures → EXPLOSION ========== */
-  /* Cycle global = 8s
-     0-12.5% (0-1s)    : mot intact
-     12.5-27.5% (1-2.2s): fissures se dessinent
-     27.5-32.5% (2.2-2.6s): fissuré stable + micro-shake
-     32.5-47.5% (2.6-3.8s): EXPLOSION (fragments s'éjectent)
-     47.5-75% (3.8-6s)  : éclaté au loin, fade out
-     75-87.5% (6-7s)    : invisible
-     87.5-100% (7-8s)   : reformation
+  /* ========== BOOSTER 3D — EXPLOSION PREMIUM lettre par lettre ==========
+     Cycle 7s:
+       0-26%  (0-1.8s)   : stable, respiration subtile
+       26-30% (1.8-2.1s) : charge énergie (flash blanc + brightness up)
+       30-48% (2.1-3.4s) : EXPLOSION (chaque lettre s'éjecte en 3D avec motion blur)
+       48-72% (3.4-5s)   : dérive + fade out
+       72-85% (5-6s)     : invisible
+       85-100% (6-7s)    : reformation (lettres reviennent fluides)
   */
 
   .booster-3d {
@@ -430,231 +410,183 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     display: inline-block;
     line-height: 0.9;
     margin: 0.08em 0 0.04em;
-    perspective: 900px;
+    perspective: 1400px;
+    transform-style: preserve-3d;
   }
 
-  /* Variables de style communes à .booster-3d__word + .frag */
-  .booster-3d__word,
-  .frag {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    font-style: normal;
-    font-size: clamp(80px, 16vw, 224px);
-    line-height: 0.9;
-    letter-spacing: -0.025em;
-    background: linear-gradient(180deg,
-      #FFFFFF 0%,
-      #F3E8FF 28%,
-      #D8B4FE 55%,
-      #A855F7 85%,
-      #7C3AED 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    filter:
-      drop-shadow(0 2px 0 #7C3AED)
-      drop-shadow(0 6px 0 #4C1D95)
-      drop-shadow(0 14px 22px rgba(124, 58, 237, 0.45));
-    transform-origin: 50% 80%;
+  /* Flash blanc au moment où le mot explose */
+  .booster-flash {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 220%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(243, 232, 255, 0.55) 25%,
+      rgba(168, 85, 247, 0.25) 50%,
+      transparent 72%);
+    filter: blur(22px);
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: screen;
+    animation: boosterFlash 7s ease-out infinite;
+  }
+  @keyframes boosterFlash {
+    0%, 24%  { opacity: 0;    transform: translate(-50%, -50%) scale(0.6); }
+    27%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.1); }
+    30%      { opacity: 0.85; transform: translate(-50%, -50%) scale(1.4); }
+    36%      { opacity: 0;    transform: translate(-50%, -50%) scale(1.8); }
+    100%     { opacity: 0;    transform: translate(-50%, -50%) scale(0.6); }
   }
 
   .booster-3d__word {
     position: relative;
+    display: inline-flex;
+    z-index: 2;
+  }
+
+  /* Chaque lettre = span indépendant avec sa trajectoire 3D */
+  .boost-letter {
     display: inline-block;
-    will-change: transform, opacity;
-    animation: wordLife 8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-  }
-  /* Bevel highlight */
-  .booster-3d__word::before {
-    content: attr(data-text);
-    position: absolute;
-    top: -1px;
-    left: 0;
-    right: 0;
-    font: inherit;
-    letter-spacing: inherit;
-    background: none;
-    -webkit-background-clip: initial;
-    background-clip: initial;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, 0.3);
-    pointer-events: none;
-    z-index: 1;
-  }
-  @keyframes wordLife {
-    /* Intact */
-    0%, 12%  { opacity: 1; transform: rotateX(4deg) translate(0, 0); }
-    /* Fissures arrivent */
-    27%      { opacity: 1; transform: rotateX(4deg) translate(0, 0); }
-    /* Micro-shake */
-    29%      { opacity: 1; transform: rotateX(4deg) translate(2.5px, 0); }
-    31%      { opacity: 1; transform: rotateX(4deg) translate(-2.5px, 0); }
-    /* Disparition avant explosion */
-    32%      { opacity: 1; transform: rotateX(4deg) translate(0, 0) scale(1.02); }
-    35%      { opacity: 0; transform: rotateX(4deg) translate(0, 0) scale(1.05); }
-    /* Invisible pendant toute la phase explosion */
-    87%      { opacity: 0; transform: rotateX(4deg) translate(0, 0) scale(0.95); }
-    /* Reformation */
-    95%, 100%{ opacity: 1; transform: rotateX(4deg) translate(0, 0) scale(1); }
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: clamp(80px, 16vw, 232px);
+    line-height: 0.92;
+    letter-spacing: -0.032em;
+    /* Couleur premium monochrome — blanc cassé avec tint lavande subtil */
+    color: #FDFBFF;
+    /* Extrusion 3D discrète + glow ambient */
+    text-shadow:
+      0 1px 0 rgba(76, 29, 149, 0.95),
+      0 2px 0 rgba(76, 29, 149, 0.75),
+      0 3px 0 rgba(76, 29, 149, 0.55),
+      0 4px 8px rgba(76, 29, 149, 0.6),
+      0 0 36px rgba(168, 85, 247, 0.35);
+    transform-origin: center center;
+    will-change: transform, opacity, filter;
+    animation: letterLife 7s cubic-bezier(0.4, 0, 0.15, 1) infinite;
+    animation-delay: calc(var(--i, 0) * -0.012s);
   }
 
-  /* ============ FRAGMENTS EN CLIP-PATH ============ */
-  .booster-frags {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 4;
-  }
-  .frag {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    opacity: 0;
-    will-change: transform, opacity;
-    animation: fragExplode 8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
-  }
+  /* Trajectoires 3D par lettre — directions variées, rotations 3D naturelles */
+  .boost-letter:nth-child(1) { --dx: -220px; --dy: -140px; --rx:  22deg; --ry: -40deg; --rz: -32deg; }
+  .boost-letter:nth-child(2) { --dx: -100px; --dy: -220px; --rx: -26deg; --ry:  14deg; --rz:  18deg; }
+  .boost-letter:nth-child(3) { --dx:   30px; --dy: -185px; --rx:  16deg; --ry: -22deg; --rz: -10deg; }
+  .boost-letter:nth-child(4) { --dx:  -45px; --dy:  200px; --rx: -20deg; --ry:  30deg; --rz: -26deg; }
+  .boost-letter:nth-child(5) { --dx:   95px; --dy: -120px; --rx:  32deg; --ry: -16deg; --rz:  24deg; }
+  .boost-letter:nth-child(6) { --dx:  170px; --dy:  180px; --rx: -28deg; --ry:  34deg; --rz: -36deg; }
+  .boost-letter:nth-child(7) { --dx:  240px; --dy:  -80px; --rx:  18deg; --ry: -26deg; --rz:  42deg; }
 
-  /* Clip-paths : 6 zones qui pavent le mot (2 rangées x 3 colonnes) avec lignes brisées */
-  .frag--1 { clip-path: polygon(0 0,    35% 0,    33% 50%,  0 50%); }
-  .frag--2 { clip-path: polygon(35% 0,  65% 0,    66% 50%, 33% 50%); }
-  .frag--3 { clip-path: polygon(65% 0, 100% 0,  100% 50%, 66% 50%); }
-  .frag--4 { clip-path: polygon(0 50%, 33% 50%,  35% 100%, 0 100%); }
-  .frag--5 { clip-path: polygon(33% 50%, 66% 50%, 65% 100%, 35% 100%); }
-  .frag--6 { clip-path: polygon(66% 50%, 100% 50%, 100% 100%, 65% 100%); }
-
-  /* Directions d'éjection par fragment */
-  .frag--1 { --dx: -120px; --dy:  -75px; --dr: -22deg; }
-  .frag--2 { --dx:   -10px; --dy: -110px; --dr:   8deg; }
-  .frag--3 { --dx:  130px; --dy:  -65px; --dr:  26deg; }
-  .frag--4 { --dx: -100px; --dy:   75px; --dr: -28deg; }
-  .frag--5 { --dx:   12px; --dy:  115px; --dr:  -5deg; }
-  .frag--6 { --dx:  140px; --dy:   85px; --dr:  30deg; }
-
-  @keyframes fragExplode {
-    /* Invisible avant l'explosion */
-    0%, 32%  {
-      opacity: 0;
-      transform: rotateX(4deg) translate(0, 0) rotate(0deg);
-    }
-    /* Apparaissent pile quand le mot principal disparaît */
-    35%      {
+  @keyframes letterLife {
+    /* Phase 1 : stable + respiration très subtile */
+    0%, 22%  {
+      transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0);
       opacity: 1;
-      transform: rotateX(4deg) translate(0, 0) rotate(0deg);
+      filter: blur(0) brightness(1);
     }
-    /* Explosion : s'éjectent rapidement */
-    47%      {
+    /* Phase 2 : charge — lumière monte, tout reste en place */
+    27%      {
+      transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1.03);
       opacity: 1;
-      transform: rotateX(4deg) translate(var(--dx), var(--dy)) rotate(var(--dr));
+      filter: blur(0) brightness(1.4);
     }
-    /* Continuent à dériver */
-    62%      {
-      opacity: 0.7;
-      transform: rotateX(4deg)
-        translate(calc(var(--dx) * 1.3), calc(var(--dy) * 1.3))
-        rotate(calc(var(--dr) * 1.4));
+    /* Phase 3 : EXPLOSION — éjection violente avec motion blur */
+    32%      {
+      transform: translate3d(calc(var(--dx) * 0.25), calc(var(--dy) * 0.25), 60px)
+                 rotateX(calc(var(--rx) * 0.4))
+                 rotateY(calc(var(--ry) * 0.4))
+                 rotateZ(calc(var(--rz) * 0.3));
+      opacity: 1;
+      filter: blur(10px) brightness(1.2);
     }
-    /* Fade out progressif */
-    75%      {
+    42%      {
+      transform: translate3d(var(--dx), var(--dy), 40px)
+                 rotateX(var(--rx))
+                 rotateY(var(--ry))
+                 rotateZ(var(--rz));
+      opacity: 1;
+      filter: blur(6px) brightness(1);
+    }
+    /* Phase 4 : dérive — motion blur s'atténue */
+    55%      {
+      transform: translate3d(calc(var(--dx) * 1.2), calc(var(--dy) * 1.2), 20px)
+                 rotateX(calc(var(--rx) * 1.25))
+                 rotateY(calc(var(--ry) * 1.25))
+                 rotateZ(calc(var(--rz) * 1.3));
+      opacity: 0.6;
+      filter: blur(2px) brightness(0.85);
+    }
+    /* Phase 5 : fade out au loin */
+    70%      {
+      transform: translate3d(calc(var(--dx) * 1.5), calc(var(--dy) * 1.5), 0)
+                 rotateX(calc(var(--rx) * 1.5))
+                 rotateY(calc(var(--ry) * 1.5))
+                 rotateZ(calc(var(--rz) * 1.6));
       opacity: 0;
-      transform: rotateX(4deg)
-        translate(calc(var(--dx) * 1.6), calc(var(--dy) * 1.6))
-        rotate(calc(var(--dr) * 1.8));
+      filter: blur(0) brightness(0.6);
     }
-    /* Invisible + reset discret */
-    88%, 100%{
+    /* Phase 6 : invisible */
+    74%, 84% {
       opacity: 0;
-      transform: rotateX(4deg) translate(0, 0) rotate(0deg);
+      transform: translate3d(0, 0, -60px) rotateX(0) rotateY(0) rotateZ(0);
+      filter: blur(0);
+    }
+    /* Phase 7 : reformation — chaque lettre revient de l'avant avec ease */
+    92%      {
+      opacity: 1;
+      transform: translate3d(0, 0, 20px) rotateX(0) rotateY(0) rotateZ(0);
+      filter: blur(0) brightness(1.1);
+    }
+    100%     {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0);
+      filter: blur(0) brightness(1);
     }
   }
 
-  /* ============ FISSURES (cycle synchronisé sur 8s) ============ */
-  .booster-3d__cracks {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: visible;
-    z-index: 3;
-    transform: rotateX(4deg);
-    transform-origin: 50% 80%;
-  }
-  .cracks-glow .crack {
-    stroke: rgba(168, 85, 247, 0.75);
-    stroke-width: 1px;
-    fill: none;
-    transform: translate(1px, 1.5px);
-    filter: blur(0.5px);
-  }
-  .cracks-main .crack {
-    stroke: #000;
-    stroke-width: 2.4px;
-    stroke-linecap: butt;
-    stroke-linejoin: miter;
-    fill: none;
-  }
-  .crack {
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
-    animation: crackCycle 8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-  }
-  /* Cascade via delay négatifs très courts (garde le cycle 8s global) */
-  .cracks-main .crack--2, .cracks-glow .crack--2 { animation-delay: -0.04s; }
-  .cracks-main .crack--3, .cracks-glow .crack--3 { animation-delay: -0.08s; }
-  .cracks-main .crack--4, .cracks-glow .crack--4 { animation-delay: -0.12s; }
-  .cracks-main .crack--5, .cracks-glow .crack--5 { animation-delay: -0.16s; }
-  .cracks-main .crack--6, .cracks-glow .crack--6 { animation-delay: -0.2s; }
-
-  @keyframes crackCycle {
-    0%, 13%  { stroke-dashoffset: 400; opacity: 1; }
-    27%      { stroke-dashoffset: 0;   opacity: 1; }
-    32%      { stroke-dashoffset: 0;   opacity: 1; }
-    35%      { stroke-dashoffset: 0;   opacity: 0; }  /* disparaissent avec le mot */
-    99%      { stroke-dashoffset: 0;   opacity: 0; }
-    100%     { stroke-dashoffset: 400; opacity: 0; }
-  }
-
-  /* Pause cycle au hover = le mot reste éclaté plus longtemps */
-  .booster-3d:hover .booster-3d__word,
-  .booster-3d:hover .frag,
-  .booster-3d:hover .crack {
+  /* Pause cycle au hover (voir l'état explosé figé) */
+  .booster-3d:hover .boost-letter,
+  .booster-3d:hover .booster-flash {
     animation-play-state: paused;
   }
 
   /* Responsive */
   @media (max-width: 768px) {
-    .booster-3d__word,
-    .frag { font-size: clamp(64px, 18vw, 120px); }
+    .boost-letter { font-size: clamp(64px, 18vw, 128px); }
+    .boost-letter:nth-child(1) { --dx: -120px; --dy:  -80px; }
+    .boost-letter:nth-child(2) { --dx:  -55px; --dy: -125px; }
+    .boost-letter:nth-child(3) { --dx:   18px; --dy: -105px; }
+    .boost-letter:nth-child(4) { --dx:  -25px; --dy:  115px; }
+    .boost-letter:nth-child(5) { --dx:   50px; --dy:  -70px; }
+    .boost-letter:nth-child(6) { --dx:   95px; --dy:  100px; }
+    .boost-letter:nth-child(7) { --dx:  135px; --dy:  -45px; }
   }
   @media (max-width: 480px) {
-    .booster-3d__word,
-    .frag {
-      filter:
-        drop-shadow(0 2px 0 #7C3AED)
-        drop-shadow(0 4px 0 #4C1D95)
-        drop-shadow(0 10px 16px rgba(124, 58, 237, 0.45));
+    .boost-letter {
+      text-shadow:
+        0 1px 0 rgba(76, 29, 149, 0.95),
+        0 2px 0 rgba(76, 29, 149, 0.7),
+        0 3px 6px rgba(76, 29, 149, 0.55),
+        0 0 24px rgba(168, 85, 247, 0.3);
     }
-    /* Amplitude d'explosion réduite mobile */
-    .frag--1 { --dx: -60px;  --dy: -40px; }
-    .frag--2 { --dx:  -5px;  --dy: -60px; }
-    .frag--3 { --dx:  70px;  --dy: -35px; }
-    .frag--4 { --dx: -55px;  --dy:  40px; }
-    .frag--5 { --dx:   8px;  --dy:  65px; }
-    .frag--6 { --dx:  75px;  --dy:  45px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .booster-3d__word,
-    .frag,
-    .crack {
+    .boost-letter,
+    .booster-flash {
       animation: none;
     }
-    .booster-3d__word { opacity: 1; transform: rotateX(4deg); }
-    .frag { opacity: 0; }
-    .crack { stroke-dashoffset: 0; opacity: 1; }
+    .boost-letter {
+      transform: none;
+      opacity: 1;
+      filter: none;
+    }
+    .booster-flash { opacity: 0; }
   }
 
   /* ===== NOISE TEXTURE ===== */
