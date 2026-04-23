@@ -26,26 +26,73 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
     <!-- Tagline principale : Ton agence BOOSTER par l'IA -->
     <h1 class="hero-title hero-title--solo">
-      <span class="tl-line tl-line--top reveal" style="--d:0.15s">Ton agence</span>
+      <span class="tl-line tl-line--top reveal" style="--d:0.15s">
+        <span class="tl-kicker-bar" aria-hidden="true"></span>
+        <span class="tl-kicker-text">Ton agence</span>
+      </span>
 
       <span class="booster-3d reveal" style="--d:0.3s">
+        <!-- Halo néon violet enveloppant (énergie contenue) -->
+        <span class="booster-neon-halo" aria-hidden="true"></span>
+
+        <!-- SVG filter — fissures/displacement pour pré-explosion -->
+        <svg class="booster-svg-defs" width="0" height="0" aria-hidden="true">
+          <defs>
+            <filter id="crackDisplace" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" seed="4" result="noise">
+                <animate attributeName="baseFrequency" values="0.015;0.08;0.015" dur="8s" repeatCount="indefinite"/>
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G">
+                <animate attributeName="scale" values="0;0;0;22;0;0;0" keyTimes="0;0.32;0.37;0.42;0.5;0.9;1" dur="8s" repeatCount="indefinite"/>
+              </feDisplacementMap>
+            </filter>
+          </defs>
+        </svg>
+
         <!-- Flash blanc au moment de la rupture -->
         <span class="booster-flash" aria-hidden="true"></span>
 
-        <!-- Mot splitté par lettre, chaque lettre = trajectoire 3D individuelle -->
+        <!-- Shockwave ring (une seule onde, expanse radiale) -->
+        <span class="booster-shockwave" aria-hidden="true"></span>
+
+        <!-- Dust cloud post-explosion -->
+        <span class="booster-dust" aria-hidden="true"></span>
+
+        <!-- Mot splitté par lettre — chaque lettre explose en particules (box-shadow burst) -->
         <span class="booster-3d__word">
-          <span class="boost-letter" style="--i:0">B</span>
-          <span class="boost-letter" style="--i:1">O</span>
-          <span class="boost-letter" style="--i:2">O</span>
-          <span class="boost-letter" style="--i:3">S</span>
-          <span class="boost-letter" style="--i:4">T</span>
-          <span class="boost-letter" style="--i:5">E</span>
-          <span class="boost-letter" style="--i:6">R</span>
+          <span class="boost-letter" style="--i:0">
+            <span class="glyph">B</span>
+            <span class="burst" aria-hidden="true"></span>
+          </span>
+          <span class="boost-letter" style="--i:1">
+            <span class="glyph">O</span>
+            <span class="burst" aria-hidden="true"></span>
+          </span>
+          <span class="boost-letter" style="--i:2">
+            <span class="glyph">O</span>
+            <span class="burst" aria-hidden="true"></span>
+          </span>
+          <span class="boost-letter" style="--i:3">
+            <span class="glyph">S</span>
+            <span class="burst" aria-hidden="true"></span>
+          </span>
+          <span class="boost-letter" style="--i:4">
+            <span class="glyph">T</span>
+            <span class="burst" aria-hidden="true"></span>
+          </span>
+          <span class="boost-letter" style="--i:5">
+            <span class="glyph">E</span>
+            <span class="burst" aria-hidden="true"></span>
+          </span>
+          <span class="boost-letter" style="--i:6">
+            <span class="glyph">R</span>
+            <span class="burst" aria-hidden="true"></span>
+          </span>
         </span>
       </span>
 
       <span class="tl-line tl-line--bottom reveal" style="--d:0.45s">
-        par l'<span class="tl-accent">IA</span>.
+        <span class="tl-prefix">par l'</span><span class="tl-accent">IA</span><span class="tl-dot">.</span>
       </span>
     </h1>
 
@@ -378,215 +425,475 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   /* ========== TAGLINE : Ton agence BOOSTER par l'IA ========== */
   .tl-line {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: clamp(22px, 3vw, 42px);
     line-height: 1.1;
     letter-spacing: -0.015em;
-    color: rgba(255, 255, 255, 0.82);
-  }
-  .tl-line--top    { margin-bottom: 0.1em; }
-  .tl-line--bottom { margin-top: 0.05em; }
-  .tl-accent {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 500;
-    color: rgba(216, 180, 254, 0.95);
+    color: rgba(255, 255, 255, 0.88);
   }
 
-  /* ========== BOOSTER 3D — EXPLOSION PREMIUM lettre par lettre ==========
-     Cycle 7s:
-       0-26%  (0-1.8s)   : stable, respiration subtile
-       26-30% (1.8-2.1s) : charge énergie (flash blanc + brightness up)
-       30-48% (2.1-3.4s) : EXPLOSION (chaque lettre s'éjecte en 3D avec motion blur)
-       48-72% (3.4-5s)   : dérive + fade out
-       72-85% (5-6s)     : invisible
-       85-100% (6-7s)    : reformation (lettres reviennent fluides)
+  /* "Ton agence" — kicker éditorial avec barre néon gauche */
+  .tl-line--top {
+    margin-bottom: 0.15em;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+  }
+  .tl-kicker-bar {
+    display: inline-block;
+    width: 34px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg,
+      rgba(192, 132, 252, 0) 0%,
+      #C084FC 40%,
+      #E9D5FF 100%);
+    box-shadow:
+      0 0 10px rgba(192, 132, 252, 0.85),
+      0 0 22px rgba(168, 85, 247, 0.55);
+    transform: translateY(1px);
+    opacity: 0.9;
+  }
+  .tl-kicker-text {
+    background: linear-gradient(90deg, #FFFFFF 0%, #F3E8FF 50%, #E9D5FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 500;
+  }
+
+  /* "par l'IA." — IA en gradient néon + glow violet */
+  .tl-line--bottom {
+    margin-top: 0.25em;
+    gap: 10px;
+  }
+  .tl-prefix {
+    color: rgba(233, 213, 255, 0.72);
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    font-style: italic;
+  }
+  .tl-accent {
+    position: relative;
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg,
+      #22D3EE 0%,
+      #A855F7 45%,
+      #C084FC 75%,
+      #E9D5FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.55))
+            drop-shadow(0 0 28px rgba(192, 132, 252, 0.35));
+  }
+  .tl-accent::after {
+    content: '';
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    bottom: -4px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg,
+      rgba(34, 211, 238, 0) 0%,
+      #22D3EE 20%,
+      #A855F7 55%,
+      #E9D5FF 100%);
+    box-shadow:
+      0 0 10px rgba(168, 85, 247, 0.8),
+      0 0 22px rgba(192, 132, 252, 0.5);
+    opacity: 0.9;
+  }
+  .tl-dot {
+    color: #C084FC;
+    font-weight: 800;
+    text-shadow:
+      0 0 8px rgba(192, 132, 252, 0.9),
+      0 0 18px rgba(168, 85, 247, 0.6);
+    margin-left: -4px;
+  }
+
+  /* ========== BOOSTER — BOMBE PREMIUM qui se désintègre ==========
+     Cycle 8s, calé à la taille du logo SMMIA (110px) — BOOSTER ~140-150px desktop.
+
+     Phases :
+       0-35%   stable + micro-fissures qui respirent (SVG turbulence)
+       35-40%  charge (brightness up, scale 1.04)
+       40-42%  FLASH BLANC + SHOCKWAVE RING expansion
+       42-55%  DISINTEGRATION : lettres éjectées 3D + burst de particules (box-shadow) + motion blur
+       55-72%  DRIFT + gravité : particules continuent, dust cloud se dilate et fade
+       72-82%  void (invisible)
+       82-100% reformation fluide, lettres reviennent en Z
   */
 
   .booster-3d {
     position: relative;
     display: inline-block;
     line-height: 0.9;
-    margin: 0.08em 0 0.04em;
-    perspective: 1400px;
+    margin: 0.06em 0 0.04em;
+    perspective: 1600px;
     transform-style: preserve-3d;
   }
 
-  /* Flash blanc au moment où le mot explose */
+  .booster-svg-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  /* Halo néon violet permanent — enveloppe le mot, respire doucement */
+  .booster-neon-halo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 130%;
+    height: 220%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center,
+      rgba(216, 180, 254, 0.35) 0%,
+      rgba(168, 85, 247, 0.22) 30%,
+      rgba(124, 58, 237, 0.12) 55%,
+      transparent 75%);
+    filter: blur(34px);
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+    animation: haloPulse 6s ease-in-out infinite;
+  }
+  @keyframes haloPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 0.85; }
+    50%      { transform: translate(-50%, -50%) scale(1.08); opacity: 1;    }
+  }
+
+  /* Flash violet-blanc (pointe d'énergie à l'instant de la rupture) */
   .booster-flash {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 120%;
-    height: 220%;
+    width: 140%;
+    height: 260%;
     border-radius: 50%;
     background: radial-gradient(ellipse,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(243, 232, 255, 0.55) 25%,
-      rgba(168, 85, 247, 0.25) 50%,
-      transparent 72%);
-    filter: blur(22px);
-    transform: translate(-50%, -50%) scale(0.6);
+      rgba(255, 255, 255, 1) 0%,
+      rgba(243, 232, 255, 0.85) 14%,
+      rgba(216, 180, 254, 0.65) 28%,
+      rgba(168, 85, 247, 0.4) 48%,
+      rgba(124, 58, 237, 0.18) 62%,
+      transparent 75%);
+    filter: blur(24px);
+    transform: translate(-50%, -50%) scale(0.55);
     opacity: 0;
     pointer-events: none;
     z-index: 1;
     mix-blend-mode: screen;
-    animation: boosterFlash 7s ease-out infinite;
+    animation: boosterFlash 8s ease-out infinite;
   }
   @keyframes boosterFlash {
-    0%, 24%  { opacity: 0;    transform: translate(-50%, -50%) scale(0.6); }
-    27%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.1); }
-    30%      { opacity: 0.85; transform: translate(-50%, -50%) scale(1.4); }
-    36%      { opacity: 0;    transform: translate(-50%, -50%) scale(1.8); }
-    100%     { opacity: 0;    transform: translate(-50%, -50%) scale(0.6); }
+    0%, 38%  { opacity: 0;    transform: translate(-50%, -50%) scale(0.55); }
+    41%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.15); }
+    44%      { opacity: 0.7;  transform: translate(-50%, -50%) scale(1.6); }
+    50%      { opacity: 0;    transform: translate(-50%, -50%) scale(2.0); }
+    100%     { opacity: 0;    transform: translate(-50%, -50%) scale(0.55); }
+  }
+
+  /* Shockwave ring — une seule onde violet néon qui s'expanse */
+  .booster-shockwave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: 160%;
+    border-radius: 50%;
+    border: 2px solid rgba(216, 180, 254, 0.95);
+    box-shadow:
+      0 0 32px rgba(192, 132, 252, 0.75),
+      0 0 64px rgba(168, 85, 247, 0.45),
+      inset 0 0 18px rgba(233, 213, 255, 0.5);
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: screen;
+    animation: boosterShock 8s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+  }
+  @keyframes boosterShock {
+    0%, 40%  { opacity: 0;    transform: translate(-50%, -50%) scale(0.3); border-width: 4px; }
+    42%      { opacity: 1;    transform: translate(-50%, -50%) scale(0.5); border-width: 3px; }
+    52%      { opacity: 0.4;  transform: translate(-50%, -50%) scale(2.8); border-width: 1px; }
+    58%      { opacity: 0;    transform: translate(-50%, -50%) scale(3.8); border-width: 0.5px; }
+    100%     { opacity: 0;    transform: translate(-50%, -50%) scale(0.3); border-width: 4px; }
+  }
+
+  /* Dust cloud — nuage de poussière violet néon après l'explosion */
+  .booster-dust {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 320%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse,
+      rgba(233, 213, 255, 0.45) 0%,
+      rgba(192, 132, 252, 0.32) 28%,
+      rgba(168, 85, 247, 0.22) 50%,
+      rgba(124, 58, 237, 0.1) 65%,
+      transparent 78%);
+    filter: blur(44px);
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+    animation: boosterDust 8s ease-out infinite;
+  }
+  @keyframes boosterDust {
+    0%, 42%  { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+    50%      { opacity: 0.9; transform: translate(-50%, -50%) scale(1.1); }
+    65%      { opacity: 0.5; transform: translate(-50%, -50%) scale(1.6); }
+    78%      { opacity: 0; transform: translate(-50%, -50%) scale(2.0); }
+    100%     { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
   }
 
   .booster-3d__word {
     position: relative;
     display: inline-flex;
     z-index: 2;
+    filter: url(#crackDisplace);
   }
 
-  /* Chaque lettre = span indépendant avec sa trajectoire 3D */
+  /* Chaque lettre = tube néon violet (Inter 900) avec profondeur 3D douce */
   .boost-letter {
     display: inline-block;
     position: relative;
     font-family: 'Inter', sans-serif;
     font-weight: 900;
     font-style: normal;
-    font-size: clamp(80px, 16vw, 232px);
+    font-size: clamp(62px, 10.5vw, 152px);
     line-height: 0.92;
-    letter-spacing: -0.032em;
-    /* Couleur premium monochrome — blanc cassé avec tint lavande subtil */
-    color: #FDFBFF;
-    /* Extrusion 3D discrète + glow ambient */
+    letter-spacing: -0.028em;
+    color: #FBF7FF;
+    -webkit-text-stroke: 0.5px rgba(233, 213, 255, 0.55);
     text-shadow:
-      0 1px 0 rgba(76, 29, 149, 0.95),
+      /* relief 3D subtil (2 couches, pas 28) */
+      0 1px 0 rgba(91, 33, 182, 0.95),
       0 2px 0 rgba(76, 29, 149, 0.75),
-      0 3px 0 rgba(76, 29, 149, 0.55),
-      0 4px 8px rgba(76, 29, 149, 0.6),
-      0 0 36px rgba(168, 85, 247, 0.35);
-    transform-origin: center center;
-    will-change: transform, opacity, filter;
-    animation: letterLife 7s cubic-bezier(0.4, 0, 0.15, 1) infinite;
-    animation-delay: calc(var(--i, 0) * -0.012s);
+      0 3px 8px rgba(55, 18, 112, 0.55),
+      /* halo néon tube (cascade de glow violet) */
+      0 0 6px rgba(243, 232, 255, 0.9),
+      0 0 14px rgba(216, 180, 254, 0.85),
+      0 0 28px rgba(192, 132, 252, 0.75),
+      0 0 52px rgba(168, 85, 247, 0.65),
+      0 0 88px rgba(139, 92, 246, 0.5),
+      0 0 140px rgba(124, 58, 237, 0.35);
+    transform-style: preserve-3d;
   }
 
-  /* Trajectoires 3D par lettre — directions variées, rotations 3D naturelles */
-  .boost-letter:nth-child(1) { --dx: -220px; --dy: -140px; --rx:  22deg; --ry: -40deg; --rz: -32deg; }
-  .boost-letter:nth-child(2) { --dx: -100px; --dy: -220px; --rx: -26deg; --ry:  14deg; --rz:  18deg; }
-  .boost-letter:nth-child(3) { --dx:   30px; --dy: -185px; --rx:  16deg; --ry: -22deg; --rz: -10deg; }
-  .boost-letter:nth-child(4) { --dx:  -45px; --dy:  200px; --rx: -20deg; --ry:  30deg; --rz: -26deg; }
-  .boost-letter:nth-child(5) { --dx:   95px; --dy: -120px; --rx:  32deg; --ry: -16deg; --rz:  24deg; }
-  .boost-letter:nth-child(6) { --dx:  170px; --dy:  180px; --rx: -28deg; --ry:  34deg; --rz: -36deg; }
-  .boost-letter:nth-child(7) { --dx:  240px; --dy:  -80px; --rx:  18deg; --ry: -26deg; --rz:  42deg; }
+  /* La lettre — VISIBLE 85% du cycle, scale-down brutal au BANG, reform fluide */
+  .boost-letter .glyph {
+    display: inline-block;
+    will-change: opacity, filter, transform;
+    animation: glyphLife 7s cubic-bezier(0.3, 0.05, 0.2, 1) infinite;
+    animation-delay: calc(var(--i, 0) * -0.015s);
+  }
+  @keyframes glyphLife {
+    /* Phase stable — 0-60% (lettre visible avec respiration subtile) */
+    0%, 55%   { opacity: 1; filter: blur(0) brightness(1); transform: scale(1); }
+    /* Charge 58% */
+    58%       { opacity: 1; filter: blur(0) brightness(1.8); transform: scale(1.06); }
+    /* BANG 60% — lettre pulvérisée en 0.07s */
+    60%       { opacity: 1; filter: blur(4px) brightness(2.2); transform: scale(1.15); }
+    62%       { opacity: 0; filter: blur(8px) brightness(1.5); transform: scale(0.1) rotate(calc(var(--i) * 12deg)); }
+    /* Void court 62-82% */
+    82%       { opacity: 0; filter: blur(0) brightness(1); transform: scale(0.4); }
+    /* Reformation 82-100% — lettre revient depuis scale 0.4 */
+    90%       { opacity: 1; filter: blur(0) brightness(1.15); transform: scale(1.04); }
+    100%      { opacity: 1; filter: blur(0) brightness(1); transform: scale(1); }
+  }
 
-  @keyframes letterLife {
-    /* Phase 1 : stable + respiration très subtile */
-    0%, 22%  {
-      transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0);
-      opacity: 1;
-      filter: blur(0) brightness(1);
-    }
-    /* Phase 2 : charge — lumière monte, tout reste en place */
-    27%      {
-      transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1.03);
-      opacity: 1;
-      filter: blur(0) brightness(1.4);
-    }
-    /* Phase 3 : EXPLOSION — éjection violente avec motion blur */
-    32%      {
-      transform: translate3d(calc(var(--dx) * 0.25), calc(var(--dy) * 0.25), 60px)
-                 rotateX(calc(var(--rx) * 0.4))
-                 rotateY(calc(var(--ry) * 0.4))
-                 rotateZ(calc(var(--rz) * 0.3));
-      opacity: 1;
-      filter: blur(10px) brightness(1.2);
-    }
-    42%      {
-      transform: translate3d(var(--dx), var(--dy), 40px)
-                 rotateX(var(--rx))
-                 rotateY(var(--ry))
-                 rotateZ(var(--rz));
-      opacity: 1;
-      filter: blur(6px) brightness(1);
-    }
-    /* Phase 4 : dérive — motion blur s'atténue */
-    55%      {
-      transform: translate3d(calc(var(--dx) * 1.2), calc(var(--dy) * 1.2), 20px)
-                 rotateX(calc(var(--rx) * 1.25))
-                 rotateY(calc(var(--ry) * 1.25))
-                 rotateZ(calc(var(--rz) * 1.3));
-      opacity: 0.6;
-      filter: blur(2px) brightness(0.85);
-    }
-    /* Phase 5 : fade out au loin */
-    70%      {
-      transform: translate3d(calc(var(--dx) * 1.5), calc(var(--dy) * 1.5), 0)
-                 rotateX(calc(var(--rx) * 1.5))
-                 rotateY(calc(var(--ry) * 1.5))
-                 rotateZ(calc(var(--rz) * 1.6));
+  /* Burst de ~28 particules par lettre (box-shadow multi-offset) */
+  .burst {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: transparent;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 3;
+    animation: burstExplode 7s cubic-bezier(0.22, 0.6, 0.35, 1) infinite;
+    animation-delay: calc(var(--i, 0) * -0.015s);
+  }
+
+  @keyframes burstExplode {
+    /* Invisible jusqu'au BANG */
+    0%, 58%   {
       opacity: 0;
-      filter: blur(0) brightness(0.6);
+      box-shadow:
+        0 0 0 rgba(192, 132, 252, 0),
+        0 0 0 rgba(192, 132, 252, 0);
     }
-    /* Phase 6 : invisible */
-    74%, 84% {
+    /* 60% — BANG : 28 éclats néon violet apparaissent SUR LA LETTRE */
+    60%       {
+      opacity: 1;
+      box-shadow:
+        0 0 3px 1px rgba(255, 255, 255, 1),
+        0 0 3px 1px rgba(243, 232, 255, 1),
+        0 0 3px 1px rgba(233, 213, 255, 1),
+        0 0 3px 1px rgba(221, 214, 254, 1),
+        0 0 3px 1px rgba(255, 255, 255, 1),
+        0 0 3px 1px rgba(243, 232, 255, 1),
+        0 0 3px 1px rgba(216, 180, 254, 1),
+        0 0 3px 1px rgba(192, 132, 252, 1),
+        0 0 3px 1px rgba(233, 213, 255, 1),
+        0 0 3px 1px rgba(255, 255, 255, 1),
+        0 0 3px 1px rgba(216, 180, 254, 1),
+        0 0 3px 1px rgba(243, 232, 255, 1),
+        0 0 3px 1px rgba(221, 214, 254, 1),
+        0 0 3px 1px rgba(192, 132, 252, 1),
+        0 0 3px 1px rgba(233, 213, 255, 1),
+        0 0 3px 1px rgba(243, 232, 255, 1),
+        0 0 3px 1px rgba(216, 180, 254, 1),
+        0 0 3px 1px rgba(255, 255, 255, 1),
+        0 0 3px 1px rgba(221, 214, 254, 1),
+        0 0 3px 1px rgba(192, 132, 252, 1),
+        0 0 3px 1px rgba(243, 232, 255, 1),
+        0 0 3px 1px rgba(233, 213, 255, 1),
+        0 0 3px 1px rgba(216, 180, 254, 1),
+        0 0 3px 1px rgba(255, 255, 255, 1),
+        0 0 3px 1px rgba(221, 214, 254, 1),
+        0 0 3px 1px rgba(192, 132, 252, 1),
+        0 0 3px 1px rgba(243, 232, 255, 1),
+        0 0 3px 1px rgba(216, 180, 254, 1);
+    }
+    /* 72% — éclats de verre violet projetés radialement (palette néon violet) */
+    72%       {
+      opacity: 0.92;
+      box-shadow:
+         -82px  -48px 4px 1px rgba(255, 255, 255, 0.98),
+          74px  -62px 4px 1px rgba(243, 232, 255, 0.95),
+         -110px  12px 4px 1px rgba(216, 180, 254, 0.92),
+          112px  28px 4px 1px rgba(192, 132, 252, 0.95),
+         -44px -102px 4px 1px rgba(233, 213, 255, 0.9),
+          56px -108px 4px 1px rgba(221, 214, 254, 0.92),
+         -128px -38px 4px 1px rgba(168, 85, 247, 0.85),
+          138px -24px 4px 1px rgba(216, 180, 254, 0.9),
+         -72px  92px 4px 1px rgba(243, 232, 255, 0.95),
+          68px  86px 4px 1px rgba(192, 132, 252, 0.9),
+         -24px  124px 4px 1px rgba(233, 213, 255, 0.88),
+          32px  116px 4px 1px rgba(255, 255, 255, 0.9),
+         -156px  54px 4px 1px rgba(216, 180, 254, 0.82),
+          148px  62px 4px 1px rgba(168, 85, 247, 0.78),
+         -28px  -16px 4px 1px rgba(255, 255, 255, 0.95),
+          34px  -22px 4px 1px rgba(243, 232, 255, 0.92),
+         -62px  -78px 4px 1px rgba(192, 132, 252, 0.88),
+          98px -88px 4px 1px rgba(221, 214, 254, 0.9),
+         -92px  42px 4px 1px rgba(216, 180, 254, 0.92),
+          102px  56px 4px 1px rgba(233, 213, 255, 0.88),
+         -18px  76px 4px 1px rgba(255, 255, 255, 0.95),
+          24px  68px 4px 1px rgba(192, 132, 252, 0.9),
+         -46px -132px 4px 1px rgba(168, 85, 247, 0.82),
+          52px -138px 4px 1px rgba(243, 232, 255, 0.85),
+         -172px   6px 4px 1px rgba(216, 180, 254, 0.75),
+          168px  14px 4px 1px rgba(192, 132, 252, 0.78),
+         -108px 118px 4px 1px rgba(233, 213, 255, 0.78),
+          116px 108px 4px 1px rgba(221, 214, 254, 0.8);
+    }
+    /* 82% — éclats au loin, fade complet */
+    82%       {
       opacity: 0;
-      transform: translate3d(0, 0, -60px) rotateX(0) rotateY(0) rotateZ(0);
-      filter: blur(0);
+      box-shadow:
+         -128px  -12px 2px 0.5px rgba(192, 132, 252, 0),
+          118px  -26px 2px 0.5px rgba(233, 213, 255, 0),
+         -168px   84px 2px 0.5px rgba(216, 180, 254, 0),
+          172px   98px 2px 0.5px rgba(243, 232, 255, 0),
+          -68px -152px 2px 0.5px rgba(221, 214, 254, 0),
+           82px -158px 2px 0.5px rgba(255, 255, 255, 0),
+         -198px   32px 2px 0.5px rgba(168, 85, 247, 0),
+          208px   46px 2px 0.5px rgba(192, 132, 252, 0),
+         -112px  172px 2px 0.5px rgba(243, 232, 255, 0),
+          106px  164px 2px 0.5px rgba(216, 180, 254, 0),
+          -38px  204px 2px 0.5px rgba(233, 213, 255, 0),
+           48px  196px 2px 0.5px rgba(221, 214, 254, 0),
+         -236px  124px 2px 0.5px rgba(192, 132, 252, 0),
+          228px  132px 2px 0.5px rgba(168, 85, 247, 0),
+          -44px    4px 2px 0.5px rgba(255, 255, 255, 0),
+           54px   -2px 2px 0.5px rgba(243, 232, 255, 0),
+          -96px -118px 2px 0.5px rgba(216, 180, 254, 0),
+          148px -128px 2px 0.5px rgba(192, 132, 252, 0),
+         -142px  112px 2px 0.5px rgba(221, 214, 254, 0),
+          152px  128px 2px 0.5px rgba(233, 213, 255, 0),
+          -28px  148px 2px 0.5px rgba(255, 255, 255, 0),
+           38px  140px 2px 0.5px rgba(216, 180, 254, 0),
+          -72px -188px 2px 0.5px rgba(192, 132, 252, 0),
+           82px -194px 2px 0.5px rgba(243, 232, 255, 0),
+         -258px   78px 2px 0.5px rgba(168, 85, 247, 0),
+          252px   86px 2px 0.5px rgba(233, 213, 255, 0),
+         -164px  198px 2px 0.5px rgba(221, 214, 254, 0),
+          172px  188px 2px 0.5px rgba(192, 132, 252, 0);
     }
-    /* Phase 7 : reformation — chaque lettre revient de l'avant avec ease */
-    92%      {
-      opacity: 1;
-      transform: translate3d(0, 0, 20px) rotateX(0) rotateY(0) rotateZ(0);
-      filter: blur(0) brightness(1.1);
-    }
-    100%     {
-      opacity: 1;
-      transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0);
-      filter: blur(0) brightness(1);
+    /* Void */
+    84%, 100% {
+      opacity: 0;
+      box-shadow:
+        0 0 0 rgba(192, 132, 252, 0),
+        0 0 0 rgba(192, 132, 252, 0);
     }
   }
 
-  /* Pause cycle au hover (voir l'état explosé figé) */
-  .booster-3d:hover .boost-letter,
-  .booster-3d:hover .booster-flash {
+  /* Pause au hover */
+  .booster-3d:hover .glyph,
+  .booster-3d:hover .burst,
+  .booster-3d:hover .booster-flash,
+  .booster-3d:hover .booster-shockwave,
+  .booster-3d:hover .booster-dust,
+  .booster-3d:hover .booster-neon-halo {
     animation-play-state: paused;
   }
 
   /* Responsive */
   @media (max-width: 768px) {
-    .boost-letter { font-size: clamp(64px, 18vw, 128px); }
-    .boost-letter:nth-child(1) { --dx: -120px; --dy:  -80px; }
-    .boost-letter:nth-child(2) { --dx:  -55px; --dy: -125px; }
-    .boost-letter:nth-child(3) { --dx:   18px; --dy: -105px; }
-    .boost-letter:nth-child(4) { --dx:  -25px; --dy:  115px; }
-    .boost-letter:nth-child(5) { --dx:   50px; --dy:  -70px; }
-    .boost-letter:nth-child(6) { --dx:   95px; --dy:  100px; }
-    .boost-letter:nth-child(7) { --dx:  135px; --dy:  -45px; }
+    .boost-letter { font-size: clamp(54px, 13vw, 110px); }
+    .frag.f1 { --fx:  -75px; --fy:  -65px; --fz: 40px; }
+    .frag.f2 { --fx:   70px; --fy:  -78px; --fz: 30px; }
+    .frag.f3 { --fx: -100px; --fy:   12px; --fz: 20px; }
+    .frag.f4 { --fx:   94px; --fy:    0px; --fz: 26px; }
+    .frag.f5 { --fx:  -54px; --fy:   90px; --fz: 16px; }
+    .frag.f6 { --fx:   66px; --fy:   96px; --fz: 36px; }
   }
   @media (max-width: 480px) {
     .boost-letter {
       text-shadow:
-        0 1px 0 rgba(76, 29, 149, 0.95),
-        0 2px 0 rgba(76, 29, 149, 0.7),
-        0 3px 6px rgba(76, 29, 149, 0.55),
-        0 0 24px rgba(168, 85, 247, 0.3);
+        0 1px 0 rgba(76, 29, 149, 0.9),
+        0 2px 0 rgba(76, 29, 149, 0.65),
+        0 3px 5px rgba(76, 29, 149, 0.5),
+        0 0 22px rgba(168, 85, 247, 0.28);
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .boost-letter,
-    .booster-flash {
+    .glyph, .frag,
+    .booster-flash, .booster-shockwave, .booster-dust,
+    .booster-neon-halo {
       animation: none;
     }
-    .boost-letter {
-      transform: none;
-      opacity: 1;
-      filter: none;
-    }
-    .booster-flash { opacity: 0; }
+    .glyph { opacity: 1; transform: none; filter: none; }
+    .frag  { opacity: 0; }
+    .booster-flash, .booster-shockwave, .booster-dust { opacity: 0; }
+    .booster-neon-halo { opacity: 0.7; }
+    .booster-3d__word { filter: none; }
   }
 
   /* ===== NOISE TEXTURE ===== */
