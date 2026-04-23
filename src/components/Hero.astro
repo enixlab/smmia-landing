@@ -58,35 +58,70 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
         <!-- Dust cloud post-explosion -->
         <span class="booster-dust" aria-hidden="true"></span>
 
-        <!-- Mot splitté par lettre — chaque lettre explose en particules (box-shadow burst) -->
+        <!-- Mot splitté par lettre — chaque lettre éclate en 6 shards polygonaux (glass shatter) -->
         <span class="booster-3d__word">
           <span class="boost-letter" style="--i:0">
             <span class="glyph">B</span>
-            <span class="burst" aria-hidden="true"></span>
+            <span class="shard s1" aria-hidden="true">B</span>
+            <span class="shard s2" aria-hidden="true">B</span>
+            <span class="shard s3" aria-hidden="true">B</span>
+            <span class="shard s4" aria-hidden="true">B</span>
+            <span class="shard s5" aria-hidden="true">B</span>
+            <span class="shard s6" aria-hidden="true">B</span>
           </span>
           <span class="boost-letter" style="--i:1">
             <span class="glyph">O</span>
-            <span class="burst" aria-hidden="true"></span>
+            <span class="shard s1" aria-hidden="true">O</span>
+            <span class="shard s2" aria-hidden="true">O</span>
+            <span class="shard s3" aria-hidden="true">O</span>
+            <span class="shard s4" aria-hidden="true">O</span>
+            <span class="shard s5" aria-hidden="true">O</span>
+            <span class="shard s6" aria-hidden="true">O</span>
           </span>
           <span class="boost-letter" style="--i:2">
             <span class="glyph">O</span>
-            <span class="burst" aria-hidden="true"></span>
+            <span class="shard s1" aria-hidden="true">O</span>
+            <span class="shard s2" aria-hidden="true">O</span>
+            <span class="shard s3" aria-hidden="true">O</span>
+            <span class="shard s4" aria-hidden="true">O</span>
+            <span class="shard s5" aria-hidden="true">O</span>
+            <span class="shard s6" aria-hidden="true">O</span>
           </span>
           <span class="boost-letter" style="--i:3">
             <span class="glyph">S</span>
-            <span class="burst" aria-hidden="true"></span>
+            <span class="shard s1" aria-hidden="true">S</span>
+            <span class="shard s2" aria-hidden="true">S</span>
+            <span class="shard s3" aria-hidden="true">S</span>
+            <span class="shard s4" aria-hidden="true">S</span>
+            <span class="shard s5" aria-hidden="true">S</span>
+            <span class="shard s6" aria-hidden="true">S</span>
           </span>
           <span class="boost-letter" style="--i:4">
             <span class="glyph">T</span>
-            <span class="burst" aria-hidden="true"></span>
+            <span class="shard s1" aria-hidden="true">T</span>
+            <span class="shard s2" aria-hidden="true">T</span>
+            <span class="shard s3" aria-hidden="true">T</span>
+            <span class="shard s4" aria-hidden="true">T</span>
+            <span class="shard s5" aria-hidden="true">T</span>
+            <span class="shard s6" aria-hidden="true">T</span>
           </span>
           <span class="boost-letter" style="--i:5">
             <span class="glyph">E</span>
-            <span class="burst" aria-hidden="true"></span>
+            <span class="shard s1" aria-hidden="true">E</span>
+            <span class="shard s2" aria-hidden="true">E</span>
+            <span class="shard s3" aria-hidden="true">E</span>
+            <span class="shard s4" aria-hidden="true">E</span>
+            <span class="shard s5" aria-hidden="true">E</span>
+            <span class="shard s6" aria-hidden="true">E</span>
           </span>
           <span class="boost-letter" style="--i:6">
             <span class="glyph">R</span>
-            <span class="burst" aria-hidden="true"></span>
+            <span class="shard s1" aria-hidden="true">R</span>
+            <span class="shard s2" aria-hidden="true">R</span>
+            <span class="shard s3" aria-hidden="true">R</span>
+            <span class="shard s4" aria-hidden="true">R</span>
+            <span class="shard s5" aria-hidden="true">R</span>
+            <span class="shard s6" aria-hidden="true">R</span>
           </span>
         </span>
       </span>
@@ -428,98 +463,102 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
+    gap: 18px;
     font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: clamp(22px, 3vw, 42px);
-    line-height: 1.1;
-    letter-spacing: -0.015em;
-    color: rgba(255, 255, 255, 0.88);
+    font-weight: 600;
+    font-size: clamp(28px, 3.6vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    color: #FFFFFF;
   }
 
   /* "Ton agence" — kicker éditorial avec barre néon gauche */
   .tl-line--top {
-    margin-bottom: 0.15em;
-    font-weight: 500;
-    letter-spacing: 0.005em;
+    margin-bottom: 0.18em;
+    font-weight: 600;
+    letter-spacing: 0.002em;
   }
   .tl-kicker-bar {
     display: inline-block;
-    width: 34px;
-    height: 2px;
+    width: 44px;
+    height: 3px;
     border-radius: 2px;
     background: linear-gradient(90deg,
       rgba(192, 132, 252, 0) 0%,
-      #C084FC 40%,
+      #C084FC 35%,
       #E9D5FF 100%);
     box-shadow:
-      0 0 10px rgba(192, 132, 252, 0.85),
-      0 0 22px rgba(168, 85, 247, 0.55);
-    transform: translateY(1px);
-    opacity: 0.9;
+      0 0 12px rgba(192, 132, 252, 1),
+      0 0 28px rgba(168, 85, 247, 0.7),
+      0 0 52px rgba(139, 92, 246, 0.4);
+    transform: translateY(2px);
   }
   .tl-kicker-text {
-    background: linear-gradient(90deg, #FFFFFF 0%, #F3E8FF 50%, #E9D5FF 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 500;
+    color: #FFFFFF;
+    font-weight: 600;
+    text-shadow:
+      0 0 4px rgba(255, 255, 255, 0.5),
+      0 0 18px rgba(216, 180, 254, 0.45);
   }
 
-  /* "par l'IA." — IA en gradient néon + glow violet */
+  /* "par l'IA." — prefix sobre + IA en gradient néon + glow violet/cyan */
   .tl-line--bottom {
-    margin-top: 0.25em;
-    gap: 10px;
+    margin-top: 0.35em;
+    gap: 12px;
+    font-weight: 500;
   }
   .tl-prefix {
-    color: rgba(233, 213, 255, 0.72);
-    font-weight: 400;
-    letter-spacing: 0.005em;
-    font-style: italic;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+    letter-spacing: 0;
+    font-style: normal;
   }
   .tl-accent {
     position: relative;
     display: inline-block;
     font-family: 'Inter', sans-serif;
-    font-weight: 800;
+    font-weight: 900;
     font-style: normal;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     background: linear-gradient(135deg,
       #22D3EE 0%,
-      #A855F7 45%,
-      #C084FC 75%,
-      #E9D5FF 100%);
+      #A855F7 42%,
+      #C084FC 72%,
+      #FFFFFF 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.55))
-            drop-shadow(0 0 28px rgba(192, 132, 252, 0.35));
+    filter:
+      drop-shadow(0 0 10px rgba(192, 132, 252, 0.75))
+      drop-shadow(0 0 24px rgba(168, 85, 247, 0.55))
+      drop-shadow(0 0 48px rgba(34, 211, 238, 0.25));
+    padding: 0 0.04em;
   }
   .tl-accent::after {
     content: '';
     position: absolute;
-    left: -2%;
-    right: -2%;
-    bottom: -4px;
-    height: 2px;
+    left: -4%;
+    right: -4%;
+    bottom: -5px;
+    height: 3px;
     border-radius: 2px;
     background: linear-gradient(90deg,
       rgba(34, 211, 238, 0) 0%,
-      #22D3EE 20%,
-      #A855F7 55%,
+      #22D3EE 18%,
+      #A855F7 52%,
       #E9D5FF 100%);
     box-shadow:
-      0 0 10px rgba(168, 85, 247, 0.8),
-      0 0 22px rgba(192, 132, 252, 0.5);
-    opacity: 0.9;
+      0 0 12px rgba(168, 85, 247, 1),
+      0 0 26px rgba(192, 132, 252, 0.65);
   }
   .tl-dot {
-    color: #C084FC;
-    font-weight: 800;
+    color: #FFFFFF;
+    font-weight: 900;
     text-shadow:
-      0 0 8px rgba(192, 132, 252, 0.9),
-      0 0 18px rgba(168, 85, 247, 0.6);
-    margin-left: -4px;
+      0 0 6px rgba(255, 255, 255, 1),
+      0 0 14px rgba(192, 132, 252, 0.95),
+      0 0 28px rgba(168, 85, 247, 0.6);
+    margin-left: -2px;
   }
 
   /* ========== BOOSTER — BOMBE PREMIUM qui se désintègre ==========
@@ -672,7 +711,8 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     filter: url(#crackDisplace);
   }
 
-  /* Chaque lettre = tube néon violet (Inter 900) avec profondeur 3D douce */
+  /* Chaque lettre = tube néon BLANC bordé de violet néon (Inter 900)
+     Pas de shadow sombre — glow violet néon uniquement pour un vrai effet verre lumineux */
   .boost-letter {
     display: inline-block;
     position: relative;
@@ -682,218 +722,201 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     font-size: clamp(62px, 10.5vw, 152px);
     line-height: 0.92;
     letter-spacing: -0.028em;
-    color: #FBF7FF;
-    -webkit-text-stroke: 0.5px rgba(233, 213, 255, 0.55);
+    color: #FFFFFF;
+    -webkit-text-stroke: 1px rgba(216, 180, 254, 0.7);
     text-shadow:
-      /* relief 3D subtil (2 couches, pas 28) */
-      0 1px 0 rgba(91, 33, 182, 0.95),
-      0 2px 0 rgba(76, 29, 149, 0.75),
-      0 3px 8px rgba(55, 18, 112, 0.55),
-      /* halo néon tube (cascade de glow violet) */
-      0 0 6px rgba(243, 232, 255, 0.9),
-      0 0 14px rgba(216, 180, 254, 0.85),
-      0 0 28px rgba(192, 132, 252, 0.75),
-      0 0 52px rgba(168, 85, 247, 0.65),
-      0 0 88px rgba(139, 92, 246, 0.5),
-      0 0 140px rgba(124, 58, 237, 0.35);
+      /* core blanc intense (verre brillant) */
+      0 0 4px rgba(255, 255, 255, 1),
+      0 0 10px rgba(243, 232, 255, 0.95),
+      /* halo néon violet en cascade (tube lumineux) */
+      0 0 18px rgba(221, 214, 254, 0.95),
+      0 0 32px rgba(192, 132, 252, 0.9),
+      0 0 58px rgba(168, 85, 247, 0.8),
+      0 0 96px rgba(139, 92, 246, 0.65),
+      0 0 150px rgba(124, 58, 237, 0.45);
     transform-style: preserve-3d;
+    padding: 0 0.02em;
   }
 
-  /* La lettre — VISIBLE 85% du cycle, scale-down brutal au BANG, reform fluide */
+  /* GLYPH — visible 0-60%, disparaît instantanément au BANG (remplacé par les shards),
+     void 60-90%, reforme fluide 90-100% */
   .boost-letter .glyph {
     display: inline-block;
+    position: relative;
+    z-index: 2;
     will-change: opacity, filter, transform;
     animation: glyphLife 7s cubic-bezier(0.3, 0.05, 0.2, 1) infinite;
-    animation-delay: calc(var(--i, 0) * -0.015s);
+    animation-delay: calc(var(--i, 0) * -0.02s);
   }
   @keyframes glyphLife {
-    /* Phase stable — 0-60% (lettre visible avec respiration subtile) */
-    0%, 55%   { opacity: 1; filter: blur(0) brightness(1); transform: scale(1); }
-    /* Charge 58% */
-    58%       { opacity: 1; filter: blur(0) brightness(1.8); transform: scale(1.06); }
-    /* BANG 60% — lettre pulvérisée en 0.07s */
-    60%       { opacity: 1; filter: blur(4px) brightness(2.2); transform: scale(1.15); }
-    62%       { opacity: 0; filter: blur(8px) brightness(1.5); transform: scale(0.1) rotate(calc(var(--i) * 12deg)); }
-    /* Void court 62-82% */
-    82%       { opacity: 0; filter: blur(0) brightness(1); transform: scale(0.4); }
-    /* Reformation 82-100% — lettre revient depuis scale 0.4 */
-    90%       { opacity: 1; filter: blur(0) brightness(1.15); transform: scale(1.04); }
-    100%      { opacity: 1; filter: blur(0) brightness(1); transform: scale(1); }
+    /* Phase stable 0-55% (lettre visible) */
+    0%, 55%   { opacity: 1; filter: blur(0) brightness(1);   transform: scale(1); }
+    /* Charge 55-60% (brightness up, léger scale) */
+    58%       { opacity: 1; filter: blur(0) brightness(1.6); transform: scale(1.04); }
+    60%       { opacity: 0; filter: blur(6px) brightness(2.4); transform: scale(1.12); }
+    /* Void 60-90% — les shards prennent le relais */
+    89%       { opacity: 0; filter: blur(0) brightness(1);   transform: scale(0.85); }
+    /* Reform 90-100% — lettre revient */
+    94%       { opacity: 1; filter: blur(0) brightness(1.2); transform: scale(1.03); }
+    100%      { opacity: 1; filter: blur(0) brightness(1);   transform: scale(1); }
   }
 
-  /* Burst de ~28 particules par lettre (box-shadow multi-offset) */
-  .burst {
+  /* SHARD — chaque lettre a 6 fragments polygonaux (clip-path) qui sont
+     des CLONES complets du glyph. Au BANG ils apparaissent assemblés (reconstituant
+     visuellement la lettre), puis s'éjectent en 3D avec rotation + blur + fade.
+     C'est le vrai effet "verre qui éclate". */
+  .shard {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: transparent;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    font: inherit;
+    color: inherit;
+    -webkit-text-stroke: inherit;
+    text-shadow: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
     pointer-events: none;
-    transform: translate(-50%, -50%);
     opacity: 0;
-    z-index: 3;
-    animation: burstExplode 7s cubic-bezier(0.22, 0.6, 0.35, 1) infinite;
-    animation-delay: calc(var(--i, 0) * -0.015s);
+    z-index: 1;
+    will-change: transform, opacity, filter;
+    transform-origin: 50% 50%;
+    animation: shardEject 7s cubic-bezier(0.22, 0.6, 0.3, 1) infinite;
+    animation-delay: calc(var(--i, 0) * -0.02s);
   }
 
-  @keyframes burstExplode {
-    /* Invisible jusqu'au BANG */
-    0%, 58%   {
+  /* 6 shards par lettre, chacun avec son clip-path polygon + trajectoire 3D unique.
+     Les clip-paths découpent la lettre en fragments triangulaires / polygonaux
+     qui s'imbriquent (comme un verre fracturé). */
+  .shard.s1 {
+    clip-path: polygon(0% 0%, 52% 0%, 34% 46%, 0% 58%);
+    --dx: -138px; --dy:  -78px; --dz: 90px; --rz: -42deg;
+  }
+  .shard.s2 {
+    clip-path: polygon(52% 0%, 100% 0%, 100% 42%, 66% 38%, 34% 46%);
+    --dx:  112px; --dy:  -96px; --dz: 75px; --rz:  36deg;
+  }
+  .shard.s3 {
+    clip-path: polygon(100% 42%, 100% 100%, 56% 100%, 60% 64%, 66% 38%);
+    --dx:  138px; --dy:   32px; --dz: 100px; --rz:  48deg;
+  }
+  .shard.s4 {
+    clip-path: polygon(0% 58%, 34% 46%, 46% 72%, 26% 100%, 0% 100%);
+    --dx: -146px; --dy:   48px; --dz: 72px; --rz: -48deg;
+  }
+  .shard.s5 {
+    clip-path: polygon(34% 46%, 66% 38%, 60% 64%, 46% 72%);
+    --dx:  -28px; --dy:  118px; --dz: 55px; --rz:  18deg;
+  }
+  .shard.s6 {
+    clip-path: polygon(46% 72%, 60% 64%, 56% 100%, 26% 100%);
+    --dx:   62px; --dy:  132px; --dz: 82px; --rz: -32deg;
+  }
+
+  /* Éjection 3D des shards — 60% BANG, 60-84% projection, 84-90% void, 90-100% reform */
+  @keyframes shardEject {
+    0%, 58%  {
       opacity: 0;
-      box-shadow:
-        0 0 0 rgba(192, 132, 252, 0),
-        0 0 0 rgba(192, 132, 252, 0);
+      transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
+      filter: blur(0);
     }
-    /* 60% — BANG : 28 éclats néon violet apparaissent SUR LA LETTRE */
-    60%       {
+    /* 60% BANG — shards apparaissent TOUS assemblés (position 0) = lettre reconstituée */
+    60%      {
       opacity: 1;
-      box-shadow:
-        0 0 3px 1px rgba(255, 255, 255, 1),
-        0 0 3px 1px rgba(243, 232, 255, 1),
-        0 0 3px 1px rgba(233, 213, 255, 1),
-        0 0 3px 1px rgba(221, 214, 254, 1),
-        0 0 3px 1px rgba(255, 255, 255, 1),
-        0 0 3px 1px rgba(243, 232, 255, 1),
-        0 0 3px 1px rgba(216, 180, 254, 1),
-        0 0 3px 1px rgba(192, 132, 252, 1),
-        0 0 3px 1px rgba(233, 213, 255, 1),
-        0 0 3px 1px rgba(255, 255, 255, 1),
-        0 0 3px 1px rgba(216, 180, 254, 1),
-        0 0 3px 1px rgba(243, 232, 255, 1),
-        0 0 3px 1px rgba(221, 214, 254, 1),
-        0 0 3px 1px rgba(192, 132, 252, 1),
-        0 0 3px 1px rgba(233, 213, 255, 1),
-        0 0 3px 1px rgba(243, 232, 255, 1),
-        0 0 3px 1px rgba(216, 180, 254, 1),
-        0 0 3px 1px rgba(255, 255, 255, 1),
-        0 0 3px 1px rgba(221, 214, 254, 1),
-        0 0 3px 1px rgba(192, 132, 252, 1),
-        0 0 3px 1px rgba(243, 232, 255, 1),
-        0 0 3px 1px rgba(233, 213, 255, 1),
-        0 0 3px 1px rgba(216, 180, 254, 1),
-        0 0 3px 1px rgba(255, 255, 255, 1),
-        0 0 3px 1px rgba(221, 214, 254, 1),
-        0 0 3px 1px rgba(192, 132, 252, 1),
-        0 0 3px 1px rgba(243, 232, 255, 1),
-        0 0 3px 1px rgba(216, 180, 254, 1);
+      transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
+      filter: blur(0) brightness(1.6);
     }
-    /* 72% — éclats de verre violet projetés radialement (palette néon violet) */
-    72%       {
-      opacity: 0.92;
-      box-shadow:
-         -82px  -48px 4px 1px rgba(255, 255, 255, 0.98),
-          74px  -62px 4px 1px rgba(243, 232, 255, 0.95),
-         -110px  12px 4px 1px rgba(216, 180, 254, 0.92),
-          112px  28px 4px 1px rgba(192, 132, 252, 0.95),
-         -44px -102px 4px 1px rgba(233, 213, 255, 0.9),
-          56px -108px 4px 1px rgba(221, 214, 254, 0.92),
-         -128px -38px 4px 1px rgba(168, 85, 247, 0.85),
-          138px -24px 4px 1px rgba(216, 180, 254, 0.9),
-         -72px  92px 4px 1px rgba(243, 232, 255, 0.95),
-          68px  86px 4px 1px rgba(192, 132, 252, 0.9),
-         -24px  124px 4px 1px rgba(233, 213, 255, 0.88),
-          32px  116px 4px 1px rgba(255, 255, 255, 0.9),
-         -156px  54px 4px 1px rgba(216, 180, 254, 0.82),
-          148px  62px 4px 1px rgba(168, 85, 247, 0.78),
-         -28px  -16px 4px 1px rgba(255, 255, 255, 0.95),
-          34px  -22px 4px 1px rgba(243, 232, 255, 0.92),
-         -62px  -78px 4px 1px rgba(192, 132, 252, 0.88),
-          98px -88px 4px 1px rgba(221, 214, 254, 0.9),
-         -92px  42px 4px 1px rgba(216, 180, 254, 0.92),
-          102px  56px 4px 1px rgba(233, 213, 255, 0.88),
-         -18px  76px 4px 1px rgba(255, 255, 255, 0.95),
-          24px  68px 4px 1px rgba(192, 132, 252, 0.9),
-         -46px -132px 4px 1px rgba(168, 85, 247, 0.82),
-          52px -138px 4px 1px rgba(243, 232, 255, 0.85),
-         -172px   6px 4px 1px rgba(216, 180, 254, 0.75),
-          168px  14px 4px 1px rgba(192, 132, 252, 0.78),
-         -108px 118px 4px 1px rgba(233, 213, 255, 0.78),
-          116px 108px 4px 1px rgba(221, 214, 254, 0.8);
+    /* 66% — début projection (accélération) */
+    66%      {
+      opacity: 1;
+      transform: translate3d(
+          calc(var(--dx) * 0.28),
+          calc(var(--dy) * 0.28),
+          calc(var(--dz) * 0.5)
+        )
+        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 0.3));
+      filter: blur(0.5px);
     }
-    /* 82% — éclats au loin, fade complet */
-    82%       {
+    /* 76% — projection max + rotation + blur (motion) */
+    76%      {
+      opacity: 0.88;
+      transform: translate3d(
+          calc(var(--dx) * 0.85),
+          calc(var(--dy) * 0.85),
+          var(--dz)
+        )
+        rotate3d(1, 0.4, 0.3, var(--rz));
+      filter: blur(1.8px);
+    }
+    /* 84% — shards au loin, fade */
+    84%      {
       opacity: 0;
-      box-shadow:
-         -128px  -12px 2px 0.5px rgba(192, 132, 252, 0),
-          118px  -26px 2px 0.5px rgba(233, 213, 255, 0),
-         -168px   84px 2px 0.5px rgba(216, 180, 254, 0),
-          172px   98px 2px 0.5px rgba(243, 232, 255, 0),
-          -68px -152px 2px 0.5px rgba(221, 214, 254, 0),
-           82px -158px 2px 0.5px rgba(255, 255, 255, 0),
-         -198px   32px 2px 0.5px rgba(168, 85, 247, 0),
-          208px   46px 2px 0.5px rgba(192, 132, 252, 0),
-         -112px  172px 2px 0.5px rgba(243, 232, 255, 0),
-          106px  164px 2px 0.5px rgba(216, 180, 254, 0),
-          -38px  204px 2px 0.5px rgba(233, 213, 255, 0),
-           48px  196px 2px 0.5px rgba(221, 214, 254, 0),
-         -236px  124px 2px 0.5px rgba(192, 132, 252, 0),
-          228px  132px 2px 0.5px rgba(168, 85, 247, 0),
-          -44px    4px 2px 0.5px rgba(255, 255, 255, 0),
-           54px   -2px 2px 0.5px rgba(243, 232, 255, 0),
-          -96px -118px 2px 0.5px rgba(216, 180, 254, 0),
-          148px -128px 2px 0.5px rgba(192, 132, 252, 0),
-         -142px  112px 2px 0.5px rgba(221, 214, 254, 0),
-          152px  128px 2px 0.5px rgba(233, 213, 255, 0),
-          -28px  148px 2px 0.5px rgba(255, 255, 255, 0),
-           38px  140px 2px 0.5px rgba(216, 180, 254, 0),
-          -72px -188px 2px 0.5px rgba(192, 132, 252, 0),
-           82px -194px 2px 0.5px rgba(243, 232, 255, 0),
-         -258px   78px 2px 0.5px rgba(168, 85, 247, 0),
-          252px   86px 2px 0.5px rgba(233, 213, 255, 0),
-         -164px  198px 2px 0.5px rgba(221, 214, 254, 0),
-          172px  188px 2px 0.5px rgba(192, 132, 252, 0);
+      transform: translate3d(
+          var(--dx),
+          var(--dy),
+          var(--dz)
+        )
+        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 1.35));
+      filter: blur(3.5px);
     }
-    /* Void */
-    84%, 100% {
+    /* Void 84-93% — rien visible, shards déjà retournés à position 0 mais opacity 0 */
+    88%, 93% {
       opacity: 0;
-      box-shadow:
-        0 0 0 rgba(192, 132, 252, 0),
-        0 0 0 rgba(192, 132, 252, 0);
+      transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
+      filter: blur(0);
+    }
+    /* Reform éphémère 93-100% : les shards réapparaissent brièvement assemblés
+       puis s'éteignent pendant que le glyph reprend le lead */
+    94%      {
+      opacity: 0.85;
+      transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
+      filter: blur(0);
+    }
+    100%     {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
+      filter: blur(0);
     }
   }
 
-  /* Pause au hover */
-  .booster-3d:hover .glyph,
-  .booster-3d:hover .burst,
-  .booster-3d:hover .booster-flash,
-  .booster-3d:hover .booster-shockwave,
-  .booster-3d:hover .booster-dust,
-  .booster-3d:hover .booster-neon-halo {
-    animation-play-state: paused;
+  /* Word container — permet tilt 3D interactif via CSS vars (--br-rx, --br-ry) */
+  .booster-3d__word {
+    transform: rotateX(var(--br-rx, 0deg)) rotateY(var(--br-ry, 0deg));
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
-  /* Responsive */
+  /* Responsive — trajectoires shards réduites sur mobile */
   @media (max-width: 768px) {
     .boost-letter { font-size: clamp(54px, 13vw, 110px); }
-    .frag.f1 { --fx:  -75px; --fy:  -65px; --fz: 40px; }
-    .frag.f2 { --fx:   70px; --fy:  -78px; --fz: 30px; }
-    .frag.f3 { --fx: -100px; --fy:   12px; --fz: 20px; }
-    .frag.f4 { --fx:   94px; --fy:    0px; --fz: 26px; }
-    .frag.f5 { --fx:  -54px; --fy:   90px; --fz: 16px; }
-    .frag.f6 { --fx:   66px; --fy:   96px; --fz: 36px; }
+    .shard.s1 { --dx:  -92px; --dy: -54px; --dz: 60px; }
+    .shard.s2 { --dx:   76px; --dy: -66px; --dz: 52px; }
+    .shard.s3 { --dx:   94px; --dy:  22px; --dz: 68px; }
+    .shard.s4 { --dx: -100px; --dy:  32px; --dz: 50px; }
+    .shard.s5 { --dx:  -18px; --dy:  80px; --dz: 38px; }
+    .shard.s6 { --dx:   42px; --dy:  88px; --dz: 55px; }
   }
   @media (max-width: 480px) {
     .boost-letter {
+      -webkit-text-stroke: 0.7px rgba(216, 180, 254, 0.6);
       text-shadow:
-        0 1px 0 rgba(76, 29, 149, 0.9),
-        0 2px 0 rgba(76, 29, 149, 0.65),
-        0 3px 5px rgba(76, 29, 149, 0.5),
-        0 0 22px rgba(168, 85, 247, 0.28);
+        0 0 3px rgba(255, 255, 255, 1),
+        0 0 8px rgba(243, 232, 255, 0.9),
+        0 0 14px rgba(192, 132, 252, 0.85),
+        0 0 26px rgba(168, 85, 247, 0.7),
+        0 0 52px rgba(139, 92, 246, 0.45);
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .glyph, .frag,
+    .glyph, .shard,
     .booster-flash, .booster-shockwave, .booster-dust,
     .booster-neon-halo {
       animation: none;
     }
     .glyph { opacity: 1; transform: none; filter: none; }
-    .frag  { opacity: 0; }
+    .shard { opacity: 0; }
     .booster-flash, .booster-shockwave, .booster-dust { opacity: 0; }
     .booster-neon-halo { opacity: 0.7; }
-    .booster-3d__word { filter: none; }
+    .booster-3d__word { filter: none; transform: none; }
   }
 
   /* ===== NOISE TEXTURE ===== */
@@ -1057,6 +1080,42 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) {
         rafId = requestAnimationFrame(loop);
       } else { rafId = 0; }
+    }
+  }
+
+  /* ========== TILT 3D INTERACTIF sur BOOSTER ==========
+     Le mot suit la souris : rotateX suivant Y curseur, rotateY suivant X curseur.
+     Lerp doux + reset au mouseleave. */
+  const boosterBox = document.querySelector<HTMLElement>('.booster-3d');
+  const boosterWord = boosterBox?.querySelector<HTMLElement>('.booster-3d__word');
+
+  if (boosterBox && boosterWord && !reduced) {
+    let targetRx = 0, targetRy = 0;
+    let currRx = 0, currRy = 0;
+    let tiltRaf = 0;
+
+    boosterBox.addEventListener('mousemove', (e: MouseEvent) => {
+      const r = boosterBox.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width  - 0.5;
+      const py = (e.clientY - r.top)  / r.height - 0.5;
+      targetRy = px * 22;
+      targetRx = -py * 14;
+      if (!tiltRaf) tiltRaf = requestAnimationFrame(tiltLoop);
+    });
+
+    boosterBox.addEventListener('mouseleave', () => {
+      targetRx = 0; targetRy = 0;
+      if (!tiltRaf) tiltRaf = requestAnimationFrame(tiltLoop);
+    });
+
+    function tiltLoop() {
+      currRx += (targetRx - currRx) * 0.12;
+      currRy += (targetRy - currRy) * 0.12;
+      boosterWord!.style.setProperty('--br-rx', `${currRx.toFixed(2)}deg`);
+      boosterWord!.style.setProperty('--br-ry', `${currRy.toFixed(2)}deg`);
+      if (Math.abs(targetRx - currRx) > 0.05 || Math.abs(targetRy - currRy) > 0.05) {
+        tiltRaf = requestAnimationFrame(tiltLoop);
+      } else { tiltRaf = 0; }
     }
   }
 </script>
