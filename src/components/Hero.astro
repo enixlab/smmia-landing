@@ -104,48 +104,27 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
         </span>
       </span>
       <span class="tagline-boost">
-        <span class="boost-aura" aria-hidden="true"></span>
-
-        <!-- Burst radial ultra-subtil (24 rayons, opacity 0.14) -->
-        <span class="boost-burst" aria-hidden="true">
-          <svg viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid meet">
-            {Array.from({length: 24}, (_, i) => {
-              const a = (i / 24) * 360;
-              const long = i % 3 === 0;
-              return (
-                <line
-                  x1="0" y1="0"
-                  x2={long ? 96 : 72} y2="0"
-                  stroke-width={long ? 0.9 : 0.5}
-                  transform={`rotate(${a})`}
-                />
-              );
-            })}
-          </svg>
+        <!-- ═══ NEBULA ECLIPSE ═══ -->
+        <span class="eclipse-scene" aria-hidden="true">
+          <!-- Halo lunaire : éclipse derrière le mot -->
+          <span class="eclipse-halo"></span>
+          <!-- Core dark : centre plus sombre pour effet éclipse -->
+          <span class="eclipse-core"></span>
+          <!-- Couronne lumineuse pulse -->
+          <span class="eclipse-corona"></span>
+          <!-- 3 anneaux orbitaux inclinés (echos au globe wireframe) -->
+          <span class="eclipse-ring eclipse-ring--1"></span>
+          <span class="eclipse-ring eclipse-ring--2"></span>
+          <span class="eclipse-ring eclipse-ring--3"></span>
+          <!-- Satellite lumineux qui orbit -->
+          <span class="eclipse-satellite"></span>
         </span>
 
-        <!-- 6 éclats monochromes subtils (lavande / blanc) -->
-        <span class="boost-shards" aria-hidden="true">
-          {Array.from({length: 6}, (_, i) => (
-            <span class={`shard shard--${i + 1}`}>
-              <svg viewBox="0 0 20 20">
-                <polygon points="10,0 20,10 10,20 0,10" />
-              </svg>
-            </span>
+        <!-- BOOSTER solide avec nebula gradient vivant -->
+        <span class="nebula-booster" id="nebulaBooster">
+          {['B','O','O','S','T','E','R'].map((l, i) => (
+            <span class="neb-letter" style={`--li:${i}`}>{l}</span>
           ))}
-        </span>
-
-        <!-- VRAI rendu 3D Z-stacked : chaque lettre = 28 couches translatées en Z -->
-        <span class="b3d-stage" id="boosterStage">
-          <span class="b3d-rotator" id="boosterRotator">
-            {['B','O','O','S','T','E','R'].map((l, i) => (
-              <span class="b3d-letter" style={`--li:${i}`} data-letter={l}>
-                {Array.from({length: 28}, (_, d) => (
-                  <span class="b3d-layer" style={`--d:${d}`}>{l}</span>
-                ))}
-              </span>
-            ))}
-          </span>
         </span>
       </span>
       <span class="tagline-bottom split-reveal" style="--start:0.6s">
@@ -742,213 +721,223 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
   }
 
-  /* =============== BURST RADIAL ultra-subtil (premium discrete) =============== */
-  .boost-burst {
+  /* =============== NEBULA ECLIPSE SCÈNE =============== */
+  .eclipse-scene {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 130%;
-    height: 240%;
-    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.14;
-    mix-blend-mode: plus-lighter;
-    animation: burstSpin 90s linear infinite;
-  }
-  .boost-burst svg {
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-  }
-  .boost-burst line {
-    stroke: rgba(216, 180, 254, 0.5);
-    stroke-linecap: round;
-  }
-  @keyframes burstSpin {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to   { transform: translate(-50%, -50%) rotate(360deg); }
-  }
-
-  /* =============== 6 ÉCLATS MONOCHROMES subtils (lavande/blanc) =============== */
-  .boost-shards {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120%;
-    height: 200%;
+    transform-style: preserve-3d;
     transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 3;
-    mix-blend-mode: screen;
   }
-  .shard {
+
+  /* Halo lunaire : cercle radial lumineux derrière le mot */
+  .eclipse-halo {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    will-change: transform;
+    top: 50%; left: 50%;
+    width: 620px; height: 620px;
+    margin: -310px 0 0 -310px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 48% 42%,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(243, 232, 255, 0.22) 12%,
+      rgba(216, 180, 254, 0.18) 26%,
+      rgba(168, 85, 247, 0.22) 42%,
+      rgba(124, 58, 237, 0.14) 58%,
+      rgba(76, 29, 149, 0.08) 72%,
+      transparent 82%);
+    filter: blur(8px);
+    animation: haloBreath 6.5s ease-in-out infinite;
   }
-  .shard svg {
-    width: 100%;
-    height: 100%;
-  }
-  .shard polygon {
-    fill: rgba(243, 232, 255, 0.7);
-  }
-  /* 2 shards plus "denses" (lavande) */
-  .shard--2 polygon, .shard--5 polygon { fill: rgba(216, 180, 254, 0.55); }
-
-  .shard--1 { --r: 300px; --size: 10px; animation: shardOrbit 18s linear infinite; }
-  .shard--2 { --r: 360px; --size: 7px;  animation: shardOrbit 22s linear infinite -4s reverse; }
-  .shard--3 { --r: 320px; --size: 9px;  animation: shardOrbit 24s linear infinite -8s; }
-  .shard--4 { --r: 400px; --size: 6px;  animation: shardOrbit 20s linear infinite -12s reverse; }
-  .shard--5 { --r: 280px; --size: 11px; animation: shardOrbit 26s linear infinite -6s; }
-  .shard--6 { --r: 380px; --size: 8px;  animation: shardOrbit 21s linear infinite -14s reverse; }
-
-  .shard {
-    width: var(--size, 8px);
-    height: var(--size, 8px);
-    margin: calc(var(--size, 8px) / -2) 0 0 calc(var(--size, 8px) / -2);
+  @keyframes haloBreath {
+    0%, 100% { transform: scale(1);    opacity: 0.95; }
+    50%      { transform: scale(1.06); opacity: 1;    }
   }
 
-  @keyframes shardOrbit {
-    0% {
-      transform: rotate(0deg) translateX(var(--r, 300px)) rotateZ(0deg);
-      opacity: 0;
-    }
-    15% { opacity: 0.85; }
-    85% { opacity: 0.85; }
-    100% {
-      transform: rotate(360deg) translateX(var(--r, 300px)) rotateZ(720deg);
-      opacity: 0;
-    }
+  /* Core dark : disque sombre légèrement décalé = effet éclipse (diamond ring) */
+  .eclipse-core {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 340px; height: 340px;
+    margin: -180px 0 0 -160px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 52% 48%,
+      rgba(6, 2, 15, 0.55) 0%,
+      rgba(10, 4, 24, 0.4) 35%,
+      rgba(18, 8, 42, 0.2) 65%,
+      transparent 85%);
+    filter: blur(4px);
+    mix-blend-mode: multiply;
   }
 
-  /* =============== VRAI MOT 3D Z-STACKED CHROME PREMIUM =============== */
-  .b3d-stage {
+  /* Couronne lumineuse : anneau brillant pulsant juste autour du core */
+  .eclipse-corona {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 400px; height: 400px;
+    margin: -200px 0 0 -200px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+      transparent 52%,
+      rgba(216, 180, 254, 0.32) 56%,
+      rgba(168, 85, 247, 0.42) 60%,
+      rgba(124, 58, 237, 0.22) 66%,
+      transparent 78%);
+    filter: blur(4px);
+    animation: coronaPulse 4.5s ease-in-out infinite;
+  }
+  @keyframes coronaPulse {
+    0%, 100% { opacity: 0.8; transform: scale(1);    }
+    50%      { opacity: 1;   transform: scale(1.08); }
+  }
+
+  /* 3 anneaux orbitaux inclinés (echos au globe wireframe du hero) */
+  .eclipse-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    border: 1px solid rgba(216, 180, 254, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.35), inset 0 0 18px rgba(168, 85, 247, 0.15);
+  }
+  /* Marqueur brillant sur chaque anneau (étoile au bord) */
+  .eclipse-ring::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: -4px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #F3E8FF;
+    box-shadow:
+      0 0 10px 2px rgba(243, 232, 255, 0.9),
+      0 0 22px 6px rgba(216, 180, 254, 0.7),
+      0 0 38px 10px rgba(168, 85, 247, 0.45);
+    transform: translateY(-50%);
+  }
+  .eclipse-ring--1 {
+    width: 560px; height: 560px;
+    margin: -280px 0 0 -280px;
+    animation: ringOrbit1 38s linear infinite;
+  }
+  .eclipse-ring--2 {
+    width: 720px; height: 720px;
+    margin: -360px 0 0 -360px;
+    animation: ringOrbit2 58s linear infinite reverse;
+    opacity: 0.65;
+    border-style: dashed;
+  }
+  .eclipse-ring--3 {
+    width: 900px; height: 900px;
+    margin: -450px 0 0 -450px;
+    animation: ringOrbit3 86s linear infinite;
+    opacity: 0.38;
+  }
+  @keyframes ringOrbit1 {
+    from { transform: rotateX(74deg) rotateZ(0deg);   }
+    to   { transform: rotateX(74deg) rotateZ(360deg); }
+  }
+  @keyframes ringOrbit2 {
+    from { transform: rotateX(78deg) rotateZ(55deg);  }
+    to   { transform: rotateX(78deg) rotateZ(415deg); }
+  }
+  @keyframes ringOrbit3 {
+    from { transform: rotateX(66deg) rotateZ(-28deg); }
+    to   { transform: rotateX(66deg) rotateZ(332deg); }
+  }
+
+  /* Satellite : point lumineux qui traverse une orbite avec trail */
+  .eclipse-satellite {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    animation: satelliteSpin 9s linear infinite;
+  }
+  .eclipse-satellite::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 310px;
+    width: 11px; height: 11px;
+    margin: -5.5px 0 0 -5.5px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow:
+      0 0 8px 2px rgba(255, 255, 255, 0.95),
+      0 0 20px 6px rgba(243, 232, 255, 0.85),
+      0 0 36px 12px rgba(216, 180, 254, 0.6),
+      0 0 60px 18px rgba(168, 85, 247, 0.4);
+  }
+  .eclipse-satellite::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 240px;
+    width: 70px; height: 2px;
+    margin: -1px 0 0 0;
+    background: linear-gradient(to left, rgba(216, 180, 254, 0.8), transparent);
+    border-radius: 2px;
+    filter: blur(1px);
+  }
+  @keyframes satelliteSpin {
+    from { transform: rotate(0deg);   }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* =============== MOT BOOSTER — NEBULA GRADIENT VIVANT =============== */
+  .nebula-booster {
     position: relative;
-    display: inline-block;
-    font-family: 'Archivo Black', 'Unbounded', 'Inter', sans-serif;
+    display: inline-flex;
+    font-family: 'Unbounded', 'Archivo Black', 'Inter', sans-serif;
     font-weight: 900;
     font-style: normal;
     font-size: clamp(92px, 19vw, 320px);
     line-height: 0.86;
     letter-spacing: -0.025em;
-    perspective: 1800px;
-    z-index: 2;
-    cursor: none;
+    z-index: 3;
     user-select: none;
-    /* Skew italique style SMMIA + tilt perspective permanente */
-    transform: skewX(-10deg) perspective(1200px) rotateX(4deg);
-  }
-
-  .b3d-rotator {
-    position: relative;
-    display: inline-flex;
-    transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-    will-change: transform;
-  }
-
-  /* Chaque lettre = conteneur 3D avec 28 couches empilées en Z */
-  .b3d-letter {
-    position: relative;
-    display: inline-block;
-    transform-style: preserve-3d;
-    line-height: 0.86;
-    transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
-    will-change: transform;
-    animation: b3dIdle 6s ease-in-out infinite;
-    animation-delay: calc(var(--li) * 0.18s);
-  }
-  @keyframes b3dIdle {
-    0%, 100% { transform: translateZ(0) translateY(0) rotateY(0deg) rotateX(0deg); }
-    25%      { transform: translateZ(10px) translateY(-2px) rotateY(4deg) rotateX(-1.5deg); }
-    50%      { transform: translateZ(16px) translateY(-4px) rotateY(0deg) rotateX(-2.5deg); }
-    75%      { transform: translateZ(10px) translateY(-2px) rotateY(-4deg) rotateX(-1.5deg); }
-  }
-
-  /* Chaque couche = copie de la lettre translatée en Z — 28 couches, -2.2px step = 60px profondeur */
-  .b3d-layer {
-    display: inline-block;
-    transform: translateZ(calc(var(--d) * -2.2px));
-    /* Couches internes : dégradé désaturé progressif vers le violet deep (fond de la ville) */
-    background: linear-gradient(165deg,
-      hsla(278, calc(22% + var(--d, 0) * 1.2%), calc(84% - var(--d, 0) * 2.4%), 1) 0%,
-      hsla(270, calc(48% - var(--d, 0) * 0.6%), calc(52% - var(--d, 0) * 1.6%), 1) 55%,
-      hsla(258, calc(50% - var(--d, 0) * 0.8%), calc(16% - var(--d, 0) * 0.4%), 1) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
-  /* Face avant (d=0) : CONIC-GRADIENT chrome curved reflection + glow 4-layer */
-  .b3d-layer[style*="--d:0"] {
-    position: relative;
-    background:
-      conic-gradient(from 210deg at 35% 28%,
-        #FFFFFF 0deg,
-        #F3E8FF 40deg,
-        #DCC7FF 85deg,
-        #A855F7 150deg,
-        #6D28D9 220deg,
-        #4C1D95 280deg,
-        #C7A9FF 330deg,
-        #FFFFFF 360deg);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    transform: skewX(-9deg);
     filter:
-      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.5))
-      drop-shadow(0 3px 0 rgba(168, 85, 247, 0.4))
-      drop-shadow(0 0 28px rgba(216, 180, 254, 0.55))
-      drop-shadow(0 0 68px rgba(168, 85, 247, 0.45))
-      drop-shadow(0 18px 40px rgba(88, 28, 135, 0.75));
+      drop-shadow(0 0 26px rgba(216, 180, 254, 0.55))
+      drop-shadow(0 0 58px rgba(168, 85, 247, 0.45))
+      drop-shadow(0 14px 44px rgba(88, 28, 135, 0.7));
   }
 
-  /* Toutes les autres couches en absolute par-dessus */
-  .b3d-layer:not([style*="--d:0"]) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-  }
-
-  /* Shine métallique balayage (signature Awwwards SOTD) — pseudo overlay par lettre */
-  .b3d-letter::after {
-    content: attr(data-letter);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 12;
-    pointer-events: none;
-    background: linear-gradient(115deg,
-      transparent 35%,
-      rgba(255, 255, 255, 0.0) 46%,
-      rgba(255, 255, 255, 0.85) 50%,
-      rgba(255, 255, 255, 0.0) 54%,
-      transparent 65%);
-    background-size: 320% 100%;
-    background-position: 180% 0;
+  .neb-letter {
+    display: inline-block;
+    /* Gradient nebula vivant (violet deep / lavande / cyan signature Prism) */
+    background: linear-gradient(135deg,
+      #F3E8FF 0%,
+      #E9D5FF 10%,
+      #D8B4FE 22%,
+      #C084FC 38%,
+      #A855F7 52%,
+      #7C3AED 68%,
+      #5B21B6 82%,
+      #22D3EE 100%);
+    background-size: 220% 220%;
+    background-position: 0% 50%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    mix-blend-mode: screen;
-    animation: shineSweep 5s ease-in-out infinite;
-    animation-delay: calc(var(--li, 0) * 0.08s);
+    animation:
+      nebulaShift 14s ease-in-out infinite,
+      letterBreath 5.5s ease-in-out infinite;
+    animation-delay: calc(var(--li, 0) * -2s), calc(var(--li, 0) * 0.15s);
+    will-change: background-position, transform;
   }
-  @keyframes shineSweep {
-    0%        { background-position: 180% 0; opacity: 0; }
-    10%       { opacity: 1; }
-    50%       { opacity: 1; background-position: -180% 0; }
-    55%, 100% { background-position: -180% 0; opacity: 0; }
+  @keyframes nebulaShift {
+    0%, 100% { background-position: 0% 50%;   }
+    50%      { background-position: 100% 50%; }
+  }
+  @keyframes letterBreath {
+    0%, 100% { transform: translateY(0);    }
+    50%      { transform: translateY(-3px); }
   }
 
-  /* Chromatic aberration subtile via pseudos (RGB split 2px) */
-  .b3d-stage::before,
-  .b3d-stage::after {
+  /* Chromatic aberration subtile du mot entier (stroke RGB split) */
+  .nebula-booster::before,
+  .nebula-booster::after {
     content: 'BOOSTER';
     position: absolute;
     top: 0;
@@ -957,30 +946,18 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     letter-spacing: inherit;
     color: transparent;
     pointer-events: none;
-    z-index: 0;
-    opacity: 0.22;
+    z-index: -1;
+    opacity: 0.2;
     mix-blend-mode: screen;
   }
-  .b3d-stage::before {
+  .nebula-booster::before {
     transform: translateX(-3px);
     -webkit-text-stroke: 1px rgba(255, 64, 160, 0.7);
   }
-  .b3d-stage::after {
+  .nebula-booster::after {
     transform: translateX(3px);
     -webkit-text-stroke: 1px rgba(64, 196, 255, 0.7);
   }
-
-  /* Hover sur la scène = EXPLOSION : chaque lettre s'éjecte en rotateZ/translate */
-  .b3d-stage:hover .b3d-letter {
-    animation-play-state: paused;
-  }
-  .b3d-stage:hover .b3d-letter:nth-child(1) { transform: translate3d(-100px, -55px, 80px) rotate3d(1, 0.5, 0.3, -24deg); }
-  .b3d-stage:hover .b3d-letter:nth-child(2) { transform: translate3d(-50px, 40px, 100px) rotate3d(0.5, 1, 0.2, 18deg); }
-  .b3d-stage:hover .b3d-letter:nth-child(3) { transform: translate3d(-15px, -45px, 55px) rotate3d(1, 0.3, 0.8, -12deg); }
-  .b3d-stage:hover .b3d-letter:nth-child(4) { transform: translate3d(15px, 25px, 115px) rotate3d(0.3, 1, 0.5, 30deg); }
-  .b3d-stage:hover .b3d-letter:nth-child(5) { transform: translate3d(40px, -35px, 65px) rotate3d(1, 0.5, 0.3, -22deg); }
-  .b3d-stage:hover .b3d-letter:nth-child(6) { transform: translate3d(70px, 38px, 85px) rotate3d(0.5, 1, 0.4, 24deg); }
-  .b3d-stage:hover .b3d-letter:nth-child(7) { transform: translate3d(105px, -50px, 50px) rotate3d(1, 0.7, 0.6, -26deg); }
 
   /* =============== Marquee ticker (signature Awwwards) =============== */
   .hero-marquee {
@@ -1144,13 +1121,17 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     .scroll-indicator { bottom: 120px; }
     .scroll-line { height: 32px; }
     .marquee-track { font-size: 11px; gap: 20px; }
-    /* Réduire charge visuelle sur mobile : 4 shards seulement, burst quasi invisible */
-    .boost-burst { opacity: 0.08; }
-    .shard--5, .shard--6 { display: none; }
-    .shard--1 { --r: 170px; } .shard--2 { --r: 210px; }
-    .shard--3 { --r: 180px; } .shard--4 { --r: 230px; }
-    .b3d-stage { font-size: clamp(72px, 18vw, 120px); }
-    .b3d-stage::before, .b3d-stage::after { display: none; }
+    /* Eclipse mobile : scale réduit, satellite désactivé pour perf */
+    .nebula-booster { font-size: clamp(72px, 18vw, 120px); }
+    .nebula-booster::before, .nebula-booster::after { display: none; }
+    .eclipse-halo   { width: 340px; height: 340px; margin: -170px 0 0 -170px; }
+    .eclipse-core   { width: 200px; height: 200px; margin: -100px 0 0 -90px; }
+    .eclipse-corona { width: 240px; height: 240px; margin: -120px 0 0 -120px; }
+    .eclipse-ring--1 { width: 330px; height: 330px; margin: -165px 0 0 -165px; }
+    .eclipse-ring--2 { width: 420px; height: 420px; margin: -210px 0 0 -210px; }
+    .eclipse-ring--3 { display: none; }
+    .eclipse-satellite::before { top: 0; left: 180px; }
+    .eclipse-satellite::after  { top: 0; left: 130px; width: 48px; }
   }
   @media (max-width: 380px) {
     #hero { padding: 60px 14px 120px; }
@@ -1162,8 +1143,8 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   @media (prefers-reduced-motion: reduce) {
     .hero-brand, .reveal,
     .galaxy-stars, .galaxy-nebula, .mesh-blob,
-    .boost-aura, .b3d-letter,
-    .boost-burst, .shard,
+    .boost-aura, .neb-letter,
+    .eclipse-halo, .eclipse-corona, .eclipse-ring, .eclipse-satellite,
     .orb-glow, .orb-expose, .orb-ring, .globe-spin,
     .globe-core, .globe-target,
     .hero-spotlight, .marquee-track,
@@ -1174,10 +1155,11 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       transform: none;
     }
     .orb-expose, .cursor { display: none; }
-    .boost-shards { display: none; }
     .split-reveal .letter { transform: translateY(0); }
-    .b3d-stage { transform: skewX(-9deg); }
-    .b3d-stage:hover .b3d-letter { transform: none; }
+    .nebula-booster { transform: skewX(-9deg); }
+    .eclipse-ring--1 { transform: rotateX(74deg); }
+    .eclipse-ring--2 { transform: rotateX(78deg) rotateZ(55deg); }
+    .eclipse-ring--3 { transform: rotateX(66deg) rotateZ(-28deg); }
   }
 </style>
 
@@ -1226,32 +1208,31 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     });
   }
 
-  // ============ BOOSTER 3D interactif : rotation mousemove sur le rotator ============
-  const b3dStage = document.getElementById('boosterStage');
-  const b3dRotator = document.getElementById('boosterRotator');
-  if (b3dStage && b3dRotator && !reduced) {
-    let rafB3d = 0;
-    let tbx = 0, tby = 0, cbx = 0, cby = 0;
+  // ============ NEBULA BOOSTER : tilt subtil au mousemove (hero entier) ============
+  const nebula = document.getElementById('nebulaBooster');
+  if (nebula && hero && !reduced && window.matchMedia('(hover: hover)').matches) {
+    let rafNeb = 0;
+    let tnx = 0, tny = 0, cnx = 0, cny = 0;
 
-    b3dStage.addEventListener('mousemove', (e) => {
-      const r = b3dStage.getBoundingClientRect();
-      tbx = ((e.clientX - r.left) / r.width  - 0.5) * 2;
-      tby = ((e.clientY - r.top)  / r.height - 0.5) * 2;
-      if (!rafB3d) rafB3d = requestAnimationFrame(b3dLoop);
+    hero.addEventListener('mousemove', (e) => {
+      const r = hero.getBoundingClientRect();
+      tnx = ((e.clientX - r.left) / r.width  - 0.5) * 2;
+      tny = ((e.clientY - r.top)  / r.height - 0.5) * 2;
+      if (!rafNeb) rafNeb = requestAnimationFrame(nebLoop);
     });
 
-    b3dStage.addEventListener('mouseleave', () => {
-      tbx = 0; tby = 0;
-      if (!rafB3d) rafB3d = requestAnimationFrame(b3dLoop);
+    hero.addEventListener('mouseleave', () => {
+      tnx = 0; tny = 0;
+      if (!rafNeb) rafNeb = requestAnimationFrame(nebLoop);
     });
 
-    function b3dLoop() {
-      cbx += (tbx - cbx) * 0.08;
-      cby += (tby - cby) * 0.08;
-      b3dRotator!.style.transform = `rotateY(${cbx * 22}deg) rotateX(${cby * -16}deg)`;
-      if (Math.abs(tbx - cbx) > 0.001 || Math.abs(tby - cby) > 0.001) {
-        rafB3d = requestAnimationFrame(b3dLoop);
-      } else { rafB3d = 0; }
+    function nebLoop() {
+      cnx += (tnx - cnx) * 0.06;
+      cny += (tny - cny) * 0.06;
+      nebula!.style.transform = `skewX(-9deg) translate3d(${cnx * 6}px, ${cny * 4}px, 0)`;
+      if (Math.abs(tnx - cnx) > 0.001 || Math.abs(tny - cny) > 0.001) {
+        rafNeb = requestAnimationFrame(nebLoop);
+      } else { rafNeb = 0; }
     }
   }
 
