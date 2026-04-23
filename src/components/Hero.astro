@@ -72,9 +72,47 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       </span>
       <span class="tagline-line tagline-boost-line reveal" style="--d:0.4s">
         <span class="boost-word" aria-label="Boostée">
+
+          <!-- Canvas particules physiques (fond) -->
+          <canvas class="boost-canvas" id="boost-canvas" aria-hidden="true"></canvas>
+
+          <!-- Speed lines anime (zoom radial) -->
+          <div class="boost-speedlines" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <!-- Lens flare horizontal qui balaie -->
+          <span class="boost-lensflare" aria-hidden="true"></span>
+
+          <!-- Éclairs violets (lightning bolts) -->
+          <svg class="boost-lightning" viewBox="-100 -100 200 200" aria-hidden="true">
+            <defs>
+              <filter id="lightGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="1.8" result="coloredBlur"/>
+                <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <g filter="url(#lightGlow)" stroke="#F3E8FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline class="bolt bolt--1" points="0,0 -20,-18 -14,-36 -30,-54 -22,-72 -38,-92"/>
+              <polyline class="bolt bolt--2" points="0,0 22,-14 18,-34 36,-50 28,-70 44,-88"/>
+              <polyline class="bolt bolt--3" points="0,0 -26,14 -14,34 -36,48 -28,68 -46,84"/>
+              <polyline class="bolt bolt--4" points="0,0 24,18 14,38 34,50 22,72 42,88"/>
+              <polyline class="bolt bolt--5" points="0,0 -42,-6 -64,-18 -80,-8"/>
+              <polyline class="bolt bolt--6" points="0,0 42,8 66,-4 82,10"/>
+            </g>
+          </svg>
+
+          <!-- Mega flash initial (big bang au load) -->
+          <span class="boost-bigbang" aria-hidden="true"></span>
+
           <!-- Onde de choc (shockwave violette) -->
           <span class="boost-shockwave boost-shockwave--1" aria-hidden="true"></span>
           <span class="boost-shockwave boost-shockwave--2" aria-hidden="true"></span>
+          <span class="boost-shockwave boost-shockwave--3" aria-hidden="true"></span>
 
           <!-- Rayons d'explosion SVG — full violet -->
           <svg class="boost-rays" viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -129,8 +167,16 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
           <span class="boost-particle boost-particle--4"></span>
           <span class="boost-particle boost-particle--5"></span>
           <span class="boost-particle boost-particle--6"></span>
-          <!-- Le mot BOOSTÉE -->
-          <span class="boost-word-text" data-text="BOOSTÉE">BOOSTÉE</span>
+          <!-- Le mot BOOSTÉE — chaque lettre animée séparément -->
+          <span class="boost-word-text" data-text="BOOSTÉE" aria-hidden="true">
+            <span class="boost-letter" style="--i:0">B</span>
+            <span class="boost-letter" style="--i:1">O</span>
+            <span class="boost-letter" style="--i:2">O</span>
+            <span class="boost-letter" style="--i:3">S</span>
+            <span class="boost-letter" style="--i:4">T</span>
+            <span class="boost-letter" style="--i:5">É</span>
+            <span class="boost-letter" style="--i:6">E</span>
+          </span>
         </span>
       </span>
       <span class="tagline-line tagline-bottom reveal" style="--d:0.6s">
@@ -661,6 +707,171 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     z-index: 1;
   }
 
+  /* ============ CANVAS PARTICULES PHYSIQUES ============ */
+  .boost-canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2000px;
+    height: 1000px;
+    max-width: none;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: screen;
+  }
+
+  /* ============ SPEED LINES (anime zoom radial) ============ */
+  .boost-speedlines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160vw;
+    height: 160vw;
+    max-width: 1600px;
+    max-height: 1600px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    mask-image: radial-gradient(circle, transparent 8%, #000 22%, #000 52%, transparent 72%);
+    -webkit-mask-image: radial-gradient(circle, transparent 8%, #000 22%, #000 52%, transparent 72%);
+  }
+  .boost-speedlines span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 2px;
+    height: 50%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(216, 180, 254, 0.9) 30%, rgba(168, 85, 247, 0.4) 80%, transparent 100%);
+    transform-origin: top center;
+    animation: speedZoom 2.2s linear infinite;
+    opacity: 0;
+  }
+  .boost-speedlines span:nth-child(1)  { transform: rotate(0deg);   animation-delay: 0s;     }
+  .boost-speedlines span:nth-child(2)  { transform: rotate(12deg);  animation-delay: 0.07s;  }
+  .boost-speedlines span:nth-child(3)  { transform: rotate(24deg);  animation-delay: 0.14s;  }
+  .boost-speedlines span:nth-child(4)  { transform: rotate(36deg);  animation-delay: 0.21s;  }
+  .boost-speedlines span:nth-child(5)  { transform: rotate(48deg);  animation-delay: 0.28s;  }
+  .boost-speedlines span:nth-child(6)  { transform: rotate(60deg);  animation-delay: 0.35s;  }
+  .boost-speedlines span:nth-child(7)  { transform: rotate(72deg);  animation-delay: 0.42s;  }
+  .boost-speedlines span:nth-child(8)  { transform: rotate(84deg);  animation-delay: 0.49s;  }
+  .boost-speedlines span:nth-child(9)  { transform: rotate(96deg);  animation-delay: 0.56s;  }
+  .boost-speedlines span:nth-child(10) { transform: rotate(108deg); animation-delay: 0.63s;  }
+  .boost-speedlines span:nth-child(11) { transform: rotate(120deg); animation-delay: 0.7s;   }
+  .boost-speedlines span:nth-child(12) { transform: rotate(132deg); animation-delay: 0.77s;  }
+  .boost-speedlines span:nth-child(13) { transform: rotate(144deg); animation-delay: 0.84s;  }
+  .boost-speedlines span:nth-child(14) { transform: rotate(156deg); animation-delay: 0.91s;  }
+  .boost-speedlines span:nth-child(15) { transform: rotate(168deg); animation-delay: 0.98s;  }
+  .boost-speedlines span:nth-child(16) { transform: rotate(180deg); animation-delay: 1.05s;  }
+  .boost-speedlines span:nth-child(17) { transform: rotate(192deg); animation-delay: 1.12s;  }
+  .boost-speedlines span:nth-child(18) { transform: rotate(204deg); animation-delay: 1.19s;  }
+  .boost-speedlines span:nth-child(19) { transform: rotate(216deg); animation-delay: 1.26s;  }
+  .boost-speedlines span:nth-child(20) { transform: rotate(228deg); animation-delay: 1.33s;  }
+  .boost-speedlines span:nth-child(21) { transform: rotate(240deg); animation-delay: 1.4s;   }
+  .boost-speedlines span:nth-child(22) { transform: rotate(252deg); animation-delay: 1.47s;  }
+  .boost-speedlines span:nth-child(23) { transform: rotate(264deg); animation-delay: 1.54s;  }
+  .boost-speedlines span:nth-child(24) { transform: rotate(276deg); animation-delay: 1.61s;  }
+  .boost-speedlines span:nth-child(25) { transform: rotate(288deg); animation-delay: 1.68s;  }
+  .boost-speedlines span:nth-child(26) { transform: rotate(300deg); animation-delay: 1.75s;  }
+  .boost-speedlines span:nth-child(27) { transform: rotate(312deg); animation-delay: 1.82s;  }
+  .boost-speedlines span:nth-child(28) { transform: rotate(324deg); animation-delay: 1.89s;  }
+  .boost-speedlines span:nth-child(29) { transform: rotate(336deg); animation-delay: 1.96s;  }
+  .boost-speedlines span:nth-child(30) { transform: rotate(348deg); animation-delay: 2.03s;  }
+  @keyframes speedZoom {
+    0%   { transform-origin: top center; transform: rotate(var(--r, 0deg)) scaleY(0); opacity: 0; }
+    20%  { opacity: 1; }
+    100% { transform: rotate(var(--r, 0deg)) scaleY(1); opacity: 0; }
+  }
+
+  /* ============ LENS FLARE horizontal qui balaie ============ */
+  .boost-lensflare {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 180%;
+    height: 30%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 3;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(216, 180, 254, 0) 35%,
+      rgba(233, 213, 255, 0.85) 48%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(233, 213, 255, 0.85) 52%,
+      rgba(216, 180, 254, 0) 65%,
+      transparent 100%);
+    filter: blur(6px);
+    mix-blend-mode: screen;
+    opacity: 0;
+    animation: flareSweep 5.5s ease-in-out infinite;
+  }
+  @keyframes flareSweep {
+    0%   { transform: translate(-130%, -50%) skewX(-14deg); opacity: 0; }
+    40%  { opacity: 0; }
+    50%  { transform: translate(-50%, -50%) skewX(-14deg);  opacity: 1; }
+    60%  { opacity: 0; }
+    100% { transform: translate(30%, -50%) skewX(-14deg);   opacity: 0; }
+  }
+
+  /* ============ ÉCLAIRS (lightning bolts) ============ */
+  .boost-lightning {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 240%;
+    height: 480%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+    overflow: visible;
+    filter:
+      drop-shadow(0 0 10px rgba(233, 213, 255, 0.95))
+      drop-shadow(0 0 22px rgba(168, 85, 247, 0.8));
+  }
+  .bolt {
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    opacity: 0;
+    animation: boltStrike 4s ease-out infinite;
+  }
+  .bolt--1 { animation-delay: 0.2s; }
+  .bolt--2 { animation-delay: 0.8s; animation-duration: 3.4s; }
+  .bolt--3 { animation-delay: 1.6s; animation-duration: 4.6s; }
+  .bolt--4 { animation-delay: 2.4s; animation-duration: 3.2s; }
+  .bolt--5 { animation-delay: 0.4s; animation-duration: 3.8s; }
+  .bolt--6 { animation-delay: 2.0s; animation-duration: 4.2s; }
+  @keyframes boltStrike {
+    0%   { stroke-dashoffset: 220; opacity: 0; }
+    8%   { stroke-dashoffset: 0;   opacity: 1; }
+    14%  { opacity: 0.2; }
+    18%  { opacity: 1; }
+    24%  { opacity: 0; stroke-dashoffset: 0; }
+    100% { opacity: 0; stroke-dashoffset: 0; }
+  }
+
+  /* ============ BIG BANG initial (flash au load) ============ */
+  .boost-bigbang {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FFFFFF 0%, #F3E8FF 25%, #D8B4FE 55%, rgba(168, 85, 247, 0) 80%);
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    z-index: 4;
+    animation: bigbang 1.8s cubic-bezier(0.19, 1, 0.22, 1) 0.35s forwards;
+  }
+  @keyframes bigbang {
+    0%   { transform: translate(-50%, -50%) scale(0);   opacity: 0; }
+    8%   { transform: translate(-50%, -50%) scale(0.2); opacity: 1; filter: blur(0); }
+    35%  { transform: translate(-50%, -50%) scale(22);  opacity: 0.9; filter: blur(6px); }
+    100% { transform: translate(-50%, -50%) scale(60);  opacity: 0; filter: blur(40px); }
+  }
+
   /* Shockwaves violettes concentriques */
   .boost-shockwave {
     position: absolute;
@@ -669,21 +880,22 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid rgba(216, 180, 254, 0.8);
+    border: 2px solid rgba(216, 180, 254, 0.85);
     transform: translate(-50%, -50%) scale(0);
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
     opacity: 0;
     box-shadow:
-      0 0 20px rgba(168, 85, 247, 0.6),
-      inset 0 0 16px rgba(216, 180, 254, 0.45);
+      0 0 28px rgba(168, 85, 247, 0.75),
+      inset 0 0 18px rgba(216, 180, 254, 0.5);
   }
-  .boost-shockwave--1 { animation: shockwave 3s ease-out infinite; }
-  .boost-shockwave--2 { animation: shockwave 3s ease-out 1.5s infinite; }
+  .boost-shockwave--1 { animation: shockwave 2.4s ease-out infinite; }
+  .boost-shockwave--2 { animation: shockwave 2.4s ease-out 0.8s infinite; }
+  .boost-shockwave--3 { animation: shockwave 2.4s ease-out 1.6s infinite; }
   @keyframes shockwave {
-    0%   { transform: translate(-50%, -50%) scale(0);   opacity: 0.85; border-width: 3px; }
-    70%  { opacity: 0.25; border-width: 1.5px; }
-    100% { transform: translate(-50%, -50%) scale(14);  opacity: 0;    border-width: 1px; }
+    0%   { transform: translate(-50%, -50%) scale(0);   opacity: 1;    border-width: 3.5px; }
+    70%  { opacity: 0.3; border-width: 1.5px; }
+    100% { transform: translate(-50%, -50%) scale(18);  opacity: 0;    border-width: 1px; }
   }
 
   /* Rayons d'explosion — full violet */
@@ -788,6 +1000,43 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     -webkit-text-stroke: 1.5px rgba(216, 180, 254, 0.35);
     z-index: -1;
     pointer-events: none;
+  }
+
+  /* Lettres : assemblage initial (chaque lettre jaillit du centre) */
+  .boost-letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.1) rotate(0deg);
+    animation:
+      letterAssemble 1s cubic-bezier(0.19, 1, 0.22, 1) calc(0.7s + var(--i) * 0.05s) forwards,
+      letterFlicker 6s ease-in-out calc(2.5s + var(--i) * 0.15s) infinite;
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+  @keyframes letterAssemble {
+    0%   {
+      opacity: 0;
+      transform: translate3d(
+        calc((var(--i) - 3) * 80px),
+        calc(-20px + (var(--i) - 3) * -10px),
+        0) scale(0.2) rotate(calc((var(--i) - 3) * 45deg));
+      filter: blur(10px);
+    }
+    60%  {
+      opacity: 1;
+      filter: blur(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+      filter: blur(0);
+    }
+  }
+  @keyframes letterFlicker {
+    0%, 100%   { opacity: 1; text-shadow: none; }
+    48%        { opacity: 1; }
+    50%        { opacity: 0.6; text-shadow: 0 0 20px rgba(233, 213, 255, 0.95); }
+    52%        { opacity: 1; }
   }
   @keyframes boostGradientShift {
     0%, 100% { background-position: 0% 50%; }
@@ -1269,5 +1518,105 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
         rafId = requestAnimationFrame(loop);
       } else { rafId = 0; }
     }
+  }
+
+  // ============ CANVAS : explosion de particules physiques ============
+  const canvas = document.getElementById('boost-canvas') as HTMLCanvasElement | null;
+  if (canvas && !reduced) {
+    const ctx = canvas.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function resize() {
+      if (!canvas) return;
+      const w = canvas.offsetWidth, h = canvas.offsetHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx?.scale(dpr, dpr);
+    }
+    resize();
+    window.addEventListener('resize', () => { resize(); });
+
+    type P = { x:number; y:number; vx:number; vy:number; life:number; max:number; r:number; hue:number; light:number };
+    const particles: P[] = [];
+    const W = () => canvas.offsetWidth;
+    const H = () => canvas.offsetHeight;
+
+    const violetHues = [268, 272, 278, 285, 292]; // violet range
+
+    function spawnBurst(count: number, intensity = 1) {
+      const cx = W() / 2, cy = H() / 2;
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = (1.5 + Math.random() * 5.5) * intensity;
+        const hue = violetHues[Math.floor(Math.random() * violetHues.length)];
+        const isWhite = Math.random() < 0.22;
+        particles.push({
+          x: cx, y: cy,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 0,
+          max: 60 + Math.random() * 80,
+          r: 1.2 + Math.random() * 2.8,
+          hue: isWhite ? 0 : hue,
+          light: isWhite ? 100 : 60 + Math.random() * 30,
+        });
+      }
+    }
+
+    // Burst initial gros
+    setTimeout(() => spawnBurst(180, 1.6), 450);
+    // Bursts cycliques
+    setInterval(() => spawnBurst(60, 1), 1400);
+
+    function tick() {
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Emission continue douce
+      if (Math.random() < 0.6) spawnBurst(3, 0.6);
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.life++;
+        // Gravité négative légère (particules montent un peu)
+        p.vy -= 0.015;
+        // Friction
+        p.vx *= 0.985;
+        p.vy *= 0.985;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        const t = p.life / p.max;
+        if (t >= 1) { particles.splice(i, 1); continue; }
+        const alpha = (1 - t) * 0.95;
+
+        // Trail
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 6);
+        if (p.hue === 0) {
+          grad.addColorStop(0,   `rgba(255, 255, 255, ${alpha})`);
+          grad.addColorStop(0.3, `rgba(233, 213, 255, ${alpha * 0.6})`);
+          grad.addColorStop(1,   `rgba(168, 85, 247, 0)`);
+        } else {
+          grad.addColorStop(0,   `hsla(${p.hue}, 90%, ${p.light}%, ${alpha})`);
+          grad.addColorStop(0.4, `hsla(${p.hue}, 80%, ${p.light - 20}%, ${alpha * 0.55})`);
+          grad.addColorStop(1,   `hsla(${p.hue}, 70%, 45%, 0)`);
+        }
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Core
+        ctx.fillStyle = p.hue === 0 ? `rgba(255,255,255,${alpha})` : `hsla(${p.hue}, 95%, ${Math.min(p.light + 15, 98)}%, ${alpha})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      requestAnimationFrame(tick);
+    }
+    tick();
   }
 </script>
