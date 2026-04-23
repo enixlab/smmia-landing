@@ -756,7 +756,10 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
-  /* ===== GLASS-LETTER : crystal BLANC PUR + rim néon violet massif ===== */
+  /* ===== GLASS-LETTER : CORE BLANC PUR + halo violet EN EXTÉRIEUR uniquement =====
+     Stratégie : le remplissage des lettres reste BLANC solide (color + fill + stroke blanc),
+     et le violet n'intervient QU'EN HALO EXTÉRIEUR (grandes distances, opacité faible)
+     pour ne pas "manger" le cœur blanc. */
   .glass-letter {
     display: inline-block;
     position: relative;
@@ -766,18 +769,23 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     font-size: clamp(68px, 11.5vw, 168px);
     line-height: 0.92;
     letter-spacing: -0.032em;
-    color: #FFFFFF;
-    -webkit-text-stroke: 0;
-    /* Glow violet massif en 8 couches (blanc core → violet profond) */
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    -webkit-text-stroke: 1.5px #FFFFFF;
     text-shadow:
-      0 0 2px  rgba(255, 255, 255, 1),
-      0 0 6px  rgba(255, 255, 255, 1),
-      0 0 12px rgba(243, 232, 255, 1),
-      0 0 22px rgba(221, 214, 254, 0.98),
-      0 0 38px rgba(192, 132, 252, 0.95),
-      0 0 64px rgba(168, 85, 247, 0.88),
-      0 0 108px rgba(139, 92, 246, 0.72),
-      0 0 180px rgba(124, 58, 237, 0.55);
+      /* COEUR BLANC SOLIDE — plusieurs couches blanches très proches */
+      0 0 1px  #FFFFFF,
+      0 0 2px  #FFFFFF,
+      0 0 4px  #FFFFFF,
+      0 0 8px  rgba(255, 255, 255, 0.85),
+      /* Transition blanc → lavender (encore très clair, opacité moyenne) */
+      0 0 16px rgba(245, 240, 255, 0.55),
+      0 0 28px rgba(221, 214, 254, 0.45),
+      /* Halo violet EN DEHORS des lettres (faible opacité, grands rayons) */
+      0 0 52px rgba(192, 132, 252, 0.55),
+      0 0 92px rgba(168, 85, 247, 0.45),
+      0 0 160px rgba(139, 92, 246, 0.32),
+      0 0 240px rgba(124, 58, 237, 0.2);
     transform-style: preserve-3d;
     padding: 0 0.03em;
   }
@@ -897,52 +905,71 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       transform: translate3d(0, 0, 0) rotate3d(1, 0.3, 0.2, 0deg);
       filter: blur(0) brightness(1);
     }
-    /* BANG 62% : tous shards visibles assemblés (reconstituent la lettre) */
-    62%       {
+    /* BANG 61% : flash blanc, tous shards visibles assemblés */
+    61%       {
       opacity: 1;
       transform: translate3d(0, 0, 0) rotate3d(1, 0.3, 0.2, 0deg);
-      filter: blur(0) brightness(2);
+      filter: blur(0) brightness(2.5);
     }
-    /* BURST 64% : projection radiale initiale + flash brightness */
-    64%       {
+    /* 63% : BURST initial violent (projection forte) */
+    63%       {
       opacity: 1;
       transform:
-        translate3d(var(--bx), var(--by), 30px)
-        rotate3d(1, 0.3, 0.2, calc(var(--rz) * 0.15));
-      filter: blur(0.3px) brightness(1.6);
+        translate3d(var(--bx), var(--by), 40px)
+        rotate3d(1, 0.3, 0.2, calc(var(--rz) * 0.12));
+      filter: blur(0) brightness(2);
     }
-    /* MI-CHUTE 70% : gravité commence (by devient + fy partiel), rotation monte */
-    70%       {
+    /* 66% : fragments encore très visibles (pleine opacité) */
+    66%       {
+      opacity: 1;
+      transform:
+        translate3d(
+          calc(var(--bx) * 1.2 + var(--fx) * 0.1),
+          calc(var(--by) * 0.6 + var(--fy) * 0.15),
+          30px)
+        rotate3d(1, 0.3, 0.3, calc(var(--rz) * 0.32));
+      filter: blur(0.4px) brightness(1.7);
+    }
+    /* 72% : mi-chute, encore bien lisibles */
+    72%       {
       opacity: 0.95;
       transform:
         translate3d(
-          calc(var(--bx) * 0.5 + var(--fx) * 0.35),
-          calc(var(--fy) * 0.3),
+          calc(var(--bx) * 0.5 + var(--fx) * 0.45),
+          calc(var(--fy) * 0.4),
           20px)
-        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 0.55));
-      filter: blur(1px) brightness(1.3);
+        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 0.6));
+      filter: blur(0.8px) brightness(1.4);
     }
-    /* CHUTE AVANCÉE 78% : majorité de la gravité appliquée, blur motion */
+    /* 78% : chute avancée */
     78%       {
-      opacity: 0.75;
+      opacity: 0.85;
       transform:
         translate3d(
           calc(var(--fx) * 0.85),
-          calc(var(--fy) * 0.8),
-          10px)
+          calc(var(--fy) * 0.75),
+          12px)
         rotate3d(1, 0.4, 0.3, calc(var(--rz) * 0.88));
-      filter: blur(2px) brightness(1);
+      filter: blur(1.5px) brightness(1.15);
     }
-    /* AU SOL 84% : position finale, fade presque complet, blur max */
-    84%       {
+    /* 83% : presque au sol, fade commence */
+    83%       {
+      opacity: 0.5;
+      transform:
+        translate3d(calc(var(--fx) * 0.98), calc(var(--fy) * 0.95), 4px)
+        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 1.05));
+      filter: blur(2.5px) brightness(1);
+    }
+    /* 86% : au sol, fade out final */
+    86%       {
       opacity: 0;
       transform:
         translate3d(var(--fx), var(--fy), 0)
         rotate3d(1, 0.4, 0.3, var(--rz));
-      filter: blur(4px) brightness(0.8);
+      filter: blur(4px) brightness(0.85);
     }
-    /* VOID 85-100% : shards invisibles, le glyph reform gère la suite */
-    86%, 100% {
+    /* VOID 86-100% : shards invisibles, le glyph reform prend le relais */
+    88%, 100% {
       opacity: 0;
       transform: translate3d(0, 0, 0) rotate3d(1, 0.3, 0.2, 0deg);
       filter: blur(0) brightness(1);
@@ -964,13 +991,16 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   }
   @media (max-width: 480px) {
     .glass-letter {
+      -webkit-text-stroke: 1px #FFFFFF;
       text-shadow:
-        0 0 2px  rgba(255, 255, 255, 1),
-        0 0 6px  rgba(243, 232, 255, 1),
-        0 0 12px rgba(221, 214, 254, 0.95),
-        0 0 24px rgba(192, 132, 252, 0.85),
-        0 0 42px rgba(168, 85, 247, 0.65),
-        0 0 78px rgba(139, 92, 246, 0.4);
+        0 0 1px  #FFFFFF,
+        0 0 2px  #FFFFFF,
+        0 0 4px  #FFFFFF,
+        0 0 8px  rgba(255, 255, 255, 0.8),
+        0 0 16px rgba(221, 214, 254, 0.4),
+        0 0 36px rgba(192, 132, 252, 0.5),
+        0 0 70px rgba(168, 85, 247, 0.38),
+        0 0 120px rgba(139, 92, 246, 0.25);
     }
   }
   @media (prefers-reduced-motion: reduce) {
