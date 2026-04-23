@@ -56,8 +56,7 @@ const testimonials = [
     posterPos: "30%",
   },
 ];
-const rowA = testimonials.slice(0, 3);
-const rowB = testimonials.slice(3);
+const rowA = testimonials;
 ---
 
 <section id="video-avis" class="va-section">
@@ -87,16 +86,16 @@ const rowB = testimonials.slice(3);
 
     </div>
 
-    <!-- Marquee vidéos : 2 lignes qui défilent en sens opposés -->
+    <!-- Marquee vidéos : 1 seule ligne -->
     <div class="va-marquee-wrap" data-animate>
 
       <!-- Fade edges (masque pour effet "flottant") -->
       <div class="va-marquee-fade va-marquee-fade--l" aria-hidden="true"></div>
       <div class="va-marquee-fade va-marquee-fade--r" aria-hidden="true"></div>
 
-      <!-- Ligne 1 : défile vers la gauche -->
+      <!-- Ligne unique : défile vers la gauche -->
       <div class="va-marquee-track va-marquee-track--l">
-        {[...rowA, ...rowA, ...rowA, ...rowA].map((t) => (
+        {[...rowA, ...rowA, ...rowA].map((t) => (
           <button
             class="va-card"
             data-video={`/videos/avis-${t.slug}.mp4`}
@@ -130,47 +129,6 @@ const rowB = testimonials.slice(3);
               </div>
 
               <!-- Bas de poster : hook propre -->
-              <div class="va-card-footer">
-                <h3 class="va-hook">{t.hook}</h3>
-                <div class="va-cta-watch">Regarder le témoignage</div>
-              </div>
-            </div>
-          </button>
-        ))}
-      </div>
-
-      <!-- Ligne 2 : défile vers la droite -->
-      <div class="va-marquee-track va-marquee-track--r">
-        {[...rowB, ...rowB, ...rowB, ...rowB].map((t) => (
-          <button
-            class="va-card"
-            data-video={`/videos/avis-${t.slug}.mp4`}
-            data-name={t.hook}
-            aria-label={`Lire le témoignage : ${t.hook}`}
-          >
-            <div class="va-card-media">
-              <img
-                src={t.poster}
-                alt={t.hook}
-                loading="lazy"
-                class="va-poster"
-                style={`object-position: center ${t.posterPos};`}
-              />
-
-              <div class="va-card-overlay" aria-hidden="true"></div>
-
-              <div class="va-metric-badge" aria-hidden="true">
-                {t.tag}
-              </div>
-
-              <div class="va-play" aria-hidden="true">
-                <span class="va-play-core">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </span>
-              </div>
-
               <div class="va-card-footer">
                 <h3 class="va-hook">{t.hook}</h3>
                 <div class="va-cta-watch">Regarder le témoignage</div>
@@ -364,7 +322,7 @@ const rowB = testimonials.slice(3);
     color: rgba(10, 4, 24, 0.65);
   }
 
-  /* ────────── Marquee vidéos — 2 lignes sens opposés ────────── */
+  /* ────────── Marquee vidéos — 1 ligne ────────── */
   .va-marquee-wrap {
     position: relative;
     width: 100vw;
@@ -373,7 +331,7 @@ const rowB = testimonials.slice(3);
     padding: 30px 0;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 0;
   }
 
   /* Fade edges — masques gauche/droite pour effet "cards flottent dans le fade" */

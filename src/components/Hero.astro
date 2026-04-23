@@ -4,6 +4,19 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
 <section id="hero">
 
+  <!-- Galaxy starfield (layers) -->
+  <div class="hero-galaxy" aria-hidden="true">
+    <div class="galaxy-stars galaxy-stars--far"></div>
+    <div class="galaxy-stars galaxy-stars--mid"></div>
+    <div class="galaxy-stars galaxy-stars--near"></div>
+    <div class="galaxy-nebula galaxy-nebula--a"></div>
+    <div class="galaxy-nebula galaxy-nebula--b"></div>
+    <div class="galaxy-nebula galaxy-nebula--c"></div>
+    <span class="galaxy-shooting galaxy-shooting--1"></span>
+    <span class="galaxy-shooting galaxy-shooting--2"></span>
+    <span class="galaxy-shooting galaxy-shooting--3"></span>
+  </div>
+
   <!-- Grille subtile -->
   <div class="hero-grid" aria-hidden="true"></div>
 
@@ -13,7 +26,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   <!-- Logos brand flottants -->
   <FloatingBrandIcons variant="subtle" seed={12} />
 
-  <!-- Halo violet fixe derrière la tagline (pas pulsant) -->
+  <!-- Halo violet pulsant derrière la tagline -->
   <div class="hero-spotlight" aria-hidden="true"></div>
 
   <div class="hero-inner">
@@ -30,24 +43,55 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       <img src="/images/logos/nj.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--light" />
     </div>
 
-    <!-- Tagline principale -->
+    <!-- Tagline principale : Ton agence rentable BOOSTÉE par l'IA -->
     <h1 class="hero-title hero-title--solo">
-      <span class="line-fill reveal" style="--d:0.2s">
-        Monte ton agence IA.
-        <svg class="underline-svg" viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="ug" x1="0" x2="1">
-              <stop offset="0%"   stop-color="#c4b5fd"/>
-              <stop offset="50%"  stop-color="#a855f7"/>
-              <stop offset="100%" stop-color="#7c3aed"/>
-            </linearGradient>
-          </defs>
-          <path d="M 6 14 C 100 6, 200 18, 296 10 S 380 6, 394 14"
-                fill="none"
-                stroke="url(#ug)"
-                stroke-width="6"
-                stroke-linecap="round"/>
-        </svg>
+      <span class="tagline-line tagline-top reveal" style="--d:0.2s">
+        Ton agence rentable
+      </span>
+      <span class="tagline-line tagline-boost-line reveal" style="--d:0.4s">
+        <span class="boost-word" aria-label="Boostée">
+          <!-- Rayons d'explosion SVG -->
+          <svg class="boost-rays" viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <defs>
+              <linearGradient id="rayG" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#FCD34D"/>
+                <stop offset="35%" stop-color="#FB923C"/>
+                <stop offset="70%" stop-color="#A855F7"/>
+                <stop offset="100%" stop-color="#22D3EE"/>
+              </linearGradient>
+            </defs>
+            <g class="boost-rays-group" stroke="url(#rayG)" stroke-width="2.2" stroke-linecap="round" opacity="0.85">
+              <line x1="-92" y1="0"   x2="-44" y2="0"   />
+              <line x1="92"  y1="0"   x2="44"  y2="0"   />
+              <line x1="0"   y1="-92" x2="0"   y2="-44" />
+              <line x1="0"   y1="92"  x2="0"   y2="44"  />
+              <line x1="-66" y1="-66" x2="-32" y2="-32" />
+              <line x1="66"  y1="66"  x2="32"  y2="32"  />
+              <line x1="-66" y1="66"  x2="-32" y2="32"  />
+              <line x1="66"  y1="-66" x2="32"  y2="-32" />
+              <line x1="-82" y1="-34" x2="-42" y2="-18" stroke-width="1.4"/>
+              <line x1="82"  y1="34"  x2="42"  y2="18"  stroke-width="1.4"/>
+              <line x1="-34" y1="-82" x2="-18" y2="-42" stroke-width="1.4"/>
+              <line x1="34"  y1="82"  x2="18"  y2="42"  stroke-width="1.4"/>
+              <line x1="-82" y1="34"  x2="-42" y2="18"  stroke-width="1.4"/>
+              <line x1="82"  y1="-34" x2="42"  y2="-18" stroke-width="1.4"/>
+              <line x1="-34" y1="82"  x2="-18" y2="42"  stroke-width="1.4"/>
+              <line x1="34"  y1="-82" x2="18"  y2="-42" stroke-width="1.4"/>
+            </g>
+          </svg>
+          <!-- Particules d'explosion -->
+          <span class="boost-particle boost-particle--1"></span>
+          <span class="boost-particle boost-particle--2"></span>
+          <span class="boost-particle boost-particle--3"></span>
+          <span class="boost-particle boost-particle--4"></span>
+          <span class="boost-particle boost-particle--5"></span>
+          <span class="boost-particle boost-particle--6"></span>
+          <!-- Le mot BOOSTÉE -->
+          <span class="boost-word-text" data-text="BOOSTÉE">BOOSTÉE</span>
+        </span>
+      </span>
+      <span class="tagline-line tagline-bottom reveal" style="--d:0.6s">
+        par l'IA.
       </span>
     </h1>
 
@@ -70,14 +114,6 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   <!-- Fade vers le noir en bas -->
   <div class="hero-fade" aria-hidden="true"></div>
-
-  <!-- Scroll CTA premium -->
-  <a href="#programme" class="hero-scroll-cta" aria-label="Découvrir le programme">
-    <span class="scroll-text">Découvrir</span>
-    <span class="scroll-mouse">
-      <span class="scroll-wheel"></span>
-    </span>
-  </a>
 </section>
 
 <style>
@@ -108,19 +144,375 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     transform-style: preserve-3d;
   }
 
-  /* Spotlight violet fixe derrière la tagline */
+  /* Spotlight pulsant multi-couleur derrière la tagline */
   .hero-spotlight {
     position: absolute;
     top: 48%;
     left: 50%;
-    width: 72%;
-    max-width: 1000px;
+    width: 78%;
+    max-width: 1100px;
     aspect-ratio: 3/1;
     transform: translate(-50%, -50%);
-    background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.28) 0%, rgba(139, 92, 246, 0.15) 35%, transparent 70%);
-    filter: blur(28px);
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(251, 146, 60, 0.22) 0%, transparent 55%),
+      radial-gradient(ellipse at center, rgba(168, 85, 247, 0.35) 0%, rgba(124, 58, 237, 0.18) 40%, transparent 72%),
+      radial-gradient(ellipse at 72% 50%, rgba(34, 211, 238, 0.22) 0%, transparent 55%);
+    filter: blur(32px);
     z-index: 0;
     pointer-events: none;
+    animation: spotlightBreath 7s ease-in-out infinite;
+  }
+  @keyframes spotlightBreath {
+    0%, 100% { opacity: 0.85; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.06); }
+  }
+
+  /* ===================== GALAXIE ACTIVE ===================== */
+  .hero-galaxy {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  /* Starfield — 3 profondeurs, box-shadow multi-étoiles */
+  .galaxy-stars {
+    position: absolute;
+    inset: -20% -10%;
+    background: transparent;
+    will-change: transform;
+  }
+  .galaxy-stars::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+  }
+  .galaxy-stars--far::before {
+    width: 2px; height: 2px; left: 0; top: 0;
+    background: #fff;
+    box-shadow:
+      120px 80px rgba(255,255,255,0.85),
+      260px 180px rgba(216,180,254,0.9),
+      440px 40px rgba(255,255,255,0.7),
+      580px 220px rgba(192,132,252,0.85),
+      720px 130px rgba(255,255,255,0.6),
+      860px 60px rgba(255,255,255,0.8),
+      980px 280px rgba(216,180,254,0.7),
+      1140px 180px rgba(255,255,255,0.9),
+      1280px 90px rgba(192,132,252,0.8),
+      1420px 230px rgba(255,255,255,0.7),
+      1580px 60px rgba(255,255,255,0.65),
+      1720px 150px rgba(216,180,254,0.8),
+      80px 320px rgba(255,255,255,0.7),
+      220px 420px rgba(192,132,252,0.85),
+      380px 500px rgba(255,255,255,0.7),
+      540px 380px rgba(255,255,255,0.8),
+      680px 560px rgba(216,180,254,0.75),
+      820px 460px rgba(255,255,255,0.65),
+      960px 620px rgba(192,132,252,0.9),
+      1120px 400px rgba(255,255,255,0.8),
+      1280px 540px rgba(255,255,255,0.7),
+      1440px 460px rgba(216,180,254,0.85),
+      1600px 580px rgba(255,255,255,0.7),
+      1760px 380px rgba(192,132,252,0.8);
+    animation: starsTwinkle 4s ease-in-out infinite, starsDriftFar 120s linear infinite;
+  }
+  .galaxy-stars--mid::before {
+    width: 2.5px; height: 2.5px; left: 0; top: 0;
+    background: #fff;
+    box-shadow:
+      180px 120px rgba(255,255,255,1),
+      340px 260px rgba(34,211,238,0.9),
+      520px 80px rgba(255,255,255,0.85),
+      680px 360px rgba(251,146,60,0.8),
+      840px 190px rgba(255,255,255,0.9),
+      1020px 80px rgba(252,211,77,0.85),
+      1200px 320px rgba(255,255,255,0.8),
+      1380px 220px rgba(34,211,238,0.85),
+      1560px 140px rgba(255,255,255,0.9),
+      1720px 300px rgba(251,146,60,0.8),
+      140px 480px rgba(255,255,255,0.85),
+      320px 560px rgba(34,211,238,0.9),
+      500px 620px rgba(255,255,255,0.8),
+      680px 480px rgba(252,211,77,0.9),
+      860px 600px rgba(255,255,255,0.85),
+      1040px 520px rgba(251,146,60,0.8),
+      1220px 640px rgba(255,255,255,0.9),
+      1400px 560px rgba(34,211,238,0.85),
+      1580px 620px rgba(255,255,255,0.8),
+      1760px 500px rgba(252,211,77,0.9);
+    animation: starsTwinkle 3s ease-in-out infinite 0.5s, starsDriftMid 80s linear infinite;
+  }
+  .galaxy-stars--near::before {
+    width: 3.5px; height: 3.5px; left: 0; top: 0;
+    background: #fff;
+    box-shadow:
+      240px 100px rgba(255,255,255,1),
+      480px 240px rgba(216,180,254,1),
+      760px 160px rgba(34,211,238,0.95),
+      1040px 300px rgba(255,255,255,1),
+      1320px 180px rgba(251,146,60,0.95),
+      1620px 240px rgba(255,255,255,1),
+      200px 440px rgba(252,211,77,1),
+      460px 560px rgba(255,255,255,1),
+      760px 620px rgba(216,180,254,0.95),
+      1060px 480px rgba(34,211,238,1),
+      1360px 580px rgba(255,255,255,1),
+      1660px 420px rgba(251,146,60,0.9);
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+    animation: starsTwinkle 2.2s ease-in-out infinite 1s, starsDriftNear 60s linear infinite;
+  }
+
+  @keyframes starsTwinkle {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+  }
+  @keyframes starsDriftFar {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-40px, 18px, 0); }
+  }
+  @keyframes starsDriftMid {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-80px, 30px, 0); }
+  }
+  @keyframes starsDriftNear {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-140px, 50px, 0); }
+  }
+
+  /* Nébuleuses colorées qui bougent lentement */
+  .galaxy-nebula {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    mix-blend-mode: screen;
+    opacity: 0.55;
+    will-change: transform, opacity;
+  }
+  .galaxy-nebula--a {
+    width: 520px; height: 520px;
+    top: -8%; left: -6%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.7) 0%, rgba(124, 58, 237, 0.3) 45%, transparent 70%);
+    animation: nebulaFloatA 22s ease-in-out infinite;
+  }
+  .galaxy-nebula--b {
+    width: 460px; height: 460px;
+    top: 55%; right: -8%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.6) 0%, rgba(14, 165, 233, 0.25) 45%, transparent 70%);
+    animation: nebulaFloatB 28s ease-in-out infinite;
+  }
+  .galaxy-nebula--c {
+    width: 380px; height: 380px;
+    bottom: -6%; left: 30%;
+    background: radial-gradient(circle, rgba(251, 146, 60, 0.5) 0%, rgba(252, 211, 77, 0.2) 45%, transparent 70%);
+    animation: nebulaFloatC 26s ease-in-out infinite;
+  }
+  @keyframes nebulaFloatA {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.55; }
+    50%      { transform: translate(40px, 60px) scale(1.08); opacity: 0.7; }
+  }
+  @keyframes nebulaFloatB {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+    50%      { transform: translate(-50px, -40px) scale(1.1); opacity: 0.65; }
+  }
+  @keyframes nebulaFloatC {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.45; }
+    50%      { transform: translate(30px, -50px) scale(1.12); opacity: 0.6; }
+  }
+
+  /* Étoiles filantes */
+  .galaxy-shooting {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.8);
+    opacity: 0;
+  }
+  .galaxy-shooting::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    width: 140px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), rgba(216, 180, 254, 0.6));
+    transform: translateY(-50%);
+  }
+  .galaxy-shooting--1 {
+    top: 18%; left: -10%;
+    animation: shootingStar 8s ease-in 2s infinite;
+  }
+  .galaxy-shooting--2 {
+    top: 42%; left: -10%;
+    animation: shootingStar 11s ease-in 5s infinite;
+  }
+  .galaxy-shooting--3 {
+    top: 68%; left: -10%;
+    animation: shootingStar 14s ease-in 8s infinite;
+  }
+  @keyframes shootingStar {
+    0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+    5%   { opacity: 1; }
+    40%  { opacity: 1; }
+    60%  { opacity: 0; }
+    100% { transform: translate3d(130vw, 24vh, 0); opacity: 0; }
+  }
+
+  /* =============== TAGLINE — multilignes =============== */
+  .tagline-line {
+    display: block;
+    line-height: 1;
+  }
+  .tagline-top {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(22px, 3.2vw, 42px);
+    color: rgba(255, 255, 255, 0.82);
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  :global([data-theme="light"]) .tagline-top {
+    color: rgba(10, 4, 24, 0.78);
+  }
+  .tagline-bottom {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(22px, 3.2vw, 42px);
+    color: rgba(255, 255, 255, 0.92);
+    letter-spacing: -0.015em;
+    margin-top: 4px;
+  }
+  :global([data-theme="light"]) .tagline-bottom {
+    color: rgba(10, 4, 24, 0.92);
+  }
+
+  /* =============== BOOSTÉE — explosion =============== */
+  .tagline-boost-line {
+    position: relative;
+    display: block;
+    padding: 8px 0;
+    line-height: 1;
+  }
+
+  .boost-word {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    z-index: 1;
+  }
+
+  /* Rayons d'explosion */
+  .boost-rays {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160%;
+    height: 320%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+    filter: drop-shadow(0 0 14px rgba(168, 85, 247, 0.65))
+            drop-shadow(0 0 28px rgba(251, 146, 60, 0.35));
+  }
+  .boost-rays-group {
+    transform-origin: center;
+    animation: raysPulse 3.4s ease-in-out infinite, raysSpin 38s linear infinite;
+  }
+  @keyframes raysPulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.08); }
+  }
+  @keyframes raysSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* Particules d'explosion */
+  .boost-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+  }
+  .boost-particle--1 { background: #FCD34D; box-shadow: 0 0 12px 2px rgba(252, 211, 77, 0.85); animation: particleBurst 3s ease-out 0.4s infinite;  --px: -240px; --py: -110px; }
+  .boost-particle--2 { background: #FB923C; box-shadow: 0 0 12px 2px rgba(251, 146, 60, 0.85); animation: particleBurst 3.2s ease-out 0.9s infinite; --px:  240px; --py: -130px; }
+  .boost-particle--3 { background: #A855F7; box-shadow: 0 0 12px 2px rgba(168, 85, 247, 0.85); animation: particleBurst 3.6s ease-out 0.2s infinite; --px: -280px; --py:  120px; }
+  .boost-particle--4 { background: #22D3EE; box-shadow: 0 0 12px 2px rgba(34, 211, 238, 0.85); animation: particleBurst 3.4s ease-out 1.3s infinite; --px:  280px; --py:  110px; }
+  .boost-particle--5 { background: #FFFFFF; box-shadow: 0 0 14px 2px rgba(255, 255, 255, 0.9);  animation: particleBurst 3.8s ease-out 0.7s infinite; --px:  -60px; --py: -160px; }
+  .boost-particle--6 { background: #FFFFFF; box-shadow: 0 0 14px 2px rgba(255, 255, 255, 0.9);  animation: particleBurst 3s ease-out 1.7s infinite;   --px:   60px; --py:  160px; }
+  @keyframes particleBurst {
+    0%   { transform: translate(-50%, -50%) scale(0.4); opacity: 0; }
+    15%  { opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--px)), calc(-50% + var(--py))) scale(0.2); opacity: 0; }
+  }
+
+  /* Le mot BOOSTÉE */
+  .boost-word-text {
+    position: relative;
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: clamp(68px, 12vw, 180px);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    background: linear-gradient(135deg,
+      #FCD34D 0%,
+      #FB923C 25%,
+      #A855F7 55%,
+      #7C3AED 78%,
+      #22D3EE 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter:
+      drop-shadow(0 0 18px rgba(251, 146, 60, 0.55))
+      drop-shadow(0 0 36px rgba(168, 85, 247, 0.5))
+      drop-shadow(0 0 56px rgba(34, 211, 238, 0.35));
+    animation: boostGradientShift 6s ease-in-out infinite, boostPulseScale 3.2s ease-in-out infinite;
+    z-index: 2;
+    transform-origin: center;
+  }
+  .boost-word-text::before {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.28);
+    z-index: -1;
+    pointer-events: none;
+  }
+  @keyframes boostGradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+  }
+  @keyframes boostPulseScale {
+    0%, 100% { transform: scale(1); filter:
+                drop-shadow(0 0 18px rgba(251, 146, 60, 0.55))
+                drop-shadow(0 0 36px rgba(168, 85, 247, 0.5))
+                drop-shadow(0 0 56px rgba(34, 211, 238, 0.35)); }
+    50%      { transform: scale(1.035); filter:
+                drop-shadow(0 0 26px rgba(251, 146, 60, 0.8))
+                drop-shadow(0 0 52px rgba(168, 85, 247, 0.75))
+                drop-shadow(0 0 80px rgba(34, 211, 238, 0.55)); }
+  }
+
+  :global([data-theme="light"]) .boost-word-text::before {
+    -webkit-text-stroke: 1.5px rgba(10, 4, 24, 0.18);
   }
 
   /* ===== EYEBROW badge session ===== */
@@ -320,9 +712,9 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   .hero-title--solo {
     font-size: clamp(34px, 5.5vw, 76px);
     letter-spacing: -0.03em;
-    margin-top: -70px;
+    margin-top: -40px;
+    gap: 0;
   }
-  .hero-title--solo .line-fill { padding-bottom: 14px; }
 
   .reveal {
     opacity: 0;
@@ -498,34 +890,45 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   /* ===== TABLETTE ===== */
   @media (max-width: 1024px) {
-    #hero { padding: 70px 20px 110px; min-height: 700px; }
-    .hero-inner { gap: 28px; }
+    #hero { padding: 70px 20px 110px; min-height: 720px; }
+    .hero-inner { gap: 24px; }
     .brand-smmia { height: 95px; }
+    .boost-word-text { font-size: clamp(56px, 11vw, 110px); }
+    .boost-rays { width: 170%; height: 340%; }
   }
 
   /* ===== MOBILE ===== */
   @media (max-width: 640px) {
-    #hero { padding: 60px 16px 100px; min-height: 560px; }
-    .hero-inner { gap: 24px; }
+    #hero { padding: 60px 16px 100px; min-height: 620px; }
+    .hero-inner { gap: 20px; }
     .brand-smmia { height: 72px; }
-    .line-outline { -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85); }
     .hero-cta-primary { padding: 15px 26px; font-size: 14px; }
     .eyebrow-text { font-size: 11px; letter-spacing: 0.14em; }
+    .tagline-top, .tagline-bottom { font-size: clamp(18px, 5vw, 22px); }
+    .boost-word-text { font-size: clamp(52px, 15vw, 78px); }
+    .boost-rays { width: 200%; height: 360%; }
+    .boost-particle { width: 4px; height: 4px; }
+    .galaxy-nebula { filter: blur(60px); }
   }
 
   /* ===== PETIT MOBILE ===== */
   @media (max-width: 380px) {
     #hero { padding: 50px 14px 90px; }
     .brand-smmia { height: 58px; }
+    .boost-word-text { font-size: clamp(44px, 14vw, 60px); }
   }
 
   /* reduce motion */
   @media (prefers-reduced-motion: reduce) {
-    .hero-brand, .reveal {
+    .hero-brand, .reveal,
+    .galaxy-stars::before, .galaxy-nebula, .galaxy-shooting,
+    .boost-rays-group, .boost-particle, .boost-word-text,
+    .hero-spotlight {
       animation: none;
       opacity: 1;
       transform: none;
     }
+    .boost-particle { display: none; }
   }
 </style>
 
