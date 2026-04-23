@@ -12,6 +12,7 @@
       loading-anim-type="none"
       events-target="global"
     ></spline-viewer>
+    <div class="hero-spline__watermark-cover" aria-hidden="true"></div>
   </div>
 
   <!-- Overlay SMMIA — logo + CTA en bas, ultra léger -->
@@ -79,6 +80,19 @@
     --spline-logo: none;
   }
   .hero-spline__stage spline-viewer::part(logo) { display: none !important; }
+
+  /* Cache le watermark "Built with Spline" (bas droite) */
+  .hero-spline__watermark-cover {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 180px;
+    height: 56px;
+    background: #000;
+    z-index: 3;
+    pointer-events: none;
+  }
+  :global([data-theme="light"]) .hero-spline__watermark-cover { background: #000; }
 
   /* Overlay SMMIA — ultra minimal, PAS DE SHADOW */
   .hero-spline__overlay {
