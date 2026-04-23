@@ -4,7 +4,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
 <section id="hero">
 
-  <!-- Custom cursor (dot + ring, blend mode difference — signature Awwwards) -->
+  <!-- Custom cursor (dot + ring blend-mode difference) -->
   <div class="cursor" id="cursor" aria-hidden="true">
     <span class="cursor-dot"></span>
     <span class="cursor-ring"></span>
@@ -103,11 +103,18 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
           <span class="serif-italic">Ton</span>&nbsp;agence&nbsp;rentable
         </span>
       </span>
-      <span class="tagline-boost split-reveal" style="--start:0.35s">
-        <span class="line-inner">
-          <span class="boost-aura" aria-hidden="true"></span>
-          <span class="boost-word">
-            <span class="boost-seg boost-seg--fill">BOO</span><span class="boost-seg boost-seg--outline">STER</span>
+      <span class="tagline-boost">
+        <span class="boost-aura" aria-hidden="true"></span>
+        <!-- VRAI rendu 3D Z-stacked : chaque lettre = 20 couches translatées en Z -->
+        <span class="b3d-stage" id="boosterStage">
+          <span class="b3d-rotator" id="boosterRotator">
+            {['B','O','O','S','T','E','R'].map((l, i) => (
+              <span class="b3d-letter" style={`--li:${i}`}>
+                {Array.from({length: 22}, (_, d) => (
+                  <span class="b3d-layer" style={`--d:${d}`}>{l}</span>
+                ))}
+              </span>
+            ))}
           </span>
         </span>
       </span>
@@ -705,69 +712,92 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
   }
 
-  /* Le mot BOOSTER : XXL éditoriale 16vw (Awwwards XXL rule) */
-  .boost-word {
+  /* =============== VRAI MOT 3D Z-STACKED INTERACTIF =============== */
+  .b3d-stage {
     position: relative;
-    display: inline-flex;
+    display: inline-block;
     font-family: 'Inter', sans-serif;
     font-weight: 900;
     font-style: italic;
-    font-size: clamp(80px, 16vw, 260px);
-    line-height: 0.88;
-    letter-spacing: -0.06em;
-    filter:
-      drop-shadow(0 0 22px rgba(216, 180, 254, 0.45))
-      drop-shadow(0 0 48px rgba(168, 85, 247, 0.4));
+    font-size: clamp(88px, 18vw, 300px);
+    line-height: 0.86;
+    letter-spacing: -0.065em;
+    perspective: 1400px;
     z-index: 2;
-    transform-origin: center;
-    will-change: transform;
-    animation: boostPulse 3.4s ease-in-out infinite;
-  }
-  @keyframes boostPulse {
-    0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.025); }
+    cursor: none;
+    user-select: none;
   }
 
-  /* Segment 1 : BOO — fill gradient chrome violet */
-  .boost-seg--fill {
+  .b3d-rotator {
+    position: relative;
+    display: inline-flex;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: transform;
+  }
+
+  /* Chaque lettre = conteneur 3D avec 22 couches empilées en Z */
+  .b3d-letter {
+    position: relative;
+    display: inline-block;
+    transform-style: preserve-3d;
+    line-height: 0.86;
+    /* Idle rotation cycle + explosion au hover de la scène */
+    transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+    animation: b3dIdle 6s ease-in-out infinite;
+    animation-delay: calc(var(--li) * 0.15s);
+  }
+  @keyframes b3dIdle {
+    0%, 100% { transform: translateZ(0) rotateY(0deg); }
+    50%      { transform: translateZ(6px) rotateY(3deg); }
+  }
+
+  /* Chaque couche = copie de la lettre translatée en Z */
+  .b3d-layer {
+    display: inline-block;
+    transform: translateZ(calc(var(--d) * -1.5px));
+    /* Dégradé de couleur vers le fond : chrome blanc → violet profond */
     background: linear-gradient(135deg,
-      #FFFFFF 0%,
-      #F3E8FF 15%,
-      #D8B4FE 32%,
-      #A855F7 55%,
-      #7C3AED 78%,
-      #4C1D95 100%);
-    background-size: 220% 220%;
+      hsla(280, calc(var(--d, 0) * 4%), calc(94% - var(--d, 0) * 3.2%), 1) 0%,
+      hsla(270, calc(40% + var(--d, 0) * 2%), calc(70% - var(--d, 0) * 2.5%), 1) 45%,
+      hsla(265, calc(50% + var(--d, 0) * 1.5%), calc(35% - var(--d, 0) * 1.2%), 1) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    animation: boostGradientShift 6s ease-in-out infinite;
-  }
-  @keyframes boostGradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50%      { background-position: 100% 50%; }
   }
 
-  /* Segment 2 : STER — outline stroke violet avec extrusion 3D (multi-layer shadow) */
-  .boost-seg--outline {
-    color: transparent;
-    -webkit-text-stroke: 2px rgba(216, 180, 254, 0.9);
-    text-stroke: 2px rgba(216, 180, 254, 0.9);
-    text-shadow:
-      1px 1px 0 rgba(124, 58, 237, 0.85),
-      2px 2px 0 rgba(124, 58, 237, 0.78),
-      3px 3px 0 rgba(109, 40, 217, 0.72),
-      4px 4px 0 rgba(109, 40, 217, 0.66),
-      5px 5px 0 rgba(91, 33, 182, 0.58),
-      6px 6px 0 rgba(91, 33, 182, 0.5),
-      7px 7px 0 rgba(76, 29, 149, 0.42),
-      8px 8px 0 rgba(76, 29, 149, 0.34),
-      9px 9px 0 rgba(46, 16, 101, 0.26),
-      10px 10px 0 rgba(46, 16, 101, 0.2),
-      12px 12px 28px rgba(46, 16, 101, 0.55);
-    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.45));
+  /* Première couche (d=0) = face avant — blanc/lavande lumineux, keeps layout */
+  .b3d-layer[style*="--d:0"] {
+    position: relative;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F3E8FF 20%, #D8B4FE 50%, #A855F7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter:
+      drop-shadow(0 0 18px rgba(216, 180, 254, 0.55))
+      drop-shadow(0 0 38px rgba(168, 85, 247, 0.4));
   }
+  /* Toutes les autres couches en absolute par-dessus */
+  .b3d-layer:not([style*="--d:0"]) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+
+  /* Hover sur la scène = EXPLOSION : chaque lettre s'éjecte en rotateZ/translate */
+  .b3d-stage:hover .b3d-letter {
+    animation-play-state: paused;
+  }
+  .b3d-stage:hover .b3d-letter:nth-child(1) { transform: translate3d(-80px, -40px, 60px) rotate3d(1, 0.5, 0.3, -20deg); }
+  .b3d-stage:hover .b3d-letter:nth-child(2) { transform: translate3d(-40px, 30px, 80px) rotate3d(0.5, 1, 0.2, 15deg); }
+  .b3d-stage:hover .b3d-letter:nth-child(3) { transform: translate3d(-10px, -35px, 40px) rotate3d(1, 0.3, 0.8, -10deg); }
+  .b3d-stage:hover .b3d-letter:nth-child(4) { transform: translate3d(10px, 20px, 90px) rotate3d(0.3, 1, 0.5, 25deg); }
+  .b3d-stage:hover .b3d-letter:nth-child(5) { transform: translate3d(30px, -25px, 50px) rotate3d(1, 0.5, 0.3, -18deg); }
+  .b3d-stage:hover .b3d-letter:nth-child(6) { transform: translate3d(55px, 30px, 70px) rotate3d(0.5, 1, 0.4, 20deg); }
+  .b3d-stage:hover .b3d-letter:nth-child(7) { transform: translate3d(85px, -40px, 40px) rotate3d(1, 0.7, 0.6, -22deg); }
 
   /* =============== Marquee ticker (signature Awwwards) =============== */
   .hero-marquee {
@@ -942,7 +972,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   @media (prefers-reduced-motion: reduce) {
     .hero-brand, .reveal,
     .galaxy-stars, .galaxy-nebula, .mesh-blob,
-    .boost-word, .boost-aura, .boost-seg--fill,
+    .boost-aura, .b3d-letter,
     .orb-glow, .orb-expose, .orb-ring, .globe-spin,
     .globe-core, .globe-target,
     .hero-spotlight, .marquee-track,
@@ -954,6 +984,7 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     }
     .orb-expose, .cursor { display: none; }
     .split-reveal .letter { transform: translateY(0); }
+    .b3d-stage:hover .b3d-letter { transform: none; }
   }
 </style>
 
@@ -1000,6 +1031,35 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       const letters = line.querySelectorAll<HTMLElement>('.letter');
       letters.forEach((l, i) => l.style.setProperty('--i', String(i)));
     });
+  }
+
+  // ============ BOOSTER 3D interactif : rotation mousemove sur le rotator ============
+  const b3dStage = document.getElementById('boosterStage');
+  const b3dRotator = document.getElementById('boosterRotator');
+  if (b3dStage && b3dRotator && !reduced) {
+    let rafB3d = 0;
+    let tbx = 0, tby = 0, cbx = 0, cby = 0;
+
+    b3dStage.addEventListener('mousemove', (e) => {
+      const r = b3dStage.getBoundingClientRect();
+      tbx = ((e.clientX - r.left) / r.width  - 0.5) * 2;
+      tby = ((e.clientY - r.top)  / r.height - 0.5) * 2;
+      if (!rafB3d) rafB3d = requestAnimationFrame(b3dLoop);
+    });
+
+    b3dStage.addEventListener('mouseleave', () => {
+      tbx = 0; tby = 0;
+      if (!rafB3d) rafB3d = requestAnimationFrame(b3dLoop);
+    });
+
+    function b3dLoop() {
+      cbx += (tbx - cbx) * 0.08;
+      cby += (tby - cby) * 0.08;
+      b3dRotator!.style.transform = `rotateY(${cbx * 22}deg) rotateX(${cby * -16}deg)`;
+      if (Math.abs(tbx - cbx) > 0.001 || Math.abs(tby - cby) > 0.001) {
+        rafB3d = requestAnimationFrame(b3dLoop);
+      } else { rafB3d = 0; }
+    }
   }
 
   // ============ CUSTOM CURSOR (dot + ring, lerp follow) ============
