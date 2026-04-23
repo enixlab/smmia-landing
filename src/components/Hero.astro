@@ -32,35 +32,24 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
       </span>
 
       <span class="booster-3d reveal" style="--d:0.3s">
-        <!-- Halo néon violet enveloppant (énergie contenue) -->
-        <span class="booster-neon-halo" aria-hidden="true"></span>
+        <!-- Halo néon violet enveloppant -->
+        <span class="booster-halo" aria-hidden="true"></span>
 
-        <!-- SVG filter — fissures/displacement pour pré-explosion -->
-        <svg class="booster-svg-defs" width="0" height="0" aria-hidden="true">
-          <defs>
-            <filter id="crackDisplace" x="-20%" y="-20%" width="140%" height="140%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" seed="4" result="noise">
-                <animate attributeName="baseFrequency" values="0.015;0.08;0.015" dur="8s" repeatCount="indefinite"/>
-              </feTurbulence>
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G">
-                <animate attributeName="scale" values="0;0;0;22;0;0;0" keyTimes="0;0.32;0.37;0.42;0.5;0.9;1" dur="8s" repeatCount="indefinite"/>
-              </feDisplacementMap>
-            </filter>
-          </defs>
-        </svg>
+        <!-- Reflet de sol (le mot se reflète comme posé sur un miroir avant de tomber) -->
+        <span class="booster-reflection" aria-hidden="true">BOOSTER</span>
 
-        <!-- Flash blanc au moment de la rupture -->
-        <span class="booster-flash" aria-hidden="true"></span>
+        <!-- Flash d'impact (positionné en BAS — comme un verre qui touche le sol) -->
+        <span class="booster-impact" aria-hidden="true"></span>
 
-        <!-- Shockwave ring (une seule onde, expanse radiale) -->
+        <!-- Shockwave ring (onde de choc au sol) -->
         <span class="booster-shockwave" aria-hidden="true"></span>
 
-        <!-- Dust cloud post-explosion -->
+        <!-- Nuage de poussière violette post-explosion -->
         <span class="booster-dust" aria-hidden="true"></span>
 
-        <!-- Mot splitté par lettre — chaque lettre éclate en 6 shards polygonaux (glass shatter) -->
+        <!-- Mot : 7 lettres × 8 shards polygonaux avec gravité -->
         <span class="booster-3d__word">
-          <span class="boost-letter" style="--i:0">
+          <span class="glass-letter" style="--i:0">
             <span class="glyph">B</span>
             <span class="shard s1" aria-hidden="true">B</span>
             <span class="shard s2" aria-hidden="true">B</span>
@@ -68,8 +57,10 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
             <span class="shard s4" aria-hidden="true">B</span>
             <span class="shard s5" aria-hidden="true">B</span>
             <span class="shard s6" aria-hidden="true">B</span>
+            <span class="shard s7" aria-hidden="true">B</span>
+            <span class="shard s8" aria-hidden="true">B</span>
           </span>
-          <span class="boost-letter" style="--i:1">
+          <span class="glass-letter" style="--i:1">
             <span class="glyph">O</span>
             <span class="shard s1" aria-hidden="true">O</span>
             <span class="shard s2" aria-hidden="true">O</span>
@@ -77,8 +68,10 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
             <span class="shard s4" aria-hidden="true">O</span>
             <span class="shard s5" aria-hidden="true">O</span>
             <span class="shard s6" aria-hidden="true">O</span>
+            <span class="shard s7" aria-hidden="true">O</span>
+            <span class="shard s8" aria-hidden="true">O</span>
           </span>
-          <span class="boost-letter" style="--i:2">
+          <span class="glass-letter" style="--i:2">
             <span class="glyph">O</span>
             <span class="shard s1" aria-hidden="true">O</span>
             <span class="shard s2" aria-hidden="true">O</span>
@@ -86,8 +79,10 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
             <span class="shard s4" aria-hidden="true">O</span>
             <span class="shard s5" aria-hidden="true">O</span>
             <span class="shard s6" aria-hidden="true">O</span>
+            <span class="shard s7" aria-hidden="true">O</span>
+            <span class="shard s8" aria-hidden="true">O</span>
           </span>
-          <span class="boost-letter" style="--i:3">
+          <span class="glass-letter" style="--i:3">
             <span class="glyph">S</span>
             <span class="shard s1" aria-hidden="true">S</span>
             <span class="shard s2" aria-hidden="true">S</span>
@@ -95,8 +90,10 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
             <span class="shard s4" aria-hidden="true">S</span>
             <span class="shard s5" aria-hidden="true">S</span>
             <span class="shard s6" aria-hidden="true">S</span>
+            <span class="shard s7" aria-hidden="true">S</span>
+            <span class="shard s8" aria-hidden="true">S</span>
           </span>
-          <span class="boost-letter" style="--i:4">
+          <span class="glass-letter" style="--i:4">
             <span class="glyph">T</span>
             <span class="shard s1" aria-hidden="true">T</span>
             <span class="shard s2" aria-hidden="true">T</span>
@@ -104,8 +101,10 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
             <span class="shard s4" aria-hidden="true">T</span>
             <span class="shard s5" aria-hidden="true">T</span>
             <span class="shard s6" aria-hidden="true">T</span>
+            <span class="shard s7" aria-hidden="true">T</span>
+            <span class="shard s8" aria-hidden="true">T</span>
           </span>
-          <span class="boost-letter" style="--i:5">
+          <span class="glass-letter" style="--i:5">
             <span class="glyph">E</span>
             <span class="shard s1" aria-hidden="true">E</span>
             <span class="shard s2" aria-hidden="true">E</span>
@@ -113,8 +112,10 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
             <span class="shard s4" aria-hidden="true">E</span>
             <span class="shard s5" aria-hidden="true">E</span>
             <span class="shard s6" aria-hidden="true">E</span>
+            <span class="shard s7" aria-hidden="true">E</span>
+            <span class="shard s8" aria-hidden="true">E</span>
           </span>
-          <span class="boost-letter" style="--i:6">
+          <span class="glass-letter" style="--i:6">
             <span class="glyph">R</span>
             <span class="shard s1" aria-hidden="true">R</span>
             <span class="shard s2" aria-hidden="true">R</span>
@@ -122,6 +123,8 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
             <span class="shard s4" aria-hidden="true">R</span>
             <span class="shard s5" aria-hidden="true">R</span>
             <span class="shard s6" aria-hidden="true">R</span>
+            <span class="shard s7" aria-hidden="true">R</span>
+            <span class="shard s8" aria-hidden="true">R</span>
           </span>
         </span>
       </span>
@@ -561,210 +564,253 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     margin-left: -2px;
   }
 
-  /* ========== BOOSTER — BOMBE PREMIUM qui se désintègre ==========
-     Cycle 8s, calé à la taille du logo SMMIA (110px) — BOOSTER ~140-150px desktop.
+  /* ========== BOOSTER — VERRE QUI TOMBE ET ÉCLATE AU SOL ==========
+     Cycle 10s. Le mot BOOSTER est en cristal blanc pur avec néon violet intense.
+     Physique simulée : lettre stable → fissure → impact en bas → shards explosent PUIS
+     tombent avec gravité → reformation depuis le haut.
 
-     Phases :
-       0-35%   stable + micro-fissures qui respirent (SVG turbulence)
-       35-40%  charge (brightness up, scale 1.04)
-       40-42%  FLASH BLANC + SHOCKWAVE RING expansion
-       42-55%  DISINTEGRATION : lettres éjectées 3D + burst de particules (box-shadow) + motion blur
-       55-72%  DRIFT + gravité : particules continuent, dust cloud se dilate et fade
-       72-82%  void (invisible)
-       82-100% reformation fluide, lettres reviennent en Z
+     Timeline (10s) :
+       0-60%   STABLE  — mot cristal lumineux, flotte + shimmer subtil (6s de lecture)
+       60-62%  CHARGE  — brightness monte, léger tremor, fissure visible
+       62%     BANG    — glyph disparaît, 56 shards (7×8) apparaissent assemblés
+       62-68%  BURST   — shards projetés radialement depuis leur position d'origine
+       68-82%  GRAVITY — shards TOMBENT (translateY augmente parabolique), rotation accélère
+       82-88%  VOID    — tout est parti au sol + fade dust cloud
+       88-100% REFORM  — lettres retombent depuis le haut (impact inversé, gravité positive)
   */
 
   .booster-3d {
     position: relative;
     display: inline-block;
     line-height: 0.9;
-    margin: 0.06em 0 0.04em;
-    perspective: 1600px;
+    margin: 0.1em 0 0.16em;
+    perspective: 1800px;
     transform-style: preserve-3d;
+    --bg-floor: rgba(168, 85, 247, 0.85);
   }
 
-  .booster-svg-defs {
-    position: absolute;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-  }
-
-  /* Halo néon violet permanent — enveloppe le mot, respire doucement */
-  .booster-neon-halo {
+  /* ===== HALO VIOLET PERMANENT (énergie contenue dans le verre) ===== */
+  .booster-halo {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 130%;
-    height: 220%;
+    width: 150%;
+    height: 240%;
     border-radius: 50%;
     background: radial-gradient(ellipse at center,
-      rgba(216, 180, 254, 0.35) 0%,
-      rgba(168, 85, 247, 0.22) 30%,
-      rgba(124, 58, 237, 0.12) 55%,
-      transparent 75%);
-    filter: blur(34px);
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(216, 180, 254, 0.32) 15%,
+      rgba(168, 85, 247, 0.22) 38%,
+      rgba(124, 58, 237, 0.12) 58%,
+      transparent 76%);
+    filter: blur(38px);
     transform: translate(-50%, -50%) scale(1);
     pointer-events: none;
     z-index: 0;
     mix-blend-mode: screen;
-    animation: haloPulse 6s ease-in-out infinite;
+    animation: boosterHaloPulse 10s ease-in-out infinite;
   }
-  @keyframes haloPulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 0.85; }
-    50%      { transform: translate(-50%, -50%) scale(1.08); opacity: 1;    }
+  @keyframes boosterHaloPulse {
+    0%, 55%, 100% { opacity: 0.9; transform: translate(-50%, -50%) scale(1);    }
+    58%           { opacity: 1;   transform: translate(-50%, -50%) scale(1.15); }
+    62%           { opacity: 1.2; transform: translate(-50%, -50%) scale(1.35); }
+    72%           { opacity: 0.6; transform: translate(-50%, -50%) scale(1.5);  }
+    85%           { opacity: 0.2; transform: translate(-50%, -50%) scale(0.95); }
+    92%           { opacity: 1;   transform: translate(-50%, -50%) scale(1.1);  }
   }
 
-  /* Flash violet-blanc (pointe d'énergie à l'instant de la rupture) */
-  .booster-flash {
+  /* ===== REFLET DE SOL — le mot se reflète en dessous (miroir cristal) ===== */
+  .booster-reflection {
     position: absolute;
-    top: 50%;
+    top: 100%;
     left: 50%;
-    width: 140%;
-    height: 260%;
+    transform: translate(-50%, 0) scaleY(-1);
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: clamp(62px, 10.5vw, 152px);
+    line-height: 0.92;
+    letter-spacing: -0.028em;
+    color: transparent;
+    -webkit-text-stroke: 0;
+    background: linear-gradient(to top,
+      rgba(192, 132, 252, 0) 0%,
+      rgba(192, 132, 252, 0.15) 40%,
+      rgba(233, 213, 255, 0.4) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: blur(4px) saturate(1.2);
+    opacity: 0.55;
+    mask-image: linear-gradient(to top, transparent 0%, black 50%, black 100%);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 50%, black 100%);
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+    animation: boosterReflectionLife 10s linear infinite;
+  }
+  @keyframes boosterReflectionLife {
+    0%, 60%   { opacity: 0.55; }
+    62%, 87%  { opacity: 0;    }
+    90%, 100% { opacity: 0.55; }
+  }
+
+  /* ===== IMPACT FLASH — au BAS du mot (point de contact avec le "sol") ===== */
+  .booster-impact {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    width: 220%;
+    height: 140%;
     border-radius: 50%;
-    background: radial-gradient(ellipse,
+    background: radial-gradient(ellipse at center,
       rgba(255, 255, 255, 1) 0%,
-      rgba(243, 232, 255, 0.85) 14%,
-      rgba(216, 180, 254, 0.65) 28%,
-      rgba(168, 85, 247, 0.4) 48%,
-      rgba(124, 58, 237, 0.18) 62%,
-      transparent 75%);
-    filter: blur(24px);
-    transform: translate(-50%, -50%) scale(0.55);
+      rgba(243, 232, 255, 0.9) 10%,
+      rgba(216, 180, 254, 0.7) 22%,
+      rgba(192, 132, 252, 0.45) 40%,
+      rgba(168, 85, 247, 0.22) 58%,
+      transparent 78%);
+    filter: blur(18px);
+    transform: translate(-50%, -50%) scaleX(0.2) scaleY(0.1);
     opacity: 0;
     pointer-events: none;
     z-index: 1;
     mix-blend-mode: screen;
-    animation: boosterFlash 8s ease-out infinite;
+    animation: boosterImpact 10s cubic-bezier(0.15, 0.85, 0.2, 1) infinite;
   }
-  @keyframes boosterFlash {
-    0%, 38%  { opacity: 0;    transform: translate(-50%, -50%) scale(0.55); }
-    41%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.15); }
-    44%      { opacity: 0.7;  transform: translate(-50%, -50%) scale(1.6); }
-    50%      { opacity: 0;    transform: translate(-50%, -50%) scale(2.0); }
-    100%     { opacity: 0;    transform: translate(-50%, -50%) scale(0.55); }
+  @keyframes boosterImpact {
+    0%, 59%  { opacity: 0;    transform: translate(-50%, -50%) scaleX(0.2) scaleY(0.1); }
+    61%      { opacity: 1;    transform: translate(-50%, -50%) scaleX(0.6) scaleY(0.4); }
+    62%      { opacity: 1;    transform: translate(-50%, -50%) scaleX(1.1) scaleY(0.7); }
+    66%      { opacity: 0.85; transform: translate(-50%, -50%) scaleX(1.5) scaleY(0.9); }
+    74%      { opacity: 0.4;  transform: translate(-50%, -50%) scaleX(2.0) scaleY(1.1); }
+    82%      { opacity: 0;    transform: translate(-50%, -50%) scaleX(2.4) scaleY(1.3); }
+    100%     { opacity: 0;    transform: translate(-50%, -50%) scaleX(0.2) scaleY(0.1); }
   }
 
-  /* Shockwave ring — une seule onde violet néon qui s'expanse */
+  /* ===== SHOCKWAVE — onde de choc circulaire au point d'impact (bas) ===== */
   .booster-shockwave {
     position: absolute;
-    top: 50%;
+    top: 95%;
     left: 50%;
-    width: 30%;
-    height: 160%;
+    width: 40%;
+    height: 80%;
     border-radius: 50%;
-    border: 2px solid rgba(216, 180, 254, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.95);
     box-shadow:
-      0 0 32px rgba(192, 132, 252, 0.75),
-      0 0 64px rgba(168, 85, 247, 0.45),
-      inset 0 0 18px rgba(233, 213, 255, 0.5);
-    transform: translate(-50%, -50%) scale(0.3);
+      0 0 24px rgba(243, 232, 255, 0.9),
+      0 0 48px rgba(192, 132, 252, 0.7),
+      0 0 96px rgba(168, 85, 247, 0.4),
+      inset 0 0 16px rgba(233, 213, 255, 0.6);
+    transform: translate(-50%, -50%) scaleX(0.3) scaleY(0.15);
     opacity: 0;
     pointer-events: none;
     z-index: 1;
     mix-blend-mode: screen;
-    animation: boosterShock 8s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+    animation: boosterShockwave 10s cubic-bezier(0.18, 0.8, 0.25, 1) infinite;
   }
-  @keyframes boosterShock {
-    0%, 40%  { opacity: 0;    transform: translate(-50%, -50%) scale(0.3); border-width: 4px; }
-    42%      { opacity: 1;    transform: translate(-50%, -50%) scale(0.5); border-width: 3px; }
-    52%      { opacity: 0.4;  transform: translate(-50%, -50%) scale(2.8); border-width: 1px; }
-    58%      { opacity: 0;    transform: translate(-50%, -50%) scale(3.8); border-width: 0.5px; }
-    100%     { opacity: 0;    transform: translate(-50%, -50%) scale(0.3); border-width: 4px; }
+  @keyframes boosterShockwave {
+    0%, 60%  { opacity: 0;    transform: translate(-50%, -50%) scaleX(0.3) scaleY(0.15); border-width: 4px; }
+    62%      { opacity: 1;    transform: translate(-50%, -50%) scaleX(0.6) scaleY(0.3);  border-width: 3px; }
+    68%      { opacity: 0.75; transform: translate(-50%, -50%) scaleX(2.2) scaleY(1.1);  border-width: 1.5px; }
+    76%      { opacity: 0.3;  transform: translate(-50%, -50%) scaleX(3.4) scaleY(1.7);  border-width: 0.8px; }
+    82%      { opacity: 0;    transform: translate(-50%, -50%) scaleX(4.2) scaleY(2.1);  border-width: 0.3px; }
+    100%     { opacity: 0;    transform: translate(-50%, -50%) scaleX(0.3) scaleY(0.15); border-width: 4px; }
   }
 
-  /* Dust cloud — nuage de poussière violet néon après l'explosion */
+  /* ===== DUST CLOUD — au bas du mot après impact ===== */
   .booster-dust {
     position: absolute;
-    top: 50%;
+    top: 98%;
     left: 50%;
-    width: 200%;
-    height: 320%;
+    width: 240%;
+    height: 180%;
     border-radius: 50%;
-    background: radial-gradient(ellipse,
-      rgba(233, 213, 255, 0.45) 0%,
-      rgba(192, 132, 252, 0.32) 28%,
-      rgba(168, 85, 247, 0.22) 50%,
-      rgba(124, 58, 237, 0.1) 65%,
-      transparent 78%);
-    filter: blur(44px);
-    transform: translate(-50%, -50%) scale(0.4);
+    background: radial-gradient(ellipse at center,
+      rgba(233, 213, 255, 0.55) 0%,
+      rgba(192, 132, 252, 0.42) 22%,
+      rgba(168, 85, 247, 0.28) 45%,
+      rgba(124, 58, 237, 0.12) 65%,
+      transparent 80%);
+    filter: blur(42px);
+    transform: translate(-50%, -50%) scale(0.3);
     opacity: 0;
     pointer-events: none;
     z-index: 0;
     mix-blend-mode: screen;
-    animation: boosterDust 8s ease-out infinite;
+    animation: boosterDust 10s ease-out infinite;
   }
   @keyframes boosterDust {
-    0%, 42%  { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
-    50%      { opacity: 0.9; transform: translate(-50%, -50%) scale(1.1); }
-    65%      { opacity: 0.5; transform: translate(-50%, -50%) scale(1.6); }
-    78%      { opacity: 0; transform: translate(-50%, -50%) scale(2.0); }
-    100%     { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+    0%, 62%  { opacity: 0;   transform: translate(-50%, -50%) scale(0.3); }
+    68%      { opacity: 0.9; transform: translate(-50%, -50%) scale(1.2); }
+    78%      { opacity: 0.5; transform: translate(-50%, -50%) scale(1.8) translateY(10px); }
+    88%      { opacity: 0;   transform: translate(-50%, -50%) scale(2.4) translateY(20px); }
+    100%     { opacity: 0;   transform: translate(-50%, -50%) scale(0.3); }
   }
 
+  /* ===== WORD CONTAINER — tilt 3D interactif souris ===== */
   .booster-3d__word {
     position: relative;
     display: inline-flex;
     z-index: 2;
-    filter: url(#crackDisplace);
+    transform: rotateX(var(--br-rx, 0deg)) rotateY(var(--br-ry, 0deg));
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
-  /* Chaque lettre = tube néon BLANC bordé de violet néon (Inter 900)
-     Pas de shadow sombre — glow violet néon uniquement pour un vrai effet verre lumineux */
-  .boost-letter {
+  /* ===== GLASS-LETTER : crystal BLANC PUR + rim néon violet massif ===== */
+  .glass-letter {
     display: inline-block;
     position: relative;
     font-family: 'Inter', sans-serif;
     font-weight: 900;
     font-style: normal;
-    font-size: clamp(62px, 10.5vw, 152px);
+    font-size: clamp(68px, 11.5vw, 168px);
     line-height: 0.92;
-    letter-spacing: -0.028em;
+    letter-spacing: -0.032em;
     color: #FFFFFF;
-    -webkit-text-stroke: 1px rgba(216, 180, 254, 0.7);
+    -webkit-text-stroke: 0;
+    /* Glow violet massif en 8 couches (blanc core → violet profond) */
     text-shadow:
-      /* core blanc intense (verre brillant) */
-      0 0 4px rgba(255, 255, 255, 1),
-      0 0 10px rgba(243, 232, 255, 0.95),
-      /* halo néon violet en cascade (tube lumineux) */
-      0 0 18px rgba(221, 214, 254, 0.95),
-      0 0 32px rgba(192, 132, 252, 0.9),
-      0 0 58px rgba(168, 85, 247, 0.8),
-      0 0 96px rgba(139, 92, 246, 0.65),
-      0 0 150px rgba(124, 58, 237, 0.45);
+      0 0 2px  rgba(255, 255, 255, 1),
+      0 0 6px  rgba(255, 255, 255, 1),
+      0 0 12px rgba(243, 232, 255, 1),
+      0 0 22px rgba(221, 214, 254, 0.98),
+      0 0 38px rgba(192, 132, 252, 0.95),
+      0 0 64px rgba(168, 85, 247, 0.88),
+      0 0 108px rgba(139, 92, 246, 0.72),
+      0 0 180px rgba(124, 58, 237, 0.55);
     transform-style: preserve-3d;
-    padding: 0 0.02em;
+    padding: 0 0.03em;
   }
 
-  /* GLYPH — visible 0-60%, disparaît instantanément au BANG (remplacé par les shards),
-     void 60-90%, reforme fluide 90-100% */
-  .boost-letter .glyph {
+  /* ===== GLYPH : la lettre visible — charge, casse, reform ===== */
+  .glass-letter .glyph {
     display: inline-block;
     position: relative;
     z-index: 2;
     will-change: opacity, filter, transform;
-    animation: glyphLife 7s cubic-bezier(0.3, 0.05, 0.2, 1) infinite;
-    animation-delay: calc(var(--i, 0) * -0.02s);
+    animation: glyphGlassLife 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation-delay: calc(var(--i, 0) * -0.015s);
   }
-  @keyframes glyphLife {
-    /* Phase stable 0-55% (lettre visible) */
-    0%, 55%   { opacity: 1; filter: blur(0) brightness(1);   transform: scale(1); }
-    /* Charge 55-60% (brightness up, léger scale) */
-    58%       { opacity: 1; filter: blur(0) brightness(1.6); transform: scale(1.04); }
-    60%       { opacity: 0; filter: blur(6px) brightness(2.4); transform: scale(1.12); }
-    /* Void 60-90% — les shards prennent le relais */
-    89%       { opacity: 0; filter: blur(0) brightness(1);   transform: scale(0.85); }
-    /* Reform 90-100% — lettre revient */
-    94%       { opacity: 1; filter: blur(0) brightness(1.2); transform: scale(1.03); }
-    100%      { opacity: 1; filter: blur(0) brightness(1);   transform: scale(1); }
+  @keyframes glyphGlassLife {
+    /* STABLE 0-55% : subtile respiration crystal */
+    0%,   55% { opacity: 1; filter: blur(0) brightness(1);                   transform: translateY(0)     scale(1);    }
+    /* TENSION 57% : la lumière monte (verre sous pression) */
+    57%       { opacity: 1; filter: blur(0) brightness(1.35) contrast(1.1);  transform: translateY(-1px)  scale(1.02); }
+    /* CHARGE 60% : flicker violent juste avant le break */
+    60%       { opacity: 1; filter: blur(0) brightness(2.2)  contrast(1.3);  transform: translateY(-2px)  scale(1.05); }
+    /* BANG 62% : la lettre DISPARAÎT instantanément (opacity 0) — les shards prennent le relais */
+    62%       { opacity: 0; filter: blur(8px) brightness(3);                 transform: translateY(0)     scale(1.12); }
+    /* VOID 62-88% : rien */
+    87%       { opacity: 0; filter: blur(0) brightness(1);                   transform: translateY(-40px) scale(0.9);  }
+    /* REFORM 88-96% : la lettre RETOMBE depuis au-dessus (inverse de la chute des shards) */
+    92%       { opacity: 1; filter: blur(0) brightness(1.6);                 transform: translateY(-8px)  scale(1.04); }
+    96%       { opacity: 1; filter: blur(0) brightness(1.2);                 transform: translateY(2px)   scale(0.99); }
+    100%      { opacity: 1; filter: blur(0) brightness(1);                   transform: translateY(0)     scale(1);    }
   }
 
-  /* SHARD — chaque lettre a 6 fragments polygonaux (clip-path) qui sont
-     des CLONES complets du glyph. Au BANG ils apparaissent assemblés (reconstituant
-     visuellement la lettre), puis s'éjectent en 3D avec rotation + blur + fade.
-     C'est le vrai effet "verre qui éclate". */
+  /* ===== SHARDS : 8 fragments polygonaux par lettre, clones du glyph avec clip-path =====
+     Chaque shard part de la position 0 (assemblé = reconstitue la lettre) puis
+     est PROJETÉ radialement, puis TOMBE avec gravité en accélérant. */
   .shard {
     position: absolute;
     top: 0;
@@ -776,147 +822,168 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
     text-shadow: inherit;
     letter-spacing: inherit;
     line-height: inherit;
+    padding: inherit;
     pointer-events: none;
     opacity: 0;
     z-index: 1;
     will-change: transform, opacity, filter;
     transform-origin: 50% 50%;
-    animation: shardEject 7s cubic-bezier(0.22, 0.6, 0.3, 1) infinite;
-    animation-delay: calc(var(--i, 0) * -0.02s);
+    animation: shardGlassShatter 10s cubic-bezier(0.22, 0.55, 0.3, 1) infinite;
+    animation-delay: calc(var(--i, 0) * -0.015s);
   }
 
-  /* 6 shards par lettre, chacun avec son clip-path polygon + trajectoire 3D unique.
-     Les clip-paths découpent la lettre en fragments triangulaires / polygonaux
-     qui s'imbriquent (comme un verre fracturé). */
-  .shard.s1 {
-    clip-path: polygon(0% 0%, 52% 0%, 34% 46%, 0% 58%);
-    --dx: -138px; --dy:  -78px; --dz: 90px; --rz: -42deg;
+  /* ============================================
+     8 SHARDS par lettre — polygons qui s'imbriquent PARFAITEMENT pour reconstituer la lettre
+     + trajectoires :
+       --bx / --by  = burst (projection initiale radiale, 0-0.5s après bang)
+       --fx / --fy  = fall (position finale après gravité — tous avec --fy positif)
+       --rz         = rotation finale (deg)
+     ============================================ */
+  .shard.s1 { /* top-left triangle */
+    clip-path: polygon(0% 0%, 54% 0%, 32% 44%, 0% 54%);
+    --bx:  -58px; --by: -42px;
+    --fx:  -88px; --fy: 180px; --rz: -340deg;
   }
-  .shard.s2 {
-    clip-path: polygon(52% 0%, 100% 0%, 100% 42%, 66% 38%, 34% 46%);
-    --dx:  112px; --dy:  -96px; --dz: 75px; --rz:  36deg;
+  .shard.s2 { /* top-right triangle */
+    clip-path: polygon(54% 0%, 100% 0%, 100% 40%, 70% 36%, 32% 44%);
+    --bx:   62px; --by: -48px;
+    --fx:   98px; --fy: 210px; --rz:  380deg;
   }
-  .shard.s3 {
-    clip-path: polygon(100% 42%, 100% 100%, 56% 100%, 60% 64%, 66% 38%);
-    --dx:  138px; --dy:   32px; --dz: 100px; --rz:  48deg;
+  .shard.s3 { /* middle-right polygon */
+    clip-path: polygon(100% 40%, 100% 76%, 64% 70%, 70% 36%);
+    --bx:   82px; --by:  -8px;
+    --fx:  124px; --fy: 240px; --rz:  290deg;
   }
-  .shard.s4 {
-    clip-path: polygon(0% 58%, 34% 46%, 46% 72%, 26% 100%, 0% 100%);
-    --dx: -146px; --dy:   48px; --dz: 72px; --rz: -48deg;
+  .shard.s4 { /* middle-left polygon */
+    clip-path: polygon(0% 54%, 32% 44%, 46% 70%, 28% 82%, 0% 78%);
+    --bx:  -86px; --by:  10px;
+    --fx: -132px; --fy: 220px; --rz: -280deg;
   }
-  .shard.s5 {
-    clip-path: polygon(34% 46%, 66% 38%, 60% 64%, 46% 72%);
-    --dx:  -28px; --dy:  118px; --dz: 55px; --rz:  18deg;
+  .shard.s5 { /* center small fragment */
+    clip-path: polygon(32% 44%, 70% 36%, 64% 70%, 46% 70%);
+    --bx:   -4px; --by: -24px;
+    --fx:   16px; --fy: 260px; --rz:  420deg;
   }
-  .shard.s6 {
-    clip-path: polygon(46% 72%, 60% 64%, 56% 100%, 26% 100%);
-    --dx:   62px; --dy:  132px; --dz: 82px; --rz: -32deg;
+  .shard.s6 { /* bottom-right triangle */
+    clip-path: polygon(100% 76%, 100% 100%, 58% 100%, 64% 70%);
+    --bx:   68px; --by:  38px;
+    --fx:   92px; --fy: 200px; --rz:  240deg;
+  }
+  .shard.s7 { /* bottom-left triangle */
+    clip-path: polygon(0% 78%, 28% 82%, 30% 100%, 0% 100%);
+    --bx:  -64px; --by:  44px;
+    --fx:  -76px; --fy: 170px; --rz: -220deg;
+  }
+  .shard.s8 { /* bottom-center polygon */
+    clip-path: polygon(28% 82%, 46% 70%, 64% 70%, 58% 100%, 30% 100%);
+    --bx:    6px; --by:  52px;
+    --fx:   24px; --fy: 160px; --rz:  180deg;
   }
 
-  /* Éjection 3D des shards — 60% BANG, 60-84% projection, 84-90% void, 90-100% reform */
-  @keyframes shardEject {
-    0%, 58%  {
+  /* ========================================================================
+     SHARD ANIMATION — le vrai glass shatter avec gravité :
+       0-60%    : invisible (la lettre entière est visible via glyph)
+       62%      : BANG — tous les shards apparaissent à leur position native
+                  (ensemble, ils reconstituent visuellement la lettre)
+       64%      : burst initial (--bx/--by) + début rotation + flash blanc
+       70%      : mi-chute, rotation s'emballe, position entre burst et chute
+       78%      : chute avancée — gravité forte, rotation finale presque atteinte
+       84%      : au sol, opacity fade out, blur fort
+       85-100%  : invisible (glyph reform prend le relais)
+     ======================================================================== */
+  @keyframes shardGlassShatter {
+    0%, 60%   {
       opacity: 0;
-      transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
-      filter: blur(0);
+      transform: translate3d(0, 0, 0) rotate3d(1, 0.3, 0.2, 0deg);
+      filter: blur(0) brightness(1);
     }
-    /* 60% BANG — shards apparaissent TOUS assemblés (position 0) = lettre reconstituée */
-    60%      {
+    /* BANG 62% : tous shards visibles assemblés (reconstituent la lettre) */
+    62%       {
       opacity: 1;
-      transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
-      filter: blur(0) brightness(1.6);
+      transform: translate3d(0, 0, 0) rotate3d(1, 0.3, 0.2, 0deg);
+      filter: blur(0) brightness(2);
     }
-    /* 66% — début projection (accélération) */
-    66%      {
+    /* BURST 64% : projection radiale initiale + flash brightness */
+    64%       {
       opacity: 1;
-      transform: translate3d(
-          calc(var(--dx) * 0.28),
-          calc(var(--dy) * 0.28),
-          calc(var(--dz) * 0.5)
-        )
-        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 0.3));
-      filter: blur(0.5px);
+      transform:
+        translate3d(var(--bx), var(--by), 30px)
+        rotate3d(1, 0.3, 0.2, calc(var(--rz) * 0.15));
+      filter: blur(0.3px) brightness(1.6);
     }
-    /* 76% — projection max + rotation + blur (motion) */
-    76%      {
-      opacity: 0.88;
-      transform: translate3d(
-          calc(var(--dx) * 0.85),
-          calc(var(--dy) * 0.85),
-          var(--dz)
-        )
+    /* MI-CHUTE 70% : gravité commence (by devient + fy partiel), rotation monte */
+    70%       {
+      opacity: 0.95;
+      transform:
+        translate3d(
+          calc(var(--bx) * 0.5 + var(--fx) * 0.35),
+          calc(var(--fy) * 0.3),
+          20px)
+        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 0.55));
+      filter: blur(1px) brightness(1.3);
+    }
+    /* CHUTE AVANCÉE 78% : majorité de la gravité appliquée, blur motion */
+    78%       {
+      opacity: 0.75;
+      transform:
+        translate3d(
+          calc(var(--fx) * 0.85),
+          calc(var(--fy) * 0.8),
+          10px)
+        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 0.88));
+      filter: blur(2px) brightness(1);
+    }
+    /* AU SOL 84% : position finale, fade presque complet, blur max */
+    84%       {
+      opacity: 0;
+      transform:
+        translate3d(var(--fx), var(--fy), 0)
         rotate3d(1, 0.4, 0.3, var(--rz));
-      filter: blur(1.8px);
+      filter: blur(4px) brightness(0.8);
     }
-    /* 84% — shards au loin, fade */
-    84%      {
+    /* VOID 85-100% : shards invisibles, le glyph reform gère la suite */
+    86%, 100% {
       opacity: 0;
-      transform: translate3d(
-          var(--dx),
-          var(--dy),
-          var(--dz)
-        )
-        rotate3d(1, 0.4, 0.3, calc(var(--rz) * 1.35));
-      filter: blur(3.5px);
-    }
-    /* Void 84-93% — rien visible, shards déjà retournés à position 0 mais opacity 0 */
-    88%, 93% {
-      opacity: 0;
-      transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
-      filter: blur(0);
-    }
-    /* Reform éphémère 93-100% : les shards réapparaissent brièvement assemblés
-       puis s'éteignent pendant que le glyph reprend le lead */
-    94%      {
-      opacity: 0.85;
-      transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
-      filter: blur(0);
-    }
-    100%     {
-      opacity: 0;
-      transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
-      filter: blur(0);
+      transform: translate3d(0, 0, 0) rotate3d(1, 0.3, 0.2, 0deg);
+      filter: blur(0) brightness(1);
     }
   }
 
-  /* Word container — permet tilt 3D interactif via CSS vars (--br-rx, --br-ry) */
-  .booster-3d__word {
-    transform: rotateX(var(--br-rx, 0deg)) rotateY(var(--br-ry, 0deg));
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-
-  /* Responsive — trajectoires shards réduites sur mobile */
+  /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
-    .boost-letter { font-size: clamp(54px, 13vw, 110px); }
-    .shard.s1 { --dx:  -92px; --dy: -54px; --dz: 60px; }
-    .shard.s2 { --dx:   76px; --dy: -66px; --dz: 52px; }
-    .shard.s3 { --dx:   94px; --dy:  22px; --dz: 68px; }
-    .shard.s4 { --dx: -100px; --dy:  32px; --dz: 50px; }
-    .shard.s5 { --dx:  -18px; --dy:  80px; --dz: 38px; }
-    .shard.s6 { --dx:   42px; --dy:  88px; --dz: 55px; }
+    .glass-letter { font-size: clamp(56px, 14vw, 118px); }
+    .booster-reflection { font-size: clamp(56px, 14vw, 118px); }
+    .shard.s1 { --bx: -40px; --by: -30px; --fx:  -60px; --fy: 130px; }
+    .shard.s2 { --bx:  42px; --by: -34px; --fx:   66px; --fy: 150px; }
+    .shard.s3 { --bx:  54px; --by:  -6px; --fx:   82px; --fy: 170px; }
+    .shard.s4 { --bx: -58px; --by:   8px; --fx:  -88px; --fy: 155px; }
+    .shard.s5 { --bx:  -2px; --by: -18px; --fx:   12px; --fy: 180px; }
+    .shard.s6 { --bx:  48px; --by:  28px; --fx:   62px; --fy: 140px; }
+    .shard.s7 { --bx: -44px; --by:  32px; --fx:  -52px; --fy: 118px; }
+    .shard.s8 { --bx:   4px; --by:  36px; --fx:   18px; --fy: 110px; }
   }
   @media (max-width: 480px) {
-    .boost-letter {
-      -webkit-text-stroke: 0.7px rgba(216, 180, 254, 0.6);
+    .glass-letter {
       text-shadow:
-        0 0 3px rgba(255, 255, 255, 1),
-        0 0 8px rgba(243, 232, 255, 0.9),
-        0 0 14px rgba(192, 132, 252, 0.85),
-        0 0 26px rgba(168, 85, 247, 0.7),
-        0 0 52px rgba(139, 92, 246, 0.45);
+        0 0 2px  rgba(255, 255, 255, 1),
+        0 0 6px  rgba(243, 232, 255, 1),
+        0 0 12px rgba(221, 214, 254, 0.95),
+        0 0 24px rgba(192, 132, 252, 0.85),
+        0 0 42px rgba(168, 85, 247, 0.65),
+        0 0 78px rgba(139, 92, 246, 0.4);
     }
   }
   @media (prefers-reduced-motion: reduce) {
     .glyph, .shard,
-    .booster-flash, .booster-shockwave, .booster-dust,
-    .booster-neon-halo {
+    .booster-impact, .booster-shockwave, .booster-dust,
+    .booster-halo, .booster-reflection {
       animation: none;
     }
     .glyph { opacity: 1; transform: none; filter: none; }
-    .shard { opacity: 0; }
-    .booster-flash, .booster-shockwave, .booster-dust { opacity: 0; }
-    .booster-neon-halo { opacity: 0.7; }
-    .booster-3d__word { filter: none; transform: none; }
+    .shard, .booster-impact, .booster-shockwave, .booster-dust { opacity: 0; }
+    .booster-halo { opacity: 0.8; }
+    .booster-reflection { opacity: 0.45; }
+    .booster-3d__word { transform: none; }
   }
 
   /* ===== NOISE TEXTURE ===== */
