@@ -18,66 +18,49 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
 
   <div class="hero-inner">
 
-    <!-- Eyebrow : badge session live -->
-    <div class="hero-eyebrow reveal" style="--d:0s">
-      <span class="pulse-dot"></span>
-      <span class="eyebrow-text">Session Mai 2026 · Places limitées</span>
-    </div>
-
     <!-- Logo SMMIA seul (switch dark/light) -->
     <div class="hero-brand" data-depth="0.5">
       <img src="/images/logos/nj.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--dark" />
       <img src="/images/logos/nj.png" alt="SMMIA" class="brand-logo brand-smmia brand-smmia--light" />
     </div>
 
-    <!-- Tagline principale -->
+    <!-- Tagline principale : Ton agence BOOSTER par l'IA -->
     <h1 class="hero-title hero-title--solo">
-      <span class="line-fill reveal" style="--d:0.2s">
-        Monte ton agence IA.
-        <svg class="underline-svg" viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="ug" x1="0" x2="1">
-              <stop offset="0%"   stop-color="#c4b5fd"/>
-              <stop offset="50%"  stop-color="#a855f7"/>
-              <stop offset="100%" stop-color="#7c3aed"/>
-            </linearGradient>
-          </defs>
-          <path d="M 6 14 C 100 6, 200 18, 296 10 S 380 6, 394 14"
-                fill="none"
-                stroke="url(#ug)"
-                stroke-width="6"
-                stroke-linecap="round"/>
+      <span class="tl-line tl-line--top reveal" style="--d:0.15s">Ton agence</span>
+
+      <span class="booster-3d reveal" style="--d:0.3s">
+        <span class="booster-3d__word" data-text="BOOSTER">BOOSTER</span>
+        <svg class="booster-3d__cracks" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true">
+          <!-- doublon glow violet décalé 1px = profondeur dans la fissure -->
+          <g class="cracks-glow">
+            <path class="crack crack--1" d="M 20 38 L 62 30 L 96 46 L 142 28 L 188 44 L 232 26 L 276 48 L 320 32 L 378 50"/>
+            <path class="crack crack--2" d="M 28 84 L 72 94 L 118 78 L 166 92 L 218 80 L 268 96 L 318 82 L 372 94"/>
+            <path class="crack crack--3" d="M 72 18 L 68 38 L 82 52 L 76 72"/>
+            <path class="crack crack--4" d="M 186 62 L 192 78 L 180 92 L 196 108"/>
+            <path class="crack crack--5" d="M 262 20 L 272 44 L 264 60 L 278 78"/>
+            <path class="crack crack--6" d="M 340 24 L 334 48 L 346 64 L 338 84"/>
+          </g>
+          <!-- fissures principales noires -->
+          <g class="cracks-main">
+            <path class="crack crack--1" d="M 20 38 L 62 30 L 96 46 L 142 28 L 188 44 L 232 26 L 276 48 L 320 32 L 378 50"/>
+            <path class="crack crack--2" d="M 28 84 L 72 94 L 118 78 L 166 92 L 218 80 L 268 96 L 318 82 L 372 94"/>
+            <path class="crack crack--3" d="M 72 18 L 68 38 L 82 52 L 76 72"/>
+            <path class="crack crack--4" d="M 186 62 L 192 78 L 180 92 L 196 108"/>
+            <path class="crack crack--5" d="M 262 20 L 272 44 L 264 60 L 278 78"/>
+            <path class="crack crack--6" d="M 340 24 L 334 48 L 346 64 L 338 84"/>
+          </g>
         </svg>
       </span>
-    </h1>
 
-    <!-- CTA premium + secondaire -->
-    <div class="hero-ctas reveal" style="--d:0.75s">
-      <a href="#pricing" class="hero-cta-primary">
-        <span class="cta-label">Rejoindre la session</span>
-        <span class="cta-arrow" aria-hidden="true">
-          <svg viewBox="0 0 14 12" fill="none" width="14" height="12">
-            <path d="M1 6H13M13 6L8 1M13 6L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-      </a>
-      <a href="#programme" class="hero-cta-secondary">
-        Voir le programme
-      </a>
-    </div>
+      <span class="tl-line tl-line--bottom reveal" style="--d:0.45s">
+        par l'<span class="tl-accent">IA</span>.
+      </span>
+    </h1>
 
   </div>
 
   <!-- Fade vers le noir en bas -->
   <div class="hero-fade" aria-hidden="true"></div>
-
-  <!-- Scroll CTA premium -->
-  <a href="#programme" class="hero-scroll-cta" aria-label="Découvrir le programme">
-    <span class="scroll-text">Découvrir</span>
-    <span class="scroll-mouse">
-      <span class="scroll-wheel"></span>
-    </span>
-  </a>
 </section>
 
 <style>
@@ -399,6 +382,161 @@ import FloatingBrandIcons from './FloatingBrandIcons.astro';
   .line-fill:hover .underline-svg {
     transform: scaleX(1.08);
     filter: drop-shadow(0 0 16px rgba(216, 180, 254, 0.9));
+  }
+
+  /* ========== TAGLINE : Ton agence BOOSTER par l'IA ========== */
+  .tl-line {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: clamp(22px, 3vw, 42px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: rgba(255, 255, 255, 0.82);
+  }
+  .tl-line--top    { margin-bottom: 0.1em; }
+  .tl-line--bottom { margin-top: 0.05em; }
+  .tl-accent {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: rgba(216, 180, 254, 0.95);
+  }
+
+  /* ========== BOOSTER 3D fissuré ========== */
+  .booster-3d {
+    position: relative;
+    display: inline-block;
+    line-height: 0.9;
+    margin: 0.08em 0 0.04em;
+    perspective: 800px;
+  }
+
+  .booster-3d__word {
+    position: relative;
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: clamp(80px, 16vw, 224px);
+    line-height: 0.9;
+    letter-spacing: -0.025em;
+    /* Fill blanc → lavande → violet deep */
+    background: linear-gradient(180deg,
+      #FFFFFF 0%,
+      #F3E8FF 28%,
+      #D8B4FE 55%,
+      #A855F7 85%,
+      #7C3AED 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    /* Extrusion 3D : 2 ombres dures courtes + 1 ambient molle */
+    filter:
+      drop-shadow(0 2px 0 #7C3AED)
+      drop-shadow(0 6px 0 #4C1D95)
+      drop-shadow(0 14px 22px rgba(124, 58, 237, 0.45));
+    transform: rotateX(4deg);
+    transform-origin: 50% 80%;
+    will-change: transform;
+  }
+
+  /* Bevel highlight : copie du texte légèrement translatée vers le haut avec fill blanc translucide */
+  .booster-3d__word::before {
+    content: attr(data-text);
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Fissures SVG overlay */
+  .booster-3d__cracks {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 3;
+    transform: rotateX(4deg);
+    transform-origin: 50% 80%;
+  }
+
+  /* Doublon glow violet : profondeur dans la fissure (simule lumière sortant) */
+  .cracks-glow .crack {
+    stroke: rgba(168, 85, 247, 0.7);
+    stroke-width: 1px;
+    fill: none;
+    transform: translate(1px, 1.5px);
+    filter: blur(0.5px);
+  }
+  /* Fissures principales noires */
+  .cracks-main .crack {
+    stroke: #000;
+    stroke-width: 2.4px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    fill: none;
+  }
+
+  /* Animation : chaque crack se dessine en cascade */
+  .crack {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: crackDraw 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+  }
+  .cracks-main .crack--1, .cracks-glow .crack--1 { animation-delay: 1.4s; }
+  .cracks-main .crack--2, .cracks-glow .crack--2 { animation-delay: 1.5s; }
+  .cracks-main .crack--3, .cracks-glow .crack--3 { animation-delay: 1.58s; }
+  .cracks-main .crack--4, .cracks-glow .crack--4 { animation-delay: 1.66s; }
+  .cracks-main .crack--5, .cracks-glow .crack--5 { animation-delay: 1.74s; }
+  .cracks-main .crack--6, .cracks-glow .crack--6 { animation-delay: 1.82s; }
+  @keyframes crackDraw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Micro-secousse quand la dernière fissure arrive (2.4s-2.52s) */
+  .booster-3d__word {
+    animation: microShake 0.16s ease-out 2.4s 1;
+  }
+  @keyframes microShake {
+    0%   { transform: rotateX(4deg) translateX(0);    }
+    25%  { transform: rotateX(4deg) translateX(2px);  }
+    55%  { transform: rotateX(4deg) translateX(-2px); }
+    80%  { transform: rotateX(4deg) translateX(1px);  }
+    100% { transform: rotateX(4deg) translateX(0);    }
+  }
+
+  /* Responsive : fissures adaptent */
+  @media (max-width: 768px) {
+    .booster-3d__word { font-size: clamp(64px, 18vw, 120px); }
+  }
+  @media (max-width: 480px) {
+    .booster-3d__word {
+      filter:
+        drop-shadow(0 2px 0 #7C3AED)
+        drop-shadow(0 4px 0 #4C1D95)
+        drop-shadow(0 10px 16px rgba(124, 58, 237, 0.45));
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .booster-3d__word { animation: none; transform: rotateX(4deg); }
+    .crack {
+      stroke-dasharray: none;
+      stroke-dashoffset: 0;
+      animation: none;
+    }
   }
 
   /* ===== NOISE TEXTURE ===== */
