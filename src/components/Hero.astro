@@ -71,26 +71,24 @@
       window.addEventListener('resize', updateNav);
     }
 
-    // Nuke Spline watermark dans le shadow DOM (NE PAS toucher au canvas → casse le WebGL)
-    function nukeSplineWatermark() {
+    // Nuke watermark Spline via CSS dans le shadow DOM (une seule injection)
+    function nukeWatermark() {
       document.querySelectorAll('spline-viewer').forEach(function (v) {
         var sr = v.shadowRoot;
-        if (!sr) return;
-        if (!sr.querySelector('style[data-nuke]')) {
-          var st = document.createElement('style');
-          st.setAttribute('data-nuke', '1');
-          st.textContent =
-            '#logo, .logo, a[href*="spline"], button[aria-label*="Spline" i],' +
-            '#spline-logo, .spline-logo, [class*="watermark" i], [class*="branding" i] {' +
-            'display: none !important; opacity: 0 !important; visibility: hidden !important;' +
-            'pointer-events: none !important; }';
-          sr.appendChild(st);
-        }
-        sr.querySelectorAll('a[href*="spline"], #logo, .logo').forEach(function (el) { el.remove(); });
+        if (!sr || sr.querySelector('style[data-nuke]')) return;
+        var st = document.createElement('style');
+        st.setAttribute('data-nuke', '1');
+        st.textContent =
+          '#logo, a[href*="spline"], [aria-label*="Spline" i] {' +
+          'display: none !important; opacity: 0 !important; pointer-events: none !important;' +
+          'visibility: hidden !important; width: 0 !important; height: 0 !important; }' +
+          '#container { width: 100% !important; height: 100% !important; }' +
+          'canvas { width: 100% !important; height: 100% !important; position: absolute !important;' +
+          'left: 0 !important; top: 0 !important; transform: none !important; object-fit: cover !important; }';
+        sr.appendChild(st);
       });
     }
-    [800, 1600, 3000, 6000].forEach(function (t) { setTimeout(nukeSplineWatermark, t); });
-    setInterval(nukeSplineWatermark, 2500);
+    [300, 800, 1500, 3000, 6000].forEach(function (t) { setTimeout(nukeWatermark, t); });
   })();
 </script>
 
@@ -131,7 +129,7 @@
   .halo-soft {
     position: absolute;
     left: 50%;
-    top: 44%;
+    top: 50%;
     transform: translate(-50%, -50%);
     width: min(1600px, 110vmin);
     aspect-ratio: 1 / 1;
@@ -167,10 +165,10 @@
   .planet-stage {
     position: absolute;
     left: 50%;
-    top: 44%;
+    top: 50%;
     transform: translate(-50%, -50%);
-    width: min(2800px, 170vmin);
-    height: min(2800px, 170vmin);
+    width: min(780px, 80vmin);
+    height: min(780px, 80vmin);
     aspect-ratio: 1 / 1;
     z-index: 5;
     display: flex;
@@ -181,9 +179,8 @@
       drop-shadow(0 15px 40px rgba(124, 58, 237, 0.15))
       drop-shadow(0 0 40px rgba(168, 85, 247, 0.18));
   }
-  @media (max-width: 1280px) { .planet-stage { width: min(2300px, 165vmin); height: min(2300px, 165vmin); } }
-  @media (max-width: 1024px) { .planet-stage { width: min(1750px, 160vmin); height: min(1750px, 160vmin); } }
-  @media (max-width: 640px)  { .planet-stage { width: min(1100px, 155vmin); height: min(1100px, 155vmin); } }
+  @media (max-width: 1024px) { .planet-stage { width: min(620px, 78vmin); height: min(620px, 78vmin); } }
+  @media (max-width: 640px)  { .planet-stage { width: min(460px, 80vmin); height: min(460px, 80vmin); top: 48%; } }
 
   .planet-stage canvas {
     display: block;
