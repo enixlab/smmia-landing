@@ -71,25 +71,11 @@
       window.addEventListener('resize', updateNav);
     }
 
-    // Force canvas Spline carré + nuke watermark shadow DOM
-    function fixSpline() {
+    // Nuke Spline watermark dans le shadow DOM (NE PAS toucher au canvas → casse le WebGL)
+    function nukeSplineWatermark() {
       document.querySelectorAll('spline-viewer').forEach(function (v) {
         var sr = v.shadowRoot;
         if (!sr) return;
-        var c = sr.querySelector('canvas');
-        if (!c) return;
-        var r = v.getBoundingClientRect();
-        var side = Math.min(r.width, r.height);
-        var dpr = Math.min(window.devicePixelRatio || 1, 2);
-        c.style.width = side + 'px';
-        c.style.height = side + 'px';
-        c.style.position = 'absolute';
-        c.style.left = '50%';
-        c.style.top = '50%';
-        c.style.transform = 'translate(-50%, -50%)';
-        c.width = Math.round(side * dpr);
-        c.height = Math.round(side * dpr);
-
         if (!sr.querySelector('style[data-nuke]')) {
           var st = document.createElement('style');
           st.setAttribute('data-nuke', '1');
@@ -102,22 +88,10 @@
         }
         sr.querySelectorAll('a[href*="spline"], #logo, .logo').forEach(function (el) { el.remove(); });
       });
-      window.dispatchEvent(new Event('resize'));
     }
-    [300, 700, 1400, 2500, 4000, 6000, 9000].forEach(function (t) { setTimeout(fixSpline, t); });
-    setInterval(fixSpline, 2000);
-    window.addEventListener('resize', fixSpline);
+    [800, 1600, 3000, 6000].forEach(function (t) { setTimeout(nukeSplineWatermark, t); });
+    setInterval(nukeSplineWatermark, 2500);
   })();
-</script>
-
-<script is:inline>
-  if (!document.querySelector('script[data-spline-viewer]')) {
-    var s = document.createElement('script');
-    s.type = 'module';
-    s.src = 'https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js';
-    s.setAttribute('data-spline-viewer', '1');
-    document.head.appendChild(s);
-  }
 </script>
 
 <style>
@@ -203,9 +177,9 @@
     align-items: center;
     justify-content: center;
     filter:
-      drop-shadow(0 60px 120px rgba(76, 29, 149, 0.38))
-      drop-shadow(0 25px 60px rgba(124, 58, 237, 0.32))
-      drop-shadow(0 0 80px rgba(168, 85, 247, 0.45));
+      drop-shadow(0 40px 80px rgba(76, 29, 149, 0.20))
+      drop-shadow(0 15px 40px rgba(124, 58, 237, 0.15))
+      drop-shadow(0 0 40px rgba(168, 85, 247, 0.18));
   }
   @media (max-width: 1280px) { .planet-stage { width: min(2300px, 165vmin); height: min(2300px, 165vmin); } }
   @media (max-width: 1024px) { .planet-stage { width: min(1750px, 160vmin); height: min(1750px, 160vmin); } }
@@ -292,9 +266,9 @@
     pointer-events: none;
     background: radial-gradient(circle at center,
       transparent 46%,
-      rgba(192, 132, 252, 0.35) 50%,
-      rgba(168, 85, 247, 0.22) 55%,
-      rgba(168, 85, 247, 0.08) 62%,
+      rgba(192, 132, 252, 0.15) 50%,
+      rgba(168, 85, 247, 0.10) 55%,
+      rgba(168, 85, 247, 0.04) 62%,
       transparent 72%);
     filter: blur(6px);
     mix-blend-mode: screen;
