@@ -235,29 +235,28 @@
     height: 100%;
     display: block;
     pointer-events: none;
-    /* Full DAY mode — kill the night side */
+    /* DAY mode modéré — la Terre reste visible */
     filter:
-      brightness(2.15)
-      contrast(0.72)
-      saturate(1.55)
-      hue-rotate(-6deg);
+      brightness(1.25)
+      contrast(0.95)
+      saturate(1.3)
+      hue-rotate(-4deg);
     mix-blend-mode: normal;
     --spline-logo: none;
   }
   .spline-crop spline-viewer::part(logo) { display: none !important; }
 
-  /* Daylight wash */
+  /* Daylight wash doux — warm rim top-left seulement */
   .spline-crop .daylight-wash {
     position: absolute;
     inset: 0;
     border-radius: 9999px;
     background:
-      radial-gradient(circle at 30% 30%,
-        rgba(255, 250, 235, 0.45) 0%,
-        rgba(255, 240, 215, 0.25) 25%,
-        rgba(224, 231, 255, 0.18) 50%,
-        rgba(196, 181, 253, 0.12) 70%,
-        transparent 90%);
+      radial-gradient(circle at 28% 22%,
+        rgba(255, 250, 235, 0.28) 0%,
+        rgba(255, 240, 215, 0.14) 20%,
+        rgba(224, 231, 255, 0.08) 45%,
+        transparent 70%);
     mix-blend-mode: screen;
     pointer-events: none;
     z-index: 3;
