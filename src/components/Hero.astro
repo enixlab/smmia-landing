@@ -1,7 +1,7 @@
 ---
-// Hero SMMIA — port EXACT du rendu Claude Design "SMMIA Hero v4 Light"
+// Hero SMMIA — port EXACT du rendu Claude Design "SMMIA Hero v4 Light" (LATEST)
 // Source : claude.ai/design/p/6cb92b07-fe86-4062-8949-d8f47fb566dd?file=SMMIA+Hero+v4+Light.html
-// Light mode : fond blanc + halo violet + planète Spline filtrée DAY + logo SMM/IA outline+néon
+// Light mode : fond blanc + halo violet soft + planète Spline Full DAY + logo SMM/IA + 4 icônes PNG
 ---
 
 <section id="hero" class="hero-root">
@@ -10,20 +10,20 @@
   <div class="halo-soft"></div>
 
   <div class="orbit-anchor orbit-tl bloom d3">
-    <div class="float-a"><div class="spin-a"><div class="orbit-icon icon-claude">C</div></div></div>
-    <div class="orbit-label">CLAUDE · COPY</div>
+    <div class="float-a"><div class="spin-a"><div class="orbit-icon"><img src="/hero-icons/claude.png" alt="Claude" /></div></div></div>
+    <div class="orbit-label">CLAUDE</div>
   </div>
   <div class="orbit-anchor orbit-tr bloom d3">
-    <div class="float-b"><div class="spin-b"><div class="orbit-icon icon-gemini">G</div></div></div>
-    <div class="orbit-label">GEMINI · VISION</div>
+    <div class="float-b"><div class="spin-b"><div class="orbit-icon"><img src="/hero-icons/gemini.png" alt="Gemini" /></div></div></div>
+    <div class="orbit-label">GEMINI</div>
   </div>
   <div class="orbit-anchor orbit-bl bloom d4">
-    <div class="float-c"><div class="spin-c"><div class="orbit-icon icon-stripe">S</div></div></div>
-    <div class="orbit-label">STRIPE · PAY</div>
+    <div class="float-c"><div class="spin-c"><div class="orbit-icon"><img src="/hero-icons/n8n.png" alt="N8N" /></div></div></div>
+    <div class="orbit-label">N8N</div>
   </div>
   <div class="orbit-anchor orbit-br bloom d4">
-    <div class="float-d"><div class="spin-d"><div class="orbit-icon icon-shopify">S</div></div></div>
-    <div class="orbit-label">SHOPIFY · OPS</div>
+    <div class="float-d"><div class="spin-d"><div class="orbit-icon"><img src="/hero-icons/shopify.png" alt="Shopify" /></div></div></div>
+    <div class="orbit-label">SHOPIFY</div>
   </div>
 
   <div class="planet-stage bloom d2">
@@ -35,6 +35,7 @@
         loading-anim-type="none"
         events-target="global"
       ></spline-viewer>
+      <div class="daylight-wash"></div>
     </div>
     <div class="planet-atmo"></div>
     <div class="logo-text">
@@ -47,13 +48,10 @@
     <div class="tag-boosted tag-size-boost my-1">BOOSTÉE</div>
     <div class="tag-line tag-size-base">PAR L'IA</div>
   </div>
-
-  <div class="spline-watermark-cover" aria-hidden="true"></div>
 </section>
 
 <script is:inline>
   (function () {
-    // Force la navbar à disparaître quand on est sur le hero
     var nav = document.getElementById('navbar');
     var hero = document.getElementById('hero');
     if (nav && hero) {
@@ -73,10 +71,12 @@
       window.addEventListener('resize', updateNav);
     }
 
-    // Force le canvas Spline à être carré (empêche l'ellipse quand le viewport s'étire)
-    function fixSplineCanvas() {
+    // Force canvas Spline carré + nuke watermark shadow DOM
+    function fixSpline() {
       document.querySelectorAll('spline-viewer').forEach(function (v) {
-        var c = v.shadowRoot && v.shadowRoot.querySelector('canvas');
+        var sr = v.shadowRoot;
+        if (!sr) return;
+        var c = sr.querySelector('canvas');
         if (!c) return;
         var r = v.getBoundingClientRect();
         var side = Math.min(r.width, r.height);
@@ -89,33 +89,28 @@
         c.style.transform = 'translate(-50%, -50%)';
         c.width = Math.round(side * dpr);
         c.height = Math.round(side * dpr);
+
+        if (!sr.querySelector('style[data-nuke]')) {
+          var st = document.createElement('style');
+          st.setAttribute('data-nuke', '1');
+          st.textContent =
+            '#logo, .logo, a[href*="spline"], button[aria-label*="Spline" i],' +
+            '#spline-logo, .spline-logo, [class*="watermark" i], [class*="branding" i] {' +
+            'display: none !important; opacity: 0 !important; visibility: hidden !important;' +
+            'pointer-events: none !important; }';
+          sr.appendChild(st);
+        }
+        sr.querySelectorAll('a[href*="spline"], #logo, .logo').forEach(function (el) { el.remove(); });
       });
       window.dispatchEvent(new Event('resize'));
     }
-    [300, 700, 1400, 2500, 4000].forEach(function (t) { setTimeout(fixSplineCanvas, t); });
-    window.addEventListener('resize', fixSplineCanvas);
-
-    // Masque le watermark "Built with Spline" dans le shadow DOM
-    function hideSplineWatermark() {
-      var viewer = document.getElementById('smmia-spline');
-      if (!viewer || !viewer.shadowRoot) return;
-      try {
-        viewer.shadowRoot.querySelectorAll('a, [id*="logo"], [class*="logo"]').forEach(function (el) {
-          var href = (el.href || '') + '';
-          var txt = (el.textContent || '').toLowerCase();
-          if (href.indexOf('spline') !== -1 || txt.indexOf('spline') !== -1) {
-            el.style.display = 'none';
-          }
-        });
-      } catch (e) {}
-    }
-    [800, 1600, 3000].forEach(function (t) { setTimeout(hideSplineWatermark, t); });
-    setInterval(hideSplineWatermark, 2500);
+    [300, 700, 1400, 2500, 4000, 6000, 9000].forEach(function (t) { setTimeout(fixSpline, t); });
+    setInterval(fixSpline, 2000);
+    window.addEventListener('resize', fixSpline);
   })();
 </script>
 
 <script is:inline>
-  // Injecte le script spline-viewer une seule fois
   if (!document.querySelector('script[data-spline-viewer]')) {
     var s = document.createElement('script');
     s.type = 'module';
@@ -173,11 +168,12 @@
     filter: blur(70px);
     pointer-events: none;
     z-index: 1;
+    opacity: 0.25;
     animation: softBreath 10s ease-in-out infinite;
   }
   @keyframes softBreath {
-    0%, 100% { opacity: .85; transform: translate(-50%, -50%) scale(1); }
-    50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.04); }
+    0%, 100% { opacity: .25; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: .30; transform: translate(-50%, -50%) scale(1.04); }
   }
 
   .grid-bg {
@@ -193,7 +189,7 @@
     z-index: 1;
   }
 
-  /* ===== PLANET STAGE — large, perfectly centered ===== */
+  /* ===== PLANET STAGE ===== */
   .planet-stage {
     position: absolute;
     left: 50%;
@@ -239,32 +235,48 @@
     height: 100%;
     display: block;
     pointer-events: none;
+    /* Full DAY mode — kill the night side */
     filter:
-      brightness(1.72)
-      contrast(0.82)
-      saturate(1.4)
-      hue-rotate(-4deg);
+      brightness(2.15)
+      contrast(0.72)
+      saturate(1.55)
+      hue-rotate(-6deg);
     mix-blend-mode: normal;
     --spline-logo: none;
   }
   .spline-crop spline-viewer::part(logo) { display: none !important; }
+
+  /* Daylight wash */
+  .spline-crop .daylight-wash {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background:
+      radial-gradient(circle at 30% 30%,
+        rgba(255, 250, 235, 0.45) 0%,
+        rgba(255, 240, 215, 0.25) 25%,
+        rgba(224, 231, 255, 0.18) 50%,
+        rgba(196, 181, 253, 0.12) 70%,
+        transparent 90%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  /* Belt-and-suspenders: white patch over Spline watermark */
   .spline-crop::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 28% 22%,
-        rgba(255, 255, 255, 0.55) 0%,
-        rgba(255, 240, 210, 0.30) 20%,
-        rgba(233, 213, 255, 0.18) 45%,
-        transparent 70%),
-      radial-gradient(circle at 75% 80%,
-        rgba(168, 85, 247, 0.18) 0%,
-        transparent 45%);
-    mix-blend-mode: screen;
+    right: -8px;
+    bottom: -8px;
+    width: 180px;
+    height: 70px;
+    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.92) 35%, #FFFFFF 100%);
+    z-index: 50;
     pointer-events: none;
-    z-index: 2;
+    border-radius: 8px;
   }
+  /* Specular highlight top-left */
   .spline-crop::before {
     content: '';
     position: absolute;
@@ -312,7 +324,7 @@
     opacity: 0;
   }
 
-  /* ===== LOGO TEXT (SMM outline + IA neon) ===== */
+  /* ===== LOGO TEXT ===== */
   .logo-text {
     position: absolute;
     left: 50%;
@@ -409,7 +421,7 @@
     .tag-size-base  { font-size: clamp(1.8rem, 8vw, 2.6rem); }
   }
 
-  /* ===== ORBIT ICONS ===== */
+  /* ===== ORBIT ICONS (PNG images) ===== */
   .orbit-anchor {
     position: absolute;
     display: flex;
@@ -424,25 +436,21 @@
 
   .orbit-icon {
     position: relative;
-    width: 72px;
-    height: 72px;
-    border-radius: 18px;
+    width: 96px;
+    height: 96px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Archivo Black', sans-serif;
-    color: white;
-    font-size: 22px;
-    letter-spacing: -0.02em;
-    box-shadow:
-      inset 0 2px 0 rgba(255, 255, 255, 0.5),
-      inset 0 -6px 14px rgba(0, 0, 0, 0.25),
-      0 14px 40px rgba(124, 58, 237, 0.35);
+    transform-style: preserve-3d;
   }
-  .icon-claude  { background: linear-gradient(140deg, #FB923C 0%, #EA580C 55%, #B45309 100%); }
-  .icon-gemini  { background: linear-gradient(140deg, #22D3EE 0%, #6366F1 55%, #7C3AED 100%); }
-  .icon-stripe  { background: linear-gradient(140deg, #A78BFA 0%, #7C3AED 55%, #4C1D95 100%); }
-  .icon-shopify { background: linear-gradient(140deg, #86EFAC 0%, #22C55E 55%, #15803D 100%); }
+  .orbit-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 12px 24px rgba(124, 58, 237, 0.35))
+      drop-shadow(0 4px 8px rgba(76, 29, 149, 0.25));
+  }
   .orbit-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
@@ -467,8 +475,9 @@
   .spin-b  { animation: spinSlowR 32s linear infinite; }
   .spin-c  { animation: spinSlow  34s linear infinite; }
   .spin-d  { animation: spinSlowR 30s linear infinite; }
+
   @media (max-width: 640px) {
-    .orbit-icon { width: 52px; height: 52px; font-size: 18px; border-radius: 14px; }
+    .orbit-icon { width: 64px; height: 64px; }
     .orbit-label { font-size: 9px; }
     .orbit-tl { top: 8%; left: 3%; }
     .orbit-tr { top: 8%; right: 3%; }
@@ -486,17 +495,4 @@
   .d3 { animation-delay: .4s; }
   .d4 { animation-delay: .55s; }
   .d5 { animation-delay: .7s; }
-
-  /* Cover watermark Spline bas droite */
-  .spline-watermark-cover {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-    width: 180px;
-    height: 40px;
-    z-index: 999;
-    pointer-events: none;
-    border-radius: 8px;
-    background: #FFFFFF;
-  }
 </style>
