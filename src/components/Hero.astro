@@ -165,15 +165,15 @@
       rgba(168, 85, 247, 0.28) 0%,
       rgba(124, 58, 237, 0.16) 25%,
       transparent 60%);
-    filter: blur(70px);
+    filter: blur(80px);
     pointer-events: none;
     z-index: 1;
-    opacity: 0.25;
+    opacity: 0.12;
     animation: softBreath 10s ease-in-out infinite;
   }
   @keyframes softBreath {
-    0%, 100% { opacity: .25; transform: translate(-50%, -50%) scale(1); }
-    50%      { opacity: .30; transform: translate(-50%, -50%) scale(1.04); }
+    0%, 100% { opacity: .10; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: .14; transform: translate(-50%, -50%) scale(1.04); }
   }
 
   .grid-bg {
@@ -263,19 +263,6 @@
     z-index: 3;
   }
 
-  /* Belt-and-suspenders: white patch over Spline watermark */
-  .spline-crop::after {
-    content: '';
-    position: absolute;
-    right: -8px;
-    bottom: -8px;
-    width: 180px;
-    height: 70px;
-    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.92) 35%, #FFFFFF 100%);
-    z-index: 50;
-    pointer-events: none;
-    border-radius: 8px;
-  }
   /* Specular highlight top-left */
   .spline-crop::before {
     content: '';
